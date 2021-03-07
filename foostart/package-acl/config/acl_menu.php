@@ -81,10 +81,11 @@ return [
                 "permissions" => [$admin]
             ],
 
-            //Categories
+            //Post
             [
-                "route"       => "category-admin.menus.top-menu",
-                "link"        => '/admin/categories/list',
+                'name'        => 'post-admin.menus.top-menu',
+                "route"       => "posts",
+                "link"        => '/admin/posts',
                 "permissions" => [$admin, '_user-editor']
             ],
     ]

@@ -32,6 +32,7 @@ class Post extends FooModel {
             'post_description',
             'post_image',
             'post_files',
+            'post_view_time',
             //Relation
             'category_id',
             'slideshow_id',
@@ -41,6 +42,10 @@ class Post extends FooModel {
         $this->fields = array_merge($this->fields, [
             'post_name' => [
                 'name' => 'post_name',
+                'type' => 'Text',
+            ],
+            'post_view_time' => [
+                'name' => 'post_view_time',
                 'type' => 'Text',
             ],
             'post_slug' => [
@@ -82,6 +87,7 @@ class Post extends FooModel {
             'post_description',
             'post_image',
             'post_files',
+            'post_view_time',
             //Relation
             'category_id',
             'slideshow_id',
@@ -266,7 +272,7 @@ class Post extends FooModel {
                 }
             }
         } elseif ($by_status) {
-            
+
             $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
 
         }
@@ -348,9 +354,16 @@ class Post extends FooModel {
 
         $item = self::create($dataFields);
 
+        //Update time
+        if (empty($params['view_time'])) {
+            $item->post_view_time = $item->updated_at;
+            $item->save();
+        }
+
+        //Add new attribute
         $key = $this->primaryKey;
         $item->id = $item->$key;
-
+        
         return $item;
     }
 

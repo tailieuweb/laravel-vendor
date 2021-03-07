@@ -15,7 +15,10 @@
 <!--CONTENT-->
 @section('content')
     @include('package-front::blocks.133-content')
-    @include('package-front::blocks.143-content')
+
+    <div class="container">
+        @include('package-front::blocks.143-content')
+    </div>
 
     <div class="container">
         <div class="row">

@@ -120,6 +120,17 @@
                     ])
                 </div>
 
+                <div class='col-md-6'>
+                    <!--VIEW TIME-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'post_view_time',
+                        'label' => trans($plang_admin.'.form.view_time'),
+                        'value' => @$item->status,
+                        'items' => $status,
+                        'description' => trans($plang_admin.'.descriptions.view_time'),
+                    ])
+                </div>
+
             </div>
 
             <!--POST DESCRIPTION-->

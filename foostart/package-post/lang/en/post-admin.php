@@ -126,6 +126,7 @@ return [
         'sorting' => 'Sorting',
         'no-selected' => 'No selected',
         'status' => 'Status',
+        'view_time' => 'View time',
     ],
 
 
@@ -157,6 +158,7 @@ return [
         'not-found' => 'Not found items',
         'config' => 'List of configurations',
         'lang' => 'List of languages',
+        'view_time' => 'View time with format dd-mm-YYYY',
     ],
 
 
