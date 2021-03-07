@@ -52,11 +52,6 @@
     padding: 0;
   }
 }
-@media (min-width: 768px) {
-  .type-165 .intro {
-    width: 96rem;
-  }
-}
 @media (max-width: 480px) {
   .type-165 .intro {
     padding: 0;

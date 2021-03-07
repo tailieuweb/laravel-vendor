@@ -1,11 +1,7 @@
-    
+
 <div class="type-164">
-    <div class="container address">
-        <div class="row">
-            <!--LEFT ADDRESS-->
-            <!--/END LEFT ADDRESS-->
-            <!--RIGHT CONTACTS-->
-            <div class="col-sm-6 col-md-6">
+    <div class="address">
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Liên hệ<br><span>Với chúng tôi</span></h2>
@@ -32,13 +28,11 @@
                                 <span class="help-block">Please enter the code displayed within the image.</span>
                             </div>
                             <span class="help-block">Please enter a the security code.</span>
-                            <button type="submit" id="feedbackSubmit" name="feedbackSubmit" class="btn btn-primary btn-lg" style="display: block; margin-top: 10px;">Gửi</button>
+                            <button type="submit" id="feedbackSubmit" name="feedbackSubmit" class="btn-primary btn-lg" style="display: block; margin-top: 10px;">Gửi</button>
                         </form>
                         <!--/END CONTACT FORM-->
                     </div>
-                </div>			
-            </div>
-            <!--/END RIGHT CONTACTS-->
-        </div>
+                </div>
+
     </div>
 </div>

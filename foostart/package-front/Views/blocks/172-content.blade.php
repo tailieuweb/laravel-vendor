@@ -1,9 +1,9 @@
-  
+
 <div class="type-172">
     <!--LIST OF HEADER BAC CAO DANG-->
     <div class="container">
         <!--LIST OF HEADER-->
-        <div class="container tuyen-sinh">
+        <div class="tuyen-sinh">
             <div class="section-heading">
                 <div>
                     <span class="spacer"></span>
@@ -45,7 +45,7 @@
                                     </div>
                                 </li>
                             </ul>
-                               
+
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <ul>
@@ -61,7 +61,7 @@
                                         <div class="button_more"> <a href="#" class="more">Xem thêm</a></div>
                                     </div>
                                 </li>
-                            </ul>      
+                            </ul>
                         </div>
                     </div>
 
@@ -96,7 +96,7 @@
                                         <div class="button_more"> <a href="#" class="more">Xem thêm</a></div>
                                     </div>
                                 </li>
-                            </ul> 
+                            </ul>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <ul>

@@ -1,8 +1,7 @@
 
 <div class="type-165">
-    <div class="container intro">
-        <div class="row">
-            <div class="col-md-8">
+    <div class="intro">
+
                 <div class="row title" data-aos="slide-up">
                     <div class="col-md-10 col-xs-9">
                         <h1  >Giới thiệu</h1>
@@ -53,7 +52,7 @@
                         </div>
                         <br>
                         <div data-aos="fade-right">
-                            Chương trình đào tạo của khoa được xây dựng công phu với sự tham khảo chương trình của nhiều trường đại học, cao đẳng nổi tiếng trong nước và quốc tế. Nhờ đó, hầu hết sinh viên ra trường đều đã có việc làm với công việc ổn định, phù hợp với ngành nghề đã được đào tạo. Bên canh đó, một số cựu sinh viên;sẵn sàng hỗ trợ sinh viên các khóa sau như hướng nghiệp, giới thiệu việc làm.;Ngoài ra, sinh viên của khoa cũng đạt giải cao trong các kỳ thi tay nghề trẻ, học sinh giỏi nghề do thành phố tổ chức.<br>    
+                            Chương trình đào tạo của khoa được xây dựng công phu với sự tham khảo chương trình của nhiều trường đại học, cao đẳng nổi tiếng trong nước và quốc tế. Nhờ đó, hầu hết sinh viên ra trường đều đã có việc làm với công việc ổn định, phù hợp với ngành nghề đã được đào tạo. Bên canh đó, một số cựu sinh viên;sẵn sàng hỗ trợ sinh viên các khóa sau như hướng nghiệp, giới thiệu việc làm.;Ngoài ra, sinh viên của khoa cũng đạt giải cao trong các kỳ thi tay nghề trẻ, học sinh giỏi nghề do thành phố tổ chức.<br>
                         </div>
                         <br>
                         <div class="images_Center" data-aos="fade-right" >
@@ -61,12 +60,12 @@
                             <em>Sinh viên;Khoa CNTT giao lưu, học tập với sinh viên ĐH;Singapore Polytechnic</em>
                         </div>
                         ​<br>
-                        <div data-aos="fade-right"> 
+                        <div data-aos="fade-right">
                             Với lợi thế là một khoa có nhiều giảng viên trẻ nên môi trường làm việc của khoa rất thân thiện, gần gũi với sinh viên. Ngoài ra, ban lãnh đạo khoa luôn có nhiều chính sách tốt để bồi dưỡng chuyên môn, tạo cơ hội thăng tiến cho những người có năng lực phát triển và thu hút nhân tài.<br>
                         </div>
 
                         <br>
-                        <div data-aos="fade-right" > 
+                        <div data-aos="fade-right" >
                             <em><strong >1.2.;Chức Năng - Nhiệm vụ</strong><br>
                                 Khoa Công nghệ Thông tin có chức năng, nhiệm vụ sau:</em>
                         </div>
@@ -126,12 +125,12 @@
                             <em>Khuôn viên trường thoáng mát, yên tĩnh dành cho sinh viên</em>
                         </div>
                         <br>
-                        <div data-aos="fade-right"> 
+                        <div data-aos="fade-right">
                             <em><strong>2. CƠ CẤU TỔ CHỨC<br>
                                     2.1. Ban lãnh đạo Khoa</strong></em><br>
                             Trưởng khoa: ThS. Võ Thành Trung<br>
                         </div>
-                        <div data-aos="fade-right"> 
+                        <div data-aos="fade-right">
                             <em><strong>2.2. Bộ môn</strong></em><br>
                             Bộ môn Tin học cơ sở -;Trưởng bộ môn: Cô Lâm Thị Phương Thảo<br>
                             Bộ môn Công nghệ phần mềm -;Trưởng bộ môn: ThS. Phan Thị Thể<br>
@@ -142,8 +141,6 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 </div>
 

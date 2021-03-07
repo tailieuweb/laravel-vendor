@@ -120,16 +120,47 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'ThematicController@thematicDetail'
         ])->where(['name' => '[a-zA-Z0-9-_]+','id' => '[0-9]+']);
 
-
-
+        /**
+         * Contact
+         */
+        Route::get('/lien-he', [
+            'as' => 'contact',
+            'uses' => 'ContactController@index'
+        ]);
+        Route::post('/lien-he', [
+            'as' => 'contact.post',
+            'uses' => 'ContactController@contactPost'
+        ]);
+        /**
+         * Intro
+         */
+        Route::get('/gioi-thieu', [
+            'as' => 'intro',
+            'uses' => 'IntroController@index'
+        ]);
+        /**
+         * Admissions
+         */
+        Route::get('/tuyen-sinh', [
+            'as' => 'admissions',
+            'uses' => 'AdmissionsController@index'
+        ]);
 
         /**
-         * Search
+        * Brochure
+        */
+        Route::get('/brochure', [
+            'as' => 'brochure',
+            'uses' => 'BrochureController@index'
+        ]);
+
+        /**
+         * Aao
          */
-        Route::get('/search/{keyword?}', [
-            'as' => 'search',
-            'uses' => 'SearchController@index'
-        ])->where(['keyword' => '[a-zA-Z0-9-_]+']);
+        Route::get('/dao-tao', [
+            'as' => 'aao',
+            'uses' => 'AaoController@index'
+        ]);
 
     });
 });

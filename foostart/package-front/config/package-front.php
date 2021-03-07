@@ -265,8 +265,6 @@ return [
         'contact' => [
             'ids' => [
                 133,
-                140,
-                141,
                 163,
                 164,
                 177,
@@ -276,20 +274,72 @@ return [
         ],//| 10-Contact page
 
         /**
-         * | 11-Other page page
+         * | 11-Intro
          */
-        'ohter' => [
+        'intro' => [
             'ids' => [
                 133,
-                155,
-                157,
+                136,
+                137,
+                165,
+                176,
                 177,
-                179,
             ],
             'libs' => [
             ]
-        ],//| 11-Other page page
+        ],//| 11-Intro
+
+        /**
+         * | 12-Admissions
+         */
+        'admissions' => [
+            'ids' => [
+                133,
+                162,
+                172,
+                177,
+            ],
+            'libs' => [
+                172 => [
+                    'css' => [
+                        'Cube_Animation',
+                    ]
+                ],
+            ]
+        ],//| 12-Admissions
+
+        /**
+         * | 13-Brochure
+         */
+        'brochure' => [
+            'ids' => [
+                133,
+                173,
+                177,
+            ],
+            'libs' => [
+                173 => [
+                    'js' => [
+                        'turn.min',
+                    ]
+                ],
+            ]
+        ],//| 13-Brochure
+
+        /**
+         * | 14-Aao
+         */
+        'aao' => [
+            'ids' => [
+                133,
+                161,
+                177
+            ],
+            'libs' => [
+            ]
+        ],//| 14-Aao
     ],
+
 
 
 

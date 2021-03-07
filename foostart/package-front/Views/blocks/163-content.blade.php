@@ -1,9 +1,7 @@
-    
+
 <div class="type-163">
-    <div class="container address">
-        <div class="row">
-            <!--LEFT ADDRESS-->
-            <div class="col-sm-6 col-md-6">
+    <div class="address">
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Văn phòng Khoa<br><span>Địa chỉ</span></h2>
@@ -38,7 +36,6 @@
                 </div>
                 <!--/END LEFT ADDRESS-->
                 <!--/END RIGHT CONTACTS-->
-            </div>
-        </div>
+
     </div>
 </div>
