@@ -96,11 +96,6 @@
     padding: 0;
   }
 }
-@media (min-width: 768px) {
-  .type-158 .sidebar {
-    width: 96rem;
-  }
-}
 @media (max-width: 480px) {
   .type-158 .sidebar {
     padding: 0;

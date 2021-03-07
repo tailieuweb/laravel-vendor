@@ -470,6 +470,10 @@ class FrontController extends Controller {
             'news_detail' => $this->getPageConfig('news_detail'),
             'personnel_list' => $this->getPageConfig('personnel_list'),
             'personnel_detail' => $this->getPageConfig('personnel_detail'),
+            'student_list' => $this->getPageConfig('student_list'),
+            'student_detail' => $this->getPageConfig('student_detail'),
+            'thematic_list' => $this->getPageConfig('thematic_list'),
+            'thematic_detail' => $this->getPageConfig('personnel_detail'),
         ];
         return $this->block_page_ids;
     }

@@ -1,4 +1,4 @@
-.type-338 .productdot {
+.type-170 .productdot {
   position: absolute;
   width: 0%;
   left: 0;
@@ -9,14 +9,14 @@
   height: 2px;
   transition-duration: 0.5s;
 }
-.type-338 .boxshow:hover .productdot {
+.type-170 .boxshow:hover .productdot {
   width: 100%;
 }
-.type-338 #catenav {
+.type-170 #catenav {
   background: #f5ce31;
   margin: 5.5rem 0 2.5rem;
 }
-.type-338 #catenav h4 {
+.type-170 #catenav h4 {
   font-size: 1em;
   padding: 1.5rem 0;
   margin: 0;
@@ -24,43 +24,40 @@
   font-weight: bold;
   display: inline-block;
 }
-.type-338 #catenav a {
+.type-170 #catenav a {
   color: #000;
   transition: color 0.5s ease-in-out;
 }
-.type-338 #catenav a:hover {
+.type-170 #catenav a:hover {
   text-decoration: none;
 }
-.type-338 .boxshow a {
+.type-170 .boxshow a {
   text-decoration: none;
 }
-.type-338 .title {
+.type-170 .title {
   margin-right: 1.5rem;
 }
-.type-338 .auto-width {
+.type-170 .auto-width {
   padding: 0;
 }
 @media (min-width: 768px) {
-  .type-338 .special {
-    width: 96rem;
-  }
-  .type-338 .navbar-nav {
+  .type-170 .navbar-nav {
     padding: 0;
   }
-  .type-338 .auto-width {
+  .type-170 .auto-width {
     width: auto;
   }
 }
 @media (max-width: 768px) {
-  .type-338 .title {
+  .type-170 .title {
     margin-right: 0rem;
   }
-  .type-338 .title a {
+  .type-170 .title a {
     padding-left: 1rem;
   }
 }
 @media (max-width: 480px) {
-  .type-338 .navbar-nav {
+  .type-170 .navbar-nav {
     padding: 0 1.5rem;
   }
 }

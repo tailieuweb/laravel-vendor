@@ -1,6 +1,6 @@
 
 <div class="type-143">
-    <div class="container news">
+    <div class="news">
         <div class="row">
             <!--TOP NEWS-->
             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <!--END TOP NEWS-->   
+            <!--END TOP NEWS-->
         </div>
     </div>
 </div>

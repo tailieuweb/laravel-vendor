@@ -1,9 +1,7 @@
 
 <div class="type-158">
-    <div class="container sidebar">
-        <div class="row">
-            <!--LEFT SIDE BAR-->
-            <div class="col-md-8">
+    <div class="sidebar">
+
                 <!--LIST HEADLINES-->
                 <div class="headlines">
                     <ul>
@@ -16,7 +14,7 @@
                                 <div class="headlinesyear">14</div>
                             </div>
                             <div class="headlinestitle">
-                                <p class="effect-hover">  <a href="#">CSS Image Sprites</a>   </p>             
+                                <p class="effect-hover">  <a href="#">CSS Image Sprites</a>   </p>
                             </div>
                         <li>
                             <div class="headlinesdate">
@@ -27,9 +25,9 @@
                                 <div class="headlinesyear">14</div>
                             </div>
                             <div class="headlinestitle">
-                                <p class="effect-hover">   <a href="#">CSS Image Sprites CSS Image Sprites CSS Image Sprites</a>                
+                                <p class="effect-hover">   <a href="#">CSS Image Sprites CSS Image Sprites CSS Image Sprites</a>
                                 </p>
-                            </div>     
+                            </div>
                         </li>
                         <li>
                             <div class="headlinesdate">
@@ -40,7 +38,7 @@
                                 <div class="headlinesyear">14</div>
                             </div>
                             <div class="headlinestitle">
-                                <p class="effect-hover"> <a href="#">CSS Image Sprites CSS Image Sprites</a>                
+                                <p class="effect-hover"> <a href="#">CSS Image Sprites CSS Image Sprites</a>
                                 </p>
                             </div>
                         </li>
@@ -57,11 +55,9 @@
                         <li class="next">
                             <a href="#">→</a>
                         </li>
-                    </ul>     
+                    </ul>
                 </div>
                 <!--/END PAGINATION-->
-            </div>
-        </div>
     </div>
 </div>
 

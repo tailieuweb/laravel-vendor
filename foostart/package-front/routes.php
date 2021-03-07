@@ -101,11 +101,11 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('/sinh-vien', [
             'as' => 'student.list',
-            'uses' => 'PostUserController@listStudent'
+            'uses' => 'StudentController@studentList'
         ]);
         Route::get('/sinh-vien/{name}-{id}', [
             'as' => 'student.detail',
-            'uses' => 'PostUserController@detailStudent'
+            'uses' => 'StudentController@studentDetail'
         ])->where(['name' => '[a-zA-Z0-9-_]+','id' => '[0-9]+']);
 
         /**
@@ -113,11 +113,11 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('/chuyen-de', [
             'as' => 'thematic.list',
-            'uses' => 'PostUserController@listThematic'
+            'uses' => 'ThematicController@thematicList'
         ]);
         Route::get('/chuyen-de/{name}-{id}', [
             'as' => 'thematic.detail',
-            'uses' => 'PostUserController@detailThematic'
+            'uses' => 'ThematicController@thematicDetail'
         ])->where(['name' => '[a-zA-Z0-9-_]+','id' => '[0-9]+']);
 
 
