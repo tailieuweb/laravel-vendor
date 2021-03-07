@@ -363,7 +363,7 @@ class Post extends FooModel {
         //Add new attribute
         $key = $this->primaryKey;
         $item->id = $item->$key;
-        
+
         return $item;
     }
 
