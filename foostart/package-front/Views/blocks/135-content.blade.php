@@ -1,8 +1,8 @@
 
 <div class="type-135">
-    <div class="container employees">        
+    <div class="container employees">
         <!--PROFILE-->
-        <div class="container prof_profile shadow profile">
+        <div class="prof_profile shadow profile">
             <div class="row">
                 <!--Begin Profile-->
                 <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 prof_ava">
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <!--END PROFILE-->            
+        <!--END PROFILE-->
     </div>
 </div>
 

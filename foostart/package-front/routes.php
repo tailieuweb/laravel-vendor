@@ -89,11 +89,11 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('/nhan-su', [
             'as' => 'personnel.list',
-            'uses' => 'PostUserController@listPersonnel'
+            'uses' => 'PersonnelController@personnelList'
         ]);
         Route::get('/nhan-su/{name}-{id}', [
             'as' => 'personnel.detail',
-            'uses' => 'PostUserController@detailPersonnel'
+            'uses' => 'PersonnelController@personnelDetail'
         ])->where(['name' => '[a-zA-Z0-9-_]+','id' => '[0-9]+']);
 
         /**

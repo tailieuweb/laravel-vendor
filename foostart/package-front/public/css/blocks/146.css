@@ -8,7 +8,7 @@
 }
 .type-146 .teacher .profview .profview_thumb {
   padding: 0.8rem;
-  background: url(../images/bg_cr_grey.png);
+  background: url(../../images/bg_cr_grey.png);
   border-radius: 50%;
 }
 .type-146 .teacher .profview .profview_thumb_wrap {
@@ -16,7 +16,7 @@
   border-radius: 50%;
 }
 .type-146 .teacher .profview .profview_thumb_wrap a {
-  -webkit-mask: url(../images/TieuKimCuong) center center;
+  -webkit-mask: url(../../images/TieuKimCuong.jpg) center center;
   display: inline-block;
 }
 .type-146 .teacher .profview .profview_thumb_wrap a:after {
@@ -66,11 +66,6 @@
 @media (min-width: 992px) {
   .type-146 .teacher {
     padding: 0;
-  }
-}
-@media (min-width: 768px) {
-  .type-146 .teacher {
-    width: 96rem;
   }
 }
 @media (max-width: 480px) {

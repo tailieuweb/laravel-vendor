@@ -468,6 +468,8 @@ class FrontController extends Controller {
             'home' => $this->getPageConfig('home'),
             'news_list' => $this->getPageConfig('news_list'),
             'news_detail' => $this->getPageConfig('news_detail'),
+            'personnel_list' => $this->getPageConfig('personnel_list'),
+            'personnel_detail' => $this->getPageConfig('personnel_detail'),
         ];
         return $this->block_page_ids;
     }

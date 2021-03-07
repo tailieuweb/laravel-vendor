@@ -94,11 +94,6 @@
 .type-152 .dep_name {
   padding: 1.5rem 0;
 }
-@media (min-width: 768px) {
-  .type-152 .slidebar {
-    width: 96rem;
-  }
-}
 @media (max-width: 480px) {
   .type-152 .slidebar {
     padding: 0;

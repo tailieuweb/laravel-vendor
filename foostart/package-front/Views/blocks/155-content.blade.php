@@ -1,11 +1,7 @@
 
 <div class="type-155">
-    <div class="container sidebar">
-        <div class="row">
-            <!--LEFT-->
-            <!--/END LEFT-->
-            <!--RIGHT SIDE BAR-->
-            <div class="col-md-4">
+    <div class="sidebar">
+
                 <!--TEST-->
                 <div class="test">
                     <div class="panel panel-default">
@@ -39,8 +35,6 @@
                         <!--/END RIGHT SIDE BAR-->
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 </div>
 

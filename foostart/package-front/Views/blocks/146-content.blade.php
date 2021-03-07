@@ -1,10 +1,7 @@
 
 <div class="type-146">
-    <div class="container teacher">
-        <div class="row">
-            <!--FACULTY OFFICE (văn phòng khoa)--> 
-            <!--LIST TEACHER OF FACULTY OFFICE-->
-            <div class="col-sm-8 col-md-8 prof_list">
+    <div class="teacher">
+            <div class=" prof_list">
                 <div class="row">
                     <div class="col-xs-6 col-sm-3 placeholder profview">
                         <div class="profview_thumb">
@@ -52,10 +49,7 @@
                     </div>
                 </div>
             </div>
-            <!--END LIST TEACHER OF FACULTY OFFICE-->
-        </div>
-        <!--END FACULTY OFFICE-->
-    </div>   
+    </div>
 </div>
 
 
