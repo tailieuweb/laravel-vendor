@@ -1,11 +1,7 @@
 
 <div class="type-153">
-    <div class="container sidebar">
-        <div class="row">
-            <!--RIGHT-->
-            <!--END RIGHT-->
-            <!--LEFT SIDE BAR-->
-            <div class="col-md-4">
+    <div class="sidebar">
+
                 <!--RECENT NEWS-->
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -15,27 +11,27 @@
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item on-recent-news boxshow">
-                                <a href="#">Thông báo V/v Tổ chức thi tốt nghiệp bậc TCCN chính quy-Đợt 1 năm học 2016-2017</a>                            
+                                <a href="#">Thông báo V/v Tổ chức thi tốt nghiệp bậc TCCN chính quy-Đợt 1 năm học 2016-2017</a>
                                 <span> - 15/02/2017</span>
                                 <span class="productdot"> </span>
                             </li>
                             <li class="list-group-item on-recent-news boxshow">
-                                <a href="#">Thông báo v/v các lớp học phần sẽ bị hủy vì không đủ sĩ số</a>                            
+                                <a href="#">Thông báo v/v các lớp học phần sẽ bị hủy vì không đủ sĩ số</a>
                                 <span> - 08/02/2017</span>
                                 <span class="productdot"> </span>
                             </li>
                             <li class="list-group-item on-recent-news boxshow">
-                                <a href="#">Thông báo v/v đăng ký học phần học kỳ 2 năm học 2016 - 2017</a>                            
+                                <a href="#">Thông báo v/v đăng ký học phần học kỳ 2 năm học 2016 - 2017</a>
                                 <span> - 06/01/2017</span>
                                 <span class="productdot"> </span>
                             </li>
                             <li class="list-group-item on-recent-news boxshow">
-                                <a href="#">Thời gian nhận và trả lễ phục</a>                            
+                                <a href="#">Thời gian nhận và trả lễ phục</a>
                                 <span> - 20/12/2016</span>
                                 <span class="productdot"> </span>
                             </li>
                             <li class="list-group-item on-recent-news boxshow">
-                                <a href="#">Thông báo đăng ký dự lễ tốt nghiệp khóa 2013 bậc CĐ và khóa 2014 bậc TCCN</a>                            
+                                <a href="#">Thông báo đăng ký dự lễ tốt nghiệp khóa 2013 bậc CĐ và khóa 2014 bậc TCCN</a>
                                 <span> - 12/12/2016</span>
                                 <span class="productdot"> </span>
                             </li>
@@ -43,8 +39,5 @@
                     </div>
                 </div>
                 <!--/END RECENT NEWS-->
-            </div>
-            <!--/END LEFT SIDE BAR-->
-        </div>
     </div>
 </div>

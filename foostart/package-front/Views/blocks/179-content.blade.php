@@ -1,8 +1,7 @@
 
 <div class="type-179">
-    <div class="container sidebar">
-        <div class="row">
-            <div class="col-md-8">
+    <div class="sidebar">
+
                 <div class="row title">
                     <div class="col-md-10 col-xs-9">
                         <h1>Thông báo danh sách SV khóa 2018 bị xóa tên vì rút học phí và không đóng học phí</h1>
@@ -29,12 +28,10 @@
                 <div class="row maincontent">
                     <div class="col-md-12 padding">
                         <p>
-                            <a href="#">Danh sách xóa tên sinh viên.</a>       
+                            <a href="#">Danh sách xóa tên sinh viên.</a>
                         </p>
                     </div>
                 </div>
 
-            </div>
-        </div>
     </div>
 </div>
