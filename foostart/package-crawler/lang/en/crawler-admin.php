@@ -62,6 +62,7 @@ return [
         'title' => 'Title',
         'email' => 'Email',
         'message' => 'Message',
+        'site_name' => 'Site name',
     ],
 
 
@@ -203,6 +204,8 @@ return [
         'first-name'    => 'First name',
         'status' => 'Status',
         'title' => 'Title',
+        'site-name' => 'Name',
+        'site_id' => 'ID',
     ],
 
 
@@ -225,6 +228,7 @@ return [
         'files' => 'Crawler files',
         'category' => 'Category name',
         'title-search' => 'Search crawler',
+        'site-search' => 'Search site',
         'title-backup' => 'Backups',
         'config' => 'Configurations',
         'crawler-status'    => 'Status',

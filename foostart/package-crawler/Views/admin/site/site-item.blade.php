@@ -2,9 +2,9 @@
 <?php
     $withs = [
         'counter' => '10%',
-        'id' => '10%',        
-        'title' => '20%',
-        'status' => '15%',
+        'id' => '10%',
+        'name' => '20%',
+        'status' => '10%',
         'updated_at' => '20%',
         'operations' => '10%',
     ];
@@ -49,9 +49,9 @@
                 </a>
             </th>
 
-            <!--TITLE-->
-            <?php $name = 'crawler_title' ?>
-            <th class="hidden-xs" style='width:{{ $withs['title'] }}'>{!! trans($plang_admin.'.columns.title') !!}
+            <!--NAME-->
+            <?php $name = 'site_name' ?>
+            <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.site_name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -127,10 +127,10 @@
                 </td>
 
                 <!--ID-->
-                <td> {!! $item->crawler_id !!}</td>
+                <td> {!! $item->site_id !!}</td>
 
                 <!--NAME-->
-                <td> {!! $item->crawler_name !!} </td>
+                <td> {!! $item->site_name !!} </td>
 
                 <!--STATUS-->
                 <td style="text-align: center;">

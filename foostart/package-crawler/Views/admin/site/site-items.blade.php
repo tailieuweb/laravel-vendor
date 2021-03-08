@@ -48,7 +48,7 @@
                     <div class="panel-body">
                         {!! Form::open(['route'=>['sites.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-crawler::admin.crawler-item')
+                            @include('package-crawler::admin.site.site-item')
 
                             {!! csrf_field(); !!}
 
@@ -62,7 +62,7 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-crawler::admin.crawler-search')
+                @include('package-crawler::admin.site.site-search')
             </div>
             <!--/SEARCH-->
 

@@ -14,21 +14,14 @@ use Foostart\Category\Helpers\SortTable;
 |   $plang_front = 'crawler-front'
 */
 View::composer([
-                'package-crawler::admin.crawler-edit',
-                'package-crawler::admin.crawler-form',
-                'package-crawler::admin.crawler-items',
-                'package-crawler::admin.crawler-item',
-                'package-crawler::admin.crawler-search',
-                'package-crawler::admin.crawler-config',
-                'package-crawler::admin.crawler-lang',
                 //Site
                 'package-crawler::admin.site.site-edit',
                 'package-crawler::admin.site.site-form',
                 'package-crawler::admin.site.site-items',
                 'package-crawler::admin.site.site-item',
                 'package-crawler::admin.site.site-search',
-                'package-crawler::admin.site.site-config',
-                'package-crawler::admin.site.site-lang',
+                'package-crawler::admin.crawler-config',
+                'package-crawler::admin.crawler-lang',
     ], function ($view) {
 
         //Order by params
@@ -41,9 +34,6 @@ View::composer([
         $plang_admin = 'crawler-admin';
         $plang_front = 'crawler-front';
 
-
-        $fooCategory = new FooCategory();
-        $key = $fooCategory->getContextKeyByRef('admin/crawlers');
         /**
          * $sidebar_items
          */
@@ -55,10 +45,6 @@ View::composer([
             trans('crawler-admin.sidebar.list') => [
                 "url" => URL::route('sites.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
-            ],
-            trans('crawler-admin.sidebar.category') => [
-                'url'  => URL::route('categories.list',['_key='.$key]),
-                'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.config') => [
                 "url" => URL::route('crawlers.config', []),
@@ -80,8 +66,8 @@ View::composer([
          */
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
-            'id' => trans($plang_admin.'.fields.id'),
-            'crawler_title' => trans($plang_admin.'.fields.title'),
+            'id' => trans($plang_admin.'.fields.site_id'),
+            'site_name' => trans($plang_admin.'.fields.site-name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),
         ];
