@@ -35,6 +35,14 @@ return [
             'min' => 3,
             'max' => 255,//unlimit
         ],
+        'pattern_name' => [
+            'min' => 3,
+            'max' => 255,
+        ],
+        'pattern_machine_name' => [
+            'min' => 3,
+            'max' => 255,//unlimit
+        ],
     ],
     'per_page' => 1,
 

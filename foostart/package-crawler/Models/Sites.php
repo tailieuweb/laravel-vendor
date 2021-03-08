@@ -320,4 +320,18 @@ class Sites extends FooModel {
 
         return $crawler;
     }
+    
+    /**
+     * Get list of sites into select
+     * @return OBJECT PLUCK SELECT
+     */
+     public function pluckSelect($params = array()) {
+
+         $elo = self::orderBy('site_name', 'ASC');
+
+
+         $items = $elo->pluck('site_name', $this->primaryKey);
+
+        return $items;
+    }
 }

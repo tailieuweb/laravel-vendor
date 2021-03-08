@@ -38,27 +38,17 @@
         <!--MENU 1-->
         <div id="menu_1" class="tab-pane fade in active">
 
-            <!--NAME-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'pattern_name',
-                'label' => trans($plang_admin.'.labels.pattern_name'),
-                'value' => @$item->pattern_name,
-                'description' => trans($plang_admin.'.descriptions.pattern_name'),
-                'errors' => $errors,
-            ])
-            <!--/NAME-->
-
             <div class="row">
-                <div class='col-md-6'>
-                    <!--URL-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'pattern_url',
-                        'label' => trans($plang_admin.'.labels.pattern_url'),
-                        'value' => @$item->pattern_name,
-                        'description' => trans($plang_admin.'.descriptions.pattern_url'),
-                        'errors' => $errors,
+                <div class="col-md-6">
+                    <!--SITE-->
+                    @include('package-category::admin.partials.select_single', [
+                        'name' => 'site_id',
+                        'label' => trans($plang_admin.'.form.site_id'),
+                        'value' => @$item->site_id,
+                        'items' => $sites,
+                        'description' => trans($plang_admin.'.descriptions.site_id'),
                     ])
-                    <!-- /URL-->
+                    <!--/SITE-->
                 </div>
 
                 <div class="col-md-6">
@@ -72,32 +62,30 @@
                     ])
                     <!--/STATUS-->
                 </div>
-
-                <div class='col-md-6'>
-                    <!--IMAGE-->
-                    @include('package-category::admin.partials.input_image', [
-                        'name' => 'pattern_image',
-                        'label' => trans($plang_admin.'.labels.pattern_image'),
-                        'value' => @$item->pattern_image,
-                        'description' => trans($plang_admin.'.descriptions.pattern_image'),
-                        'errors' => $errors,
-                        'lfm_config' => TRUE
-                    ])
-                    <!-- /IMAGE-->
-                </div>
             </div>
 
-             <!--DESCRIPTION-->
-            @include('package-category::admin.partials.textarea', [
-                'name' => 'pattern_description',
-                'label' => trans($plang_admin.'.labels.pattern_description'),
-                'value' => @$item->pattern_description,
-                'description' => trans($plang_admin.'.descriptions.pattern_description'),
-                'rows' => 25,
-                'tinymce' => true,
+            <!--NAME-->
+            @include('package-category::admin.partials.input_text', [
+                'name' => 'pattern_name',
+                'label' => trans($plang_admin.'.labels.pattern_name'),
+                'value' => @$item->pattern_name,
+                'description' => trans($plang_admin.'.descriptions.pattern_name'),
                 'errors' => $errors,
             ])
-            <!--/DESCRIPTION-->
+            <!--/NAME-->
+
+            <!--MACHINE NAME-->
+            @include('package-category::admin.partials.input_slug', [
+                'name' => 'pattern_machine_name',
+                'id' => 'pattern_machine_name',
+                'ref' => 'pattern_name',
+                'label' => trans($plang_admin.'.labels.pattern_machine_name'),
+                'value' => @$item->pattern_machine_name,
+                'description' => trans($plang_admin.'.descriptions.pattern_machine_name'),
+                'errors' => $errors,
+            ])
+            <!--/MACHINE NAME-->
+
         </div>
 
     </div>

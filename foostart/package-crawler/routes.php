@@ -175,7 +175,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/patterns/edit', [
             'as' => 'patterns.edit',
-            'uses' => 'SiteAdminController@edit'
+            'uses' => 'PatternAdminController@edit'
         ]);
 
         /**
@@ -183,7 +183,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/patterns/copy', [
             'as' => 'patterns.copy',
-            'uses' => 'SiteAdminController@copy'
+            'uses' => 'PatternAdminController@copy'
         ]);
 
         /**
@@ -191,7 +191,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::post('admin/patterns/edit', [
             'as' => 'patterns.post',
-            'uses' => 'SiteAdminController@post'
+            'uses' => 'PatternAdminController@post'
         ]);
 
         /**
@@ -199,7 +199,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/patterns/delete', [
             'as' => 'patterns.delete',
-            'uses' => 'SiteAdminController@delete'
+            'uses' => 'PatternAdminController@delete'
         ]);
 
         /**
@@ -207,7 +207,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/patterns/trash', [
             'as' => 'patterns.trash',
-            'uses' => 'SiteAdminController@trash'
+            'uses' => 'PatternAdminController@trash'
         ]);
 
         /**
@@ -215,7 +215,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/patterns/search', [
             'as' => 'patterns.search',
-            'uses' => 'SiteAdminController@search'
+            'uses' => 'PatternAdminController@search'
         ]);
 
     });

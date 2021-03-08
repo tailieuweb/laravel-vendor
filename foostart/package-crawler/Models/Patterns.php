@@ -25,9 +25,9 @@ class Patterns extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'pattern_name',
-            'pattern_url',
-            'pattern_image',
-            'pattern_description',
+            'pattern_machine_name',
+            //Relation
+            'site_id'
         ]);
 
         //list of fields for inserting
@@ -39,6 +39,10 @@ class Patterns extends FooModel {
             'pattern_machine_name' => [
                 'name' => 'pattern_machine_name',
                 'type' => 'Text',
+            ],
+            'site_id' => [
+                'name' => 'site_id',
+                'type' => 'Int',
             ],
         ]);
 
@@ -150,7 +154,7 @@ class Patterns extends FooModel {
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.pattern_name', '=', $value);
                             }
-                            break;                        
+                            break;
                         case 'pattern_machine_name':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.pattern_machine_name', '=', $value);

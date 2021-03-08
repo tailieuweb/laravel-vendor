@@ -122,6 +122,7 @@ return [
         'sorting' => 'Sorting',
         'no-selected' => 'No selected',
         'status' => 'Status',
+        'site_id' => 'Site',
     ],
 
 
@@ -160,7 +161,11 @@ return [
         'site_url' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'site_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'site_form' => 'Site form',
-        'site_image' => 'Site image'
+        'site_id' => 'Site ID',
+        'site_image' => 'Site image',
+        'pattern_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'pattern_machine_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'pattern_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -244,7 +249,9 @@ return [
         'site_name' => 'Site name',
         'site_url' => 'Site url',
         'site_image' => 'Site image',
-        'site_description' => 'Site description'
+        'site_description' => 'Site description',
+        'pattern_name' => 'Pattern name',
+        'pattern_machine_name' => 'Pattern machine name',
     ],
 
 

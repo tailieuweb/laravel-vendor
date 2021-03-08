@@ -97,9 +97,6 @@ class Slideshow extends FooModel {
         //primary key
         $this->primaryKey = 'slideshow_id';
 
-        //the number of items on page
-        $this->perPage = 10;
-
     }
 
     /**

@@ -16,14 +16,16 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
+use Foostart\Crawler\Models\Sites;
 use Foostart\Crawler\Models\Patterns;
 use Foostart\Category\Models\Category;
-use Foostart\Crawler\Validators\SitesValidator;
+use Foostart\Crawler\Validators\PatternsValidator;
 use Illuminate\Support\Facades\DB;
 
 class PatternAdminController extends FooController {
 
     public $obj_item = NULL;
+    public $obj_site = NULL;
     public $obj_category = NULL;
 
     public $statuses = NULL;
@@ -33,10 +35,11 @@ class PatternAdminController extends FooController {
         parent::__construct();
         // models
         $this->obj_item = new Patterns(array('perPage' => 10));
+        $this->obj_site = new Sites(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new SitesValidator();
+        $this->obj_validator = new PatternsValidator();
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
         $this->plang_admin = 'crawler-admin';
@@ -62,12 +65,10 @@ class PatternAdminController extends FooController {
         ];
 
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
+        $this->data_view['sites'] = $this->obj_site->pluckSelect();
 
-        $this->statuses = config('package-crawler.status.list');
-
-        // //set category
+        //set category
         $this->category_ref_name = 'admin/patterns';
-
     }
 
     /**
