@@ -149,10 +149,13 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             'Fruitcake\\Cors\\' => 15,
             'Foostart\\Slideshow\\' => 19,
+            'Foostart\\Sample\\' => 16,
             'Foostart\\Post\\' => 14,
             'Foostart\\Pexcel\\' => 16,
+            'Foostart\\Module\\' => 16,
             'Foostart\\Front\\' => 15,
             'Foostart\\Filemanager\\' => 21,
+            'Foostart\\Crawler\\' => 17,
             'Foostart\\Contact\\' => 17,
             'Foostart\\Category\\' => 18,
             'Foostart\\Acl\\' => 13,
@@ -457,6 +460,10 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             0 => __DIR__ . '/..' . '/foostart/package-slideshow',
         ),
+        'Foostart\\Sample\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-sample',
+        ),
         'Foostart\\Post\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-post',
@@ -465,6 +472,10 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             0 => __DIR__ . '/..' . '/foostart/package-pexcel',
         ),
+        'Foostart\\Module\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-module',
+        ),
         'Foostart\\Front\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-front',
@@ -472,6 +483,10 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Filemanager\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-filemanager/src',
+        ),
+        'Foostart\\Crawler\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-crawler',
         ),
         'Foostart\\Contact\\' => 
         array (

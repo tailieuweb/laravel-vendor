@@ -1059,6 +1059,51 @@
             "install-path": "../foostart/package-contact"
         },
         {
+            "name": "foostart/package-crawler",
+            "version": "10.0.0",
+            "version_normalized": "10.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-crawler.git",
+                "reference": "4ed17fa727d48cb78e6135fec2b324b46de4a548"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-crawler/zipball/4ed17fa727d48cb78e6135fec2b324b46de4a548",
+                "reference": "4ed17fa727d48cb78e6135fec2b324b46de4a548",
+                "shasum": ""
+            },
+            "time": "2021-03-07T21:39:54+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Crawler\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Create overview contact can intergrate other project",
+            "keywords": [
+                "foostart",
+                "laravel 5 package contact"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-crawler/issues",
+                "source": "https://github.com/foostart/package-crawler/tree/10.0.0"
+            },
+            "install-path": "../foostart/package-crawler"
+        },
+        {
             "name": "foostart/package-filemanager",
             "version": "8.0.1",
             "version_normalized": "8.0.1.0",
@@ -1182,6 +1227,51 @@
             "install-path": "../foostart/package-front"
         },
         {
+            "name": "foostart/package-module",
+            "version": "10.0.0",
+            "version_normalized": "10.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-module.git",
+                "reference": "67953d4717d7a48979ed1ec7aea6cfb152304003"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-module/zipball/67953d4717d7a48979ed1ec7aea6cfb152304003",
+                "reference": "67953d4717d7a48979ed1ec7aea6cfb152304003",
+                "shasum": ""
+            },
+            "time": "2021-03-07T21:40:45+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Module\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Create overview contact can intergrate other project",
+            "keywords": [
+                "foostart",
+                "laravel 5 package contact"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-module/issues",
+                "source": "https://github.com/foostart/package-module/tree/10.0.0"
+            },
+            "install-path": "../foostart/package-module"
+        },
+        {
             "name": "foostart/package-pexcel",
             "version": "10.0.0",
             "version_normalized": "10.0.0.0",
@@ -1274,6 +1364,51 @@
                 "source": "https://github.com/foostart/package-post/tree/10.0.7"
             },
             "install-path": "../foostart/package-post"
+        },
+        {
+            "name": "foostart/package-sample",
+            "version": "10.0.0",
+            "version_normalized": "10.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-sample.git",
+                "reference": "09d55c7f6e6a6b3f125b507520b77177bea5d161"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-sample/zipball/09d55c7f6e6a6b3f125b507520b77177bea5d161",
+                "reference": "09d55c7f6e6a6b3f125b507520b77177bea5d161",
+                "shasum": ""
+            },
+            "time": "2021-03-07T21:39:07+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Sample\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Create overview contact can intergrate other project",
+            "keywords": [
+                "foostart",
+                "laravel 5 package contact"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-sample/issues",
+                "source": "https://github.com/foostart/package-sample/tree/10.0.0"
+            },
+            "install-path": "../foostart/package-sample"
         },
         {
             "name": "foostart/package-sentry",
