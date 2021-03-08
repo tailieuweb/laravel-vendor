@@ -205,6 +205,7 @@ return [
         'status' => 'Status',
         'title' => 'Title',
         'site-name' => 'Name',
+        'site-pattern' => 'Pattern',
         'site_id' => 'ID',
     ],
 

@@ -15,11 +15,11 @@ use Foostart\Category\Helpers\SortTable;
 */
 View::composer([
                 //Site
-                'package-crawler::admin.site.site-edit',
-                'package-crawler::admin.site.site-form',
-                'package-crawler::admin.site.site-items',
-                'package-crawler::admin.site.site-item',
-                'package-crawler::admin.site.site-search',
+                'package-crawler::admin.pattern.pattern-edit',
+                'package-crawler::admin.pattern.pattern-form',
+                'package-crawler::admin.pattern.pattern-items',
+                'package-crawler::admin.pattern.pattern-item',
+                'package-crawler::admin.pattern.pattern-search',
                 'package-crawler::admin.crawler-config',
                 'package-crawler::admin.crawler-lang',
     ], function ($view) {
@@ -63,7 +63,7 @@ View::composer([
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
             'id' => trans($plang_admin.'.fields.site_id'),
-            'site_name' => trans($plang_admin.'.fields.site_name'),
+            'pattern_name' => trans($plang_admin.'.fields.pattern_name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),
         ];

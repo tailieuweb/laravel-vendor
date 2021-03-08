@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
                   'namespace' => 'Foostart\Crawler\Controllers\Admin',
         ], function () {
-        
+
         /**
          * configs
         */
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['web']], function () {
 
     });
 
-    /**
+    /****************************************************************************
      * Site
      */
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
@@ -140,6 +140,82 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('admin/sites/search', [
                 'as' => 'sites.search',
                 'uses' => 'SiteAdminController@search'
+        ]);
+
+    });
+
+    /****************************************************************************
+     * Pattern
+     */
+    Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
+        'namespace' => 'Foostart\Crawler\Controllers\Admin',
+    ], function () {
+
+        /*
+          |-----------------------------------------------------------------------
+          | Manage patterns
+          |-----------------------------------------------------------------------
+          | 1. List of patterns
+          | 2. Edit pattern
+          | 3. Delete patterns
+          | 4. Add new patterns
+          |
+        */
+
+        /**
+         * list
+         */
+        Route::get('admin/patterns', [
+            'as' => 'patterns.list',
+            'uses' => 'PatternAdminController@index'
+        ]);
+
+        /**
+         * edit-add
+         */
+        Route::get('admin/patterns/edit', [
+            'as' => 'patterns.edit',
+            'uses' => 'SiteAdminController@edit'
+        ]);
+
+        /**
+         * copy
+         */
+        Route::get('admin/patterns/copy', [
+            'as' => 'patterns.copy',
+            'uses' => 'SiteAdminController@copy'
+        ]);
+
+        /**
+         * post
+         */
+        Route::post('admin/patterns/edit', [
+            'as' => 'patterns.post',
+            'uses' => 'SiteAdminController@post'
+        ]);
+
+        /**
+         * delete
+         */
+        Route::get('admin/patterns/delete', [
+            'as' => 'patterns.delete',
+            'uses' => 'SiteAdminController@delete'
+        ]);
+
+        /**
+         * trash
+         */
+        Route::get('admin/patterns/trash', [
+            'as' => 'patterns.trash',
+            'uses' => 'SiteAdminController@trash'
+        ]);
+
+        /**
+         * search
+         */
+        Route::get('admin/patterns/search', [
+            'as' => 'patterns.search',
+            'uses' => 'SiteAdminController@search'
         ]);
 
     });
