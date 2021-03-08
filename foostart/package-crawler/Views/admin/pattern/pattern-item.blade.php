@@ -3,8 +3,8 @@
     $withs = [
         'counter' => '10%',
         'id' => '10%',
-        'machine_name' => '20%',
-        'machine_machine_name' => '20%',
+        'pattern_name' => '20%',
+        'pattern_machine_name' => '20%',
         'status' => '10%',
         'updated_at' => '20%',
         'operations' => '10%',
@@ -52,7 +52,7 @@
 
             <!--NAME-->
             <?php $name = 'pattern_name' ?>
-            <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.pattern_name') !!}
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>{!! trans($plang_admin.'.columns.pattern_name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -66,7 +66,7 @@
             
             <!--MACHINE NAME-->
             <?php $name = 'pattern_machine_name' ?>
-            <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.machine_name') !!}
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>{!! trans($plang_admin.'.columns.machine_name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
