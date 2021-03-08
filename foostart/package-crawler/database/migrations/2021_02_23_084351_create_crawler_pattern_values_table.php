@@ -4,11 +4,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateCrawlersTable extends FoostartMigration
+class CreateCrawlerPatternValuesTable extends FoostartMigration
 {
     public function __construct() {
-        $this->table = 'crawlers';
-        $this->prefix_column = 'crawler_';
+        $this->table = 'crawler_pattern_values';
+        $this->prefix_column = 'value_';
     }
     /**
      * Run the migrations.
@@ -23,15 +23,10 @@ class CreateCrawlersTable extends FoostartMigration
             $table->increments($this->prefix_column . 'id')->comment('Primary key');
             
             // Relation
+            $table->integer('pattern_id')->comment('Pattern ID');
             
             // Other attributes
-            //Sender
-            $table->string($this->prefix_column . 'name', 255)->comment('Name');
-            $table->string($this->prefix_column . 'email', 100)->comment('Email');
-            $table->string($this->prefix_column . 'phone', 50)->comment('Phone');
-            $table->string($this->prefix_column . 'title', 255)->comment('Title');
-            $table->text($this->prefix_column . 'description')->comment('Description');
-            
+            $table->string($this->prefix_column . 'value', 500)->comment('Regular expression');
             
             //Set common columns
             $this->setCommonColumns($table);

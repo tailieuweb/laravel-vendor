@@ -3,11 +3,11 @@
 use Foostart\Category\Library\Validators\FooValidator;
 use Event;
 use \LaravelAcl\Library\Validators\AbstractValidator;
-use Foostart\Crawler\Models\Crawler;
+use Foostart\Crawler\Models\CrawlerSites;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
-class CrawlerValidator extends FooValidator
+class CrawlerSitesValidator extends FooValidator
 {
 
     protected $obj_crawler;
@@ -24,7 +24,7 @@ class CrawlerValidator extends FooValidator
         self::$configs = $this->loadConfigs();
 
         // model
-        $this->obj_crawler = new Crawler();
+        $this->obj_crawler = new CrawlerSites();
 
         // language
         $this->lang_front = 'crawler-front';

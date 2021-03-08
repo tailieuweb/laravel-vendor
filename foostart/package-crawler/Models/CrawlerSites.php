@@ -3,7 +3,7 @@
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Crawler extends FooModel {
+class CrawlerSites extends FooModel {
 
     /**
      * @table categories
@@ -20,7 +20,7 @@ class Crawler extends FooModel {
     public function setConfigs() {
 
         //table name
-        $this->table = 'crawlers';
+        $this->table = 'crawler_sites';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
@@ -325,7 +325,7 @@ class Crawler extends FooModel {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $crawler = new Crawler;
+        $crawler = new CrawlerSites();
         $crawler->fill($params);
         $crawler->save();
 

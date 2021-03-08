@@ -33,77 +33,13 @@ Route::group(['middleware' => ['web']], function () {
     ]);
 
 
-
-
+    /**
+     * Common
+     */
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
                   'namespace' => 'Foostart\Crawler\Controllers\Admin',
         ], function () {
-
-        /*
-          |-----------------------------------------------------------------------
-          | Manage crawler
-          |-----------------------------------------------------------------------
-          | 1. List of crawler
-          | 2. Edit crawler
-          | 3. Delete crawler
-          | 4. Add new crawler
-          | 5. Manage configurations
-          | 6. Manage languages
-          |
-        */
-
-        /**
-         * list
-         */
-        Route::get('admin/crawlers', [
-            'as' => 'crawlers',
-            'uses' => 'CrawlerAdminController@index'
-        ]);
-        Route::get('admin/crawlers/list', [
-            'as' => 'crawlers.list',
-            'uses' => 'CrawlerAdminController@index'
-        ]);
-
-        /**
-         * edit-add
-         */
-        Route::get('admin/crawlers/edit', [
-            'as' => 'crawlers.edit',
-            'uses' => 'CrawlerAdminController@edit'
-        ]);
-
-        /**
-         * copy
-         */
-        Route::get('admin/crawlers/copy', [
-            'as' => 'crawlers.copy',
-            'uses' => 'CrawlerAdminController@copy'
-        ]);
-
-        /**
-         * post
-         */
-        Route::post('admin/crawlers/edit', [
-            'as' => 'crawlers.post',
-            'uses' => 'CrawlerAdminController@post'
-        ]);
-
-        /**
-         * delete
-         */
-        Route::get('admin/crawlers/delete', [
-            'as' => 'crawlers.delete',
-            'uses' => 'CrawlerAdminController@delete'
-        ]);
-
-        /**
-         * trash
-         */
-         Route::get('admin/crawlers/trash', [
-            'as' => 'crawlers.trash',
-            'uses' => 'CrawlerAdminController@trash'
-        ]);
-
+        
         /**
          * configs
         */
@@ -130,15 +66,81 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'CrawlerAdminController@lang'
         ]);
 
+    });
+
+    /**
+     * Site
+     */
+    Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
+                  'namespace' => 'Foostart\Crawler\Controllers\Admin',
+        ], function () {
+
+        /*
+          |-----------------------------------------------------------------------
+          | Manage sites
+          |-----------------------------------------------------------------------
+          | 1. List of sites
+          | 2. Edit site
+          | 3. Delete site
+          | 4. Add new site
+          |
+        */
+
+        /**
+         * list
+         */
+        Route::get('admin/sites', [
+            'as' => 'sites.list',
+            'uses' => 'SiteAdminController@index'
+        ]);
+
+        /**
+         * edit-add
+         */
+        Route::get('admin/sites/edit', [
+            'as' => 'sites.edit',
+            'uses' => 'SiteAdminController@edit'
+        ]);
+
+        /**
+         * copy
+         */
+        Route::get('admin/sites/copy', [
+            'as' => 'sites.copy',
+            'uses' => 'SiteAdminController@copy'
+        ]);
+
+        /**
+         * post
+         */
+        Route::post('admin/sites/edit', [
+            'as' => 'sites.post',
+            'uses' => 'SiteAdminController@post'
+        ]);
+
+        /**
+         * delete
+         */
+        Route::get('admin/sites/delete', [
+            'as' => 'sites.delete',
+            'uses' => 'SiteAdminController@delete'
+        ]);
+
+        /**
+         * trash
+         */
+         Route::get('admin/sites/trash', [
+            'as' => 'sites.trash',
+            'uses' => 'SiteAdminController@trash'
+        ]);
+
         /**
          * search
         */
-        Route::get('admin/crawlers/search', [
-                'as' => 'crawlers.search',
-                'uses' => 'CrawlerAdminController@search'
+        Route::get('admin/sites/search', [
+                'as' => 'sites.search',
+                'uses' => 'SiteAdminController@search'
         ]);
-
-
 
     });
 });

@@ -41,11 +41,11 @@ View::composer([
          */
         $sidebar_items = [
             trans('crawler-admin.sidebar.add') => [
-                'url' => URL::route('crawlers.edit', []),
+                'url' => URL::route('sites.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.list') => [
-                "url" => URL::route('crawlers.list', []),
+                "url" => URL::route('sites.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.category') => [

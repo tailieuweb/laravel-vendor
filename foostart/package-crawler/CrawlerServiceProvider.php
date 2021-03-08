@@ -1,6 +1,4 @@
-<?php
-
-namespace Foostart\Crawler;
+<?php namespace Foostart\Crawler;
 
 use Illuminate\Support\ServiceProvider;
 use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;

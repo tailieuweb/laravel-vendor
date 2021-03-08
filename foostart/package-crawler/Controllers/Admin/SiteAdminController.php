@@ -21,7 +21,7 @@ use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\CrawlerSitesValidator;
 use Illuminate\Support\Facades\DB;
 
-class CrawlerAdminController extends FooController {
+class SiteAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
