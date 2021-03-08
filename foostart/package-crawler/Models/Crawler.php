@@ -1,9 +1,9 @@
-<?php namespace Foostart\Contact\Models;
+<?php namespace Foostart\Crawler\Models;
 
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends FooModel {
+class Crawler extends FooModel {
 
     /**
      * @table categories
@@ -20,55 +20,55 @@ class Contact extends FooModel {
     public function setConfigs() {
 
         //table name
-        $this->table = 'contacts';
+        $this->table = 'crawlers';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'contact_name',
-            'contact_email',
-            'contact_phone',
-            'contact_title',
-            'contact_description',
+            'crawler_name',
+            'crawler_email',
+            'crawler_phone',
+            'crawler_title',
+            'crawler_description',
 
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'contact_name' => [
-                'name' => 'contact_name',
+            'crawler_name' => [
+                'name' => 'crawler_name',
                 'type' => 'Text',
             ],
-             'contact_email' => [
-                'name' => 'contact_email',
+             'crawler_email' => [
+                'name' => 'crawler_email',
                 'type' => 'Text',
             ],
-            'contact_phone' => [
-                'name' => 'contact_phone',
+            'crawler_phone' => [
+                'name' => 'crawler_phone',
                 'type' => 'Text',
             ],
-            'contact_description' => [
-                'name' => 'contact_description',
+            'crawler_description' => [
+                'name' => 'crawler_description',
                 'type' => 'Text',
             ],
-            'contact_title' => [
-                'name' => 'contact_title',
+            'crawler_title' => [
+                'name' => 'crawler_title',
                 'type' => 'Text',
             ],
         ]);
         
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [            
-            'contact_title',
-            'contact_email',
-            'contact_phone',
-            'contact_name',
-            'contact_description',
+            'crawler_title',
+            'crawler_email',
+            'crawler_phone',
+            'crawler_name',
+            'crawler_description',
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'contact_id',
-            'contact_name',
+            'crawler_id',
+            'crawler_name',
             'updated_at',
             $this->field_status,
         ];
@@ -79,7 +79,7 @@ class Contact extends FooModel {
         ];
 
         //primary key
-        $this->primaryKey = 'contact_id';
+        $this->primaryKey = 'crawler_id';
 
     }
 
@@ -109,9 +109,9 @@ class Contact extends FooModel {
     }
 
     /**
-     * Get a contact by {id}
+     * Get a crawler by {id}
      * @param ARRAY $params list of parameters
-     * @return OBJECT contact
+     * @return OBJECT crawler
      */
     public function selectItem($params = array(), $key = NULL) {
 
@@ -162,24 +162,24 @@ class Contact extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'contact_name':
+                        case 'crawler_name':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.contact_name', '=', $value);
+                                $elo = $elo->where($this->table . '.crawler_name', '=', $value);
                             }
                             break;
-                        case 'contact_title':
+                        case 'crawler_title':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.contact_title', '=', $value);
+                                $elo = $elo->where($this->table . '.crawler_title', '=', $value);
                             }
                             break;
-                        case 'contact_phone':
+                        case 'crawler_phone':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.contact_phone', '=', $value);
+                                $elo = $elo->where($this->table . '.crawler_phone', '=', $value);
                             }
                             break;
-                        case 'contact_email':
+                        case 'crawler_email':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.contact_email', '=', $value);
+                                $elo = $elo->where($this->table . '.crawler_email', '=', $value);
                             }
                             break;
                         case 'status':
@@ -191,8 +191,8 @@ class Contact extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.contact_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.contact_description','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.crawler_name', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.crawler_description','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -214,7 +214,7 @@ class Contact extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.contact_id as id'
+                            $this->table . '.crawler_id as id'
                 );
 
         return $elo;
@@ -254,7 +254,7 @@ class Contact extends FooModel {
 
             $item->save();
               //add new attribute
-            $item->id = $item->contact_id;
+            $item->id = $item->crawler_id;
 
 
             return $item;
@@ -267,7 +267,7 @@ class Contact extends FooModel {
     /**
      *
      * @param ARRAY $params list of parameters
-     * @return OBJECT contact
+     * @return OBJECT crawler
      */
     public function insertItem($params = []) {
 
@@ -312,22 +312,22 @@ class Contact extends FooModel {
      * @return ARRAY list of statuses
      */
     public function getPluckStatus() {
-        $pluck_status = config('package-contact.status.list');
+        $pluck_status = config('package-crawler.status.list');
         return $pluck_status;
      }
 
     /**
      *
      * @param ARRAY $params list of parameters
-     * @return OBJECT contact
+     * @return OBJECT crawler
      */
     public function insertSample($params = []) {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $contact = new Contact;
-        $contact->fill($params);
-        $contact->save();
+        $crawler = new Crawler;
+        $crawler->fill($params);
+        $crawler->save();
 
 
         // $item = self::create($dataFields);
@@ -335,6 +335,6 @@ class Contact extends FooModel {
         // $key = $this->primaryKey;
         // $item->id = $item->$key;
 
-        return $contact;
+        return $crawler;
     }
 }

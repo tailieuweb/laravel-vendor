@@ -16,11 +16,11 @@
 
 ## Step 1: Add service providers to **config/app.php**
 
-1. Foostart\Contact\ContactServiceProvider::class,
+1. Foostart\Crawler\CrawlerServiceProvider::class,
 
 ## Step 2: Install publish
 
-1. php artisan vendor:publish --provider="Foostart\Contact\ContactServiceProvider" --force
+1. php artisan vendor:publish --provider="Foostart\Crawler\CrawlerServiceProvider" --force
 1. php artisan migrate
-1. php artisan db:seed --class=ContactsSeeder
+1. php artisan db:seed --class=CrawlersSeeder
 

@@ -1,8 +1,8 @@
-<?php namespace Foostart\Contact\Controllers\User;
+<?php namespace Foostart\Crawler\Controllers\User;
 
 /*
 |-----------------------------------------------------------------------
-| ContactAdminController
+| CrawlerAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
 | @website: http://foostart.com
@@ -16,11 +16,11 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Contact\Models\Contact;
-use Foostart\Contact\Validators\ContactValidator;
+use Foostart\Crawler\Models\Crawler;
+use Foostart\Crawler\Validators\CrawlerValidator;
 
 
-class ContactUserController extends FooController {
+class CrawlerUserController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -29,21 +29,21 @@ class ContactUserController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Contact();
+        $this->obj_item = new Crawler();
 
         // validators
-        $this->obj_validator = new ContactValidator();
+        $this->obj_validator = new CrawlerValidator();
 
         // set language files
-        $this->plang_admin = 'contact-admin';
-        $this->plang_front = 'contact-front';
+        $this->plang_admin = 'crawler-admin';
+        $this->plang_front = 'crawler-front';
 
         // package name
-        $this->package_name = 'package-contact';
-        $this->package_base_name = 'contact';
+        $this->package_name = 'package-crawler';
+        $this->package_base_name = 'crawler';
 
         // root routers
-        $this->root_router = 'contact';
+        $this->root_router = 'crawler';
 
     }
 

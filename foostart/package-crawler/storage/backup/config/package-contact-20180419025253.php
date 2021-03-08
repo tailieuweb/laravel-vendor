@@ -3,11 +3,11 @@ return [
 //â
     //Number of worlds
     'length' => [
-        'contact_name' => [
+        'crawler_name' => [
             'min' => 10,
             'max' => 255,
         ],
-        'contact_description' => [
+        'crawler_description' => [
             'min' => 255,
             'max' => 0,//unlimit
         ],
@@ -23,7 +23,7 @@ return [
     |
     */
     'env' => 0,
-    'load_from' => 'package-contact::',
+    'load_from' => 'package-crawler::',
 
     /*
     |-----------------------------------------------------------------------

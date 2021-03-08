@@ -1,14 +1,14 @@
 <!------------------------------------------------------------------------------
-| List of elements in contact form
+| List of elements in crawler form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['contacts.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['crawlers.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
 
     <!--BUTTONS-->
     <div class='btn-form'>
         <!-- DELETE BUTTON -->
         @if($item)
-            <a href="{!! URL::route('contacts.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
+            <a href="{!! URL::route('crawlers.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
             class="btn btn-danger pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}
             </a>
@@ -40,9 +40,9 @@
 
             <!--TITLE-->
             @include('package-category::admin.partials.input_text', [
-                'name' => 'contact_title',
+                'name' => 'crawler_title',
                 'label' => trans($plang_admin.'.labels.title'),
-                'value' => @$item->contact_title,
+                'value' => @$item->crawler_title,
                 'description' => trans($plang_admin.'.descriptions.title'),
                 'errors' => $errors,
             ])
@@ -51,9 +51,9 @@
                 <div class='col-md-6'>
                     <!--NAME-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'contact_name',
+                        'name' => 'crawler_name',
                         'label' => trans($plang_admin.'.labels.name'),
-                        'value' => @$item->contact_name,
+                        'value' => @$item->crawler_name,
                         'description' => trans($plang_admin.'.descriptions.name'),
                         'errors' => $errors,
                     ])
@@ -63,9 +63,9 @@
                 <div class='col-md-6'>
                     <!--EMAIL-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'contact_email',
+                        'name' => 'crawler_email',
                         'label' => trans($plang_admin.'.labels.email'),
-                        'value' => @$item->contact_email,
+                        'value' => @$item->crawler_email,
                         'description' => trans($plang_admin.'.descriptions.email'),
                         'errors' => $errors,
                     ])
@@ -75,10 +75,10 @@
                 <div class='col-md-6'>
                     <!--PHONE-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'contact_phone',
+                        'name' => 'crawler_phone',
                         'label' => trans($plang_admin.'.labels.phone'),
-                        'value' => @$item->contact_phone,
-                        'description' => trans($plang_admin.'.descriptions.contact-phone'),
+                        'value' => @$item->crawler_phone,
+                        'description' => trans($plang_admin.'.descriptions.crawler-phone'),
                     ])
                 </div>
                 
@@ -97,9 +97,9 @@
             
              <!--DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
-                'name' => 'contact_description',
+                'name' => 'crawler_description',
                 'label' => trans($plang_admin.'.labels.description'),
-                'value' => @$item->contact_description,
+                'value' => @$item->crawler_description,
                 'description' => trans($plang_admin.'.descriptions.description'),
                 'rows' => 25,
                 'tinymce' => true,
@@ -120,5 +120,5 @@
 
 {!! Form::close() !!}
 <!------------------------------------------------------------------------------
-| End list of elements in contact form
+| End list of elements in crawler form
 |------------------------------------------------------------------------------>

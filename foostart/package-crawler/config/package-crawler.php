@@ -3,27 +3,27 @@ return [
 
     //Number of worlds
     'length' => [
-        'contact_name' => [
+        'crawler_name' => [
             'min' => 10,
             'max' => 255,
         ],
-        'contact_description' => [
+        'crawler_description' => [
             'min' => 255,
             'max' => 0,//unlimit
         ],
-        'contact_status' => [
+        'crawler_status' => [
             'min' => 255,
             'max' => 0,//unlimit
         ],
-        'contact_title' => [
+        'crawler_title' => [
             'min' => 10,
             'max' => 255,
         ],
-        'contact_email' => [
+        'crawler_email' => [
             'min' => 10,
             'max' => 255,
         ],
-        'contact_message' => [
+        'crawler_message' => [
             'min' => 10,
             'max' => 255,
         ],
@@ -39,7 +39,7 @@ return [
     |
     */
     'env' => 0,
-    'load_from' => 'package-contact::',
+    'load_from' => 'package-crawler::',
 
     /*
     |-----------------------------------------------------------------------

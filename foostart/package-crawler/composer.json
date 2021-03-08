@@ -1,9 +1,9 @@
 {
     "name": "foostart/package-crawler",
-    "description": "Create overview contact can intergrate other project",
+    "description": "Create overview crawler can intergrate other project",
     "keywords": [
         "foostart",
-        "laravel 5 package contact"
+        "laravel 5 package crawler"
     ],
     "authors": [
         {

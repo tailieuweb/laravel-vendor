@@ -1,7 +1,7 @@
 <!--
 | @TITLE
-| Update existing contact
-| Add new contact
+| Update existing crawler
+| Add new crawler
 |
 |-------------------------------------------------------------------------------
 | @REQUIRED
@@ -33,7 +33,7 @@
        
         <!--SEARCH-->
         <div class="col-md-3">
-            @include('package-contact::admin.contact-search')
+            @include('package-crawler::admin.crawler-search')
         </div>
         <!--/SEARCH-->
     </div>

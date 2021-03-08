@@ -1,8 +1,8 @@
-<?php namespace Foostart\Contact\Controllers\Front;
+<?php namespace Foostart\Crawler\Controllers\Front;
 
 /*
 |-----------------------------------------------------------------------
-| ContactAdminController
+| CrawlerAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
 | @website: http://foostart.com
@@ -16,16 +16,16 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Contact\Models\Contact;
+use Foostart\Crawler\Models\Crawler;
 use Foostart\Category\Models\Category;
-use Foostart\Contact\Validators\ContactValidator;
+use Foostart\Crawler\Validators\CrawlerValidator;
 use Illuminate\Support\Facades\DB;
-use Foostart\Contact\Validators\SampleValidator;
+use Foostart\Crawler\Validators\SampleValidator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Mail\Mailable;
 
-class ContactController extends FooController {
+class CrawlerController extends FooController {
     public $obj_item = NULL;
     public $obj_category = NULL;
     
@@ -35,27 +35,27 @@ class ContactController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Contact(array('perPage' => 10));
+        $this->obj_item = new Crawler(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new ContactValidator();
+        $this->obj_validator = new CrawlerValidator();
         $this->obj_validator_sample = new SampleValidator();
         // set language files
-        $this->plang_admin = 'contact-admin';
-        $this->plang_front = 'contact-front';
+        $this->plang_admin = 'crawler-admin';
+        $this->plang_front = 'crawler-front';
 
         // package name
-        $this->package_name = 'package-contact';
-        $this->package_base_name = 'contact';
+        $this->package_name = 'package-crawler';
+        $this->package_base_name = 'crawler';
 
         // root routers
-        $this->root_router = 'contacts';
+        $this->root_router = 'crawlers';
 
         // page views
         $this->page_views = [
             'front' => [
-                'home' => $this->package_name.'::front.'.$this->package_base_name.'-contact',
+                'home' => $this->package_name.'::front.'.$this->package_base_name.'-crawler',
                 
             ]
         ];

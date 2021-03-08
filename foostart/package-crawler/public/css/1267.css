@@ -33,13 +33,13 @@
 }
 @font-face {
   font-family: 'icomoon';
-  src: url(http://localhost/training/vendor/foostart/package-contact/public/fonts/icons.ttf) format('truetype');
+  src: url(http://localhost/training/vendor/foostart/package-crawler/public/fonts/icons.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'theme';
-  src: url(http://localhost/training/vendor/foostart/package-contact/public/fonts/theme-icons.ttf) format('truetype'), url(../fonts/theme-icons.woff) format('woff'), url(https://vip-restaurant.vamtam.com/wp-content/themes/vip-restaurant/vamtam/assets/fonts/theme-icons/theme-icons.svg#theme-icons) format('svg');
+  src: url(http://localhost/training/vendor/foostart/package-crawler/public/fonts/theme-icons.ttf) format('truetype'), url(../fonts/theme-icons.woff) format('woff'), url(https://vip-restaurant.vamtam.com/wp-content/themes/vip-restaurant/vamtam/assets/fonts/theme-icons/theme-icons.svg#theme-icons) format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -113,19 +113,19 @@
 .type-25 h5 {
   font-family: 'Libre Baskerville';
 }
-.type-25 .contact-col .title,
+.type-25 .crawler-col .title,
 .type-25 .time-col .title {
   font-size: 40px;
   line-height: 50px;
   padding: 15px 0;
 }
-.type-25 .contact-col h5,
+.type-25 .crawler-col h5,
 .type-25 .time-col h5 {
   font-size: 18px;
   line-height: 22px;
   margin-bottom: 15px;
 }
-.type-25 .contact-col p,
+.type-25 .crawler-col p,
 .type-25 .time-col p {
   line-height: 24px;
   font-size: 16px;
@@ -139,7 +139,7 @@
 .type-25 .time-col h3 {
   padding-top: 30px;
 }
-.type-25 .contact-col .large-icon {
+.type-25 .crawler-col .large-icon {
   width: 61px;
   height: 61px;
   border-radius: 60px;
@@ -150,11 +150,11 @@
   display: inline-block;
   margin: 10px 0;
 }
-.type-25 .contact-col .large-icon:hover {
+.type-25 .crawler-col .large-icon:hover {
   background: #fff;
   color: #cb7152;
 }
-.type-25 .contact-col .icon-group a {
+.type-25 .crawler-col .icon-group a {
   color: #333;
   display: inline-block;
   height: 32px;
@@ -164,11 +164,11 @@
   font-size: 20px;
   line-height: 32px;
 }
-.type-25 .contact-col .icon-group a:hover {
+.type-25 .crawler-col .icon-group a:hover {
   background: #fff;
   color: #cb7152;
 }
-.type-25 .contact-col .icon {
+.type-25 .crawler-col .icon {
   font-family: 'icomoon' !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -177,25 +177,25 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.type-25 .contact-col .icon.shortcode {
+.type-25 .crawler-col .icon.shortcode {
   line-height: 1.15;
 }
-.type-25 .contact-col .theme.icon {
+.type-25 .crawler-col .theme.icon {
   font-family: 'theme' !important;
 }
-.type-25 .contact {
+.type-25 .crawler {
   position: relative;
   z-index: 100;
 }
-.type-25 .contact-form {
+.type-25 .crawler-form {
   background: #fff;
   position: relative;
   border-radius: 20px;
   margin-top: -50px;
   padding-bottom: 75px;
 }
-.type-25 .contact-form::before,
-.type-25 .contact-form::after {
+.type-25 .crawler-form::before,
+.type-25 .crawler-form::after {
   content: "";
   display: block;
   width: 156px;
@@ -204,25 +204,25 @@
   left: 50%;
   margin-left: -78px;
 }
-.type-25 .contact-form::before {
+.type-25 .crawler-form::before {
   background: url('../images/ornament-top.svg');
   top: -25px;
 }
-.type-25 .contact-form::after {
+.type-25 .crawler-form::after {
   background: url('../images/ornament-bottom.svg');
   bottom: -25px;
 }
-.type-25 .contact-form-inner {
+.type-25 .crawler-form-inner {
   padding: 30px 10px 0;
 }
-.type-25 .contact-form .tabNav {
+.type-25 .crawler-form .tabNav {
   padding: 0;
 }
-.type-25 .contact-form .tabNav li {
+.type-25 .crawler-form .tabNav li {
   padding: 10px 20px;
   margin: 0;
 }
-.type-25 .contact-form .tabNav li a {
+.type-25 .crawler-form .tabNav li a {
   font-family: 'Libre Baskerville';
   font-size: 20px;
   font-weight: normal;
@@ -235,8 +235,8 @@
   padding: 10px 0px;
   transition: all 0.3s ease-in;
 }
-.type-25 .contact-form .tabNav li.active a,
-.type-25 .contact-form .tabNav li:hover a {
+.type-25 .crawler-form .tabNav li.active a,
+.type-25 .crawler-form .tabNav li:hover a {
   color: #cb7152;
   border-color: #cb7152;
 }
@@ -344,12 +344,12 @@
   right: 0;
 }
 @media (max-width: 480px) {
-  .type-25 .contact-col 
+  .type-25 .crawler-col 
         .title,
   .type-25 .type-25 .time-col .title {
     text-align: center !important;
   }
-  .type-25 .contact-form {
+  .type-25 .crawler-form {
     margin-top: 28px;
     height: 786px;
     wight: 630px;

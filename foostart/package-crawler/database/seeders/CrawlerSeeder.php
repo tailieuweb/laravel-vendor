@@ -4,14 +4,14 @@ use Foostart\Category\Helpers\FoostartSeeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class ContactsSeeder extends FoostartSeeder
+class CrawlersSeeder extends FoostartSeeder
 {
     
     public function __construct() {
         // Table name
-        $this->table = 'contacts';
+        $this->table = 'crawlers';
         // Prefix column
-        $this->prefix_column = 'contact_';
+        $this->prefix_column = 'crawler_';
     }
     /**
      * Run the database seeds.
@@ -22,9 +22,9 @@ class ContactsSeeder extends FoostartSeeder
     {
         //Create context for user/level
         DB::table('contexts')->insert([
-            $this->prefix_context . 'name' => 'Admin contacts',
+            $this->prefix_context . 'name' => 'Admin crawlers',
             $this->prefix_context . 'key' => 'abee417e2dddc5240b586d454e',
-            $this->prefix_context . 'ref' => 'admin/contacts',
+            $this->prefix_context . 'ref' => 'admin/crawlers',
             'status' => 99,
             'created_user_id' => 1,
             'updated_user_id' => 1,

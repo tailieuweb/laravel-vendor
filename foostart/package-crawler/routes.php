@@ -5,13 +5,13 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * USER
  */
-Route::group(['middleware' => ['web', ], 'namespace' => 'Foostart\Contact\Controllers\User', ], function () {
+Route::group(['middleware' => ['web', ], 'namespace' => 'Foostart\Crawler\Controllers\User', ], function () {
     /**
     * list
     */
-   Route::post('contact', [
-       'as' => 'usercontact.post',
-       'uses' => 'ContactUserController@post'
+   Route::post('crawler', [
+       'as' => 'usercrawler.post',
+       'uses' => 'CrawlerUserController@post'
    ]);
 });
 
@@ -23,30 +23,30 @@ Route::group(['middleware' => ['web']], function () {
     /**
      * sample
     */
-    Route::get('contacts/sample', [
-        'as' => 'contacts.sample',
-        'uses' => 'Foostart\Contact\Controllers\Admin\ContactAdminController@sample'
+    Route::get('crawlers/sample', [
+        'as' => 'crawlers.sample',
+        'uses' => 'Foostart\Crawler\Controllers\Admin\CrawlerAdminController@sample'
     ]);
-    Route::post('contacts/sample', [
-        'as' => 'contacts.sample',
-        'uses' => 'Foostart\Contact\Controllers\Admin\ContactAdminController@addSample'
+    Route::post('crawlers/sample', [
+        'as' => 'crawlers.sample',
+        'uses' => 'Foostart\Crawler\Controllers\Admin\CrawlerAdminController@addSample'
     ]);
 
 
 
 
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
-                  'namespace' => 'Foostart\Contact\Controllers\Admin',
+                  'namespace' => 'Foostart\Crawler\Controllers\Admin',
         ], function () {
 
         /*
           |-----------------------------------------------------------------------
-          | Manage contact
+          | Manage crawler
           |-----------------------------------------------------------------------
-          | 1. List of contact
-          | 2. Edit contact
-          | 3. Delete contact
-          | 4. Add new contact
+          | 1. List of crawler
+          | 2. Edit crawler
+          | 3. Delete crawler
+          | 4. Add new crawler
           | 5. Manage configurations
           | 6. Manage languages
           |
@@ -55,87 +55,87 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/contacts', [
-            'as' => 'contacts',
-            'uses' => 'ContactAdminController@index'
+        Route::get('admin/crawlers', [
+            'as' => 'crawlers',
+            'uses' => 'CrawlerAdminController@index'
         ]);
-        Route::get('admin/contacts/list', [
-            'as' => 'contacts.list',
-            'uses' => 'ContactAdminController@index'
+        Route::get('admin/crawlers/list', [
+            'as' => 'crawlers.list',
+            'uses' => 'CrawlerAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/contacts/edit', [
-            'as' => 'contacts.edit',
-            'uses' => 'ContactAdminController@edit'
+        Route::get('admin/crawlers/edit', [
+            'as' => 'crawlers.edit',
+            'uses' => 'CrawlerAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/contacts/copy', [
-            'as' => 'contacts.copy',
-            'uses' => 'ContactAdminController@copy'
+        Route::get('admin/crawlers/copy', [
+            'as' => 'crawlers.copy',
+            'uses' => 'CrawlerAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/contacts/edit', [
-            'as' => 'contacts.post',
-            'uses' => 'ContactAdminController@post'
+        Route::post('admin/crawlers/edit', [
+            'as' => 'crawlers.post',
+            'uses' => 'CrawlerAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/contacts/delete', [
-            'as' => 'contacts.delete',
-            'uses' => 'ContactAdminController@delete'
+        Route::get('admin/crawlers/delete', [
+            'as' => 'crawlers.delete',
+            'uses' => 'CrawlerAdminController@delete'
         ]);
 
         /**
          * trash
          */
-         Route::get('admin/contacts/trash', [
-            'as' => 'contacts.trash',
-            'uses' => 'ContactAdminController@trash'
+         Route::get('admin/crawlers/trash', [
+            'as' => 'crawlers.trash',
+            'uses' => 'CrawlerAdminController@trash'
         ]);
 
         /**
          * configs
         */
-        Route::get('admin/contacts/config', [
-            'as' => 'contacts.config',
-            'uses' => 'ContactAdminController@config'
+        Route::get('admin/crawlers/config', [
+            'as' => 'crawlers.config',
+            'uses' => 'CrawlerAdminController@config'
         ]);
 
-        Route::post('admin/contacts/config', [
-            'as' => 'contacts.config',
-            'uses' => 'ContactAdminController@config'
+        Route::post('admin/crawlers/config', [
+            'as' => 'crawlers.config',
+            'uses' => 'CrawlerAdminController@config'
         ]);
 
         /**
          * language
         */
-        Route::get('admin/contacts/lang', [
-            'as' => 'contacts.lang',
-            'uses' => 'ContactAdminController@lang'
+        Route::get('admin/crawlers/lang', [
+            'as' => 'crawlers.lang',
+            'uses' => 'CrawlerAdminController@lang'
         ]);
 
-        Route::post('admin/contacts/lang', [
-            'as' => 'contacts.lang',
-            'uses' => 'ContactAdminController@lang'
+        Route::post('admin/crawlers/lang', [
+            'as' => 'crawlers.lang',
+            'uses' => 'CrawlerAdminController@lang'
         ]);
 
         /**
          * search
         */
-        Route::get('admin/contacts/search', [
-                'as' => 'contacts.search',
-                'uses' => 'ContactAdminController@search'
+        Route::get('admin/crawlers/search', [
+                'as' => 'crawlers.search',
+                'uses' => 'CrawlerAdminController@search'
         ]);
 
 

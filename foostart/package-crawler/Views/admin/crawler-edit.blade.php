@@ -1,7 +1,7 @@
 <!--
 | @TITLE
-| Update existing contact
-| Add new contact
+| Update existing crawler
+| Add new crawler
 |
 |-------------------------------------------------------------------------------
 | @REQUIRED
@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
 
-                            @include('package-contact::admin.contact-form')
+                            @include('package-crawler::admin.crawler-form')
 
                         </div>
                     </div>
@@ -74,7 +74,7 @@
         </div>
 
         <div class='col-md-4'>
-            @include('package-contact::admin.contact-search')
+            @include('package-crawler::admin.crawler-search')
         </div>
 
     </div>
