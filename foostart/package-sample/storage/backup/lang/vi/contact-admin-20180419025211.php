@@ -10,7 +10,7 @@ return [
     |
     */
     'menus' => [
-        'top-menu' => 'Contacts'
+        'top-menu' => 'Samples'
     ],
 
 
@@ -47,7 +47,7 @@ return [
     */
     'columns' => [
         'order' => '#',
-        'name' => 'Contact name',
+        'name' => 'Sample name',
         'operations' => 'Operations',
         'updated_at' => 'Updated at',
         'filename' => 'File name',
@@ -62,11 +62,11 @@ return [
     |
     */
     'pages' => [
-        'title-list' => 'List of contacts',
+        'title-list' => 'List of samples',
         'title-list-search' => 'Search results',
-        'title-edit' => 'Edit contact',
-        'title-add' => 'Add new contact',
-        'title-delete' => 'Delete contact',
+        'title-edit' => 'Edit sample',
+        'title-add' => 'Add new sample',
+        'title-delete' => 'Delete sample',
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage languages',
     ],
@@ -121,8 +121,8 @@ return [
     |
     */
     'description' => [
-        'form' => 'Contact form',
-        'update' => 'Update contact',
+        'form' => 'Sample form',
+        'update' => 'Update sample',
         'name' => '<blockquote class="quote-card">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -170,8 +170,8 @@ return [
     |
     */
     'fields' => [
-        'id' => 'Contact ID',
-        'name' => 'Contact name',
+        'id' => 'Sample ID',
+        'name' => 'Sample name',
         'description' => 'Description',
         'overview' => 'Overview',
         'slug' => 'Slug',
@@ -191,9 +191,9 @@ return [
     |
     */
     'labels' => [
-        'name' => 'Contact name',
+        'name' => 'Sample name',
         'category' => 'Category name',
-        'title-search' => 'Search contact',
+        'title-search' => 'Search sample',
         'title-backup' => 'Backups',
         'config' => 'Configurations',
     ],
@@ -235,8 +235,8 @@ return [
     |
     */
     'headings' => [
-        'form-search' => 'Search contacts',
-        'list' => 'List of contacts',
+        'form-search' => 'Search samples',
+        'list' => 'List of samples',
         'search' => 'Search results',
     ],
 

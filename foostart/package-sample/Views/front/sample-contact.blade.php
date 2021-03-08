@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="vi">
     <head>
-        <title>Contact Page</title>
+        <title>Sample Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=100" />
         <meta http-equiv="REFRESH" content="1800" />
@@ -12,24 +12,24 @@
         <meta name="keywords" content="Tai lieu web"/>
 
 
-        {!! HTML::style('packages/contact/css/bootstrap.min.css') !!}
-        {!! HTML::style('packages/contact/css/font-awesome.min.css') !!}
-      {!! HTML::style('packages/contact/css/1234.css') !!}
+        {!! HTML::style('packages/sample/css/bootstrap.min.css') !!}
+        {!! HTML::style('packages/sample/css/font-awesome.min.css') !!}
+      {!! HTML::style('packages/sample/css/1234.css') !!}
       
-      {!! HTML::style('packages/contact/css/1235.css') !!}
-      {!! HTML::style('packages/contact/css/1248.css') !!}
-      {!! HTML::style('packages/contact/css/1267.css') !!}
-      {!! HTML::style('packages/contact/css/1244.css') !!}
+      {!! HTML::style('packages/sample/css/1235.css') !!}
+      {!! HTML::style('packages/sample/css/1248.css') !!}
+      {!! HTML::style('packages/sample/css/1267.css') !!}
+      {!! HTML::style('packages/sample/css/1244.css') !!}
  
-      {!! HTML::script('packages/contact/js/jquery-2.1.4.min.js') !!}
-      {!! HTML::script('packages/contact/js/bootstrap.min.js') !!}
-      {!! HTML::script('packages/contact/js/1234.js') !!}
-      {!! HTML::script('packages/contact/js/1235.js') !!}
-      {!! HTML::script('packages/contact/js/amination.js') !!}
-      {!! HTML::script('packages/contact/js/jquery.js') !!}
-      {!! HTML::script('packages/contact/js/modul-0-splash.js') !!}
-      {!! HTML::script('packages/contact/js/about.js') !!}
-      {!! HTML::script('packages/contact/js/datepicker.min.js') !!}
+      {!! HTML::script('packages/sample/js/jquery-2.1.4.min.js') !!}
+      {!! HTML::script('packages/sample/js/bootstrap.min.js') !!}
+      {!! HTML::script('packages/sample/js/1234.js') !!}
+      {!! HTML::script('packages/sample/js/1235.js') !!}
+      {!! HTML::script('packages/sample/js/amination.js') !!}
+      {!! HTML::script('packages/sample/js/jquery.js') !!}
+      {!! HTML::script('packages/sample/js/modul-0-splash.js') !!}
+      {!! HTML::script('packages/sample/js/about.js') !!}
+      {!! HTML::script('packages/sample/js/datepicker.min.js') !!}
       
     </head>
     <body style="position: relative;">
@@ -41,7 +41,7 @@
 		<div class="about" style="width: 100%;height: 100%;position: absolute;background: #fff;z-index: -999;"></div>
         <div class="type-1234">
     <div class="m-splash-screen-progress-wrapper">
-        <img src="http://localhost/training/vendor/foostart/package-contact/public/images/logo-dark.svg" alt="reponsive-img" class="attachment-full size-full">
+        <img src="http://localhost/training/vendor/foostart/package-sample/public/images/logo-dark.svg" alt="reponsive-img" class="attachment-full size-full">
         <div class="m-splash-screen-progress"></div>
     </div>
 </div>
@@ -117,7 +117,7 @@
                             </li>
 
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="#">Sample</a>
                                 <ul>
                                     <li><a href="#">Gourmet</a></li>
                                     <li><a href="#">Coffe</a></li>
@@ -251,12 +251,12 @@
 
 </div>
 <div class="container">
-    <div class="contact">
+    <div class="sample">
         <div class="row">
             <div class="wrapper">
-                <div class="col-sm-3 text-center contact-col con-col">
+                <div class="col-sm-3 text-center sample-col con-col">
                     <span class="icon shortcode theme"></span>
-                    <h3 class="title">Contact</h3>
+                    <h3 class="title">Sample</h3>
                     <h5 class="phone">+359 562 958</h5>
                     <p>
                         Via Stella, 22, 41121
@@ -272,8 +272,8 @@
                         <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                     </p>
                 </div>
-                <div class="col-sm-6 contact-form">
-                    <div class="contact-form-inner">
+                <div class="col-sm-6 sample-form">
+                    <div class="sample-form-inner">
                         <ul class="list-inline text-center tabNav" role="tablist">
                             <li role="presentation" class="active">
                                 <a href="#book"  role="tab" data-toggle="tab">Book</a>
@@ -369,7 +369,7 @@
                                             
                                                 <!-- add class error show error -->
                                                 <label>Name</label>
-                                                <input type="text" name="contact_title" ></input>
+                                                <input type="text" name="sample_title" ></input>
                                                 <div class="error-mes error-mes1">This is a required field.</div>
                                                 
 
@@ -377,17 +377,17 @@
                                             <div class="field required col-sm-4">
                                                 <!-- add class error show error -->
                                                 <label >Email</label>
-                                                <input type="email" name="contact_email" ></input>
+                                                <input type="email" name="sample_email" ></input>
                                                 <div class="error-mes error-mes1">This is a required field.</div>
                                             </div>
                                             <div class="field col-sm-4">
                                                 <label >Phone</label>
-                                                <input type="tel" name="contact_phone"  />
+                                                <input type="tel" name="sample_phone"  />
                                             </div>
                                         </div>
                                         <div class="field required">
                                             <label >Message </label>
-                                            <textarea name="contact_message"></textarea>
+                                            <textarea name="sample_message"></textarea>
                                             <div class="error-mes error-mes1">This is a required field.</div>
                                         </div>
                                         <input class="btn-form" type="submit" value="Send" />
@@ -400,9 +400,9 @@
                         </div>
                         <!-- end tab-content -->
                     </div>
-                    <!-- end contact-form-inner -->
+                    <!-- end sample-form-inner -->
                 </div>
-                <div class="col-sm-3 text-center contact-col time-col">
+                <div class="col-sm-3 text-center sample-col time-col">
                     <span class="icon shortcode theme"></span>
                     <h3 class="title">Time</h3>
                     <h5>Weekdays</h5>
@@ -415,7 +415,7 @@
         </div>
     </div>
 </div>
-<!-- end contact -->
+<!-- end sample -->
 <div class="wrap-map">
     <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDwaeroZWoFDb7a6nXtexnqA-mwgBqoeYM'></script>
     <div class="app">
@@ -425,7 +425,7 @@
    
     <a href='http://maps-generator.com/'>add google map</a>
     <script  src='https://embedmaps.com/google-maps-authorization/script.js?id=87f441691c59e42c1f8984d69e623db8714cf424'></script>
-    <script src="http://localhost/training/vendor/foostart/package-contact/public/js/jsmap.js" ></script>
+    <script src="http://localhost/training/vendor/foostart/package-sample/public/js/jsmap.js" ></script>
 
 
 </div>

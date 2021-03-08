@@ -1,7 +1,7 @@
 <!--
 | @TITLE
-| Update existing contact
-| Add new contact
+| Update existing sample
+| Add new sample
 |
 |-------------------------------------------------------------------------------
 | @REQUIRED
@@ -33,7 +33,7 @@
        
         <!--SEARCH-->
         <div class="col-md-3">
-            @include('package-contact::admin.contact-search')
+            @include('package-sample::admin.sample-search')
         </div>
         <!--/SEARCH-->
     </div>

@@ -209,12 +209,12 @@
 }
 @font-face {
   font-family: Libre Baskerville;
-  src: url(http://localhost/training/vendor/foostart/package-contact/public/fonts/Libre-Baskerville.woff2);
+  src: url(http://localhost/training/vendor/foostart/package-sample/public/fonts/Libre-Baskerville.woff2);
   font-weight: bold;
 }
 @font-face {
   font-family: Varela Round;
-  src: url('http://localhost/training/vendor/foostart/package-contact/public/fonts/Varela-Round.woff2');
+  src: url('http://localhost/training/vendor/foostart/package-sample/public/fonts/Varela-Round.woff2');
   font-weight: bold;
 }
 @media (max-width: 1000px) {

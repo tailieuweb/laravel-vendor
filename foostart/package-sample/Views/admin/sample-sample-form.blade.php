@@ -1,8 +1,8 @@
 <!------------------------------------------------------------------------------
-| List of elements in contact form
+| List of elements in sample form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['contacts.sample', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['samples.sample', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
 
     <!--BUTTONS-->
     <div class='btn-form'>
@@ -21,48 +21,48 @@
         <!--MENU 1-->
         <div id="menu_1" class="tab-pane fade in active">
 
-            <!--contact title-->
-            @include('package-contact::admin.partials.input_text', [
-            'name' => 'contact_title',
+            <!--sample title-->
+            @include('package-sample::admin.partials.input_text', [
+            'name' => 'sample_title',
             'label' => trans($plang_admin.'.labels.title'),
-            'value' => @$item->contact_title,
+            'value' => @$item->sample_title,
             'description' => trans($plang_admin.'.descriptions.title'),
             'errors' => $errors,
             ])
-            <!--/contact title-->
+            <!--/sample title-->
 
-            <!--contact email-->
-            @include('package-contact::admin.partials.textarea', [
-            'name' => 'contact_email',
+            <!--sample email-->
+            @include('package-sample::admin.partials.textarea', [
+            'name' => 'sample_email',
             'label' => trans($plang_admin.'.labels.email'),
-            'value' => @$item->contact_email,
+            'value' => @$item->sample_email,
             'description' => trans($plang_admin.'.descriptions.email'),
             'tinymce' => false,
             'errors' => $errors,
             ])
-            <!--/contact email-->
+            <!--/sample email-->
 
-            <!--contact phone-->
-            @include('package-contact::admin.partials.input_text', [
-            'name' => 'contact_phone',
+            <!--sample phone-->
+            @include('package-sample::admin.partials.input_text', [
+            'name' => 'sample_phone',
             'label' => trans($plang_admin.'.labels.phone'),
-            'value' => @$item->contact_phone,
+            'value' => @$item->sample_phone,
             'description' => trans($plang_admin.'.descriptions.phone'),
             'errors' => $errors,
             ])
-            <!--/contact title-->
+            <!--/sample title-->
 
-            <!--contact message-->
-            @include('package-contact::admin.partials.textarea', [
-            'name' => 'contact_message',
+            <!--sample message-->
+            @include('package-sample::admin.partials.textarea', [
+            'name' => 'sample_message',
             'label' => trans($plang_admin.'.labels.message'),
-            'value' => @$item->contact_message,
+            'value' => @$item->sample_message,
             'description' => trans($plang_admin.'.descriptions.message'),
             'rows' => 50,
             'tinymce' => true,
             'errors' => $errors,
             ])
-            <!--/contact message-->
+            <!--/sample message-->
 
             
 
@@ -80,5 +80,5 @@
 
 {!! Form::close() !!}
 <!------------------------------------------------------------------------------
-| End list of elements in contact form
+| End list of elements in sample form
 |------------------------------------------------------------------------------>

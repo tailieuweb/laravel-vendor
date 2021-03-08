@@ -50,7 +50,7 @@
             </th>
 
             <!--TITLE-->
-            <?php $name = 'contact_title' ?>
+            <?php $name = 'sample_title' ?>
             <th class="hidden-xs" style='width:{{ $withs['title'] }}'>{!! trans($plang_admin.'.columns.title') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
@@ -127,10 +127,10 @@
                 </td>
 
                 <!--ID-->
-                <td> {!! $item->contact_id !!}</td>
+                <td> {!! $item->sample_id !!}</td>
 
                 <!--NAME-->
-                <td> {!! $item->contact_name !!} </td>
+                <td> {!! $item->sample_name !!} </td>
 
                 <!--STATUS-->
                 <td style="text-align: center;">
@@ -147,7 +147,7 @@
                 <!--OPERATOR-->
                 <td>
                     <!--edit-->
-                    <a href="{!! URL::route('contacts.edit', [   'id' => $item->id,
+                    <a href="{!! URL::route('samples.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
                                                             ])
                             !!}">
@@ -155,7 +155,7 @@
                     </a>
 
                     <!--copy-->
-                    <a href="{!! URL::route('contacts.copy',[    'cid' => $item->id,
+                    <a href="{!! URL::route('samples.copy',[    'cid' => $item->id,
                                                                 '_token' => csrf_token(),
                                                             ])
                              !!}"
@@ -164,7 +164,7 @@
                     </a>
 
                     <!--delete-->
-                    <a href="{!! URL::route('contacts.delete',[  'id' => $item->id,
+                    <a href="{!! URL::route('samples.delete',[  'id' => $item->id,
                                                                 '_token' => csrf_token(),
                                                               ])
                              !!}"

@@ -3,27 +3,27 @@ return [
 
     //Number of worlds
     'length' => [
-        'contact_name' => [
+        'sample_name' => [
             'min' => 10,
             'max' => 255,
         ],
-        'contact_description' => [
+        'sample_description' => [
             'min' => 255,
             'max' => 0,//unlimit
         ],
-        'contact_status' => [
+        'sample_status' => [
             'min' => 255,
             'max' => 0,//unlimit
         ],
-        'contact_title' => [
+        'sample_title' => [
             'min' => 10,
             'max' => 255,
         ],
-        'contact_email' => [
+        'sample_email' => [
             'min' => 10,
             'max' => 255,
         ],
-        'contact_message' => [
+        'sample_message' => [
             'min' => 10,
             'max' => 255,
         ],
@@ -39,7 +39,7 @@ return [
     |
     */
     'env' => 0,
-    'load_from' => 'package-contact::',
+    'load_from' => 'package-sample::',
 
     /*
     |-----------------------------------------------------------------------
