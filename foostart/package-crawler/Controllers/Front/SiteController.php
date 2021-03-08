@@ -16,16 +16,12 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Crawler\Models\CrawlerSites;
+use Foostart\Crawler\Models\Sites;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\CrawlerValidator;
 use Illuminate\Support\Facades\DB;
-use Foostart\Crawler\Validators\SampleValidator;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Mail\Mailable;
 
-class CrawlerController extends FooController {
+class SiteController extends FooController {
     public $obj_item = NULL;
     public $obj_category = NULL;
     

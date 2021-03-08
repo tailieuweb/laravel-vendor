@@ -42,7 +42,7 @@
 
                 <!--DESCRIPTION-->
                 <div class='panel-description'>
-                    {!! trans($plang_admin.'.descriptions.form') !!}</h4>
+                    {!! trans($plang_admin.'.descriptions.site_form') !!}</h4>
                 </div>
 
                 <!-- ERRORS NAME  -->
@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
 
-                            @include('package-crawler::admin.crawler-form')
+                            @include('package-crawler::admin.site.site-form')
 
                         </div>
                     </div>
@@ -74,7 +74,7 @@
         </div>
 
         <div class='col-md-4'>
-            @include('package-crawler::admin.crawler-search')
+            @include('package-crawler::admin.site.site-search')
         </div>
 
     </div>

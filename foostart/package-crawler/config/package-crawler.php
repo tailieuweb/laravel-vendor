@@ -27,6 +27,14 @@ return [
             'min' => 10,
             'max' => 255,
         ],
+        'site_name' => [
+            'min' => 3,
+            'max' => 255,
+        ],
+        'site_description' => [
+            'min' => 3,
+            'max' => 255,//unlimit
+        ],
     ],
     'per_page' => 1,
 

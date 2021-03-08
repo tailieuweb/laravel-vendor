@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateCrawlerSitesTable extends FoostartMigration
+class CreateSitesTable extends FoostartMigration
 {
     public function __construct() {
         $this->table = 'crawler_sites';

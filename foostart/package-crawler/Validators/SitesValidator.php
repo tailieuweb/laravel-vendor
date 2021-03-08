@@ -3,11 +3,11 @@
 use Foostart\Category\Library\Validators\FooValidator;
 use Event;
 use \LaravelAcl\Library\Validators\AbstractValidator;
-use Foostart\Crawler\Models\CrawlerSites;
+use Foostart\Crawler\Models\Sites;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
-class CrawlerSitesValidator extends FooValidator
+class SitesValidator extends FooValidator
 {
 
     protected $obj_crawler;
@@ -16,15 +16,15 @@ class CrawlerSitesValidator extends FooValidator
     {
         // add rules
         self::$rules = [
-            'crawler_name' => ["required"],
-            'crawler_description' => ["required"],
+            'site_name' => ["required"],
+            'site_description' => ["required"],
         ];
 
         // set configs
         self::$configs = $this->loadConfigs();
 
         // model
-        $this->obj_crawler = new CrawlerSites();
+        $this->obj_crawler = new Sites();
 
         // language
         $this->lang_front = 'crawler-front';
@@ -34,8 +34,8 @@ class CrawlerSitesValidator extends FooValidator
         Event::listen('validating', function($input)
         {
             self::$messages = [
-                'crawler_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
-                'crawler_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
+                'site_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
+                'site_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
                 ];
         });
 
@@ -57,21 +57,21 @@ class CrawlerSitesValidator extends FooValidator
 
         $params = [
             'name' => [
-                'key' => 'crawler_name',
+                'key' => 'site_name',
                 'label' => trans($this->lang_admin.'.fields.name'),
-                'min' => $_ln['crawler_name']['min'],
-                'max' => $_ln['crawler_name']['max'],
+                'min' => $_ln['site_name']['min'],
+                'max' => $_ln['site_name']['max'],
             ],
             'description' => [
-                'key' => 'crawler_description',
+                'key' => 'site_description',
                 'label' => trans($this->lang_admin.'.fields.description'),
-                'min' => $_ln['crawler_description']['min'],
-                'max' => $_ln['crawler_description']['max'],
+                'min' => $_ln['site_description']['min'],
+                'max' => $_ln['site_description']['max'],
             ],
         ];
 
-        $flag = $this->isValidLength($input['crawler_name'], $params['name']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['crawler_description'], $params['description']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['site_name'], $params['name']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['site_description'], $params['description']) ? $flag : FALSE;
         return $flag;
     }
 
@@ -94,10 +94,8 @@ class CrawlerSitesValidator extends FooValidator
     public function userValidate($input) {
         //set rules
         self::$rules = [
-            'crawler_name' => ["required"],
-            'crawler_email' => ["required", "email"],
-            'crawler_title' => ["required"],
-            'crawler_message' => ["required"],
+            'site_name' => ["required"],
+            'site_url' => ["required"],
         ];
 
         //validate

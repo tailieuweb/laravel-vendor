@@ -21,6 +21,14 @@ View::composer([
                 'package-crawler::admin.crawler-search',
                 'package-crawler::admin.crawler-config',
                 'package-crawler::admin.crawler-lang',
+                //Site
+                'package-crawler::admin.site.site-edit',
+                'package-crawler::admin.site.site-form',
+                'package-crawler::admin.site.site-items',
+                'package-crawler::admin.site.site-item',
+                'package-crawler::admin.site.site-search',
+                'package-crawler::admin.site.site-config',
+                'package-crawler::admin.site.site-lang',
     ], function ($view) {
 
         //Order by params

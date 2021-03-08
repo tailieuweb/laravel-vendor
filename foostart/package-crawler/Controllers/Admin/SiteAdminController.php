@@ -16,9 +16,9 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Crawler\Models\CrawlerSites;
+use Foostart\Crawler\Models\Sites;
 use Foostart\Category\Models\Category;
-use Foostart\Crawler\Validators\CrawlerSitesValidator;
+use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
 
 class SiteAdminController extends FooController {
@@ -32,11 +32,11 @@ class SiteAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new CrawlerSites(array('perPage' => 10));
+        $this->obj_item = new Sites(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new CrawlerSitesValidator();
+        $this->obj_validator = new SitesValidator();
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
         $this->plang_admin = 'crawler-admin';
@@ -44,10 +44,10 @@ class SiteAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'crawler';
+        $this->package_base_name = 'site.site';
 
         // root routers
-        $this->root_router = 'crawlers';
+        $this->root_router = 'sites';
 
         // page views
         $this->page_views = [

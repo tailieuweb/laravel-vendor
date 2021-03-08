@@ -155,7 +155,7 @@
                     </a>
 
                     <!--copy-->
-                    <a href="{!! URL::route('crawlers.copy',[    'cid' => $item->id,
+                    <a href="{!! URL::route('sites.copy',[    'cid' => $item->id,
                                                                 '_token' => csrf_token(),
                                                             ])
                              !!}"

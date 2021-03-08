@@ -155,6 +155,11 @@ return [
         'message'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'answer'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'title'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'site_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'site_url' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'site_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'site_form' => 'Site form',
+        'site_image' => 'Site image'
     ],
 
 
@@ -230,7 +235,11 @@ return [
         'message'        => 'Message',
         'answer'        => 'Answer',
         'title'        => 'Title',
-        'phone' => 'Phone'
+        'phone' => 'Phone',
+        'site_name' => 'Site name',
+        'site_url' => 'Site url',
+        'site_image' => 'Site image',
+        'site_description' => 'Site description'
     ],
 
 

@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------
-| List of elements in crawler form
+| List of elements in site form
 |------------------------------------------------------------------------------->
 
 {!! Form::open(['route'=>['sites.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
@@ -38,50 +38,29 @@
         <!--MENU 1-->
         <div id="menu_1" class="tab-pane fade in active">
 
-            <!--TITLE-->
+            <!--NAME-->
             @include('package-category::admin.partials.input_text', [
-                'name' => 'crawler_title',
-                'label' => trans($plang_admin.'.labels.title'),
-                'value' => @$item->crawler_title,
-                'description' => trans($plang_admin.'.descriptions.title'),
+                'name' => 'site_name',
+                'label' => trans($plang_admin.'.labels.site_name'),
+                'value' => @$item->site_name,
+                'description' => trans($plang_admin.'.descriptions.site_name'),
                 'errors' => $errors,
             ])
-            <!--/TITLE-->
+            <!--/NAME-->
+
             <div class="row">
                 <div class='col-md-6'>
-                    <!--NAME-->
+                    <!--URL-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'crawler_name',
-                        'label' => trans($plang_admin.'.labels.name'),
-                        'value' => @$item->crawler_name,
-                        'description' => trans($plang_admin.'.descriptions.name'),
+                        'name' => 'site_url',
+                        'label' => trans($plang_admin.'.labels.site_url'),
+                        'value' => @$item->site_name,
+                        'description' => trans($plang_admin.'.descriptions.site_url'),
                         'errors' => $errors,
                     ])
-                    <!-- /NAME-->
+                    <!-- /URL-->
                 </div>
-                
-                <div class='col-md-6'>
-                    <!--EMAIL-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'crawler_email',
-                        'label' => trans($plang_admin.'.labels.email'),
-                        'value' => @$item->crawler_email,
-                        'description' => trans($plang_admin.'.descriptions.email'),
-                        'errors' => $errors,
-                    ])
-                    <!-- /EMAIL-->
-                </div>
-                
-                <div class='col-md-6'>
-                    <!--PHONE-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'crawler_phone',
-                        'label' => trans($plang_admin.'.labels.phone'),
-                        'value' => @$item->crawler_phone,
-                        'description' => trans($plang_admin.'.descriptions.crawler-phone'),
-                    ])
-                </div>
-                
+
                 <div class="col-md-6">
                     <!--STATUS-->
                     @include('package-category::admin.partials.select_single', [
@@ -93,14 +72,27 @@
                     ])
                     <!--/STATUS-->
                 </div>
+
+                <div class='col-md-6'>
+                    <!--IMAGE-->
+                    @include('package-category::admin.partials.input_image', [
+                        'name' => 'site_image',
+                        'label' => trans($plang_admin.'.labels.site_image'),
+                        'value' => @$item->site_image,
+                        'description' => trans($plang_admin.'.descriptions.site_image'),
+                        'errors' => $errors,
+                        'lfm_config' => TRUE
+                    ])
+                    <!-- /IMAGE-->
+                </div>
             </div>
-            
+
              <!--DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
-                'name' => 'crawler_description',
-                'label' => trans($plang_admin.'.labels.description'),
-                'value' => @$item->crawler_description,
-                'description' => trans($plang_admin.'.descriptions.description'),
+                'name' => 'site_description',
+                'label' => trans($plang_admin.'.labels.site_description'),
+                'value' => @$item->site_description,
+                'description' => trans($plang_admin.'.descriptions.site_description'),
                 'rows' => 25,
                 'tinymce' => true,
                 'errors' => $errors,
@@ -120,5 +112,5 @@
 
 {!! Form::close() !!}
 <!------------------------------------------------------------------------------
-| End list of elements in crawler form
+| End list of elements in site form
 |------------------------------------------------------------------------------>

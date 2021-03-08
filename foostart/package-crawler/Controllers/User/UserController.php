@@ -16,11 +16,11 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Crawler\Models\CrawlerSites;
-use Foostart\Crawler\Validators\CrawlerSitesValidator;
+use Foostart\Crawler\Models\Sites;
+use Foostart\Crawler\Validators\SitesValidator;
 
 
-class CrawlerUserController extends FooController {
+class UserController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -29,10 +29,10 @@ class CrawlerUserController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new CrawlerSites();
+        $this->obj_item = new Sites();
 
         // validators
-        $this->obj_validator = new CrawlerSitesValidator();
+        $this->obj_validator = new SitesValidator();
 
         // set language files
         $this->plang_admin = 'crawler-admin';

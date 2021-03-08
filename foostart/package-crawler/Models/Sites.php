@@ -3,7 +3,7 @@
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 
-class CrawlerSites extends FooModel {
+class Sites extends FooModel {
 
     /**
      * @table categories
@@ -24,51 +24,44 @@ class CrawlerSites extends FooModel {
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'crawler_name',
-            'crawler_email',
-            'crawler_phone',
-            'crawler_title',
-            'crawler_description',
-
+            'site_name',
+            'site_url',
+            'site_image',
+            'site_description',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'crawler_name' => [
-                'name' => 'crawler_name',
+            'site_name' => [
+                'name' => 'site_name',
                 'type' => 'Text',
             ],
-             'crawler_email' => [
-                'name' => 'crawler_email',
+             'site_url' => [
+                'name' => 'site_url',
                 'type' => 'Text',
             ],
-            'crawler_phone' => [
-                'name' => 'crawler_phone',
+            'site_image' => [
+                'name' => 'site_image',
                 'type' => 'Text',
             ],
-            'crawler_description' => [
-                'name' => 'crawler_description',
-                'type' => 'Text',
-            ],
-            'crawler_title' => [
-                'name' => 'crawler_title',
+            'site_description' => [
+                'name' => 'site_description',
                 'type' => 'Text',
             ],
         ]);
-        
+
         //check valid fields for inserting
-        $this->valid_insert_fields = array_merge($this->valid_insert_fields, [            
-            'crawler_title',
-            'crawler_email',
-            'crawler_phone',
-            'crawler_name',
-            'crawler_description',
+        $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
+            'site_name',
+            'site_url',
+            'site_image',
+            'site_description',
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'crawler_id',
-            'crawler_name',
+            'site_id',
+            'site_name',
             'updated_at',
             $this->field_status,
         ];
@@ -79,7 +72,7 @@ class CrawlerSites extends FooModel {
         ];
 
         //primary key
-        $this->primaryKey = 'crawler_id';
+        $this->primaryKey = 'site_id';
 
     }
 
@@ -162,24 +155,14 @@ class CrawlerSites extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'crawler_name':
+                        case 'site_name':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.crawler_name', '=', $value);
+                                $elo = $elo->where($this->table . '.site_name', '=', $value);
                             }
                             break;
-                        case 'crawler_title':
+                        case 'site_url':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.crawler_title', '=', $value);
-                            }
-                            break;
-                        case 'crawler_phone':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.crawler_phone', '=', $value);
-                            }
-                            break;
-                        case 'crawler_email':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.crawler_email', '=', $value);
+                                $elo = $elo->where($this->table . '.site_url', '=', $value);
                             }
                             break;
                         case 'status':
@@ -187,12 +170,12 @@ class CrawlerSites extends FooModel {
                                 $elo = $elo->where($this->table . '.'.$this->field_status, '=', $value);
                             }
                             break;
-                        
+
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.crawler_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.crawler_description','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.site_name', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.site_description','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -201,7 +184,7 @@ class CrawlerSites extends FooModel {
                     }
                 }
             }
-        } 
+        }
 
         return $elo;
     }
@@ -214,7 +197,7 @@ class CrawlerSites extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.crawler_id as id'
+                            $this->table . '.site_id as id'
                 );
 
         return $elo;
@@ -247,14 +230,14 @@ class CrawlerSites extends FooModel {
 
         if (!empty($item)) {
             $dataFields = $this->getDataFields($params, $this->fields);
-            
+
             foreach ($dataFields as $key => $value) {
                 $item->$key = $value;
             }
 
             $item->save();
               //add new attribute
-            $item->id = $item->crawler_id;
+            $item->id = $item->site_id;
 
 
             return $item;
@@ -325,7 +308,7 @@ class CrawlerSites extends FooModel {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $crawler = new CrawlerSites();
+        $crawler = new Sites();
         $crawler->fill($params);
         $crawler->save();
 
