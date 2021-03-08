@@ -1,8 +1,8 @@
-<?php namespace Foostart\Contact\Controllers\Admin;
+<?php namespace Foostart\Sample\Controllers\Admin;
 
 /*
 |-----------------------------------------------------------------------
-| ContactAdminController
+| SampleAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
 | @website: http://foostart.com
@@ -16,16 +16,15 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Contact\Models\Contact;
+use Foostart\Sample\Models\Sample;
 use Foostart\Category\Models\Category;
-use Foostart\Contact\Validators\ContactValidator;
+use Foostart\Sample\Validators\SampleValidator;
 use Illuminate\Support\Facades\DB;
-use Foostart\Contact\Validators\SampleValidator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Mail\Mailable;
 
-class ContactAdminController extends FooController {
+class SampleAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -36,22 +35,22 @@ class ContactAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Contact(array('perPage' => 10));
+        $this->obj_item = new Sample(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new ContactValidator();
+        $this->obj_validator = new SampleValidator();
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
-        $this->plang_admin = 'contact-admin';
-        $this->plang_front = 'contact-front';
+        $this->plang_admin = 'sample-admin';
+        $this->plang_front = 'sample-front';
 
         // package name
-        $this->package_name = 'package-contact';
-        $this->package_base_name = 'contact';
+        $this->package_name = 'package-sample';
+        $this->package_base_name = 'sample';
 
         // root routers
-        $this->root_router = 'contacts';
+        $this->root_router = 'samples';
 
         // page views
         $this->page_views = [
@@ -67,12 +66,12 @@ class ContactAdminController extends FooController {
 
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
 
-        $this->statuses = config('package-contact.status.list');
-        $this->obj_sample = config('package-contact.sample.list');
+        $this->statuses = config('package-sample.status.list');
+        $this->obj_sample = config('package-sample.sample.list');
 
 
         // //set category
-        $this->category_ref_name = 'admin/contacts';
+        $this->category_ref_name = 'admin/samples';
 
     }
 
@@ -253,8 +252,8 @@ class ContactAdminController extends FooController {
     public function config(Request $request) {
         $is_valid_request = $this->isValidRequest($request);
         // display view
-        $config_path = realpath(base_path('config/package-contact.php'));
-        $package_path = realpath(base_path('vendor/foostart/package-contact'));
+        $config_path = realpath(base_path('config/package-sample.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-sample'));
 
         $config_bakup = $package_path.'/storage/backup/config';
         if (!file_exists($config_bakup)) {
@@ -274,7 +273,7 @@ class ContactAdminController extends FooController {
         if ($request->isMethod('post') && $is_valid_request) {
 
             //create backup of current config
-            file_put_contents($config_bakup.'/package-contact-'.date('YmdHis',time()).'.php', $content);
+            file_put_contents($config_bakup.'/package-sample-'.date('YmdHis',time()).'.php', $content);
 
             //update new config
             $content = $request->get('content');
@@ -302,13 +301,13 @@ class ContactAdminController extends FooController {
     public function lang(Request $request) {
         $is_valid_request = $this->isValidRequest($request);
         // display view
-        $langs = config('package-contact.langs');
+        $langs = config('package-sample.langs');
         $lang_paths = [];
-        $package_path = realpath(base_path('vendor/foostart/package-contact'));
+        $package_path = realpath(base_path('vendor/foostart/package-sample'));
 
         if (!empty($langs) && is_array($langs)) {
             foreach ($langs as $key => $value) {
-                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/contact-admin.php'));
+                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/sample-admin.php'));
 
                 $key_backup = $package_path.'/storage/backup/lang/'.$key;
 
@@ -345,8 +344,8 @@ class ContactAdminController extends FooController {
             foreach ($lang_paths as $key => $value) {
                 $content = file_get_contents($value);
 
-                //format file name contact-admin-YmdHis.php
-                file_put_contents($lang_bakup.'/'.$key.'/contact-admin-'.date('YmdHis',time()).'.php', $content);
+                //format file name sample-admin-YmdHis.php
+                file_put_contents($lang_bakup.'/'.$key.'/sample-admin-'.date('YmdHis',time()).'.php', $content);
             }
 
 

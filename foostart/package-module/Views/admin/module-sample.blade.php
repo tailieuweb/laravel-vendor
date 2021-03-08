@@ -1,7 +1,7 @@
 <!--
 | @TITLE
-| Update existing contact
-| Add new contact
+| Update existing module
+| Add new module
 |
 |-------------------------------------------------------------------------------
 | @REQUIRED
@@ -33,7 +33,7 @@
        
         <!--SEARCH-->
         <div class="col-md-3">
-            @include('package-contact::admin.contact-search')
+            @include('package-module::admin.module-search')
         </div>
         <!--/SEARCH-->
     </div>

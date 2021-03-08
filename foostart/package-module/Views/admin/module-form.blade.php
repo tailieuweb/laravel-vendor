@@ -1,14 +1,14 @@
 <!------------------------------------------------------------------------------
-| List of elements in contact form
+| List of elements in module form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['contacts.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['modules.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
 
     <!--BUTTONS-->
     <div class='btn-form'>
         <!-- DELETE BUTTON -->
         @if($item)
-            <a href="{!! URL::route('contacts.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
+            <a href="{!! URL::route('modules.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
             class="btn btn-danger pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}
             </a>
@@ -40,9 +40,9 @@
 
             <!--TITLE-->
             @include('package-category::admin.partials.input_text', [
-                'name' => 'contact_title',
+                'name' => 'module_title',
                 'label' => trans($plang_admin.'.labels.title'),
-                'value' => @$item->contact_title,
+                'value' => @$item->module_title,
                 'description' => trans($plang_admin.'.descriptions.title'),
                 'errors' => $errors,
             ])
@@ -51,9 +51,9 @@
                 <div class='col-md-6'>
                     <!--NAME-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'contact_name',
+                        'name' => 'module_name',
                         'label' => trans($plang_admin.'.labels.name'),
-                        'value' => @$item->contact_name,
+                        'value' => @$item->module_name,
                         'description' => trans($plang_admin.'.descriptions.name'),
                         'errors' => $errors,
                     ])
@@ -63,9 +63,9 @@
                 <div class='col-md-6'>
                     <!--EMAIL-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'contact_email',
+                        'name' => 'module_email',
                         'label' => trans($plang_admin.'.labels.email'),
-                        'value' => @$item->contact_email,
+                        'value' => @$item->module_email,
                         'description' => trans($plang_admin.'.descriptions.email'),
                         'errors' => $errors,
                     ])
@@ -75,10 +75,10 @@
                 <div class='col-md-6'>
                     <!--PHONE-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'contact_phone',
+                        'name' => 'module_phone',
                         'label' => trans($plang_admin.'.labels.phone'),
-                        'value' => @$item->contact_phone,
-                        'description' => trans($plang_admin.'.descriptions.contact-phone'),
+                        'value' => @$item->module_phone,
+                        'description' => trans($plang_admin.'.descriptions.module-phone'),
                     ])
                 </div>
                 
@@ -97,9 +97,9 @@
             
              <!--DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
-                'name' => 'contact_description',
+                'name' => 'module_description',
                 'label' => trans($plang_admin.'.labels.description'),
-                'value' => @$item->contact_description,
+                'value' => @$item->module_description,
                 'description' => trans($plang_admin.'.descriptions.description'),
                 'rows' => 25,
                 'tinymce' => true,
@@ -120,5 +120,5 @@
 
 {!! Form::close() !!}
 <!------------------------------------------------------------------------------
-| End list of elements in contact form
+| End list of elements in module form
 |------------------------------------------------------------------------------>

@@ -46,9 +46,9 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['contacts.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
+                        {!! Form::open(['route'=>['modules.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-contact::admin.contact-item')
+                            @include('package-module::admin.module-item')
 
                             {!! csrf_field(); !!}
 
@@ -62,7 +62,7 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-contact::admin.contact-search')
+                @include('package-module::admin.module-search')
             </div>
             <!--/SEARCH-->
 

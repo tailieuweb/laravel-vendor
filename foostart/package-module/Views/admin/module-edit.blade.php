@@ -1,7 +1,7 @@
 <!--
 | @TITLE
-| Update existing contact
-| Add new contact
+| Update existing module
+| Add new module
 |
 |-------------------------------------------------------------------------------
 | @REQUIRED
@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
 
-                            @include('package-contact::admin.contact-form')
+                            @include('package-module::admin.module-form')
 
                         </div>
                     </div>
@@ -74,7 +74,7 @@
         </div>
 
         <div class='col-md-4'>
-            @include('package-contact::admin.contact-search')
+            @include('package-module::admin.module-search')
         </div>
 
     </div>

@@ -1,8 +1,8 @@
-<?php namespace Foostart\Contact\Controllers\User;
+<?php namespace Foostart\Module\Controllers\User;
 
 /*
 |-----------------------------------------------------------------------
-| ContactAdminController
+| ModuleAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
 | @website: http://foostart.com
@@ -16,11 +16,11 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Contact\Models\Contact;
-use Foostart\Contact\Validators\ContactValidator;
+use Foostart\Module\Models\Module;
+use Foostart\Module\Validators\ModuleValidator;
 
 
-class ContactUserController extends FooController {
+class ModuleUserController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -29,21 +29,21 @@ class ContactUserController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Contact();
+        $this->obj_item = new Module();
 
         // validators
-        $this->obj_validator = new ContactValidator();
+        $this->obj_validator = new ModuleValidator();
 
         // set language files
-        $this->plang_admin = 'contact-admin';
-        $this->plang_front = 'contact-front';
+        $this->plang_admin = 'module-admin';
+        $this->plang_front = 'module-front';
 
         // package name
-        $this->package_name = 'package-contact';
-        $this->package_base_name = 'contact';
+        $this->package_name = 'package-module';
+        $this->package_base_name = 'module';
 
         // root routers
-        $this->root_router = 'contact';
+        $this->root_router = 'module';
 
     }
 

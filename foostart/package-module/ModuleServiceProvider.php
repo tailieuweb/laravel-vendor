@@ -1,6 +1,6 @@
 <?php
 
-namespace Foostart\Contact;
+namespace Foostart\Module;
 
 use Illuminate\Support\ServiceProvider;
 use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
@@ -8,7 +8,7 @@ use URL,
     Route;
 use Illuminate\Http\Request;
 
-class ContactServiceProvider extends ServiceProvider {
+class ModuleServiceProvider extends ServiceProvider {
 
     /**
      * Bootstrap the application services.
@@ -21,7 +21,7 @@ class ContactServiceProvider extends ServiceProvider {
 //        $this->generateContextKey();
 
         // load view
-        $this->loadViewsFrom(__DIR__ . '/Views', 'package-contact');
+        $this->loadViewsFrom(__DIR__ . '/Views', 'package-module');
 
         // include view composers
         require __DIR__ . "/composers.php";
@@ -57,18 +57,18 @@ class ContactServiceProvider extends ServiceProvider {
 
     /**
      * Public config to system
-     * @source: vendor/foostart/package-contact/config
+     * @source: vendor/foostart/package-module/config
      * @destination: config/
      */
     protected function publishConfig() {
         $this->publishes([
-            __DIR__ . '/config/package-contact.php' => config_path('package-contact.php'),
+            __DIR__ . '/config/package-module.php' => config_path('package-module.php'),
                 ], 'config');
     }
 
     /**
      * Public language to system
-     * @source: vendor/foostart/package-contact/lang
+     * @source: vendor/foostart/package-module/lang
      * @destination: resources/lang
      */
     protected function publishLang() {
@@ -79,25 +79,25 @@ class ContactServiceProvider extends ServiceProvider {
 
     /**
      * Public view to system
-     * @source: vendor/foostart/package-contact/Views
-     * @destination: resources/views/vendor/package-contact
+     * @source: vendor/foostart/package-module/Views
+     * @destination: resources/views/vendor/package-module
      */
     protected function publishViews() {
 
         $this->publishes([
-            __DIR__ . '/Views' => base_path('resources/views/vendor/package-contact'),
+            __DIR__ . '/Views' => base_path('resources/views/vendor/package-module'),
         ]);
     }
 
     protected function publishAssets() {
         $this->publishes([
-            __DIR__ . '/public' => public_path('packages/foostart/package-contact'),
+            __DIR__ . '/public' => public_path('packages/foostart/package-module'),
         ]);
     }
     
     /**
      * Publish migrations
-     * @source: foostart/package-contact/database/migrations
+     * @source: foostart/package-module/database/migrations
      * @destination: database/migrations
      */
     protected function publishMigrations() {        
@@ -108,7 +108,7 @@ class ContactServiceProvider extends ServiceProvider {
     
     /**
      * Publish seeders
-     * @source: foostart/package-contact/database/seeders
+     * @source: foostart/package-module/database/seeders
      * @destination: database/seeders
      */
     protected function publishSeeders() {        

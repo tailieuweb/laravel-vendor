@@ -46,7 +46,7 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['contacts.config'], 'method' => 'post'])  !!}
+                        {!! Form::open(['route'=>['modules.config'], 'method' => 'post'])  !!}
 
                             <div class='btn-form'>
 
@@ -69,7 +69,7 @@
 
             <!--SEARCH-->
             <div class="col-md-4">
-                @include('package-contact::admin.contact-config-backup')
+                @include('package-module::admin.module-config-backup')
             </div>
             <!--/SEARCH-->
 

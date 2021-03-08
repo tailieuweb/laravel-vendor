@@ -7,19 +7,19 @@
  <body>
   <br />
    <div class="panel panel-default">
-    <div class="panel-heading">{!! trans('contact-admin.labels.search') !!}</div>
+    <div class="panel-heading">{!! trans('module-admin.labels.search') !!}</div>
     <div class="panel-body">
      <div class="form-group">
-      <input type="text" name="search" id="search" class="form-control" placeholder="{!! trans('contact-admin.labels.assigner') !!}" />
+      <input type="text" name="search" id="search" class="form-control" placeholder="{!! trans('module-admin.labels.assigner') !!}" />
      </div>
      <div class="table-responsive">
-      <h3 align="center">{!! trans('contact-admin.labels.total-data') !!}<span id="total_records"></span></h3>
+      <h3 align="center">{!! trans('module-admin.labels.total-data') !!}<span id="total_records"></span></h3>
       <table class="table table-striped table-bordered">
        <thead>
         <tr>
-         <th>{!! trans('contact-admin.fields.user-id') !!}</th>
-         <th>{!! trans('contact-admin.fields.first-name') !!}</th>
-         <th>{!! trans('contact-admin.fields.last-name') !!}</th>
+         <th>{!! trans('module-admin.fields.user-id') !!}</th>
+         <th>{!! trans('module-admin.fields.first-name') !!}</th>
+         <th>{!! trans('module-admin.fields.last-name') !!}</th>
         </tr>
        </thead>
        <tbody>
@@ -38,7 +38,7 @@ $(document).ready(function(){
  function fetch_customer_data(query = '')
  {
   $.ajax({
-   url:"{{ route('contacts.search') }}",
+   url:"{{ route('modules.search') }}",
    method:'GET',
    data:{query:query},
    dataType:'json',

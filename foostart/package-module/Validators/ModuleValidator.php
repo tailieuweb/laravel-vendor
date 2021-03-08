@@ -1,41 +1,41 @@
-<?php namespace Foostart\Contact\Validators;
+<?php namespace Foostart\Module\Validators;
 
 use Foostart\Category\Library\Validators\FooValidator;
 use Event;
 use \LaravelAcl\Library\Validators\AbstractValidator;
-use Foostart\Contact\Models\Contact;
+use Foostart\Module\Models\Module;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
-class ContactValidator extends FooValidator
+class ModuleValidator extends FooValidator
 {
 
-    protected $obj_contact;
+    protected $obj_module;
 
     public function __construct()
     {
         // add rules
         self::$rules = [
-            'contact_name' => ["required"],
-            'contact_description' => ["required"],
+            'module_name' => ["required"],
+            'module_description' => ["required"],
         ];
 
         // set configs
         self::$configs = $this->loadConfigs();
 
         // model
-        $this->obj_contact = new Contact();
+        $this->obj_module = new Module();
 
         // language
-        $this->lang_front = 'contact-front';
-        $this->lang_admin = 'contact-admin';
+        $this->lang_front = 'module-front';
+        $this->lang_admin = 'module-admin';
 
         // event listening
         Event::listen('validating', function($input)
         {
             self::$messages = [
-                'contact_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
-                'contact_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
+                'module_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
+                'module_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
                 ];
         });
 
@@ -57,21 +57,21 @@ class ContactValidator extends FooValidator
 
         $params = [
             'name' => [
-                'key' => 'contact_name',
+                'key' => 'module_name',
                 'label' => trans($this->lang_admin.'.fields.name'),
-                'min' => $_ln['contact_name']['min'],
-                'max' => $_ln['contact_name']['max'],
+                'min' => $_ln['module_name']['min'],
+                'max' => $_ln['module_name']['max'],
             ],
             'description' => [
-                'key' => 'contact_description',
+                'key' => 'module_description',
                 'label' => trans($this->lang_admin.'.fields.description'),
-                'min' => $_ln['contact_description']['min'],
-                'max' => $_ln['contact_description']['max'],
+                'min' => $_ln['module_description']['min'],
+                'max' => $_ln['module_description']['max'],
             ],
         ];
 
-        $flag = $this->isValidLength($input['contact_name'], $params['name']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['contact_description'], $params['description']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['module_name'], $params['name']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['module_description'], $params['description']) ? $flag : FALSE;
         return $flag;
     }
 
@@ -82,7 +82,7 @@ class ContactValidator extends FooValidator
      */
     public function loadConfigs(){
 
-        $configs = config('package-contact');
+        $configs = config('package-module');
         return $configs;
     }
 
@@ -94,10 +94,10 @@ class ContactValidator extends FooValidator
     public function userValidate($input) {
         //set rules
         self::$rules = [
-            'contact_name' => ["required"],
-            'contact_email' => ["required", "email"],
-            'contact_title' => ["required"],
-            'contact_message' => ["required"],
+            'module_name' => ["required"],
+            'module_email' => ["required", "email"],
+            'module_title' => ["required"],
+            'module_message' => ["required"],
         ];
 
         //validate

@@ -47,7 +47,7 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['contacts.lang'], 'method' => 'post'])  !!}
+                        {!! Form::open(['route'=>['modules.lang'], 'method' => 'post'])  !!}
 
                             <div class='btn-form'>
 
@@ -94,7 +94,7 @@
 
             <!--SEARCH-->
             <div class="col-md-4">
-                @include('package-contact::admin.contact-lang-backup')
+                @include('package-module::admin.module-lang-backup')
             </div>
             <!--/SEARCH-->
 

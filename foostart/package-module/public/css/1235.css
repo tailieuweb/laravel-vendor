@@ -5,27 +5,27 @@ a {
 }
 @font-face {
   font-family: Kaushan Script;
-  src: url(http://localhost/training/vendor/foostart/package-contact/public/fonts/Kaushan-Script.woff2);
+  src: url(http://localhost/training/vendor/foostart/package-module/public/fonts/Kaushan-Script.woff2);
   font-weight: bold;
 }
 @font-face {
   font-family: Libre Baskerville;
-  src: url(http://localhost/training/vendor/foostart/package-contact/public/fonts/Libre-Baskerville.woff2);
+  src: url(http://localhost/training/vendor/foostart/package-module/public/fonts/Libre-Baskerville.woff2);
   font-weight: bold;
 }
 @font-face {
   font-family: Varela Round;
-  src: url(http://localhost/training/vendor/foostart/package-contact/public/fonts/Varela-Round.woff2);
+  src: url(http://localhost/training/vendor/foostart/package-module/public/fonts/Varela-Round.woff2);
   font-weight: bold;
 }
 @font-face {
   font-family: theme;
-  src: url(http://localhost/training/vendor/foostart/package-contact/public/fonts/theme-icons.ttf);
+  src: url(http://localhost/training/vendor/foostart/package-module/public/fonts/theme-icons.ttf);
   font-weight: bold;
 }
 @font-face {
   font-family: theme;
-  src: url(http://localhost/training/vendor/foostart/package-contact/public/fonts/IcoMoon-Free.ttf);
+  src: url(http://localhost/training/vendor/foostart/package-module/public/fonts/IcoMoon-Free.ttf);
   font-weight: bold;
 }
 .type-1235 .header-top {
@@ -177,7 +177,7 @@ a {
   cursor: pointer;
 }
 .type-1235 .header-banner {
-  background: url(http://localhost/training/vendor/foostart/package-contact/public/images/slider-bg-coffe-1.jpg) 0% 0% / cover fixed #292929;
+  background: url(http://localhost/training/vendor/foostart/package-module/public/images/slider-bg-coffe-1.jpg) 0% 0% / cover fixed #292929;
   padding-top: 180px;
   padding-bottom: 180px;
 }

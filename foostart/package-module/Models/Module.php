@@ -1,9 +1,9 @@
-<?php namespace Foostart\Contact\Models;
+<?php namespace Foostart\Module\Models;
 
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends FooModel {
+class Module extends FooModel {
 
     /**
      * @table categories
@@ -20,55 +20,55 @@ class Contact extends FooModel {
     public function setConfigs() {
 
         //table name
-        $this->table = 'contacts';
+        $this->table = 'modules';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'contact_name',
-            'contact_email',
-            'contact_phone',
-            'contact_title',
-            'contact_description',
+            'module_name',
+            'module_email',
+            'module_phone',
+            'module_title',
+            'module_description',
 
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'contact_name' => [
-                'name' => 'contact_name',
+            'module_name' => [
+                'name' => 'module_name',
                 'type' => 'Text',
             ],
-             'contact_email' => [
-                'name' => 'contact_email',
+             'module_email' => [
+                'name' => 'module_email',
                 'type' => 'Text',
             ],
-            'contact_phone' => [
-                'name' => 'contact_phone',
+            'module_phone' => [
+                'name' => 'module_phone',
                 'type' => 'Text',
             ],
-            'contact_description' => [
-                'name' => 'contact_description',
+            'module_description' => [
+                'name' => 'module_description',
                 'type' => 'Text',
             ],
-            'contact_title' => [
-                'name' => 'contact_title',
+            'module_title' => [
+                'name' => 'module_title',
                 'type' => 'Text',
             ],
         ]);
         
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [            
-            'contact_title',
-            'contact_email',
-            'contact_phone',
-            'contact_name',
-            'contact_description',
+            'module_title',
+            'module_email',
+            'module_phone',
+            'module_name',
+            'module_description',
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'contact_id',
-            'contact_name',
+            'module_id',
+            'module_name',
             'updated_at',
             $this->field_status,
         ];
@@ -79,7 +79,7 @@ class Contact extends FooModel {
         ];
 
         //primary key
-        $this->primaryKey = 'contact_id';
+        $this->primaryKey = 'module_id';
 
     }
 
@@ -109,9 +109,9 @@ class Contact extends FooModel {
     }
 
     /**
-     * Get a contact by {id}
+     * Get a module by {id}
      * @param ARRAY $params list of parameters
-     * @return OBJECT contact
+     * @return OBJECT module
      */
     public function selectItem($params = array(), $key = NULL) {
 
@@ -162,24 +162,24 @@ class Contact extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'contact_name':
+                        case 'module_name':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.contact_name', '=', $value);
+                                $elo = $elo->where($this->table . '.module_name', '=', $value);
                             }
                             break;
-                        case 'contact_title':
+                        case 'module_title':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.contact_title', '=', $value);
+                                $elo = $elo->where($this->table . '.module_title', '=', $value);
                             }
                             break;
-                        case 'contact_phone':
+                        case 'module_phone':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.contact_phone', '=', $value);
+                                $elo = $elo->where($this->table . '.module_phone', '=', $value);
                             }
                             break;
-                        case 'contact_email':
+                        case 'module_email':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.contact_email', '=', $value);
+                                $elo = $elo->where($this->table . '.module_email', '=', $value);
                             }
                             break;
                         case 'status':
@@ -191,8 +191,8 @@ class Contact extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.contact_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.contact_description','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.module_name', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.module_description','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -214,7 +214,7 @@ class Contact extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.contact_id as id'
+                            $this->table . '.module_id as id'
                 );
 
         return $elo;
@@ -254,7 +254,7 @@ class Contact extends FooModel {
 
             $item->save();
               //add new attribute
-            $item->id = $item->contact_id;
+            $item->id = $item->module_id;
 
 
             return $item;
@@ -267,7 +267,7 @@ class Contact extends FooModel {
     /**
      *
      * @param ARRAY $params list of parameters
-     * @return OBJECT contact
+     * @return OBJECT module
      */
     public function insertItem($params = []) {
 
@@ -312,22 +312,22 @@ class Contact extends FooModel {
      * @return ARRAY list of statuses
      */
     public function getPluckStatus() {
-        $pluck_status = config('package-contact.status.list');
+        $pluck_status = config('package-module.status.list');
         return $pluck_status;
      }
 
     /**
      *
      * @param ARRAY $params list of parameters
-     * @return OBJECT contact
+     * @return OBJECT module
      */
     public function insertSample($params = []) {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $contact = new Contact;
-        $contact->fill($params);
-        $contact->save();
+        $module = new Module;
+        $module->fill($params);
+        $module->save();
 
 
         // $item = self::create($dataFields);
@@ -335,6 +335,6 @@ class Contact extends FooModel {
         // $key = $this->primaryKey;
         // $item->id = $item->$key;
 
-        return $contact;
+        return $module;
     }
 }

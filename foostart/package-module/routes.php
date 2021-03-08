@@ -5,13 +5,13 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * USER
  */
-Route::group(['middleware' => ['web', ], 'namespace' => 'Foostart\Contact\Controllers\User', ], function () {
+Route::group(['middleware' => ['web', ], 'namespace' => 'Foostart\Module\Controllers\User', ], function () {
     /**
     * list
     */
-   Route::post('contact', [
-       'as' => 'usercontact.post',
-       'uses' => 'ContactUserController@post'
+   Route::post('module', [
+       'as' => 'usermodule.post',
+       'uses' => 'ModuleUserController@post'
    ]);
 });
 
@@ -23,30 +23,30 @@ Route::group(['middleware' => ['web']], function () {
     /**
      * sample
     */
-    Route::get('contacts/sample', [
-        'as' => 'contacts.sample',
-        'uses' => 'Foostart\Contact\Controllers\Admin\ContactAdminController@sample'
+    Route::get('modules/sample', [
+        'as' => 'modules.sample',
+        'uses' => 'Foostart\Module\Controllers\Admin\ModuleAdminController@sample'
     ]);
-    Route::post('contacts/sample', [
-        'as' => 'contacts.sample',
-        'uses' => 'Foostart\Contact\Controllers\Admin\ContactAdminController@addSample'
+    Route::post('modules/sample', [
+        'as' => 'modules.sample',
+        'uses' => 'Foostart\Module\Controllers\Admin\ModuleAdminController@addSample'
     ]);
 
 
 
 
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
-                  'namespace' => 'Foostart\Contact\Controllers\Admin',
+                  'namespace' => 'Foostart\Module\Controllers\Admin',
         ], function () {
 
         /*
           |-----------------------------------------------------------------------
-          | Manage contact
+          | Manage module
           |-----------------------------------------------------------------------
-          | 1. List of contact
-          | 2. Edit contact
-          | 3. Delete contact
-          | 4. Add new contact
+          | 1. List of module
+          | 2. Edit module
+          | 3. Delete module
+          | 4. Add new module
           | 5. Manage configurations
           | 6. Manage languages
           |
@@ -55,87 +55,87 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/contacts', [
-            'as' => 'contacts',
-            'uses' => 'ContactAdminController@index'
+        Route::get('admin/modules', [
+            'as' => 'modules',
+            'uses' => 'ModuleAdminController@index'
         ]);
-        Route::get('admin/contacts/list', [
-            'as' => 'contacts.list',
-            'uses' => 'ContactAdminController@index'
+        Route::get('admin/modules/list', [
+            'as' => 'modules.list',
+            'uses' => 'ModuleAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/contacts/edit', [
-            'as' => 'contacts.edit',
-            'uses' => 'ContactAdminController@edit'
+        Route::get('admin/modules/edit', [
+            'as' => 'modules.edit',
+            'uses' => 'ModuleAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/contacts/copy', [
-            'as' => 'contacts.copy',
-            'uses' => 'ContactAdminController@copy'
+        Route::get('admin/modules/copy', [
+            'as' => 'modules.copy',
+            'uses' => 'ModuleAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/contacts/edit', [
-            'as' => 'contacts.post',
-            'uses' => 'ContactAdminController@post'
+        Route::post('admin/modules/edit', [
+            'as' => 'modules.post',
+            'uses' => 'ModuleAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/contacts/delete', [
-            'as' => 'contacts.delete',
-            'uses' => 'ContactAdminController@delete'
+        Route::get('admin/modules/delete', [
+            'as' => 'modules.delete',
+            'uses' => 'ModuleAdminController@delete'
         ]);
 
         /**
          * trash
          */
-         Route::get('admin/contacts/trash', [
-            'as' => 'contacts.trash',
-            'uses' => 'ContactAdminController@trash'
+         Route::get('admin/modules/trash', [
+            'as' => 'modules.trash',
+            'uses' => 'ModuleAdminController@trash'
         ]);
 
         /**
          * configs
         */
-        Route::get('admin/contacts/config', [
-            'as' => 'contacts.config',
-            'uses' => 'ContactAdminController@config'
+        Route::get('admin/modules/config', [
+            'as' => 'modules.config',
+            'uses' => 'ModuleAdminController@config'
         ]);
 
-        Route::post('admin/contacts/config', [
-            'as' => 'contacts.config',
-            'uses' => 'ContactAdminController@config'
+        Route::post('admin/modules/config', [
+            'as' => 'modules.config',
+            'uses' => 'ModuleAdminController@config'
         ]);
 
         /**
          * language
         */
-        Route::get('admin/contacts/lang', [
-            'as' => 'contacts.lang',
-            'uses' => 'ContactAdminController@lang'
+        Route::get('admin/modules/lang', [
+            'as' => 'modules.lang',
+            'uses' => 'ModuleAdminController@lang'
         ]);
 
-        Route::post('admin/contacts/lang', [
-            'as' => 'contacts.lang',
-            'uses' => 'ContactAdminController@lang'
+        Route::post('admin/modules/lang', [
+            'as' => 'modules.lang',
+            'uses' => 'ModuleAdminController@lang'
         ]);
 
         /**
          * search
         */
-        Route::get('admin/contacts/search', [
-                'as' => 'contacts.search',
-                'uses' => 'ContactAdminController@search'
+        Route::get('admin/modules/search', [
+                'as' => 'modules.search',
+                'uses' => 'ModuleAdminController@search'
         ]);
 
 

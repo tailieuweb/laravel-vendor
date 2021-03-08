@@ -4,11 +4,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateContactsTable extends FoostartMigration
+class CreateModulesTable extends FoostartMigration
 {
     public function __construct() {
-        $this->table = 'contacts';
-        $this->prefix_column = 'contact_';
+        $this->table = 'modules';
+        $this->prefix_column = 'module_';
     }
     /**
      * Run the migrations.

@@ -10,7 +10,7 @@ return [
     |
     */
     'menus' => [
-        'top-menu' => 'Contacts'
+        'top-menu' => 'Modules'
     ],
 
 
@@ -47,7 +47,7 @@ return [
     */
     'columns' => [
         'order' => '#',
-        'name' => 'Contact name',
+        'name' => 'Module name',
         'operations' => 'Operations',
         'updated_at' => 'Updated at',
         'filename' => 'File name',
@@ -62,11 +62,11 @@ return [
     |
     */
     'pages' => [
-        'title-list' => 'List of contacts',
+        'title-list' => 'List of modules',
         'title-list-search' => 'Search results',
-        'title-edit' => 'Edit contact',
-        'title-add' => 'Add new contact',
-        'title-delete' => 'Delete contact',
+        'title-edit' => 'Edit module',
+        'title-add' => 'Add new module',
+        'title-delete' => 'Delete module',
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage languages',
     ],
@@ -121,8 +121,8 @@ return [
     |
     */
     'description' => [
-        'form' => 'Contact form',
-        'update' => 'Update contact',
+        'form' => 'Module form',
+        'update' => 'Update module',
         'name' => '<blockquote class="quote-card">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -170,8 +170,8 @@ return [
     |
     */
     'fields' => [
-        'id' => 'Contact ID',
-        'name' => 'Contact name',
+        'id' => 'Module ID',
+        'name' => 'Module name',
         'description' => 'Description',
         'overview' => 'Overview',
         'slug' => 'Slug',
@@ -191,9 +191,9 @@ return [
     |
     */
     'labels' => [
-        'name' => 'Contact name',
+        'name' => 'Module name',
         'category' => 'Category name',
-        'title-search' => 'Search contact',
+        'title-search' => 'Search module',
         'title-backup' => 'Backups',
         'config' => 'Configurations',
     ],
@@ -235,8 +235,8 @@ return [
     |
     */
     'headings' => [
-        'form-search' => 'Search contacts',
-        'list' => 'List of contacts',
+        'form-search' => 'Search modules',
+        'list' => 'List of modules',
         'search' => 'Search results',
     ],
 

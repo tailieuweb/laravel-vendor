@@ -10,7 +10,7 @@ return [
     |
     */
     'menus' => [
-        'top-menu' => 'Contacts'
+        'top-menu' => 'Modules'
     ],
 
 
@@ -48,7 +48,7 @@ return [
     */
     'columns' => [
         'order' => '#',
-        'name' => 'Contact name',
+        'name' => 'Module name',
         'operations' => 'Operations',
         'updated_at' => 'Updated at',
         'filename' => 'File name',
@@ -63,11 +63,11 @@ return [
     |
     */
     'pages' => [
-        'title-list' => 'List of contacts',
+        'title-list' => 'List of modules',
         'title-list-search' => 'Search results',
-        'title-edit' => 'Edit contact',
-        'title-add' => 'Add new contact',
-        'title-delete' => 'Delete contact',
+        'title-edit' => 'Edit module',
+        'title-add' => 'Add new module',
+        'title-delete' => 'Delete module',
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage list of languages',
     ],
@@ -122,8 +122,8 @@ return [
     |
     */
     'descriptions' => [
-        'form' => 'Contact form',
-        'update' => 'Update contact',
+        'form' => 'Module form',
+        'update' => 'Update module',
         'name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category' => 'Click <a href=":href">here</a> to manage list of categories by token.',
         'overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
@@ -168,10 +168,10 @@ return [
     |
     */
     'fields' => [
-        'id' => 'Contact ID',
-        'name' => 'Contact name',
-        'description' => 'Contact Description',
-        'overview' => 'Contact Overview',
+        'id' => 'Module ID',
+        'name' => 'Module name',
+        'description' => 'Module Description',
+        'overview' => 'Module Overview',
         'slug' => 'Slug',
         'updated_at' => 'Updated at'
     ],
@@ -189,13 +189,13 @@ return [
     |
     */
     'labels' => [
-        'name' => 'Contact name',
-        'overview' => 'Contact overview',
-        'description' => 'Contact description',
-        'image' => 'Contact image',
-        'files' => 'Contact files',
+        'name' => 'Module name',
+        'overview' => 'Module overview',
+        'description' => 'Module description',
+        'image' => 'Module image',
+        'files' => 'Module files',
         'category' => 'Category name',
-        'title-search' => 'Search contact',
+        'title-search' => 'Search module',
         'title-backup' => 'Backups',
         'config' => 'Configurations',
     ],
@@ -244,8 +244,8 @@ return [
     |
     */
     'headings' => [
-        'form-search' => 'Search contacts',
-        'list' => 'List of contacts',
+        'form-search' => 'Search modules',
+        'list' => 'List of modules',
         'search' => 'Search results',
     ],
 

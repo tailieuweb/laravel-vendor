@@ -10,17 +10,17 @@ use Foostart\Category\Helpers\SortTable;
 |   $sidebar_items
 |   $sorting
 |   $order_by
-|   $plang_admin = 'contact-admin'
-|   $plang_front = 'contact-front'
+|   $plang_admin = 'module-admin'
+|   $plang_front = 'module-front'
 */
 View::composer([
-                'package-contact::admin.contact-edit',
-                'package-contact::admin.contact-form',
-                'package-contact::admin.contact-items',
-                'package-contact::admin.contact-item',
-                'package-contact::admin.contact-search',
-                'package-contact::admin.contact-config',
-                'package-contact::admin.contact-lang',
+                'package-module::admin.module-edit',
+                'package-module::admin.module-form',
+                'package-module::admin.module-items',
+                'package-module::admin.module-item',
+                'package-module::admin.module-search',
+                'package-module::admin.module-config',
+                'package-module::admin.module-lang',
     ], function ($view) {
 
         //Order by params
@@ -30,34 +30,34 @@ View::composer([
          * $plang-admin
          * $plang-front
          */
-        $plang_admin = 'contact-admin';
-        $plang_front = 'contact-front';
+        $plang_admin = 'module-admin';
+        $plang_front = 'module-front';
 
 
         $fooCategory = new FooCategory();
-        $key = $fooCategory->getContextKeyByRef('admin/contacts');
+        $key = $fooCategory->getContextKeyByRef('admin/modules');
         /**
          * $sidebar_items
          */
         $sidebar_items = [
-            trans('contact-admin.sidebar.add') => [
-                'url' => URL::route('contacts.edit', []),
+            trans('module-admin.sidebar.add') => [
+                'url' => URL::route('modules.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('contact-admin.sidebar.list') => [
-                "url" => URL::route('contacts.list', []),
+            trans('module-admin.sidebar.list') => [
+                "url" => URL::route('modules.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            trans('contact-admin.sidebar.category') => [
+            trans('module-admin.sidebar.category') => [
                 'url'  => URL::route('categories.list',['_key='.$key]),
                 'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
-            trans('contact-admin.sidebar.config') => [
-                "url" => URL::route('contacts.config', []),
+            trans('module-admin.sidebar.config') => [
+                "url" => URL::route('modules.config', []),
                 'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
             ],
-            trans('contact-admin.sidebar.lang') => [
-                "url" => URL::route('contacts.lang', []),
+            trans('module-admin.sidebar.lang') => [
+                "url" => URL::route('modules.lang', []),
                 'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
             ],
         ];
@@ -73,7 +73,7 @@ View::composer([
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
             'id' => trans($plang_admin.'.fields.id'),
-            'contact_title' => trans($plang_admin.'.fields.title'),
+            'module_title' => trans($plang_admin.'.fields.title'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),
         ];

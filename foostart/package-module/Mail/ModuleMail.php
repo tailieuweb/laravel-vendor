@@ -1,13 +1,13 @@
 <?php
  
- namespace Foostart\Contact\Mail;
+ namespace Foostart\Module\Mail;
  
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
  
-class ContactMail extends Mailable
+class ModuleMail extends Mailable
 {
     use Queueable, SerializesModels;
      
@@ -35,6 +35,6 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-            return $this->view('package-contact::admin.contact-mail');
+            return $this->view('package-module::admin.module-mail');
     }
 }
