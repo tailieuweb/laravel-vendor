@@ -29,6 +29,12 @@
                 {!! trans($plang_admin.'.tabs.menu-1') !!}
             </a>
         </li>
+        <!--MENU 2-->
+        <li class="">
+            <a data-toggle="tab" href="#menu_2">
+                {!! trans($plang_admin.'.tabs.menu-2') !!}
+            </a>
+        </li>
     </ul>
     <!--/TAB MENU-->
 
@@ -85,7 +91,22 @@
                 'errors' => $errors,
             ])
             <!--/MACHINE NAME-->
+            
+            <!--DESCRIPTION-->
+            @include('package-category::admin.partials.textarea', [
+                'name' => 'pattern_description',
+                'label' => trans($plang_admin.'.labels.pattern_description'),
+                'value' => @$item->pattern_description,
+                'description' => trans($plang_admin.'.descriptions.pattern_description'),
+                'rows' => 15,
+                'tinymce' => true,
+                'errors' => $errors,
+            ])
+            <!--/DESCRIPTION-->
 
+        </div>
+        <!--MENU 2-->
+        <div id="menu_2" class="tab-pane fade">
         </div>
 
     </div>

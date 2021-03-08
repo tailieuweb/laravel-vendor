@@ -64,6 +64,7 @@ View::composer([
             '' => trans($plang_admin.'.form.no-selected'),
             'id' => trans($plang_admin.'.fields.site_id'),
             'pattern_name' => trans($plang_admin.'.fields.pattern_name'),
+            'machine_machine_name' => trans($plang_admin.'.fields.machine_machine_name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),
         ];

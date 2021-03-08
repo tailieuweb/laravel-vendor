@@ -26,6 +26,7 @@ class Patterns extends FooModel {
         $this->fillable = array_merge($this->fillable, [
             'pattern_name',
             'pattern_machine_name',
+            'pattern_description',
             //Relation
             'site_id'
         ]);
@@ -40,6 +41,10 @@ class Patterns extends FooModel {
                 'name' => 'pattern_machine_name',
                 'type' => 'Text',
             ],
+            'pattern_description' => [
+                'name' => 'pattern_description',
+                'type' => 'Text',
+            ],
             'site_id' => [
                 'name' => 'site_id',
                 'type' => 'Int',
@@ -50,6 +55,8 @@ class Patterns extends FooModel {
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
             'pattern_name',
             'pattern_machine_name',
+            'pattern_description',
+            
         ]);
 
         //check valid fields for ordering

@@ -3,8 +3,8 @@
     $withs = [
         'counter' => '10%',
         'id' => '10%',
-        'name' => '20%',
         'machine_name' => '20%',
+        'machine_machine_name' => '20%',
         'status' => '10%',
         'updated_at' => '20%',
         'operations' => '10%',
@@ -65,7 +65,7 @@
             </th>
             
             <!--MACHINE NAME-->
-            <?php $name = 'machine_name' ?>
+            <?php $name = 'pattern_machine_name' ?>
             <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.machine_name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
