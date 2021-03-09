@@ -63,6 +63,8 @@ return [
         'email' => 'Email',
         'message' => 'Message',
         'site_name' => 'Site name',
+        'pattern_name' => 'Pattern name',
+        'machine_name' => 'Machine name'
     ],
 
 

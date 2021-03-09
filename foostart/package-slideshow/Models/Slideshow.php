@@ -207,8 +207,7 @@ class Slideshow extends FooModel {
                 }
             }
         } elseif ($by_status) {
-
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->status['publish']);
+            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
 
         }
 

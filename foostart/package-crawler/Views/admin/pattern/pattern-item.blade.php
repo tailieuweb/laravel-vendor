@@ -63,7 +63,7 @@
                     @endif
                 </a>
             </th>
-            
+
             <!--MACHINE NAME-->
             <?php $name = 'pattern_machine_name' ?>
             <th class="hidden-xs" style='width:{{ $withs[$name] }}'>{!! trans($plang_admin.'.columns.machine_name') !!}
@@ -146,6 +146,9 @@
 
                 <!--NAME-->
                 <td> {!! $item->pattern_name !!} </td>
+
+                <!--MACHINE NAME-->
+                <td> {!! $item->pattern_machine_name !!} </td>
 
                 <!--STATUS-->
                 <td style="text-align: center;">
