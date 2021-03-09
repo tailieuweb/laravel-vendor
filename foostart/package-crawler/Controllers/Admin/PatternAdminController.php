@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\App;
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Sites;
 use Foostart\Crawler\Models\Patterns;
+use Foostart\Crawler\Models\RegularExpressions;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\PatternsValidator;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +37,7 @@ class PatternAdminController extends FooController {
         // models
         $this->obj_item = new Patterns(array('perPage' => 10));
         $this->obj_site = new Sites(array('perPage' => 10));
+        $this->obj_regular_expression = new RegularExpressions();
         $this->obj_category = new Category();
 
         // validators
@@ -102,6 +104,7 @@ class PatternAdminController extends FooController {
     public function edit(Request $request) {
 
         $item = NULL;
+        $regular_expressions = [];
         $categories = NULL;
 
         $params = $request->all();
@@ -116,6 +119,12 @@ class PatternAdminController extends FooController {
             if (empty($item)) {
                 return Redirect::route($this->root_router.'.list')
                                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+            } else {
+                //Get regular expressions by pattern id
+                $_params = [
+                    'pattern_id' => $item->id
+                ];
+                $regular_expressions = $this->obj_regular_expression->selectItems($_params);
             }
         }
 
@@ -129,6 +138,7 @@ class PatternAdminController extends FooController {
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
+            'regular_expressions' => $regular_expressions,
             'categories' => $categories,
             'request' => $request,
             'context' => $context,
@@ -179,6 +189,8 @@ class PatternAdminController extends FooController {
                 $item = $this->obj_item->insertItem($params);
 
                 if (!empty($item)) {
+
+                    //
 
                     //message
                     return Redirect::route($this->root_router.'.edit', ["id" => $item->id])

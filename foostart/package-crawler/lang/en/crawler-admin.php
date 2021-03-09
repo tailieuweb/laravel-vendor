@@ -64,7 +64,8 @@ return [
         'message' => 'Message',
         'site_name' => 'Site name',
         'pattern_name' => 'Pattern name',
-        'machine_name' => 'Machine name'
+        'machine_name' => 'Machine name',
+        'regular_expression_value' => 'Value',
     ],
 
 
@@ -168,6 +169,7 @@ return [
         'pattern_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'pattern_machine_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'pattern_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'regular_expression' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -254,6 +256,8 @@ return [
         'site_description' => 'Site description',
         'pattern_name' => 'Pattern name',
         'pattern_machine_name' => 'Pattern machine name',
+        'pattern_description' => 'Pattern description',
+        'regular_expression' => 'Regular expression',
     ],
 
 

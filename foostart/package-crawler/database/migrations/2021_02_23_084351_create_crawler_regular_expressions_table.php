@@ -4,11 +4,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateCrawlerPatternValuesTable extends FoostartMigration
+class CreateCrawlerRegularExpressionsTable extends FoostartMigration
 {
     public function __construct() {
-        $this->table = 'crawler_pattern_values';
-        $this->prefix_column = 'value_';
+        $this->table = 'crawler_regular_expressions';
+        $this->prefix_column = 'regular_expression_';
     }
     /**
      * Run the migrations.
