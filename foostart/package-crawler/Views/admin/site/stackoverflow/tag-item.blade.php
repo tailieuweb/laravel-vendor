@@ -149,26 +149,18 @@
                 <td> {!! $item->updated_at !!} </td>
 
                 <!--OPERATOR-->
-                <td>
+                <td class="text-center">
                     <!--edit-->
-                    <a href="{!! URL::route('sites.edit', [   'id' => $item->id,
+                    <a href="{!! URL::route('stackoverflow_tag.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
                                                             ])
                             !!}">
                         <i class="fa fa-edit f-tb-icon"></i>
                     </a>
 
-                    <!--copy-->
-                    <a href="{!! URL::route('sites.copy',[    'cid' => $item->id,
-                                                                '_token' => csrf_token(),
-                                                            ])
-                             !!}"
-                        class="margin-left-5">
-                        <i class="fa fa-files-o f-tb-icon" aria-hidden="true"></i>
-                    </a>
 
                     <!--delete-->
-                    <a href="{!! URL::route('sites.delete',[  'id' => $item->id,
+                    <a href="{!! URL::route('stackoverflow_tag.delete',[  'id' => $item->id,
                                                                 '_token' => csrf_token(),
                                                               ])
                              !!}"

@@ -96,6 +96,7 @@ return [
         'title-pattern' => 'List of patterns',
         'title-list-search-site' => 'Search sites',
         'title-list-search-pattern' => 'Search patterns',
+        'title-edit-tag' => 'Edit tag'
     ],
 
 
@@ -183,6 +184,12 @@ return [
         'pattern_machine_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'pattern_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'regular_expression' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'tag_form' => 'Tag form',
+        'tag_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'tag_url' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'tag_overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'tag_other' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'tag_num_questions' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -274,6 +281,11 @@ return [
         'pattern_machine_name' => 'Pattern machine name',
         'pattern_description' => 'Pattern description',
         'regular_expression' => 'Regular expression',
+        'tag_name' => 'Tag name',
+        'tag_url' => 'Tag URL',
+        'tag_overview' => 'Tag overview',
+        'tag_other' => 'Tag other',
+        'tag_num_questions' => 'Number questions',
     ],
 
 

@@ -2,13 +2,13 @@
 | List of elements in site form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['sites.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['stackoverflow_tag.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
 
     <!--BUTTONS-->
     <div class='btn-form'>
         <!-- DELETE BUTTON -->
         @if($item)
-            <a href="{!! URL::route('sites.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
+            <a href="{!! URL::route('stackoverflow_tag.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
             class="btn btn-danger pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}
             </a>
@@ -40,59 +40,56 @@
 
             <!--NAME-->
             @include('package-category::admin.partials.input_text', [
-                'name' => 'site_name',
-                'label' => trans($plang_admin.'.labels.site_name'),
-                'value' => @$item->site_name,
-                'description' => trans($plang_admin.'.descriptions.site_name'),
+                'name' => 'tag_name',
+                'label' => trans($plang_admin.'.labels.tag_name'),
+                'value' => @$item->tag_name,
+                'description' => trans($plang_admin.'.descriptions.tag_name'),
                 'errors' => $errors,
             ])
             <!--/NAME-->
 
             <div class="row">
-                <div class='col-md-6'>
+                <div class='col-md-8'>
                     <!--URL-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'site_url',
-                        'label' => trans($plang_admin.'.labels.site_url'),
-                        'value' => @$item->site_name,
+                        'name' => 'tag_url',
+                        'label' => trans($plang_admin.'.labels.tag_url'),
+                        'value' => @$item->tag_url,
                         'description' => trans($plang_admin.'.descriptions.site_url'),
                         'errors' => $errors,
                     ])
                     <!-- /URL-->
                 </div>
 
-                <div class="col-md-6">
-                    <!--STATUS-->
-                    @include('package-category::admin.partials.select_single', [
-                        'name' => 'status',
-                        'label' => trans($plang_admin.'.form.status'),
-                        'value' => @$item->status,
+                <div class="col-md-4">
+                    <!--NUM QUESTIONS-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'tag_num_questions',
+                        'label' => trans($plang_admin.'.labels.tag_num_questions'),
+                        'value' => @$item->tag_num_questions,
                         'items' => $status,
-                        'description' => trans($plang_admin.'.descriptions.status'),
+                        'description' => trans($plang_admin.'.descriptions.tag_num_questions'),
                     ])
-                    <!--/STATUS-->
-                </div>
-
-                <div class='col-md-6'>
-                    <!--IMAGE-->
-                    @include('package-category::admin.partials.input_image', [
-                        'name' => 'site_image',
-                        'label' => trans($plang_admin.'.labels.site_image'),
-                        'value' => @$item->site_image,
-                        'description' => trans($plang_admin.'.descriptions.site_image'),
-                        'errors' => $errors,
-                        'lfm_config' => TRUE
-                    ])
-                    <!-- /IMAGE-->
+                    <!--/NUM QUESTIONS-->
                 </div>
             </div>
+            <!--OTHER-->
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'tag_other',
+            'label' => trans($plang_admin.'.labels.tag_other'),
+            'value' => @$item->post_overview,
+            'description' => trans($plang_admin.'.descriptions.tag_other'),
+            'tinymce' => false,
+            'errors' => $errors,
+            ])
+            <!--/OTHER-->
 
              <!--DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
-                'name' => 'site_description',
-                'label' => trans($plang_admin.'.labels.site_description'),
-                'value' => @$item->site_description,
-                'description' => trans($plang_admin.'.descriptions.site_description'),
+                'name' => 'tag_overview',
+                'label' => trans($plang_admin.'.labels.tag_overview'),
+                'value' => @$item->tag_overview,
+                'description' => trans($plang_admin.'.descriptions.tag_overview'),
                 'rows' => 25,
                 'tinymce' => true,
                 'errors' => $errors,

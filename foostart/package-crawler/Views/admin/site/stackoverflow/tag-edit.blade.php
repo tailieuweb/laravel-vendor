@@ -18,7 +18,7 @@
 @extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {{ trans($plang_admin.'.pages.title-edit') }}
+    {{ trans($plang_admin.'.pages.title-edit-tag') }}
 @stop
 
 @section('content')
@@ -31,18 +31,15 @@
                 <!--TITLE BAR-->
                 <div class="panel-heading">
                     <h3 class="panel-title bariol-thin">
-                        {!! !empty($item->id)
-                            ?
-                            '<i class="fa fa-pencil"></i>'.trans($plang_admin.'.pages.title-edit')
-                            :
-                            '<i class="fa fa-users"></i>'.trans($plang_admin.'.pages.title-add')
+                        {!!
+                            '<i class="fa fa-pencil"></i>'.trans($plang_admin.'.pages.title-edit-tag')
                         !!}
                     </h3>
                 </div>
 
                 <!--DESCRIPTION-->
                 <div class='panel-description'>
-                    {!! trans($plang_admin.'.descriptions.site_form') !!}</h4>
+                    {!! trans($plang_admin.'.descriptions.tag_form') !!}</h4>
                 </div>
 
                 <!-- ERRORS NAME  -->
@@ -65,7 +62,7 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
 
-                            @include('package-crawler::admin.site.site-form')
+                            @include('package-crawler::admin.site.stackoverflow.tag-form')
 
                         </div>
                     </div>
