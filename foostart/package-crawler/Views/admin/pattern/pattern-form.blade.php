@@ -104,14 +104,13 @@
             ])
             <!--/DESCRIPTION-->
 
-        </div>
+        </div>        
         <!--MENU 2-->
         <div id="menu_2" class="tab-pane fade">
             <!--REGULAR EXPRESSION-->
             @include('package-category::admin.partials.input_text_add_more', [
                 'name' => 'regular_expression',
                 'label' => trans($plang_admin.'.labels.regular_expression'),
-                'value' => @$item->id,
                 'description' => trans($plang_admin.'.descriptions.regular_expression'),
                 'items' => $regular_expressions,
                 'errors' => $errors,

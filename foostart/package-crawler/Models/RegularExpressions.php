@@ -311,4 +311,38 @@ class RegularExpressions extends FooModel {
 
         return $crawler;
     }
+
+    /**
+     * @param $params list of attributes
+     */
+    public function insertProcess($params, $pattern_id) {
+        //Clear old regular expression by pattern_id
+        $_params = [
+            'pattern_id' => $pattern_id
+        ];
+        $data = $params;
+
+        $items = $this->selectItems($_params);
+
+        if ($items) {
+            foreach ($items as $_item) {
+                $_item->delete();
+            }
+        }
+
+        //Insert new regular expression
+        foreach ($params['regular_expression'] as $key => $value) {
+            $data = array_merge($data, [
+              'pattern_id' => $pattern_id,
+              'regular_expression_value' => $value,
+              'status' => $params['re_status'][$key],
+            ]);
+            $this->insertItem($data);
+        }
+
+        //Get new list of regular expressions by pattern_id
+        $regular_expressions = $this->selectItems($_params);
+
+        return $regular_expressions;
+    }
 }

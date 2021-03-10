@@ -14,14 +14,14 @@ use Foostart\Category\Helpers\SortTable;
 |   $plang_front = 'crawler-front'
 */
 View::composer([
-                //Pattern
-                'package-crawler::admin.pattern.pattern-edit',
-                'package-crawler::admin.pattern.pattern-form',
-                'package-crawler::admin.pattern.pattern-items',
-                'package-crawler::admin.pattern.pattern-item',
-                'package-crawler::admin.pattern.pattern-search',
-                'package-crawler::admin.crawler-config',
-                'package-crawler::admin.crawler-lang',
+
+
+            //Pattern
+            'package-crawler::admin.pattern.pattern-edit',
+            'package-crawler::admin.pattern.pattern-form',
+            'package-crawler::admin.pattern.pattern-items',
+            'package-crawler::admin.pattern.pattern-item',
+            'package-crawler::admin.pattern.pattern-search',
     ], function ($view) {
 
         //Order by params
@@ -39,11 +39,11 @@ View::composer([
          */
         $sidebar_items = [
             trans('crawler-admin.sidebar.add') => [
-                'url' => URL::route('patterns.edit', []),
+                'url' => URL::route('sites.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('crawler-admin.sidebar.list') => [
-                "url" => URL::route('patterns.list', []),
+            trans('crawler-admin.sidebar.list_sites') => [
+                "url" => URL::route('sites.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.config') => [

@@ -33,7 +33,10 @@ return [
         'config' => 'Configurations',
         'lang' => 'Languages',
         'category' => 'Categories',
-        'sample' => 'Sample'
+        'sample' => 'Sample',
+        'list_sites' => 'Sites',
+        'list_patterns' => 'Patterns',
+        'add_pattern' => 'New pattern'
     ],
 
 

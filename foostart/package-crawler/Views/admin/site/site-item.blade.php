@@ -130,7 +130,14 @@
                 <td> {!! $item->site_id !!}</td>
 
                 <!--NAME-->
-                <td> {!! $item->site_name !!} </td>
+                <td>
+                    <a href="{!! URL::route('patterns.list', [   'site_id' => $item->site_id,
+                                                                '_token' => csrf_token()
+                                                            ])
+                            !!}">
+                    {!! $item->site_name !!}
+                    </a>
+                </td>
 
                 <!--STATUS-->
                 <td style="text-align: center;">

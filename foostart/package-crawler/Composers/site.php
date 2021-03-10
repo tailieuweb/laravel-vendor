@@ -22,6 +22,14 @@ View::composer([
                 'package-crawler::admin.site.site-search',
                 'package-crawler::admin.crawler-config',
                 'package-crawler::admin.crawler-lang',
+
+                //Pattern
+                'package-crawler::admin.pattern.pattern-edit',
+                'package-crawler::admin.pattern.pattern-form',
+                'package-crawler::admin.pattern.pattern-items',
+                'package-crawler::admin.pattern.pattern-item',
+                'package-crawler::admin.pattern.pattern-search',
+
     ], function ($view) {
 
         //Order by params
@@ -42,7 +50,7 @@ View::composer([
                 'url' => URL::route('sites.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('crawler-admin.sidebar.list') => [
+            trans('crawler-admin.sidebar.list_sites') => [
                 "url" => URL::route('sites.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],

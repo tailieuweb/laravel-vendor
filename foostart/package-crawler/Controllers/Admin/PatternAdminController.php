@@ -23,7 +23,8 @@ use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\PatternsValidator;
 use Illuminate\Support\Facades\DB;
 
-class PatternAdminController extends FooController {
+class PatternAdminController extends FooController
+{
 
     public $obj_item = NULL;
     public $obj_site = NULL;
@@ -31,7 +32,9 @@ class PatternAdminController extends FooController {
 
     public $statuses = NULL;
     public $obj_sample = NULL;
-    public function __construct() {
+
+    public function __construct()
+    {
 
         parent::__construct();
         // models
@@ -57,12 +60,12 @@ class PatternAdminController extends FooController {
         // page views
         $this->page_views = [
             'admin' => [
-                'items' => $this->package_name.'::admin.'.$this->package_base_name.'-items',
-                'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
-                'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
-                'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
-                'sample'  => $this->package_name.'::admin.'.$this->package_base_name.'-sample',
-                'mail'  => $this->package_name.'::admin.'.$this->package_base_name.'-mail',
+                'items' => $this->package_name . '::admin.' . $this->package_base_name . '-items',
+                'edit' => $this->package_name . '::admin.' . $this->package_base_name . '-edit',
+                'config' => $this->package_name . '::admin.' . $this->package_base_name . '-config',
+                'lang' => $this->package_name . '::admin.' . $this->package_base_name . '-lang',
+                'sample' => $this->package_name . '::admin.' . $this->package_base_name . '-sample',
+                'mail' => $this->package_name . '::admin.' . $this->package_base_name . '-mail',
             ]
         ];
 
@@ -78,7 +81,8 @@ class PatternAdminController extends FooController {
      * @return view list of items
      * @date 27/12/2017
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         $params = $request->all();
 
@@ -101,7 +105,8 @@ class PatternAdminController extends FooController {
      * @return view edit page
      * @date 26/12/2017
      */
-    public function edit(Request $request) {
+    public function edit(Request $request)
+    {
 
         $item = NULL;
         $regular_expressions = [];
@@ -117,8 +122,8 @@ class PatternAdminController extends FooController {
             $item = $this->obj_item->selectItem($params, FALSE);
 
             if (empty($item)) {
-                return Redirect::route($this->root_router.'.list')
-                                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
             } else {
                 //Get regular expressions by pattern id
                 $_params = [
@@ -151,15 +156,17 @@ class PatternAdminController extends FooController {
      * @return view edit page
      * @date 27/12/2017
      */
-    public function post(Request $request) {
+    public function post(Request $request)
+    {
 
         $item = NULL;
+        $regular_expressions = NULL;
 
         $params = array_merge($request->all(), $this->getUser());
 
         $is_valid_request = $this->isValidRequest($request);
 
-        $id = (int) $request->get('id');
+        $id = (int)$request->get('id');
 
         if ($is_valid_request && $this->obj_validator->validate($params)) {// valid data
 
@@ -173,33 +180,37 @@ class PatternAdminController extends FooController {
                     $params['id'] = $id;
                     $item = $this->obj_item->updateItem($params);
 
+                    //Insert regular expression value
+                    $regular_expressions = $this->obj_regular_expression->insertProcess($params, $item->id);
+
                     // message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
-                                    ->withMessage(trans($this->plang_admin.'.actions.edit-ok'));
+                    return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
+                        ->withMessage(trans($this->plang_admin . '.actions.edit-ok'));
                 } else {
 
                     // message
-                    return Redirect::route($this->root_router.'.list')
-                                    ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+                    return Redirect::route($this->root_router . '.list')
+                        ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
                 }
 
-            // add new item
+                // add new item
             } else {
 
                 $item = $this->obj_item->insertItem($params);
 
                 if (!empty($item)) {
 
-                    //
+                    //Insert regular expression value
+                    $regular_expressions = $this->obj_regular_expression->insertProcess($_params, $item->id);
 
                     //message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
-                                    ->withMessage(trans($this->plang_admin.'.actions.add-ok'));
+                    return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
+                        ->withMessage(trans($this->plang_admin . '.actions.add-ok'));
                 } else {
 
                     //message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
-                                    ->withMessage(trans($this->plang_admin.'.actions.add-error'));
+                    return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
+                        ->withMessage(trans($this->plang_admin . '.actions.add-error'));
                 }
 
             }
@@ -209,8 +220,8 @@ class PatternAdminController extends FooController {
             $errors = $this->obj_validator->getErrors();
 
             // passing the id incase fails editing an already existing item
-            return Redirect::route($this->root_router.'.edit', $id ? ["id" => $id]: [])
-                    ->withInput()->withErrors($errors);
+            return Redirect::route($this->root_router . '.edit', $id ? ["id" => $id] : [])
+                ->withInput()->withErrors($errors);
         }
     }
 
@@ -219,12 +230,13 @@ class PatternAdminController extends FooController {
      * @return view list of items
      * @date 27/12/2017
      */
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
 
         $item = NULL;
         $flag = TRUE;
         $params = array_merge($request->all(), $this->getUser());
-        $delete_type = isset($params['del-forever'])?'delete-forever':'delete-trash';
+        $delete_type = isset($params['del-forever']) ? 'delete-forever' : 'delete-trash';
         $id = (int)$request->get('id');
         $ids = $request->get('ids');
 
@@ -232,7 +244,7 @@ class PatternAdminController extends FooController {
 
         if ($is_valid_request && (!empty($id) || !empty($ids))) {
 
-            $ids = !empty($id)?[$id]:$ids;
+            $ids = !empty($id) ? [$id] : $ids;
 
             foreach ($ids as $id) {
 
@@ -243,13 +255,13 @@ class PatternAdminController extends FooController {
                 }
             }
             if ($flag) {
-                return Redirect::route($this->root_router.'.list')
-                                ->withMessage(trans($this->plang_admin.'.actions.delete-ok'));
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.delete-ok'));
             }
         }
 
-        return Redirect::route($this->root_router.'.list')
-                        ->withMessage(trans($this->plang_admin.'.actions.delete-error'));
+        return Redirect::route($this->root_router . '.list')
+            ->withMessage(trans($this->plang_admin . '.actions.delete-error'));
     }
 
     /**
@@ -257,15 +269,16 @@ class PatternAdminController extends FooController {
      * @param Request $request
      * @return view config page
      */
-    public function config(Request $request) {
+    public function config(Request $request)
+    {
         $is_valid_request = $this->isValidRequest($request);
         // display view
         $config_path = realpath(base_path('config/package-crawler.php'));
         $package_path = realpath(base_path('vendor/foostart/package-crawler'));
 
-        $config_bakup = $package_path.'/storage/backup/config';
+        $config_bakup = $package_path . '/storage/backup/config';
         if (!file_exists($config_bakup)) {
-            mkdir($config_bakup, 0755    , true);
+            mkdir($config_bakup, 0755, true);
         }
         $config_bakup = realpath($config_bakup);
 
@@ -281,7 +294,7 @@ class PatternAdminController extends FooController {
         if ($request->isMethod('post') && $is_valid_request) {
 
             //create backup of current config
-            file_put_contents($config_bakup.'/package-crawler-'.date('YmdHis',time()).'.php', $content);
+            file_put_contents($config_bakup . '/package-crawler-' . date('YmdHis', time()) . '.php', $content);
 
             //update new config
             $content = $request->get('content');
@@ -289,7 +302,7 @@ class PatternAdminController extends FooController {
             file_put_contents($config_path, $content);
         }
 
-        $backups = array_reverse(glob($config_bakup.'/*'));
+        $backups = array_reverse(glob($config_bakup . '/*'));
 
         $this->data_view = array_merge($this->data_view, array(
             'request' => $request,
@@ -306,7 +319,8 @@ class PatternAdminController extends FooController {
      * @param Request $request
      * @return view lang page
      */
-    public function lang(Request $request) {
+    public function lang(Request $request)
+    {
         $is_valid_request = $this->isValidRequest($request);
         // display view
         $langs = config('package-crawler.langs');
@@ -315,24 +329,24 @@ class PatternAdminController extends FooController {
 
         if (!empty($langs) && is_array($langs)) {
             foreach ($langs as $key => $value) {
-                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/crawler-admin.php'));
+                $lang_paths[$key] = realpath(base_path('resources/lang/' . $key . '/crawler-admin.php'));
 
-                $key_backup = $package_path.'/storage/backup/lang/'.$key;
+                $key_backup = $package_path . '/storage/backup/lang/' . $key;
 
                 if (!file_exists($key_backup)) {
-                    mkdir($key_backup, 0755    , true);
+                    mkdir($key_backup, 0755, true);
                 }
             }
         }
 
-        $lang_bakup = realpath($package_path.'/storage/backup/lang');
-        $lang = $request->get('lang')?$request->get('lang'):'en';
+        $lang_bakup = realpath($package_path . '/storage/backup/lang');
+        $lang = $request->get('lang') ? $request->get('lang') : 'en';
         $lang_contents = [];
 
         if ($version = $request->get('v')) {
             //load backup lang
             $group_backups = base64_decode($version);
-            $group_backups = empty($group_backups)?[]: explode(';', $group_backups);
+            $group_backups = empty($group_backups) ? [] : explode(';', $group_backups);
 
             foreach ($group_backups as $group_backup) {
                 $_backup = explode('=', $group_backup);
@@ -353,7 +367,7 @@ class PatternAdminController extends FooController {
                 $content = file_get_contents($value);
 
                 //format file name crawler-admin-YmdHis.php
-                file_put_contents($lang_bakup.'/'.$key.'/crawler-admin-'.date('YmdHis',time()).'.php', $content);
+                file_put_contents($lang_bakup . '/' . $key . '/crawler-admin-' . date('YmdHis', time()) . '.php', $content);
             }
 
 
@@ -368,13 +382,13 @@ class PatternAdminController extends FooController {
         //get list of backup langs
         $backups = [];
         foreach ($langs as $key => $value) {
-            $backups[$key] = array_reverse(glob($lang_bakup.'/'.$key.'/*'));
+            $backups[$key] = array_reverse(glob($lang_bakup . '/' . $key . '/*'));
         }
 
         $this->data_view = array_merge($this->data_view, array(
             'request' => $request,
             'backups' => $backups,
-            'langs'   => $langs,
+            'langs' => $langs,
             'lang_contents' => $lang_contents,
             'lang' => $lang,
         ));
@@ -388,7 +402,8 @@ class PatternAdminController extends FooController {
      * @return view edit page
      * @date 26/12/2017
      */
-    public function copy(Request $request) {
+    public function copy(Request $request)
+    {
 
         $params = $request->all();
 
@@ -402,8 +417,8 @@ class PatternAdminController extends FooController {
             $item = $this->obj_item->selectItem($params, FALSE);
 
             if (empty($item)) {
-                return Redirect::route($this->root_router.'.list')
-                                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
             }
 
             $item->id = NULL;
@@ -427,33 +442,29 @@ class PatternAdminController extends FooController {
      * @return view edit page
      * @date 23/04/2018
      */
-    public function search(Request $request){
-        if($request->ajax())
-        {
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
             $output = '';
             $query = $request->get('query');
-            if($query != '')
-            {
-            $data = DB::table('user_profile')
-                ->where('last_name', 'like', '%'.$query.'%')
-                ->orWhere('first_name', 'like', '%'.$query.'%')
-                ->get();
+            if ($query != '') {
+                $data = DB::table('user_profile')
+                    ->where('last_name', 'like', '%' . $query . '%')
+                    ->orWhere('first_name', 'like', '%' . $query . '%')
+                    ->get();
             }
             $total_row = $data->count();
-            if($total_row > 0)
-            {
-                foreach($data as $row)
-                {
+            if ($total_row > 0) {
+                foreach ($data as $row) {
                     $output .= '
                     <tr>
-                    <td>'.$row->id.'</td>
-                    <td>'.$row->first_name.'</td>
-                    <td>'.$row->last_name.'</td>
+                    <td>' . $row->id . '</td>
+                    <td>' . $row->first_name . '</td>
+                    <td>' . $row->last_name . '</td>
                     </tr>
                     ';
                 }
-            }else
-            {
+            } else {
                 $output = '
                 <tr>
                     <td align="center" colspan="5">No Data Found</td>
@@ -461,9 +472,9 @@ class PatternAdminController extends FooController {
                 ';
             }
             $data = array(
-                'table_data'  => $output,
-                'total_data'  => $total_row
-               );
+                'table_data' => $output,
+                'total_data' => $total_row
+            );
 
             echo json_encode($data);
 
