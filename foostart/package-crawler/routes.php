@@ -224,7 +224,7 @@ Route::group(['middleware' => ['web']], function () {
      * StackOverflow
      */
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
-                  'namespace' => 'Foostart\Crawler\Controllers\Admin\Site',
+                  'namespace' => 'Foostart\Crawler\Controllers\Admin\Site\StackOverflow',
     ], function () {
 
         /*

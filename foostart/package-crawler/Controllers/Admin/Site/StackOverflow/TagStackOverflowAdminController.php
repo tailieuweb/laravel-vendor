@@ -1,4 +1,4 @@
-<?php namespace Foostart\Crawler\Controllers\Admin\Site;
+<?php namespace Foostart\Crawler\Controllers\Admin\Site\StackOverflow;
 
 /*
 |-----------------------------------------------------------------------
@@ -21,7 +21,7 @@ use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
 
-class StackOverflowAdminController extends FooController {
+class TagStackOverflowAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
