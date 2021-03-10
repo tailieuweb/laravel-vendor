@@ -20,7 +20,7 @@ use Foostart\Crawler\Models\Sites;
 use Foostart\Crawler\Validators\SitesValidator;
 
 
-class UserController extends FooController {
+class CrawlerUserController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;

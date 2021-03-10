@@ -308,56 +308,56 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/sites/stackoverflow/tags', [
-            'as' => 'stackoverflow_tag.list',
+        Route::get('admin/sites/stackoverflow/questions', [
+            'as' => 'stackoverflow_question.list',
             'uses' => 'TagStackOverflowAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/sites/stackoverflow/tag/edit', [
-            'as' => 'stackoverflow_tag.edit',
+        Route::get('admin/sites/stackoverflow/question/edit', [
+            'as' => 'stackoverflow_question.edit',
             'uses' => 'TagStackOverflowAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/sites/stackoverflow/tag/copy', [
-            'as' => 'stackoverflow_tag.copy',
+        Route::get('admin/sites/stackoverflow/question/copy', [
+            'as' => 'stackoverflow_question.copy',
             'uses' => 'TagStackOverflowAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/sites/stackoverflow/tag/edit', [
-            'as' => 'stackoverflow_tag.post',
+        Route::post('admin/sites/stackoverflow/question/edit', [
+            'as' => 'stackoverflow_question.post',
             'uses' => 'TagStackOverflowAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/sites/stackoverflow/tag/delete', [
-            'as' => 'stackoverflow_tag.delete',
+        Route::get('admin/sites/stackoverflow/question/delete', [
+            'as' => 'stackoverflow_question.delete',
             'uses' => 'TagStackOverflowAdminController@delete'
         ]);
 
         /**
          * trash
          */
-        Route::get('admin/sites/stackoverflow/tag/trash', [
-            'as' => 'stackoverflow_tag.trash',
+        Route::get('admin/sites/stackoverflow/question/trash', [
+            'as' => 'stackoverflow_question.trash',
             'uses' => 'TagStackOverflowAdminController@trash'
         ]);
 
         /**
          * search
          */
-        Route::get('admin/sites/stackoverflow/tag/search', [
-            'as' => 'stackoverflow_tag.search',
+        Route::get('admin/sites/stackoverflow/question/search', [
+            'as' => 'stackoverflow_question.search',
             'uses' => 'TagStackOverflowAdminController@search'
         ]);
     });//End Stackoverflow

@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Sites;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTags;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTagsQuestions;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowAnswers;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowQuestions;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowComments;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +37,7 @@ class TagStackOverflowAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Sites(array('perPage' => 10));
+        $this->obj_item = new StackoverflowTags(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
@@ -44,7 +49,7 @@ class TagStackOverflowAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'crawler';
+        $this->package_base_name = 'site.stackoverflow.tag';
 
         // root routers
         $this->root_router = 'crawlers';
@@ -64,11 +69,9 @@ class TagStackOverflowAdminController extends FooController {
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
 
         $this->statuses = config('package-crawler.status.list');
-        $this->obj_sample = config('package-crawler.sample.list');
-
 
         // //set category
-        $this->category_ref_name = 'admin/crawlers';
+        $this->category_ref_name = 'admin/sites/stackoverflow/tags';
 
     }
 

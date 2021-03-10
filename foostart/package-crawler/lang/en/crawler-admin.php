@@ -36,7 +36,9 @@ return [
         'sample' => 'Sample',
         'list_sites' => 'Sites',
         'list_patterns' => 'Patterns',
-        'add_pattern' => 'New pattern'
+        'add_pattern' => 'New pattern',
+        'tags' => 'Tags',
+        'questions' => 'Questions',
     ],
 
 
@@ -69,6 +71,7 @@ return [
         'pattern_name' => 'Pattern name',
         'machine_name' => 'Machine name',
         'regular_expression_value' => 'Value',
+        'view_pattern' => 'Patterns',
     ],
 
 
