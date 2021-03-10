@@ -229,70 +229,136 @@ Route::group(['middleware' => ['web']], function () {
 
         /*
           |-----------------------------------------------------------------------
-          | Manage patterns
+          | Manage Tags of StackOverflow
           |-----------------------------------------------------------------------
-          | 1. List of patterns
-          | 2. Edit pattern
-          | 3. Delete patterns
-          | 4. Add new patterns
+          | 1. List of tags
+          | 2. Edit tag
+          | 3. Delete tag
+          | 4. Add new tag
           |
         */
 
         /**
          * list
          */
-        Route::get('admin/sites/stackoverflow', [
-            'as' => 'stackoverflow.list',
-            'uses' => 'PatternAdminController@index'
+        Route::get('admin/sites/stackoverflow/tags', [
+            'as' => 'stackoverflow_tag.list',
+            'uses' => 'TagStackOverflowAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/patterns/edit', [
-            'as' => 'patterns.edit',
-            'uses' => 'PatternAdminController@edit'
+        Route::get('admin/sites/stackoverflow/tag/edit', [
+            'as' => 'stackoverflow_tag.edit',
+            'uses' => 'TagStackOverflowAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/patterns/copy', [
-            'as' => 'patterns.copy',
-            'uses' => 'PatternAdminController@copy'
+        Route::get('admin/sites/stackoverflow/tag/copy', [
+            'as' => 'stackoverflow_tag.copy',
+            'uses' => 'TagStackOverflowAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/patterns/edit', [
-            'as' => 'patterns.post',
-            'uses' => 'PatternAdminController@post'
+        Route::post('admin/sites/stackoverflow/tag/edit', [
+            'as' => 'stackoverflow_tag.post',
+            'uses' => 'TagStackOverflowAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/patterns/delete', [
-            'as' => 'patterns.delete',
-            'uses' => 'PatternAdminController@delete'
+        Route::get('admin/sites/stackoverflow/tag/delete', [
+            'as' => 'stackoverflow_tag.delete',
+            'uses' => 'TagStackOverflowAdminController@delete'
         ]);
 
         /**
          * trash
          */
-        Route::get('admin/patterns/trash', [
-            'as' => 'patterns.trash',
-            'uses' => 'PatternAdminController@trash'
+        Route::get('admin/sites/stackoverflow/tag/trash', [
+            'as' => 'stackoverflow_tag.trash',
+            'uses' => 'TagStackOverflowAdminController@trash'
         ]);
 
         /**
          * search
          */
-        Route::get('admin/patterns/search', [
-            'as' => 'patterns.search',
-            'uses' => 'PatternAdminController@search'
+        Route::get('admin/sites/stackoverflow/tag/search', [
+            'as' => 'stackoverflow_tag.search',
+            'uses' => 'TagStackOverflowAdminController@search'
         ]);
 
+        /*
+          |-----------------------------------------------------------------------
+          | Manage Questions of StackOverflow
+          |-----------------------------------------------------------------------
+          | 1. List of tags
+          | 2. Edit tag
+          | 3. Delete tag
+          | 4. Add new tag
+          |
+        */
+
+        /**
+         * list
+         */
+        Route::get('admin/sites/stackoverflow/tags', [
+            'as' => 'stackoverflow_tag.list',
+            'uses' => 'TagStackOverflowAdminController@index'
+        ]);
+
+        /**
+         * edit-add
+         */
+        Route::get('admin/sites/stackoverflow/tag/edit', [
+            'as' => 'stackoverflow_tag.edit',
+            'uses' => 'TagStackOverflowAdminController@edit'
+        ]);
+
+        /**
+         * copy
+         */
+        Route::get('admin/sites/stackoverflow/tag/copy', [
+            'as' => 'stackoverflow_tag.copy',
+            'uses' => 'TagStackOverflowAdminController@copy'
+        ]);
+
+        /**
+         * post
+         */
+        Route::post('admin/sites/stackoverflow/tag/edit', [
+            'as' => 'stackoverflow_tag.post',
+            'uses' => 'TagStackOverflowAdminController@post'
+        ]);
+
+        /**
+         * delete
+         */
+        Route::get('admin/sites/stackoverflow/tag/delete', [
+            'as' => 'stackoverflow_tag.delete',
+            'uses' => 'TagStackOverflowAdminController@delete'
+        ]);
+
+        /**
+         * trash
+         */
+        Route::get('admin/sites/stackoverflow/tag/trash', [
+            'as' => 'stackoverflow_tag.trash',
+            'uses' => 'TagStackOverflowAdminController@trash'
+        ]);
+
+        /**
+         * search
+         */
+        Route::get('admin/sites/stackoverflow/tag/search', [
+            'as' => 'stackoverflow_tag.search',
+            'uses' => 'TagStackOverflowAdminController@search'
+        ]);
     });//End Stackoverflow
 });
