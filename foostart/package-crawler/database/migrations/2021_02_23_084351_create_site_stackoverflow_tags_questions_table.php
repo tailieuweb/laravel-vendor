@@ -23,12 +23,10 @@ class CreateSiteStackoverflowTagsQuestionsTable extends FoostartMigration
             $table->increments($this->prefix_column . 'id')->comment('Primary key');
 
             // Relation
-            $table->integer('site_id')->comment('Site ID');
+            $table->integer('tag_id')->comment('Tag ID');
+            $table->integer('question_id')->comment('Question ID');
 
             // Other attributes
-            $table->string($this->prefix_column . 'name', 55)->comment('Name');
-            $table->string($this->prefix_column . 'machine_name', 55)->comment('Machine name');
-            $table->text($this->prefix_column . 'description')->comment('Description');
 
             //Set common columns
             $this->setCommonColumns($table);

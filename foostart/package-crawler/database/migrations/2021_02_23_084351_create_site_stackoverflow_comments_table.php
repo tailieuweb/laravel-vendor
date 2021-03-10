@@ -8,7 +8,7 @@ class CreateSiteStackoverflowCommentsTable extends FoostartMigration
 {
     public function __construct() {
         $this->table = 'site_stackoverflow_comments';
-        $this->prefix_column = 'tag_';
+        $this->prefix_column = 'comment_';
     }
     /**
      * Run the migrations.
@@ -23,12 +23,12 @@ class CreateSiteStackoverflowCommentsTable extends FoostartMigration
             $table->increments($this->prefix_column . 'id')->comment('Primary key');
 
             // Relation
-            $table->integer('site_id')->comment('Site ID');
+            $table->integer('context_id')->comment('Context ID');
+            $table->string($this->prefix_column . 'type', 25)->comment('Context Name');
 
             // Other attributes
-            $table->string($this->prefix_column . 'name', 55)->comment('Name');
-            $table->string($this->prefix_column . 'machine_name', 55)->comment('Machine name');
-            $table->text($this->prefix_column . 'description')->comment('Description');
+            $table->string($this->prefix_column . 'url_user', 255)->comment('URL user');
+            $table->text($this->prefix_column . 'content')->comment('content');
 
             //Set common columns
             $this->setCommonColumns($table);

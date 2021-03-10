@@ -72,6 +72,8 @@ return [
         'machine_name' => 'Machine name',
         'regular_expression_value' => 'Value',
         'view_pattern' => 'Patterns',
+        'num_questions' => 'Questions',
+        'tag_name' => 'Tag name'
     ],
 
 
@@ -227,6 +229,7 @@ return [
         'site-name' => 'Name',
         'site-pattern' => 'Pattern',
         'site_id' => 'ID',
+        'tag_name' => 'Tag nam'
     ],
 
 

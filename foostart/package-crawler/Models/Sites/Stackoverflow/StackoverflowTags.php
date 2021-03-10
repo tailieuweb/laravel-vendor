@@ -201,7 +201,7 @@ class StackoverflowTags extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.site_id as id'
+                            $this->table . '.tag_id as id'
                 );
 
         return $elo;

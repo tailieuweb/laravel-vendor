@@ -2,8 +2,8 @@
 <?php
     $withs = [
         'counter' => '10%',
-        'id' => '10%',
-        'name' => '20%',
+        'name' => '30%',
+        'num_questions' => '15%',
         'status' => '10%',
         'updated_at' => '20%',
         'operations' => '10%',
@@ -36,8 +36,8 @@
             </th>
 
             <!--NAME-->
-            <?php $name = 'site_name' ?>
-            <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.site_name') !!}
+            <?php $name = 'tag_name' ?>
+            <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.tag_name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -49,9 +49,9 @@
                 </a>
             </th>
 
-            <!--PATTERN-->
-            <?php $name = 'id' ?>
-            <th class="hidden-xs" style='width:{{ $withs['id'] }}'>{!! trans($plang_admin.'.columns.view_pattern') !!}
+            <!--NUM QUESTIONS-->
+            <?php $name = 'num_questions' ?>
+            <th class="hidden-xs text-center" style='width:{{ $withs['num_questions'] }}'>{!! trans($plang_admin.'.columns.num_questions') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -128,25 +128,16 @@
 
                 <!--NAME-->
                 <td>
-                    <a href="{!! URL::route('stackoverflow_tag.list', [                                                                 '_token' => csrf_token()
-                                                            ])
-                            !!}">
-                    {!! $item->site_name !!}
-                    </a>
+                    {!! $item->tag_name !!}
                 </td>
 
-                <!--Pattern-->
-                <td>
-                    <a href="{!! URL::route('patterns.list', [   'site_id' => $item->site_id,
-                                                                '_token' => csrf_token()
-                                                            ])
-                            !!}">
-                    {!! $item->site_id !!}
-                    </a>
+                <!--NUM QUESTIONS-->
+                <td class="text-center">
+                    {!! $item->tag_num_questions !!}
                 </td>
 
                 <!--STATUS-->
-                <td style="text-align: center;">
+                <td class="text-center">
                     @if($item->status && (isset($config_status['list'][$item->status])))
                         <i class="fa fa-circle" style="color:{!! $config_status['color'][$item->status] !!}" title='{!! $config_status["list"][$item->status] !!}'></i>
                     @else
