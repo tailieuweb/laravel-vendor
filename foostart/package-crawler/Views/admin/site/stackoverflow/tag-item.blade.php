@@ -3,7 +3,7 @@
     $withs = [
         'counter' => '10%',
         'name' => '30%',
-        'num_questions' => '15%',
+        'tag_num_questions' => '15%',
         'status' => '10%',
         'updated_at' => '20%',
         'operations' => '10%',
@@ -50,8 +50,8 @@
             </th>
 
             <!--NUM QUESTIONS-->
-            <?php $name = 'num_questions' ?>
-            <th class="hidden-xs text-center" style='width:{{ $withs['num_questions'] }}'>{!! trans($plang_admin.'.columns.num_questions') !!}
+            <?php $name = 'tag_num_questions' ?>
+            <th class="hidden-xs text-center" style='width:{{ $withs[$name] }}'>{!! trans($plang_admin.'.columns.tag_num_questions') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>

@@ -57,7 +57,7 @@ View::composer([
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
             'tag_name' => trans($plang_admin.'.fields.tag_name'),
-            'num_questions' => trans($plang_admin.'.fields.num_questions'),
+            'tag_num_questions' => trans($plang_admin.'.fields.num_questions'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),
         ];

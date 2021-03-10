@@ -66,6 +66,8 @@ class StackoverflowTags extends FooModel {
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
+            'tag_name',
+            'tag_num_questions',
             'updated_at',
             $this->field_status,
         ];
@@ -159,14 +161,19 @@ class StackoverflowTags extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'site_name':
+                        case 'tag_name':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.site_name', '=', $value);
+                                $elo = $elo->where($this->table . '.tag_name', '=', $value);
                             }
                             break;
-                        case 'site_url':
+                        case 'tag_url':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.site_url', '=', $value);
+                                $elo = $elo->where($this->table . '.tag_url', '=', $value);
+                            }
+                            break;
+                        case 'tag_overview':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.tag_overview', '=', $value);
                             }
                             break;
                         case 'status':
@@ -178,8 +185,9 @@ class StackoverflowTags extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.site_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.site_description','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.tag_name', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.tag_overview','LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.tag_url','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -323,19 +331,5 @@ class StackoverflowTags extends FooModel {
         // $item->id = $item->$key;
 
         return $crawler;
-    }
-
-    /**
-     * Get list of sites into select
-     * @return OBJECT PLUCK SELECT
-     */
-     public function pluckSelect($params = array()) {
-
-         $elo = self::orderBy('site_name', 'ASC');
-
-
-         $items = $elo->pluck('site_name', $this->primaryKey);
-
-        return $items;
     }
 }

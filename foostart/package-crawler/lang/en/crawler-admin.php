@@ -73,7 +73,8 @@ return [
         'regular_expression_value' => 'Value',
         'view_pattern' => 'Patterns',
         'num_questions' => 'Questions',
-        'tag_name' => 'Tag name'
+        'tag_name' => 'Tag name',
+        'tag_num_questions' => 'Questions'
     ],
 
 
@@ -288,6 +289,8 @@ return [
         'tag_overview' => 'Tag overview',
         'tag_other' => 'Tag other',
         'tag_num_questions' => 'Number questions',
+        'title-search-tag' => 'Search tags',
+        'unknown' => 'Unknown'
     ],
 
 

@@ -1,12 +1,12 @@
 <div class="panel panel-info">
     <div class="panel-heading">
         <h3 class="panel-title bariol-thin"><i class="fa fa-search"></i>
-            <?php echo trans($plang_admin.'.labels.title-search-site') ?>
+            <?php echo trans($plang_admin.'.labels.title-search-tag') ?>
         </h3>
     </div>
     <div class="panel-body">
 
-        {!! Form::open(['route' => 'sites.list','method' => 'get']) !!}
+        {!! Form::open(['route' => 'stackoverflow_tag.list','method' => 'get']) !!}
 
             <!--BUTTONS-->
             <div class="form-group">
@@ -27,7 +27,7 @@
             @include('package-category::admin.partials.select_single', [
                 'name' => 'status',
                 'label' => trans($plang_admin.'.form.status'),
-                'value' => @$params['status']?$params['status']:'99',
+                'value' => @$params['status']?$params['status']:NULL,
                 'items' => $status,
             ])
 
