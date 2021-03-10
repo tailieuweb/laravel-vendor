@@ -11,6 +11,7 @@
 */
 
 
+
 use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
@@ -21,7 +22,7 @@ use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
 
-class StackOverflowAdminController extends FooController {
+class StackOverflowQuestionAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;

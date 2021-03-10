@@ -243,7 +243,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/tags', [
             'as' => 'stackoverflow_tag.list',
-            'uses' => 'TagStackOverflowAdminController@index'
+            'uses' => 'StackOverflowTagAdminController@index'
         ]);
 
         /**
@@ -251,7 +251,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/tag/edit', [
             'as' => 'stackoverflow_tag.edit',
-            'uses' => 'TagStackOverflowAdminController@edit'
+            'uses' => 'StackOverflowTagAdminController@edit'
         ]);
 
         /**
@@ -259,7 +259,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/tag/copy', [
             'as' => 'stackoverflow_tag.copy',
-            'uses' => 'TagStackOverflowAdminController@copy'
+            'uses' => 'StackOverflowTagAdminController@copy'
         ]);
 
         /**
@@ -267,7 +267,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::post('admin/sites/stackoverflow/tag/edit', [
             'as' => 'stackoverflow_tag.post',
-            'uses' => 'TagStackOverflowAdminController@post'
+            'uses' => 'StackOverflowTagAdminController@post'
         ]);
 
         /**
@@ -275,7 +275,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/tag/delete', [
             'as' => 'stackoverflow_tag.delete',
-            'uses' => 'TagStackOverflowAdminController@delete'
+            'uses' => 'StackOverflowTagAdminController@delete'
         ]);
 
         /**
@@ -283,7 +283,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/tag/trash', [
             'as' => 'stackoverflow_tag.trash',
-            'uses' => 'TagStackOverflowAdminController@trash'
+            'uses' => 'StackOverflowTagAdminController@trash'
         ]);
 
         /**
@@ -291,7 +291,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/tag/search', [
             'as' => 'stackoverflow_tag.search',
-            'uses' => 'TagStackOverflowAdminController@search'
+            'uses' => 'StackOverflowTagAdminController@search'
         ]);
 
         /*
@@ -310,7 +310,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/questions', [
             'as' => 'stackoverflow_question.list',
-            'uses' => 'TagStackOverflowAdminController@index'
+            'uses' => 'StackOverflowQuestionAdminController@index'
         ]);
 
         /**
@@ -318,7 +318,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/question/edit', [
             'as' => 'stackoverflow_question.edit',
-            'uses' => 'TagStackOverflowAdminController@edit'
+            'uses' => 'StackOverflowQuestionAdminController@edit'
         ]);
 
         /**
@@ -326,7 +326,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/question/copy', [
             'as' => 'stackoverflow_question.copy',
-            'uses' => 'TagStackOverflowAdminController@copy'
+            'uses' => 'StackOverflowQuestionAdminController@copy'
         ]);
 
         /**
@@ -334,7 +334,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::post('admin/sites/stackoverflow/question/edit', [
             'as' => 'stackoverflow_question.post',
-            'uses' => 'TagStackOverflowAdminController@post'
+            'uses' => 'StackOverflowQuestionAdminController@post'
         ]);
 
         /**
@@ -342,7 +342,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/question/delete', [
             'as' => 'stackoverflow_question.delete',
-            'uses' => 'TagStackOverflowAdminController@delete'
+            'uses' => 'StackOverflowQuestionAdminController@delete'
         ]);
 
         /**
@@ -350,7 +350,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/question/trash', [
             'as' => 'stackoverflow_question.trash',
-            'uses' => 'TagStackOverflowAdminController@trash'
+            'uses' => 'StackOverflowQuestionAdminController@trash'
         ]);
 
         /**
@@ -358,7 +358,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/sites/stackoverflow/question/search', [
             'as' => 'stackoverflow_question.search',
-            'uses' => 'TagStackOverflowAdminController@search'
+            'uses' => 'StackOverflowQuestionAdminController@search'
         ]);
     });//End Stackoverflow
 });

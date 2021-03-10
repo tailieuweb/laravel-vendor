@@ -30,7 +30,7 @@ class CreateSiteStackoverflowTagsTable extends FoostartMigration
             $table->string($this->prefix_column . 'url', 255)->comment('Url');
             $table->text($this->prefix_column . 'overview')->comment('Overview');
             $table->integer($this->prefix_column . 'num_questions')->nullable()->comment('Number questions');
-            $table->string($this->prefix_column . 'other', 1000)->comment('Other info');
+            $table->string($this->prefix_column . 'other', 1000)->nullable()->comment('Other info');
 
             //Set common columns
             $this->setCommonColumns($table);

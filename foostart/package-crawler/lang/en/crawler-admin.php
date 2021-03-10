@@ -236,7 +236,9 @@ return [
         'site-name' => 'Name',
         'site-pattern' => 'Pattern',
         'site_id' => 'ID',
-        'tag_name' => 'Tag nam'
+        'tag_name' => 'Tag name',
+        'tag_url' => 'Tag url',
+
     ],
 
 

@@ -23,10 +23,10 @@ use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowAnswers;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowQuestions;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowComments;
 use Foostart\Category\Models\Category;
-use Foostart\Crawler\Validators\SitesValidator;
+use Foostart\Crawler\Validators\Sites\StackoverflowTagsValidator;
 use Illuminate\Support\Facades\DB;
 
-class TagStackOverflowAdminController extends FooController {
+class StackOverflowTagAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -41,7 +41,7 @@ class TagStackOverflowAdminController extends FooController {
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new SitesValidator();
+        $this->obj_validator = new StackoverflowTagsValidator();
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
         $this->plang_admin = 'crawler-admin';
@@ -52,7 +52,7 @@ class TagStackOverflowAdminController extends FooController {
         $this->package_base_name = 'site.stackoverflow.tag';
 
         // root routers
-        $this->root_router = 'crawlers';
+        $this->root_router = 'stackoverflow_tag';
 
         // page views
         $this->page_views = [

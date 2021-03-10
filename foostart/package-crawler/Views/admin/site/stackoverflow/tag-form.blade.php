@@ -48,20 +48,18 @@
             ])
             <!--/NAME-->
 
-            <div class="row">
-                <div class='col-md-8'>
-                    <!--URL-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'tag_url',
-                        'label' => trans($plang_admin.'.labels.tag_url'),
-                        'value' => @$item->tag_url,
-                        'description' => trans($plang_admin.'.descriptions.site_url'),
-                        'errors' => $errors,
-                    ])
-                    <!-- /URL-->
-                </div>
+            <!--URL-->
+            @include('package-category::admin.partials.input_text', [
+                'name' => 'tag_url',
+                'label' => trans($plang_admin.'.labels.tag_url'),
+                'value' => @$item->tag_url,
+                'description' => trans($plang_admin.'.descriptions.site_url'),
+                'errors' => $errors,
+            ])
+            <!-- /URL-->
 
-                <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-6">
                     <!--NUM QUESTIONS-->
                     @include('package-category::admin.partials.input_text', [
                         'name' => 'tag_num_questions',
@@ -72,12 +70,24 @@
                     ])
                     <!--/NUM QUESTIONS-->
                 </div>
+
+                <div class='col-md-6'>
+                    <!--STATUS-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'status',
+                    'label' => trans($plang_admin.'.form.status'),
+                    'value' => @$item->status,
+                    'items' => $status,
+                    'description' => trans($plang_admin.'.descriptions.status'),
+                ])
+                <!--/STATUS-->
+                </div>
             </div>
             <!--OTHER-->
             @include('package-category::admin.partials.textarea', [
             'name' => 'tag_other',
             'label' => trans($plang_admin.'.labels.tag_other'),
-            'value' => @$item->post_overview,
+            'value' => @$item->tag_other,
             'description' => trans($plang_admin.'.descriptions.tag_other'),
             'tinymce' => false,
             'errors' => $errors,

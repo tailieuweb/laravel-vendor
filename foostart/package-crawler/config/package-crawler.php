@@ -41,7 +41,16 @@ return [
         ],
         'pattern_machine_name' => [
             'min' => 3,
-            'max' => 255,//unlimit
+            'max' => 255,
+        ],
+        //Stackoverflow tag
+        'tag_name' => [
+            'min' => 3,
+            'max' => 255,
+        ],
+        'tag_url' => [
+            'min' => 3,
+            'max' => 255,
         ],
     ],
     'per_page' => 1,

@@ -241,7 +241,7 @@ class StackoverflowTags extends FooModel {
 
             $item->save();
               //add new attribute
-            $item->id = $item->site_id;
+            $item->id = $item->tag_id;
 
 
             return $item;
