@@ -218,5 +218,81 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'PatternAdminController@search'
         ]);
 
-    });
+    });//End pattern
+
+    /****************************************************************************
+     * StackOverflow
+     */
+    Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
+                  'namespace' => 'Foostart\Crawler\Controllers\Admin\Site',
+    ], function () {
+
+        /*
+          |-----------------------------------------------------------------------
+          | Manage patterns
+          |-----------------------------------------------------------------------
+          | 1. List of patterns
+          | 2. Edit pattern
+          | 3. Delete patterns
+          | 4. Add new patterns
+          |
+        */
+
+        /**
+         * list
+         */
+        Route::get('admin/sites/stackoverflow', [
+            'as' => 'stackoverflow.list',
+            'uses' => 'PatternAdminController@index'
+        ]);
+
+        /**
+         * edit-add
+         */
+        Route::get('admin/patterns/edit', [
+            'as' => 'patterns.edit',
+            'uses' => 'PatternAdminController@edit'
+        ]);
+
+        /**
+         * copy
+         */
+        Route::get('admin/patterns/copy', [
+            'as' => 'patterns.copy',
+            'uses' => 'PatternAdminController@copy'
+        ]);
+
+        /**
+         * post
+         */
+        Route::post('admin/patterns/edit', [
+            'as' => 'patterns.post',
+            'uses' => 'PatternAdminController@post'
+        ]);
+
+        /**
+         * delete
+         */
+        Route::get('admin/patterns/delete', [
+            'as' => 'patterns.delete',
+            'uses' => 'PatternAdminController@delete'
+        ]);
+
+        /**
+         * trash
+         */
+        Route::get('admin/patterns/trash', [
+            'as' => 'patterns.trash',
+            'uses' => 'PatternAdminController@trash'
+        ]);
+
+        /**
+         * search
+         */
+        Route::get('admin/patterns/search', [
+            'as' => 'patterns.search',
+            'uses' => 'PatternAdminController@search'
+        ]);
+
+    });//End Stackoverflow
 });

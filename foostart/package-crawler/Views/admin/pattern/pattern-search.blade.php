@@ -1,7 +1,7 @@
 <div class="panel panel-info">
     <div class="panel-heading">
         <h3 class="panel-title bariol-thin"><i class="fa fa-search"></i>
-            <?php echo trans($plang_admin.'.labels.title-search') ?>
+            <?php echo trans($plang_admin.'.labels.title-search-pattern') ?>
         </h3>
     </div>
     <div class="panel-body">
@@ -21,6 +21,14 @@
                 'name' => 'keyword',
                 'label' => trans($plang_admin.'.form.keyword'),
                 'value' => @$params['keyword'],
+            ])
+
+            <!-- SITE -->
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'site_id',
+                'label' => trans($plang_admin.'.form.site_id'),
+                'value' => @$params['site_id']?$params['site_id']:NULL,
+                'items' => $sites,
             ])
 
             <!-- STATUS -->

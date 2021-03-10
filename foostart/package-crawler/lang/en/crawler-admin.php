@@ -87,6 +87,10 @@ return [
         'title-delete' => 'Delete crawler',
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage list of languages',
+        'title-site' => 'List of sites',
+        'title-pattern' => 'List of patterns',
+        'title-list-search-site' => 'Search sites',
+        'title-list-search-pattern' => 'Search patterns',
     ],
 
 
@@ -129,6 +133,7 @@ return [
         'no-selected' => 'No selected',
         'status' => 'Status',
         'site_id' => 'Site',
+        'site' => 'Site'
     ],
 
 
@@ -241,6 +246,8 @@ return [
         'files' => 'Crawler files',
         'category' => 'Category name',
         'title-search' => 'Search crawler',
+        'title-search-site' => 'Search sites',
+        'title-search-pattern' => 'Search patterns',
         'site-search' => 'Search site',
         'title-backup' => 'Backups',
         'config' => 'Configurations',

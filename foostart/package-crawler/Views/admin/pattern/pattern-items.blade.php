@@ -21,6 +21,7 @@
                         </h3>
                     </div>
 
+
                     <!--DESCRIPTION-->
                     <div class='panel-info panel-description'>
                         {!! trans($plang_admin.'.descriptions.list') !!}</h4>
@@ -46,6 +47,14 @@
 
                     <!--BODY-->
                     <div class="panel-body">
+                        <!--ADD BUTTONS-->
+                        <div class='btn-form'>
+                            <a href="{!! URL::route('patterns.edit',['site_id' => $site_id, '_token' => csrf_token()]) !!}"
+                               class="btn btn-info pull-right">
+                                {!! trans($plang_admin.'.buttons.add') !!}
+                            </a>
+                        </div>
+                        <!--/ADD BUTTONS-->
                         {!! Form::open(['route'=>['patterns.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
                             @include('package-crawler::admin.pattern.pattern-item')

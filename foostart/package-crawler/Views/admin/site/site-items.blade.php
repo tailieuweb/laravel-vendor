@@ -1,7 +1,7 @@
 @extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {{ trans($plang_admin.'.pages.title-list') }}
+    {{ trans($plang_admin.'.pages.title-site') }}
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
                     <!--HEADING-->
                     <div class="panel-heading">
                         <h3 class="panel-title bariol-thin"><i class="fa fa-list-ul" aria-hidden="true"></i>
-                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search') : trans($plang_admin.'.pages.title-list') !!}
+                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search-site') : trans($plang_admin.'.pages.title-site') !!}
                         </h3>
                     </div>
 
