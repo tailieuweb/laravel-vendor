@@ -26,9 +26,9 @@ class CreateSiteStackoverflowTagsTable extends FoostartMigration
 
 
             // Other attributes
-            $table->string($this->prefix_column . 'name', 55)->comment('Name');
+            $table->string($this->prefix_column . 'name', 500)->comment('Name');
             $table->string($this->prefix_column . 'url', 255)->comment('Url');
-            $table->text($this->prefix_column . 'overview')->comment('Overview');
+            $table->text($this->prefix_column . 'overview')->nullable()->comment('Overview');
             $table->integer($this->prefix_column . 'num_questions')->nullable()->comment('Number questions');
             $table->string($this->prefix_column . 'other', 1000)->nullable()->comment('Other info');
 

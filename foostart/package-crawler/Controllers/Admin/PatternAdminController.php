@@ -110,7 +110,7 @@ class PatternAdminController extends FooController
     {
 
         $item = NULL;
-        $regular_expressions = [];
+        $regular_expressions = NULL;
         $categories = NULL;
 
         $params = $request->all();
@@ -130,7 +130,8 @@ class PatternAdminController extends FooController
                 $_params = [
                     'pattern_id' => $item->id
                 ];
-                $regular_expressions = $this->obj_regular_expression->selectItems($_params);
+
+                $regular_expressions = $this->obj_regular_expression->selectItems($_params)->items();
             }
         }
 
@@ -149,6 +150,7 @@ class PatternAdminController extends FooController
             'request' => $request,
             'context' => $context,
         ));
+
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 
@@ -202,7 +204,7 @@ class PatternAdminController extends FooController
                 if (!empty($item)) {
 
                     //Insert regular expression value
-                    $regular_expressions = $this->obj_regular_expression->insertProcess($_params, $item->id);
+                    $regular_expressions = $this->obj_regular_expression->insertProcess($params, $item->id);
 
                     //message
                     return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
@@ -438,48 +440,6 @@ class PatternAdminController extends FooController
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 
-    /**
-     * Search user by name
-     * @return view edit page
-     * @date 23/04/2018
-     */
-    public function search(Request $request)
-    {
-        if ($request->ajax()) {
-            $output = '';
-            $query = $request->get('query');
-            if ($query != '') {
-                $data = DB::table('user_profile')
-                    ->where('last_name', 'like', '%' . $query . '%')
-                    ->orWhere('first_name', 'like', '%' . $query . '%')
-                    ->get();
-            }
-            $total_row = $data->count();
-            if ($total_row > 0) {
-                foreach ($data as $row) {
-                    $output .= '
-                    <tr>
-                    <td>' . $row->id . '</td>
-                    <td>' . $row->first_name . '</td>
-                    <td>' . $row->last_name . '</td>
-                    </tr>
-                    ';
-                }
-            } else {
-                $output = '
-                <tr>
-                    <td align="center" colspan="5">No Data Found</td>
-                </tr>
-                ';
-            }
-            $data = array(
-                'table_data' => $output,
-                'total_data' => $total_row
-            );
 
-            echo json_encode($data);
-
-        }
-    }
 
 }

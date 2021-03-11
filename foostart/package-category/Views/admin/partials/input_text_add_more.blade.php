@@ -67,7 +67,7 @@
 
         <input class="btn btn-info pull-right regular_expression_add"  value="Add new regular expression">
 
-        @if($items)
+
             <table class="table table-hover">
 
                 <thead>
@@ -96,6 +96,7 @@
                 <tr>
                 </thead>
                 <tbody>
+                @if($items)
                 @foreach($items as $_item)
                     <tr class="{{$name}}_item">
                         <!--COUNTER-->
@@ -104,7 +105,7 @@
                         <td><?php echo $_item->regular_expression_id ?></td>
                         <!--VALUE-->
                         <td>
-                            {!! Form::text($name.'[]', $_item->regular_expression_value, ['class' => 'form-control', 'placeholder' => $placehover]) !!}
+                            {!! Form::text($_name, $_item->regular_expression_value, ['class' => 'form-control', 'placeholder' => $placehover]) !!}
                         </td>
                         <!--STATUS-->
                         <td>
@@ -132,11 +133,45 @@
                         </td>
                     </tr>
                 @endforeach
+                @else
+                    <tr class="{{$name}}_item">
+                        <!--COUNTER-->
+                        <td><?php echo $counter; $counter++ ?></td>
+                        <!--ID-->
+                        <td></td>
+                        <!--VALUE-->
+                        <td>
+                            {!! Form::text($_name, null, ['class' => 'form-control', 'placeholder' => $placehover]) !!}
+                        </td>
+                        <!--STATUS-->
+                        <td>
+                            <!--STATUS-->
+                        @include('package-category::admin.partials.select_single', [
+                            'name' => 're_status[]',
+                            'label' => NULL,
+                            'value' => NULL,
+                            'items' => $status,
+                            'description' => NULL,
+                        ])
+                        <!--/STATUS-->
+                        </td>
+                        <!--OPERATIONS-->
+                        <td>
+                            <!--copy-->
+                            <a href="#" class="margin-left-5 regular_expression_delete">
+                                <i class="fa fa-files-o f-tb-icon" aria-hidden="true"></i>
+                            </a>
+
+                            <!--delete-->
+                            <a href="#" class="margin-left-5 regular_expression_delete">
+                                <i class="fa fa-trash-o f-tb-icon"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endif
                 </tbody>
             </table>
-        @else
-            {!! Form::text($name, $value, ['class' => 'form-control', 'placeholder' => $placehover]) !!}
-        @endif
+
     </div>
 
 

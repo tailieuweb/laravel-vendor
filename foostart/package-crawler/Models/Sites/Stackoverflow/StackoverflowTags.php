@@ -276,6 +276,25 @@ class StackoverflowTags extends FooModel {
         return $item;
     }
 
+    /**
+     * Insert items
+     */
+    public function insertItems($data = []) {
+
+        foreach ($data['tag_name'] as $key => $tag_name) {
+
+            $item = [
+              'user_id' => 1,
+              'tag_name' => @$tag_name,
+              'tag_url' => @$data['tag_url'][$key],
+              'tag_overview' => @$data['tag_overview'][$key],
+              'tag_num_questions' => @$data['tag_num_questions'][$key],
+              'tag_other' => @$data['tag_other'][$key],
+            ];
+            $this->insertItem($item);
+        }
+
+    }
 
     /**
      *
@@ -332,4 +351,8 @@ class StackoverflowTags extends FooModel {
 
         return $crawler;
     }
+
+
+
+
 }

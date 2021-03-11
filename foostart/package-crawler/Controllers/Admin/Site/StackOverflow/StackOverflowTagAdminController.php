@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Sites;
+use Foostart\Crawler\Models\Patterns;
+use Foostart\Crawler\Models\RegularExpressions;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTags;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTagsQuestions;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowAnswers;
@@ -25,6 +27,8 @@ use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowComments;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\Sites\StackoverflowTagsValidator;
 use Illuminate\Support\Facades\DB;
+
+use Foostart\Crawler\Scripts\Stackoverflow\CrawlTags;
 
 class StackOverflowTagAdminController extends FooController {
 
@@ -376,7 +380,26 @@ class StackOverflowTagAdminController extends FooController {
 
     public function crawler() {
 
-        //Get
+        //Object
+        $obj_pattern = new Patterns();
+        $obj_tag = new StackoverflowTags();
+        $obj_crawlTags = new CrawlTags();
+
+        $patterns = NULL;
+
+        //Get patterns of Stack Ovreflow
+        $site_id = 1;
+        $params = [
+            'site_id' => 1,
+        ];
+        $patterns = $obj_pattern->selectItems($params);
+
+        //Get tags url
+        $url_tags = config('package-crawler.crawler.url_tags');
+
+        //Crawl
+        $obj_crawlTags->getTags($url_tags, $patterns, $obj_tag);
+
         return Redirect::route($this->root_router.'.list')
             ->withMessage(trans($this->plang_admin.'.actions.crawler-ok'));
     }

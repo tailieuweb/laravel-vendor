@@ -2,6 +2,7 @@
 
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
+use Foostart\Crawler\Models\RegularExpressions;
 
 class Patterns extends FooModel {
 
@@ -56,7 +57,7 @@ class Patterns extends FooModel {
             'pattern_name',
             'pattern_machine_name',
             'pattern_description',
-            
+
         ]);
 
         //check valid fields for ordering
@@ -321,5 +322,12 @@ class Patterns extends FooModel {
         // $item->id = $item->$key;
 
         return $crawler;
+    }
+
+    /**
+     * Get the regular expressions of pattern
+     */
+    public function regular_expressions() {
+        return $this->hasMany(RegularExpressions::class, 'pattern_id');
     }
 }

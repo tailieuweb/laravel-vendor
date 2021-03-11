@@ -2,6 +2,7 @@
 
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
+use Foostart\Crawler\Models\Patterns;
 
 class RegularExpressions extends FooModel {
 
@@ -59,6 +60,7 @@ class RegularExpressions extends FooModel {
         //check valid fields for filter
         $this->valid_filter_fields = [
             'keyword',
+            'pattern_id',
             'status',
         ];
 
@@ -146,14 +148,9 @@ class RegularExpressions extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'pattern_name':
+                        case 'pattern_id':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.pattern_name', '=', $value);
-                            }
-                            break;
-                        case 'pattern_machine_name':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.pattern_machine_name', '=', $value);
+                                $elo = $elo->where($this->table . '.pattern_id', '=', $value);
                             }
                             break;
                         case 'status':
@@ -165,8 +162,8 @@ class RegularExpressions extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.pattern_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.pattern_machine_name','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.regular_expression', 'LIKE', "%{$value}%");
+
                                 });
                             }
                             break;
@@ -344,5 +341,12 @@ class RegularExpressions extends FooModel {
         $regular_expressions = $this->selectItems($_params);
 
         return $regular_expressions;
+    }
+
+    /*
+     * Get pattern of regular expression
+     */
+    public function pattern() {
+        return $this->belongTo(Patterns::class);
     }
 }

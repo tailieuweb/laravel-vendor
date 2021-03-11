@@ -8,4 +8,14 @@ class Site
         return $content;
     }
 
+    public function getValues($pattern, $content) {
+        $values = [];
+        preg_match_all($pattern, $content, $matches);
+
+        if (!empty($matches[1])) {
+            $values = $matches[1];
+        }
+        return $values;
+    }
+
 }
