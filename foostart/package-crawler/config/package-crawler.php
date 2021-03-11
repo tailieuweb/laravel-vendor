@@ -146,4 +146,17 @@ return [
             99 => '#5bc0de'
         ]
         ],
+    /*
+     |--------------------------------------------------------------------------
+     | Crawler
+     |--------------------------------------------------------------------------
+     | @public = 99
+     | @in_trash = 55 delete from list
+     | @draft = 11 auto save
+     | @unpublish = 33
+    */
+
+    'crawler' => [
+        'url_tags' => 'https://stackoverflow.com/tags',
+    ]
 ];
