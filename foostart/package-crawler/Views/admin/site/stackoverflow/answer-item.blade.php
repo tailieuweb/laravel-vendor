@@ -2,7 +2,7 @@
 <?php
     $withs = [
         'counter' => '10%',
-        'question_name' => '30%',
+        'answer_description' => '40%',
         'status' => '10%',
         'updated_at' => '20%',
         'operations' => '10%',
@@ -34,18 +34,10 @@
                 </span>
             </th>
 
-            <!--NAME-->
-            <?php $name = 'question_name' ?>
-            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>{!! trans($plang_admin.'.columns.question_name') !!}
-                <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
-                    @if($sorting['items'][$name] == 'asc')
-                        <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-                    @elseif($sorting['items'][$name] == 'desc')
-                        <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-                    @else
-                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                    @endif
-                </a>
+            <!--DESCRIPTION-->
+            <?php $name = 'answer_description' ?>
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                {!! trans($plang_admin.'.columns.answer_description') !!}
             </th>
 
             <!--STATUS-->
@@ -113,10 +105,7 @@
 
                 <!--NAME-->
                 <td>
-                    <a href="{!! URL::route('stackoverflow_answer.list', ['question_id' => $item->id, '_token' => csrf_token()])
-                            !!}">
-                    {!! $item->question_name !!}
-                    </a>
+                    {!! $item->answer_description !!}
                 </td>
 
                 <!--STATUS-->
@@ -134,7 +123,7 @@
                 <!--OPERATOR-->
                 <td class="text-center">
                     <!--edit-->
-                    <a href="{!! URL::route('stackoverflow_question.edit', [   'id' => $item->id,
+                    <a href="{!! URL::route('stackoverflow_answer.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
                                                             ])
                             !!}">
@@ -143,7 +132,7 @@
 
 
                     <!--delete-->
-                    <a href="{!! URL::route('stackoverflow_question.delete',[  'id' => $item->id,
+                    <a href="{!! URL::route('stackoverflow_answer.delete',[  'id' => $item->id,
                                                                 '_token' => csrf_token(),
                                                               ])
                              !!}"

@@ -24,7 +24,7 @@ class StackoverflowAnswers extends FooModel {
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'answer_content',
+            'answer_description',
             'answer_url_user',
             //Relation
             'questions_id',
@@ -32,8 +32,8 @@ class StackoverflowAnswers extends FooModel {
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-             'answer_content' => [
-                'name' => 'answer_content',
+             'answer_description' => [
+                'name' => 'answer_description',
                 'type' => 'Text',
             ],
             'answer_url_user' => [
@@ -49,7 +49,7 @@ class StackoverflowAnswers extends FooModel {
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'answer_content',
+            'answer_description',
             'answer_url_user',
             //Relation
             'question_id'
@@ -150,16 +150,7 @@ class StackoverflowAnswers extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'site_name':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.site_name', '=', $value);
-                            }
-                            break;
-                        case 'site_url':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.site_url', '=', $value);
-                            }
-                            break;
+
                         case 'status':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.'.$this->field_status, '=', $value);
@@ -169,8 +160,8 @@ class StackoverflowAnswers extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.site_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.site_description','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.answer_description', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.answer_url_user','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -192,7 +183,7 @@ class StackoverflowAnswers extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.site_id as id'
+                            $this->table . '.answer_id as id'
                 );
 
         return $elo;
@@ -232,7 +223,7 @@ class StackoverflowAnswers extends FooModel {
 
             $item->save();
               //add new attribute
-            $item->id = $item->site_id;
+            $item->id = $item->answer_id;
 
 
             return $item;
@@ -316,17 +307,5 @@ class StackoverflowAnswers extends FooModel {
         return $crawler;
     }
 
-    /**
-     * Get list of sites into select
-     * @return OBJECT PLUCK SELECT
-     */
-     public function pluckSelect($params = array()) {
 
-         $elo = self::orderBy('site_name', 'ASC');
-
-
-         $items = $elo->pluck('site_name', $this->primaryKey);
-
-        return $items;
-    }
 }

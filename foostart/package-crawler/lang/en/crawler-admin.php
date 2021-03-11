@@ -76,7 +76,9 @@ return [
         'tag_name' => 'Tag name',
         'tag_num_questions' => 'Questions',
         'question_name' => 'Question name',
-        'question_description' => 'Question description'
+        'question_description' => 'Question description',
+        'answer_description' => 'Answer description',
+
     ],
 
 
@@ -102,6 +104,8 @@ return [
         'title-edit-tag' => 'Edit tag',
         'title-questions' => 'List of questions',
         'title-edit-question' => 'Edit questions',
+        'title-list-search-answers' => 'Search answers',
+        'title-edit-answer' => 'Edit answer'
     ],
 
 
@@ -197,6 +201,9 @@ return [
         'tag_num_questions' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'question_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'question_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'answer_url_user' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'answer_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'answer_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -303,6 +310,10 @@ return [
         'question_url' => 'Question URL',
         'question_description' => 'Question description',
         'question_url_user' => 'URL user',
+        'title-search-answer' => 'Search answers',
+        'answer_url_user' => 'URL user',
+        'answer_description' => 'Description',
+        'title-search-answer' => 'Search answers'
 
     ],
 

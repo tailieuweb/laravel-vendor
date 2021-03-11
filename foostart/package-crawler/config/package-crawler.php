@@ -65,6 +65,15 @@ return [
             'min' => 3,
             'max' => 0,//Unlimit
         ],
+        //Stackoverflow answer
+        'answer_url_user' => [
+            'min' => 3,
+            'max' => 255,
+        ],
+        'answer_description' => [
+            'min' => 3,
+            'max' => 255,
+        ],
     ],
     'per_page' => 1,
 

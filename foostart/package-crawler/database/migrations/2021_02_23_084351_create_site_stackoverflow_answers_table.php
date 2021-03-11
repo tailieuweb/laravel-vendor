@@ -26,8 +26,8 @@ class CreateSiteStackoverflowAnswersTable extends FoostartMigration
             $table->integer('question_id')->comment('Question ID');
 
             // Other attributes
-            $table->string($this->prefix_column . 'content', 55)->comment('Content');
-            $table->string($this->prefix_column . 'url_user', 55)->comment('URL user');
+            $table->text($this->prefix_column . 'description')->comment('Description');
+            $table->string($this->prefix_column . 'url_user', 255)->comment('URL user');
 
             //Set common columns
             $this->setCommonColumns($table);

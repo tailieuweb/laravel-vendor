@@ -80,7 +80,7 @@ View::composer([
 });
 
 View::composer([
-    //Stackoverflow tag
+    //Stackoverflow question
     'package-crawler::admin.site.stackoverflow.question-edit',
     'package-crawler::admin.site.stackoverflow.question-form',
     'package-crawler::admin.site.stackoverflow.question-items',
@@ -123,6 +123,71 @@ View::composer([
     $orders = [
         '' => trans($plang_admin.'.form.no-selected'),
         'question_name' => trans($plang_admin.'.fields.question_name'),
+        'updated_at' => trans($plang_admin.'.fields.updated_at'),
+        'status' => trans($plang_admin.'.fields.status'),
+    ];
+    $sortTable = new SortTable();
+    $sortTable->setOrders($orders);
+    $sorting = $sortTable->linkOrders();
+
+    //Order by
+    $order_by = [
+        'asc' => trans('category-admin.order.by-asc'),
+        'desc' => trans('category-admin.order.by-des'),
+    ];
+
+    // assign to view
+    $view->with('sidebar_items', $sidebar_items );
+    $view->with('order_by', $order_by);
+    $view->with('sorting', $sorting);
+    $view->with('plang_admin', $plang_admin);
+    $view->with('plang_front', $plang_front);
+});
+
+
+View::composer([
+    //Stackoverflow answer
+    'package-crawler::admin.site.stackoverflow.answer-edit',
+    'package-crawler::admin.site.stackoverflow.answer-form',
+    'package-crawler::admin.site.stackoverflow.answer-items',
+    'package-crawler::admin.site.stackoverflow.answer-item',
+    'package-crawler::admin.site.stackoverflow.answer-search',
+], function ($view) {
+
+    //Order by params
+    $params = Request::all();
+
+    /**
+     * $plang-admin
+     * $plang-front
+     */
+    $plang_admin = 'crawler-admin';
+    $plang_front = 'crawler-front';
+
+    /**
+     * $sidebar_items
+     */
+    $sidebar_items = [
+        trans('crawler-admin.sidebar.tags') => [
+            'url' => URL::route('stackoverflow_tag.list', []),
+            'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
+        ],
+        trans('crawler-admin.sidebar.questions') => [
+            'url' => URL::route('stackoverflow_question.list', []),
+            'icon' => '<i class="fa fa-question-circle" aria-hidden="true"></i>'
+        ],
+        trans('crawler-admin.sidebar.list_sites') => [
+            "url" => URL::route('sites.list', []),
+            'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
+        ]
+    ];
+
+    /**
+     * $sorting
+     * $order_by
+     */
+    $orders = [
+        '' => trans($plang_admin.'.form.no-selected'),
         'updated_at' => trans($plang_admin.'.fields.updated_at'),
         'status' => trans($plang_admin.'.fields.status'),
     ];

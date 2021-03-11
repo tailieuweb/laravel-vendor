@@ -360,5 +360,74 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'stackoverflow_question.search',
             'uses' => 'StackOverflowQuestionAdminController@search'
         ]);
+
+        /*
+          |-----------------------------------------------------------------------
+          | Manage Answers of StackOverflow
+          |-----------------------------------------------------------------------
+          | 1. List of answers
+          | 2. Edit answer
+          | 3. Delete answer
+          | 4. Add new answer
+          |
+        */
+
+        /**
+         * list
+         */
+        Route::get('admin/sites/stackoverflow/answers', [
+            'as' => 'stackoverflow_answer.list',
+            'uses' => 'StackOverflowAnswerAdminController@index'
+        ]);
+
+        /**
+         * edit-add
+         */
+        Route::get('admin/sites/stackoverflow/answer/edit', [
+            'as' => 'stackoverflow_answer.edit',
+            'uses' => 'StackOverflowAnswerAdminController@edit'
+        ]);
+
+        /**
+         * copy
+         */
+        Route::get('admin/sites/stackoverflow/answer/copy', [
+            'as' => 'stackoverflow_answer.copy',
+            'uses' => 'StackOverflowAnswerAdminController@copy'
+        ]);
+
+        /**
+         * post
+         */
+        Route::post('admin/sites/stackoverflow/answer/edit', [
+            'as' => 'stackoverflow_answer.post',
+            'uses' => 'StackOverflowAnswerAdminController@post'
+        ]);
+
+        /**
+         * delete
+         */
+        Route::get('admin/sites/stackoverflow/answer/delete', [
+            'as' => 'stackoverflow_answer.delete',
+            'uses' => 'StackOverflowAnswerAdminController@delete'
+        ]);
+
+        /**
+         * trash
+         */
+        Route::get('admin/sites/stackoverflow/answer/trash', [
+            'as' => 'stackoverflow_answer.trash',
+            'uses' => 'StackOverflowAnswerAdminController@trash'
+        ]);
+
+        /**
+         * search
+         */
+        Route::get('admin/sites/stackoverflow/answer/search', [
+            'as' => 'stackoverflow_answer.search',
+            'uses' => 'StackOverflowAnswerAdminController@search'
+        ]);
     });//End Stackoverflow
+
+
 });
