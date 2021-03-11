@@ -374,4 +374,10 @@ class StackOverflowTagAdminController extends FooController {
         return view($this->page_views['admin']['lang'], $this->data_view);
     }
 
+    public function crawler() {
+
+        //Get
+        return Redirect::route($this->root_router.'.list')
+            ->withMessage(trans($this->plang_admin.'.actions.crawler-ok'));
+    }
 }

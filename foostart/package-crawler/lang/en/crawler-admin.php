@@ -127,7 +127,9 @@ return [
         'delete' => 'Delete',
         'delete-in-trash' => 'In trash',
         'delete-forever' => 'Forever',
-        'sent' => 'Sent'
+        'sent' => 'Sent',
+        'crawl_tag' => 'Crawl tag',
+        'crawl_question' => 'Crawl question',
     ],
 
 

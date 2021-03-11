@@ -46,6 +46,15 @@
 
                     <!--BODY-->
                     <div class="panel-body">
+                        <!--ADD BUTTONS-->
+                        <div class='btn-form'>
+                            <a href="{!! URL::route('stackoverflow_tag.crawler',['_token' => csrf_token()]) !!}"
+                               class="btn btn-info pull-right">
+                                {!! trans($plang_admin.'.buttons.crawl_tag') !!}
+                            </a>
+                        </div>
+                        <!--/ADD BUTTONS-->
+
                         {!! Form::open(['route'=>['sites.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
                             @include('package-crawler::admin.site.stackoverflow.tag-item')

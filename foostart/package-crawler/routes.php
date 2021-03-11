@@ -294,6 +294,14 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'StackOverflowTagAdminController@search'
         ]);
 
+        /**
+         * crawler
+         */
+        Route::get('admin/sites/stackoverflow/tag/crawler', [
+            'as' => 'stackoverflow_tag.crawler',
+            'uses' => 'StackOverflowTagAdminController@crawler'
+        ]);
+
         /*
           |-----------------------------------------------------------------------
           | Manage Questions of StackOverflow
