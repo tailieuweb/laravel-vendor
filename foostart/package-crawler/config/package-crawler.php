@@ -52,6 +52,19 @@ return [
             'min' => 3,
             'max' => 255,
         ],
+        //Stackoverflow question
+        'question_name' => [
+            'min' => 3,
+            'max' => 255,
+        ],
+        'question_url' => [
+            'min' => 3,
+            'max' => 255,
+        ],
+        'question_description' => [
+            'min' => 3,
+            'max' => 0,//Unlimit
+        ],
     ],
     'per_page' => 1,
 

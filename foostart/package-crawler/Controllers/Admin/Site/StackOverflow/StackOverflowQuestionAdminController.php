@@ -13,13 +13,19 @@
 
 
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\Dumper\AbstractDumper;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Sites;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTags;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTagsQuestions;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowAnswers;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowQuestions;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowComments;
 use Foostart\Category\Models\Category;
-use Foostart\Crawler\Validators\SitesValidator;
+use Foostart\Crawler\Validators\Sites\StackoverflowQuestionsValidator;
 use Illuminate\Support\Facades\DB;
 
 class StackOverflowQuestionAdminController extends FooController {
@@ -33,11 +39,11 @@ class StackOverflowQuestionAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Sites(array('perPage' => 10));
+        $this->obj_item = new StackoverflowQuestions(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new SitesValidator();
+        $this->obj_validator = new StackoverflowQuestionsValidator();
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
         $this->plang_admin = 'crawler-admin';
@@ -45,10 +51,10 @@ class StackOverflowQuestionAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'crawler';
+        $this->package_base_name = 'site.stackoverflow.question';
 
         // root routers
-        $this->root_router = 'crawlers';
+        $this->root_router = 'stackoverflow_question';
 
         // page views
         $this->page_views = [

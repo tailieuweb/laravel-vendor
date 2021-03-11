@@ -8,7 +8,7 @@ class CreateSiteStackoverflowQuestionsTable extends FoostartMigration
 {
     public function __construct() {
         $this->table = 'site_stackoverflow_questions';
-        $this->prefix_column = 'tag_';
+        $this->prefix_column = 'question_';
     }
     /**
      * Run the migrations.
@@ -25,7 +25,8 @@ class CreateSiteStackoverflowQuestionsTable extends FoostartMigration
             // Relation
 
             // Other attributes
-            $table->string($this->prefix_column . 'name', 55)->comment('Name');
+            $table->string($this->prefix_column . 'name', 255)->comment('Name');
+            $table->string($this->prefix_column . 'url', 255)->comment('URL');
             $table->text($this->prefix_column . 'description')->comment('Description');
             $table->string($this->prefix_column . 'url_user', 55)->comment('URL user');
 

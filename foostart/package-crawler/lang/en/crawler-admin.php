@@ -74,7 +74,9 @@ return [
         'view_pattern' => 'Patterns',
         'num_questions' => 'Questions',
         'tag_name' => 'Tag name',
-        'tag_num_questions' => 'Questions'
+        'tag_num_questions' => 'Questions',
+        'question_name' => 'Question name',
+        'question_description' => 'Question description'
     ],
 
 
@@ -97,7 +99,9 @@ return [
         'title-pattern' => 'List of patterns',
         'title-list-search-site' => 'Search sites',
         'title-list-search-pattern' => 'Search patterns',
-        'title-edit-tag' => 'Edit tag'
+        'title-edit-tag' => 'Edit tag',
+        'title-questions' => 'List of questions',
+        'title-edit-question' => 'Edit questions',
     ],
 
 
@@ -191,6 +195,8 @@ return [
         'tag_overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'tag_other' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'tag_num_questions' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'question_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'question_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -239,6 +245,7 @@ return [
         'site_id' => 'ID',
         'tag_name' => 'Tag name',
         'tag_url' => 'Tag url',
+        'question_name' => 'Question name'
 
     ],
 
@@ -290,7 +297,13 @@ return [
         'tag_other' => 'Tag other',
         'tag_num_questions' => 'Number questions',
         'title-search-tag' => 'Search tags',
-        'unknown' => 'Unknown'
+        'unknown' => 'Unknown',
+        'title-search-question' => 'Search questions',
+        'question_name' => 'Question name',
+        'question_url' => 'Question URL',
+        'question_description' => 'Question description',
+        'question_url_user' => 'URL user',
+
     ],
 
 

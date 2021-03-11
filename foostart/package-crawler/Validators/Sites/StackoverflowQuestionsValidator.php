@@ -16,8 +16,9 @@ class StackoverflowQuestionsValidator extends FooValidator
     {
         // add rules
         self::$rules = [
-            'site_name' => ["required"],
-            'site_description' => ["required"],
+            'question_name' => ["required"],
+            'question_url' => ["required"],
+            'question_description' => ["required"],
         ];
 
         // set configs
@@ -34,8 +35,9 @@ class StackoverflowQuestionsValidator extends FooValidator
         Event::listen('validating', function($input)
         {
             self::$messages = [
-                'site_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
-                'site_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
+                'question_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.question_name')]),
+                'question_url.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.question_url')]),
+                'question_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.question_description')]),
                 ];
         });
 
@@ -56,22 +58,29 @@ class StackoverflowQuestionsValidator extends FooValidator
         $_ln = self::$configs['length'];
 
         $params = [
-            'name' => [
-                'key' => 'site_name',
-                'label' => trans($this->lang_admin.'.fields.name'),
-                'min' => $_ln['site_name']['min'],
-                'max' => $_ln['site_name']['max'],
+            'question_name' => [
+                'key' => 'question_name',
+                'label' => trans($this->lang_admin.'.fields.question_name'),
+                'min' => $_ln['question_name']['min'],
+                'max' => $_ln['question_name']['max'],
             ],
-            'description' => [
-                'key' => 'site_description',
-                'label' => trans($this->lang_admin.'.fields.description'),
-                'min' => $_ln['site_description']['min'],
-                'max' => $_ln['site_description']['max'],
+            'question_url' => [
+                'key' => 'question_url',
+                'label' => trans($this->lang_admin.'.fields.question_url'),
+                'min' => $_ln['question_url']['min'],
+                'max' => $_ln['question_url']['max'],
+            ],
+            'question_description' => [
+                'key' => 'question_description',
+                'label' => trans($this->lang_admin.'.fields.question_description'),
+                'min' => $_ln['question_description']['min'],
+                'max' => $_ln['question_description']['max'],
             ],
         ];
 
-        $flag = $this->isValidLength($input['site_name'], $params['name']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['site_description'], $params['description']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['question_name'], $params['question_name']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['question_url'], $params['question_url']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['question_description'], $params['question_description']) ? $flag : FALSE;
         return $flag;
     }
 
