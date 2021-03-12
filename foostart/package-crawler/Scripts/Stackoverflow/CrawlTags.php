@@ -64,6 +64,7 @@ class CrawlTags extends Site{
             if (!empty($obj_tag)) {
                 $obj_tag->insertItems($data);
             }
+            return true;
         }
     }
 }

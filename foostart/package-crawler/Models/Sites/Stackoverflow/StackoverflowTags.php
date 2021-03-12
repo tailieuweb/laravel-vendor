@@ -285,11 +285,11 @@ class StackoverflowTags extends FooModel {
 
             $item = [
               'user_id' => 1,
-              'tag_name' => @$tag_name,
-              'tag_url' => @$data['tag_url'][$key],
-              'tag_overview' => @$data['tag_overview'][$key],
-              'tag_num_questions' => @$data['tag_num_questions'][$key],
-              'tag_other' => @$data['tag_other'][$key],
+              'tag_name' => trim(@$tag_name),
+              'tag_url' => trim(@$data['tag_url'][$key]),
+              'tag_overview' => trim(@$data['tag_overview'][$key]),
+              'tag_num_questions' => trim(@$data['tag_num_questions'][$key]),
+              'tag_other' => trim(@$data['tag_other'][$key]),
             ];
             $this->insertItem($item);
         }

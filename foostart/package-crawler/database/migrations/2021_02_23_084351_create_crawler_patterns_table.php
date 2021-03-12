@@ -28,7 +28,7 @@ class CreateCrawlerPatternsTable extends FoostartMigration
             // Other attributes
             $table->string($this->prefix_column . 'name', 55)->comment('Name');
             $table->string($this->prefix_column . 'machine_name', 55)->comment('Machine name');
-            $table->text($this->prefix_column . 'description')->comment('Description');
+            $table->text($this->prefix_column . 'description')->nullable()->comment('Description');
             
             //Set common columns
             $this->setCommonColumns($table);
