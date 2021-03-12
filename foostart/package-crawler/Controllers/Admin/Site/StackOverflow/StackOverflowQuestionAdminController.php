@@ -10,8 +10,6 @@
 |
 */
 
-
-
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\Dumper\AbstractDumper;
 use URL, Route, Redirect;
@@ -19,6 +17,8 @@ use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Sites;
+use Foostart\Crawler\Models\Patterns;
+use Foostart\Crawler\Models\RegularExpressions;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTags;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTagsQuestions;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowAnswers;
@@ -27,6 +27,8 @@ use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowComments;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\Sites\StackoverflowQuestionsValidator;
 use Illuminate\Support\Facades\DB;
+
+use Foostart\Crawler\Scripts\Stackoverflow\CrawlQuestions;
 
 class StackOverflowQuestionAdminController extends FooController {
 
@@ -464,6 +466,31 @@ class StackOverflowQuestionAdminController extends FooController {
             echo json_encode($data);
 
         }
+    }
+
+    public function crawler() {
+
+        //Object
+        $obj_pattern = new Patterns();
+        $obj_tag = new StackoverflowTags();
+        $obj_question = new StackoverflowQuestions();
+        $obj_crawlQuestions = new CrawlQuestions();
+
+        //Get list of tags
+        $tags = StackoverflowTags::all();
+
+        //Get patterns of Stack Ovreflow
+        $site_id = 1;
+        $params = [
+            'site_id' => 1,
+        ];
+        $patterns = $obj_pattern->selectItems($params);
+
+        //Crawl
+        $obj_crawlQuestions->getQuestions($patterns, $tags, $obj_question);
+
+        return Redirect::route($this->root_router.'.list')
+            ->withMessage(trans($this->plang_admin.'.actions.crawler-ok'));
     }
 
 }

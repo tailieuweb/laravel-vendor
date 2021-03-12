@@ -322,4 +322,20 @@ class StackoverflowQuestions extends FooModel {
 
         return $items;
     }
+
+    /**
+     * Insert items
+     */
+    public function insertItems($data = []) {
+
+        foreach ($data['question_name'] as $key => $value) {
+
+            $item = [
+                'user_id' => 1,
+                'question_name' => trim(@$value),
+                'question_url' => trim(@$data['question_url'][$key]),
+            ];
+            $this->insertItem($item);
+        }
+    }
 }

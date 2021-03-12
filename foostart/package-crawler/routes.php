@@ -294,13 +294,6 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'StackOverflowTagAdminController@search'
         ]);
 
-        /**
-         * crawler
-         */
-        Route::get('admin/sites/stackoverflow/tag/crawler', [
-            'as' => 'stackoverflow_tag.crawler',
-            'uses' => 'StackOverflowTagAdminController@crawler'
-        ]);
 
         /*
           |-----------------------------------------------------------------------
@@ -434,6 +427,22 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('admin/sites/stackoverflow/answer/search', [
             'as' => 'stackoverflow_answer.search',
             'uses' => 'StackOverflowAnswerAdminController@search'
+        ]);
+
+        /**
+         * crawler
+         */
+        Route::get('admin/sites/stackoverflow/tag/crawler', [
+            'as' => 'stackoverflow_tag.crawler',
+            'uses' => 'StackOverflowTagAdminController@crawler'
+        ]);
+        Route::get('admin/sites/stackoverflow/question/crawler', [
+            'as' => 'stackoverflow_question.crawler',
+            'uses' => 'StackOverflowQuestionAdminController@crawler'
+        ]);
+        Route::get('admin/sites/stackoverflow/answer/crawler', [
+            'as' => 'stackoverflow_answer.crawler',
+            'uses' => 'StackOverflowAnswerAdminController@crawler'
         ]);
     });//End Stackoverflow
 

@@ -46,10 +46,19 @@
 
                     <!--BODY-->
                     <div class="panel-body">
+
+                        <!--ADD BUTTONS-->
+                        <div class='btn-form'>
+                            <a href="{!! URL::route('stackoverflow_answer.crawler',['question_id' => $question_id,'_token' => csrf_token()]) !!}"
+                               class="btn btn-info">
+                                {!! trans($plang_admin.'.buttons.crawl_answer') !!}
+                            </a>
+                        </div>
+                        <!--/ADD BUTTONS-->
+
                         {!! Form::open(['route'=>['sites.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
                             @include('package-crawler::admin.site.stackoverflow.answer-item')
-
                             {!! csrf_field(); !!}
 
                         {!! Form::close() !!}

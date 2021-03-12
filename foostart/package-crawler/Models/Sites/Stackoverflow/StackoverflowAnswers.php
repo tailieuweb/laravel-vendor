@@ -27,7 +27,7 @@ class StackoverflowAnswers extends FooModel {
             'answer_description',
             'answer_url_user',
             //Relation
-            'questions_id',
+            'question_id',
         ]);
 
         //list of fields for inserting
@@ -305,6 +305,22 @@ class StackoverflowAnswers extends FooModel {
         // $item->id = $item->$key;
 
         return $crawler;
+    }
+
+    /**
+     * Insert items
+     */
+    public function insertItems($data = []) {
+
+        foreach ($data['answer_description'] as $key => $value) {
+
+            $item = [
+                'question_id' => $data['question_id'],
+                'user_id' => 1,
+                'answer_description' => trim(@$value),
+            ];
+            $this->insertItem($item);
+        }
     }
 
 

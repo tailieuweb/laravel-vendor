@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Sites;
+use Foostart\Crawler\Models\Patterns;
+use Foostart\Crawler\Models\RegularExpressions;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTags;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTagsQuestions;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowAnswers;
@@ -27,6 +29,8 @@ use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowComments;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\Sites\StackoverflowAnswersValidator;
 use Illuminate\Support\Facades\DB;
+
+use Foostart\Crawler\Scripts\Stackoverflow\CrawlAnswers;
 
 class StackOverflowAnswerAdminController extends FooController {
 
@@ -87,6 +91,7 @@ class StackOverflowAnswerAdminController extends FooController {
     public function index(Request $request) {
 
         $params = $request->all();
+        $question_id = $request->get('question_id');
 
         $items = $this->obj_item->selectItems($params);
 
@@ -95,6 +100,7 @@ class StackOverflowAnswerAdminController extends FooController {
             'items' => $items,
             'request' => $request,
             'params' => $params,
+            'question_id' => $question_id,
             'config_status' => $this->obj_item->config_status
         ));
 
@@ -419,52 +425,36 @@ class StackOverflowAnswerAdminController extends FooController {
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 
-    /**
-     * Search user by name
-     * @return view edit page
-     * @date 23/04/2018
-     */
-    public function search(Request $request){
-        if($request->ajax())
-        {
-            $output = '';
-            $query = $request->get('query');
-            if($query != '')
-            {
-            $data = DB::table('user_profile')
-                ->where('last_name', 'like', '%'.$query.'%')
-                ->orWhere('first_name', 'like', '%'.$query.'%')
-                ->get();
-            }
-            $total_row = $data->count();
-            if($total_row > 0)
-            {
-                foreach($data as $row)
-                {
-                    $output .= '
-                    <tr>
-                    <td>'.$row->id.'</td>
-                    <td>'.$row->first_name.'</td>
-                    <td>'.$row->last_name.'</td>
-                    </tr>
-                    ';
-                }
-            }else
-            {
-                $output = '
-                <tr>
-                    <td align="center" colspan="5">No Data Found</td>
-                </tr>
-                ';
-            }
-            $data = array(
-                'table_data'  => $output,
-                'total_data'  => $total_row
-               );
+    public function crawler(Request $request) {
 
-            echo json_encode($data);
-
+        $question_id = $request->get('question_id', NULL);
+        if (empty($question_id)) {
+            return Redirect::route('stackoverflow_question.list');
         }
+
+
+        //Object
+        $obj_pattern = new Patterns();
+        $obj_tag = new StackoverflowTags();
+        $obj_question = new StackoverflowQuestions();
+        $obj_answer = new StackoverflowAnswers();
+        $obj_crawlAnswers = new CrawlAnswers();
+
+        //Get list of questions
+        $questions = $obj_question->selectItems();
+
+        //Get patterns of Stack Ovreflow
+        $site_id = 1;
+        $params = [
+            'site_id' => 1,
+        ];
+        $patterns = $obj_pattern->selectItems($params);
+
+        //Crawl
+        $obj_crawlAnswers->getAnswers($patterns, $questions, $obj_answer);
+
+        return Redirect::route($this->root_router.'.list', ['question_id' => $question_id])
+            ->withMessage(trans($this->plang_admin.'.actions.crawler-ok'));
     }
 
 }

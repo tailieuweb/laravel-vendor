@@ -130,6 +130,7 @@ return [
         'sent' => 'Sent',
         'crawl_tag' => 'Crawl tag',
         'crawl_question' => 'Crawl question',
+        'crawl_answer' => 'Crawl answer',
     ],
 
 

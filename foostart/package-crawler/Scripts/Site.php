@@ -18,4 +18,14 @@ class Site
         return $values;
     }
 
+    public function getValue($pattern, $content) {
+        preg_match_all($pattern, $content, $matches);
+
+        $value = 0;
+        if (!empty($matches[1]) && !empty($matches[1][0])) {
+            $value = $matches[1][0];
+        }
+
+        return intval($value);
+    }
 }
