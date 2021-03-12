@@ -25,10 +25,8 @@ class Sample extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'sample_name',
-            'sample_email',
-            'sample_phone',
-            'sample_title',
             'sample_description',
+            'version_id'
 
         ]);
 
@@ -38,30 +36,19 @@ class Sample extends FooModel {
                 'name' => 'sample_name',
                 'type' => 'Text',
             ],
-             'sample_email' => [
-                'name' => 'sample_email',
-                'type' => 'Text',
-            ],
-            'sample_phone' => [
-                'name' => 'sample_phone',
-                'type' => 'Text',
-            ],
             'sample_description' => [
                 'name' => 'sample_description',
                 'type' => 'Text',
             ],
-            'sample_title' => [
-                'name' => 'sample_title',
-                'type' => 'Text',
+            'version_id' => [
+                'name' => 'version_id',
+                'type' => 'Int',
             ],
         ]);
         
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [            
             'sample_title',
-            'sample_email',
-            'sample_phone',
-            'sample_name',
             'sample_description',
         ]);
 
@@ -167,21 +154,7 @@ class Sample extends FooModel {
                                 $elo = $elo->where($this->table . '.sample_name', '=', $value);
                             }
                             break;
-                        case 'sample_title':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.sample_title', '=', $value);
-                            }
-                            break;
-                        case 'sample_phone':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.sample_phone', '=', $value);
-                            }
-                            break;
-                        case 'sample_email':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.sample_email', '=', $value);
-                            }
-                            break;
+
                         case 'status':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.'.$this->field_status, '=', $value);
@@ -253,9 +226,18 @@ class Sample extends FooModel {
             }
 
             $item->save();
-              //add new attribute
-            $item->id = $item->sample_id;
 
+            //Version id
+            if (empty($item->version_id)) {
+                $item->version_id = 1;
+                $item->save();
+            } else {
+                $item->version_id = intval($item->version_id) + 1;
+                $item->save();
+            }
+
+            //add new attribute
+            $item->id = $item->sample_id;
 
             return $item;
         } else {
@@ -277,6 +259,12 @@ class Sample extends FooModel {
 
         $key = $this->primaryKey;
         $item->id = $item->$key;
+
+        //Version id
+        if (empty($item->version_id)) {
+            $item->version_id = 1;
+            $item->save();
+        }
 
         return $item;
     }

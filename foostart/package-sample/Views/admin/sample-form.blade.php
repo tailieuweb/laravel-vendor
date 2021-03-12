@@ -38,63 +38,25 @@
         <!--MENU 1-->
         <div id="menu_1" class="tab-pane fade in active">
 
-            <!--TITLE-->
+            <!--NAME-->
             @include('package-category::admin.partials.input_text', [
-                'name' => 'sample_title',
-                'label' => trans($plang_admin.'.labels.title'),
-                'value' => @$item->sample_title,
-                'description' => trans($plang_admin.'.descriptions.title'),
+                'name' => 'sample_name',
+                'label' => trans($plang_admin.'.labels.name'),
+                'value' => @$item->sample_name,
+                'description' => trans($plang_admin.'.descriptions.name'),
                 'errors' => $errors,
             ])
-            <!--/TITLE-->
-            <div class="row">
-                <div class='col-md-6'>
-                    <!--NAME-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'sample_name',
-                        'label' => trans($plang_admin.'.labels.name'),
-                        'value' => @$item->sample_name,
-                        'description' => trans($plang_admin.'.descriptions.name'),
-                        'errors' => $errors,
-                    ])
-                    <!-- /NAME-->
-                </div>
-                
-                <div class='col-md-6'>
-                    <!--EMAIL-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'sample_email',
-                        'label' => trans($plang_admin.'.labels.email'),
-                        'value' => @$item->sample_email,
-                        'description' => trans($plang_admin.'.descriptions.email'),
-                        'errors' => $errors,
-                    ])
-                    <!-- /EMAIL-->
-                </div>
-                
-                <div class='col-md-6'>
-                    <!--PHONE-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'sample_phone',
-                        'label' => trans($plang_admin.'.labels.phone'),
-                        'value' => @$item->sample_phone,
-                        'description' => trans($plang_admin.'.descriptions.sample-phone'),
-                    ])
-                </div>
-                
-                <div class="col-md-6">
-                    <!--STATUS-->
-                    @include('package-category::admin.partials.select_single', [
-                        'name' => 'status',
-                        'label' => trans($plang_admin.'.form.status'),
-                        'value' => @$item->status,
-                        'items' => $status,
-                        'description' => trans($plang_admin.'.descriptions.status'),
-                    ])
-                    <!--/STATUS-->
-                </div>
-            </div>
-            
+
+            <!--STATUS-->
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'status',
+                'label' => trans($plang_admin.'.form.status'),
+                'value' => @$item->status,
+                'items' => $status,
+                'description' => trans($plang_admin.'.descriptions.status'),
+            ])
+            <!--/STATUS-->
+
              <!--DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
                 'name' => 'sample_description',
@@ -114,6 +76,7 @@
     <!--HIDDEN FIELDS-->
     <div class='hidden-field'>
         {!! Form::hidden('id',@$item->id) !!}
+        {!! Form::hidden('version_id',@$item->version_id) !!}
         {!! Form::hidden('context',$request->get('context',null)) !!}
     </div>
     <!--/HIDDEN FIELDS-->

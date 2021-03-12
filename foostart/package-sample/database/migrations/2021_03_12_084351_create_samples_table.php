@@ -25,13 +25,9 @@ class CreateSamplesTable extends FoostartMigration
             // Relation
             
             // Other attributes
-            //Sender
             $table->string($this->prefix_column . 'name', 255)->comment('Name');
-            $table->string($this->prefix_column . 'email', 100)->comment('Email');
-            $table->string($this->prefix_column . 'phone', 50)->comment('Phone');
-            $table->string($this->prefix_column . 'title', 255)->comment('Title');
             $table->text($this->prefix_column . 'description')->comment('Description');
-            
+            $table->integer('version_id')->nullable()->comment('Version ID');
             
             //Set common columns
             $this->setCommonColumns($table);
