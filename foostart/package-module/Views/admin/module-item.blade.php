@@ -3,7 +3,7 @@
     $withs = [
         'counter' => '10%',
         'id' => '10%',        
-        'title' => '20%',
+        'module_name' => '30%',
         'status' => '15%',
         'updated_at' => '20%',
         'operations' => '10%',
@@ -49,9 +49,9 @@
                 </a>
             </th>
 
-            <!--TITLE-->
-            <?php $name = 'module_title' ?>
-            <th class="hidden-xs" style='width:{{ $withs['title'] }}'>{!! trans($plang_admin.'.columns.title') !!}
+            <!--NAME-->
+            <?php $name = 'module_name' ?>
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>{!! trans($plang_admin.'.columns.module_name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -130,7 +130,15 @@
                 <td> {!! $item->module_id !!}</td>
 
                 <!--NAME-->
-                <td> {!! $item->module_name !!} </td>
+                <td>
+                    <a href="{!! URL::route('modules.view',[    'id' => $item->id,
+                                                                '_token' => csrf_token(),
+                                                            ])
+                             !!}"
+                       class="margin-left-5">
+                    {!! $item->module_name !!}
+                    </a>
+                </td>
 
                 <!--STATUS-->
                 <td style="text-align: center;">

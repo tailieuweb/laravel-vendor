@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Session\TokenMismatchException;
-
+use Foostart\Module\Controllers\Admin;
 /**
  * USER
  */
@@ -62,6 +62,14 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('admin/modules/list', [
             'as' => 'modules.list',
             'uses' => 'ModuleAdminController@index'
+        ]);
+
+        /**
+         * view
+         */
+        Route::get('admin/modules/view', [
+            'as' => 'modules.view',
+            'uses' => 'ModuleAdminController@view'
         ]);
 
         /**
@@ -142,3 +150,18 @@ Route::group(['middleware' => ['web']], function () {
 
     });
 });
+
+/**
+ * view
+ */
+Route::group(['middleware' => ['web'], 'namespace' => 'Foostart\Module\Controllers\Admin'],
+    function () {
+    /**
+     * list
+     */
+        Route::get('modules/view', [
+            'as' => 'modules.viewfront',
+            'uses' => 'ModuleAdminController@viewfront'
+        ]);
+});
+

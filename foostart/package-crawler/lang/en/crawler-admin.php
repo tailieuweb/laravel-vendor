@@ -10,7 +10,7 @@ return [
     |
     */
     'menus' => [
-        'top-menu' => 'Crawlers'
+        'top-menu' => 'Sites'
     ],
 
 

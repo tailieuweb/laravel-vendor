@@ -21,6 +21,7 @@ View::composer([
                 'package-module::admin.module-search',
                 'package-module::admin.module-config',
                 'package-module::admin.module-lang',
+                'package-module::admin.module-view',
     ], function ($view) {
 
         //Order by params
@@ -73,7 +74,7 @@ View::composer([
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
             'id' => trans($plang_admin.'.fields.id'),
-            'module_title' => trans($plang_admin.'.fields.title'),
+            'module_name' => trans($plang_admin.'.fields.module_name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),
         ];

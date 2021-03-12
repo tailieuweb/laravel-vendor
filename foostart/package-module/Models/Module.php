@@ -25,10 +25,11 @@ class Module extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'module_name',
-            'module_email',
-            'module_phone',
-            'module_title',
+            'module_slug',
             'module_description',
+            'module_html',
+            'module_css',
+            'module_javascript',
 
         ]);
 
@@ -38,31 +39,40 @@ class Module extends FooModel {
                 'name' => 'module_name',
                 'type' => 'Text',
             ],
-             'module_email' => [
-                'name' => 'module_email',
-                'type' => 'Text',
-            ],
-            'module_phone' => [
-                'name' => 'module_phone',
+             'module_slug' => [
+                'name' => 'module_slug',
                 'type' => 'Text',
             ],
             'module_description' => [
                 'name' => 'module_description',
                 'type' => 'Text',
             ],
-            'module_title' => [
-                'name' => 'module_title',
+            'module_description' => [
+                'name' => 'module_description',
+                'type' => 'Text',
+            ],
+            'module_html' => [
+                'name' => 'module_html',
+                'type' => 'Text',
+            ],
+            'module_css' => [
+                'name' => 'module_css',
+                'type' => 'Text',
+            ],
+            'module_javascript' => [
+                'name' => 'module_javascript',
                 'type' => 'Text',
             ],
         ]);
         
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [            
-            'module_title',
-            'module_email',
-            'module_phone',
             'module_name',
+            'module_slug',
             'module_description',
+            'module_html',
+            'module_css',
+            'module_javascript',
         ]);
 
         //check valid fields for ordering
@@ -165,21 +175,6 @@ class Module extends FooModel {
                         case 'module_name':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.module_name', '=', $value);
-                            }
-                            break;
-                        case 'module_title':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.module_title', '=', $value);
-                            }
-                            break;
-                        case 'module_phone':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.module_phone', '=', $value);
-                            }
-                            break;
-                        case 'module_email':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.module_email', '=', $value);
                             }
                             break;
                         case 'status':
@@ -306,15 +301,6 @@ class Module extends FooModel {
         return FALSE;
     }
 
-
-    /**
-     * Get list of statuses to push to select
-     * @return ARRAY list of statuses
-     */
-    public function getPluckStatus() {
-        $pluck_status = config('package-module.status.list');
-        return $pluck_status;
-     }
 
     /**
      *

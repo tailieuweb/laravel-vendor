@@ -4,8 +4,12 @@
 class Site
 {
     public function getContentByURL($url) {
-        $content = file_get_contents($url);
-        return $content;
+        try {
+            $content = file_get_contents($url);
+            return $content;
+        } catch (\Exception $e) {
+            return NULL;
+        }
     }
 
     public function getValues($pattern, $content) {

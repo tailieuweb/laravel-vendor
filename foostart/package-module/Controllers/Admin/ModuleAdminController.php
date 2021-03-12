@@ -61,15 +61,12 @@ class ModuleAdminController extends FooController {
                 'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
                 'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
                 'sample'  => $this->package_name.'::admin.'.$this->package_base_name.'-sample',
-                'mail'  => $this->package_name.'::admin.'.$this->package_base_name.'-mail',
+                'view'  => $this->package_name.'::admin.'.$this->package_base_name.'-view',
+                'viewfront'  => $this->package_name.'::admin.'.$this->package_base_name.'-viewfront',
             ]
         ];
 
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
-
-        $this->statuses = config('package-module.status.list');
-        $this->obj_sample = config('package-module.sample.list');
-
 
         // //set category
         $this->category_ref_name = 'admin/modules';
@@ -138,6 +135,7 @@ class ModuleAdminController extends FooController {
             'request' => $request,
             'context' => $context,
         ));
+
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 
@@ -461,6 +459,86 @@ class ModuleAdminController extends FooController {
             echo json_encode($data);
 
         }
+    }
+
+    public function view(Request $request) {
+
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['id'] = $request->get('id', NULL);
+
+        $context = $this->obj_item->getContext($this->category_ref_name);
+
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+
+            if (empty($item)) {
+                return Redirect::route($this->root_router.'.list')
+                    ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+            }
+        } else {
+            return Redirect::route($this->root_router.'.list');
+        }
+
+        //get categories by context
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($params);
+        }
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'item' => $item,
+            'categories' => $categories,
+            'request' => $request,
+            'context' => $context,
+        ));
+
+        return view($this->page_views['admin']['view'], $this->data_view);
+    }
+
+    public function viewfront(Request $request) {
+
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['id'] = $request->get('id', NULL);
+
+        $context = $this->obj_item->getContext($this->category_ref_name);
+
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+
+            if (empty($item)) {
+                return Redirect::route($this->root_router.'.list')
+                    ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+            }
+        } else {
+            return Redirect::route($this->root_router.'.list');
+        }
+
+        //get categories by context
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($params);
+        }
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'item' => $item,
+            'categories' => $categories,
+            'request' => $request,
+            'context' => $context,
+        ));
+
+        return view($this->page_views['admin']['viewfront'], $this->data_view);
     }
 
 }

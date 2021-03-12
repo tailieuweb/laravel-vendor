@@ -23,16 +23,17 @@ class CreateModulesTable extends FoostartMigration
             $table->increments($this->prefix_column . 'id')->comment('Primary key');
             
             // Relation
+            $table->integer('category_id')->nullable()->comment('Category ID');
             
             // Other attributes
             //Sender
             $table->string($this->prefix_column . 'name', 255)->comment('Name');
-            $table->string($this->prefix_column . 'email', 100)->comment('Email');
-            $table->string($this->prefix_column . 'phone', 50)->comment('Phone');
-            $table->string($this->prefix_column . 'title', 255)->comment('Title');
-            $table->text($this->prefix_column . 'description')->comment('Description');
-            
-            
+            $table->string($this->prefix_column . 'slug', 255)->comment('Slug');
+            $table->text($this->prefix_column . 'description')->nullable()->comment('Description');
+            $table->text($this->prefix_column . 'html')->comment('html');
+            $table->text($this->prefix_column . 'css')->nullable()->comment('css');
+            $table->text($this->prefix_column . 'javascript')->nullable()->comment('javascript');
+
             //Set common columns
             $this->setCommonColumns($table);
         });

@@ -1,7 +1,7 @@
 @extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {{ trans($plang_admin.'.pages.title-questions') }}
+    {{ trans($plang_admin.'.pages.title-list') }}
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
                     <!--HEADING-->
                     <div class="panel-heading">
                         <h3 class="panel-title bariol-thin"><i class="fa fa-list-ul" aria-hidden="true"></i>
-                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search-questions') : trans($plang_admin.'.pages.title-questions') !!}
+                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search') : trans($plang_admin.'.pages.title-list') !!}
                         </h3>
                     </div>
 
@@ -44,25 +44,13 @@
                     @endif
                     <!--/ERRORS-->
 
-                    <!--ADD BUTTONS-->
-                    <div class='btn-form' style="margin-right: 15px;">
-                        <a href="{!! URL::route('stackoverflow_question.crawler',['_token' => csrf_token()]) !!}"
-                           class="btn btn-info pull-right">
-                            {!! trans($plang_admin.'.buttons.crawl_question') !!}
-                        </a>
-                    </div>
-                    <!--/ADD BUTTONS-->
-
                     <!--BODY-->
                     <div class="panel-body">
+                        <iframe src="{{ URL::route('modules.viewfront',[  'id' => $item->id]) }}"
+                                width="100%" height="500">
+                            {!! $item->module_html !!}
+                        </iframe>
 
-                        {!! Form::open(['route'=>['sites.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
-
-                            @include('package-crawler::admin.site.stackoverflow.question-item')
-
-                            {!! csrf_field(); !!}
-
-                        {!! Form::close() !!}
                     </div>
                     <!--/BODY-->
 
@@ -72,7 +60,7 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-crawler::admin.site.stackoverflow.question-search')
+                @include('package-module::admin.module-search')
             </div>
             <!--/SEARCH-->
 

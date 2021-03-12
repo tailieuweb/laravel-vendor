@@ -62,6 +62,7 @@ return [
         'title' => 'Title',
         'email' => 'Email',
         'message' => 'Message',
+        'module_name' => 'Module name'
     ],
 
 
@@ -155,6 +156,12 @@ return [
         'message'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'answer'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'title'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'module_name'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'module_slug'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'module_description'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'module_html'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'module_css'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'module_javascript'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -230,7 +237,13 @@ return [
         'message'        => 'Message',
         'answer'        => 'Answer',
         'title'        => 'Title',
-        'phone' => 'Phone'
+        'phone' => 'Phone',
+        'module_name' => 'Module name',
+        'module_slug' => 'Module slug',
+        'module_description' => 'Module description',
+        'module_html' => 'Source HTML',
+        'module_css' => 'Source CSS',
+        'module_javascript' => 'Source JavaScript',
     ],
 
 
@@ -248,9 +261,9 @@ return [
       */
     'tabs' => [
         'menu-1' => 'Basic',
-        'menu-2' => 'Advance',
-        'menu-3' => 'Other',
-        'menu-4' => 'Assigner',
+        'menu-2' => 'HTML',
+        'menu-3' => 'CSS',
+        'menu-4' => 'JavaScript',
         'menu-5' => 'Answer',
         'menu-6' => 'Menu 6',
         'menu-7' => 'Menu 7',

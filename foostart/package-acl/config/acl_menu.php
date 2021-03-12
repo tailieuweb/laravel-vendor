@@ -88,5 +88,26 @@ return [
                 "link"        => '/admin/posts',
                 "permissions" => [$admin, '_user-editor']
             ],
+            //Site
+            [
+                'name'        => 'crawler-admin.menus.top-menu',
+                "route"       => "sites.list",
+                "link"        => '/admin/sites',
+                "permissions" => [$admin, '_user-editor']
+            ],
+            //Module
+            [
+                'name'        => 'module-admin.menus.top-menu',
+                "route"       => "modules",
+                "link"        => '/admin/modules',
+                "permissions" => [$admin, '_user-editor']
+            ],
+            //Sample
+            [
+                'name'        => 'sample-admin.menus.top-menu',
+                "route"       => "samples",
+                "link"        => '/admin/samples',
+                "permissions" => [$admin, '_user-editor']
+            ],
     ]
 ];

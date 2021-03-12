@@ -32,6 +32,9 @@ class CrawlAnswers extends Site{
             $pages = intval(ceil($counter / 30));
             $pages = ($pages == 0) ? 1 : $pages;
 
+            $data = [];
+
+            $flag = true;
             for ($index = 1; $index <= $pages; $index++ ) {
                 $url = $url_answers . '?page=' . $index;
                 $html = $this->getContentByURL($url);
@@ -40,7 +43,6 @@ class CrawlAnswers extends Site{
                 $re_answer_description = @$pattern->regular_expressions->first()->regular_expression_value;
 
                 //
-                $data = [];
                 /**
                  * Parse content by pattern
                  */
@@ -48,6 +50,12 @@ class CrawlAnswers extends Site{
                     'answer_description' => $this->getValues($re_answer_description, $html),
                     'question_id' => $question->question_id
                 ];
+
+                if ($flag) {
+                    $flag = false;
+                    $question->question_description = array_shift($data['answer_description']);
+                    $question->save();
+                }
 
                 /**
                  * Insert into answers

@@ -82,7 +82,6 @@ class PostAdminController extends FooController {
         $this->data_view['context'] = $this->context;
         $this->data_view['slideshow'] = $this->obj_slideshow->pluckSelect();
 
-
         /**
          * Breadcrumb
          */
