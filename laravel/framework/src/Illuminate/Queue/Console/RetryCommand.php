@@ -2,8 +2,12 @@
 
 namespace Illuminate\Queue\Console;
 
+use DateTimeInterface;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use RuntimeException;
 
 class RetryCommand extends Command
 {
@@ -126,10 +130,26 @@ class RetryCommand extends Command
     {
         $payload = json_decode($payload, true);
 
-        $instance = unserialize($payload['data']['command']);
+        if (! isset($payload['data']['command'])) {
+            return json_encode($payload);
+        }
+
+        if (Str::startsWith($payload['data']['command'], 'O:')) {
+            $instance = unserialize($payload['data']['command']);
+        } elseif ($this->laravel->bound(Encrypter::class)) {
+            $instance = unserialize($this->laravel->make(Encrypter::class)->decrypt($payload['data']['command']));
+        }
+
+        if (! isset($instance)) {
+            throw new RuntimeException('Unable to extract job payload.');
+        }
 
         if (is_object($instance) && method_exists($instance, 'retryUntil')) {
-            $payload['retryUntil'] = $instance->retryUntil()->timestamp;
+            $retryUntil = $instance->retryUntil();
+
+            $payload['retryUntil'] = $retryUntil instanceof DateTimeInterface
+                                        ? $retryUntil->getTimestamp()
+                                        : $retryUntil;
         }
 
         return json_encode($payload);
