@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '7a4d32c6b62ddd898457bd3897ee421ad2641094',
+    'reference' => '1cab52c20b6b96c73647b1fb0fb6f933109cc3ef',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -166,6 +166,60 @@ private static $installed = array (
       ),
       'reference' => 'd501fd2658d55491a2295ff600ae5978eaad7403',
     ),
+    'foostart/package-acl' => 
+    array (
+      'pretty_version' => '10.0.5',
+      'version' => '10.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '10628f0a4cb0d2bb41a6b1f325fd84be8a81ef5d',
+    ),
+    'foostart/package-category' => 
+    array (
+      'pretty_version' => '10.0.7',
+      'version' => '10.0.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '02fdb7411089779a2dd0368e586948ed40e3de1e',
+    ),
+    'foostart/package-filemanager' => 
+    array (
+      'pretty_version' => '8.0.1',
+      'version' => '8.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3bf781596178f047ad9b02ea698b15a504031af6',
+    ),
+    'foostart/package-post' => 
+    array (
+      'pretty_version' => '10.0.7',
+      'version' => '10.0.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b731e274a240d14b27568899888266830b1326be',
+    ),
+    'foostart/package-sentry' => 
+    array (
+      'pretty_version' => '10.0.5',
+      'version' => '10.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '61dcb918ecefc7141c47de4c873866535189bf3d',
+    ),
+    'foostart/package-slideshow' => 
+    array (
+      'pretty_version' => '10.0.7',
+      'version' => '10.0.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '51917400e4fa97aa33cad85577b3d71ea99a7aaf',
+    ),
     'fruitcake/laravel-cors' => 
     array (
       'pretty_version' => 'v2.0.3',
@@ -183,6 +237,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '7e279d2cd5d7fbb156ce46daada972355cea27bb',
+    ),
+    'gregwar/captcha' => 
+    array (
+      'pretty_version' => 'v1.1.1',
+      'version' => '1.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1240ab993ca713680573b2d4166900da5f758623',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -437,6 +500,15 @@ private static $installed = array (
         0 => 'v8.37.0',
       ),
     ),
+    'intervention/image' => 
+    array (
+      'pretty_version' => '2.5.1',
+      'version' => '2.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'abbf18d5ab8367f96b3205ca3c89fb2fa598c69e',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -460,7 +532,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '7a4d32c6b62ddd898457bd3897ee421ad2641094',
+      'reference' => '1cab52c20b6b96c73647b1fb0fb6f933109cc3ef',
     ),
     'laravel/tinker' => 
     array (
@@ -470,6 +542,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '04ad32c1a3328081097a181875733fa51f402083',
+    ),
+    'laravelcollective/html' => 
+    array (
+      'pretty_version' => 'v6.2.1',
+      'version' => '6.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ae15b9c4bf918ec3a78f092b8555551dd693fde3',
     ),
     'league/commonmark' => 
     array (
