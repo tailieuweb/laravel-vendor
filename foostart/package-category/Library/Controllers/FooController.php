@@ -73,7 +73,7 @@ class FooController extends Controller {
                 'url' =>$this->breadcrumb_2['url'].'/'.request()->segment(3),
             ];
         }
-        
+
         /**
          * Data view
          */
@@ -95,7 +95,7 @@ class FooController extends Controller {
             'user_id' => $this->user_id,
             'user_full_name' => $this->user_full_name,
             'user_email' => $this->user_email,
-            'token_api' => $this->token_api,            
+            'token_api' => $this->token_api,
         ));
 
         return $this->data_view;
@@ -107,12 +107,17 @@ class FooController extends Controller {
      * @return ARRAY user info
      * @date 28/12/2017
      */
-    public function getUser() {
+    public function getUser($id = NULL) {
 
         $authentication = \App::make('authenticator');
         $profile_repository = \App::make('profile_repository');
 
-        $this->user = $authentication->getLoggedUser()->toArray();
+        if (!empty($id)) {
+            return $this->user = $authentication->getUserById($id);
+        } else {
+            $this->user = $authentication->getLoggedUser()->toArray();
+        }
+
         $this->user['user_id'] = $this->user['id'];
 
         $user_profile = $profile_repository->getFromUserId($this->user['id'])->toArray();
