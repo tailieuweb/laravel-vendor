@@ -43,7 +43,12 @@
 1. php artisan config:clear
 1. php artisan storage:link
 
-## Step 6: Add user
+## Step 6: Migrate and Seeder
+Run the following
+1. php artisan migrate
+1. php artisan db:seed
+
+## Step 7: Add user
 
 foostart\laravel-filemanager\src\Handlers\ConfigHandler.php
 ```

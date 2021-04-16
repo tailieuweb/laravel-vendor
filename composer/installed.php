@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '1cab52c20b6b96c73647b1fb0fb6f933109cc3ef',
+    'reference' => '6c8df99612b1564c0798f156e7839a793971bc05',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -144,12 +144,12 @@
     ),
     'foostart/package-acl' => 
     array (
-      'pretty_version' => '10.0.5',
-      'version' => '10.0.5.0',
+      'pretty_version' => '10.0.6',
+      'version' => '10.0.6.0',
       'aliases' => 
       array (
       ),
-      'reference' => '10628f0a4cb0d2bb41a6b1f325fd84be8a81ef5d',
+      'reference' => '5d605abaec0e77d1a696488ba9c87b32e178a617',
     ),
     'foostart/package-category' => 
     array (
@@ -216,12 +216,12 @@
     ),
     'gregwar/captcha' => 
     array (
-      'pretty_version' => 'v1.1.1',
-      'version' => '1.1.1.0',
+      'pretty_version' => 'v1.1.9',
+      'version' => '1.1.9.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1240ab993ca713680573b2d4166900da5f758623',
+      'reference' => '4bb668e6b40e3205a020ca5ee4ca8cff8b8780c5',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -508,7 +508,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '1cab52c20b6b96c73647b1fb0fb6f933109cc3ef',
+      'reference' => '6c8df99612b1564c0798f156e7839a793971bc05',
     ),
     'laravel/tinker' => 
     array (
