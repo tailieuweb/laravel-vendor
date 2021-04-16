@@ -24,6 +24,7 @@
 ## Step 2: Add class aliases to **config/app.php**
 
 1. 'Image' => Intervention\Image\Facades\Image::class,
+1. 'Input' => Illuminate\Support\Facades\Request::class,
 
 ## Step 3: Install publish
 
