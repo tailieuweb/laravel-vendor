@@ -1039,6 +1039,7 @@ return array(
     'Foostart\\Acl\\Authentication\\Repository\\SentryUserRepository' => $vendorDir . '/foostart/package-acl/app/Authentication/Repository/SentryUserRepository.php',
     'Foostart\\Acl\\Authentication\\Repository\\UserRepositorySearchFilter' => $vendorDir . '/foostart/package-acl/app/Authentication/Repository/UserRepositorySearchFilter.php',
     'Foostart\\Acl\\Authentication\\Services\\ReminderService' => $vendorDir . '/foostart/package-acl/app/Authentication/Services/ReminderService.php',
+    'Foostart\\Acl\\Authentication\\Services\\TokenService' => $vendorDir . '/foostart/package-acl/app/Authentication/Services/TokenService.php',
     'Foostart\\Acl\\Authentication\\Services\\UserProfileService' => $vendorDir . '/foostart/package-acl/app/Authentication/Services/UserProfileService.php',
     'Foostart\\Acl\\Authentication\\Services\\UserRegisterService' => $vendorDir . '/foostart/package-acl/app/Authentication/Services/UserRegisterService.php',
     'Foostart\\Acl\\Authentication\\Validators\\GroupValidator' => $vendorDir . '/foostart/package-acl/app/Authentication/Validators/GroupValidator.php',

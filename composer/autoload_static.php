@@ -1654,6 +1654,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Acl\\Authentication\\Repository\\SentryUserRepository' => __DIR__ . '/..' . '/foostart/package-acl/app/Authentication/Repository/SentryUserRepository.php',
         'Foostart\\Acl\\Authentication\\Repository\\UserRepositorySearchFilter' => __DIR__ . '/..' . '/foostart/package-acl/app/Authentication/Repository/UserRepositorySearchFilter.php',
         'Foostart\\Acl\\Authentication\\Services\\ReminderService' => __DIR__ . '/..' . '/foostart/package-acl/app/Authentication/Services/ReminderService.php',
+        'Foostart\\Acl\\Authentication\\Services\\TokenService' => __DIR__ . '/..' . '/foostart/package-acl/app/Authentication/Services/TokenService.php',
         'Foostart\\Acl\\Authentication\\Services\\UserProfileService' => __DIR__ . '/..' . '/foostart/package-acl/app/Authentication/Services/UserProfileService.php',
         'Foostart\\Acl\\Authentication\\Services\\UserRegisterService' => __DIR__ . '/..' . '/foostart/package-acl/app/Authentication/Services/UserRegisterService.php',
         'Foostart\\Acl\\Authentication\\Validators\\GroupValidator' => __DIR__ . '/..' . '/foostart/package-acl/app/Authentication/Validators/GroupValidator.php',

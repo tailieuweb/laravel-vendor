@@ -6,9 +6,9 @@
         {!! HTML::style('packages/foostart/css/font-awesome-4.7.0.min.css') !!}
 	</head>
 	<body>
-		<h2>Generate token by {!! Config::get('acl_base.app_name') !!}</h2>
+		<h2>Generate token for {!! $body['email'] !!}</h2>
 		<div>
-            {!! $body !!}
+            {!! $body['token'] !!}
 		</div>
 	</body>
 </html>

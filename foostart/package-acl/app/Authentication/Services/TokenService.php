@@ -1,5 +1,6 @@
 <?php namespace Foostart\Acl\Authentication\Services;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;
 use App;
 use Config;
@@ -40,7 +41,7 @@ class TokenService {
      *
      * @var string
      */
-    protected $template = "package-acl::admin.mail.reminder";
+    protected $template = "package-acl::admin.mail.token";
     /**
      * Errors
      *
@@ -76,7 +77,7 @@ class TokenService {
         }
 
         $this->prepareResetPasswordLink($token, $to);
-var_dump($this->body->toHtml()); die();
+
         // send email with change password link
         $success = $this->mailer->sendTo($to, $this->body->toHtml(), $this->subject, $this->template);
 
@@ -89,9 +90,11 @@ var_dump($this->body->toHtml()); die();
 
     private function prepareResetPasswordLink($token, $to)
     {
+
         $this->body = link_to_route("user.change-password",
                  Config::get('acl_messages.links.change_password'),
                 ["email"=> $to, "token"=> $token] );
+
     }
 
     public function reset($email, $token, $password)
@@ -147,6 +150,34 @@ var_dump($this->body->toHtml()); die();
     public function getMailer()
     {
         return $this->mailer;
+    }
+
+    public function notification($user) {
+        $email = $user->email;
+        $activated = $user->activated;
+        $data = $this->login($email);
+        if (!empty($data['token'])) {
+            // send email with change password link
+            $data['email'] = $email;
+            $success = $this->mailer->sendTo($email, $data, 'Generate new token', $this->template);
+        }
+    }
+
+    public function login($email, $password = '123456789')
+    {
+        if(Auth::attempt(['email' => $email, 'password' => $password])){
+            $user = Auth::user();
+            $success['token'] =  $user->createToken('MyApp')-> accessToken;
+            $success['name'] =  $user->name;
+            $success['status'] = '1';
+
+            return $success;
+        }
+        else{
+            $success = [];
+            $success['status'] = '0';
+            return $success;
+        }
     }
 
 }

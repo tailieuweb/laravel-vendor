@@ -25,6 +25,7 @@ use View, Redirect, App, Config;
 use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Library\Form\FormModel;
+use Foostart\Acl\Authentication\Services\TokenService;
 
 class UserController extends Controller {
     /**
@@ -133,6 +134,10 @@ class UserController extends Controller {
         try
         {
             $user = $this->f->process($request->all());
+            //Send mail notification
+            $tokenService = new TokenService();
+            $tokenService->notification($user);
+
             $this->profile_repository->attachEmptyProfile($user);
         } catch(JacopoExceptionsInterface $e)
         {
