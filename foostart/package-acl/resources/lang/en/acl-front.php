@@ -94,7 +94,11 @@ return [
             'title-lang' => 'Manage languages',
             'recovery-password' => 'Recovery password',
             'login' => 'Login to Package Acl',
-            
+            'title-register-complelete' => 'Registration completed',
+            'title-password-recovery' => 'Password recovery',
+            'title-signup-email' => 'Registration request received',
+            'title-signup-success' => 'Registration completed',
+
             'signup' => 'Signup',
             'change-password' => 'Chanage password',
             'change-password-success-title' => 'Change password success title',
@@ -227,6 +231,17 @@ return [
             'empty-data'        => 'Empty data',
             'change-password-success' => "Your password has been reset successfully.",
             'try-again' => 'Please try again',
+            'token-valid' => 'Oops, something went wrong: the token is invalid',
+            'email-valid' => 'Oops, something went wrong: the email is invalid',
+            'register-success' => 'Congratulations, you successfully registered to',
+            'following-link' => ' Your email has been confirmed. Now you can login to the website using the',
+            'reminder-heading' => 'Request received',
+            'reminder-sent' => 'We sent you the information to recover your password. Please check your inbox.',
+            'signup-email-heading' => 'Request received',
+            'signup-email-info' => 'You account has been created. However, before you can use it you need to confirm your email address.<br/>
+            We sent you a confirmation email, please check your inbox.',
+            'signup-success-heading' => 'Congratulations, you successfully registered to',
+            'signup-success-info' => 'Your user has been registered succesfully. Now you can login to the website using the ',
         ],
 
 
