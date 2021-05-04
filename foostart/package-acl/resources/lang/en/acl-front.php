@@ -417,10 +417,10 @@ return [
     */
     'error' => [
         'login-error-failed' => 'The username or password entered is incorrect. Please try again',
-        'login-error-required-field' => 'login-error-required-field',
-        'login-error-not-active' => 'login-error-required-field',
-        'login-error-required-password' => 'login-error-required-password',
-        'login-error-many-attempts' => 'login-error-many-attempts',
+        'login-error-required-field' => 'Login error required field',
+        'login-error-not-active' => 'Login error not active',
+        'login-error-required-password' => 'Login error required password',
+        'login-error-many-attempts' => 'Login error many attempts',
     ],
 
 ];

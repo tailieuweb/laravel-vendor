@@ -8,10 +8,10 @@
 
         <h1>
             <i class="fa fa-download"></i>
-            {!! trans($plang_front.'.message.reminder-heading') !!}
+            {!! trans($plang_front.'.messages.reminder-heading') !!}
         </h1>
         <p class="lead">
-            {!! trans($plang_front.'.message.reminder-sent') !!}
+            {!! trans($plang_front.'.messages.reminder-sent') !!}
         </p>
     </div>
 </div>
