@@ -123,6 +123,7 @@
                                     </div>
                                     <span class="text-danger">{!! $errors->first('level_id') !!}</span>
                                     <!-- category_id text field -->
+
                                     <div class="form-group">
                                         {!! Form::label('category_id',trans($plang_admin.'.labels.category').':') !!}
                                         {!! Form::select('category_id', $pluck_select_category_department, null, ["class" => "form-control"]) !!}
