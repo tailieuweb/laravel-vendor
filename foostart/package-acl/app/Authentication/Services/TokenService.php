@@ -159,7 +159,7 @@ class TokenService {
         if (!empty($data['token'])) {
             // send email with change password link
             $data['email'] = $email;
-            $success = $this->mailer->sendTo($email, $data, 'Generate new token', $this->template);
+            $success = $this->mailer->sendTo($email, $data, 'Generate new key', $this->template);
         }
     }
 
