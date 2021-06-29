@@ -354,6 +354,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
      */
     public function attempt(array $credentials = [], $remember = false)
     {
+
         $this->fireAttemptEvent($credentials, $remember);
 
         $this->lastAttempted = $user = $this->provider->retrieveByCredentials($credentials);
@@ -466,6 +467,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
      */
     public function login(AuthenticatableContract $user, $remember = false)
     {
+
         $this->updateSession($user->getAuthIdentifier());
 
         // If the user should be permanently "remembered" by the application we will
@@ -494,8 +496,8 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     protected function updateSession($id)
     {
         $this->session->put($this->getName(), $id);
-
         $this->session->migrate(true);
+
     }
 
     /**
