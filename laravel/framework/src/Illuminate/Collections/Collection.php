@@ -4,8 +4,6 @@ namespace Illuminate\Support;
 
 use ArrayAccess;
 use ArrayIterator;
-use Illuminate\Collections\ItemNotFoundException;
-use Illuminate\Collections\MultipleItemsFoundException;
 use Illuminate\Support\Traits\EnumeratesValues;
 use Illuminate\Support\Traits\Macroable;
 use stdClass;
@@ -797,9 +795,15 @@ class Collection implements ArrayAccess, Enumerable
             return array_pop($this->items);
         }
 
+        if ($this->isEmpty()) {
+            return new static;
+        }
+
         $results = [];
 
-        foreach (range(1, $count) as $item) {
+        $collectionCount = $this->count();
+
+        foreach (range(1, min($count, $collectionCount)) as $item) {
             array_push($results, array_pop($this->items));
         }
 
@@ -961,9 +965,15 @@ class Collection implements ArrayAccess, Enumerable
             return array_shift($this->items);
         }
 
+        if ($this->isEmpty()) {
+            return new static;
+        }
+
         $results = [];
 
-        foreach (range(1, $count) as $item) {
+        $collectionCount = $this->count();
+
+        foreach (range(1, min($count, $collectionCount)) as $item) {
             array_push($results, array_shift($this->items));
         }
 
@@ -1098,8 +1108,8 @@ class Collection implements ArrayAccess, Enumerable
      * @param  mixed  $value
      * @return mixed
      *
-     * @throws \Illuminate\Collections\ItemNotFoundException
-     * @throws \Illuminate\Collections\MultipleItemsFoundException
+     * @throws \Illuminate\Support\ItemNotFoundException
+     * @throws \Illuminate\Support\MultipleItemsFoundException
      */
     public function sole($key = null, $operator = null, $value = null)
     {
@@ -1118,6 +1128,33 @@ class Collection implements ArrayAccess, Enumerable
         }
 
         return $items->first();
+    }
+
+    /**
+     * Get the first item in the collection but throw an exception if no matching items exist.
+     *
+     * @param  mixed  $key
+     * @param  mixed  $operator
+     * @param  mixed  $value
+     * @return mixed
+     *
+     * @throws \Illuminate\Support\ItemNotFoundException
+     */
+    public function firstOrFail($key = null, $operator = null, $value = null)
+    {
+        $filter = func_num_args() > 1
+            ? $this->operatorForWhere(...func_get_args())
+            : $key;
+
+        $placeholder = new stdClass();
+
+        $item = $this->first($filter, $placeholder);
+
+        if ($item === $placeholder) {
+            throw new ItemNotFoundException;
+        }
+
+        return $item;
     }
 
     /**
