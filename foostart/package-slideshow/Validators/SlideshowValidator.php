@@ -32,12 +32,11 @@ class SlideshowValidator extends FooValidator
         $this->lang_admin = 'slideshow-admin';
 
         // event listening
-        Event::listen('validating', function($input)
-        {
+        Event::listen('validating', function ($input) {
             self::$messages = [
-                'slideshow_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
-                'slideshow_overview.required'      => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.overview')]),
-                'slideshow_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
+                'slideshow_name.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.name')]),
+                'slideshow_overview.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.overview')]),
+                'slideshow_description.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.description')]),
             ];
         });
 
@@ -49,7 +48,8 @@ class SlideshowValidator extends FooValidator
      * @param ARRAY $input is form data
      * @return type
      */
-    public function validate($input) {
+    public function validate($input)
+    {
 
         $flag = parent::validate($input);
         $this->errors = $this->errors ? $this->errors : new MessageBag();
@@ -60,19 +60,19 @@ class SlideshowValidator extends FooValidator
         $params = [
             'name' => [
                 'key' => 'slideshow_name',
-                'label' => trans($this->lang_admin.'.fields.name'),
+                'label' => trans($this->lang_admin . '.fields.name'),
                 'min' => $_ln['slideshow_name']['min'],
                 'max' => $_ln['slideshow_name']['max'],
             ],
             'overview' => [
                 'key' => 'slideshow_overview',
-                'label' => trans($this->lang_admin.'.fields.overview'),
+                'label' => trans($this->lang_admin . '.fields.overview'),
                 'min' => $_ln['slideshow_overview']['min'],
                 'max' => $_ln['slideshow_overview']['max'],
             ],
             'description' => [
                 'key' => 'slideshow_description',
-                'label' => trans($this->lang_admin.'.fields.description'),
+                'label' => trans($this->lang_admin . '.fields.description'),
                 'min' => $_ln['slideshow_description']['min'],
                 'max' => $_ln['slideshow_description']['max'],
             ],
@@ -90,7 +90,8 @@ class SlideshowValidator extends FooValidator
      * Load configuration
      * @return ARRAY $configs list of configurations
      */
-    public function loadConfigs(){
+    public function loadConfigs()
+    {
 
         $configs = config('package-slideshow');
         return $configs;

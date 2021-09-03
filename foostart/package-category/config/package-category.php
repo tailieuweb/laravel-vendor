@@ -47,7 +47,7 @@ return [
         'unpublish' => 33,
         'intrash' => 55,
         'draft' => 11,
-        'new'   => 22,
+        'new' => 22,
         'list' => [
             99 => 'Publish',
             33 => 'Unpublish',
@@ -61,9 +61,6 @@ return [
             99 => '#5bc0de'
         ]
     ],
-
-
-
 
 
     /*
@@ -85,9 +82,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | LANGUAGES
@@ -100,9 +94,6 @@ return [
         'en' => 'English',
         'vi' => 'Vietnam'
     ],
-
-
-
 
 
     /*

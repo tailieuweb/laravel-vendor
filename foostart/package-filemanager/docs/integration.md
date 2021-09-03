@@ -1,7 +1,9 @@
 ## Note
+
 Check `vendor/foostart/package-filemanager/src/views/demo.blade.php`, which already integrated all options from below.
 
 ## WYSIWYG Editor Integration:
+
 ### Option 1: CKEditor
 
 ```html
@@ -136,10 +138,12 @@ $(document).ready(function(){
 ```
 
 ## Standalone button
-If you are going to use filemanager independently, meaning set the value of an input to selected photo/file url, follow this structure:
 
-1. Create a button, input, and image preview holder if you are going to choose images.
-  Specify the id to the input and image preview by `data-input` and `data-preview`.
+If you are going to use filemanager independently, meaning set the value of an input to selected photo/file url, follow
+this structure:
+
+1. Create a button, input, and image preview holder if you are going to choose images. Specify the id to the input and
+   image preview by `data-input` and `data-preview`.
 
     ```html
     <div class="input-group">
@@ -163,21 +167,22 @@ If you are going to use filemanager independently, meaning set the value of an i
     ```javascript
     $('#lfm').filemanager('image');
     ```
-    or
+   or
     ```javascript
     $('#lfm').filemanager('file');
     ```
 
-    Domain can be specified in the second parameter(optional, but will be required when developing on Windows mechines) :
+   Domain can be specified in the second parameter(optional, but will be required when developing on Windows mechines) :
 
     ```javascript
     var domain = "{{ url() }}";
     $('#lfm').filemanager('image', {prefix: domain});
     ```
-    
-## JavaScript integration
-In case you are developing javascript application and you want dynamically to trigger filemanager popup, you can create function like this. It doesn't rely on jQuery.
 
+## JavaScript integration
+
+In case you are developing javascript application and you want dynamically to trigger filemanager popup, you can create
+function like this. It doesn't rely on jQuery.
 
 ```javascript
 var lfm = function(options, cb) {

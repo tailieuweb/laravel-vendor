@@ -21,12 +21,14 @@ use Foostart\Category\Models\Category;
 use Foostart\Slideshow\Validators\StyleValidator;
 
 
-class StyleAdminController extends FooController {
+class StyleAdminController extends FooController
+{
 
     public $obj_item = NULL;
     public $obj_category = NULL;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         parent::__construct();
         // models
@@ -50,8 +52,8 @@ class StyleAdminController extends FooController {
         // page views
         $this->page_views = [
             'admin' => [
-                'items' => $this->package_name.'::admin.'.$this->package_base_name.'-items',
-                'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
+                'items' => $this->package_name . '::admin.' . $this->package_base_name . '-items',
+                'edit' => $this->package_name . '::admin.' . $this->package_base_name . '-edit',
             ]
         ];
 
@@ -67,7 +69,8 @@ class StyleAdminController extends FooController {
      * @return view list of items
      * @date 27/12/2017
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         $params = $request->all();
 
@@ -89,7 +92,8 @@ class StyleAdminController extends FooController {
      * @return view edit page
      * @date 26/12/2017
      */
-    public function edit(Request $request) {
+    public function edit(Request $request)
+    {
 
         $item = NULL;
         $categories = NULL;
@@ -102,8 +106,8 @@ class StyleAdminController extends FooController {
             $item = $this->obj_item->selectItem($params, FALSE);
 
             if (empty($item)) {
-                return Redirect::route($this->root_router.'.list')
-                                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
             }
         }
 
@@ -129,7 +133,8 @@ class StyleAdminController extends FooController {
      * @return view edit page
      * @date 27/12/2017
      */
-    public function post(Request $request) {
+    public function post(Request $request)
+    {
 
         $item = NULL;
 
@@ -137,7 +142,7 @@ class StyleAdminController extends FooController {
 
         $is_valid_request = $this->isValidRequest($request);
 
-        $id = (int) $request->get('id');
+        $id = (int)$request->get('id');
 
         $view_style_path = $package_path = realpath(base_path(config('package-slideshow.view-style-path')));
 
@@ -154,35 +159,35 @@ class StyleAdminController extends FooController {
                     $item = $this->obj_item->updateItem($params);
 
                     //save to file
-                    file_put_contents($view_style_path.'/'.$params['style_view_file'].'.blade.php', $params['style_view_content']);
+                    file_put_contents($view_style_path . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
                     // message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
-                                    ->withMessage(trans($this->plang_admin.'.actions.edit-ok'));
+                    return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
+                        ->withMessage(trans($this->plang_admin . '.actions.edit-ok'));
                 } else {
 
                     // message
-                    return Redirect::route($this->root_router.'.list')
-                                    ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+                    return Redirect::route($this->root_router . '.list')
+                        ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
                 }
 
-            // add new item
+                // add new item
             } else {
 
                 //save to file
-                file_put_contents($view_style_path.'/'.$params['style_view_file'].'.blade.php', $params['style_view_content']);
+                file_put_contents($view_style_path . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
                 //insert
                 $item = $this->obj_item->insertItem($params);
 
                 if (!empty($item)) {
 
                     //message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
-                                    ->withMessage(trans($this->plang_admin.'.actions.add-ok'));
+                    return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
+                        ->withMessage(trans($this->plang_admin . '.actions.add-ok'));
                 } else {
 
                     //message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
-                                    ->withMessage(trans($this->plang_admin.'.actions.add-error'));
+                    return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
+                        ->withMessage(trans($this->plang_admin . '.actions.add-error'));
                 }
 
             }
@@ -192,8 +197,8 @@ class StyleAdminController extends FooController {
             $errors = $this->obj_validator->getErrors();
 
             // passing the id incase fails editing an already existing item
-            return Redirect::route($this->root_router.'.edit', $id ? ["id" => $id]: [])
-                    ->withInput()->withErrors($errors);
+            return Redirect::route($this->root_router . '.edit', $id ? ["id" => $id] : [])
+                ->withInput()->withErrors($errors);
         }
     }
 
@@ -202,12 +207,13 @@ class StyleAdminController extends FooController {
      * @return view list of items
      * @date 27/12/2017
      */
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
 
         $item = NULL;
         $flag = TRUE;
         $params = array_merge($request->all(), $this->getUser());
-        $delete_type = isset($params['del-forever'])?'delete-forever':'delete-trash';
+        $delete_type = isset($params['del-forever']) ? 'delete-forever' : 'delete-trash';
         $id = (int)$request->get('id');
         $ids = $request->get('ids');
 
@@ -215,7 +221,7 @@ class StyleAdminController extends FooController {
 
         if ($is_valid_request && (!empty($id) || !empty($ids))) {
 
-            $ids = !empty($id)?[$id]:$ids;
+            $ids = !empty($id) ? [$id] : $ids;
 
             foreach ($ids as $id) {
 
@@ -226,13 +232,13 @@ class StyleAdminController extends FooController {
                 }
             }
             if ($flag) {
-                return Redirect::route($this->root_router.'.list')
-                                ->withMessage(trans($this->plang_admin.'.actions.delete-ok'));
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.delete-ok'));
             }
         }
 
-        return Redirect::route($this->root_router.'.list')
-                        ->withMessage(trans($this->plang_admin.'.actions.delete-error'));
+        return Redirect::route($this->root_router . '.list')
+            ->withMessage(trans($this->plang_admin . '.actions.delete-error'));
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -6,10 +7,12 @@ use Foostart\Category\Helpers\FoostartMigration;
 
 class CreateCategoriesTable extends FoostartMigration
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->table = 'categories';
         $this->prefix_column = 'category_';
     }
+
     /**
      * Run the migrations.
      *
@@ -19,12 +22,12 @@ class CreateCategoriesTable extends FoostartMigration
     {
         Schema::dropIfExists($this->table);
         Schema::create($this->table, function (Blueprint $table) {
-            
+
             $table->increments($this->prefix_column . 'id')->comment('Primary key');
-            
+
             // Relation
             $table->integer('context_id')->comment('Context ID');
-            
+
             // Other attributes
             $table->integer($this->prefix_column . 'id_parent')->nullable()->comment('ID of category parent');
             $table->string($this->prefix_column . 'id_parent_str', 1000)->nullable()->comment('List of ids of category parent');
@@ -34,10 +37,10 @@ class CreateCategoriesTable extends FoostartMigration
             $table->string($this->prefix_column . 'slug', 1000)->comment('Slug in URL');
             $table->string($this->prefix_column . 'url', 1000)->comment('Category url');
             $table->string($this->prefix_column . 'icon', 500)->comment('Category icon');
-            $table->string($this->prefix_column . 'overview', 1000)->comment('Category overview');            
+            $table->string($this->prefix_column . 'overview', 1000)->comment('Category overview');
             $table->text($this->prefix_column . 'description')->comment('Category description');
             $table->string($this->prefix_column . 'image', 255)->nullable()->comment('Image path');
-            
+
             //Set common columns
             $this->setCommonColumns($table);
         });

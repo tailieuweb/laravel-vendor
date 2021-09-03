@@ -4,6 +4,7 @@
  *
  * @author foostart foostart@gmail.com
  */
+
 use Cartalyst\Sentry\Users\Eloquent\User as CartaUser;
 use Cartalyst\Sentry\Users\UserExistsException;
 use Cartalyst\Sentry\Users\LoginRequiredException;
@@ -24,8 +25,7 @@ class User extends CartaUser
      */
     public function validate()
     {
-        if ( ! $login = $this->{static::$loginAttribute})
-        {
+        if (!$login = $this->{static::$loginAttribute}) {
             throw new LoginRequiredException("A login is required for a user, none given.");
         }
 
@@ -33,8 +33,7 @@ class User extends CartaUser
         $query = $this->newQuery();
         $persistedUser = $query->where($this->getLoginName(), '=', $login)->first();
 
-        if ($persistedUser and $persistedUser->getId() != $this->getId())
-        {
+        if ($persistedUser and $persistedUser->getId() != $this->getId()) {
             throw new UserExistsException("A user already exists with login [$login], logins must be unique for users.");
         }
 

@@ -21,24 +21,24 @@ class FilemanagerServiceProvider extends ServiceProvider
             include __DIR__ . '/routes.php';
         }
 
-        $this->loadTranslationsFrom(__DIR__.'/lang', 'package-filemanager');
+        $this->loadTranslationsFrom(__DIR__ . '/lang', 'package-filemanager');
 
-        $this->loadViewsFrom(__DIR__.'/views', 'package-filemanager');
+        $this->loadViewsFrom(__DIR__ . '/views', 'package-filemanager');
 
         $this->publishes([
             __DIR__ . '/config/lfm.php' => base_path('config/lfm.php'),
         ], 'lfm_config');
 
         $this->publishes([
-            __DIR__.'/../public' => public_path('vendor/package-filemanager'),
+            __DIR__ . '/../public' => public_path('vendor/package-filemanager'),
         ], 'lfm_public');
 
         $this->publishes([
-            __DIR__.'/views'  => base_path('resources/views/vendor/package-filemanager'),
+            __DIR__ . '/views' => base_path('resources/views/vendor/package-filemanager'),
         ], 'lfm_view');
 
         $this->publishes([
-            __DIR__.'/Handlers/LfmConfigHandler.php' => base_path('app/Handlers/LfmConfigHandler.php'),
+            __DIR__ . '/Handlers/LfmConfigHandler.php' => base_path('app/Handlers/LfmConfigHandler.php'),
         ], 'lfm_handler');
     }
 

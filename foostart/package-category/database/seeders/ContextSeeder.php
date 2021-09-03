@@ -6,12 +6,14 @@ use Carbon\Carbon;
 
 class ContextSeeder extends FoostartSeeder
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Table name
         $this->table = 'contexts';
         // Prefix column
         $this->prefix_column = 'context_';
     }
+
     /**
      * Run the database seeds.
      *
@@ -30,7 +32,7 @@ class ContextSeeder extends FoostartSeeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        
+
         //Create context for user/level
         DB::table($this->table)->insert([
             $this->prefix_column . 'name' => 'User department',

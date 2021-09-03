@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Models;
+<?php namespace Foostart\Acl\Authentication\Models;
 
 use Foostart\Acl\Authentication\Presenters\UserProfilePresenter;
 
@@ -7,7 +7,6 @@ use Foostart\Acl\Authentication\Presenters\UserProfilePresenter;
  *
  * @author Foostart foostart.com@gmail.com
  */
-
 class UserProfile extends BaseModel
 {
     protected $table = "user_profile";
@@ -29,7 +28,7 @@ class UserProfile extends BaseModel
         'level_id',
     ];
     protected $context_key;
-    
+
     protected $guarded = ["id"];
 
     public function user()

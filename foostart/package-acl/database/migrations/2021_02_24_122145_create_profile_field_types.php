@@ -3,7 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfileFieldTypes extends Migration {
+class CreateProfileFieldTypes extends Migration
+{
 
     /**
      * Run the migrations.
@@ -13,8 +14,7 @@ class CreateProfileFieldTypes extends Migration {
     public function up()
     {
         Schema::dropIfExists('profile_field_type');
-        Schema::create('profile_field_type', function(Blueprint $table)
-        {
+        Schema::create('profile_field_type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
             $table->timestamps();

@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\Images;
+<?php namespace Foostart\Acl\Authentication\Classes\Images;
 
 use Image;
 use Input;
@@ -9,16 +9,14 @@ use Foostart\Acl\Library\Exceptions\NotFoundException;
  *
  * @author Foostart foostart.com@gmail.com
  */
-trait ImageHelperTrait {
+trait ImageHelperTrait
+{
 
     public static function getPathFromInput($input_name)
     {
-        if (Input::hasFile($input_name))
-        {
+        if (Input::hasFile($input_name)) {
             return $path = Input::file($input_name)->getRealPath();
-        }
-        else
-        {
+        } else {
             throw new NotFoundException('File non found.');
         }
     }

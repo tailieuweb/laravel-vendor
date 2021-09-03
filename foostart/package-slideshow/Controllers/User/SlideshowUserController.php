@@ -11,7 +11,9 @@ use Foostart\Slideshow\Models\Slideshows;
 class SlideshowUserController extends Controller
 {
     public $data = array();
-    public function __construct() {
+
+    public function __construct()
+    {
 
     }
 

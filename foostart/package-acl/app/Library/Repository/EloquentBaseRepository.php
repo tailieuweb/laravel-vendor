@@ -35,7 +35,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
 
     /**
      * Update a new object
-     * @param       id
+     * @param id
      * @param array $data
      * @return mixed
      * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
@@ -69,12 +69,9 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      */
     public function find($id)
     {
-        try
-        {
+        try {
             $model = $this->model->findOrFail($id);
-        }
-        catch(ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             throw new NotFoundException;
         }
 

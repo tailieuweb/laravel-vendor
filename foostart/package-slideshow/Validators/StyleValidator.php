@@ -32,12 +32,11 @@ class StyleValidator extends FooValidator
         $this->lang_admin = 'style-admin';
 
         // event listening
-        Event::listen('validating', function($input)
-        {
+        Event::listen('validating', function ($input) {
             self::$messages = [
-                'style_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
-                'style_overview.required'      => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.overview')]),
-                'style_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
+                'style_name.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.name')]),
+                'style_overview.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.overview')]),
+                'style_description.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.description')]),
             ];
         });
 
@@ -49,7 +48,8 @@ class StyleValidator extends FooValidator
      * @param ARRAY $input is form data
      * @return type
      */
-    public function validate($input) {
+    public function validate($input)
+    {
 
         $flag = parent::validate($input);
         $this->errors = $this->errors ? $this->errors : new MessageBag();
@@ -60,7 +60,7 @@ class StyleValidator extends FooValidator
         $params = [
             'name' => [
                 'key' => 'style_name',
-                'label' => trans($this->lang_admin.'.fields.name'),
+                'label' => trans($this->lang_admin . '.fields.name'),
                 'min' => $_ln['style_name']['min'],
                 'max' => $_ln['style_name']['max'],
             ],
@@ -76,7 +76,8 @@ class StyleValidator extends FooValidator
      * Load configuration
      * @return ARRAY $configs list of configurations
      */
-    public function loadConfigs(){
+    public function loadConfigs()
+    {
 
         $configs = config('package-style');
         return $configs;

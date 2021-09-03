@@ -17,6 +17,10 @@
  * @copyright  (c) 2011 - 2013, Cartalyst LLC
  * @link       http://cartalyst.com
  */
+class UserBannedException extends \RuntimeException
+{
+}
 
-class UserBannedException extends \RuntimeException {}
-class UserSuspendedException extends \RuntimeException {}
+class UserSuspendedException extends \RuntimeException
+{
+}

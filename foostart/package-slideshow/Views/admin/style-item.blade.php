@@ -1,5 +1,5 @@
 @if(!empty($items) && (!$items->isEmpty()) )
-<?php
+    <?php
     $withs = [
         'order' => '5%',
         'name' => '40%',
@@ -11,18 +11,18 @@
     global $counter;
     $nav = $items->toArray();
     $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
-?>
-<caption>
-    @if($nav['total'] == 1)
-        {!! trans($plang_admin.'.descriptions.counter', ['number' => $nav['total']]) !!}
-    @else
-        {!! trans($plang_admin.'.descriptions.counters', ['number' => $nav['total']]) !!}
-    @endif
-</caption>
+    ?>
+    <caption>
+        @if($nav['total'] == 1)
+            {!! trans($plang_admin.'.descriptions.counter', ['number' => $nav['total']]) !!}
+        @else
+            {!! trans($plang_admin.'.descriptions.counters', ['number' => $nav['total']]) !!}
+        @endif
+    </caption>
 
-<table class="table table-hover">
+    <table class="table table-hover">
 
-    <thead>
+        <thead>
         <tr style="height: 50px;">
 
             <!--ORDER-->
@@ -48,7 +48,8 @@
             <!-- NAME -->
             <?php $name = 'updated_at' ?>
 
-            <th class="hidden-xs" style='width:{{ $withs['updated_at'] }}'>{!! trans($plang_admin.'.columns.updated_at') !!}
+            <th class="hidden-xs"
+                style='width:{{ $withs['updated_at'] }}'>{!! trans($plang_admin.'.columns.updated_at') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -73,16 +74,16 @@
             <!--DELETE-->
             <th style='width:{{ $withs['delete'] }}'>
                 <span class="del-checkbox pull-right">
-                    <input type="checkbox" id="selecctall" />
+                    <input type="checkbox" id="selecctall"/>
                     <label for="del-checkbox"></label>
                 </span>
             </th>
 
         </tr>
 
-    </thead>
+        </thead>
 
-    <tbody>
+        <tbody>
         @foreach($items as $item)
 
             <tr>
@@ -110,7 +111,7 @@
                                                                 '_token' => csrf_token(),
                                                             ])
                              !!}"
-                        class="margin-left-5">
+                       class="margin-left-5">
                         <i class="fa fa-files-o f-tb-icon" aria-hidden="true"></i>
                     </a>
 
@@ -136,12 +137,12 @@
             </tr>
         @endforeach
 
-    </tbody>
+        </tbody>
 
-</table>
-<div class="paginator">
-    {!! $items->appends($request->except(['page']) )->render() !!}
-</div>
+    </table>
+    <div class="paginator">
+        {!! $items->appends($request->except(['page']) )->render() !!}
+    </div>
 @else
     <!--SEARCH RESULT MESSAGE-->
     <span class="text-warning">

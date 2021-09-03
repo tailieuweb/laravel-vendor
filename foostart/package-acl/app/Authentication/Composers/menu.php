@@ -36,7 +36,7 @@ View::composer([
     'package-acl::admin.user.profile',
     'package-acl::admin.acl-lang',
     'package-acl::admin.acl-lang-backup',
-        ], function ($view) use ($plang_admin, $plang_front) {
+], function ($view) use ($plang_admin, $plang_front) {
 
     $fooCategory = new FoostartCategory();
     $key_department = $fooCategory->getContextKeyByRef('user/department');

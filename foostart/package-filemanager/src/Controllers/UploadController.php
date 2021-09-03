@@ -109,7 +109,7 @@ class UploadController extends LfmController
             return false;
         }
 
-        if (! $file instanceof UploadedFile) {
+        if (!$file instanceof UploadedFile) {
             array_push($this->errors, parent::error('instance'));
             return false;
         }

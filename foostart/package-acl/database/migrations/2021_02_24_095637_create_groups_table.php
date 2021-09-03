@@ -3,7 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupsTable extends Migration {
+class CreateGroupsTable extends Migration
+{
 
     /**
      * Run the migrations.
@@ -13,8 +14,7 @@ class CreateGroupsTable extends Migration {
     public function up()
     {
         Schema::dropIfExists('groups');
-        Schema::create('groups', function(Blueprint $table)
-        {
+        Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
             $table->text('permissions')->nullable();

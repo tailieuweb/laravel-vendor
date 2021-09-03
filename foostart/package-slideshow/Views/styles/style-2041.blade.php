@@ -20,17 +20,17 @@ $slideshow_items = !empty($slideshow->slideshow_images) ? json_decode($slideshow
                         <div class="carousel slide" id="myCarousel">
                             <!-- Carousel items -->
                             <div class="carousel-inner">
-                                <?php $active='active' ?>
+                                <?php $active = 'active' ?>
                                 @foreach($slideshow_items as $key => $item)
-                                <div class="{!! $active !!} item" data-slide-number="{!! $key !!}">
-                                    <div class="testimonial-text">
-                                        <p>
-                                            {!! $item->description !!}
-                                        </p>
-                                        <a href="#">{!! $item->author !!}</a>
+                                    <div class="{!! $active !!} item" data-slide-number="{!! $key !!}">
+                                        <div class="testimonial-text">
+                                            <p>
+                                                {!! $item->description !!}
+                                            </p>
+                                            <a href="#">{!! $item->author !!}</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php $active='' ?>
+                                    <?php $active = '' ?>
                                 @endforeach
 
 
@@ -46,13 +46,13 @@ $slideshow_items = !empty($slideshow->slideshow_images) ? json_decode($slideshow
                 <div class="swiper-wrapper" id="bx-pager">
 
                     @foreach($slideshow_items as $key => $item)
-                    <div class="swiper-slide">
-                        <a id="carousel-selector-{!! $key !!}">
-                            <img class="thumb-img" src="{!! URL::to($item->image) !!}" alt=""/>
-                            <span><?php $item->author ?></span>
-                            <span class="color"><?php $item->author ?></span>
-                        </a>
-                    </div>
+                        <div class="swiper-slide">
+                            <a id="carousel-selector-{!! $key !!}">
+                                <img class="thumb-img" src="{!! URL::to($item->image) !!}" alt=""/>
+                                <span><?php $item->author ?></span>
+                                <span class="color"><?php $item->author ?></span>
+                            </a>
+                        </div>
                     @endforeach
 
                 </div>
@@ -67,9 +67,9 @@ $slideshow_items = !empty($slideshow->slideshow_images) ? json_decode($slideshow
     </div>
 
     <div id="bg5" data-0="background-position:0px 0px;"
-    data-end="background-position:0px -1800px;"
-    class="skrollable skrollable-between"
-    style="background-position: 0px -1341.35px;">
-    <div class="clearfix"></div>
-</div>
+         data-end="background-position:0px -1800px;"
+         class="skrollable skrollable-between"
+         style="background-position: 0px -1341.35px;">
+        <div class="clearfix"></div>
+    </div>
 </div>

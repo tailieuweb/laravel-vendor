@@ -17,11 +17,30 @@
  * @copyright  (c) 2011 - 2013, Cartalyst LLC
  * @link       http://cartalyst.com
  */
+class LoginRequiredException extends \UnexpectedValueException
+{
+}
 
-class LoginRequiredException extends \UnexpectedValueException {}
-class PasswordRequiredException extends \UnexpectedValueException {}
-class UserAlreadyActivatedException extends \RuntimeException {}
-class UserNotFoundException extends \OutOfBoundsException {}
-class UserNotActivatedException extends \RuntimeException {}
-class UserExistsException extends \UnexpectedValueException {}
-class WrongPasswordException extends UserNotFoundException {}
+class PasswordRequiredException extends \UnexpectedValueException
+{
+}
+
+class UserAlreadyActivatedException extends \RuntimeException
+{
+}
+
+class UserNotFoundException extends \OutOfBoundsException
+{
+}
+
+class UserNotActivatedException extends \RuntimeException
+{
+}
+
+class UserExistsException extends \UnexpectedValueException
+{
+}
+
+class WrongPasswordException extends UserNotFoundException
+{
+}

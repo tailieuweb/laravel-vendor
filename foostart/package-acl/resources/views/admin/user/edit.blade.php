@@ -31,18 +31,18 @@
                         <div class="col-md-12 col-xs-12">
                             <a href="{!! URL::route('users.profile.edit',['user_id' => $user->id]) !!}"
                                class="btn btn-info pull-right" {!! ! isset($user->id) ? 'disabled="disabled"' : '' !!}><i
-                                        class="fa fa-user"></i> Edit profile</a>
+                                    class="fa fa-user"></i> Edit profile</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <h4>{!! trans($plang_admin.'.labels.login-data') !!} </h4>
                     {!! Form::model($user, [ 'url' => URL::route('users.edit')] )  !!}
-                        {{-- Field hidden to fix chrome and safari autocomplete bug --}}
-                        {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
-                        {!! Form::hidden('id') !!}
-                        {!! Form::hidden('form_name','user') !!}
+                    {{-- Field hidden to fix chrome and safari autocomplete bug --}}
+                    {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
+                    {!! Form::hidden('id') !!}
+                    {!! Form::hidden('form_name','user') !!}
 
-                        <!-- email text field -->
+                    <!-- email text field -->
                         <div class="form-group">
                             {!! Form::label('email',trans($plang_admin.'.labels.email').':*') !!}
                             {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'user email', 'autocomplete' => 'off']) !!}

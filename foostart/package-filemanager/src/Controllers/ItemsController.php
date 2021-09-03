@@ -21,10 +21,10 @@ class ItemsController extends LfmController
         $directories = parent::sortFilesAndDirectories(parent::getDirectories($path), $sort_type);
 
         return [
-            'html' => (string) view($this->getView())->with([
-                'files'       => $files,
+            'html' => (string)view($this->getView())->with([
+                'files' => $files,
                 'directories' => $directories,
-                'items'       => array_merge($directories, $files),
+                'items' => array_merge($directories, $files),
             ]),
             'working_dir' => parent::getInternalPath($path),
         ];

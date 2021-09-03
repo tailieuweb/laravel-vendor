@@ -8,7 +8,8 @@ use Route,
 
 use Illuminate\Support\Facades\App;
 
-class FooController extends Controller {
+class FooController extends Controller
+{
 
     //send data to view
     public $data_view = array();
@@ -52,28 +53,28 @@ class FooController extends Controller {
     public $breadcrumb_3 = [];
 
 
-
-    public function __construct() {
+    public function __construct()
+    {
         /**
          * Breadcrumb
          */
         //1
         $this->breadcrumb_1 = [
-            'url' => url('/'.request()->segment(1)),
+            'url' => url('/' . request()->segment(1)),
         ];
         //2
         if (request()->segment(1)) {
             $this->breadcrumb_2 = [
-                'url' => $this->breadcrumb_1['url'].'/'.request()->segment(2),
+                'url' => $this->breadcrumb_1['url'] . '/' . request()->segment(2),
             ];
         }
         //3
         if (request()->segment(2)) {
             $this->breadcrumb_3 = [
-                'url' =>$this->breadcrumb_2['url'].'/'.request()->segment(3),
+                'url' => $this->breadcrumb_2['url'] . '/' . request()->segment(3),
             ];
         }
-        
+
         /**
          * Data view
          */
@@ -82,7 +83,8 @@ class FooController extends Controller {
         ]);
     }
 
-    public function setUserInfo($user) {
+    public function setUserInfo($user)
+    {
 
         $user = is_array($user) ? (object)$user : $user;
 
@@ -95,7 +97,7 @@ class FooController extends Controller {
             'user_id' => $this->user_id,
             'user_full_name' => $this->user_full_name,
             'user_email' => $this->user_email,
-            'token_api' => $this->token_api,            
+            'token_api' => $this->token_api,
         ));
 
         return $this->data_view;
@@ -107,7 +109,8 @@ class FooController extends Controller {
      * @return ARRAY user info
      * @date 28/12/2017
      */
-    public function getUser() {
+    public function getUser()
+    {
 
         $authentication = \App::make('authenticator');
         $profile_repository = \App::make('profile_repository');
@@ -117,7 +120,7 @@ class FooController extends Controller {
 
         $user_profile = $profile_repository->getFromUserId($this->user['id'])->toArray();
 
-        $this->user['user_full_name'] = $user_profile['first_name'].' '.$user_profile['last_name'];
+        $this->user['user_full_name'] = $user_profile['first_name'] . ' ' . $user_profile['last_name'];
 
         unset($this->user['id']);
         unset($this->user['created_at']);
@@ -133,7 +136,8 @@ class FooController extends Controller {
      * @return ARRAY user info
      * @date 28/12/2017
      */
-    public function hasPermissions(array $permissions) {
+    public function hasPermissions(array $permissions)
+    {
 
         $authentication = \App::make('authentication_helper');
 
@@ -147,7 +151,8 @@ class FooController extends Controller {
      * @param Request $request
      * @return boolean
      */
-    public function isValidRequest(Request $request) {
+    public function isValidRequest(Request $request)
+    {
         $flag = TRUE;
         $valid_token = csrf_token();
 

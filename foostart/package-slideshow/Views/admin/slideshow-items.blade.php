@@ -32,7 +32,7 @@
                     @if( isset($message) )
                         <div class="panel-info alert alert-success flash-message">{!! $message !!}</div>
                     @endif
-                    <!--/MESSAGE-->
+                <!--/MESSAGE-->
 
                     <!--ERRORS-->
                     @if($errors && ! $errors->isEmpty() )
@@ -40,17 +40,17 @@
 
                             <div class="alert alert-danger flash-message">{!! $error !!}</div>
 
-                        @endforeach
-                    @endif
-                    <!--/ERRORS-->
+                    @endforeach
+                @endif
+                <!--/ERRORS-->
 
                     <!--BODY-->
                     <div class="panel-body">
                         {!! Form::open(['route'=>['slideshows.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-slideshow::admin.slideshow-item')
+                        @include('package-slideshow::admin.slideshow-item')
 
-                            {!! csrf_field(); !!}
+                        {!! csrf_field(); !!}
 
                         {!! Form::close() !!}
                     </div>

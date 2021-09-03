@@ -6,6 +6,7 @@
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Foostart\Acl\Library\Validators\ValidatorInterface;
 use Foostart\Acl\Library\Exceptions\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -14,7 +15,8 @@ use Foostart\Acl\Library\Exceptions\NotFoundException;
 use Foostart\Acl\Authentication\Exceptions\PermissionException;
 use Event;
 
-class FormModel implements FormInterface{
+class FormModel implements FormInterface
+{
 
     /**
      * Validator
@@ -50,13 +52,10 @@ class FormModel implements FormInterface{
      */
     public function process(array $input)
     {
-        if($this->v->validate($input))
-        {
+        if ($this->v->validate($input)) {
             Event::dispatch("form.processing", array($input));
             return $this->callRepository($input);
-        }
-        else
-        {
+        } else {
             $this->errors = $this->v->getErrors();
             throw new ValidationException;
         }
@@ -69,31 +68,20 @@ class FormModel implements FormInterface{
      */
     protected function callRepository($input)
     {
-        if($this->isUpdate($input))
-        {
-            try
-            {
+        if ($this->isUpdate($input)) {
+            try {
                 $obj = $this->r->update($input[$this->id_field_name], $input);
-            }
-            catch(ModelNotFoundException $e)
-            {
+            } catch (ModelNotFoundException $e) {
                 $this->errors = new MessageBag(array("model" => "Element not found."));
                 throw new NotFoundException();
-            }
-            catch(PermissionException $e)
-            {
+            } catch (PermissionException $e) {
                 $this->errors = new MessageBag(array("model" => "You don't have the permission to edit this item. Does the item is associated to other elements? if so delete the associations first."));
                 throw new PermissionException();
             }
-        }
-        else
-        {
-            try
-            {
+        } else {
+            try {
                 $obj = $this->r->create($input);
-            }
-            catch(NotFoundException $e)
-            {
+            } catch (NotFoundException $e) {
                 $this->errors = new MessageBag(array("model" => $e->getMessage()));
                 throw new NotFoundException();
             }
@@ -109,7 +97,7 @@ class FormModel implements FormInterface{
      */
     protected function isUpdate($input)
     {
-        return (isset($input[$this->id_field_name]) && ! empty($input[$this->id_field_name]) );
+        return (isset($input[$this->id_field_name]) && !empty($input[$this->id_field_name]));
     }
 
     /**
@@ -120,25 +108,17 @@ class FormModel implements FormInterface{
      */
     public function delete(array $input)
     {
-        if(isset($input[$this->id_field_name]) && ! empty($input[$this->id_field_name]))
-        {
-            try
-            {
+        if (isset($input[$this->id_field_name]) && !empty($input[$this->id_field_name])) {
+            try {
                 $this->r->delete($input[$this->id_field_name]);
-            }
-            catch(ModelNotFoundException $e)
-            {
+            } catch (ModelNotFoundException $e) {
                 $this->errors = new MessageBag(array("model" => "Element does not exists."));
                 throw new NotFoundException();
-            }
-            catch(PermissionException $e)
-            {
+            } catch (PermissionException $e) {
                 $this->errors = new MessageBag(array("model" => "Cannot delete this item, please check that the item is not already associated to any other element, in that case remove the association first."));
                 throw new PermissionException();
             }
-        }
-        else
-        {
+        } else {
             $this->errors = new MessageBag(array("model" => "Id not given"));
             throw new NotFoundException();
         }

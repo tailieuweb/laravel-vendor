@@ -3,7 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserGroupsTable extends Migration {
+class CreateUserGroupsTable extends Migration
+{
 
     /**
      * Run the migrations.
@@ -13,8 +14,7 @@ class CreateUserGroupsTable extends Migration {
     public function up()
     {
         Schema::dropIfExists('users_groups');
-        Schema::create('users_groups', function(Blueprint $table)
-        {
+        Schema::create('users_groups', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('group_id')->unsigned();
             // setup index
