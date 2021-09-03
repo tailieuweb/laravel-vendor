@@ -8,6 +8,8 @@
 ## Requirements
 
 * Config database with *.env* file
+* Laravel 8.x
+* PHP 8.0
 
 ## Requirements
 

@@ -22,7 +22,7 @@ class InstallCommand extends Command
     protected $info = '> The package-acl was installed successfully';
 
     protected $call_wrapper;
-
+    protected $db_seeder;
     /**
      * Create a new command instance.
      *
