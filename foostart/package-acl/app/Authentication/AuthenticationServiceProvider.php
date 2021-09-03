@@ -109,7 +109,7 @@ class AuthenticationServiceProvider extends ServiceProvider {
         });
 
         $this->app->bind('profile_repository', function () {
-            return new EloquentUserProfileRepository;
+                return new EloquentUserProfileRepository;
         });
 
         $this->app->bind('register_service', function () {
@@ -232,7 +232,6 @@ class AuthenticationServiceProvider extends ServiceProvider {
      * Publish migrations
      */
     protected function publishMigrations() {
-
         $this->publishes([
             __DIR__ . '/../../database/migrations' => $this->app->databasePath() . '/migrations',
         ]);

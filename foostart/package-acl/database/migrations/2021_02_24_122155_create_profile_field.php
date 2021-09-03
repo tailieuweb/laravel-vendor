@@ -5,18 +5,18 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProfileField extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
         Schema::dropIfExists('profile_field');
         Schema::create('profile_field', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('profile_id')->unsigned();
+            $table->integer('profile_id')->unsigned()->index();
             $table->integer('profile_field_type_id')->unsigned();
             $table->string('value');
             // relations
@@ -32,16 +32,16 @@ class CreateProfileField extends Migration {
             $table->unique(['profile_id','profile_field_type_id']);
             $table->timestamps();
         });
-	}
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('profile_field');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('profile_field');
+    }
 
 }

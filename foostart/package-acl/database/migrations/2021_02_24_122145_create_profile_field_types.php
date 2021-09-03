@@ -5,13 +5,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProfileFieldTypes extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
         Schema::dropIfExists('profile_field_type');
         Schema::create('profile_field_type', function(Blueprint $table)
         {
@@ -19,16 +19,16 @@ class CreateProfileFieldTypes extends Migration {
             $table->string('description');
             $table->timestamps();
         });
-	}
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('profile_field_type');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('profile_field_type');
+    }
 
 }
