@@ -16,7 +16,7 @@ class CreateUserProfileTable extends Migration
         Schema::dropIfExists('user_profile');
         Schema::create('user_profile', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index();
             $table->string('first_name', 50)->nullable();
             $table->string('last_name', 50)->nullable();
             $table->string('phone', 20)->nullable();

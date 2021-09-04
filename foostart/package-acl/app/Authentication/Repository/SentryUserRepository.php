@@ -250,4 +250,11 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
         return TRUE;
 
     }
+
+    /**
+     * Truncate table users data
+     */
+    public function truncate() {
+        $this->sentry->truncate('users');
+    }
 }

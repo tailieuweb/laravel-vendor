@@ -130,4 +130,12 @@ class Provider implements ProviderInterface
         $this->model = $model;
     }
 
+    /**
+     * Truncate table
+     */
+    public function truncate() {
+        $model = $this->createModel();
+
+        return $model->truncate();
+    }
 }

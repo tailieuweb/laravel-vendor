@@ -357,5 +357,11 @@ class Group extends Model implements GroupInterface
 
         return true;
     }
-
+    /**
+     * Truncate table
+     * @return mixed
+     */
+    public function truncate() {
+        return $this->query()->truncate();;
+    }
 }

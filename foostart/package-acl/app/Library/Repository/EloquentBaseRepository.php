@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Library\Exceptions\NotFoundException;
 use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
 use Event;
+use Illuminate\Support\Facades\Schema;
 
 class EloquentBaseRepository implements BaseRepositoryInterface
 {
@@ -103,4 +104,12 @@ class EloquentBaseRepository implements BaseRepositoryInterface
         $this->model = $model;
     }
 
+    /**
+     * Truncate table
+     */
+    public function truncate() {
+        Schema::disableForeignKeyConstraints();
+        $this->model->truncate();
+        Schema::enableForeignKeyConstraints();
+    }
 }

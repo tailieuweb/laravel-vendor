@@ -15,6 +15,13 @@ use Cartalyst\Sentry\Groups\GroupNotFoundException;
 class SentryGroupRepository implements BaseRepositoryInterface
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'groups';
+
+    /**
      * Sentry instance
      * @var
      */
@@ -97,5 +104,12 @@ class SentryGroupRepository implements BaseRepositoryInterface
         $group_repository_search = $group_repository_search ? $group_repository_search : new GroupRepositorySearchFilter($per_page);
         return $group_repository_search->all($search_filters);
 
+    }
+
+    /**
+     * Truncate table data
+     */
+    public function truncate() {
+        $this->sentry->truncate($this->table);
     }
 }

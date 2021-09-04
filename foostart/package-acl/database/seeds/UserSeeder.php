@@ -21,6 +21,9 @@ class UserSeeder extends Seeder
         $group_repository = App::make('group_repository');
         $profile_repository = App::make('profile_repository');
 
+        // Clear user data before create sample user data
+        $user_repository->truncate();
+
         $user_data = [
             "email" => $this->admin_email,
             "password" => $this->admin_password,
@@ -28,6 +31,9 @@ class UserSeeder extends Seeder
         ];
 
         $user = $user_repository->create($user_data);
+
+        // Clear user profile data create  sample user profile
+        $profile_repository->truncate();
 
         $profile_repository->attachEmptyProfile($user);
 

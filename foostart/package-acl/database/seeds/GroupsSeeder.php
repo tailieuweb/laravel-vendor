@@ -17,6 +17,9 @@ class GroupsSeeder extends Seeder
     {
         $group_repository = App::make('group_repository');
 
+        // Clear data before create sample data
+        $group_repository->truncate();
+
         $group1 = [
             "name" => "superadmin",
             "permissions" => ["_superadmin" => 1]

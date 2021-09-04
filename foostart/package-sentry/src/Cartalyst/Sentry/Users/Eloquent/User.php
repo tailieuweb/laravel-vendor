@@ -28,6 +28,7 @@ use Cartalyst\Sentry\Users\UserAlreadyActivatedException;
 use Cartalyst\Sentry\Users\UserExistsException;
 use Cartalyst\Sentry\Users\UserInterface;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
 
 class User extends Model implements UserInterface
 {
@@ -994,4 +995,13 @@ class User extends Model implements UserInterface
         return static::$loginAttribute;
     }
 
+    /**
+     * Truncate table
+     * @return mixed
+     */
+    public function truncate() {
+        Schema::disableForeignKeyConstraints();
+        $this->query()->truncate();;
+        Schema::enableForeignKeyConstraints();
+    }
 }

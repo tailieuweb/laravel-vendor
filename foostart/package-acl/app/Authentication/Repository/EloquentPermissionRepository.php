@@ -123,4 +123,13 @@ class EloquentPermissionRepository extends EloquentBaseRepository
         }
         return $q;
     }
+
+    /**
+     * Truncate table
+     * @return mixed
+     */
+    public function truncate(){
+        $permission = new Permission();
+        return $permission->truncate();
+    }
 }

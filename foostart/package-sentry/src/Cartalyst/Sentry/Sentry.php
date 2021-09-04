@@ -759,5 +759,14 @@ class Sentry
         $this->user->save();
         return $this->user;
     }
+
+    public function truncate($table) {
+        switch ($table) {
+            case 'groups':
+                return $this->groupProvider->truncate();
+            case 'users':
+                return $this->userProvider->truncate();
+        }
+    }
 }
 

@@ -15,6 +15,10 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permission_repository = App::make('permission_repository');
+
+        // Clear data before create sample data
+        $permission_repository->truncate();
+
         $permission1 = [
             "description" => "superadmin",
             "permission" => "_superadmin",
