@@ -3,32 +3,38 @@
     <div class="panel-heading">
         <h3 class="panel-title bariol-thin">
             <i class="fa fa-user"></i>
-            {!! $request->all() ? trans($plang_admin.'.users-search') : trans($plang_admin.'.sidebars.users-list') !!}
+            {!! $request->all() ? trans($plang_admin.'.search.user') : trans($plang_admin.'.sidebars.users-list') !!}
         </h3>
     </div>
 
     <div class="panel-body">
-
-        <!--TOP MENU-->
-        <div class="row">
-            <div class="col-lg-10 col-md-8 col-sm-8">
-            </div>
-
-        </div>
 
         <!--TABLE-->
         <div class="row">
             <div class="col-md-12">
                 @if(! $users->isEmpty() )
                     <div class="table-responsive">
+
+                        <caption>
+                            @if($users->total() == 1)
+                                {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
+                            @else
+                                {!! trans($plang_admin.'.descriptions.counters', ['number' => $users->total()]) !!}
+                            @endif
+                        </caption>
+
                         <table class="table table-hover">
 
                             <!--TITLE-->
                             <thead>
                             <tr>
                                 <!-- ORDER -->
+                                <?php $name = 'order' ?>
+                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}</th>
+
+                                <!-- ID -->
                                 <?php $name = 'id' ?>
-                                <th class="hidden-xs">#
+                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
@@ -118,10 +124,11 @@
                             <!--DATA-->
                             <tbody>
                             <?php
-                            $index = $users->perPage() * ($users->currentPage() - 1) + 1;
+                            $order = $users->perPage() * ($users->currentPage() - 1) + 1;
                             ?>
                             @foreach($users as $user)
                                 <tr>
+                                    <td><?php echo $order; $order++ ?></td>
                                     <td>{!! $user->id !!}</td>
                                     <td>{!! $user->email !!}</td>
                                     <td class="hidden-xs">{!! $user->first_name !!}</td>
@@ -131,21 +138,21 @@
                                     <td>
                                         @if(! $user->protected)
                                             <a href="{!! URL::route('users.edit', ['id' => $user->id]) !!}"><i
-                                                    class="fa fa-pencil-square-o fa-2x"></i></a>
+                                                    class="fa fa-pencil-square-o"></i></a>
                                             <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}"
-                                               class="margin-left-5 delete"><i class="fa fa-trash-o fa-2x"></i></a>
+                                               class="margin-left-5 delete"><i class="fa fa-trash-o"></i></a>
                                         @else
-                                            <i class="fa fa-times fa-2x light-blue"></i>
-                                            <i class="fa fa-times fa-2x margin-left-12 light-blue"></i>
+                                            <i class="fa fa-times light-blue"></i>
+                                            <i class="fa fa-times margin-left-12 light-blue"></i>
                                         @endif
                                     </td>
                                 </tr>
-                            </tbody>
                             @endforeach
+                            </tbody>
                         </table>
                     </div>
                     <div class="paginator">
-                        {!! $users->appends($request->except(['page']) )->render() !!}
+                        {!! $users->appends($request->except(['page']) )->render($pagination_view) !!}
                     </div>
                 @else
                     <span class="text-warning"><h5>{!! trans($plang_admin.'.messages.empty-data') !!}</h5></span>

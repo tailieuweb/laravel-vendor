@@ -91,7 +91,7 @@
         </tbody>
     </table>
     <div class="paginator">
-        {!! $permissions->appends($request->except(['page']) )->render() !!}
+        {!! $permissions->appends($request->except(['page']) )->render($pagination_view) !!}
     </div>
 @else
     <span class="text-warning"><h5>{!! trans($plang_admin.'.messages.permission-not-found') !!}</h5></span>

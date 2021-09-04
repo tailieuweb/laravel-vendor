@@ -33,7 +33,8 @@ abstract class Controller extends BaseController
 
         // Set data view
         $this->data_view = array_merge($this->data_view,[
-            'breadcrumbs' => $this->breadcrumbs
+            'breadcrumbs' => $this->breadcrumbs,
+            'pagination_view' => 'pagination::bootstrap-4'
         ]);
     }
 }

@@ -81,7 +81,7 @@
         </tbody>
     </table>
     <div class="paginator">
-        {!! $groups->appends($request->except(['page']) )->render() !!}
+        {!! $groups->appends($request->except(['page']) )->render($pagination_view) !!}
     </div>
 @else
     <span class="text-warning"><h5>No results found.</h5></span>

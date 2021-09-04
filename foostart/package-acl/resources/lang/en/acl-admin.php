@@ -201,6 +201,7 @@ return [
         'config' => 'Configurations',
         'filename' => 'File name',
         'order' => '#',
+        'id' => 'ID',
     ],
 
 

@@ -24,18 +24,21 @@ class UserSeeder extends Seeder
         // Clear user data before create sample user data
         $user_repository->truncate();
 
-        $user_data = [
-            "email" => $this->admin_email,
-            "password" => $this->admin_password,
-            "activated" => 1
-        ];
+        for ($i = 0; $i < 100; $i++) {
+            $u = ($i > 0) ? $i : '';
+            $user_data = [
+                "email" => $this->admin_email . $u,
+                "password" => $this->admin_password,
+                "activated" => 1
+            ];
 
-        $user = $user_repository->create($user_data);
+            $user = $user_repository->create($user_data);
 
-        // Clear user profile data create  sample user profile
-        $profile_repository->truncate();
+            // Clear user profile data create  sample user profile
+            $profile_repository->truncate();
 
-        $profile_repository->attachEmptyProfile($user);
+            $profile_repository->attachEmptyProfile($user);
+        }
 
         $superadmin_group = $this->getSuperadminGroup($group_repository);
         $user_repository->addGroup($user->id, $superadmin_group->id);
