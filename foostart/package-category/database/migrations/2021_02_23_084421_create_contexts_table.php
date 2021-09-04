@@ -27,8 +27,8 @@ class CreateContextsTable extends FoostartMigration
 
             // Other attributes
             $table->string($this->prefix_column . 'name', 255)->comment('Context name');
-            $table->string($this->prefix_column . 'key', 255)->comment('Context key');
             $table->string($this->prefix_column . 'ref', 255)->comment('Context references');
+            $table->string($this->prefix_column . 'key', 255)->comment('Context key');
             $table->string($this->prefix_column . 'slug', 1000)->nullable()->comment('Context slug');
             $table->string($this->prefix_column . 'notes', 1000)->nullable()->comment('Category overview');
 
