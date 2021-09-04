@@ -48,32 +48,27 @@ class FooController extends Controller
     protected $category_ref_type = NULL;
     protected $category_ref_level = NULL;
 
-    public $breadcrumb_1 = [];
-    public $breadcrumb_2 = [];
-    public $breadcrumb_3 = [];
-
+    public $breadcrumbs = [];
 
     public function __construct()
     {
-        /**
-         * Breadcrumb
-         */
-        //1
-        $this->breadcrumb_1 = [
-            'url' => url('/' . request()->segment(1)),
-        ];
-        //2
-        if (request()->segment(1)) {
-            $this->breadcrumb_2 = [
-                'url' => $this->breadcrumb_1['url'] . '/' . request()->segment(2),
-            ];
+        // Set url to breadcrumb
+        $pathInfo = request()->getPathInfo();
+        $segments = explode('/', $pathInfo);
+
+        foreach ($segments as $index => $segment) {
+            if ($index === 0) {
+                $this->breadcrumbs[] = [
+                    'url' => url('/' )
+                ];
+            } else {
+                $this->breadcrumbs[] = [
+                    'url' => $this->breadcrumbs[$index-1]['url'] . '/' . $segment,
+                    'label' => trans('acl-admin.breadcrumbs.'.$segment)
+                ];
+            }
         }
-        //3
-        if (request()->segment(2)) {
-            $this->breadcrumb_3 = [
-                'url' => $this->breadcrumb_2['url'] . '/' . request()->segment(3),
-            ];
-        }
+        unset($this->breadcrumbs[0]);
 
         /**
          * Data view

@@ -45,3 +45,6 @@ Select option [* ] Provider: Foostart\Acl\Authentication\AuthenticationServicePr
 
 2. php artisan vendor:publish --provider="Foostart\Category\CategoryServiceProvider" --force
 3. Ref: https://packagist.org/packages/foostart/package-post
+
+## Tips 1: Publish
+php artisan vendor:publish --force
