@@ -231,7 +231,7 @@ class Category extends FooModel
      * @param ARRAY $params
      * @return ELOQUENT OBJECT
      */
-    protected function searchFilters($params = [], $elo)
+    protected function searchFilters(array $params, $elo)
     {
 
         if ($this->isValidFilters($params)) {
@@ -313,7 +313,7 @@ class Category extends FooModel
      * @param ARRAY $params
      * @return ELOQUENT OBJECT
      */
-    public function paginateItems($params = [], $elo)
+    public function paginateItems(array $params, $elo)
     {
         $items = $elo->paginate($this->perPage);
 

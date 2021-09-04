@@ -194,7 +194,7 @@ class Context extends FooModel
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    protected function searchFilters(array $params = [], $elo)
+    protected function searchFilters(array $params, $elo)
     {
 
         //filter
@@ -269,7 +269,7 @@ class Context extends FooModel
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    public function paginateItems(array $params = [], $elo)
+    public function paginateItems(array $params, $elo)
     {
         $items = $elo->paginate($this->perPage);
 
@@ -335,7 +335,7 @@ class Context extends FooModel
      * @param ARRAY $input list of parameters
      * @return boolean TRUE incase delete successfully otherwise return FALSE
      */
-    public function deleteItem($input = [], $delete_type)
+    public function deleteItem(?array $input, $delete_type)
     {
 
         $item = $this->find($input['id']);
