@@ -203,6 +203,7 @@ return [
         'filename' => 'File name',
         'order' => '#',
         'id' => 'ID',
+        'keyword' => 'Keyword',
     ],
 
 

@@ -15,19 +15,23 @@
         </div>
 
         <!--MAIN FILTERS-->
-        <!-- email text field -->
-        <div class="form-group">
-            {!! Form::label('email',trans($plang_admin.'.labels.email')) !!}
-            {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'user email']) !!}
-        </div>
-        <span class="text-danger">{!! $errors->first('email') !!}</span>
+        <!-- KEYWORD -->
+        @include('package-category::admin.partials.input_text', [
+            'name' => 'keyword',
+            'placehover' => trans($plang_admin.'.labels.keyword'),
+            'label' => trans($plang_admin.'.labels.keyword'),
+            'value' => @$params['keyword'],
+        ])
+        <span class="text-danger">{!! $errors->first('keyword') !!}</span>
 
-        <!-- full name text field-->
-        <div class="form-group">
-            {!! Form::label('full_name',trans($plang_admin.'.labels.full_name')) !!}
-            {!! Form::text('full_name', null, ['class' => 'form-control', 'placeholder' => 'full name']) !!}
-        </div>
-        <span class="text-danger">{!! $errors->first('full_name') !!}</span>
+        <!-- EMAIL -->
+        @include('package-category::admin.partials.input_text', [
+            'name' => 'email',
+            'placehover' => trans($plang_admin.'.labels.email'),
+            'label' => trans($plang_admin.'.labels.email'),
+            'value' => @$params['email'],
+        ])
+        <span class="text-danger">{!! $errors->first('email') !!}</span>
 
         <!--/END MAIN FILTERS-->
 
@@ -35,6 +39,13 @@
                 data-target="#more_filter">{!! trans($plang_admin.'.search.btn-advance') !!}</button>
 
         <div id='more_filter' class='collapse'>
+
+            <!-- FULL NAME-->
+            <div class="form-group">
+                {!! Form::label('full_name',trans($plang_admin.'.labels.full_name')) !!}
+                {!! Form::text('full_name', null, ['class' => 'form-control', 'placeholder' => 'full name']) !!}
+            </div>
+            <span class="text-danger">{!! $errors->first('full_name') !!}</span>
 
             <!-- first_name text field -->
             <div class="form-group">
