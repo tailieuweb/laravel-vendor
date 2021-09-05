@@ -90,10 +90,16 @@ class GroupController extends Controller
         return Redirect::route('groups.edit', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
     }
 
+    /**
+     * Delete group
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteGroup(Request $request)
     {
         try {
             $this->f->delete($request->all());
+
         } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             return Redirect::route('groups.list')->withErrors($errors);

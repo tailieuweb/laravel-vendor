@@ -245,6 +245,10 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'permissions.delete',
             'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@deletePermission'
         ]);
+        Route::get('/admin/permissions/restore', [
+            'as' => 'permissions.restore',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@restorePermission'
+        ]);
     });
 });
 

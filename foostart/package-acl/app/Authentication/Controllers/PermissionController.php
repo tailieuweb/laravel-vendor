@@ -95,10 +95,16 @@ class PermissionController extends Controller
         return Redirect::route("permissions.edit", ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.permission_permission_edit_success'));
     }
 
+    /**
+     * Delete permission
+     * @param Request $request
+     * @return mixed
+     */
     public function deletePermission(Request $request)
     {
         try {
             $this->f->delete($request->all());
+
         } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             return Redirect::route('permissions.list')->withErrors($errors);
