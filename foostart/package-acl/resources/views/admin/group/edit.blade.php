@@ -24,7 +24,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-6 col-xs-12">
+                        <div class="col-md-4 col-xs-6">
                             {{-- group base form --}}
                             <h4>{!! trans($plang_admin.'.labels.general-data') !!}</h4>
                             {!! Form::model($group, [ 'url' => [URL::route('groups.edit'), $group->id], 'method' => 'post'] ) !!}
@@ -35,12 +35,24 @@
                             </div>
                             <span class="text-danger">{!! $errors->first('name') !!}</span>
                             {!! Form::hidden('id') !!}
-                            <a href="{!! URL::route('groups.delete',['id' => $group->id, '_token' => csrf_token()]) !!}"
-                               class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
-                            {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
+
+                            @if($group->deleted_at)
+                                <a href="{!! URL::route('groups.restore',['id' => $group->id, '_token' => csrf_token()]) !!}"
+                                   class="btn btn-success pull-right margin-left-5 restore">
+                                    {!! trans($plang_admin.'.buttons.restore') !!}
+                                </a>
+                            @else
+                                <a href="{!! URL::route('groups.delete',['id' => $group->id, '_token' => csrf_token()]) !!}"
+                                   class="btn btn-warning pull-right margin-left-5 delete">
+                                    {!! trans($plang_admin.'.buttons.delete') !!}
+                                </a>
+                            @endif
+                            {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
                             {!! Form::close() !!}
                         </div>
-                        <div class="col-md-6 col-xs-12">
+                        <div class="col-md-4 col-xs-6">
+                        </div>
+                        <div class="col-md-4 col-xs-6">
                             {{-- group permission form --}}
                             <h4><i class="fa fa-lock"></i>{!! trans($plang_admin.'.labels.permission-name') !!}</h4>
                             {{-- permissions --}}

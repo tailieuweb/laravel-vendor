@@ -101,6 +101,22 @@ class GroupController extends Controller
         return Redirect::route('groups.list')->withMessage(Config::get('acl_messages.flash.success.group_delete_success'));
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function restoreGroup(Request $request)
+    {
+        try {
+            $obj = $this->group_repository->find($request->get('id'));
+            $this->f->restore($request->all());
+        } catch (JacopoExceptionsInterface $e) {
+            $errors = $this->f->getErrors();
+            return Redirect::route('groups.list')->withErrors($errors);
+        }
+        return Redirect::route('groups.edit', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
+    }
+
     public function editPermission(Request $request)
     {
         // prepare input

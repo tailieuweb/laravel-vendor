@@ -87,6 +87,19 @@ class SentryGroupRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Restore object
+     * @param $id
+     * @return mixed
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
+     */
+    public function restore($id)
+    {
+        $obj = $this->find($id);
+        Event::dispatch('repository.restore', [$obj]);
+        return $obj->restore();
+    }
+
+    /**
      * Find a model by his id
      *
      * @param $id

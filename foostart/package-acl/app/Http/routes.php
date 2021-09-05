@@ -221,6 +221,10 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'groups.delete',
             'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@deleteGroup'
         ]);
+        Route::get('/admin/groups/restore', [
+            'as' => 'groups.restore',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@restoreGroup'
+        ]);
         Route::post('/admin/groups/editpermission', [
             'as' => 'groups.edit.permission',
             'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@editPermission'
