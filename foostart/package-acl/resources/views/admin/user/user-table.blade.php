@@ -148,9 +148,7 @@
 
                             <!--DATA-->
                             <tbody>
-                            <?php
-                            $order = $users->perPage() * ($users->currentPage() - 1) + 1;
-                            ?>
+                            <?php $order = $users->perPage() * ($users->currentPage() - 1) + 1; ?>
                             @foreach($users as $user)
                                 <tr>
                                     <td>
