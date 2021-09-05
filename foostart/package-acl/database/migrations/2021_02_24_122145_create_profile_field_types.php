@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateProfileFieldTypes extends Migration
+class CreateProfileFieldTypes extends FoostartMigration
 {
-
+    public function __construct()
+    {
+        $this->table = 'profile_field_type';
+        $this->prefix_column = 'profile_field_type_';
+    }
     /**
      * Run the migrations.
      *
@@ -13,11 +17,13 @@ class CreateProfileFieldTypes extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('profile_field_type');
-        Schema::create('profile_field_type', function (Blueprint $table) {
+        Schema::dropIfExists($this->table);
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
-            $table->timestamps();
+
+            // Set common columns
+            $this->setCommonColumns($table);
         });
     }
 
@@ -28,7 +34,7 @@ class CreateProfileFieldTypes extends Migration
      */
     public function down()
     {
-        Schema::drop('profile_field_type');
+        Schema::drop($this->table);
     }
 
 }

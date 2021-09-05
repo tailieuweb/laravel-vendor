@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class CreatePermissionTable extends Migration
+class CreatePermissionTable extends FoostartMigration
 {
-
+    public function __construct()
+    {
+        $this->table = 'permission';
+        $this->prefix_column = 'permission_';
+    }
     /**
      * Run the migrations.
      *
@@ -13,15 +17,18 @@ class CreatePermissionTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('permission');
-        Schema::create('permission', function (Blueprint $table) {
+        Schema::dropIfExists($this->table);
+        Schema::create($this->table, function (Blueprint $table) {
+
             $table->increments('id');
             $table->string('overview', 500);
-            $table->string('description');
+            $table->text('description');
             $table->string('url', 255);
             $table->string('permission');
             $table->boolean('protected')->default(0);
-            $table->timestamps();
+
+            // Set common columns
+            $this->setCommonColumns($table);
         });
     }
 
@@ -32,7 +39,7 @@ class CreatePermissionTable extends Migration
      */
     public function down()
     {
-        Schema::drop('permission');
+        Schema::drop($this->table);
     }
 
 }

@@ -46,7 +46,7 @@ class UserRepositorySearchFilter
 
         $q = $this->createAllSelect($q);
 
-
+        $sql = $q->toSql();
         return $q->paginate($this->per_page);
     }
 

@@ -62,13 +62,6 @@ class UserController extends Controller
         $this->auth = $auth;
         $this->register_service = App::make('register_service');
         $this->custom_profile_repository = App::make('custom_profile_repository');
-
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_1['label'] = 'Admin';
-        $this->breadcrumb_2['label'] = 'Users';
-
     }
 
     /**
@@ -78,10 +71,6 @@ class UserController extends Controller
      */
     public function getList(Request $request)
     {
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3 = NULL;
         $user_leader = $this->user_repository->isLeader();
         $users = $this->user_repository->all($request->except(['page']));
 
@@ -89,19 +78,12 @@ class UserController extends Controller
         $this->data_view = array_merge($this->data_view, array(
             "users" => $users,
             "request" => $request,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
         return View::make('package-acl::admin.user.list')->with($this->data_view);
     }
 
     public function editUser(Request $request)
     {
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3['label'] = 'Edit';
         try {
             $user_leader = $this->user_repository->isLeader();
             $user = $this->user_repository->find($request->get('id'));
@@ -119,8 +101,6 @@ class UserController extends Controller
         $this->data_view = array_merge($this->data_view, array(
             "user" => $user,
             "presenter" => $presenter,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
         ));
         return View::make('package-acl::admin.user.edit')->with($this->data_view);
     }
@@ -419,12 +399,6 @@ class UserController extends Controller
      */
     public function lang(Request $request)
     {
-
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3['label'] = 'Edit';
-
         $is_valid_request = $this->isValidRequest($request);
 
         // get list of languages
@@ -497,9 +471,6 @@ class UserController extends Controller
             'langs' => $langs,
             'lang_contents' => $lang_contents,
             'lang' => $lang,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
         return View::make('package-acl::admin.acl-lang')->with($this->data_view);
     }

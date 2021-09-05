@@ -49,7 +49,7 @@ return [
         [
             "name" => "acl-admin.menu.users",
             "route" => "users",
-            "link" => '/admin/users/list',
+            "link" => '/admin/users',
             "permissions" => [$admin, '_user-editor', '_user-leader'],
             "skip_permissions" => ["users.selfprofile.edit", "users.profile.edit", "users.profile.addfield", "users.profile.deletefield"]
         ],

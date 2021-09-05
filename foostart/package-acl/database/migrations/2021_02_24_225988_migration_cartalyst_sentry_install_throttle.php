@@ -18,10 +18,15 @@
  * @link       http://cartalyst.com
  */
 
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class MigrationCartalystSentryInstallThrottle extends Migration
+class MigrationCartalystSentryInstallThrottle extends FoostartMigration
 {
+    public function __construct()
+    {
+        $this->table = 'throttle';
+        $this->prefix_column = 'throttle_';
+    }
 
     /**
      * Run the migrations.
@@ -30,7 +35,7 @@ class MigrationCartalystSentryInstallThrottle extends Migration
      */
     public function up()
     {
-        Schema::create('throttle', function ($table) {
+        Schema::create($this->table, function ($table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->string('ip_address')->nullable();
@@ -41,6 +46,10 @@ class MigrationCartalystSentryInstallThrottle extends Migration
             $table->timestamp('suspended_at')->nullable();
             $table->timestamp('banned_at')->nullable();
 
+            // Set common columns
+            $this->setCommonColumns($table);
+
+            // Setup other attributes
             // We'll need to ensure that MySQL uses the InnoDB engine to
             // support the indexes, other engines aren't affected.
             $table->engine = 'InnoDB';
@@ -55,7 +64,7 @@ class MigrationCartalystSentryInstallThrottle extends Migration
      */
     public function down()
     {
-        Schema::drop('throttle');
+        Schema::drop($this->table);
     }
 
 }

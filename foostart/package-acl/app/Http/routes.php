@@ -130,10 +130,6 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * user
          */
-        Route::get('/admin/users/list', [
-            'as' => 'users.list',
-            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@getList'
-        ]);
         Route::get('/admin/users', [
             'as' => 'users.list',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@getList'

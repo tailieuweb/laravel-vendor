@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateProfileField extends Migration
+class CreateProfileField extends FoostartMigration
 {
+    public function __construct()
+    {
+        $this->table = 'profile_field';
+        $this->prefix_column = 'profile_field_';
+    }
 
     /**
      * Run the migrations.
@@ -13,8 +18,8 @@ class CreateProfileField extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('profile_field');
-        Schema::create('profile_field', function (Blueprint $table) {
+        Schema::dropIfExists($this->table);
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->integer('profile_id')->unsigned()->index();
             $table->integer('profile_field_type_id')->unsigned();
@@ -30,7 +35,10 @@ class CreateProfileField extends Migration
                 ->onDelete('cascade');
             // indexes
             $table->unique(['profile_id', 'profile_field_type_id']);
-            $table->timestamps();
+
+            // Set common columns
+            $this->setCommonColumns($table);
+
         });
     }
 
@@ -41,7 +49,7 @@ class CreateProfileField extends Migration
      */
     public function down()
     {
-        Schema::drop('profile_field');
+        Schema::drop($this->table);
     }
 
 }

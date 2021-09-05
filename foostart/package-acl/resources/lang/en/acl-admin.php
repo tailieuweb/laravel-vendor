@@ -42,6 +42,7 @@ return [
      */
     'order' => [
         'name' => 'Order',
+        'id' => 'ID',
         'no-selected' => 'No selected',
         'by-asc' => 'ASC',
         'by-desc' => 'DESC',

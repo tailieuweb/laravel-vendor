@@ -25,8 +25,8 @@ class FoostartMigration extends Migration
         $table->integer('sequence')->nullable()->comment('Input order');
 
         //Add created_user_id and updated_user_id
-        $table->integer('created_user_id')->comment('Created by User Id');
-        $table->integer('updated_user_id')->comment('Updated by User Id');
+        $table->integer('created_user_id')->nullable()->comment('Created by User Id');
+        $table->integer('updated_user_id')->nullable()->comment('Updated by User Id');
 
         //Add deleted_at field
         $table->softDeletes();

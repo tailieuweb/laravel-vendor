@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class CreatePasswordResetsTable extends Migration
+class CreatePasswordResetsTable extends FoostartMigration
 {
-
+    public function __construct()
+    {
+        $this->table = 'password_resets';
+        $this->prefix_column = 'password_resets_';
+    }
     /**
      * Run the migrations.
      *
@@ -13,11 +17,14 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('password_resets');
-        Schema::create('password_resets', function (Blueprint $table) {
+        Schema::dropIfExists($this->table);
+        Schema::create($this->table, function (Blueprint $table) {
             $table->string('email', 100)->index();
             $table->string('token', 100)->index();
-            $table->timestamp('created_at');
+
+            // Set common columns
+            $this->setCommonColumns($table);
+
         });
     }
 
@@ -28,7 +35,7 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('password_resets');
+        Schema::drop($this->table);
     }
 
 }

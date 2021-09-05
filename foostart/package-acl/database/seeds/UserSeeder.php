@@ -23,7 +23,8 @@ class UserSeeder extends Seeder
 
         // Clear user data before create sample user data
         $user_repository->truncate();
-
+        // Clear user profile data create  sample user profile
+        $profile_repository->truncate();
         for ($i = 0; $i < 100; $i++) {
             $u = ($i > 0) ? $i : '';
             $user_data = [
@@ -33,15 +34,14 @@ class UserSeeder extends Seeder
             ];
 
             $user = $user_repository->create($user_data);
-
-            // Clear user profile data create  sample user profile
-            $profile_repository->truncate();
-
             $profile_repository->attachEmptyProfile($user);
+
+            if ($i == 0) {
+                $superadmin_group = $this->getSuperadminGroup($group_repository);
+                $user_repository->addGroup($user->id, $superadmin_group->id);
+            }
         }
 
-        $superadmin_group = $this->getSuperadminGroup($group_repository);
-        $user_repository->addGroup($user->id, $superadmin_group->id);
     }
 
     /**
