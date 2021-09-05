@@ -11,5 +11,9 @@ class Group extends SentryGroup
 {
     protected $guarded = ["id"];
 
-    protected $fillable = ["name", "permissions", "protected"];
+    protected $fillable = [
+        "name",
+        "permissions",
+        "protected"
+    ];
 }

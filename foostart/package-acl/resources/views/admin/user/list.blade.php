@@ -18,7 +18,7 @@
                 @endforeach
             @endif
             <!--BODY-->
-            {!! Form::open(['route'=>['users.delete', 'id' => @$item->id], 'method' => 'get', 'class'=>'form-responsive'])  !!}
+            {!! Form::open(['route'=>['users.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
                 @include('package-acl::admin.user.user-table')
                 {!! csrf_field(); !!}
             {!! Form::close() !!}

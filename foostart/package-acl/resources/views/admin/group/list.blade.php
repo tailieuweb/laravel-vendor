@@ -26,7 +26,12 @@
                                 class="fa fa-group"></i> {!! $request->all() ? 'Search results:' : 'Groups' !!}</h3>
                     </div>
                     <div class="panel-body">
-                        @include('package-acl::admin.group.groups-table')
+                        <!--BODY-->
+                        {!! Form::open(['route'=>['groups.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
+                            @include('package-acl::admin.group.groups-table')
+                            {!! csrf_field(); !!}
+                        {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>

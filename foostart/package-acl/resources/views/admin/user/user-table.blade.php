@@ -1,3 +1,15 @@
+<?php
+    $withs = [
+        'counter' => '5%',
+        'id' => '7%',
+        'email' => '30%',
+        'first_name' => '15%',
+        'last_name' => '15%',
+        'active' => '7%',
+        'status' => '5%',
+        'last_login' => '16%',
+    ];
+?>
 <div class="panel panel-info">
     <!--HEADING-->
     <div class="panel-heading">
@@ -44,9 +56,9 @@
                             <!--TITLE-->
                             <thead>
                             <tr>
-                                <!-- ORDER -->
-                                <?php $name = 'order' ?>
-                                <th class="hidden-xs">
+                                <!-- COUNTER -->
+                                <?php $name = 'counter' ?>
+                                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <span class="del-checkbox pull-right">
                                         <input type="checkbox" id="selecctall"/>
@@ -56,7 +68,8 @@
 
                                 <!-- ID -->
                                 <?php $name = 'id' ?>
-                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
+                                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                                    {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
@@ -70,7 +83,8 @@
 
                                 <!-- EMAIL -->
                                 <?php $name = 'email' ?>
-                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
+                                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                                    {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -84,7 +98,8 @@
 
                                 <!-- FIRST NAME -->
                                 <?php $name = 'first_name' ?>
-                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
+                                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                                    {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-first-name' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -98,7 +113,8 @@
 
                                 <!-- LAST NAME -->
                                 <?php $name = 'last_name' ?>
-                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
+                                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                                    {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-name' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -112,7 +128,8 @@
 
                                 <!-- ACTIVE -->
                                 <?php $name = 'active' ?>
-                                <th class="hidden-xs text-center">{!! trans($plang_admin.'.labels.'.$name) !!}
+                                <th class="hidden-xs text-center" style='width:{{ $withs[$name] }}'>
+                                    {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-active' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -126,13 +143,14 @@
 
                                 <!--STATUS-->
                                 <?php $name = 'status' ?>
-                                <th class="hidden-xs text-center">
+                                <th class="hidden-xs text-center" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.columns.status') !!}
                                 </th>
 
                                 <!-- LAST LOGIN -->
                                 <?php $name = 'last_login' ?>
-                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
+                                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                                    {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-login' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>

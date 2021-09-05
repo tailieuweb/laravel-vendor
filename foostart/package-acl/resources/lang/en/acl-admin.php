@@ -223,9 +223,10 @@ return [
         'title-backup' => 'Backups',
         'config' => 'Configurations',
         'filename' => 'File name',
-        'order' => '#',
+        'order' => 'Order',
         'id' => 'ID',
         'keyword' => 'Keyword',
+        'counter' => '#',
     ],
 
 

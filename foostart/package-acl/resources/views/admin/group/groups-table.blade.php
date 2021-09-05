@@ -1,3 +1,13 @@
+<?php
+$withs = [
+    'counter' => '5%',
+    'id' => '7%',
+    'name' => '30%',
+    'permissions' => '50%',
+    'status' => '8%',
+];
+?>
+
 @if( ! $groups->isEmpty() )
     <div style="min-height: 50px;">
 
@@ -27,19 +37,19 @@
         <thead>
             <tr>
 
-                <!-- ORDER -->
-                <?php $name = 'order' ?>
-                <th width=5% class="hidden-xs">
+                <!-- COUNTER -->
+                <?php $name = 'counter' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                     {!! trans($plang_admin.'.labels.'.$name) !!}
                     <span class="del-checkbox pull-right">
-                                            <input type="checkbox" id="selecctall"/>
-                                            <label for="del-checkbox"></label>
-                                        </span>
+                        <input type="checkbox" id="selecctall"/>
+                    </span>
                 </th>
 
                 <!-- ID -->
                 <?php $name = 'id' ?>
-                <th width=10% class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.labels.'.$name) !!}
                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                         @if($sorting['items'][$name] == 'asc')
                             <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
@@ -54,7 +64,8 @@
 
                 <!-- Group name -->
                 <?php $name = 'name' ?>
-                <th class="hidden-xs">{!! trans($plang_admin.'.tables.group-'.$name) !!}
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.tables.group-'.$name) !!}
                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                         @if($sorting['items'][$name] == 'asc')
                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -68,7 +79,8 @@
 
                 <!--Group permissions-->
                 <?php $name = 'permissions' ?>
-                <th class="hidden-xs">{!! trans($plang_admin.'.tables.group-'.$name) !!}
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.tables.group-'.$name) !!}
                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                         @if($sorting['items'][$name] == 'asc')
                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -78,6 +90,12 @@
                             <i class="fa fa-sort-desc" aria-hidden="true"></i>
                         @endif
                     </a>
+                </th>
+
+                <!--STATUS-->
+                <?php $name = 'status' ?>
+                <th class="hidden-xs text-center" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.columns.status') !!}
                 </th>
             </tr>
         </thead>
@@ -106,6 +124,11 @@
                 <td style="width:40%">{!! $group->name !!}</td>
 
                 <td style="width:50%">{!! $group->permissions !!}</td>
+
+                <td class="text-center">
+                    {!! $group->deleted_at ? '<i class="fa fa-circle-o red" title="In trash"></i>' :
+                                            '<i class="fa fa-circle green" title="Available"></i>' !!}
+                </td>
             </tr>
 
         @endforeach

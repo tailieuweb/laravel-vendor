@@ -18,12 +18,13 @@
  * @link       http://cartalyst.com
  */
 
+use Cartalyst\Sentry\BaseSentryModel;
 use Cartalyst\Sentry\Groups\NameRequiredException;
 use Cartalyst\Sentry\Groups\GroupExistsException;
 use Cartalyst\Sentry\Groups\GroupInterface;
-use Illuminate\Database\Eloquent\Model;
 
-class Group extends Model implements GroupInterface
+
+class Group extends BaseSentryModel implements GroupInterface
 {
 
     /**

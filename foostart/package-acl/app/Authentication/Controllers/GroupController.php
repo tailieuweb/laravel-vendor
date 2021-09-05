@@ -53,14 +53,16 @@ class GroupController extends Controller
         return View::make('package-acl::admin.group.list')->with($this->data_view);
     }
 
+    /**
+     * Edit group page
+     * @param Request $request
+     * @return mixed
+     */
     public function editGroup(Request $request)
     {
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3['label'] = 'Edit';
         try {
             $obj = $this->group_repository->find($request->get('id'));
+
         } catch (UserNotFoundException $e) {
             $obj = new Group;
         }

@@ -187,6 +187,11 @@ class UserController extends Controller
             ->withMessage(Config::get('acl_messages.flash.success.user_group_add_success'));
     }
 
+    /**
+     * Delete group
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteGroup(Request $request)
     {
         $user_id = $request->get('id');

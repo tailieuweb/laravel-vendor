@@ -158,6 +158,7 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'users.groups.delete',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@deleteGroup'
         ]);
+
         Route::post('/admin/users/editpermission', [
             'as' => 'users.edit.permission',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editPermission'
