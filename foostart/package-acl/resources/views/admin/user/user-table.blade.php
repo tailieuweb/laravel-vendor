@@ -143,13 +143,6 @@
                                         @endif
                                     </a>
                                 </th>
-
-                                <!-- OPERATION -->
-                                <th>
-                                    <span class='lb-delete-all'>
-                                        {{ trans($plang_admin.'.columns.operations') }}
-                                    </span>
-                                </th>
                             </tr>
                             </thead>
 
@@ -167,7 +160,11 @@
                                             <label for="box-item"></label>
                                         </span>
                                     </td>
-                                    <td>{!! $user->id !!}</td>
+                                    <td>
+                                        <a href="{!! URL::route('users.edit', ['id' => $user->id]) !!}">
+                                            {!! $user->id !!}
+                                        </a>
+                                    </td>
                                     <td>{!! $user->email !!}</td>
                                     <td class="hidden-xs">{!! $user->first_name !!}</td>
                                     <td class="hidden-xs">{!! $user->last_name !!}</td>
@@ -178,17 +175,8 @@
                                         {!! $user->deleted_at ? '<i class="fa fa-circle-o red" title="In trash"></i>' :
                                                                 '<i class="fa fa-circle green" title="Available"></i>' !!}
                                     </td>
-                                    <td class="hidden-xs">{!! $user->last_login ? $user->last_login : trans($plang_admin.'.messages.message-last-login') !!}</td>
-                                    <td>
-                                        @if(! $user->protected)
-                                            <a href="{!! URL::route('users.edit', ['id' => $user->id]) !!}"><i
-                                                    class="fa fa-pencil-square-o"></i></a>
-                                            <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}"
-                                               class="margin-left-5 delete"><i class="fa fa-trash-o"></i></a>
-                                        @else
-                                            <i class="fa fa-times light-blue"></i>
-                                            <i class="fa fa-times margin-left-12 light-blue"></i>
-                                        @endif
+                                    <td class="hidden-xs">
+                                        {!! $user->last_login ? $user->last_login : trans($plang_admin.'.messages.message-last-login') !!}
                                     </td>
                                 </tr>
                             @endforeach

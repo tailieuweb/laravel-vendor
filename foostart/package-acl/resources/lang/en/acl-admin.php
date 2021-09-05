@@ -75,12 +75,15 @@ return [
         'reset' => 'Reset',
         'submit' => 'Submit',
         'delete' => 'Delete',
+        'trash' => 'Trash',
+        'restore' => 'Restore',
+        'edit-profile' => 'Edit profile',
         'upload-avatar' => 'Update avatar',
         'update-avatar' => 'Update avatar',
         'search' => 'Search',
         'save' => 'Save',
-        'delete-in-trash' => 'In trash',
-        'delete-forever' => 'Forever',
+        'delete-in-trash' => 'Trash',
+        'delete-forever' => 'Delete forever',
     ],
 
 
