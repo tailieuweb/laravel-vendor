@@ -22,7 +22,22 @@ class UserRepositorySearchFilter
     private $valid_ordering_fields = ["first_name", "last_name", "email", "last_login", "activated", "name", 'id'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['email', 'full_name', 'first_name', 'last_name', 'sex', 'category_id', 'code', 'activated', 'banned', 'group_id', 'order_by', 'ordering', 'user_leader', 'id'];
+    private $valid_fields_filter = [
+        'keyword',
+        'email',
+        'full_name',
+        'first_name',
+        'last_name',
+        'sex',
+        'category_id',
+        'code',
+        'activated',
+        'banned',
+        'group_id',
+        'order_by',
+        'ordering',
+        'user_leader',
+        'id'];
 
     protected $user_leader;
 
@@ -46,7 +61,7 @@ class UserRepositorySearchFilter
 
         $q = $this->createAllSelect($q);
 
-        $sql = $q->toSql();
+        $sql = $q->toSql();//Debug: removed
         return $q->paginate($this->per_page);
     }
 
@@ -79,6 +94,15 @@ class UserRepositorySearchFilter
                 if ($this->isValidFilterValue($value)) {
                     $column = $column . '';
                     switch ($column) {
+                        case 'keyword':
+                            if (!empty($value)) {
+                                $q = $q->where(function ($q) use ($value) {
+                                    $q->where($this->user_table_name . '.email', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->profile_table_name . '.first_name', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->profile_table_name . '.last_name', 'LIKE', "%{$value}%");
+                                });
+                            }
+                            break;
                         case 'activated':
                             if (!empty($value)) {
                                 $q = $q->where($this->user_table_name . '.activated', '=', $value);

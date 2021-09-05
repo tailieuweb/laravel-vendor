@@ -49,13 +49,15 @@ return [
     ],
 
     'sex' => [
-        0 => 'Any',
         1 => 'Female',
         2 => 'Male',
         3 => 'Other',
     ],
     'banned' => [
-        0 => 'Any',
+        1 => 'Yes',
+        2 => 'No',
+    ],
+    'active' => [
         1 => 'Yes',
         2 => 'No',
     ],
