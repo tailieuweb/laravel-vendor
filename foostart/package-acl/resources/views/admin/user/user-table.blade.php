@@ -112,7 +112,7 @@
 
                                 <!-- ACTIVE -->
                                 <?php $name = 'active' ?>
-                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
+                                <th class="hidden-xs text-center">{!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-active' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -122,6 +122,12 @@
                                             <i class="fa fa-sort-desc" aria-hidden="true"></i>
                                         @endif
                                     </a>
+                                </th>
+
+                                <!--STATUS-->
+                                <?php $name = 'status' ?>
+                                <th class="hidden-xs text-center">
+                                    {!! trans($plang_admin.'.columns.status') !!}
                                 </th>
 
                                 <!-- LAST LOGIN -->
@@ -165,7 +171,13 @@
                                     <td>{!! $user->email !!}</td>
                                     <td class="hidden-xs">{!! $user->first_name !!}</td>
                                     <td class="hidden-xs">{!! $user->last_name !!}</td>
-                                    <td>{!! $user->activated ? '<i class="fa fa-circle green"></i>' : '<i class="fa fa-circle-o red"></i>' !!}</td>
+                                    <td class="text-center">
+                                        {!! $user->activated ? '<i class="fa fa-circle green"></i>' : '<i class="fa fa-circle-o red"></i>' !!}
+                                    </td>
+                                    <td class="text-center">
+                                        {!! $user->deleted_at ? '<i class="fa fa-circle-o red" title="In trash"></i>' :
+                                                                '<i class="fa fa-circle green" title="Available"></i>' !!}
+                                    </td>
                                     <td class="hidden-xs">{!! $user->last_login ? $user->last_login : trans($plang_admin.'.messages.message-last-login') !!}</td>
                                     <td>
                                         @if(! $user->protected)

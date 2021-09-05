@@ -94,6 +94,9 @@ return [
     'hint' => [
         'delete-forever' => 'Delete forever',
         'delete-in-trash' => 'Delete in trash',
+        'deleted' => 'In trash',
+        'available' => 'Available',
+        'inactive' => 'Inactive'
     ],
 
     /***********************************************************************
