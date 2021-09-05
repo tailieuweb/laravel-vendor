@@ -201,10 +201,6 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * groups
          */
-        Route::get('/admin/groups/list', [
-            'as' => 'groups.list',
-            'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@getList'
-        ]);
         Route::get('/admin/groups', [
             'as' => 'groups.list',
             'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@getList'
@@ -233,10 +229,6 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * permissions
          */
-        Route::get('/admin/permissions/list', [
-            'as' => 'permissions.list',
-            'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@getList'
-        ]);
         Route::get('/admin/permissions', [
             'as' => 'permissions.list',
             'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@getList'

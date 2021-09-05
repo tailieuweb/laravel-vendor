@@ -10,7 +10,6 @@ $withs = [
 
 @if( ! $groups->isEmpty() )
     <div style="min-height: 50px;">
-
         <div>
             @if($groups->total() == 1)
                 {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
@@ -29,8 +28,6 @@ $withs = [
                                                                     "title"=> trans($plang_admin.'.hint.delete-forever'),
                                                                     'name'=>'del-forever'))
         !!}
-
-
     </div>
 
     <table class="table table-hover">
@@ -61,8 +58,7 @@ $withs = [
                     </a>
                 </th>
 
-
-                <!-- Group name -->
+                <!-- Group -->
                 <?php $name = 'name' ?>
                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                     {!! trans($plang_admin.'.tables.group-'.$name) !!}
@@ -102,12 +98,12 @@ $withs = [
 
         <tbody>
 
-        <?php $order = $groups->perPage() * ($groups->currentPage() - 1) + 1; ?>
+        <?php $counter = $groups->perPage() * ($groups->currentPage() - 1) + 1; ?>
         @foreach($groups as $group)
 
             <tr>
                 <td>
-                    <?php echo $order; $order++ ?>
+                    <?php echo $counter; $counter++ ?>
                     <span class='box-item pull-right'>
                         <input type="checkbox" id="<?php echo $group->id ?>" name="ids[]"
                                value="{!! $group->id !!}">

@@ -1,5 +1,6 @@
 <?php namespace Foostart\Acl\Database;
 
+use Foostart\Acl\Library\Constants\FoostartConstants;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Facades\App;
@@ -54,5 +55,29 @@ class PermissionSeeder extends Seeder
             "overview" => '',
         ];
         $permission_repository->create($permission5);
+
+        // Create sample data for testing
+        $this->createSampleData();
+    }
+
+    /**
+     * Create sample data for testing
+     */
+    private function createSampleData() {
+        $permission_repository = App::make('permission_repository');
+
+        $isCreateSampleData =  env('DB_SAMPLE_TEST', FoostartConstants::IS_CREATE_SAMPLE_DATA);
+        if ($isCreateSampleData == FoostartConstants::IS_CREATE_SAMPLE_DATA) {
+            $group_repository = App::make('group_repository');
+            for($i = 0; $i < FoostartConstants::SAMPLE_DATA_SIZE; $i++) {
+                $permission = [
+                    "description" => "Permission test ".$i,
+                    "permission" => "permission_test_".$i,
+                    "url" => '',
+                    "overview" => '',
+                ];
+                $permission_repository->create($permission);
+            }
+        }
     }
 }

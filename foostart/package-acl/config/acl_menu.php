@@ -59,7 +59,7 @@ return [
         [
             "name" => "acl-admin.menu.groups",
             "route" => "groups",
-            "link" => '/admin/groups/list',
+            "link" => '/admin/groups',
             "permissions" => [$admin, "_group-editor"]
         ],
 
@@ -68,23 +68,22 @@ return [
         [
             "name" => "acl-admin.menu.permissions",
             "route" => "permissions",
-            "link" => '/admin/permissions/list',
+            "link" => '/admin/permissions',
             "permissions" => [$admin, "_permission-editor"]
         ],
 
         //Contexts
         [
-
             'name' => 'category-admin.menus.top-menu-contexts',
             "route" => "contexts",
-            "link" => '/admin/contexts/list',
+            "link" => '/admin/contexts',
             "permissions" => [$admin]
         ],
 
         //Categories
         [
             "route" => "category-admin.menus.top-menu",
-            "link" => '/admin/categories/list',
+            "link" => '/admin/categories',
             "permissions" => [$admin, '_user-editor']
         ],
     ]

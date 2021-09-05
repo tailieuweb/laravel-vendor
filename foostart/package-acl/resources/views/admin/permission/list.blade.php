@@ -24,7 +24,11 @@
                         <h3 class="panel-title bariol-thin"><i class="fa fa-lock"></i> Permissions</h3>
                     </div>
                     <div class="panel-body">
-                        @include('package-acl::admin.permission.permission-table')
+                        <!--BODY-->
+                        {!! Form::open(['route'=>['permissions.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
+                            @include('package-acl::admin.permission.permission-table')
+                            {!! csrf_field(); !!}
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
