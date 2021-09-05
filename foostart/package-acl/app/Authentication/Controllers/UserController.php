@@ -82,6 +82,11 @@ class UserController extends Controller
         return View::make('package-acl::admin.user.list')->with($this->data_view);
     }
 
+    /**
+     * Show user info page for editing
+     * @param Request $request
+     * @return mixed
+     */
     public function editUser(Request $request)
     {
         try {
@@ -90,11 +95,11 @@ class UserController extends Controller
 
             if (!$this->user_repository->canUpdate($user)) {
 
-                return Redirect::route("users.list")->withErrors('cant update');
+                return Redirect::route("users.list")->withErrors('User cant update');
             }
 
         } catch (JacopoExceptionsInterface $e) {
-            $user = new User;
+            return Redirect::route("users.list")->withErrors('User not found');
         }
         $presenter = new UserPresenter($user);
         // display view
@@ -105,6 +110,11 @@ class UserController extends Controller
         return View::make('package-acl::admin.user.edit')->with($this->data_view);
     }
 
+    /**
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function postEditUser(Request $request)
     {
         $id = $request->get('id');
@@ -126,6 +136,11 @@ class UserController extends Controller
             ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
     }
 
+    /**
+     * Delete user
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteUser(Request $request)
     {
         try {
@@ -136,6 +151,25 @@ class UserController extends Controller
         }
         return Redirect::route('users.list')
             ->withMessage(Config::get('acl_messages.flash.success.user_delete_success'));
+    }
+
+    /**
+     * Restore user
+     * @param Request $request
+     * @return mixed
+     */
+    public function restoreUser(Request $request)
+    {
+        try {
+            $user = $this->user_repository->find($request->get('id'));
+            $this->f->restore($request->all());
+
+        } catch (JacopoExceptionsInterface $e) {
+            $errors = $this->f->getErrors();
+            return Redirect::route('users.list')->withErrors($errors);
+        }
+        return Redirect::route('users.edit', ["id" => $user->id])
+            ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
     }
 
     public function addGroup(Request $request)

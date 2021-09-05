@@ -146,6 +146,10 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'users.delete',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@deleteUser'
         ]);
+        Route::get('/admin/users/restore', [
+            'as' => 'users.restore',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@restoreUser'
+        ]);
         Route::post('/admin/users/groups/add', [
             'as' => 'users.groups.add',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@addGroup'

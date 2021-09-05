@@ -235,6 +235,7 @@ return [
     'messages' => [
         'message-last-login' => 'not logged yet.',
         'user-delete' => 'Are you sure to delete this item?',
+        'user-restore' => 'Are you sure to restore this item?',
         'permission-not-found' => 'No permissions found.',
         'empty-data' => 'Empty data',
     ],

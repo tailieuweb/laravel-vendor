@@ -76,6 +76,19 @@ class EloquentBaseRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Restore object
+     * @param $id
+     * @return mixed
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
+     */
+    public function restore($id)
+    {
+        $obj = $this->find($id);
+        Event::dispatch('repository.restore', [$obj]);
+        return $obj->restore();
+    }
+
+    /**
      * Find a model by his id
      * @param $id
      * @return mixed
@@ -84,7 +97,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
     public function find($id)
     {
         try {
-            $model = $this->model->findOrFail($id);
+            $model = $this->model->withTrashed()->findOrFail($id);
         } catch (ModelNotFoundException $e) {
             throw new NotFoundException;
         }

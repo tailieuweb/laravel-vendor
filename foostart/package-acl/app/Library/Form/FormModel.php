@@ -15,6 +15,7 @@ use Illuminate\Support\MessageBag;
 use Foostart\Acl\Library\Exceptions\NotFoundException;
 use Foostart\Acl\Authentication\Exceptions\PermissionException;
 use Event;
+use Foostart\Acl\Library\Constants\FoostartConstant;
 
 class FormModel implements FormInterface
 {
@@ -153,6 +154,48 @@ class FormModel implements FormInterface
                         throw new NotFoundException();
                     } catch (PermissionException $e) {
                         $this->errors = new MessageBag(array("model" => "Cannot delete this item, please check that the item is not already associated to any other element, in that case remove the association first."));
+                        throw new PermissionException();
+                    }
+                } else {
+                    $this->errors = new MessageBag(array("model" => "Id not given"));
+                    throw new NotFoundException();
+                }
+
+            }
+
+        } else {
+            $this->errors = new MessageBag(array("model" => "Id not given"));
+            throw new NotFoundException();
+        }
+    }
+
+    /**
+     * Restore on the repository
+     * @param $input
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
+     * @todo test with exceptions
+     */
+    public function restore(array $input)
+    {
+        $id = isset($input[$this->id_field_name]) ? $input[$this->id_field_name] : null;
+        $ids =isset($input[$this->ids_field_name]) ? $input[$this->ids_field_name] : [];
+
+        $is_valid_request = $this->isValidRequest($input);
+        $ids = !empty($id) ? [$id] : $ids;
+
+        if ($is_valid_request && !empty($ids)) {
+
+            foreach ($ids as $id) {
+
+                if (!empty($id)) {
+                    try {
+                        $this->r->restore($id);
+
+                    } catch (ModelNotFoundException $e) {
+                        $this->errors = new MessageBag(array("model" => "Element does not exists."));
+                        throw new NotFoundException();
+                    } catch (PermissionException $e) {
+                        $this->errors = new MessageBag(array("model" => "Cannot restore this item, please check that the item is not already associated to any other element, in that case remove the association first."));
                         throw new PermissionException();
                     }
                 } else {
