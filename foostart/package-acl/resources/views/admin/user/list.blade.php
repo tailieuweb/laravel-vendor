@@ -17,8 +17,14 @@
                     <div class="alert alert-danger">{!! $error !!}</div>
                 @endforeach
             @endif
+            <!--BODY-->
+            <div class="panel-body">
             {{-- user lists --}}
-            @include('package-acl::admin.user.user-table')
+                {!! Form::open(['route'=>['users.delete', 'id' => @$item->id], 'method' => 'get', 'class'=>'form-responsive'])  !!}
+                    @include('package-acl::admin.user.user-table')
+                    {!! csrf_field(); !!}
+                {!! Form::close() !!}
+            </div>
         </div>
         <div class="col-md-3">
             @include('package-acl::admin.user.search')

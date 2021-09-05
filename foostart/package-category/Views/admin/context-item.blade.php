@@ -22,7 +22,7 @@
         @endif
     </caption>
 
-    <div class="table-responsive" style="width: 950px">
+    <div class="table-responsive">
         <table class="table table-hover">
 
             <thead>
@@ -32,9 +32,9 @@
                 <th style='width:{{ $withs['counter'] }}'>
                     {{ trans($plang_admin.'.columns.counter') }}
                     <span class="del-checkbox pull-right">
-                    <input type="checkbox" id="selecctall"/>
-                    <label for="del-checkbox"></label>
-                </span>
+                        <input type="checkbox" id="selecctall"/>
+                        <label for="del-checkbox"></label>
+                    </span>
                 </th>
 
                 <!-- NAME -->
@@ -136,9 +136,9 @@
                     <td>
                         <?php echo $counter; $counter++ ?>
                         <span class='box-item pull-right'>
-                        <input type="checkbox" id="<?php echo $item->id ?>" name="ids[]" value="{!! $item->id !!}">
-                        <label for="box-item"></label>
-                    </span>
+                            <input type="checkbox" id="<?php echo $item->id ?>" name="ids[]" value="{!! $item->id !!}">
+                            <label for="box-item"></label>
+                        </span>
                     </td>
 
                     <!--NAME-->

@@ -11,7 +11,7 @@ function displayChilds($childs, $level){ ?>
         <span class='box-item pull-right'>
                         <input type="checkbox" id="<?php echo $item->id ?>" name="ids[]" value="{!! $item->id !!}">
                         <label for="box-item"></label>
-                    </span>
+        </span>
     </td>
 
     <!--ORDER-->
@@ -25,9 +25,6 @@ function displayChilds($childs, $level){ ?>
         |_
         {!! $item->category_name !!}
     </td>
-
-    <!--URL-->
-    <td>{!! $item->category_url !!}</td>
 
     <!--STATUS-->
     <td style="text-align: center;">

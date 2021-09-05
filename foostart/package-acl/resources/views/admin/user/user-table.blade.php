@@ -15,13 +15,29 @@
                 @if(! $users->isEmpty() )
                     <div class="table-responsive">
 
-                        <caption>
-                            @if($users->total() == 1)
-                                {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
-                            @else
-                                {!! trans($plang_admin.'.descriptions.counters', ['number' => $users->total()]) !!}
-                            @endif
-                        </caption>
+                        <div style="min-height: 50px;">
+                            <div>
+                                @if($users->total() == 1)
+                                    {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
+                                @else
+                                    {!! trans($plang_admin.'.descriptions.counters', ['number' => $users->total()]) !!}
+                                @endif
+                            </div>
+
+                            {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
+                                                                                                "class"=>"btn btn-warning delete btn-delete-all",
+                                                                                                "title"=> trans($plang_admin.'.hint.delete-in-trash'),
+                                                                                                'name'=>'del-trash'))
+                            !!}
+                            {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
+                                                                                        "class"=>"btn btn-danger delete btn-delete-all",
+                                                                                        "title"=> trans($plang_admin.'.hint.delete-forever'),
+                                                                                        'name'=>'del-forever'))
+                            !!}
+
+
+                        </div>
+
 
                         <table class="table table-hover">
 
@@ -30,7 +46,13 @@
                             <tr>
                                 <!-- ORDER -->
                                 <?php $name = 'order' ?>
-                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}</th>
+                                <th class="hidden-xs">
+                                    {!! trans($plang_admin.'.labels.'.$name) !!}
+                                    <span class="del-checkbox pull-right">
+                                        <input type="checkbox" id="selecctall"/>
+                                        <label for="del-checkbox"></label>
+                                    </span>
+                                </th>
 
                                 <!-- ID -->
                                 <?php $name = 'id' ?>
@@ -117,7 +139,11 @@
                                 </th>
 
                                 <!-- OPERATION -->
-                                <th>{!! trans($plang_admin.'.menu.operations') !!}</th>
+                                <th>
+                                    <span class='lb-delete-all'>
+                                        {{ trans($plang_admin.'.columns.operations') }}
+                                    </span>
+                                </th>
                             </tr>
                             </thead>
 
@@ -128,7 +154,13 @@
                             ?>
                             @foreach($users as $user)
                                 <tr>
-                                    <td><?php echo $order; $order++ ?></td>
+                                    <td>
+                                        <?php echo $order; $order++ ?>
+                                        <span class='box-item pull-right'>
+                                            <input type="checkbox" id="<?php echo $user->id ?>" name="ids[]" value="{!! $user->id !!}">
+                                            <label for="box-item"></label>
+                                        </span>
+                                    </td>
                                     <td>{!! $user->id !!}</td>
                                     <td>{!! $user->email !!}</td>
                                     <td class="hidden-xs">{!! $user->first_name !!}</td>
@@ -161,3 +193,7 @@
         </div>
     </div>
 </div>
+@section('footer_scripts')
+    @parent
+    {!! HTML::script('packages/foostart/js/form-table.js')  !!}
+@stop
