@@ -63,6 +63,19 @@ class EloquentBaseRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Force deletes list of new object
+     * @param $id
+     * @return mixed
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
+     */
+    public function deleteForce($id)
+    {
+        $obj = $this->find($id);
+        Event::dispatch('repository.deleting', [$obj]);
+        return $obj->forceDelete();
+    }
+
+    /**
      * Find a model by his id
      * @param $id
      * @return mixed

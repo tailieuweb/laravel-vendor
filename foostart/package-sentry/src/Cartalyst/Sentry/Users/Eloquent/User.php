@@ -18,7 +18,7 @@
  * @link       http://cartalyst.com
  */
 
-use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Sentry\BaseSentryModel;
 use Cartalyst\Sentry\Groups\GroupInterface;
 use Cartalyst\Sentry\Groups\Eloquent\Provider as GroupProvider;
 use Cartalyst\Sentry\Hashing\HasherInterface;
@@ -30,7 +30,7 @@ use Cartalyst\Sentry\Users\UserInterface;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
 
-class User extends Model implements UserInterface
+class User extends BaseSentryModel implements UserInterface
 {
 
     /**

@@ -46,6 +46,4 @@ class UserProfilePresenter extends AbstractPresenter
 
         return $use_gravatar ? $this->gravatar($size) : $this->custom_avatar();
     }
-
-
 }

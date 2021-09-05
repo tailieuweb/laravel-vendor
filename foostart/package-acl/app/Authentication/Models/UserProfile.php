@@ -9,6 +9,7 @@ use Foostart\Acl\Authentication\Presenters\UserProfilePresenter;
  */
 class UserProfile extends BaseModel
 {
+
     protected $table = "user_profile";
 
     protected $fillable = [
