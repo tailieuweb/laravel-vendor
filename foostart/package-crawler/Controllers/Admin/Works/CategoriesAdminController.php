@@ -1,4 +1,4 @@
-<?php namespace Foostart\Crawler\Controllers\Admin;
+<?php namespace Foostart\Crawler\Controllers\Admin\Works;
 
 /*
 |-----------------------------------------------------------------------
@@ -21,7 +21,7 @@ use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
 
-class SiteAdminController extends FooController {
+class CategoriesAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -44,10 +44,10 @@ class SiteAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'site.site';
+        $this->package_base_name = 'crawler';
 
         // root routers
-        $this->root_router = 'sites';
+        $this->root_router = 'crawlers';
 
         // page views
         $this->page_views = [

@@ -1,4 +1,4 @@
-<?php namespace Foostart\Crawler\Controllers\Admin;
+<?php namespace Foostart\Crawler\Controllers\Admin\Works;
 
 /*
 |-----------------------------------------------------------------------
@@ -21,7 +21,7 @@ use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
 
-class SiteAdminController extends FooController {
+class JobsAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;

@@ -30,6 +30,8 @@ return [
         'groups' => 'Groups',
         'posts' => 'Posts',
         'sites' => 'Sites',
+        'crawler_works' => 'Crawler works',
+        'crawler_works_jobs' => 'Crawler Jobs',
         'permissions' => 'Permissions',
         'operations' => 'Operations',
         'contexts' => 'Contextes',

@@ -3,34 +3,9 @@
 use Illuminate\Session\TokenMismatchException;
 
 /**
- * USER
- */
-Route::group(['middleware' => ['web', ], 'namespace' => 'Foostart\Crawler\Controllers\User', ], function () {
-    /**
-    * list
-    */
-   Route::post('crawler', [
-       'as' => 'usercrawler.post',
-       'uses' => 'CrawlerUserController@post'
-   ]);
-});
-
-
-/**
  * ADMINISTRATOR
  */
 Route::group(['middleware' => ['web']], function () {
-    /**
-     * sample
-    */
-    Route::get('crawlers/sample', [
-        'as' => 'crawlers.sample',
-        'uses' => 'Foostart\Crawler\Controllers\Admin\CrawlerAdminController@sample'
-    ]);
-    Route::post('crawlers/sample', [
-        'as' => 'crawlers.sample',
-        'uses' => 'Foostart\Crawler\Controllers\Admin\CrawlerAdminController@addSample'
-    ]);
 
 
     /**
@@ -69,7 +44,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     /****************************************************************************
-     * Site
+     * Stackoverflow
      */
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
                   'namespace' => 'Foostart\Crawler\Controllers\Admin',
@@ -226,6 +201,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
                   'namespace' => 'Foostart\Crawler\Controllers\Admin\Site\StackOverflow',
     ], function () {
+
 
         /*
           |-----------------------------------------------------------------------
@@ -445,6 +421,4 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'StackOverflowAnswerAdminController@crawler'
         ]);
     });//End Stackoverflow
-
-
 });

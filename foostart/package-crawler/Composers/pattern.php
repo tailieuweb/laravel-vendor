@@ -14,8 +14,6 @@ use Foostart\Category\Helpers\SortTable;
 |   $plang_front = 'crawler-front'
 */
 View::composer([
-
-
             //Pattern
             'package-crawler::admin.pattern.pattern-edit',
             'package-crawler::admin.pattern.pattern-form',

@@ -4,9 +4,9 @@ use Foostart\Category\Helpers\FoostartSeeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class CrawlersSeeder extends FoostartSeeder
+class CrawlerSeeder extends FoostartSeeder
 {
-    
+
     public function __construct() {
         // Table name
         $this->table = 'crawlers';

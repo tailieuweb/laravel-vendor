@@ -35,10 +35,10 @@ class CrawlerServiceProvider extends ServiceProvider {
 
         // publish assets
         $this->publishAssets();
-        
+
         // public migrations
         $this->publishMigrations();
-        
+
         // public seeders
         $this->publishSeeders();
 
@@ -50,7 +50,9 @@ class CrawlerServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        include __DIR__ . '/routes.php';
+        include __DIR__ . '/Routes/routes.php';
+        include __DIR__ . '/Routes/works_jobs.php';
+        include __DIR__ . '/Routes/works_categories.php';
     }
 
     /**
@@ -92,24 +94,24 @@ class CrawlerServiceProvider extends ServiceProvider {
             __DIR__ . '/public' => public_path('packages/foostart/package-crawler'),
         ]);
     }
-    
+
     /**
      * Publish migrations
      * @source: foostart/package-crawler/database/migrations
      * @destination: database/migrations
      */
-    protected function publishMigrations() {        
+    protected function publishMigrations() {
         $this->publishes([
             __DIR__ . '/database/migrations' => $this->app->databasePath() . '/migrations',
         ]);
     }
-    
+
     /**
      * Publish seeders
      * @source: foostart/package-crawler/database/seeders
      * @destination: database/seeders
      */
-    protected function publishSeeders() {        
+    protected function publishSeeders() {
         $this->publishes([
             __DIR__ . '/database/seeders' => $this->app->databasePath() . '/seeders',
         ]);

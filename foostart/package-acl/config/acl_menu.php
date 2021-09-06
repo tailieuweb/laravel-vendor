@@ -102,5 +102,13 @@ return [
             "link" => '/admin/sites',
             "permissions" => [$admin, "_permission-editor"]
         ],
+
+        //Crawler works
+        [
+            "name" => "acl-admin.menu.crawler_works_jobs",
+            "route" => "works.jobs",
+            "link" => '/admin/crawler/works/jobs',
+            "permissions" => [$admin, "_permission-editor"]
+        ],
     ]
 ];
