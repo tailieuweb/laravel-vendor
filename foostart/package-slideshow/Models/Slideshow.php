@@ -2,13 +2,15 @@
 
 use Foostart\Category\Library\Models\FooModel;
 
-class Slideshow extends FooModel {
+class Slideshow extends FooModel
+{
 
     /**
      * @table categories
      * @param array $attributes
      */
-    public function __construct(array $attributes = array()) {
+    public function __construct(array $attributes = array())
+    {
         //set configurations
         $this->setConfigs();
 
@@ -16,7 +18,8 @@ class Slideshow extends FooModel {
 
     }
 
-    public function setConfigs() {
+    public function setConfigs()
+    {
 
         //table name
         $this->table = 'slideshows';
@@ -97,6 +100,9 @@ class Slideshow extends FooModel {
         //primary key
         $this->primaryKey = 'slideshow_id';
 
+        //the number of items on page
+        $this->perPage = 10;
+
     }
 
     /**
@@ -104,7 +110,8 @@ class Slideshow extends FooModel {
      * @param type $params
      * @return object list of categories
      */
-    public function selectItems($params = array()) {
+    public function selectItems($params = array())
+    {
 
         //join to another tables
         $elo = $this->joinTable();
@@ -129,13 +136,14 @@ class Slideshow extends FooModel {
      * @param ARRAY $params list of parameters
      * @return OBJECT slideshow
      */
-    public function selectItem($params = array(), $key = NULL) {
+    public function selectItem($params = array(), $key = NULL)
+    {
 
 
         if (empty($key)) {
             $key = $this->primaryKey;
         }
-       //join to another tables
+        //join to another tables
         $elo = $this->joinTable($params);
 
         //search filters
@@ -158,10 +166,11 @@ class Slideshow extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    protected function joinTable(array $params = []){
+    protected function joinTable(array $params = [])
+    {
         $elo = $this;
         if (!empty($params['join_table']) && !empty($params['join_on'])) {
-            $elo = $elo->join($params['join_table'], "{$this->table}.{$params['join_on']}",'=', "{$params['join_table']}.{$params['join_on']}");
+            $elo = $elo->join($params['join_table'], "{$this->table}.{$params['join_on']}", '=', "{$params['join_table']}.{$params['join_on']}");
         }
         return $elo;
     }
@@ -171,17 +180,14 @@ class Slideshow extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    protected function searchFilters(array $params = [], $elo, $by_status = TRUE){
+    protected function searchFilters(array $params, $elo, $by_status = TRUE)
+    {
 
         //filter
-        if ($this->isValidFilters($params) && (!empty($params)))
-        {
-            foreach($params as $column => $value)
-            {
-                if($this->isValidValue($value))
-                {
-                    switch($column)
-                    {
+        if ($this->isValidFilters($params) && (!empty($params))) {
+            foreach ($params as $column => $value) {
+                if ($this->isValidValue($value)) {
+                    switch ($column) {
                         case 'slideshow_name':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.slideshow_name', '=', $value);
@@ -189,15 +195,15 @@ class Slideshow extends FooModel {
                             break;
                         case 'status':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.'.$this->field_status, '=', $value);
+                                $elo = $elo->where($this->table . '.' . $this->field_status, '=', $value);
                             }
                             break;
                         case 'keyword':
                             if (!empty($value)) {
-                                $elo = $elo->where(function($elo) use ($value) {
+                                $elo = $elo->where(function ($elo) use ($value) {
                                     $elo->where($this->table . '.slideshow_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.slideshow_description','LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.slideshow_overview','LIKE', "%{$value}%");
+                                        ->orWhere($this->table . '.slideshow_description', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->table . '.slideshow_overview', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -207,7 +213,8 @@ class Slideshow extends FooModel {
                 }
             }
         } elseif ($by_status) {
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
+
+            $elo = $elo->where($this->table . '.' . $this->field_status, '=', $this->status['publish']);
 
         }
 
@@ -219,16 +226,17 @@ class Slideshow extends FooModel {
      * @param ELOQUENT OBJECT
      * @return ELOQUENT OBJECT
      */
-    public function createSelect($elo, $params = []) {
+    public function createSelect($elo, $params = [])
+    {
 
         if (!empty($params['join_table']) && !empty($params['join_on'])) {
             $elo = $elo->select($this->table . '.*',
-                            $this->table . '.slideshow_id as id',
-                            $params['join_table'].'.*');
+                $this->table . '.slideshow_id as id',
+                $params['join_table'] . '.*');
         } else {
             $elo = $elo->select($this->table . '.*',
-                            $this->table . '.slideshow_id as id'
-                );
+                $this->table . '.slideshow_id as id'
+            );
         }
         return $elo;
     }
@@ -238,7 +246,8 @@ class Slideshow extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    public function paginateItems(array $params = [], $elo) {
+    public function paginateItems(array $params, $elo)
+    {
         $items = $elo->paginate($this->perPage);
 
         return $items;
@@ -250,7 +259,8 @@ class Slideshow extends FooModel {
      * @param INT $id is primary key
      * @return type
      */
-    public function updateItem($params = [], $id = NULL) {
+    public function updateItem($params = [], $id = NULL)
+    {
 
         if (empty($id)) {
             $id = $params['id'];
@@ -282,7 +292,8 @@ class Slideshow extends FooModel {
      * @param ARRAY $params list of parameters
      * @return OBJECT slideshow
      */
-    public function insertItem($params = []) {
+    public function insertItem($params = [])
+    {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
@@ -303,7 +314,8 @@ class Slideshow extends FooModel {
      * @param ARRAY $input list of parameters
      * @return boolean TRUE incase delete successfully otherwise return FALSE
      */
-    public function deleteItem($input = [], $delete_type) {
+    public function deleteItem(?array $input, $delete_type)
+    {
 
         $item = $this->find($input['id']);
 
@@ -322,7 +334,8 @@ class Slideshow extends FooModel {
         return FALSE;
     }
 
-    public function encodeImages($input) {
+    public function encodeImages($input)
+    {
         $json_images = array();
 
         if (!empty($input['images'])) {
@@ -339,14 +352,15 @@ class Slideshow extends FooModel {
         return json_encode($json_images);
     }
 
-    public function getSlideshowById($id) {
+    public function getSlideshowById($id)
+    {
 
         $slideshow = NULL;
 
         $_params = [
             'join_table' => 'slideshow_styles',
-            'join_on'   => 'style_id',
-            'id'    => $id
+            'join_on' => 'style_id',
+            'id' => $id
         ];
         $slideshow = $this->selectItem($_params);
 
@@ -357,12 +371,13 @@ class Slideshow extends FooModel {
      * Get list of categories into select
      * @return OBJECT PLUCK SELECT
      */
-     public function pluckSelect($params = array()) {
+    public function pluckSelect($params = array())
+    {
 
-         $elo = self::orderBy('slideshow_name', 'ASC');
+        $elo = self::orderBy('slideshow_name', 'ASC');
 
 
-         $items = $elo->pluck('slideshow_name', $this->primaryKey);
+        $items = $elo->pluck('slideshow_name', $this->primaryKey);
 
         return $items;
     }

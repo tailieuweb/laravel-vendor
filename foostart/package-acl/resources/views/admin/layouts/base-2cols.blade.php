@@ -6,8 +6,8 @@
             @include('package-acl::admin.layouts.sidebar')
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12 main">
-            <div class="col-sm-6 col-md-12 col-xs-12">
-                @include('package-acl::admin.layouts.breadcrumb')
+            <div class="">
+                @include('package-acl::admin.layouts.partials.breadcrumb-1')
             </div>
             @yield('content')
         </div>

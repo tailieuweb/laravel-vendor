@@ -18,7 +18,7 @@ class MultiUser
 
             if ($previous_dir == null) {
                 $request->merge(compact('working_dir'));
-            } elseif (! $this->validDir($previous_dir)) {
+            } elseif (!$this->validDir($previous_dir)) {
                 $request->replace(compact('working_dir'));
             }
         }

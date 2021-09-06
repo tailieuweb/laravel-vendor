@@ -32,7 +32,7 @@ class LfmController extends Controller
     {
         $arr_errors = [];
 
-        if (! extension_loaded('gd') && ! extension_loaded('imagick')) {
+        if (!extension_loaded('gd') && !extension_loaded('imagick')) {
             array_push($arr_errors, trans('package-filemanager::lfm.message-extension_not_found'));
         }
 
@@ -40,7 +40,7 @@ class LfmController extends Controller
         $mine_config = 'lfm.valid_' . $type_key . '_mimetypes';
         $config_error = null;
 
-        if (! is_array(config($mine_config))) {
+        if (!is_array(config($mine_config))) {
             array_push($arr_errors, 'Config : ' . $mine_config . ' is not a valid array.');
         }
 

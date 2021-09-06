@@ -22,7 +22,7 @@ trait LfmHelpers
     /**
      * Get real path of a thumbnail on the operating system.
      *
-     * @param  string|null  $image_name  File name of original image
+     * @param string|null $image_name File name of original image
      * @return string|null
      */
     public function getThumbPath($image_name = null)
@@ -33,7 +33,7 @@ trait LfmHelpers
     /**
      * Get real path of a file, image, or current working directory on the operating system.
      *
-     * @param  string|null  $file_name  File name of image or file
+     * @param string|null $file_name File name of image or file
      * @return string|null
      */
     public function getCurrentPath($file_name = null, $is_thumb = null)
@@ -48,7 +48,7 @@ trait LfmHelpers
     /**
      * Get url of a thumbnail.
      *
-     * @param  string|null  $image_name  File name of original image
+     * @param string|null $image_name File name of original image
      * @return string|null
      */
     public function getThumbUrl($image_name = null)
@@ -59,7 +59,7 @@ trait LfmHelpers
     /**
      * Get url of a original image.
      *
-     * @param  string|null  $image_name  File name of original image
+     * @param string|null $image_name File name of original image
      * @return string|null
      */
     public function getFileUrl($image_name = null, $is_thumb = null)
@@ -70,9 +70,9 @@ trait LfmHelpers
     /**
      * Assemble needed config or input to form url or real path of a file, image, or current working directory.
      *
-     * @param  string       $type       Url or dir
-     * @param  bollean      $is_thumb   Image is a thumbnail or not
-     * @param  string|null  $file_name  File name of image or file
+     * @param string $type Url or dir
+     * @param bollean $is_thumb Image is a thumbnail or not
+     * @param string|null $file_name File name of image or file
      * @return string|null
      */
     private function composeSegments($type, $is_thumb, $file_name)
@@ -93,7 +93,7 @@ trait LfmHelpers
     /**
      * Assemble base_directory and route prefix config.
      *
-     * @param  string  $type  Url or dir
+     * @param string $type Url or dir
      * @return string
      */
     public function getPathPrefix($type)
@@ -145,7 +145,7 @@ trait LfmHelpers
      */
     private function appendThumbFolderPath($is_thumb)
     {
-        if (! $is_thumb) {
+        if (!$is_thumb) {
             return;
         }
 
@@ -154,7 +154,7 @@ trait LfmHelpers
         // to add thumbs substring to the end of url
         $in_thumb_folder = str_contains($this->getFormatedWorkingDir(), $this->ds . $thumb_folder_name);
 
-        if (! $in_thumb_folder) {
+        if (!$in_thumb_folder) {
             return $thumb_folder_name . $this->ds;
         }
     }
@@ -162,7 +162,7 @@ trait LfmHelpers
     /**
      * Get root working directory.
      *
-     * @param  string  $type  User or share.
+     * @param string $type User or share.
      * @return string
      */
     public function rootFolder($type)
@@ -179,7 +179,7 @@ trait LfmHelpers
     /**
      * Get real path of root working directory on the operating system.
      *
-     * @param  string|null  $type  User or share
+     * @param string|null $type User or share
      * @return string|null
      */
     public function getRootFolderPath($type)
@@ -190,7 +190,7 @@ trait LfmHelpers
     /**
      * Get only the file name.
      *
-     * @param  string  $file  Real path of a file.
+     * @param string $file Real path of a file.
      * @return string
      */
     public function getName($file)
@@ -206,7 +206,7 @@ trait LfmHelpers
     /**
      * Get url with only working directory and file name.
      *
-     * @param  string  $full_path  Real path of a file.
+     * @param string $full_path Real path of a file.
      * @return string
      */
     public function getInternalPath($full_path)
@@ -223,7 +223,7 @@ trait LfmHelpers
     /**
      * Change directiry separator, from url one to one on current operating system.
      *
-     * @param  string  $path  Url of a file.
+     * @param string $path Url of a file.
      * @return string
      */
     private function translateToOsPath($path)
@@ -238,7 +238,7 @@ trait LfmHelpers
     /**
      * Change directiry separator, from one on current operating system to url one.
      *
-     * @param  string  $path  Real path of a file.
+     * @param string $path Real path of a file.
      * @return string
      */
     private function translateToLfmPath($path)
@@ -253,18 +253,18 @@ trait LfmHelpers
     /**
      * Strip duplicate slashes from url.
      *
-     * @param  string  $path  Any url.
+     * @param string $path Any url.
      * @return string
      */
     private function removeDuplicateSlash($path)
     {
-        return preg_replace('/\\'.$this->ds.'{2,}/', $this->ds, $path);
+        return preg_replace('/\\' . $this->ds . '{2,}/', $this->ds, $path);
     }
 
     /**
      * Strip first slash from url.
      *
-     * @param  string  $path  Any url.
+     * @param string $path Any url.
      * @return string
      */
     private function removeFirstSlash($path)
@@ -279,7 +279,7 @@ trait LfmHelpers
     /**
      * Strip last slash from url.
      *
-     * @param  string  $path  Any url.
+     * @param string $path Any url.
      * @return string
      */
     private function removeLastSlash($path)
@@ -295,7 +295,7 @@ trait LfmHelpers
     /**
      * Translate file name to make it compatible on Windows.
      *
-     * @param  string  $input  Any string.
+     * @param string $input Any string.
      * @return string
      */
     public function translateFromUtf8($input)
@@ -310,7 +310,7 @@ trait LfmHelpers
     /**
      * Translate file name from Windows.
      *
-     * @param  string  $input  Any string.
+     * @param string $input Any string.
      * @return string
      */
     public function translateToUtf8($input)
@@ -343,7 +343,7 @@ trait LfmHelpers
      */
     public function isProcessingFiles()
     {
-        return ! $this->isProcessingImages();
+        return !$this->isProcessingImages();
     }
 
     /**
@@ -379,7 +379,7 @@ trait LfmHelpers
      */
     public function allowShareFolder()
     {
-        if (! $this->allowMultiUser()) {
+        if (!$this->allowMultiUser()) {
             return true;
         }
 
@@ -411,7 +411,7 @@ trait LfmHelpers
     /**
      * Get folders by the given directory.
      *
-     * @param  string  $path  Real path of a directory.
+     * @param string $path Real path of a directory.
      * @return array of objects
      */
     public function getDirectories($path)
@@ -426,7 +426,7 @@ trait LfmHelpers
     /**
      * Get files by the given directory.
      *
-     * @param  string  $path  Real path of a directory.
+     * @param string $path Real path of a directory.
      * @return array of objects
      */
     public function getFilesWithInfo($path)
@@ -439,7 +439,7 @@ trait LfmHelpers
     /**
      * Format a file or folder to object.
      *
-     * @param  string  $item  Real path of a file or directory.
+     * @param string $item Real path of a file or directory.
      * @return object
      */
     public function objectPresenter($item)
@@ -447,7 +447,7 @@ trait LfmHelpers
         $item_name = $this->getName($item);
         $is_file = is_file($item);
 
-        if (! $is_file) {
+        if (!$is_file) {
             $file_type = trans('package-filemanager::lfm.type-folder');
             $icon = 'fa-folder-o';
             $thumb_url = asset('vendor/package-filemanager/img/folder.png');
@@ -457,7 +457,7 @@ trait LfmHelpers
 
             $thumb_path = $this->getThumbPath($item_name);
             $file_path = $this->getCurrentPath($item_name);
-            if (! $this->imageShouldHaveThumb($file_path)) {
+            if (!$this->imageShouldHaveThumb($file_path)) {
                 $thumb_url = $this->getFileUrl($item_name) . '?timestamp=' . filemtime($file_path);
             } elseif (File::exists($thumb_path)) {
                 $thumb_url = $this->getThumbUrl($item_name) . '?timestamp=' . filemtime($thumb_path);
@@ -471,16 +471,16 @@ trait LfmHelpers
             $thumb_url = null;
         }
 
-        return (object) [
-            'name'    => $item_name,
-            'url'     => $is_file ? $this->getFileUrl($item_name) : '',
-            'size'    => $is_file ? $this->humanFilesize(File::size($item)) : '',
+        return (object)[
+            'name' => $item_name,
+            'url' => $is_file ? $this->getFileUrl($item_name) : '',
+            'size' => $is_file ? $this->humanFilesize(File::size($item)) : '',
             'updated' => filemtime($item),
-            'path'    => $is_file ? '' : $this->getInternalPath($item),
-            'time'    => date('Y-m-d h:i', filemtime($item)),
-            'type'    => $file_type,
-            'icon'    => $icon,
-            'thumb'   => $thumb_url,
+            'path' => $is_file ? '' : $this->getInternalPath($item),
+            'time' => date('Y-m-d h:i', filemtime($item)),
+            'type' => $file_type,
+            'icon' => $icon,
+            'thumb' => $thumb_url,
             'is_file' => $is_file,
         ];
     }
@@ -488,12 +488,12 @@ trait LfmHelpers
     /**
      * Create folder if not exist.
      *
-     * @param  string  $path  Real path of a directory.
+     * @param string $path Real path of a directory.
      * @return null
      */
     public function createFolderByPath($path)
     {
-        if (! File::exists($path)) {
+        if (!File::exists($path)) {
             File::makeDirectory($path, config('lfm.create_folder_mode', 0755), true, true);
         }
     }
@@ -501,7 +501,7 @@ trait LfmHelpers
     /**
      * Check a folder and its subfolders is empty or not.
      *
-     * @param  string  $directory_path  Real path of a directory.
+     * @param string $directory_path Real path of a directory.
      * @return bool
      */
     public function directoryIsEmpty($directory_path)
@@ -512,7 +512,7 @@ trait LfmHelpers
     /**
      * Check a file is image or not.
      *
-     * @param  mixed  $file  Real path of a file or instance of UploadedFile.
+     * @param mixed $file Real path of a file or instance of UploadedFile.
      * @return bool
      */
     public function fileIsImage($file)
@@ -525,12 +525,12 @@ trait LfmHelpers
     /**
      * Check thumbnail should be created when the file is uploading.
      *
-     * @param  mixed  $file  Real path of a file or instance of UploadedFile.
+     * @param mixed $file Real path of a file or instance of UploadedFile.
      * @return bool
      */
     public function imageShouldHaveThumb($file)
     {
-        if (! config('lfm.should_create_thumbnails', true)) {
+        if (!config('lfm.should_create_thumbnails', true)) {
             return false;
         }
 
@@ -545,7 +545,7 @@ trait LfmHelpers
     /**
      * Get mime type of a file.
      *
-     * @param  mixed  $file  Real path of a file or instance of UploadedFile.
+     * @param mixed $file Real path of a file or instance of UploadedFile.
      * @return string
      */
     public function getFileType($file)
@@ -562,8 +562,8 @@ trait LfmHelpers
     /**
      * Sort files and directories.
      *
-     * @param  mixed  $arr_items  Array of files or folders or both.
-     * @param  mixed  $sort_type  Alphabetic or time.
+     * @param mixed $arr_items Array of files or folders or both.
+     * @param mixed $sort_type Alphabetic or time.
      * @return array of object
      */
     public function sortFilesAndDirectories($arr_items, $sort_type)
@@ -610,8 +610,8 @@ trait LfmHelpers
     /**
      * Shorter function of getting localized error message..
      *
-     * @param  mixed  $error_type  Key of message in lang file.
-     * @param  mixed  $variables   Variables the message needs.
+     * @param mixed $error_type Key of message in lang file.
+     * @param mixed $variables Variables the message needs.
      * @return string
      */
     public function error($error_type, $variables = [])
@@ -622,8 +622,8 @@ trait LfmHelpers
     /**
      * Make file size readable.
      *
-     * @param  int  $bytes     File size in bytes.
-     * @param  int  $decimals  Decimals.
+     * @param int $bytes File size in bytes.
+     * @param int $decimals Decimals.
      * @return string
      */
     public function humanFilesize($bytes, $decimals = 2)

@@ -17,8 +17,8 @@ Route::get('slideshow', [
 Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
-                  'namespace' => 'Foostart\Slideshow\Controllers\Admin',
-        ], function () {
+        'namespace' => 'Foostart\Slideshow\Controllers\Admin',
+    ], function () {
 
         /*
           |-----------------------------------------------------------------------
@@ -76,14 +76,14 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * trash
          */
-         Route::get('admin/slideshows/trash', [
+        Route::get('admin/slideshows/trash', [
             'as' => 'slideshows.trash',
             'uses' => 'SlideshowAdminController@trash'
         ]);
 
         /**
          * configs
-        */
+         */
         Route::get('admin/slideshows/config', [
             'as' => 'slideshows.config',
             'uses' => 'SlideshowAdminController@config'
@@ -96,7 +96,7 @@ Route::group(['middleware' => ['web']], function () {
 
         /**
          * language
-        */
+         */
         Route::get('admin/slideshows/lang', [
             'as' => 'slideshows.lang',
             'uses' => 'SlideshowAdminController@lang'
@@ -161,7 +161,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * trash
          */
-         Route::get('admin/styles/trash', [
+        Route::get('admin/styles/trash', [
             'as' => 'styles.trash',
             'uses' => 'StyleAdminController@trash'
         ]);

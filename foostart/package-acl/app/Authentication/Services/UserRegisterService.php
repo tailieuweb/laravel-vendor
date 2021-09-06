@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Services;
+<?php namespace Foostart\Acl\Authentication\Services;
 
 use Config;
 use DB;
@@ -11,6 +11,7 @@ use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
 use Foostart\Acl\Authentication\Helpers\DbHelper;
 use Foostart\Acl\Authentication\Validators\UserSignupValidator;
 use Foostart\Acl\Library\Exceptions\ValidationException;
+use Illuminate\Support\Arr;
 
 /**
  * Class UserRegisterService
@@ -49,7 +50,7 @@ class UserRegisterService
         $this->user_signup_validator = $v ? $v : new UserSignupValidator;
         $this->activation_enabled = Config::get('acl_base.email_confirmation');
         Event::listen('service.activated',
-                      'Foostart\Acl\Authentication\Services\UserRegisterService@sendActivationEmailToClient');
+            'Foostart\Acl\Authentication\Services\UserRegisterService@sendActivationEmailToClient');
     }
 
 
@@ -78,15 +79,16 @@ class UserRegisterService
      * @param array $input list of user info
      * @loc T7 DT MD QN
      * @date 10:10 27/01/2019
-     * @author Kang
      * @return type
+     * @author Kang
      */
-    public function saveRegisterBySocial(array $input) {
+    public function saveRegisterBySocial(array $input)
+    {
 
         //Get user by email
         try {
             $user = $this->user_repository->findByLogin($input['email']);
-        } catch(UserNotFoundException $e) {
+        } catch (UserNotFoundException $e) {
             $user = $this->saveDbData($input);
         }
 
@@ -99,8 +101,7 @@ class UserRegisterService
      */
     protected function validateInput(array $input)
     {
-        if(!$this->user_signup_validator->validate($input))
-        {
+        if (!$this->user_signup_validator->validate($input)) {
             $this->errors = $this->user_signup_validator->getErrors();
             throw new ValidationException;
         }
@@ -113,12 +114,10 @@ class UserRegisterService
     protected function saveDbData(array $input)
     {
         DbHelper::startTransaction();
-        try
-        {
+        try {
             $user = $this->user_repository->create($input);
             $this->profile_repository->create($this->createProfileInput($input, $user));
-        } catch(UserExistsException $e)
-        {
+        } catch (UserExistsException $e) {
             DbHelper::rollback();
             $this->errors = new MessageBag(["model" => "User already exists."]);
             throw new UserExistsException;
@@ -145,13 +144,13 @@ class UserRegisterService
 
         // send email to client
         $mailer->sendTo($input['email'], [
-                                               "email"      => $input["email"],
-                                               "password"   => $input["password"],
-                                               "first_name" => $input["first_name"],
-                                               "token"      => $this->activation_enabled ? App::make('authenticator')->getActivationToken($input["email"]) : ''
-                                       ],
-                        Config::get('acl_messages.email.user_registration_request_subject'),
-                        $view_file);
+            "email" => $input["email"],
+            "password" => $input["password"],
+            "first_name" => $input["first_name"],
+            "token" => $this->activation_enabled ? App::make('authenticator')->getActivationToken($input["email"]) : ''
+        ],
+            Config::get('acl_messages.email.user_registration_request_subject'),
+            $view_file);
     }
 
 
@@ -165,8 +164,8 @@ class UserRegisterService
         $mailer = App::make('jmailer');
         // if i activate a deactivated user
         $mailer->sendTo($user->email, ["email" => $user->email],
-                        Config::get('acl_messages.email.user_registraction_activation_subject'),
-                        "package-acl::admin.mail.registration-activated-client");
+            Config::get('acl_messages.email.user_registraction_activation_subject'),
+            "package-acl::admin.mail.registration-activated-client");
     }
 
     /**
@@ -179,16 +178,13 @@ class UserRegisterService
     {
         $token_msg = "The given token/email are invalid.";
 
-        try
-        {
+        try {
             $user = $this->user_repository->findByLogin($email);
-        } catch(UserNotFoundException $e)
-        {
+        } catch (UserNotFoundException $e) {
             $this->errors = new MessageBag(["token" => $token_msg]);
             throw new UserNotFoundException;
         }
-        if($user->activation_code != $token)
-        {
+        if ($user->activation_code != $token) {
             $this->errors = new MessageBag(["token" => $token_msg]);
             throw new TokenMismatchException;
         }
@@ -215,6 +211,6 @@ class UserRegisterService
     private function createProfileInput(array $input, $user)
     {
         return array_merge(["user_id" => $user->id],
-                           array_except($input, ["email", "password", "activated"]));
+            Arr::except($input, ["email", "password", "activated"]));
     }
 }

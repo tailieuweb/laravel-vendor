@@ -144,7 +144,7 @@ class Sites extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    protected function searchFilters(array $params = [], $elo, $by_status = TRUE){
+    protected function searchFilters(array $params, $elo, $by_status = TRUE){
 
         //filter
         if ($this->isValidFilters($params) && (!empty($params)))
@@ -208,7 +208,7 @@ class Sites extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    public function paginateItems(array $params = [], $elo) {
+    public function paginateItems(array $params, $elo) {
         $items = $elo->paginate($this->perPage);
 
         return $items;
@@ -270,7 +270,7 @@ class Sites extends FooModel {
      * @param ARRAY $input list of parameters
      * @return boolean TRUE incase delete successfully otherwise return FALSE
      */
-    public function deleteItem($input = [], $delete_type) {
+    public function deleteItem(array $input, $delete_type) {
 
         $item = $this->find($input['id']);
 
@@ -320,7 +320,7 @@ class Sites extends FooModel {
 
         return $crawler;
     }
-    
+
     /**
      * Get list of sites into select
      * @return OBJECT PLUCK SELECT

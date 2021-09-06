@@ -8,14 +8,16 @@ use URL,
     Route;
 use Illuminate\Http\Request;
 
-class SlideshowServiceProvider extends ServiceProvider {
+class SlideshowServiceProvider extends ServiceProvider
+{
 
     /**
      * Bootstrap the application services.
      *
      * @return void
      */
-    public function boot(Request $request) {
+    public function boot(Request $request)
+    {
 
         //generate context key
 //        $this->generateContextKey();
@@ -33,7 +35,7 @@ class SlideshowServiceProvider extends ServiceProvider {
         $this->publishLang();
 
         // publish views
-        //$this->publishViews();
+        $this->publishViews();
 
         // publish assets
         $this->publishAssets();
@@ -51,7 +53,8 @@ class SlideshowServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         include __DIR__ . '/routes.php';
     }
 
@@ -60,10 +63,11 @@ class SlideshowServiceProvider extends ServiceProvider {
      * @source: vendor/foostart/package-slideshow/config
      * @destination: config/
      */
-    protected function publishConfig() {
+    protected function publishConfig()
+    {
         $this->publishes([
             __DIR__ . '/config/package-slideshow.php' => config_path('package-slideshow.php'),
-                ], 'config');
+        ], 'config');
     }
 
     /**
@@ -71,7 +75,8 @@ class SlideshowServiceProvider extends ServiceProvider {
      * @source: vendor/foostart/package-slideshow/lang
      * @destination: resources/lang
      */
-    protected function publishLang() {
+    protected function publishLang()
+    {
         $this->publishes([
             __DIR__ . '/lang' => base_path('resources/lang'),
         ]);
@@ -82,14 +87,16 @@ class SlideshowServiceProvider extends ServiceProvider {
      * @source: vendor/foostart/package-slideshow/Views
      * @destination: resources/views/vendor/package-slideshow
      */
-    protected function publishViews() {
+    protected function publishViews()
+    {
 
         $this->publishes([
             __DIR__ . '/Views' => base_path('resources/views/vendor/package-slideshow'),
         ]);
     }
 
-    protected function publishAssets() {
+    protected function publishAssets()
+    {
         $this->publishes([
             __DIR__ . '/public' => public_path('packages/foostart'),
         ]);
@@ -100,7 +107,8 @@ class SlideshowServiceProvider extends ServiceProvider {
      * @source: foostart/package-slideshow/database/migrations
      * @destination: database/migrations
      */
-    protected function publishMigrations() {
+    protected function publishMigrations()
+    {
         $this->publishes([
             __DIR__ . '/database/migrations' => $this->app->databasePath() . '/migrations',
         ]);
@@ -111,7 +119,8 @@ class SlideshowServiceProvider extends ServiceProvider {
      * @source: foostart/package-slideshow/database/seeders
      * @destination: database/seeders
      */
-    protected function publishSeeders() {
+    protected function publishSeeders()
+    {
         $this->publishes([
             __DIR__ . '/database/seeders' => $this->app->databasePath() . '/seeders',
         ]);

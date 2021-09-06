@@ -37,7 +37,7 @@ class CropController extends LfmController
         $image_path = parent::getCurrentPath(request('img'));
         $crop_path = $image_path;
 
-        if (! $overWrite) {
+        if (!$overWrite) {
             $fileParts = explode('.', request('img'));
             $fileParts[count($fileParts) - 2] = $fileParts[count($fileParts) - 2] . '_cropped_' . time();
             $crop_path = parent::getCurrentPath(implode('.', $fileParts));

@@ -17,7 +17,14 @@
  * @copyright  (c) 2011 - 2013, Cartalyst LLC
  * @link       http://cartalyst.com
  */
+class GroupExistsException extends \UnexpectedValueException
+{
+}
 
-class GroupExistsException extends \UnexpectedValueException {}
-class GroupNotFoundException extends \UnexpectedValueException {}
-class NameRequiredException extends \UnexpectedValueException {}
+class GroupNotFoundException extends \UnexpectedValueException
+{
+}
+
+class NameRequiredException extends \UnexpectedValueException
+{
+}

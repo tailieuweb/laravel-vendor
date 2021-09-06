@@ -15,9 +15,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | SIDEBAR
@@ -38,9 +35,6 @@ return [
         'add-style' => 'Add style',
         'list-style' => 'List of styles',
     ],
-
-
-
 
 
     /*
@@ -77,9 +71,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | Button
@@ -98,9 +89,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | Form
@@ -115,9 +103,6 @@ return [
         'no-selected' => 'No selected',
         'status' => 'Status',
     ],
-
-
-
 
 
     /*
@@ -149,7 +134,6 @@ return [
     ],
 
 
-
     /*
     |-----------------------------------------------------------------------
     | Error
@@ -163,8 +147,6 @@ return [
         'required' => ':attribute is required',
         'required_length' => 'Allow from: <b>:minlength</b> to <b>:maxlength</b>. characters',
     ],
-
-
 
 
     /*
@@ -186,8 +168,6 @@ return [
         'id-style' => 'Style ID',
         'name-style' => 'Style name',
     ],
-
-
 
 
     /*
@@ -216,9 +196,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | TABS
@@ -239,9 +216,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | HEADING
@@ -258,9 +232,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | CONFIRMS
@@ -273,9 +244,6 @@ return [
     'confirms' => [
         'delete' => 'Are you sure you want to delete this item?',
     ],
-
-
-
 
 
     /*
@@ -295,9 +263,6 @@ return [
         'delete-ok' => 'Delete item successfully',
         'delete-error' => 'Delete item failed',
     ],
-
-
-
 
 
     /*
@@ -334,9 +299,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | Order by
@@ -350,13 +312,6 @@ return [
     ],
 
 
-
-
-
-
-
-
-
     /*
     |-----------------------------------------------------------------------
     | Hint
@@ -364,7 +319,7 @@ return [
     | The list of hint
     |
     */
-    'hint'  => [
+    'hint' => [
         'delete-forever' => 'Delete forever',
         'delete-in-trash' => 'Delete in trash',
     ],

@@ -17,9 +17,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | SIDEBAR
@@ -38,9 +35,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | Table column
@@ -49,10 +43,10 @@ return [
     |
     */
     'columns' => [
-        'any'   => 'Any',
+        'any' => 'Any',
         'order' => 'Order',
         'counter' => '#',
-        'id'    => 'ID',
+        'id' => 'ID',
         'category-name' => 'Category name',
         'user-full-name' => 'User full name',
         'context-name' => 'Context name',
@@ -91,9 +85,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | Button
@@ -115,9 +106,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | Hint
@@ -125,13 +113,10 @@ return [
     | The list of hint
     |
     */
-    'hint'  => [
+    'hint' => [
         'delete-forever' => 'Delete forever',
         'delete-in-trash' => 'Delete in trash',
     ],
-
-
-
 
 
     /*
@@ -148,9 +133,6 @@ return [
         'no-selected' => 'No selected',
         'status' => 'Status',
     ],
-
-
-
 
 
     /*
@@ -174,7 +156,7 @@ return [
         'not-found' => 'Not found items',
         'config' => 'List of configurations',
         'lang' => 'List of languages',
-        'category-slug' =>'Category Slug',
+        'category-slug' => 'Category Slug',
         'context-name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'context-ref' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'context-key' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
@@ -187,7 +169,6 @@ return [
         'category-icon' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category-status' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
-
 
 
     /*
@@ -204,9 +185,9 @@ return [
         'required_length' => 'Allow from: <b>:minlength</b> to <b>:maxlength</b>. characters',
         'required_min_length' => 'Allow from: <b>:minlength</b> characters',
         'required_max_length' => 'Allow max: <b>:minlength</b> characters',
+        'required-order-by' => 'Required order by',
+        'existing-order' => 'Existing order'
     ],
-
-
 
 
     /*
@@ -234,8 +215,6 @@ return [
         'title' => 'Title',
         'status' => 'Status'
     ],
-
-
 
 
     /*
@@ -267,7 +246,7 @@ return [
         'context-key' => 'Context key',
         'context-status' => 'Status',
         'unknown' => 'Unknown',
-        'category-slug' =>'Category Slug',
+        'category-slug' => 'Category Slug',
         'category-url' => 'Category URL',
         'category-order' => 'Category order',
         'category-parent' => 'Category parent',
@@ -280,9 +259,6 @@ return [
             'add' => 'Regenerate new key',
         ]
     ],
-
-
-
 
 
     /*
@@ -305,14 +281,11 @@ return [
         'menu_8' => 'Menu 8',
         'menu_9' => 'Menu 9',
         'menu_9' => 'Menu 9',
-        'guide'  => 'Guide',
-        'other'  => 'Other',
-        'basic'  => 'Basic',
+        'guide' => 'Guide',
+        'other' => 'Other',
+        'basic' => 'Basic',
         'advance' => 'Advance',
     ],
-
-
-
 
 
     /*
@@ -331,9 +304,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | CONFIRMS
@@ -346,9 +316,6 @@ return [
     'confirms' => [
         'delete' => 'Are you sure you want to delete this item?',
     ],
-
-
-
 
 
     /*
@@ -368,9 +335,6 @@ return [
         'delete-ok' => 'Delete item successfully',
         'delete-error' => 'Delete item failed',
     ],
-
-
-
 
 
     /*

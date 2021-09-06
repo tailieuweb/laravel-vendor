@@ -25,7 +25,7 @@ class Pexcel extends FooModel {
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'pexcel_name',            
+            'pexcel_name',
             'pexcel_overview',
             'pexcel_description',
             'pexcel_image',
@@ -65,8 +65,8 @@ class Pexcel extends FooModel {
             'user_id' => [
                 'name' => 'user_id',
                 'type' => 'Int',
-            ], 
-           
+            ],
+
         ]);
 
         //check valid fields for inserting
@@ -166,7 +166,7 @@ class Pexcel extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    protected function searchFilters(array $params = [], $elo, $by_status = TRUE) {
+    protected function searchFilters(array $params, $elo, $by_status = TRUE) {
 
         //filter
         if ($this->isValidFilters($params) && (!empty($params))) {
@@ -197,7 +197,7 @@ class Pexcel extends FooModel {
                     }
                 }
             }
-        } 
+        }
 
         return $elo;
     }
@@ -220,7 +220,7 @@ class Pexcel extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    public function paginateItems(array $params = [], $elo) {
+    public function paginateItems(array $params, $elo) {
         $items = $elo->paginate($this->perPage);
 
         return $items;
@@ -283,7 +283,7 @@ class Pexcel extends FooModel {
      * @param ARRAY $input list of parameters
      * @return boolean TRUE incase delete successfully otherwise return FALSE
      */
-    public function deleteItem($input = [], $delete_type) {
+    public function deleteItem(array $input, $delete_type) {
 
         $item = $this->find($input['id']);
 
@@ -306,7 +306,7 @@ class Pexcel extends FooModel {
      * Get list of statuses to push to select
      * @return ARRAY list of statuses
      */
-    
+
      public function getPluckStatus() {
             $pluck_status = config('package-pexcel.status.list');
             return $pluck_status;

@@ -5,11 +5,11 @@
  * multiple files for attachment
  */
 $(document).ready(function () {
-    
+
     (function ($) {
 
         $.fn.filemanager = function (type, options) {
-            
+
             //set type of file for file manager
             type = type || 'image';
             var _type = type;
@@ -20,7 +20,7 @@ $(document).ready(function () {
             }
 
             this.on('click', function (e) {
-                
+
                 var route_prefix = (options && options.prefix) ? options.prefix : '/package-filemanager';
                 localStorage.setItem('target_input', $(this).data('input'));
                 localStorage.setItem('target_preview', $(this).data('preview'));
@@ -37,9 +37,9 @@ $(document).ready(function () {
         if ($('#lfm-images').length) {
             $('#lfm-images').filemanager('images');
         }
-        
+
     })(jQuery);
-    
+
 });//end upload processing
 
 /**
@@ -51,19 +51,19 @@ $(document).ready(function () {
         $.fn.filecontrol = function (image, event) {
             //set image url
             if (image && image.url) {
-               $(this).data('image-url', image.url);
+                $(this).data('image-url', image.url);
             }
             //set image dir
             if (image && image.dir) {
-               $(this).data('image-dir', image.dir);
+                $(this).data('image-dir', image.dir);
             }
             //hide in case empty image
             if (!$(this).data('image-dir')) {
                 $(this).hide();
-            }else {
+            } else {
                 $(this).show();
                 if (event === 'click') {
-                    
+
                     this.on('click', function (e) {
 
                         if ($(this).data('on') === 'remove') {
@@ -72,41 +72,42 @@ $(document).ready(function () {
                             //set text to 'undo'
                             $(this).html($(this).data('label-undo'));
                             //change thumbnail to empty
-                            $('#' + $(this).data('preview')).attr('src',$(this).data('image-empty'));
+                            $('#' + $(this).data('preview')).attr('src', $(this).data('image-empty'));
                             //set empty value to input
                             $('#' + $(this).data('input')).val('');
-                            
-                        }else {
+
+                        } else {
 
                             //set status to 'remove'
                             $(this).data('on', 'remove');
                             //set text to 'remove'
                             $(this).html($(this).data('label-remove'));
                             //change thumbnail to image
-                            $('#' + $(this).data('preview')).attr('src',$(this).data('image-url'));
+                            $('#' + $(this).data('preview')).attr('src', $(this).data('image-url'));
                             //set image dir value to input
                             $('#' + $(this).data('input')).val($(this).data('image-dir'));
-                           
+
                         }
                         return false;
-                        
+
                     });
                 }
             }
             return false;
         };
-        
+
         //button control thumbnail
         if ($('#lfm-remove').length) {
-            $('#lfm-remove').filecontrol(false,'click');
-        };
-        
+            $('#lfm-remove').filecontrol(false, 'click');
+        }
+        ;
+
     })(jQuery);
 });//end remove/undo processing
 
 $(document).ready(function () {
     (function ($) {
-        $('.list-group-item .delete-item').click(function() {
+        $('.list-group-item .delete-item').click(function () {
             $(this).parent().remove();
             return false;
         });
@@ -120,11 +121,11 @@ $(document).ready(function () {
  * @returns page after uploading
  */
 function SetUrl(url, file_path) {
-    
+
     //get type of file that uploaded
     var type = localStorage.getItem('type');
     var ul = localStorage.getItem('grid-view');
-    
+
     switch (type) {
         //files
         case 'file':
@@ -133,15 +134,15 @@ function SetUrl(url, file_path) {
             if (!ul) {
                 ul = 'list-uploaded-files ul';
             }
-            
-            var item = $('.'+ul).find('.item-template').clone(true).removeClass('item-template');
+
+            var item = $('.' + ul).find('.item-template').clone(true).removeClass('item-template');
             //add file name
-            item.find('.file-item').html('<a href="'+ url +'">' + file_path + '</a>');
+            item.find('.file-item').html('<a href="' + url + '">' + file_path + '</a>');
             //add input value
             item.find('input').val(file_path);
             //append to last item
-            item.appendTo($('.'+ul));
-            
+            item.appendTo($('.' + ul));
+
             break;
         //multiple images
         case 'images':
@@ -185,5 +186,5 @@ function SetUrl(url, file_path) {
         case 'images':
             break;
     }
-    
+
 }

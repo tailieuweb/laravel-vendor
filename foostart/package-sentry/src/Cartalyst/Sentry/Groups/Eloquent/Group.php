@@ -18,370 +18,351 @@
  * @link       http://cartalyst.com
  */
 
+use Cartalyst\Sentry\BaseSentryModel;
 use Cartalyst\Sentry\Groups\NameRequiredException;
 use Cartalyst\Sentry\Groups\GroupExistsException;
 use Cartalyst\Sentry\Groups\GroupInterface;
-use Illuminate\Database\Eloquent\Model;
 
-class Group extends Model implements GroupInterface {
 
-	/**
-	 * The table associated with the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'groups';
+class Group extends BaseSentryModel implements GroupInterface
+{
 
-	/**
-	 * The attributes that aren't mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $guarded = array();
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'groups';
 
-	/**
-	 * Allowed permissions values.
-	 *
-	 * Possible options:
-	 *    0 => Remove.
-	 *    1 => Add.
-	 *
-	 * @var array
-	 */
-	protected $allowedPermissionsValues = array(0, 1);
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = array();
 
-	/**
-	 * The Eloquent user model.
-	 *
-	 * @var string
-	 */
-	protected static $userModel = 'Cartalyst\Sentry\Users\Eloquent\User';
+    /**
+     * Allowed permissions values.
+     *
+     * Possible options:
+     *    0 => Remove.
+     *    1 => Add.
+     *
+     * @var array
+     */
+    protected $allowedPermissionsValues = array(0, 1);
 
-	/**
-	 * The user groups pivot table name.
-	 *
-	 * @var string
-	 */
-	protected static $userGroupsPivot = 'users_groups';
+    /**
+     * The Eloquent user model.
+     *
+     * @var string
+     */
+    protected static $userModel = 'Cartalyst\Sentry\Users\Eloquent\User';
 
-	/**
-	 * Returns the group's ID.
-	 *
-	 * @return mixed
-	 */
-	public function getId()
-	{
-		return $this->getKey();
-	}
+    /**
+     * The user groups pivot table name.
+     *
+     * @var string
+     */
+    protected static $userGroupsPivot = 'users_groups';
 
-	/**
-	 * Returns the group's name.
-	 *
-	 * @return string
-	 */
-	public function getName()
-	{
-		return $this->name;
-	}
+    /**
+     * Returns the group's ID.
+     *
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->getKey();
+    }
 
-	/**
-	 * Returns permissions for the group.
-	 *
-	 * @return array
-	 */
-	public function getPermissions()
-	{
-		return $this->permissions;
-	}
+    /**
+     * Returns the group's name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * See if a group has access to the passed permission(s).
-	 *
-	 * If multiple permissions are passed, the group must
-	 * have access to all permissions passed through, unless the
-	 * "all" flag is set to false.
-	 *
-	 * @param  string|array  $permissions
-	 * @param  bool  $all
-	 * @return bool
-	 */
-	public function hasAccess($permissions, $all = true)
-	{
-		$groupPermissions = $this->getPermissions();
+    /**
+     * Returns permissions for the group.
+     *
+     * @return array
+     */
+    public function getPermissions()
+    {
+        return $this->permissions;
+    }
 
-		if ( ! is_array($permissions))
-		{
-			$permissions = (array) $permissions;
-		}
+    /**
+     * See if a group has access to the passed permission(s).
+     *
+     * If multiple permissions are passed, the group must
+     * have access to all permissions passed through, unless the
+     * "all" flag is set to false.
+     *
+     * @param string|array $permissions
+     * @param bool $all
+     * @return bool
+     */
+    public function hasAccess($permissions, $all = true)
+    {
+        $groupPermissions = $this->getPermissions();
 
-		foreach ($permissions as $permission)
-		{
-			// We will set a flag now for whether this permission was
-			// matched at all.
-			$matched = true;
+        if (!is_array($permissions)) {
+            $permissions = (array)$permissions;
+        }
 
-			// Now, let's check if the permission ends in a wildcard "*" symbol.
-			// If it does, we'll check through all the merged permissions to see
-			// if a permission exists which matches the wildcard.
-			if ((strlen($permission) > 1) and ends_with($permission, '*'))
-			{
-				$matched = false;
+        foreach ($permissions as $permission) {
+            // We will set a flag now for whether this permission was
+            // matched at all.
+            $matched = true;
 
-				foreach ($groupPermissions as $groupPermission => $value)
-				{
-					// Strip the '*' off the end of the permission.
-					$checkPermission = substr($permission, 0, -1);
+            // Now, let's check if the permission ends in a wildcard "*" symbol.
+            // If it does, we'll check through all the merged permissions to see
+            // if a permission exists which matches the wildcard.
+            if ((strlen($permission) > 1) and ends_with($permission, '*')) {
+                $matched = false;
 
-					// We will make sure that the merged permission does not
-					// exactly match our permission, but starts with it.
-					if ($checkPermission != $groupPermission and starts_with($groupPermission, $checkPermission) and $value == 1)
-					{
-						$matched = true;
-						break;
-					}
-				}
-			}
+                foreach ($groupPermissions as $groupPermission => $value) {
+                    // Strip the '*' off the end of the permission.
+                    $checkPermission = substr($permission, 0, -1);
 
-			// Now, let's check if the permission starts in a wildcard "*" symbol.
-			// If it does, we'll check through all the merged permissions to see
-			// if a permission exists which matches the wildcard.
-			elseif ((strlen($permission) > 1) and starts_with($permission, '*'))
-			{
-				$matched = false;
+                    // We will make sure that the merged permission does not
+                    // exactly match our permission, but starts with it.
+                    if ($checkPermission != $groupPermission and starts_with($groupPermission, $checkPermission) and $value == 1) {
+                        $matched = true;
+                        break;
+                    }
+                }
+            }
 
-				foreach ($groupPermissions as $groupPermission => $value)
-				{
-					// Strip the '*' off the start of the permission.
-					$checkPermission = substr($permission, 1);
+            // Now, let's check if the permission starts in a wildcard "*" symbol.
+            // If it does, we'll check through all the merged permissions to see
+            // if a permission exists which matches the wildcard.
+            elseif ((strlen($permission) > 1) and starts_with($permission, '*')) {
+                $matched = false;
 
-					// We will make sure that the merged permission does not
-					// exactly match our permission, but ends with it.
-					if ($checkPermission != $groupPermission and ends_with($groupPermission, $checkPermission) and $value == 1)
-					{
-						$matched = true;
-						break;
-					}
-				}
-			}
+                foreach ($groupPermissions as $groupPermission => $value) {
+                    // Strip the '*' off the start of the permission.
+                    $checkPermission = substr($permission, 1);
 
-			else
-			{
-				$matched = false;
+                    // We will make sure that the merged permission does not
+                    // exactly match our permission, but ends with it.
+                    if ($checkPermission != $groupPermission and ends_with($groupPermission, $checkPermission) and $value == 1) {
+                        $matched = true;
+                        break;
+                    }
+                }
+            } else {
+                $matched = false;
 
-				foreach ($groupPermissions as $groupPermission => $value)
-				{
-					// This time check if the groupPermission ends in wildcard "*" symbol.
-					if ((strlen($groupPermission) > 1) and ends_with($groupPermission, '*'))
-					{
-						$matched = false;
+                foreach ($groupPermissions as $groupPermission => $value) {
+                    // This time check if the groupPermission ends in wildcard "*" symbol.
+                    if ((strlen($groupPermission) > 1) and ends_with($groupPermission, '*')) {
+                        $matched = false;
 
-						// Strip the '*' off the end of the permission.
-						$checkGroupPermission = substr($groupPermission, 0, -1);
+                        // Strip the '*' off the end of the permission.
+                        $checkGroupPermission = substr($groupPermission, 0, -1);
 
-						// We will make sure that the merged permission does not
-						// exactly match our permission, but starts wtih it.
-						if ($checkGroupPermission != $permission and starts_with($permission, $checkGroupPermission) and $value == 1)
-						{
-							$matched = true;
-							break;
-						}
-					}
+                        // We will make sure that the merged permission does not
+                        // exactly match our permission, but starts wtih it.
+                        if ($checkGroupPermission != $permission and starts_with($permission, $checkGroupPermission) and $value == 1) {
+                            $matched = true;
+                            break;
+                        }
+                    }
 
-					// Otherwise, we'll fallback to standard permissions checking where
-					// we match that permissions explicitly exist.
-					elseif ($permission == $groupPermission and $groupPermissions[$permission] == 1)
-					{
-						$matched = true;
-						break;
-					}
-				}
-			}
+                    // Otherwise, we'll fallback to standard permissions checking where
+                    // we match that permissions explicitly exist.
+                    elseif ($permission == $groupPermission and $groupPermissions[$permission] == 1) {
+                        $matched = true;
+                        break;
+                    }
+                }
+            }
 
-			// Now, we will check if we have to match all
-			// permissions or any permission and return
-			// accordingly.
-			if ($all === true and $matched === false)
-			{
-				return false;
-			}
-			elseif ($all === false and $matched === true)
-			{
-				return true;
-			}
-		}
+            // Now, we will check if we have to match all
+            // permissions or any permission and return
+            // accordingly.
+            if ($all === true and $matched === false) {
+                return false;
+            } elseif ($all === false and $matched === true) {
+                return true;
+            }
+        }
 
-		return $all;
-		
-	}
+        return $all;
 
-	/**
-	 * Returns if the user has access to any of the
-	 * given permissions.
-	 *
-	 * @param  array  $permissions
-	 * @return bool
-	 */
-	public function hasAnyAccess(array $permissions)
-	{
-		return $this->hasAccess($permissions, false);
-	}
+    }
 
-	/**
-	 * Returns the relationship between groups and users.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-	 */
-	public function users()
-	{
-		return $this->belongsToMany(static::$userModel, static::$userGroupsPivot);
-	}
+    /**
+     * Returns if the user has access to any of the
+     * given permissions.
+     *
+     * @param array $permissions
+     * @return bool
+     */
+    public function hasAnyAccess(array $permissions)
+    {
+        return $this->hasAccess($permissions, false);
+    }
 
-	/**
-	 * Set the Eloquent model to use for user relationships.
-	 *
-	 * @param  string  $model
-	 * @return void
-	 */
-	public static function setUserModel($model)
-	{
-		static::$userModel = $model;
-	}
+    /**
+     * Returns the relationship between groups and users.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany(static::$userModel, static::$userGroupsPivot);
+    }
 
-	/**
-	 * Set the user groups pivot table name.
-	 *
-	 * @param  string  $tableName
-	 * @return void
-	 */
-	public static function setUserGroupsPivot($tableName)
-	{
-		static::$userGroupsPivot = $tableName;
-	}
+    /**
+     * Set the Eloquent model to use for user relationships.
+     *
+     * @param string $model
+     * @return void
+     */
+    public static function setUserModel($model)
+    {
+        static::$userModel = $model;
+    }
 
-	/**
-	 * Saves the group.
-	 *
-	 * @param  array  $options
-	 * @return bool
-	 */
-	public function save(array $options = array())
-	{
-		$this->validate();
-		return parent::save();
-	}
+    /**
+     * Set the user groups pivot table name.
+     *
+     * @param string $tableName
+     * @return void
+     */
+    public static function setUserGroupsPivot($tableName)
+    {
+        static::$userGroupsPivot = $tableName;
+    }
 
-	/**
-	 * Delete the group.
-	 *
-	 * @return bool
-	 */
-	public function delete()
-	{
-		$this->users()->detach();
-		return parent::delete();
-	}
+    /**
+     * Saves the group.
+     *
+     * @param array $options
+     * @return bool
+     */
+    public function save(array $options = array())
+    {
+        $this->validate();
+        return parent::save();
+    }
 
-	/**
-	 * Mutator for giving permissions.
-	 *
-	 * @param  mixed $permissions
-	 * @return array
-	 * @throws \InvalidArgumentException
-	 */
-	public function getPermissionsAttribute($permissions)
-	{
-		if ( ! $permissions)
-		{
-			return array();
-		}
+    /**
+     * Delete the group.
+     *
+     * @return bool
+     */
+    public function delete()
+    {
+        $this->users()->detach();
+        return parent::delete();
+    }
 
-		if (is_array($permissions))
-		{
-			return $permissions;
-		}
+    /**
+     * Mutator for giving permissions.
+     *
+     * @param mixed $permissions
+     * @return array
+     * @throws \InvalidArgumentException
+     */
+    public function getPermissionsAttribute($permissions)
+    {
+        if (!$permissions) {
+            return array();
+        }
 
-		if ( ! $_permissions = json_decode($permissions, true))
-		{
-			throw new \InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
-		}
+        if (is_array($permissions)) {
+            return $permissions;
+        }
 
-		return $_permissions;
-	}
+        if (!$_permissions = json_decode($permissions, true)) {
+            throw new \InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
+        }
 
-	/**
-	 * Mutator for taking permissions.
-	 *
-	 * @param  array  $permissions
-	 * @return void
-	 * @throws \InvalidArgumentException
-	 */
-	public function setPermissionsAttribute(array $permissions)
-	{
-		// Merge permissions
-		$permissions = array_merge($this->getPermissions(), $permissions);
+        return $_permissions;
+    }
 
-		// Loop through and adjust permissions as needed
-		foreach ($permissions as $permission => &$value)
-		{
-			// Lets make sure their is a valid permission value
-			if ( ! in_array($value = (int) $value, $this->allowedPermissionsValues))
-			{
-				throw new \InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
-			}
+    /**
+     * Mutator for taking permissions.
+     *
+     * @param array $permissions
+     * @return void
+     * @throws \InvalidArgumentException
+     */
+    public function setPermissionsAttribute(array $permissions)
+    {
+        // Merge permissions
+        $permissions = array_merge($this->getPermissions(), $permissions);
 
-			// If the value is 0, delete it
-			if ($value === 0)
-			{
-				unset($permissions[$permission]);
-			}
-		}
+        // Loop through and adjust permissions as needed
+        foreach ($permissions as $permission => &$value) {
+            // Lets make sure their is a valid permission value
+            if (!in_array($value = (int)$value, $this->allowedPermissionsValues)) {
+                throw new \InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
+            }
 
-		$this->attributes['permissions'] = ( ! empty($permissions)) ? json_encode($permissions) : '';
-	}
+            // If the value is 0, delete it
+            if ($value === 0) {
+                unset($permissions[$permission]);
+            }
+        }
 
-	/**
-	 * Convert the model instance to an array.
-	 *
-	 * @return array
-	 */
-	public function toArray()
-	{
-		$attributes = parent::toArray();
+        $this->attributes['permissions'] = (!empty($permissions)) ? json_encode($permissions) : '';
+    }
 
-		if (isset($attributes['permissions']))
-		{
-			$attributes['permissions'] = $this->getPermissionsAttribute($attributes['permissions']);
-		}
+    /**
+     * Convert the model instance to an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $attributes = parent::toArray();
 
-		return $attributes;
-	}
+        if (isset($attributes['permissions'])) {
+            $attributes['permissions'] = $this->getPermissionsAttribute($attributes['permissions']);
+        }
 
-	/**
-	 * Validates the group and throws a number of
-	 * Exceptions if validation fails.
-	 *
-	 * @return bool
-	 * @throws \Cartalyst\Sentry\Groups\NameRequiredException
-	 * @throws \Cartalyst\Sentry\Groups\GroupExistsException
-	 */
-	public function validate()
-	{
-		// Check if name field was passed
-		if ( ! $name = $this->name)
-		{
-			throw new NameRequiredException("A name is required for a group, none given.");
-		}
+        return $attributes;
+    }
 
-		// Check if group already exists
-		$query = $this->newQuery();
-		$persistedGroup = $query->where('name', '=', $name)->first();
+    /**
+     * Validates the group and throws a number of
+     * Exceptions if validation fails.
+     *
+     * @return bool
+     * @throws \Cartalyst\Sentry\Groups\NameRequiredException
+     * @throws \Cartalyst\Sentry\Groups\GroupExistsException
+     */
+    public function validate()
+    {
+        // Check if name field was passed
+        if (!$name = $this->name) {
+            throw new NameRequiredException("A name is required for a group, none given.");
+        }
 
-		if ($persistedGroup and $persistedGroup->getId() != $this->getId())
-		{
-			throw new GroupExistsException("A group already exists with name [$name], names must be unique for groups.");
-		}
+        // Check if group already exists
+        $query = $this->newQuery();
+        $persistedGroup = $query->where('name', '=', $name)->first();
 
-		return true;
-	}
+        if ($persistedGroup and $persistedGroup->getId() != $this->getId()) {
+            throw new GroupExistsException("A group already exists with name [$name], names must be unique for groups.");
+        }
 
+        return true;
+    }
+    /**
+     * Truncate table
+     * @return mixed
+     */
+    public function truncate() {
+        return $this->query()->truncate();;
+    }
 }

@@ -1,9 +1,6 @@
 @webiste: http://foostart.com
 
-@package-name: slideshow
-@author: Kang
-@date: 27/12/2017
-@version: 2.0
+@package-name: slideshow @author: Kang @date: 27/12/2017 @version: 2.0
 
 @features
 

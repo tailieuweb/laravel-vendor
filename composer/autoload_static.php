@@ -149,7 +149,6 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             'Fruitcake\\Cors\\' => 15,
             'Foostart\\Slideshow\\' => 19,
-            'Foostart\\Sample\\' => 16,
             'Foostart\\Post\\' => 14,
             'Foostart\\Pexcel\\' => 16,
             'Foostart\\Module\\' => 16,
@@ -460,10 +459,6 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             0 => __DIR__ . '/..' . '/foostart/package-slideshow',
         ),
-        'Foostart\\Sample\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/foostart/package-sample',
-        ),
         'Foostart\\Post\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-post',
@@ -705,6 +700,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Cartalyst\\Sentry\\BaseSentryModel' => __DIR__ . '/..' . '/foostart/package-sentry/src/Cartalyst/Sentry/BaseSentryModel.php',
         'Cartalyst\\Sentry\\Cookies\\CookieInterface' => __DIR__ . '/..' . '/foostart/package-sentry/src/Cartalyst/Sentry/Cookies/CookieInterface.php',
         'Cartalyst\\Sentry\\Cookies\\IlluminateCookie' => __DIR__ . '/..' . '/foostart/package-sentry/src/Cartalyst/Sentry/Cookies/IlluminateCookie.php',
         'Cartalyst\\Sentry\\Cookies\\NativeCookie' => __DIR__ . '/..' . '/foostart/package-sentry/src/Cartalyst/Sentry/Cookies/NativeCookie.php',
@@ -759,7 +755,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'CreateProfileField' => __DIR__ . '/..' . '/foostart/package-acl/database/migrations/2021_02_24_122155_create_profile_field.php',
         'CreateProfileFieldTypes' => __DIR__ . '/..' . '/foostart/package-acl/database/migrations/2021_02_24_122145_create_profile_field_types.php',
         'CreateUserGroupsTable' => __DIR__ . '/..' . '/foostart/package-acl/database/migrations/2021_02_24_095623_create_user_groups_table.php',
-        'CreateUserProfileTable' => __DIR__ . '/..' . '/foostart/package-acl/database/migrations/2021_02_24_165011_create_user_profile_table.php',
+        'CreateUserProfileTable' => __DIR__ . '/..' . '/foostart/package-acl/database/migrations/2021_02_24_122150_create_user_profile_table.php',
         'CreateUsersTable' => __DIR__ . '/..' . '/foostart/package-acl/database/migrations/2021_02_24_095545_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -1622,9 +1618,9 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Acl\\Console\\Commands\\Inspire' => __DIR__ . '/..' . '/foostart/package-acl/app/Console/Commands/Inspire.php',
         'Foostart\\Acl\\Console\\Kernel' => __DIR__ . '/..' . '/foostart/package-acl/app/Console/Kernel.php',
         'Foostart\\Acl\\Database\\DatabaseSeeder' => __DIR__ . '/..' . '/foostart/package-acl/database/seeds/DatabaseSeeder.php',
-        'Foostart\\Acl\\Database\\GroupsSeeder' => __DIR__ . '/..' . '/foostart/package-acl/database/seeds/DatabaseSeeder.php',
-        'Foostart\\Acl\\Database\\PermissionSeeder' => __DIR__ . '/..' . '/foostart/package-acl/database/seeds/DatabaseSeeder.php',
-        'Foostart\\Acl\\Database\\UserSeeder' => __DIR__ . '/..' . '/foostart/package-acl/database/seeds/DatabaseSeeder.php',
+        'Foostart\\Acl\\Database\\GroupsSeeder' => __DIR__ . '/..' . '/foostart/package-acl/database/seeds/GroupsSeeder.php',
+        'Foostart\\Acl\\Database\\PermissionSeeder' => __DIR__ . '/..' . '/foostart/package-acl/database/seeds/PermissionSeeder.php',
+        'Foostart\\Acl\\Database\\UserSeeder' => __DIR__ . '/..' . '/foostart/package-acl/database/seeds/UserSeeder.php',
         'Foostart\\Acl\\Exceptions\\Handler' => __DIR__ . '/..' . '/foostart/package-acl/app/Exceptions/Handler.php',
         'Foostart\\Acl\\Http\\Kernel' => __DIR__ . '/..' . '/foostart/package-acl/app/Http/Kernel.php',
         'Foostart\\Acl\\Http\\Middleware\\AdminLogged' => __DIR__ . '/..' . '/foostart/package-acl/app/Http/Middleware/AdminLogged.php',
@@ -1635,6 +1631,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Acl\\Http\\Middleware\\UserLeader' => __DIR__ . '/..' . '/foostart/package-acl/app/Http/Middleware/UserLeader.php',
         'Foostart\\Acl\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/..' . '/foostart/package-acl/app/Http/Middleware/VerifyCsrfToken.php',
         'Foostart\\Acl\\Http\\Requests\\Request' => __DIR__ . '/..' . '/foostart/package-acl/app/Http/Requests/Request.php',
+        'Foostart\\Acl\\Library\\Constants\\FoostartConstants' => __DIR__ . '/..' . '/foostart/package-acl/app/Library/Constants/FoostartConstants.php',
         'Foostart\\Acl\\Library\\Email\\MailerInterface' => __DIR__ . '/..' . '/foostart/package-acl/app/Library/Email/MailerInterface.php',
         'Foostart\\Acl\\Library\\Email\\SwiftMailer' => __DIR__ . '/..' . '/foostart/package-acl/app/Library/Email/SwiftMailer.php',
         'Foostart\\Acl\\Library\\Exceptions\\InvalidException' => __DIR__ . '/..' . '/foostart/package-acl/app/Library/Exceptions/InvalidException.php',
@@ -1778,10 +1775,6 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Post\\Models\\Post' => __DIR__ . '/..' . '/foostart/package-post/Models/Post.php',
         'Foostart\\Post\\PostServiceProvider' => __DIR__ . '/..' . '/foostart/package-post/PostServiceProvider.php',
         'Foostart\\Post\\Validators\\PostValidator' => __DIR__ . '/..' . '/foostart/package-post/Validators/PostValidator.php',
-        'Foostart\\Sample\\Controllers\\Front\\SampleController' => __DIR__ . '/..' . '/foostart/package-sample/Controllers/Front/SampleController.php',
-        'Foostart\\Sample\\Models\\Sample' => __DIR__ . '/..' . '/foostart/package-sample/Models/Sample.php',
-        'Foostart\\Sample\\SampleServiceProvider' => __DIR__ . '/..' . '/foostart/package-sample/SampleServiceProvider.php',
-        'Foostart\\Sample\\Validators\\SampleValidator' => __DIR__ . '/..' . '/foostart/package-sample/Validators/SampleValidator.php',
         'Foostart\\Slideshow\\Controllers\\Admin\\SlideshowAdminController' => __DIR__ . '/..' . '/foostart/package-slideshow/Controllers/Admin/SlideshowAdminController.php',
         'Foostart\\Slideshow\\Controllers\\Admin\\StyleAdminController' => __DIR__ . '/..' . '/foostart/package-slideshow/Controllers/Admin/StyleAdminController.php',
         'Foostart\\Slideshow\\Controllers\\Front\\SlideshowFrontController' => __DIR__ . '/..' . '/foostart/package-slideshow/Controllers/Front/SlideshowFrontController.php',

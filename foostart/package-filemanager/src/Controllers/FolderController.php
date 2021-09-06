@@ -35,11 +35,11 @@ class FolderController extends LfmController
                 return strcmp($a->name, $b->name);
             });
 
-            array_push($root_folders, (object) [
+            array_push($root_folders, (object)[
                 'name' => trans('package-filemanager::lfm.title-' . $lang_key),
                 'path' => parent::getInternalPath($root_folder_path),
                 'children' => $children,
-                'has_next' => ! ($lang_key == end($folder_types)),
+                'has_next' => !($lang_key == end($folder_types)),
             ]);
         }
 

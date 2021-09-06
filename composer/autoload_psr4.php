@@ -71,7 +71,6 @@ return array(
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
     'Fruitcake\\Cors\\' => array($vendorDir . '/fruitcake/laravel-cors/src'),
     'Foostart\\Slideshow\\' => array($vendorDir . '/foostart/package-slideshow'),
-    'Foostart\\Sample\\' => array($vendorDir . '/foostart/package-sample'),
     'Foostart\\Post\\' => array($vendorDir . '/foostart/package-post'),
     'Foostart\\Pexcel\\' => array($vendorDir . '/foostart/package-pexcel'),
     'Foostart\\Module\\' => array($vendorDir . '/foostart/package-module'),
