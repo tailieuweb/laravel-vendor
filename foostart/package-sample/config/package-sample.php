@@ -4,11 +4,11 @@ return [
     //Number of worlds
     'length' => [
         'sample_name' => [
-            'min' => 10,
+            'min' => 5,
             'max' => 255,
         ],
         'sample_description' => [
-            'min' => 255,
+            'min' => 5,
             'max' => 0,//unlimit
         ],
         'sample_status' => [
