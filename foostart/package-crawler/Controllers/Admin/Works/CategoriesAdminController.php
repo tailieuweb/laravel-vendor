@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\App;
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Sites;
 use Foostart\Category\Models\Category;
+use Foostart\Crawler\Models\Works\WorksCategories;
+use Foostart\Crawler\Models\Works\WorksCategoriesJobs;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +34,7 @@ class CategoriesAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Sites(array('perPage' => 10));
+        $this->obj_item = new WorksCategories(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
@@ -44,7 +46,7 @@ class CategoriesAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'crawler';
+        $this->package_base_name = 'works.categories.category';
 
         // root routers
         $this->root_router = 'crawlers';
@@ -64,8 +66,6 @@ class CategoriesAdminController extends FooController {
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
 
         $this->statuses = config('package-crawler.status.list');
-        $this->obj_sample = config('package-crawler.sample.list');
-
 
         // //set category
         $this->category_ref_name = 'admin/crawlers';

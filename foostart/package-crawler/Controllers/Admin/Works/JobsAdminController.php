@@ -16,7 +16,9 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Crawler\Models\Sites;
+use Foostart\Crawler\Models\Works\WorksJobs;
+use Foostart\Crawler\Models\Works\WorksCategories;
+use Foostart\Crawler\Models\Works\WorksCategoriesJobs;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +34,7 @@ class JobsAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Sites(array('perPage' => 10));
+        $this->obj_item = new WorksJobs(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
@@ -44,7 +46,7 @@ class JobsAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'site.site';
+        $this->package_base_name = 'works.jobs.job';
 
         // root routers
         $this->root_router = 'sites';
@@ -54,10 +56,6 @@ class JobsAdminController extends FooController {
             'admin' => [
                 'items' => $this->package_name.'::admin.'.$this->package_base_name.'-items',
                 'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
-                'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
-                'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
-                'sample'  => $this->package_name.'::admin.'.$this->package_base_name.'-sample',
-                'mail'  => $this->package_name.'::admin.'.$this->package_base_name.'-mail',
             ]
         ];
 

@@ -44,15 +44,6 @@
                     @endif
                     <!--/ERRORS-->
 
-                    <!--ADD BUTTONS-->
-                    <div class='btn-form' style="margin-right: 15px;">
-                        <a href="{!! URL::route('stackoverflow_answer.crawler',['question_id' => $question_id,'_token' => csrf_token()]) !!}"
-                           class="btn btn-info pull-right">
-                            {!! trans($plang_admin.'.buttons.crawl_answer') !!}
-                        </a>
-                    </div>
-                    <!--/ADD BUTTONS-->
-
                     <!--BODY-->
                     <div class="panel-body">
 
