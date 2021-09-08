@@ -13,6 +13,13 @@ use Foostart\Category\Helpers\SortTable;
 |   $plang_admin = 'crawler-admin'
 |   $plang_front = 'crawler-front'
 */
+/**
+ * $plang-admin
+ * $plang-front
+ */
+$plang_admin = 'crawler-admin';
+$plang_front = 'crawler-front';
+
 View::composer([
             //Works jobs
             'package-crawler::admin.works.jobs.job-edit',
@@ -20,17 +27,10 @@ View::composer([
             'package-crawler::admin.works.jobs.job-items',
             'package-crawler::admin.works.jobs.job-item',
             'package-crawler::admin.works.jobs.job-search',
-    ], function ($view) {
+    ], function ($view) use ($plang_admin, $plang_front) {
 
         //Order by params
         $params = Request::all();
-
-        /**
-         * $plang-admin
-         * $plang-front
-         */
-        $plang_admin = 'crawler-admin';
-        $plang_front = 'crawler-front';
 
         /**
          * $sidebar_items
@@ -90,23 +90,20 @@ View::composer([
     'package-crawler::admin.works.categories.category-items',
     'package-crawler::admin.works.categories.category-item',
     'package-crawler::admin.works.categories.category-search',
-], function ($view) {
+], function ($view) use ($plang_admin, $plang_front) {
 
     //Order by params
     $params = Request::all();
-
-    /**
-     * $plang-admin
-     * $plang-front
-     */
-    $plang_admin = 'crawler-admin';
-    $plang_front = 'crawler-front';
 
     /**
      * $sidebar_items
      */
     $sidebar_items = [
         trans('crawler-admin.sidebar.add') => [
+            'url' => URL::route('works.categories.edit', []),
+            'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
+        ],
+        trans('crawler-admin.sidebar.list_categories') => [
             'url' => URL::route('works.categories.list', []),
             'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
         ],
@@ -114,7 +111,7 @@ View::composer([
             "url" => URL::route('sites.list', []),
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
-        trans('crawler-admin.sidebar.job') => [
+        trans('crawler-admin.sidebar.list_jobs') => [
             'url' => URL::route('works.jobs.list', []),
             'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
         ],
@@ -126,7 +123,8 @@ View::composer([
      */
     $orders = [
         '' => trans($plang_admin.'.form.no-selected'),
-        'job_name' => trans($plang_admin.'.fields.job_name'),
+        'category_id' => trans($plang_admin.'.fields.category_id'),
+        'category_name' => trans($plang_admin.'.fields.category_name'),
         'updated_at' => trans($plang_admin.'.fields.updated_at'),
         'status' => trans($plang_admin.'.fields.status'),
     ];

@@ -41,6 +41,7 @@ return [
         'tags' => 'Tags',
         'questions' => 'Questions',
         'list_jobs' => 'Jobs',
+        'list_categories' => 'Categories',
     ],
 
 
@@ -81,7 +82,7 @@ return [
         'question_description' => 'Question description',
         'answer_description' => 'Answer description',
         'job_name' => 'Job name',
-
+        'category_name' => 'Category name',
     ],
 
 
@@ -113,6 +114,11 @@ return [
         'title-list-search-jobs' => 'Search jobs',
         'title-list-edit-job' => 'Edit job',
         'title-edit-job' => 'Edit job',
+        'title-categories' => 'List of categories',
+        'title-list-search-categories' => 'Search categories',
+        'title-list-edit-category' => 'Edit category',
+        'title-edit-category' => 'Edit category',
+        'title-categories' => 'List of categories',
 
     ],
 
@@ -215,10 +221,15 @@ return [
         'answer_url_user' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'answer_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'answer_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'category_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_url' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'category_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'category_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'category_url' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'category_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -268,7 +279,9 @@ return [
         'tag_name' => 'Tag name',
         'tag_url' => 'Tag url',
         'question_name' => 'Question name',
-        'job_name' => 'Job name'
+        'job_name' => 'Job name',
+        'category_id' => 'Category ID',
+        'category_name' => 'Category name',
 
     ],
 
@@ -292,6 +305,7 @@ return [
         'files' => 'Crawler files',
         'category' => 'Category name',
         'title-search' => 'Search crawler',
+        'title-categories' => 'Search categories',
         'title-search-site' => 'Search sites',
         'title-search-pattern' => 'Search patterns',
         'site-search' => 'Search site',
@@ -331,11 +345,16 @@ return [
         'answer_description' => 'Description',
         'title-search-answer' => 'Search answers',
         'id' => 'ID',
+        'category_id' => 'ID',
         'title-search-jobs' => 'Search jobs',
         'job_name' => 'Job name',
         'job_url' => 'Job url',
         'job_description' => 'Job description',
-
+        'category_name' => 'Category name',
+        'category_url' => 'Category url',
+        'category_description' => 'Category description',
+        'title-search-categories' => 'Search categories',
+        'category_overview' => 'Category overview',
     ],
 
 

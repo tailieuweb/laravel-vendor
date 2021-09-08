@@ -21,12 +21,14 @@ use Foostart\Category\Models\Category;
 use Foostart\Crawler\Models\Works\WorksCategories;
 use Foostart\Crawler\Models\Works\WorksCategoriesJobs;
 use Foostart\Crawler\Validators\SitesValidator;
+use Foostart\Crawler\Validators\Works\CategoriesValidator;
 use Illuminate\Support\Facades\DB;
 
 class CategoriesAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
+    public $obj_site = NULL;
 
     public $statuses = NULL;
     public $obj_sample = NULL;
@@ -36,9 +38,10 @@ class CategoriesAdminController extends FooController {
         // models
         $this->obj_item = new WorksCategories(array('perPage' => 10));
         $this->obj_category = new Category();
+        $this->obj_site = new Sites();
 
         // validators
-        $this->obj_validator = new SitesValidator();
+        $this->obj_validator = new CategoriesValidator();
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
         $this->plang_admin = 'crawler-admin';
@@ -49,7 +52,7 @@ class CategoriesAdminController extends FooController {
         $this->package_base_name = 'works.categories.category';
 
         // root routers
-        $this->root_router = 'crawlers';
+        $this->root_router = 'works.categories';
 
         // page views
         $this->page_views = [
@@ -63,13 +66,11 @@ class CategoriesAdminController extends FooController {
             ]
         ];
 
-        $this->data_view['status'] = $this->obj_item->getPluckStatus();
-
         $this->statuses = config('package-crawler.status.list');
-
+        $this->data_view['status'] = $this->obj_item->getPluckStatus();
+        $this->data_view['sites'] = $this->obj_site->pluckSelect();
         // //set category
         $this->category_ref_name = 'admin/crawlers';
-
     }
 
     /**
@@ -146,7 +147,7 @@ class CategoriesAdminController extends FooController {
 
         $item = NULL;
 
-        $params = array_merge($request->all(), $this->getUser());
+        $params = array_merge($this->getUser(), $request->all());
 
         $is_valid_request = $this->isValidRequest($request);
 
@@ -241,135 +242,7 @@ class CategoriesAdminController extends FooController {
                         ->withMessage(trans($this->plang_admin.'.actions.delete-error'));
     }
 
-    /**
-     * Manage configuration of package
-     * @param Request $request
-     * @return view config page
-     */
-    public function config(Request $request) {
-        $is_valid_request = $this->isValidRequest($request);
-        // display view
-        $config_path = realpath(base_path('config/package-crawler.php'));
-        $package_path = realpath(base_path('vendor/foostart/package-crawler'));
 
-        $config_bakup = $package_path.'/storage/backup/config';
-        if (!file_exists($config_bakup)) {
-            mkdir($config_bakup, 0755    , true);
-        }
-        $config_bakup = realpath($config_bakup);
-
-
-        if ($version = $request->get('v')) {
-            //load backup config
-            $content = file_get_contents(base64_decode($version));
-        } else {
-            //load current config
-            $content = file_get_contents($config_path);
-        }
-
-        if ($request->isMethod('post') && $is_valid_request) {
-
-            //create backup of current config
-            file_put_contents($config_bakup.'/package-crawler-'.date('YmdHis',time()).'.php', $content);
-
-            //update new config
-            $content = $request->get('content');
-
-            file_put_contents($config_path, $content);
-        }
-
-        $backups = array_reverse(glob($config_bakup.'/*'));
-
-        $this->data_view = array_merge($this->data_view, array(
-            'request' => $request,
-            'content' => $content,
-            'backups' => $backups,
-        ));
-
-        return view($this->page_views['admin']['config'], $this->data_view);
-    }
-
-
-    /**
-     * Manage languages of package
-     * @param Request $request
-     * @return view lang page
-     */
-    public function lang(Request $request) {
-        $is_valid_request = $this->isValidRequest($request);
-        // display view
-        $langs = config('package-crawler.langs');
-        $lang_paths = [];
-        $package_path = realpath(base_path('vendor/foostart/package-crawler'));
-
-        if (!empty($langs) && is_array($langs)) {
-            foreach ($langs as $key => $value) {
-                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/crawler-admin.php'));
-
-                $key_backup = $package_path.'/storage/backup/lang/'.$key;
-
-                if (!file_exists($key_backup)) {
-                    mkdir($key_backup, 0755    , true);
-                }
-            }
-        }
-
-        $lang_bakup = realpath($package_path.'/storage/backup/lang');
-        $lang = $request->get('lang')?$request->get('lang'):'en';
-        $lang_contents = [];
-
-        if ($version = $request->get('v')) {
-            //load backup lang
-            $group_backups = base64_decode($version);
-            $group_backups = empty($group_backups)?[]: explode(';', $group_backups);
-
-            foreach ($group_backups as $group_backup) {
-                $_backup = explode('=', $group_backup);
-                $lang_contents[$_backup[0]] = file_get_contents($_backup[1]);
-            }
-
-        } else {
-            //load current lang
-            foreach ($lang_paths as $key => $lang_path) {
-                $lang_contents[$key] = file_get_contents($lang_path);
-            }
-        }
-
-        if ($request->isMethod('post') && $is_valid_request) {
-
-            //create backup of current config
-            foreach ($lang_paths as $key => $value) {
-                $content = file_get_contents($value);
-
-                //format file name crawler-admin-YmdHis.php
-                file_put_contents($lang_bakup.'/'.$key.'/crawler-admin-'.date('YmdHis',time()).'.php', $content);
-            }
-
-
-            //update new lang
-            foreach ($langs as $key => $value) {
-                $content = $request->get($key);
-                file_put_contents($lang_paths[$key], $content);
-            }
-
-        }
-
-        //get list of backup langs
-        $backups = [];
-        foreach ($langs as $key => $value) {
-            $backups[$key] = array_reverse(glob($lang_bakup.'/'.$key.'/*'));
-        }
-
-        $this->data_view = array_merge($this->data_view, array(
-            'request' => $request,
-            'backups' => $backups,
-            'langs'   => $langs,
-            'lang_contents' => $lang_contents,
-            'lang' => $lang,
-        ));
-
-        return view($this->page_views['admin']['lang'], $this->data_view);
-    }
 
     /**
      * Edit existing item by {id} parameters OR

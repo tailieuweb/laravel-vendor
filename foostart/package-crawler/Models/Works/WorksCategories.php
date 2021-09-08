@@ -28,7 +28,9 @@ class WorksCategories extends FooModel {
             'category_name',
             //Relation
             'category_url',
-            'category_overview'
+            'category_overview',
+            'category_description',
+            'category_image',
         ]);
 
         //list of fields for inserting
@@ -49,6 +51,13 @@ class WorksCategories extends FooModel {
                 'name' => 'category_overview',
                 'type' => 'Text',
             ],
+            'category_description' => [
+                'name' => 'category_description',
+                'type' => 'Text',
+            ],'category_image' => [
+                'name' => 'category_image',
+                'type' => 'Text',
+            ],
         ]);
 
         //check valid fields for inserting
@@ -57,6 +66,8 @@ class WorksCategories extends FooModel {
             'category_name',
             'category_url',
             'category_overview',
+            'category_description',
+            'category_image',
         ]);
 
         //check valid fields for ordering
@@ -154,14 +165,14 @@ class WorksCategories extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'site_name':
+                        case 'category_name':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.site_name', '=', $value);
+                                $elo = $elo->where($this->table . '.category_name', '=', $value);
                             }
                             break;
-                        case 'site_url':
+                        case 'category_url':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.site_url', '=', $value);
+                                $elo = $elo->where($this->table . '.category_url', '=', $value);
                             }
                             break;
                         case 'status':
@@ -173,8 +184,8 @@ class WorksCategories extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.site_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.site_description','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.category_name', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.category_description','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -196,7 +207,7 @@ class WorksCategories extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.site_id as id'
+                            $this->table . '.category_id as id'
                 );
 
         return $elo;
@@ -236,8 +247,7 @@ class WorksCategories extends FooModel {
 
             $item->save();
               //add new attribute
-            $item->id = $item->site_id;
-
+            $item->id = $item->category_id;
 
             return $item;
         } else {
@@ -326,10 +336,10 @@ class WorksCategories extends FooModel {
      */
      public function pluckSelect($params = array()) {
 
-         $elo = self::orderBy('site_name', 'ASC');
+         $elo = self::orderBy('category_name', 'ASC');
 
 
-         $items = $elo->pluck('site_name', $this->primaryKey);
+         $items = $elo->pluck('category_name', $this->primaryKey);
 
         return $items;
     }

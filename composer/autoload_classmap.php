@@ -1132,6 +1132,8 @@ return array(
     'Foostart\\Crawler\\Validators\\Sites\\StackoverflowAnswersValidator' => $vendorDir . '/foostart/package-crawler/Validators/Sites/StackoverflowAnswersValidator.php',
     'Foostart\\Crawler\\Validators\\Sites\\StackoverflowQuestionsValidator' => $vendorDir . '/foostart/package-crawler/Validators/Sites/StackoverflowQuestionsValidator.php',
     'Foostart\\Crawler\\Validators\\Sites\\StackoverflowTagsValidator' => $vendorDir . '/foostart/package-crawler/Validators/Sites/StackoverflowTagsValidator.php',
+    'Foostart\\Crawler\\Validators\\Works\\CategoriesValidator' => $vendorDir . '/foostart/package-crawler/Validators/Works/CategoriesValidator.php',
+    'Foostart\\Crawler\\Validators\\Works\\JobsValidator' => $vendorDir . '/foostart/package-crawler/Validators/Works/JobsValidator.php',
     'Foostart\\Filemanager\\Controllers\\Controller' => $vendorDir . '/foostart/package-filemanager/src/Controllers/Controller.php',
     'Foostart\\Filemanager\\Controllers\\CropController' => $vendorDir . '/foostart/package-filemanager/src/Controllers/CropController.php',
     'Foostart\\Filemanager\\Controllers\\DeleteController' => $vendorDir . '/foostart/package-filemanager/src/Controllers/DeleteController.php',

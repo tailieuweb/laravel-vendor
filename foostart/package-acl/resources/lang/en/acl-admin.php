@@ -18,6 +18,7 @@ return [
         'crawler' => 'Crawlers',
         'works' => 'Works',
         'jobs' => 'Jobs',
+        'categories' => 'Categories',
     ],
 
     /***********************************************************************

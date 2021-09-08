@@ -1717,6 +1717,8 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Crawler\\Validators\\Sites\\StackoverflowAnswersValidator' => __DIR__ . '/..' . '/foostart/package-crawler/Validators/Sites/StackoverflowAnswersValidator.php',
         'Foostart\\Crawler\\Validators\\Sites\\StackoverflowQuestionsValidator' => __DIR__ . '/..' . '/foostart/package-crawler/Validators/Sites/StackoverflowQuestionsValidator.php',
         'Foostart\\Crawler\\Validators\\Sites\\StackoverflowTagsValidator' => __DIR__ . '/..' . '/foostart/package-crawler/Validators/Sites/StackoverflowTagsValidator.php',
+        'Foostart\\Crawler\\Validators\\Works\\CategoriesValidator' => __DIR__ . '/..' . '/foostart/package-crawler/Validators/Works/CategoriesValidator.php',
+        'Foostart\\Crawler\\Validators\\Works\\JobsValidator' => __DIR__ . '/..' . '/foostart/package-crawler/Validators/Works/JobsValidator.php',
         'Foostart\\Filemanager\\Controllers\\Controller' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Controllers/Controller.php',
         'Foostart\\Filemanager\\Controllers\\CropController' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Controllers/CropController.php',
         'Foostart\\Filemanager\\Controllers\\DeleteController' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Controllers/DeleteController.php',
