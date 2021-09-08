@@ -151,7 +151,7 @@
                 <!--OPERATOR-->
                 <td class="text-center">
                     <!--edit-->
-                    <a href="{!! URL::route('stackoverflow_tag.edit', [   'id' => $item->id,
+                    <a href="{!! URL::route('crawler.site.stackoverflow.tag.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
                                                             ])
                             !!}">
@@ -160,7 +160,7 @@
 
 
                     <!--delete-->
-                    <a href="{!! URL::route('stackoverflow_tag.delete',[  'id' => $item->id,
+                    <a href="{!! URL::route('crawler.site.stackoverflow.tag.delete',[  'id' => $item->id,
                                                                 '_token' => csrf_token(),
                                                               ])
                              !!}"

@@ -14,6 +14,7 @@ return [
         'edit' => 'Edit',
         'list' => 'List',
         'users' => 'Users',
+        'sites' => 'Sites',
         'permissions' => 'Permissions',
         'crawler' => 'Crawlers',
         'works' => 'Works',

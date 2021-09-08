@@ -44,10 +44,10 @@ class SiteAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'site.site';
+        $this->package_base_name = 'crawler.site.site';
 
         // root routers
-        $this->root_router = 'sites';
+        $this->root_router = 'crawler';
 
         // page views
         $this->page_views = [
@@ -115,7 +115,7 @@ class SiteAdminController extends FooController {
             $item = $this->obj_item->selectItem($params, FALSE);
 
             if (empty($item)) {
-                return Redirect::route($this->root_router.'.list')
+                return Redirect::route($this->root_router.'.site.list')
                                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
             }
         }
@@ -165,12 +165,12 @@ class SiteAdminController extends FooController {
                     $item = $this->obj_item->updateItem($params);
 
                     // message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
+                    return Redirect::route($this->root_router.'.site.edit', ["id" => $item->id])
                                     ->withMessage(trans($this->plang_admin.'.actions.edit-ok'));
                 } else {
 
                     // message
-                    return Redirect::route($this->root_router.'.list')
+                    return Redirect::route($this->root_router.'.site.list')
                                     ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
                 }
 
@@ -182,12 +182,12 @@ class SiteAdminController extends FooController {
                 if (!empty($item)) {
 
                     //message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
+                    return Redirect::route($this->root_router.'.site.edit', ["id" => $item->id])
                                     ->withMessage(trans($this->plang_admin.'.actions.add-ok'));
                 } else {
 
                     //message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
+                    return Redirect::route($this->root_router.'.site.edit', ["id" => $item->id])
                                     ->withMessage(trans($this->plang_admin.'.actions.add-error'));
                 }
 
@@ -198,7 +198,7 @@ class SiteAdminController extends FooController {
             $errors = $this->obj_validator->getErrors();
 
             // passing the id incase fails editing an already existing item
-            return Redirect::route($this->root_router.'.edit', $id ? ["id" => $id]: [])
+            return Redirect::route($this->root_router.'.site.edit', $id ? ["id" => $id]: [])
                     ->withInput()->withErrors($errors);
         }
     }
@@ -232,12 +232,12 @@ class SiteAdminController extends FooController {
                 }
             }
             if ($flag) {
-                return Redirect::route($this->root_router.'.list')
+                return Redirect::route($this->root_router.'.site.list')
                                 ->withMessage(trans($this->plang_admin.'.actions.delete-ok'));
             }
         }
 
-        return Redirect::route($this->root_router.'.list')
+        return Redirect::route($this->root_router.'.site.list')
                         ->withMessage(trans($this->plang_admin.'.actions.delete-error'));
     }
 
@@ -391,7 +391,7 @@ class SiteAdminController extends FooController {
             $item = $this->obj_item->selectItem($params, FALSE);
 
             if (empty($item)) {
-                return Redirect::route($this->root_router.'.list')
+                return Redirect::route($this->root_router.'.site.list')
                                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
             }
 

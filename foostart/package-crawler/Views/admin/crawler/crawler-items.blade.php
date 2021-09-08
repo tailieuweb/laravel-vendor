@@ -46,7 +46,7 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['sites.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
+                        {!! Form::open(['route'=>['crawler.site.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
                             @include('package-crawler::admin.crawler-item')
 

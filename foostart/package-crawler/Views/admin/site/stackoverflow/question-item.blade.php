@@ -113,7 +113,7 @@
 
                 <!--NAME-->
                 <td>
-                    <a href="{!! URL::route('stackoverflow_answer.list', ['question_id' => $item->id, '_token' => csrf_token()])
+                    <a href="{!! URL::route('crawler.site.stackoverflow.answer.list', ['question_id' => $item->id, '_token' => csrf_token()])
                             !!}">
                     {!! $item->question_name !!}
                     </a>
@@ -134,7 +134,7 @@
                 <!--OPERATOR-->
                 <td class="text-center">
                     <!--edit-->
-                    <a href="{!! URL::route('stackoverflow_question.edit', [   'id' => $item->id,
+                    <a href="{!! URL::route('crawler.site.stackoverflow.question.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
                                                             ])
                             !!}">
@@ -143,7 +143,7 @@
 
 
                     <!--delete-->
-                    <a href="{!! URL::route('stackoverflow_question.delete',[  'id' => $item->id,
+                    <a href="{!! URL::route('crawler.site.stackoverflow.question.delete',[  'id' => $item->id,
                                                                 '_token' => csrf_token(),
                                                               ])
                              !!}"

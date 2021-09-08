@@ -37,19 +37,19 @@ View::composer([
          */
         $sidebar_items = [
             trans('crawler-admin.sidebar.add') => [
-                'url' => URL::route('sites.edit', []),
+                'url' => URL::route('crawler.site.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.list_sites') => [
-                "url" => URL::route('sites.list', []),
+                "url" => URL::route('crawler.site.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.config') => [
-                "url" => URL::route('crawlers.config', []),
+                "url" => URL::route('crawler.config', []),
                 'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.lang') => [
-                "url" => URL::route('crawlers.lang', []),
+                "url" => URL::route('crawler.lang', []),
                 'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
             ],
         ];

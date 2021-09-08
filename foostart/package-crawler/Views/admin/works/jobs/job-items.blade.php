@@ -45,7 +45,7 @@
                     <!--BODY-->
                     <div class="panel-body">
 
-                        {!! Form::open(['route'=>['works.jobs.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
+                        {!! Form::open(['route'=>['crawler.work.job.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
                             @include('package-crawler::admin.works.jobs.job-item')
                             {!! csrf_field(); !!}
                         {!! Form::close() !!}

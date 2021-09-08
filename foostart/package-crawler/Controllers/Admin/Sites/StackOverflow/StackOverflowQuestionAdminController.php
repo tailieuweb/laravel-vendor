@@ -1,8 +1,8 @@
-<?php namespace Foostart\Crawler\Controllers\Admin\Site\StackOverflow;
+<?php namespace Foostart\Crawler\Controllers\Admin\Sites\StackOverflow;
 
 /*
 |-----------------------------------------------------------------------
-| CrawlerAdminController
+| StackOverflowQuestionAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
 | @website: http://foostart.com
@@ -56,7 +56,7 @@ class StackOverflowQuestionAdminController extends FooController {
         $this->package_base_name = 'site.stackoverflow.question';
 
         // root routers
-        $this->root_router = 'stackoverflow_question';
+        $this->root_router = 'crawler.site.stackoverflow.question';
 
         // page views
         $this->page_views = [

@@ -45,7 +45,7 @@
                     <!--BODY-->
                     <div class="panel-body">
 
-                        {!! Form::open(['route'=>['works.categories.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
+                        {!! Form::open(['route'=>['crawler.work.category.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
                         @include('package-crawler::admin.works.categories.category-item')
                         {!! csrf_field(); !!}
                         {!! Form::close() !!}

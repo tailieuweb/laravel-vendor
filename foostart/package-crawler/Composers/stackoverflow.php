@@ -37,15 +37,15 @@ View::composer([
          */
         $sidebar_items = [
             trans('crawler-admin.sidebar.tags') => [
-                'url' => URL::route('stackoverflow_tag.list', []),
+                'url' => URL::route('crawler.site.stackoverflow.tag.list', []),
                 'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.questions') => [
-                'url' => URL::route('stackoverflow_question.list', []),
+                'url' => URL::route('crawler.site.stackoverflow.question.list', []),
                 'icon' => '<i class="fa fa-question-circle" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.list_sites') => [
-                "url" => URL::route('sites.list', []),
+                "url" => URL::route('crawler.site.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ]
         ];
@@ -103,15 +103,15 @@ View::composer([
      */
     $sidebar_items = [
         trans('crawler-admin.sidebar.tags') => [
-            'url' => URL::route('stackoverflow_tag.list', []),
+            'url' => URL::route('crawler.site.stackoverflow.tag.list', []),
             'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.questions') => [
-            'url' => URL::route('stackoverflow_question.list', []),
+            'url' => URL::route('crawler.site.stackoverflow.question.list', []),
             'icon' => '<i class="fa fa-question-circle" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.list_sites') => [
-            "url" => URL::route('sites.list', []),
+            "url" => URL::route('crawler.site.list', []),
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ]
     ];
@@ -169,15 +169,15 @@ View::composer([
      */
     $sidebar_items = [
         trans('crawler-admin.sidebar.tags') => [
-            'url' => URL::route('stackoverflow_tag.list', []),
+            'url' => URL::route('crawler.site.stackoverflow.tag.list', []),
             'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.questions') => [
-            'url' => URL::route('stackoverflow_question.list', []),
+            'url' => URL::route('crawler.site.stackoverflow.question.list', []),
             'icon' => '<i class="fa fa-question-circle" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.list_sites') => [
-            "url" => URL::route('sites.list', []),
+            "url" => URL::route('crawler.site.list', []),
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ]
     ];

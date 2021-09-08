@@ -282,6 +282,7 @@ return [
         'job_name' => 'Job name',
         'category_id' => 'Category ID',
         'category_name' => 'Category name',
+        'site_name' => 'Site name',
 
     ],
 

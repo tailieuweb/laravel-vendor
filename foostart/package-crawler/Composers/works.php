@@ -45,7 +45,7 @@ View::composer([
                 'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.list_sites') => [
-                "url" => URL::route('sites.list', []),
+                "url" => URL::route('crawler.site.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.category') => [
@@ -108,7 +108,7 @@ View::composer([
             'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.list_sites') => [
-            "url" => URL::route('sites.list', []),
+            "url" => URL::route('crawler.site.list', []),
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.list_jobs') => [

@@ -123,7 +123,7 @@
                 <!--OPERATOR-->
                 <td class="text-center">
                     <!--edit-->
-                    <a href="{!! URL::route('stackoverflow_answer.edit', [   'id' => $item->id,
+                    <a href="{!! URL::route('crawler.site.stackoverflow.answer.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
                                                             ])
                             !!}">
@@ -132,7 +132,7 @@
 
 
                     <!--delete-->
-                    <a href="{!! URL::route('stackoverflow_answer.delete',[  'id' => $item->id,
+                    <a href="{!! URL::route('crawler.site.stackoverflow.answer.delete',[  'id' => $item->id,
                                                                 '_token' => csrf_token(),
                                                               ])
                              !!}"

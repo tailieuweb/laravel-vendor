@@ -47,7 +47,7 @@ class CrawlerAdminController extends FooController {
         $this->package_base_name = 'crawler';
 
         // root routers
-        $this->root_router = 'crawlers';
+        $this->root_router = 'crawler';
 
         // page views
         $this->page_views = [

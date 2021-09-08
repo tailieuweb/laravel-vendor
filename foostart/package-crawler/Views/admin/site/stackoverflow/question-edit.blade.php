@@ -71,7 +71,7 @@
         </div>
 
         <div class='col-md-4'>
-            @include('package-crawler::admin.site.site-search')
+            @include('package-crawler::admin.crawler.site.site-search')
         </div>
 
     </div>

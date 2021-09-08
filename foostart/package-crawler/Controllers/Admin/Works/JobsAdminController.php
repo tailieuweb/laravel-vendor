@@ -53,7 +53,7 @@ class JobsAdminController extends FooController {
         $this->package_base_name = 'works.jobs.job';
 
         // root routers
-        $this->root_router = 'works.jobs';
+        $this->root_router = 'crawler.work.job';
 
         // page views
         $this->page_views = [

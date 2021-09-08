@@ -46,7 +46,7 @@
 
                     <!--ADD BUTTONS-->
                     <div class='btn-form' style="margin-right: 15px;">
-                        <a href="{!! URL::route('stackoverflow_answer.crawler',['question_id' => $question_id,'_token' => csrf_token()]) !!}"
+                        <a href="{!! URL::route('crawler.site.stackoverflow.answer.crawler',['question_id' => $question_id,'_token' => csrf_token()]) !!}"
                            class="btn btn-info pull-right">
                             {!! trans($plang_admin.'.buttons.crawl_answer') !!}
                         </a>
@@ -56,7 +56,7 @@
                     <!--BODY-->
                     <div class="panel-body">
 
-                        {!! Form::open(['route'=>['sites.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
+                        {!! Form::open(['route'=>['crawler.site.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
                             @include('package-crawler::admin.site.stackoverflow.answer-item')
                             {!! csrf_field(); !!}

@@ -52,7 +52,7 @@ class CategoriesAdminController extends FooController {
         $this->package_base_name = 'works.categories.category';
 
         // root routers
-        $this->root_router = 'works.categories';
+        $this->root_router = 'crawler.work.category';
 
         // page views
         $this->page_views = [

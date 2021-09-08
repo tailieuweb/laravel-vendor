@@ -2,7 +2,7 @@
 <?php
     $withs = [
         'counter' => '10%',
-        'id' => '10%',        
+        'id' => '10%',
         'title' => '20%',
         'status' => '15%',
         'updated_at' => '20%',
@@ -147,7 +147,7 @@
                 <!--OPERATOR-->
                 <td>
                     <!--edit-->
-                    <a href="{!! URL::route('sites.edit', [   'id' => $item->id,
+                    <a href="{!! URL::route('crawler.site.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
                                                             ])
                             !!}">
@@ -155,7 +155,7 @@
                     </a>
 
                     <!--copy-->
-                    <a href="{!! URL::route('sites.copy',[    'cid' => $item->id,
+                    <a href="{!! URL::route('crawler.site.copy',[    'cid' => $item->id,
                                                                 '_token' => csrf_token(),
                                                             ])
                              !!}"
@@ -164,7 +164,7 @@
                     </a>
 
                     <!--delete-->
-                    <a href="{!! URL::route('sites.delete',[  'id' => $item->id,
+                    <a href="{!! URL::route('crawler.site.delete',[  'id' => $item->id,
                                                                 '_token' => csrf_token(),
                                                               ])
                              !!}"

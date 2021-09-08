@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
 
-                            @include('package-crawler::admin.site.site-form')
+                            @include('package-crawler::admin.crawler.site.site-form')
 
                         </div>
                     </div>
@@ -74,7 +74,7 @@
         </div>
 
         <div class='col-md-4'>
-            @include('package-crawler::admin.site.site-search')
+            @include('package-crawler::admin.crawler.site.site-search')
         </div>
 
     </div>

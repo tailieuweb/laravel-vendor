@@ -1,8 +1,8 @@
-<?php namespace Foostart\Crawler\Controllers\Admin\Site\StackOverflow;
+<?php namespace Foostart\Crawler\Controllers\Admin\Sites\StackOverflow;
 
 /*
 |-----------------------------------------------------------------------
-| CrawlerAdminController
+| StackOverflowAnswerAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
 | @website: http://foostart.com
@@ -11,7 +11,9 @@
 */
 
 
+
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\Dumper\AbstractDumper;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
@@ -25,12 +27,12 @@ use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowAnswers;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowQuestions;
 use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowComments;
 use Foostart\Category\Models\Category;
-use Foostart\Crawler\Validators\Sites\StackoverflowTagsValidator;
+use Foostart\Crawler\Validators\Sites\StackoverflowAnswersValidator;
 use Illuminate\Support\Facades\DB;
 
-use Foostart\Crawler\Scripts\Stackoverflow\CrawlTags;
+use Foostart\Crawler\Scripts\Stackoverflow\CrawlAnswers;
 
-class StackOverflowTagAdminController extends FooController {
+class StackOverflowAnswerAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -41,11 +43,11 @@ class StackOverflowTagAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new StackoverflowTags(array('perPage' => 10));
+        $this->obj_item = new StackoverflowAnswers(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new StackoverflowTagsValidator();
+        $this->obj_validator = new StackoverflowAnswersValidator();
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
         $this->plang_admin = 'crawler-admin';
@@ -53,10 +55,10 @@ class StackOverflowTagAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'site.stackoverflow.tag';
+        $this->package_base_name = 'site.stackoverflow.answer';
 
         // root routers
-        $this->root_router = 'stackoverflow_tag';
+        $this->root_router = 'crawler.site.stackoverflow.answer';
 
         // page views
         $this->page_views = [
@@ -73,9 +75,11 @@ class StackOverflowTagAdminController extends FooController {
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
 
         $this->statuses = config('package-crawler.status.list');
+        $this->obj_sample = config('package-crawler.sample.list');
+
 
         // //set category
-        $this->category_ref_name = 'admin/sites/stackoverflow/tags';
+        $this->category_ref_name = 'admin/sites/stackoverflow';
 
     }
 
@@ -87,6 +91,7 @@ class StackOverflowTagAdminController extends FooController {
     public function index(Request $request) {
 
         $params = $request->all();
+        $question_id = $request->get('question_id');
 
         $items = $this->obj_item->selectItems($params);
 
@@ -95,6 +100,7 @@ class StackOverflowTagAdminController extends FooController {
             'items' => $items,
             'request' => $request,
             'params' => $params,
+            'question_id' => $question_id,
             'config_status' => $this->obj_item->config_status
         ));
 
@@ -169,6 +175,7 @@ class StackOverflowTagAdminController extends FooController {
                 if (!empty($item)) {
 
                     $params['id'] = $id;
+                    $params = array_merge($item->toArray(), $params);
                     $item = $this->obj_item->updateItem($params);
 
                     // message
@@ -378,14 +385,63 @@ class StackOverflowTagAdminController extends FooController {
         return view($this->page_views['admin']['lang'], $this->data_view);
     }
 
-    public function crawler() {
+    /**
+     * Edit existing item by {id} parameters OR
+     * Add new item
+     * @return view edit page
+     * @date 26/12/2017
+     */
+    public function copy(Request $request) {
+
+        $params = $request->all();
+
+        $item = NULL;
+        $params['id'] = $request->get('cid', NULL);
+
+        $context = $this->obj_item->getContext($this->category_ref_name);
+
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+
+            if (empty($item)) {
+                return Redirect::route($this->root_router.'.list')
+                                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+            }
+
+            $item->id = NULL;
+        }
+
+        $categories = $this->obj_category->pluckSelect($params);
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'item' => $item,
+            'categories' => $categories,
+            'request' => $request,
+            'context' => $context,
+        ));
+
+        return view($this->page_views['admin']['edit'], $this->data_view);
+    }
+
+    public function crawler(Request $request) {
+
+        $question_id = $request->get('question_id', NULL);
+        if (empty($question_id)) {
+            return Redirect::route('crawler.site.stackoverflow.question.list');
+        }
+
 
         //Object
         $obj_pattern = new Patterns();
         $obj_tag = new StackoverflowTags();
-        $obj_crawlTags = new CrawlTags();
+        $obj_question = new StackoverflowQuestions();
+        $obj_answer = new StackoverflowAnswers();
+        $obj_crawlAnswers = new CrawlAnswers();
 
-        $patterns = NULL;
+        //Get list of questions
+        $questions = $obj_question->selectItems();
 
         //Get patterns of Stack Ovreflow
         $site_id = 1;
@@ -394,13 +450,11 @@ class StackOverflowTagAdminController extends FooController {
         ];
         $patterns = $obj_pattern->selectItems($params);
 
-        //Get tags url
-        $url_tags = config('package-crawler.crawler.url_tags');
-
         //Crawl
-        $obj_crawlTags->getTags($url_tags, $patterns, $obj_tag);
+        $obj_crawlAnswers->getAnswers($patterns, $questions, $obj_answer);
 
-        return Redirect::route($this->root_router.'.list')
+        return Redirect::route($this->root_router.'.list', ['question_id' => $question_id])
             ->withMessage(trans($this->plang_admin.'.actions.crawler-ok'));
     }
+
 }

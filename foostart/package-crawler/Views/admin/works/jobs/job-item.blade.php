@@ -110,7 +110,7 @@ $withs = [
                 </td>
 
                 <td>
-                    <a href="{!! URL::route('works.jobs.edit', ['id' => $item->id]) !!}">
+                    <a href="{!! URL::route('crawler.work.job.edit', ['id' => $item->id]) !!}">
                         {!! $item->id !!}
                     </a>
                 </td>

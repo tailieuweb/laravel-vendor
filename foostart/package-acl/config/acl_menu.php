@@ -95,19 +95,19 @@ return [
             "permissions" => [$admin, "_permission-editor"]
         ],
 
-        //Sites
+        //Crawler site
         [
             "name" => "acl-admin.menu.sites",
-            "route" => "sites",
-            "link" => '/admin/sites',
+            "route" => "crawler.site",
+            "link" => '/admin/crawler/site',
             "permissions" => [$admin, "_permission-editor"]
         ],
 
-        //Crawler works
+        //Crawler work
         [
             "name" => "acl-admin.menu.crawler_works_jobs",
-            "route" => "works.jobs",
-            "link" => '/admin/crawler/works/jobs',
+            "route" => "crawler.work.job",
+            "link" => '/admin/crawler/work/job',
             "permissions" => [$admin, "_permission-editor"]
         ],
     ]

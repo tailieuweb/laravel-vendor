@@ -1,8 +1,8 @@
-<?php namespace Foostart\Crawler\Controllers\Admin\Site\StackOverflow;
+<?php namespace Foostart\Crawler\Controllers\Admin\Sites\StackOverflow;
 
 /*
 |-----------------------------------------------------------------------
-| CrawlerAdminController
+| StackOverflowTagAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
 | @website: http://foostart.com
@@ -17,11 +17,20 @@ use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Sites;
+use Foostart\Crawler\Models\Patterns;
+use Foostart\Crawler\Models\RegularExpressions;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTags;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowTagsQuestions;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowAnswers;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowQuestions;
+use Foostart\Crawler\Models\Sites\Stackoverflow\StackoverflowComments;
 use Foostart\Category\Models\Category;
-use Foostart\Crawler\Validators\SitesValidator;
+use Foostart\Crawler\Validators\Sites\StackoverflowTagsValidator;
 use Illuminate\Support\Facades\DB;
 
-class StackOverflowAdminController extends FooController {
+use Foostart\Crawler\Scripts\Stackoverflow\CrawlTags;
+
+class StackOverflowTagAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -32,11 +41,11 @@ class StackOverflowAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Sites(array('perPage' => 10));
+        $this->obj_item = new StackoverflowTags(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new SitesValidator();
+        $this->obj_validator = new StackoverflowTagsValidator();
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
         $this->plang_admin = 'crawler-admin';
@@ -44,10 +53,10 @@ class StackOverflowAdminController extends FooController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'crawler';
+        $this->package_base_name = 'site.stackoverflow.tag';
 
         // root routers
-        $this->root_router = 'crawlers';
+        $this->root_router = 'crawler.site.stackoverflow.tag';
 
         // page views
         $this->page_views = [
@@ -64,11 +73,9 @@ class StackOverflowAdminController extends FooController {
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
 
         $this->statuses = config('package-crawler.status.list');
-        $this->obj_sample = config('package-crawler.sample.list');
-
 
         // //set category
-        $this->category_ref_name = 'admin/crawlers';
+        $this->category_ref_name = 'admin/sites/stackoverflow/tags';
 
     }
 
@@ -371,92 +378,29 @@ class StackOverflowAdminController extends FooController {
         return view($this->page_views['admin']['lang'], $this->data_view);
     }
 
-    /**
-     * Edit existing item by {id} parameters OR
-     * Add new item
-     * @return view edit page
-     * @date 26/12/2017
-     */
-    public function copy(Request $request) {
+    public function crawler() {
 
-        $params = $request->all();
+        //Object
+        $obj_pattern = new Patterns();
+        $obj_tag = new StackoverflowTags();
+        $obj_crawlTags = new CrawlTags();
 
-        $item = NULL;
-        $params['id'] = $request->get('cid', NULL);
+        $patterns = NULL;
 
-        $context = $this->obj_item->getContext($this->category_ref_name);
+        //Get patterns of Stack Ovreflow
+        $site_id = 1;
+        $params = [
+            'site_id' => 1,
+        ];
+        $patterns = $obj_pattern->selectItems($params);
 
-        if (!empty($params['id'])) {
+        //Get tags url
+        $url_tags = config('package-crawler.crawler.url_tags');
 
-            $item = $this->obj_item->selectItem($params, FALSE);
+        //Crawl
+        $obj_crawlTags->getTags($url_tags, $patterns, $obj_tag);
 
-            if (empty($item)) {
-                return Redirect::route($this->root_router.'.list')
-                                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
-            }
-
-            $item->id = NULL;
-        }
-
-        $categories = $this->obj_category->pluckSelect($params);
-
-        // display view
-        $this->data_view = array_merge($this->data_view, array(
-            'item' => $item,
-            'categories' => $categories,
-            'request' => $request,
-            'context' => $context,
-        ));
-
-        return view($this->page_views['admin']['edit'], $this->data_view);
+        return Redirect::route($this->root_router.'.list')
+            ->withMessage(trans($this->plang_admin.'.actions.crawler-ok'));
     }
-
-    /**
-     * Search user by name
-     * @return view edit page
-     * @date 23/04/2018
-     */
-    public function search(Request $request){
-        if($request->ajax())
-        {
-            $output = '';
-            $query = $request->get('query');
-            if($query != '')
-            {
-            $data = DB::table('user_profile')
-                ->where('last_name', 'like', '%'.$query.'%')
-                ->orWhere('first_name', 'like', '%'.$query.'%')
-                ->get();
-            }
-            $total_row = $data->count();
-            if($total_row > 0)
-            {
-                foreach($data as $row)
-                {
-                    $output .= '
-                    <tr>
-                    <td>'.$row->id.'</td>
-                    <td>'.$row->first_name.'</td>
-                    <td>'.$row->last_name.'</td>
-                    </tr>
-                    ';
-                }
-            }else
-            {
-                $output = '
-                <tr>
-                    <td align="center" colspan="5">No Data Found</td>
-                </tr>
-                ';
-            }
-            $data = array(
-                'table_data'  => $output,
-                'total_data'  => $total_row
-               );
-
-            echo json_encode($data);
-
-        }
-    }
-
 }

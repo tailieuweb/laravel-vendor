@@ -50,7 +50,8 @@ class CrawlerServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        include __DIR__ . '/Routes/routes.php';
+        include __DIR__ . '/Routes/crawlers.php';
+        include __DIR__ . '/Routes/stackoverflow.php';
         include __DIR__ . '/Routes/works_jobs.php';
         include __DIR__ . '/Routes/works_categories.php';
     }
