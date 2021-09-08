@@ -150,7 +150,6 @@ class PatternAdminController extends FooController
             'request' => $request,
             'context' => $context,
         ));
-
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 

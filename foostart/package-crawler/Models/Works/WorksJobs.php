@@ -28,6 +28,7 @@ class WorksJobs extends FooModel {
             'job_name',
             'job_url',
             'job_description',
+            'job_overview',
         ]);
 
         //list of fields for inserting
@@ -40,6 +41,10 @@ class WorksJobs extends FooModel {
                 'name' => 'job_name',
                 'type' => 'Text',
             ],
+            'job_image' => [
+                'name' => 'job_image',
+                'type' => 'Text',
+            ],
             'job_url' => [
                 'name' => 'job_url',
                 'type' => 'Text',
@@ -48,15 +53,21 @@ class WorksJobs extends FooModel {
                 'name' => 'job_description',
                 'type' => 'Text',
             ],
+            'job_overview' => [
+                'name' => 'job_overview',
+                'type' => 'Text',
+            ],
         ]);
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
             'site_id',
             'job_name',
+            'job_image',
             //Relation
             'job_url',
             'job_description',
+            'job_overview',
         ]);
 
         //check valid fields for ordering
@@ -164,8 +175,8 @@ class WorksJobs extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.answer_description', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.answer_url_user','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.job_description', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.job_url','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -187,7 +198,7 @@ class WorksJobs extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.answer_id as id'
+                            $this->table . '.job_id as id'
                 );
 
         return $elo;
@@ -227,7 +238,7 @@ class WorksJobs extends FooModel {
 
             $item->save();
               //add new attribute
-            $item->id = $item->answer_id;
+            $item->id = $item->job_id;
 
 
             return $item;

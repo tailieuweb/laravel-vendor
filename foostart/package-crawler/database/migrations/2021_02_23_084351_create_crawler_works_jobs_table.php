@@ -28,6 +28,8 @@ class CreateCrawlerWorksJobsTable extends FoostartMigration
             // Other attributes
             $table->string($this->prefix_column . 'name', 255)->comment('Name');
             $table->string($this->prefix_column . 'url', 255)->comment('URL');
+            $table->string($this->prefix_column . 'image', 255)->comment('Image');
+            $table->string($this->prefix_column . 'overview', 500)->comment('Overview');
             $table->text($this->prefix_column . 'description')->comment('Description');
 
             //Set common columns

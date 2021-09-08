@@ -15,6 +15,9 @@ return [
         'list' => 'List',
         'users' => 'Users',
         'permissions' => 'Permissions',
+        'crawler' => 'Crawlers',
+        'works' => 'Works',
+        'jobs' => 'Jobs',
     ],
 
     /***********************************************************************

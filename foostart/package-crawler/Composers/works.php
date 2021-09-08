@@ -40,6 +40,10 @@ View::composer([
                 'url' => URL::route('works.jobs.edit', []),
                 'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
             ],
+            trans('crawler-admin.sidebar.list_jobs') => [
+                'url' => URL::route('works.jobs.list', []),
+                'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
+            ],
             trans('crawler-admin.sidebar.list_sites') => [
                 "url" => URL::route('sites.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
@@ -56,6 +60,7 @@ View::composer([
          */
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
+            'id' => trans($plang_admin.'.fields.id'),
             'job_name' => trans($plang_admin.'.fields.job_name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),

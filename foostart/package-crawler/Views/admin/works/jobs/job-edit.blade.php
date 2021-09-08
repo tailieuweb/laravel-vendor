@@ -18,7 +18,7 @@
 @extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {{ trans($plang_admin.'.pages.title-edit-answer') }}
+    {{ trans($plang_admin.'.pages.title-edit-job') }}
 @stop
 
 @section('content')
@@ -50,7 +50,6 @@
                 @endif
                 <!-- /END ERROR NAME -->
 
-
                 {{-- successful message --}}
                 @if(Session::get('message'))
                     <div class='panel-success'>
@@ -59,19 +58,15 @@
                 @endif
 
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12">
 
-                            @include('package-crawler::admin.site.stackoverflow.answer-form')
+                            @include('package-crawler::admin.works.jobs.job-form')
 
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
         <div class='col-md-4'>
-            @include('package-crawler::admin.site.stackoverflow.answer-search')
+            @include('package-crawler::admin.works.jobs.job-search')
         </div>
 
     </div>

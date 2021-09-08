@@ -1,7 +1,7 @@
 @extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {{ trans($plang_admin.'.pages.title-answers') }}
+    {{ trans($plang_admin.'.pages.title-jobs') }}
 @stop
 
 @section('content')
@@ -11,13 +11,11 @@
 
             <!--LIST OF ITEMS-->
             <div class="col-md-9">
-
                 <div class="panel panel-info">
-
                     <!--HEADING-->
                     <div class="panel-heading">
                         <h3 class="panel-title bariol-thin"><i class="fa fa-list-ul" aria-hidden="true"></i>
-                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search-answers') : trans($plang_admin.'.pages.title-answers') !!}
+                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search-jobs') : trans($plang_admin.'.pages.title-jobs') !!}
                         </h3>
                     </div>
 
@@ -47,11 +45,9 @@
                     <!--BODY-->
                     <div class="panel-body">
 
-                        {!! Form::open(['route'=>['sites.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
-
-                            @include('package-crawler::admin.site.stackoverflow.answer-item')
+                        {!! Form::open(['route'=>['works.jobs.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
+                            @include('package-crawler::admin.works.jobs.job-item')
                             {!! csrf_field(); !!}
-
                         {!! Form::close() !!}
                     </div>
                     <!--/BODY-->
@@ -62,14 +58,13 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-crawler::admin.site.stackoverflow.answer-search')
+                @include('package-crawler::admin.works.jobs.job-search')
             </div>
             <!--/SEARCH-->
 
         </div>
     </div>
 @stop
-
 
 @section('footer_scripts')
     <!-- DELETE CONFIRM -->

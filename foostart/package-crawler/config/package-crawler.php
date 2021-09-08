@@ -74,6 +74,22 @@ return [
             'min' => 3,
             'max' => 255,
         ],
+
+        //Works Jobs
+        'job_name' => [
+            'min' => 3,
+            'max' => 255,
+        ],
+        'job_description' => [
+            'min' => 3,
+            'max' => 255,
+        ],
+
+        //Works Categories
+        'category_name' => [
+            'min' => 3,
+            'max' => 255,
+        ],
     ],
     'per_page' => 1,
 

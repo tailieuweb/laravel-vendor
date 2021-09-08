@@ -40,6 +40,7 @@ return [
         'add_pattern' => 'New pattern',
         'tags' => 'Tags',
         'questions' => 'Questions',
+        'list_jobs' => 'Jobs',
     ],
 
 
@@ -79,6 +80,7 @@ return [
         'question_name' => 'Question name',
         'question_description' => 'Question description',
         'answer_description' => 'Answer description',
+        'job_name' => 'Job name',
 
     ],
 
@@ -106,7 +108,12 @@ return [
         'title-questions' => 'List of questions',
         'title-edit-question' => 'Edit questions',
         'title-list-search-answers' => 'Search answers',
-        'title-edit-answer' => 'Edit answer'
+        'title-edit-answer' => 'Edit answer',
+        'title-jobs' => 'List of jobs',
+        'title-list-search-jobs' => 'Search jobs',
+        'title-list-edit-job' => 'Edit job',
+        'title-edit-job' => 'Edit job',
+
     ],
 
 
@@ -208,6 +215,10 @@ return [
         'answer_url_user' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'answer_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'answer_form' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'job_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'job_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'job_url' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'job_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -256,7 +267,8 @@ return [
         'site_id' => 'ID',
         'tag_name' => 'Tag name',
         'tag_url' => 'Tag url',
-        'question_name' => 'Question name'
+        'question_name' => 'Question name',
+        'job_name' => 'Job name'
 
     ],
 
@@ -317,7 +329,12 @@ return [
         'title-search-answer' => 'Search answers',
         'answer_url_user' => 'URL user',
         'answer_description' => 'Description',
-        'title-search-answer' => 'Search answers'
+        'title-search-answer' => 'Search answers',
+        'id' => 'ID',
+        'title-search-jobs' => 'Search jobs',
+        'job_name' => 'Job name',
+        'job_url' => 'Job url',
+        'job_description' => 'Job description',
 
     ],
 

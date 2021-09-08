@@ -17,16 +17,19 @@ use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Crawler\Models\Works\WorksJobs;
+use Foostart\Crawler\Models\Sites;
 use Foostart\Crawler\Models\Works\WorksCategories;
 use Foostart\Crawler\Models\Works\WorksCategoriesJobs;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
+use Foostart\Crawler\Validators\Works\JobsValidator;
 use Illuminate\Support\Facades\DB;
 
 class JobsAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
+    public $obj_site = NULL;
 
     public $statuses = NULL;
     public $obj_sample = NULL;
@@ -36,10 +39,11 @@ class JobsAdminController extends FooController {
         // models
         $this->obj_item = new WorksJobs(array('perPage' => 10));
         $this->obj_category = new Category();
+        $this->obj_site = new Sites();
 
         // validators
-        $this->obj_validator = new SitesValidator();
-        //$this->obj_validator_sample = new SampleValidator();
+        $this->obj_validator = new JobsValidator();
+
         // set language files
         $this->plang_admin = 'crawler-admin';
         $this->plang_front = 'crawler-front';
@@ -49,7 +53,7 @@ class JobsAdminController extends FooController {
         $this->package_base_name = 'works.jobs.job';
 
         // root routers
-        $this->root_router = 'sites';
+        $this->root_router = 'works.jobs';
 
         // page views
         $this->page_views = [
@@ -59,15 +63,12 @@ class JobsAdminController extends FooController {
             ]
         ];
 
-        $this->data_view['status'] = $this->obj_item->getPluckStatus();
-
         $this->statuses = config('package-crawler.status.list');
-        $this->obj_sample = config('package-crawler.sample.list');
-
+        $this->data_view['sites'] = $this->obj_site->pluckSelect();
+        $this->data_view['status'] = $this->obj_item->getPluckStatus();
 
         // //set category
         $this->category_ref_name = 'admin/crawlers';
-
     }
 
     /**
@@ -144,7 +145,7 @@ class JobsAdminController extends FooController {
 
         $item = NULL;
 
-        $params = array_merge($request->all(), $this->getUser());
+        $params = array_merge( $this->getUser(), $request->all());
 
         $is_valid_request = $this->isValidRequest($request);
 
