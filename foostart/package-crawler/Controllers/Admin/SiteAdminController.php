@@ -146,7 +146,7 @@ class SiteAdminController extends BaseCrawlerAdminController {
 
         $item = NULL;
 
-        $params = array_merge($request->all(), $this->getUser());
+        $params = array_merge($this->getUser(), $request->all());
 
         $is_valid_request = $this->isValidRequest($request);
 

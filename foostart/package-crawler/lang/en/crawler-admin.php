@@ -94,11 +94,11 @@ return [
     |
     */
     'pages' => [
-        'title-list' => 'List of crawlers',
+        'title-list' => 'List of sites',
         'title-list-search' => 'Search results',
-        'title-edit' => 'Edit crawler',
-        'title-add' => 'Add new crawler',
-        'title-delete' => 'Delete crawler',
+        'title-edit' => 'Edit site',
+        'title-add' => 'Add new site',
+        'title-delete' => 'Delete site',
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage list of languages',
         'title-site' => 'List of sites',
@@ -231,6 +231,8 @@ return [
         'category_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category_url' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'slug' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'site_type' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -357,6 +359,7 @@ return [
         'category_description' => 'Category description',
         'title-search-categories' => 'Search categories',
         'category_overview' => 'Category overview',
+        'slug' => 'Site lug',
     ],
 
 

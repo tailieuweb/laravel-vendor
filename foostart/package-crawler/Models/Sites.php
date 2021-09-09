@@ -25,6 +25,8 @@ class Sites extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'site_name',
+            'site_slug',
+            'site_type',
             'site_url',
             'site_image',
             'site_description',
@@ -35,6 +37,14 @@ class Sites extends FooModel {
             'site_name' => [
                 'name' => 'site_name',
                 'type' => 'Text',
+            ],
+            'site_slug' => [
+                'name' => 'site_slug',
+                'type' => 'Text',
+            ],
+            'site_type' => [
+                'name' => 'site_type',
+                'type' => 'Int',
             ],
              'site_url' => [
                 'name' => 'site_url',
@@ -53,6 +63,8 @@ class Sites extends FooModel {
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
             'site_name',
+            'site_slug',
+            'site_type',
             'site_url',
             'site_image',
             'site_description',

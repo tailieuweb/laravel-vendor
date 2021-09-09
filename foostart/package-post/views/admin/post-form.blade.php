@@ -73,7 +73,7 @@
         'description' => trans($plang_admin.'.descriptions.slug'),
         'errors' => $errors,
     ])
-    <!--/POST NAME-->
+    <!--/POST SLUG-->
 
         <div class="row">
 

@@ -29,6 +29,12 @@
                 {!! trans($plang_admin.'.tabs.menu-1') !!}
             </a>
         </li>
+        <!--OTHER-->
+        <li>
+            <a data-toggle="tab" href="#menu_3">
+                {!! trans($plang_admin.'.tabs.other') !!}
+            </a>
+        </li>
     </ul>
     <!--/TAB MENU-->
 
@@ -48,17 +54,39 @@
             ])
             <!--/NAME-->
 
+            <!--SITE SLUG-->
+            @include('package-category::admin.partials.input_slug', [
+                'name' => 'site_slug',
+                'id' => 'site_slug',
+                'ref' => 'site_name',
+                'label' => trans($plang_admin.'.labels.slug'),
+                'value' => @$item->site_slug,
+                'description' => trans($plang_admin.'.descriptions.slug'),
+                'errors' => $errors,
+            ])
+            <!--/SITE SLUG-->
+
+            <!--URL-->
+            @include('package-category::admin.partials.input_text', [
+                'name' => 'site_url',
+                'label' => trans($plang_admin.'.labels.site_url'),
+                'value' => @$item->site_name,
+                'description' => trans($plang_admin.'.descriptions.site_url'),
+                'errors' => $errors,
+            ])
+            <!-- /URL-->
+
             <div class="row">
                 <div class='col-md-6'>
-                    <!--URL-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'site_url',
-                        'label' => trans($plang_admin.'.labels.site_url'),
-                        'value' => @$item->site_name,
-                        'description' => trans($plang_admin.'.descriptions.site_url'),
-                        'errors' => $errors,
+                    <!--SITE TYPE-->
+                    @include('package-category::admin.partials.select_single', [
+                        'name' => 'site_type',
+                        'label' => trans($plang_admin.'.form.site_type'),
+                        'value' => @$item->site_type,
+                        'items' => $siteTypeSelect,
+                        'description' => trans($plang_admin.'.descriptions.site_type'),
                     ])
-                    <!-- /URL-->
+                    <!--/SITE TYPE-->
                 </div>
 
                 <div class="col-md-6">
@@ -71,19 +99,6 @@
                         'description' => trans($plang_admin.'.descriptions.status'),
                     ])
                     <!--/STATUS-->
-                </div>
-
-                <div class='col-md-6'>
-                    <!--IMAGE-->
-                    @include('package-category::admin.partials.input_image', [
-                        'name' => 'site_image',
-                        'label' => trans($plang_admin.'.labels.site_image'),
-                        'value' => @$item->site_image,
-                        'description' => trans($plang_admin.'.descriptions.site_image'),
-                        'errors' => $errors,
-                        'lfm_config' => TRUE
-                    ])
-                    <!-- /IMAGE-->
                 </div>
             </div>
 
@@ -98,6 +113,20 @@
                 'errors' => $errors,
             ])
             <!--/DESCRIPTION-->
+        </div>
+        <!--/END MENU1-->
+        <!--OTHER-->
+        <div id="menu_3" class="tab-pane fade">
+            <!--SITE IMAGE-->
+            @include('package-category::admin.partials.input_image', [
+                'name' => 'site_image',
+                'label' => trans($plang_admin.'.labels.site_image'),
+                'value' => @$item->site_image,
+                'description' => trans($plang_admin.'.descriptions.site_image'),
+                'errors' => $errors,
+                'lfm_config' => TRUE
+            ])
+            <!--/SITE IMAGE-->
         </div>
 
     </div>
