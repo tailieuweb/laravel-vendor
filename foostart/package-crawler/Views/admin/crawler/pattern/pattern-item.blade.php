@@ -165,7 +165,7 @@
                 <!--OPERATOR-->
                 <td>
                     <!--edit-->
-                    <a href="{!! URL::route('patterns.edit', [   'id' => $item->id,
+                    <a href="{!! URL::route('crawler.pattern.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
                                                             ])
                             !!}">
@@ -173,7 +173,7 @@
                     </a>
 
                     <!--copy-->
-                    <a href="{!! URL::route('patterns.copy',[    'cid' => $item->id,
+                    <a href="{!! URL::route('crawler.pattern.copy',[    'cid' => $item->id,
                                                                 '_token' => csrf_token(),
                                                             ])
                              !!}"
@@ -182,7 +182,7 @@
                     </a>
 
                     <!--delete-->
-                    <a href="{!! URL::route('patterns.delete',[  'id' => $item->id,
+                    <a href="{!! URL::route('crawler.pattern.delete',[  'id' => $item->id,
                                                                 '_token' => csrf_token(),
                                                               ])
                              !!}"

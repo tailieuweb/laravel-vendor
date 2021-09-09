@@ -15,13 +15,13 @@ use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
-use Foostart\Category\Library\Controllers\FooController;
+use Foostart\Crawler\Controllers\Admin\BaseCrawlerAdminController;
 use Foostart\Crawler\Models\Sites;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
 
-class CrawlerAdminController extends FooController {
+class CrawlerAdminController extends BaseCrawlerAdminController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -81,16 +81,15 @@ class CrawlerAdminController extends FooController {
 
         $params = $request->all();
 
-        $items = $this->obj_item->selectItems($params);
+        $crawlerSites = $this->obj_item->selectItems($params);
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
-            'items' => $items,
+            'crawlerSites' => $crawlerSites,
             'request' => $request,
             'params' => $params,
             'config_status' => $this->obj_item->config_status
         ));
-
         return view($this->page_views['admin']['items'], $this->data_view);
     }
 

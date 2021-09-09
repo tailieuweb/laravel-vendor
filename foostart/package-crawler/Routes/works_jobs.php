@@ -29,56 +29,56 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/crawler/works/jobs', [
-            'as' => 'works.jobs.list',
+        Route::get('admin/crawler/work/job', [
+            'as' => 'crawler.work.job.list',
             'uses' => 'JobsAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/crawler/works/jobs/edit', [
-            'as' => 'works.jobs.edit',
+        Route::get('admin/crawler/work/job/edit', [
+            'as' => 'crawler.work.job.edit',
             'uses' => 'JobsAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/crawler/works/jobs/copy', [
-            'as' => 'works.jobs.copy',
+        Route::get('admin/crawler/work/job/copy', [
+            'as' => 'crawler.work.job.copy',
             'uses' => 'JobsAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/crawler/works/jobs/edit', [
-            'as' => 'works.jobs.post',
+        Route::post('admin/crawler/work/job/edit', [
+            'as' => 'crawler.work.job.post',
             'uses' => 'JobsAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/crawler/works/jobs/delete', [
-            'as' => 'works.jobs.delete',
+        Route::get('admin/crawler/work/job/delete', [
+            'as' => 'crawler.work.job.delete',
             'uses' => 'JobsAdminController@delete'
         ]);
 
         /**
          * trash
          */
-        Route::get('admin/crawler/works/jobs/trash', [
-            'as' => 'works.jobs.trash',
+        Route::get('admin/crawler/work/job/trash', [
+            'as' => 'crawler.work.job.trash',
             'uses' => 'JobsAdminController@trash'
         ]);
 
         /**
          * search
          */
-        Route::get('admin/crawler/works/jobs/search', [
-            'as' => 'works.jobs.search',
+        Route::get('admin/crawler/work/job/search', [
+            'as' => 'crawler.work.job.search',
             'uses' => 'JobsAdminController@search'
         ]);
 

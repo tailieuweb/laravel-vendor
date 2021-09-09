@@ -30,7 +30,7 @@ Route::group(['middleware' => ['web']], function () {
          * list
          */
         Route::get('admin/crawler/site/stackoverflow/tag', [
-            'as' => 'crawler.stackoverflow.tag.list',
+            'as' => 'crawler.site.stackoverflow.tag.list',
             'uses' => 'StackOverflowTagAdminController@index'
         ]);
 
@@ -38,7 +38,7 @@ Route::group(['middleware' => ['web']], function () {
          * edit-add
          */
         Route::get('admin/crawler/site/stackoverflow/tag/edit', [
-            'as' => 'crawler.stackoverflow.tag.edit',
+            'as' => 'crawler.site.stackoverflow.tag.edit',
             'uses' => 'StackOverflowTagAdminController@edit'
         ]);
 
@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web']], function () {
          * copy
          */
         Route::get('admin/crawler/site/stackoverflow/tag/copy', [
-            'as' => 'crawler.stackoverflow.tag.copy',
+            'as' => 'crawler.site.stackoverflow.tag.copy',
             'uses' => 'StackOverflowTagAdminController@copy'
         ]);
 
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['web']], function () {
          * post
          */
         Route::post('admin/crawler/site/stackoverflow/tag/edit', [
-            'as' => 'crawler.stackoverflow.tag.post',
+            'as' => 'crawler.site.stackoverflow.tag.post',
             'uses' => 'StackOverflowTagAdminController@post'
         ]);
 
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['web']], function () {
          * delete
          */
         Route::get('admin/crawler/site/stackoverflow/tag/delete', [
-            'as' => 'crawler.stackoverflow.tag.delete',
+            'as' => 'crawler.site.stackoverflow.tag.delete',
             'uses' => 'StackOverflowTagAdminController@delete'
         ]);
 
@@ -70,7 +70,7 @@ Route::group(['middleware' => ['web']], function () {
          * trash
          */
         Route::get('admin/crawler/site/stackoverflow/tag/trash', [
-            'as' => 'crawler.stackoverflow.tag.trash',
+            'as' => 'crawler.site.stackoverflow.tag.trash',
             'uses' => 'StackOverflowTagAdminController@trash'
         ]);
 
@@ -78,7 +78,7 @@ Route::group(['middleware' => ['web']], function () {
          * search
          */
         Route::get('admin/crawler/site/stackoverflow/tag/search', [
-            'as' => 'crawler.stackoverflow.tag.search',
+            'as' => 'crawler.site.stackoverflow.tag.search',
             'uses' => 'StackOverflowTagAdminController@search'
         ]);
 
@@ -98,7 +98,7 @@ Route::group(['middleware' => ['web']], function () {
          * list
          */
         Route::get('admin/crawler/site/stackoverflow/questions', [
-            'as' => 'crawler.stackoverflow.question.list',
+            'as' => 'crawler.site.stackoverflow.question.list',
             'uses' => 'StackOverflowQuestionAdminController@index'
         ]);
 
@@ -106,7 +106,7 @@ Route::group(['middleware' => ['web']], function () {
          * edit-add
          */
         Route::get('admin/crawler/site/stackoverflow/question/edit', [
-            'as' => 'crawler.stackoverflow.question.edit',
+            'as' => 'crawler.site.stackoverflow.question.edit',
             'uses' => 'StackOverflowQuestionAdminController@edit'
         ]);
 
@@ -114,7 +114,7 @@ Route::group(['middleware' => ['web']], function () {
          * copy
          */
         Route::get('admin/crawler/site/stackoverflow/question/copy', [
-            'as' => 'crawler.stackoverflow.question.copy',
+            'as' => 'crawler.site.stackoverflow.question.copy',
             'uses' => 'StackOverflowQuestionAdminController@copy'
         ]);
 
@@ -130,7 +130,7 @@ Route::group(['middleware' => ['web']], function () {
          * delete
          */
         Route::get('admin/crawler/site/stackoverflow/question/delete', [
-            'as' => 'crawler.stackoverflow.question.delete',
+            'as' => 'crawler.site.stackoverflow.question.delete',
             'uses' => 'StackOverflowQuestionAdminController@delete'
         ]);
 
@@ -138,7 +138,7 @@ Route::group(['middleware' => ['web']], function () {
          * trash
          */
         Route::get('admin/crawler/site/stackoverflow/question/trash', [
-            'as' => 'crawler.stackoverflow.question.trash',
+            'as' => 'crawler.site.stackoverflow.question.trash',
             'uses' => 'StackOverflowQuestionAdminController@trash'
         ]);
 
@@ -146,7 +146,7 @@ Route::group(['middleware' => ['web']], function () {
          * search
          */
         Route::get('admin/crawler/site/stackoverflow/question/search', [
-            'as' => 'crawler.stackoverflow.question.search',
+            'as' => 'crawler.site.stackoverflow.question.search',
             'uses' => 'StackOverflowQuestionAdminController@search'
         ]);
 
@@ -165,7 +165,7 @@ Route::group(['middleware' => ['web']], function () {
          * list
          */
         Route::get('admin/crawler/site/stackoverflow/answers', [
-            'as' => 'crawler.stackoverflow.answer.list',
+            'as' => 'crawler.site.stackoverflow.answer.list',
             'uses' => 'StackOverflowAnswerAdminController@index'
         ]);
 
@@ -173,7 +173,7 @@ Route::group(['middleware' => ['web']], function () {
          * edit-add
          */
         Route::get('admin/crawler/site/stackoverflow/answer/edit', [
-            'as' => 'crawler.stackoverflow.answer.edit',
+            'as' => 'crawler.site.stackoverflow.answer.edit',
             'uses' => 'StackOverflowAnswerAdminController@edit'
         ]);
 
@@ -181,7 +181,7 @@ Route::group(['middleware' => ['web']], function () {
          * copy
          */
         Route::get('admin/crawler/site/stackoverflow/answer/copy', [
-            'as' => 'crawler.stackoverflow.answer.copy',
+            'as' => 'crawler.site.stackoverflow.answer.copy',
             'uses' => 'StackOverflowAnswerAdminController@copy'
         ]);
 
@@ -189,7 +189,7 @@ Route::group(['middleware' => ['web']], function () {
          * post
          */
         Route::post('admin/crawler/site/stackoverflow/answer/edit', [
-            'as' => 'crawler.stackoverflow.answer.post',
+            'as' => 'crawler.site.stackoverflow.answer.post',
             'uses' => 'StackOverflowAnswerAdminController@post'
         ]);
 
@@ -197,7 +197,7 @@ Route::group(['middleware' => ['web']], function () {
          * delete
          */
         Route::get('admin/crawler/site/stackoverflow/answer/delete', [
-            'as' => 'crawler.stackoverflow.answer.delete',
+            'as' => 'crawler.site.stackoverflow.answer.delete',
             'uses' => 'StackOverflowAnswerAdminController@delete'
         ]);
 
@@ -205,7 +205,7 @@ Route::group(['middleware' => ['web']], function () {
          * trash
          */
         Route::get('admin/crawler/site/stackoverflow/answer/trash', [
-            'as' => 'crawler.stackoverflow.answer.trash',
+            'as' => 'crawler.site.stackoverflow.answer.trash',
             'uses' => 'StackOverflowAnswerAdminController@trash'
         ]);
 
@@ -213,7 +213,7 @@ Route::group(['middleware' => ['web']], function () {
          * search
          */
         Route::get('admin/crawler/site/stackoverflow/answer/search', [
-            'as' => 'crawler.stackoverflow.answer.search',
+            'as' => 'crawler.site.stackoverflow.answer.search',
             'uses' => 'StackOverflowAnswerAdminController@search'
         ]);
 
@@ -221,15 +221,15 @@ Route::group(['middleware' => ['web']], function () {
          * crawler
          */
         Route::get('admin/crawler/site/stackoverflow/tag/crawler', [
-            'as' => 'crawler.stackoverflow.tag.crawler',
+            'as' => 'crawler.site.stackoverflow.tag.crawler',
             'uses' => 'StackOverflowTagAdminController@crawler'
         ]);
         Route::get('admin/crawler/site/stackoverflow/question/crawler', [
-            'as' => 'crawler.stackoverflow.question.crawler',
+            'as' => 'crawler.site.stackoverflow.question.crawler',
             'uses' => 'StackOverflowQuestionAdminController@crawler'
         ]);
         Route::get('admin/crawler/site/stackoverflow/answer/crawler', [
-            'as' => 'crawler.stackoverflow.answer.crawler',
+            'as' => 'crawler.site.stackoverflow.answer.crawler',
             'uses' => 'StackOverflowAnswerAdminController@crawler'
         ]);
     });//End Stackoverflow

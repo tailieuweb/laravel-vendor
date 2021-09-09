@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
-use Foostart\Category\Library\Controllers\FooController;
+use Foostart\Crawler\Controllers\Admin\BaseCrawlerAdminController;
 use Foostart\Crawler\Models\Works\WorksJobs;
 use Foostart\Crawler\Models\Sites;
 use Foostart\Crawler\Models\Works\WorksCategories;
@@ -25,7 +25,7 @@ use Foostart\Crawler\Validators\SitesValidator;
 use Foostart\Crawler\Validators\Works\JobsValidator;
 use Illuminate\Support\Facades\DB;
 
-class JobsAdminController extends FooController {
+class JobsAdminController extends BaseCrawlerAdminController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;

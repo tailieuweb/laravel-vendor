@@ -37,11 +37,11 @@ View::composer([
          */
         $sidebar_items = [
             trans('crawler-admin.sidebar.add') => [
-                'url' => URL::route('works.jobs.edit', []),
+                'url' => URL::route('crawler.work.job.edit', []),
                 'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.list_jobs') => [
-                'url' => URL::route('works.jobs.list', []),
+                'url' => URL::route('crawler.work.job.list', []),
                 'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.list_sites') => [
@@ -49,7 +49,7 @@ View::composer([
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.category') => [
-                'url' => URL::route('works.categories.list', []),
+                'url' => URL::route('crawler.work.category.list', []),
                 'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
             ],
         ];
@@ -100,11 +100,11 @@ View::composer([
      */
     $sidebar_items = [
         trans('crawler-admin.sidebar.add') => [
-            'url' => URL::route('works.categories.edit', []),
+            'url' => URL::route('crawler.work.category.edit', []),
             'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.list_categories') => [
-            'url' => URL::route('works.categories.list', []),
+            'url' => URL::route('crawler.work.category.list', []),
             'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.list_sites') => [
@@ -112,7 +112,7 @@ View::composer([
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
         trans('crawler-admin.sidebar.list_jobs') => [
-            'url' => URL::route('works.jobs.list', []),
+            'url' => URL::route('crawler.work.job.list', []),
             'icon' => '<i class="fa fa-tags" aria-hidden="true"></i>'
         ],
     ];

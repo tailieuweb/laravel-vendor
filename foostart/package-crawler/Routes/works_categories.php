@@ -29,56 +29,56 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/crawler/works/categories', [
-            'as' => 'works.categories.list',
+        Route::get('admin/crawler/work/category', [
+            'as' => 'crawler.work.category.list',
             'uses' => 'CategoriesAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/crawler/works/categories/edit', [
-            'as' => 'works.categories.edit',
+        Route::get('admin/crawler/work/category/edit', [
+            'as' => 'crawler.work.category.edit',
             'uses' => 'CategoriesAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/crawler/works/categories/copy', [
-            'as' => 'works.categories.copy',
+        Route::get('admin/crawler/work/category/copy', [
+            'as' => 'crawler.work.category.copy',
             'uses' => 'CategoriesAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/crawler/works/categories/edit', [
-            'as' => 'works.categories.post',
+        Route::post('admin/crawler/work/category/edit', [
+            'as' => 'crawler.work.category.post',
             'uses' => 'CategoriesAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/crawler/works/categories/delete', [
-            'as' => 'works.categories.delete',
+        Route::get('admin/crawler/work/category/delete', [
+            'as' => 'crawler.work.category.delete',
             'uses' => 'CategoriesAdminController@delete'
         ]);
 
         /**
          * trash
          */
-        Route::get('admin/crawler/works/categories/trash', [
-            'as' => 'works.categories.trash',
+        Route::get('admin/crawler/work/category/trash', [
+            'as' => 'crawler.work.category.trash',
             'uses' => 'CategoriesAdminController@trash'
         ]);
 
         /**
          * search
          */
-        Route::get('admin/crawler/works/categories/search', [
-            'as' => 'works.categories.search',
+        Route::get('admin/crawler/work/category/search', [
+            'as' => 'crawler.work.category.search',
             'uses' => 'CategoriesAdminController@search'
         ]);
 

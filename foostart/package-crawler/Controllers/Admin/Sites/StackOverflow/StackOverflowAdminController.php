@@ -15,13 +15,13 @@ use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
-use Foostart\Category\Library\Controllers\FooController;
+use Foostart\Crawler\Controllers\Admin\BaseCrawlerAdminController;
 use Foostart\Crawler\Models\Sites;
 use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\SitesValidator;
 use Illuminate\Support\Facades\DB;
 
-class StackOverflowAdminController extends FooController {
+class StackOverflowAdminController extends BaseCrawlerAdminController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;

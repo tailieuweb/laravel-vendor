@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
-use Foostart\Category\Library\Controllers\FooController;
+use Foostart\Crawler\Controllers\Admin\BaseCrawlerAdminController;
 use Foostart\Crawler\Models\Sites;
 use Foostart\Crawler\Models\Patterns;
 use Foostart\Crawler\Models\RegularExpressions;
@@ -23,7 +23,7 @@ use Foostart\Category\Models\Category;
 use Foostart\Crawler\Validators\PatternsValidator;
 use Illuminate\Support\Facades\DB;
 
-class PatternAdminController extends FooController
+class PatternAdminController extends BaseCrawlerAdminController
 {
 
     public $obj_item = NULL;

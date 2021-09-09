@@ -17,7 +17,7 @@ use Symfony\Component\VarDumper\Dumper\AbstractDumper;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
-use Foostart\Category\Library\Controllers\FooController;
+use Foostart\Crawler\Controllers\Admin\BaseCrawlerAdminController;
 use Foostart\Crawler\Models\Sites;
 use Foostart\Crawler\Models\Patterns;
 use Foostart\Crawler\Models\RegularExpressions;
@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\DB;
 
 use Foostart\Crawler\Scripts\Stackoverflow\CrawlAnswers;
 
-class StackOverflowAnswerAdminController extends FooController {
+class StackOverflowAnswerAdminController extends BaseCrawlerAdminController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;

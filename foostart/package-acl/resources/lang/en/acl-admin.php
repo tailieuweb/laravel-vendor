@@ -15,11 +15,15 @@ return [
         'list' => 'List',
         'users' => 'Users',
         'sites' => 'Sites',
+        'site' => 'Site',
         'permissions' => 'Permissions',
         'crawler' => 'Crawlers',
         'works' => 'Works',
+        'work' => 'Work',
         'jobs' => 'Jobs',
+        'job' => 'Job',
         'categories' => 'Categories',
+        'category' => 'Category',
     ],
 
     /***********************************************************************

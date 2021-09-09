@@ -2,13 +2,13 @@
 | List of elements in pattern form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['patterns.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['crawler.pattern.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
 
     <!--BUTTONS-->
     <div class='btn-form'>
         <!-- DELETE BUTTON -->
         @if($item)
-            <a href="{!! URL::route('patterns.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
+            <a href="{!! URL::route('crawler.pattern.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
             class="btn btn-danger pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}
             </a>
