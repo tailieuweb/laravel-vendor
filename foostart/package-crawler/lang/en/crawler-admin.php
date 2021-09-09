@@ -165,7 +165,8 @@ return [
         'no-selected' => 'No selected',
         'status' => 'Status',
         'site_id' => 'Site',
-        'site' => 'Site'
+        'site' => 'Site',
+        'site_type' => 'Site type',
     ],
 
 

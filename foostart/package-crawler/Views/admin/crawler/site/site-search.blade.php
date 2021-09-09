@@ -23,6 +23,14 @@
                 'value' => @$params['keyword'],
             ])
 
+            <!-- SITE TYPE -->
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'site_type',
+                'label' => trans($plang_admin.'.form.site_type'),
+                'value' => @$params['site_type']?$params['site_type']:'0',
+                'items' => $siteTypeSelect,
+            ])
+
             <!-- STATUS -->
             @include('package-category::admin.partials.select_single', [
                 'name' => 'status',

@@ -19,12 +19,37 @@ use Foostart\Crawler\Constants\CrawlerConstants;
 
 class BaseCrawlerAdminController extends FooController {
 
+    public array $siteTypes;
+    public array $siteTypeSelect;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->data_view = array_merge($this->data_view, [
+            'siteTypes' => $this->getSiteTypes(),
+            'siteTypeSelect' => $this->getSiteTypeSelect(),
+        ]);
+    }
     /**
      * Get list of site types
      */
     public function getSiteTypes() {
         $siteTypes = CrawlerConstants::SITE_TYPES;
         return $siteTypes;
+    }
+
+    /**
+     * Get list of site types with format selection
+     */
+    public function getSiteTypeSelect() {
+        $siteTypes = $this->getSiteTypes();
+        $siteTypeSelect = [];
+        foreach ($siteTypes as $key => $siteType) {
+            $siteTypeSelect[$key] = $siteType['name'];
+        }
+
+        return $siteTypeSelect;
     }
 
 }

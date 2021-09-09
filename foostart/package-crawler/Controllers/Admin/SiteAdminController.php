@@ -87,7 +87,6 @@ class SiteAdminController extends BaseCrawlerAdminController {
         $this->data_view = array_merge($this->data_view, array(
             'crawlerSites' => $crawlerSites,
             'request' => $request,
-            'siteTypes' => $this->getSiteTypes(),
             'params' => $params,
             'config_status' => $this->obj_item->config_status
         ));
