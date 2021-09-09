@@ -6,12 +6,13 @@ use App;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Foostart\Category\Models\Context;
 
 class FooModel extends Model
 {
-
+    use SoftDeletes;
 
     protected $prefix_table = '';
 

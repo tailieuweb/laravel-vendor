@@ -6,18 +6,21 @@
 
     <!--BUTTONS-->
     <div class='btn-form'>
-        <!-- DELETE BUTTON -->
-        @if($item)
+        @if($item->deleted_at)
+            <a href="{!! URL::route('crawler.site.restore',['id' => $item->id, '_token' => csrf_token()]) !!}"
+               class="btn btn-success pull-right margin-left-5 restore">
+                {!! trans($plang_admin.'.buttons.restore') !!}
+            </a>
+        @else
             <a href="{!! URL::route('crawler.site.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
-            class="btn btn-danger pull-right margin-left-5 delete">
+               class="btn btn-warning pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}
             </a>
         @endif
-        <!-- DELETE BUTTON -->
-
         <!-- SAVE BUTTON -->
-        {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
+            {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
         <!-- /SAVE BUTTON -->
+
     </div>
     <!--/BUTTONS-->
 

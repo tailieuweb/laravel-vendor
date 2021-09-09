@@ -102,6 +102,14 @@ Route::group(['middleware' => ['web']], function () {
         ]);
 
         /**
+         * restore
+         */
+        Route::get('admin/crawler/site/restore', [
+            'as' => 'crawler.site.restore',
+            'uses' => 'SiteAdminController@restore'
+        ]);
+
+        /**
          * trash
          */
         Route::get('admin/crawler/site/trash', [
@@ -175,6 +183,14 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('admin/crawler/pattern/delete', [
             'as' => 'crawler.pattern.delete',
             'uses' => 'PatternAdminController@delete'
+        ]);
+
+        /**
+         * restore
+         */
+        Route::get('admin/crawler/pattern/restore', [
+            'as' => 'crawler.pattern.restore',
+            'uses' => 'PatternAdminController@restore'
         ]);
 
         /**

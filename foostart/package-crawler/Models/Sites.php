@@ -148,7 +148,7 @@ class Sites extends FooModel {
      * @return ELOQUENT OBJECT
      */
     protected function joinTable(array $params = []){
-        return $this;
+        return $this->withTrashed();
     }
 
     /**
@@ -289,18 +289,33 @@ class Sites extends FooModel {
         if ($item) {
             switch ($delete_type) {
                 case 'delete-trash':
-                    return $item->fdelete($item);
-                    break;
-                case 'delete-forever':
+                    $item->fdelete($item);
                     return $item->delete();
-                    break;
+                case 'delete-forever':
+                    return $item->forceDelete ();
             }
-
         }
 
         return FALSE;
     }
 
+
+
+    /**
+     *
+     * @param ARRAY $input list of parameters
+     * @return boolean TRUE incase restore successfully otherwise return FALSE
+     */
+    public function restoreItem(array $input) {
+
+        $item = $this->withTrashed()->find($input['id']);
+
+        if ($item) {
+            $item->restore();
+        }
+
+        return FALSE;
+    }
 
     /**
      * Get list of statuses to push to select
