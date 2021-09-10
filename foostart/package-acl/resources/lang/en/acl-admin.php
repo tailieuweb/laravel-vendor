@@ -24,6 +24,7 @@ return [
         'job' => 'Job',
         'categories' => 'Categories',
         'category' => 'Category',
+        'pattern' => 'Pattern',
     ],
 
     /***********************************************************************

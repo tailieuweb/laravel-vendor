@@ -74,12 +74,14 @@ class Sites extends FooModel {
         $this->valid_ordering_fields = [
             'site_id',
             'site_name',
+            'site_type',
             'updated_at',
             $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
             'keyword',
+            'site_type',
             'status',
         ];
 
@@ -157,7 +159,6 @@ class Sites extends FooModel {
      * @return ELOQUENT OBJECT
      */
     protected function searchFilters(array $params, $elo, $by_status = TRUE){
-
         //filter
         if ($this->isValidFilters($params) && (!empty($params)))
         {
@@ -170,6 +171,11 @@ class Sites extends FooModel {
                         case 'site_name':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.site_name', '=', $value);
+                            }
+                            break;
+                        case 'site_type':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.site_type', '=', $value);
                             }
                             break;
                         case 'site_url':
@@ -284,7 +290,7 @@ class Sites extends FooModel {
      */
     public function deleteItem(array $input, $delete_type) {
 
-        $item = $this->find($input['id']);
+        $item = $this->withTrashed()->find($input['id']);
 
         if ($item) {
             switch ($delete_type) {
@@ -292,7 +298,7 @@ class Sites extends FooModel {
                     $item->fdelete($item);
                     return $item->delete();
                 case 'delete-forever':
-                    return $item->forceDelete ();
+                    return $item->forceDelete();
             }
         }
 

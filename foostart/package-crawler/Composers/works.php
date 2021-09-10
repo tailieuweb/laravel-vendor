@@ -123,7 +123,7 @@ View::composer([
      */
     $orders = [
         '' => trans($plang_admin.'.form.no-selected'),
-        'category_id' => trans($plang_admin.'.fields.category_id'),
+        'id' => trans($plang_admin.'.fields.id'),
         'category_name' => trans($plang_admin.'.fields.category_name'),
         'updated_at' => trans($plang_admin.'.fields.updated_at'),
         'status' => trans($plang_admin.'.fields.status'),

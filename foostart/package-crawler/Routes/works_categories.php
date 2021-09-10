@@ -65,6 +65,13 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'crawler.work.category.delete',
             'uses' => 'CategoriesAdminController@delete'
         ]);
+        /**
+         * restore
+         */
+        Route::get('admin/crawler/work/category/restore', [
+            'as' => 'crawler.work.category.restore',
+            'uses' => 'CategoriesAdminController@restore'
+        ]);
 
         /**
          * trash

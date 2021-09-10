@@ -52,10 +52,10 @@ class PatternAdminController extends BaseCrawlerAdminController
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'pattern.pattern';
+        $this->package_base_name = 'crawler.pattern.pattern';
 
         // root routers
-        $this->root_router = 'patterns';
+        $this->root_router = 'crawler.pattern';
 
         // page views
         $this->page_views = [
@@ -84,14 +84,13 @@ class PatternAdminController extends BaseCrawlerAdminController
      */
     public function index(Request $request)
     {
-
         $params = $request->all();
 
-        $items = $this->obj_item->selectItems($params);
+        $crawlerPatterns = $this->obj_item->selectItems($params);
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
-            'items' => $items,
+            'crawlerPatterns' => $crawlerPatterns,
             'request' => $request,
             'params' => $params,
             'config_status' => $this->obj_item->config_status
@@ -150,6 +149,7 @@ class PatternAdminController extends BaseCrawlerAdminController
             'request' => $request,
             'context' => $context,
         ));
+
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 
@@ -264,6 +264,43 @@ class PatternAdminController extends BaseCrawlerAdminController
 
         return Redirect::route($this->root_router . '.list')
             ->withMessage(trans($this->plang_admin . '.actions.delete-error'));
+    }
+
+    /**
+     * Delete existing item
+     * @return view list of items
+     * @date 27/12/2017
+     */
+    public function restore(Request $request) {
+
+        $item = NULL;
+        $flag = TRUE;
+        $params = array_merge($this->getUser(), $request->all());
+        $id = (int)$request->get('id');
+        $ids = $request->get('ids');
+
+        $is_valid_request = $this->isValidRequest($request);
+
+        if ($is_valid_request && (!empty($id) || !empty($ids))) {
+
+            $ids = !empty($id)?[$id]:$ids;
+
+            foreach ($ids as $id) {
+
+                $params['id'] = $id;
+
+                if (!$this->obj_item->restoreItem($params)) {
+                    $flag = FALSE;
+                }
+            }
+            if ($flag) {
+                return Redirect::route($this->root_router.'.list')
+                    ->withMessage(trans($this->plang_admin.'.actions.restore-ok'));
+            }
+        }
+
+        return Redirect::route($this->root_router.'.list')
+            ->withMessage(trans($this->plang_admin.'.actions.restore-error'));
     }
 
     /**

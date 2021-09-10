@@ -6,14 +6,19 @@
 
     <!--BUTTONS-->
     <div class='btn-form'>
-        <!-- DELETE BUTTON -->
-        @if($item)
+        <!-- RESTORE/DELETE BUTTON -->
+        @if(isset($item) && $item->deleted_at)
+            <a href="{!! URL::route('crawler.pattern.restore',['id' => $item->id, '_token' => csrf_token()]) !!}"
+               class="btn btn-success pull-right margin-left-5 restore">
+                {!! trans($plang_admin.'.buttons.restore') !!}
+            </a>
+        @elseif (isset($item))
             <a href="{!! URL::route('crawler.pattern.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
-            class="btn btn-danger pull-right margin-left-5 delete">
+               class="btn btn-warning pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}
             </a>
         @endif
-        <!-- DELETE BUTTON -->
+        <!-- RESTORE/DELETE BUTTON -->
 
         <!-- SAVE BUTTON -->
         {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
@@ -44,32 +49,6 @@
         <!--MENU 1-->
         <div id="menu_1" class="tab-pane fade in active">
 
-            <div class="row">
-                <div class="col-md-6">
-                    <!--SITE-->
-                    @include('package-category::admin.partials.select_single', [
-                        'name' => 'site_id',
-                        'label' => trans($plang_admin.'.form.site_id'),
-                        'value' => @$item->site_id,
-                        'items' => $sites,
-                        'description' => trans($plang_admin.'.descriptions.site_id'),
-                    ])
-                    <!--/SITE-->
-                </div>
-
-                <div class="col-md-6">
-                    <!--STATUS-->
-                    @include('package-category::admin.partials.select_single', [
-                        'name' => 'status',
-                        'label' => trans($plang_admin.'.form.status'),
-                        'value' => @$item->status,
-                        'items' => $status,
-                        'description' => trans($plang_admin.'.descriptions.status'),
-                    ])
-                    <!--/STATUS-->
-                </div>
-            </div>
-
             <!--NAME-->
             @include('package-category::admin.partials.input_text', [
                 'name' => 'pattern_name',
@@ -91,6 +70,32 @@
                 'errors' => $errors,
             ])
             <!--/MACHINE NAME-->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <!--SITE-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'site_id',
+                    'label' => trans($plang_admin.'.form.site_id'),
+                    'value' => @$item->site_id,
+                    'items' => $sites,
+                    'description' => trans($plang_admin.'.descriptions.site_id'),
+                ])
+                <!--/SITE-->
+                </div>
+
+                <div class="col-md-6">
+                    <!--STATUS-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'status',
+                    'label' => trans($plang_admin.'.form.status'),
+                    'value' => @$item->status,
+                    'items' => $status,
+                    'description' => trans($plang_admin.'.descriptions.status'),
+                ])
+                <!--/STATUS-->
+                </div>
+            </div>
 
             <!--DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [

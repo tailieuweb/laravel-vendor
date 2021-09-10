@@ -65,6 +65,13 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'crawler.work.job.delete',
             'uses' => 'JobsAdminController@delete'
         ]);
+        /**
+         * restore
+         */
+        Route::get('admin/crawler/work/job/restore', [
+            'as' => 'crawler.work.job.restore',
+            'uses' => 'JobsAdminController@restore'
+        ]);
 
         /**
          * trash

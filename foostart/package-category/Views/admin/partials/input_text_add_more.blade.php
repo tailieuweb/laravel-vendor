@@ -36,11 +36,11 @@
     $items = empty($items) ? '' : $items;
     //with
     $withs = [
-        'counter' => '5%',
-        'id' => '10%',
-        'value' => '20%',
-        'status' => '20%',
-        'operations' => '10%',
+        'counter' => '3%',
+        'id' => '3%',
+        'value' => '60%',
+        'status' => '25%',
+        'operations' => '15%',
     ];
     //counter
     $counter = 1;
@@ -65,7 +65,9 @@
 
     <div class="input_fields_wrap">
 
-        <input class="btn btn-info pull-right regular_expression_add"  value="Add new regular expression">
+        <span class="btn btn-info regular_expression_add"  value="Add new regular expression">
+            +
+        </span>
 
 
             <table class="table table-hover">
@@ -113,7 +115,7 @@
                             @include('package-category::admin.partials.select_single', [
                                 'name' => 're_status[]',
                                 'label' => NULL,
-                                'value' => @$item->status,
+                                'value' => @$_item->status,
                                 'items' => $status,
                                 'description' => NULL,
                             ])

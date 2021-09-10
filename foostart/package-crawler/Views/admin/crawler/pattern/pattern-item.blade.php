@@ -1,26 +1,35 @@
-@if(!empty($items) && (!$items->isEmpty()) )
 <?php
-    $withs = [
-        'counter' => '10%',
-        'id' => '10%',
-        'pattern_name' => '20%',
-        'pattern_machine_name' => '20%',
-        'status' => '10%',
-        'updated_at' => '20%',
-        'operations' => '10%',
-    ];
-
-    global $counter;
-    $nav = $items->toArray();
-    $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
+$withs = [
+    'counter' => '5%',
+    'id' => '10%',
+    'pattern_name' => '25%',
+    'pattern_machine_name' => '25%',
+    'status' => '10%',
+    'updated_at' => '15%',
+    'operations' => '15%',
+];
 ?>
-<caption>
-    @if($nav['total'] == 1)
-        {!! trans($plang_admin.'.descriptions.counter', ['number' => $nav['total']]) !!}
-    @else
-        {!! trans($plang_admin.'.descriptions.counters', ['number' => $nav['total']]) !!}
-    @endif
-</caption>
+@if(!empty($crawlerPatterns) && (!$crawlerPatterns->isEmpty()) )
+    <div style="min-height: 50px;">
+        <div>
+            @if($crawlerPatterns->total() == 1)
+                {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
+            @else
+                {!! trans($plang_admin.'.descriptions.counters', ['number' => $crawlerPatterns->total()]) !!}
+            @endif
+        </div>
+        {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
+                                                                            "class"=>"btn btn-warning delete btn-delete-all",
+                                                                            "title"=> trans($plang_admin.'.hint.delete-in-trash'),
+                                                                            'name'=>'del-trash'))
+        !!}
+        {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
+                                                                            "class"=>"btn btn-danger delete btn-delete-all",
+                                                                            "title"=> trans($plang_admin.'.hint.delete-forever'),
+                                                                            'name'=>'del-forever'))
+        !!}
+    </div>
+
 <div class="table-responsive">
 <table class="table table-hover">
 
@@ -41,11 +50,11 @@
             <th class="hidden-xs" style='width:{{ $withs['id'] }}'>{!! trans($plang_admin.'.columns.id') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
-                        <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                        <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
                     @elseif($sorting['items'][$name] == 'desc')
-                        <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                        <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
                     @else
-                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
                     @endif
                 </a>
             </th>
@@ -66,7 +75,8 @@
 
             <!--MACHINE NAME-->
             <?php $name = 'pattern_machine_name' ?>
-            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>{!! trans($plang_admin.'.columns.machine_name') !!}
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                {!! trans($plang_admin.'.columns.machine_name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -113,16 +123,6 @@
                 <span class='lb-delete-all'>
                     {{ trans($plang_admin.'.columns.operations') }}
                 </span>
-                {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
-                                                                            "class"=>"btn btn-danger pull-right delete btn-delete-all del-trash",
-                                                                            "title"=> trans($plang_admin.'.hint.delete-in-trash'),
-                                                                            'name'=>'del-trash'))
-                !!}
-                {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
-                                                                            "class"=>"btn btn-warning pull-right delete btn-delete-all del-forever",
-                                                                            "title"=> trans($plang_admin.'.hint.delete-forever'),
-                                                                            'name'=>'del-forever'))
-                !!}
             </th>
 
         </tr>
@@ -130,7 +130,8 @@
     </thead>
 
     <tbody>
-        @foreach($items as $item)
+        <?php $counter = $crawlerPatterns->perPage() * ($crawlerPatterns->currentPage() - 1) + 1;  ?>
+        @foreach($crawlerPatterns as $item)
             <tr>
                 <!--COUNTER-->
                 <td>
@@ -142,7 +143,14 @@
                 </td>
 
                 <!--ID-->
-                <td> {!! $item->pattern_id !!}</td>
+                <td>
+                    <a href="{!! URL::route('crawler.pattern.edit', [   'id' => $item->id,
+                                                                '_token' => csrf_token()
+                                                            ])
+                            !!}">
+                    {!! $item->pattern_id !!}
+                    </a>
+                </td>
 
                 <!--NAME-->
                 <td> {!! $item->pattern_name !!} </td>
@@ -200,7 +208,7 @@
 </table>
 </div>
 <div class="paginator">
-    {!! $items->appends($request->except(['page']) )->render() !!}
+    {!! $crawlerPatterns->appends($request->except(['page']) )->render($pagination_view)  !!}
 </div>
 @else
     <!--SEARCH RESULT MESSAGE-->

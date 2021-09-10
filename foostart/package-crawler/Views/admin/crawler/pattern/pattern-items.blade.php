@@ -1,7 +1,7 @@
 @extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {{ trans($plang_admin.'.pages.title-list') }}
+    {{ trans($plang_admin.'.pages.title-list-pattern') }}
 @stop
 
 @section('content')
@@ -17,10 +17,9 @@
                     <!--HEADING-->
                     <div class="panel-heading">
                         <h3 class="panel-title bariol-thin"><i class="fa fa-list-ul" aria-hidden="true"></i>
-                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search') : trans($plang_admin.'.pages.title-list') !!}
+                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-pattern-search') : trans($plang_admin.'.pages.title-list-pattern') !!}
                         </h3>
                     </div>
-
 
                     <!--DESCRIPTION-->
                     <div class='panel-info panel-description'>
@@ -47,17 +46,9 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        <!--ADD BUTTONS-->
-                        <div class='btn-form'>
-                            <a href="{!! URL::route('crawler.pattern.edit',['site_id' => $site_id, '_token' => csrf_token()]) !!}"
-                               class="btn btn-info pull-right">
-                                {!! trans($plang_admin.'.buttons.add') !!}
-                            </a>
-                        </div>
-                        <!--/ADD BUTTONS-->
                         {!! Form::open(['route'=>['crawler.pattern.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-crawler::admin.pattern.pattern-item')
+                            @include('package-crawler::admin.crawler.pattern.pattern-item')
 
                             {!! csrf_field(); !!}
 
@@ -71,14 +62,13 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-crawler::admin.pattern.pattern-search')
+                @include('package-crawler::admin.crawler.pattern.pattern-search')
             </div>
             <!--/SEARCH-->
 
         </div>
     </div>
 @stop
-
 
 @section('footer_scripts')
     <!-- DELETE CONFIRM -->

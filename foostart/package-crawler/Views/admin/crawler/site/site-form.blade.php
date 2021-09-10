@@ -6,12 +6,12 @@
 
     <!--BUTTONS-->
     <div class='btn-form'>
-        @if($item->deleted_at)
+        @if(isset($item) && $item->deleted_at)
             <a href="{!! URL::route('crawler.site.restore',['id' => $item->id, '_token' => csrf_token()]) !!}"
                class="btn btn-success pull-right margin-left-5 restore">
                 {!! trans($plang_admin.'.buttons.restore') !!}
             </a>
-        @else
+        @elseif (isset($item))
             <a href="{!! URL::route('crawler.site.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
                class="btn btn-warning pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}

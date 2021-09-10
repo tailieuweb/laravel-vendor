@@ -15,11 +15,11 @@ use Foostart\Category\Helpers\SortTable;
 */
 View::composer([
             //Pattern
-            'package-crawler::admin.pattern.pattern-edit',
-            'package-crawler::admin.pattern.pattern-form',
-            'package-crawler::admin.pattern.pattern-items',
-            'package-crawler::admin.pattern.pattern-item',
-            'package-crawler::admin.pattern.pattern-search',
+            'package-crawler::admin.crawler.pattern.pattern-edit',
+            'package-crawler::admin.crawler.pattern.pattern-form',
+            'package-crawler::admin.crawler.pattern.pattern-items',
+            'package-crawler::admin.crawler.pattern.pattern-item',
+            'package-crawler::admin.crawler.pattern.pattern-search',
     ], function ($view) {
 
         //Order by params
@@ -39,6 +39,10 @@ View::composer([
             trans('crawler-admin.sidebar.add') => [
                 'url' => URL::route('crawler.site.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
+            ],
+            trans('crawler-admin.sidebar.list_patterns') => [
+                "url" => URL::route('crawler.pattern.list', []),
+                'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.list_sites') => [
                 "url" => URL::route('crawler.site.list', []),

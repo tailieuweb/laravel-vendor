@@ -24,11 +24,11 @@ View::composer([
                 'package-crawler::admin.crawler-lang',
 
                 //Pattern
-                'package-crawler::admin.pattern.pattern-edit',
-                'package-crawler::admin.pattern.pattern-form',
-                'package-crawler::admin.pattern.pattern-items',
-                'package-crawler::admin.pattern.pattern-item',
-                'package-crawler::admin.pattern.pattern-search',
+                'package-crawler::admin.crawler.pattern.pattern-edit',
+                'package-crawler::admin.crawler.pattern.pattern-form',
+                'package-crawler::admin.crawler.pattern.pattern-items',
+                'package-crawler::admin.crawler.pattern.pattern-item',
+                'package-crawler::admin.crawler.pattern.pattern-search',
 
     ], function ($view) {
 
@@ -52,6 +52,10 @@ View::composer([
             ],
             trans('crawler-admin.sidebar.list_sites') => [
                 "url" => URL::route('crawler.site.list', []),
+                'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
+            ],
+            trans('crawler-admin.sidebar.list_patterns') => [
+                "url" => URL::route('crawler.pattern.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.config') => [

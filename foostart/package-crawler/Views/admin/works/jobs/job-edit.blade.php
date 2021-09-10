@@ -23,9 +23,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="panel panel-info">
 
                 <!--TITLE BAR-->
@@ -58,17 +56,14 @@
                 @endif
 
                 <div class="panel-body">
-
-                            @include('package-crawler::admin.works.jobs.job-form')
-
+                    @include('package-crawler::admin.works.jobs.job-form')
                 </div>
             </div>
         </div>
 
-        <div class='col-md-4'>
+        <div class='col-md-3'>
             @include('package-crawler::admin.works.jobs.job-search')
         </div>
 
-    </div>
 </div>
 @stop
