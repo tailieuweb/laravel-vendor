@@ -58,10 +58,19 @@ $withs = [
                 </a>
             </th>
 
-            <!--JOB NAME-->
+            <!--NAME-->
             <?php $name = 'job_name' ?>
             <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                 {!! trans($plang_admin.'.columns.job_name') !!}
+                <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                    @if($sorting['items'][$name] == 'asc')
+                        <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                    @elseif($sorting['items'][$name] == 'desc')
+                        <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                    @else
+                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                    @endif
+                </a>
             </th>
 
             <!--STATUS-->

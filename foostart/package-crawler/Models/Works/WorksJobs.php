@@ -72,6 +72,9 @@ class WorksJobs extends FooModel {
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
+            'id',
+            'job_name',
+            'status',
             'updated_at',
             $this->field_status,
         ];
