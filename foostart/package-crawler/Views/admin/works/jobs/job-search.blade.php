@@ -14,6 +14,11 @@
                     {!! trans($plang_admin.'.buttons.reset') !!}
                 </a>
                 {!! Form::submit(trans($plang_admin.'.buttons.search').'', ["class" => "btn btn-info", 'id' => 'search-submit']) !!}
+                {!! Form::submit(trans($plang_admin.'.buttons.export').'', [
+                                                                            "class" => "btn btn-info",
+                                                                            'id' => 'export-submit',
+                                                                            'name'=>'export'
+                                                                            ])!!}
             </div>
 
             <!-- KEYWORD -->

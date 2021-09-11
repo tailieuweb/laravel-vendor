@@ -122,7 +122,7 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
             <!--OPERATOR-->
             <td>
                 <!--edit-->
-                <a href="{!! URL::route('pexcels.edit', [   'id' => $item->id,
+                <a href="{!! URL::route('pexcel.edit', [   'id' => $item->id,
                    '_token' => csrf_token()
                    ])
                    !!}">
@@ -130,7 +130,7 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
                 </a>
 
                 <!--copy-->
-                <a href="{!! URL::route('pexcels.copy',[    'cid' => $item->id,
+                <a href="{!! URL::route('pexcel.copy',[    'cid' => $item->id,
                    '_token' => csrf_token(),
                    ])
                    !!}"
@@ -139,7 +139,7 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
                 </a>
 
                 <!--delete-->
-                <a href="{!! URL::route('pexcels.delete',[  'id' => $item->id,
+                <a href="{!! URL::route('pexcel.delete',[  'id' => $item->id,
                    '_token' => csrf_token(),
                    ])
                    !!}"

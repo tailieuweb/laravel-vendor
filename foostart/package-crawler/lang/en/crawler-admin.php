@@ -149,6 +149,7 @@ return [
         'crawl_question' => 'Crawl question',
         'crawl_answer' => 'Crawl answer',
         'restore' => 'Restore',
+        'export' => 'Export',
     ],
 
 

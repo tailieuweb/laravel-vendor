@@ -14,7 +14,7 @@
 use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
-
+use Foostart\Crawler\Helper\JobExport;
 use Foostart\Crawler\Controllers\Admin\BaseCrawlerAdminController;
 use Foostart\Crawler\Models\Works\WorksJobs;
 use Foostart\Crawler\Models\Sites;
@@ -90,6 +90,13 @@ class JobsAdminController extends BaseCrawlerAdminController {
             'config_status' => $this->obj_item->config_status
         ));
 
+        //Export
+        if (isset($params['export'])) {
+            $jobExport = new JobExport();
+            $jobExport->jobExport = $items;
+            $jobExport->exportJobs($items);
+            return $jobExport->exportJobs($items);
+        }
         return view($this->page_views['admin']['items'], $this->data_view);
     }
 

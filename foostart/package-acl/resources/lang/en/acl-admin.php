@@ -25,6 +25,7 @@ return [
         'categories' => 'Categories',
         'category' => 'Category',
         'pattern' => 'Pattern',
+        'pexcel' => 'Pexcel',
     ],
 
     /***********************************************************************

@@ -36,7 +36,7 @@ class PexcelServiceProvider extends ServiceProvider {
         $this->publishViews();
 
         // publish assets
-        $this->publishAssets();
+        //$this->publishAssets();
 
     }
 

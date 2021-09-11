@@ -12,3 +12,20 @@
 3. Language standard
 4. Add filters on table data
 5. Add token for prevent XSRF
+
+
+1. config/app.php
+   'providers' => [
+   /*
+    * Package Service Providers...
+      */
+      Maatwebsite\Excel\ExcelServiceProvider::class,
+      ]
+
+'aliases' => [
+...
+'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+]
+
+2. Publish
+php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config

@@ -2,9 +2,17 @@
 
 namespace Foostart\Pexcel\Helper;
 
-class PexcelParser
-{
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\Exportable;
 
+class PexcelParser implements  FromCollection
+{
+    use Exportable;
+
+    public function collection()
+    {
+
+    }
     public function isValidFile($file_path)
     {
 
@@ -111,7 +119,7 @@ class PexcelParser
 
     public function export_items($items = []) {
 
-        $temp = realpath(base_path('public/files/templates/template.xlsx'));
+        $temp = realpath(base_path('/files/1/1-pexcels/thong-ke-viec-lam.xls'));
 
         $columns =  ['A' => 'A', 'B' => 'B', 'C' => 'C' , 'D' => 'D', 'E' => 'E', 'F' => 'F'];
 
@@ -160,4 +168,7 @@ class PexcelParser
 
         })->download('xlsx');
     }
+
+
+
 }

@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
     {{ trans($plang_admin.'.pages.title-list') }}
@@ -46,7 +46,7 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['pexcels.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
+                        {!! Form::open(['route'=>['pexcel.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
                             @include('package-pexcel::admin.pexcel-item')
 

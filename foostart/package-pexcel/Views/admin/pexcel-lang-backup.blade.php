@@ -49,7 +49,7 @@
                     }
                     ?>
                     <td>
-                        <a href="{!! URL::route('pexcels.lang', ['v' => base64_encode($group_backup), 'lang' => $lang]) !!}">
+                        <a href="{!! URL::route('pexcel.lang', ['v' => base64_encode($group_backup), 'lang' => $lang]) !!}">
                             {!! basename($backup) !!}
                         </a>
                     </td>

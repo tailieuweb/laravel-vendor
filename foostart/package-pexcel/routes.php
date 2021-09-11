@@ -36,102 +36,105 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-         Route::get('admin/pexcels', [
-            'as' => 'pexcels.list',
-            'uses' => 'PexcelAdminController@index'
-        ]);
-        Route::get('admin/pexcels/list', [
-            'as' => 'pexcels.list',
+         Route::get('admin/pexcel', [
+            'as' => 'pexcel.list',
             'uses' => 'PexcelAdminController@index'
         ]);
 
         /**
          * view
          */
-        Route::get('admin/pexcels/view', [
-            'as' => 'pexcels.view',
+        Route::get('admin/pexcel/view', [
+            'as' => 'pexcel.view',
             'uses' => 'PexcelAdminController@view'
         ]);
 
         /**
          * download
          */
-        Route::get('admin/pexcels/download', [
-            'as' => 'pexcels.download',
+        Route::get('admin/pexcel/download', [
+            'as' => 'pexcel.download',
             'uses' => 'PexcelAdminController@download'
         ]);
 
         /**
          * save
          */
-        Route::post('admin/pexcels/save', [
-            'as' => 'pexcels.save',
+        Route::post('admin/pexcel/save', [
+            'as' => 'pexcel.save',
             'uses' => 'PexcelAdminController@save'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/pexcels/edit', [
-            'as' => 'pexcels.edit',
+        Route::get('admin/pexcel/edit', [
+            'as' => 'pexcel.edit',
             'uses' => 'PexcelAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/pexcels/copy', [
-            'as' => 'pexcels.copy',
+        Route::get('admin/pexcel/copy', [
+            'as' => 'pexcel.copy',
             'uses' => 'PexcelAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/pexcels/edit', [
-            'as' => 'pexcels.post',
+        Route::post('admin/pexcel/edit', [
+            'as' => 'pexcel.post',
             'uses' => 'PexcelAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/pexcels/delete', [
-            'as' => 'pexcels.delete',
+        Route::get('admin/pexcel/delete', [
+            'as' => 'pexcel.delete',
             'uses' => 'PexcelAdminController@delete'
+        ]);
+        /**
+         * restore
+         */
+        Route::get('admin/pexcel/restore', [
+            'as' => 'pexcel.restore',
+            'uses' => 'PexcelAdminController@restore'
         ]);
 
         /**
          * trash
          */
-         Route::get('admin/pexcels/trash', [
-            'as' => 'pexcels.trash',
+         Route::get('admin/pexcel/trash', [
+            'as' => 'pexcel.trash',
             'uses' => 'PexcelAdminController@trash'
         ]);
 
         /**
          * configs
         */
-        Route::get('admin/pexcels/config', [
-            'as' => 'pexcels.config',
+        Route::get('admin/pexcel/config', [
+            'as' => 'pexcel.config',
             'uses' => 'PexcelAdminController@config'
         ]);
 
-        Route::post('admin/pexcels/config', [
-            'as' => 'pexcels.config',
+        Route::post('admin/pexcel/config', [
+            'as' => 'pexcel.config',
             'uses' => 'PexcelAdminController@config'
         ]);
 
         /**
          * language
         */
-        Route::get('admin/pexcels/lang', [
-            'as' => 'pexcels.lang',
+        Route::get('admin/pexcel/lang', [
+            'as' => 'pexcel.lang',
             'uses' => 'PexcelAdminController@lang'
         ]);
 
-        Route::post('admin/pexcels/lang', [
-            'as' => 'pexcels.lang',
+        Route::post('admin/pexcel/lang', [
+            'as' => 'pexcel.lang',
             'uses' => 'PexcelAdminController@lang'
         ]);
 

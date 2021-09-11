@@ -36,7 +36,7 @@
 
                     <!--NAME-->
                     <td>
-                        <a href="{!! URL::route('pexcels.config', ['v' => base64_encode($backup)]) !!}">
+                        <a href="{!! URL::route('pexcel.config', ['v' => base64_encode($backup)]) !!}">
                             {!! basename($backup) !!}
                         </a>
                     </td>

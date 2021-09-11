@@ -3,7 +3,7 @@
     "description": "Create overview pexcel can intergrate other project",
     "keywords": [
         "foostart",
-        "laravel 5 package pexcel"
+        "laravel 8 package pexcel"
     ],
     "authors": [
         {
@@ -14,6 +14,7 @@
     ],
     "license": "MIT",
     "require": {
+        "maatwebsite/excel": "*"
     },
     "autoload": {
         "psr-4": {

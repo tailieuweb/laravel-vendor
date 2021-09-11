@@ -49,7 +49,7 @@ class PexcelAdminController extends FooController {
         $this->package_base_name = 'pexcel';
 
         // root routers
-        $this->root_router = 'pexcels';
+        $this->root_router = 'pexcel';
 
         // page views
         $this->page_views = [

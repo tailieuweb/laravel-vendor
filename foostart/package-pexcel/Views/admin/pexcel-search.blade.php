@@ -6,11 +6,11 @@
     </div>
     <div class="panel-body">
 
-        {!! Form::open(['route' => 'pexcels.list','method' => 'get']) !!}
+        {!! Form::open(['route' => 'pexcel.list','method' => 'get']) !!}
 
             <!--BUTTONS-->
             <div class="form-group">
-                <a href="{!! URL::route('pexcels.list', ['context' => @$params['context']]) !!}" class="btn btn-default search-reset">
+                <a href="{!! URL::route('pexcel.list', ['context' => @$params['context']]) !!}" class="btn btn-default search-reset">
                     {!! trans($plang_admin.'.buttons.reset') !!}
                 </a>
                 {!! Form::submit(trans($plang_admin.'.buttons.search').'', ["class" => "btn btn-info", 'id' => 'search-submit']) !!}
@@ -23,7 +23,7 @@
                 'value' => @$params['keyword'],
             ])
 
-           
+
             <!--SORTING-->
             @include('package-category::admin.partials.sorting')
 
