@@ -72,6 +72,8 @@ class WorksCategories extends FooModel {
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
+            'id',
+            'category_name',
             'updated_at',
             $this->field_status,
         ];
@@ -146,7 +148,7 @@ class WorksCategories extends FooModel {
      * @return ELOQUENT OBJECT
      */
     protected function joinTable(array $params = []){
-        return $this;
+        return $this->withTrashed();
     }
 
     /**
@@ -281,22 +283,38 @@ class WorksCategories extends FooModel {
      */
     public function deleteItem(array $input, $delete_type) {
 
-        $item = $this->find($input['id']);
+        $item = $this->withTrashed()->find($input['id']);
 
         if ($item) {
             switch ($delete_type) {
                 case 'delete-trash':
-                    return $item->fdelete($item);
-                    break;
-                case 'delete-forever':
+                    $item->fdelete($item);
                     return $item->delete();
-                    break;
+                case 'delete-forever':
+                    return $item->forceDelete();
             }
 
         }
 
         return FALSE;
     }
+
+    /**
+     *
+     * @param ARRAY $input list of parameters
+     * @return boolean TRUE incase delete successfully otherwise return FALSE
+     */
+    public function restoreItem(array $input) {
+
+        $item = $this->withTrashed()->find($input['id']);
+
+        if ($item) {
+            $item->restore();
+        }
+
+        return FALSE;
+    }
+
 
 
     /**

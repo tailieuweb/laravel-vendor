@@ -242,6 +242,44 @@ class CategoriesAdminController extends BaseCrawlerAdminController {
                         ->withMessage(trans($this->plang_admin.'.actions.delete-error'));
     }
 
+    /**
+     * Delete existing item
+     * @return view list of items
+     * @date 27/12/2017
+     */
+    public function restore(Request $request) {
+
+        $item = NULL;
+        $flag = TRUE;
+        $params = array_merge($request->all(), $this->getUser());
+        $delete_type = isset($params['del-forever'])?'delete-forever':'delete-trash';
+        $id = (int)$request->get('id');
+        $ids = $request->get('ids');
+
+        $is_valid_request = $this->isValidRequest($request);
+
+        if ($is_valid_request && (!empty($id) || !empty($ids))) {
+
+            $ids = !empty($id)?[$id]:$ids;
+
+            foreach ($ids as $id) {
+
+                $params['id'] = $id;
+
+                if (!$this->obj_item->restoreItem($params)) {
+                    $flag = FALSE;
+                }
+            }
+            if ($flag) {
+                return Redirect::route($this->root_router.'.list')
+                    ->withMessage(trans($this->plang_admin.'.actions.delete-ok'));
+            }
+        }
+
+        return Redirect::route($this->root_router.'.list')
+            ->withMessage(trans($this->plang_admin.'.actions.delete-error'));
+    }
+
 
 
     /**

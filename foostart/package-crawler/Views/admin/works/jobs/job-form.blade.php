@@ -10,7 +10,7 @@
         'routeRestore' => 'crawler.work.job.restore',
         'routeDelete' => 'crawler.work.job.delete',
     ])
-    <!--/NAME-->
+    <!--/BUTTON FORM-->
 
     <!--TAB MENU-->
     <ul class="nav nav-tabs">

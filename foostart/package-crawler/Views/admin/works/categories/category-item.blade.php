@@ -1,7 +1,7 @@
 <?php
 $withs = [
     'counter' => '5%',
-    'category_id' => '10%',
+    'id' => '10%',
     'category_name' => '40%',
     'status' => '10%',
     'updated_at' => '20%'
@@ -44,7 +44,7 @@ $withs = [
                 </th>
 
                 <!-- ID -->
-                <?php $name = 'category_id' ?>
+                <?php $name = 'id' ?>
                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                     {!! trans($plang_admin.'.labels.'.$name) !!}
                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
@@ -58,10 +58,19 @@ $withs = [
                     </a>
                 </th>
 
-                <!--category NAME-->
+                <!--NAME-->
                 <?php $name = 'category_name' ?>
                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                     {!! trans($plang_admin.'.columns.category_name') !!}
+                    <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                        @if($sorting['items'][$name] == 'asc')
+                            <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                        @elseif($sorting['items'][$name] == 'desc')
+                            <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                        @else
+                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        @endif
+                    </a>
                 </th>
 
                 <!--STATUS-->

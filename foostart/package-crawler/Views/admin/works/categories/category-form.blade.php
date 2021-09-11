@@ -4,22 +4,13 @@
 
 {!! Form::open(['route'=>['crawler.work.category.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
 
-<!--BUTTONS-->
-<div class='btn-form'>
-    <!-- DELETE BUTTON -->
-    @if($item)
-        <a href="{!! URL::route('crawler.work.category.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
-           class="btn btn-danger pull-right margin-left-5 delete">
-            {!! trans($plang_admin.'.buttons.delete') !!}
-        </a>
-@endif
-<!-- DELETE BUTTON -->
-
-    <!-- SAVE BUTTON -->
-{!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
-<!-- /SAVE BUTTON -->
-</div>
-<!--/BUTTONS-->
+<!--BUTTON FORM -->
+@include('package-category::admin.partials.btn-form-edit', [
+    'item' => @$item,
+    'routeRestore' => 'crawler.work.category.restore',
+    'routeDelete' => 'crawler.work.category.delete',
+])
+<!--/BUTTON FORM-->
 
 <!--TAB MENU-->
 <ul class="nav nav-tabs">
