@@ -179,7 +179,9 @@ class WorksJobs extends FooModel {
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
                                     $elo->where($this->table . '.job_description', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.job_url','LIKE', "%{$value}%");
+                                    ->orWhere($this->table . '.job_url','LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.job_name','LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.job_overview','LIKE', "%{$value}%");
                                 });
                             }
                             break;

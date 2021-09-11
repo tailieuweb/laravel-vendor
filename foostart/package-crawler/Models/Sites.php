@@ -1,7 +1,6 @@
 <?php namespace Foostart\Crawler\Models;
 
 use Foostart\Category\Library\Models\FooModel;
-use Illuminate\Database\Eloquent\Model;
 
 class Sites extends FooModel {
 

@@ -28,8 +28,8 @@ class CreateCrawlerSitesTable extends FoostartMigration
             $table->string($this->prefix_column . 'name', 255)->comment('Site name');
             $table->string($this->prefix_column . 'slug', 255)->comment('Site slug');
             $table->string($this->prefix_column . 'url', 255)->comment('Site url');
-            $table->integer($this->prefix_column . 'type', 255)->comment('Site type');
-            $table->string($this->prefix_column . 'image', 255)->comment('Site image');
+            $table->integer($this->prefix_column . 'type')->comment('Site type');
+            $table->string($this->prefix_column . 'image', 255)->nullable()->comment('Site image');
             $table->text($this->prefix_column . 'description')->comment('Site description');
 
             //Set common columns

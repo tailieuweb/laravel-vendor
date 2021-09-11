@@ -10,7 +10,7 @@ use Foostart\Crawler\Models\RegularExpressions;
 use Foostart\Crawler\Models\Patterns;
 
 
-class CrawlerSeeder extends FoostartSeeder
+class StackOverflowSeeder extends FoostartSeeder
 {
     public $obj_site;
     public $obj_re;
@@ -45,7 +45,10 @@ class CrawlerSeeder extends FoostartSeeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        $this->call('Database\Seeders\WorksSeeder');
+        $this->call('Foostart\Acl\Database\PermissionSeeder');
+        $this->call('Foostart\Acl\Database\GroupsSeeder');
+        $this->call('Foostart\Acl\Database\UserSeeder');
+
         $this->createSampleData();
     }
 

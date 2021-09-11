@@ -140,17 +140,18 @@ $withs = [
 
                     <!--NAME-->
                     <td>
-                        <a href="{!! URL::route($siteTypes[$item->site_type]['route'], [
-                                                                                        '_token' => csrf_token()
-                                                                                        ])
-                                !!}">
-                        {!! $item->site_name !!}
+                        @if(isset($siteTypes[$item->site_type]))
+                            <a href="{!! URL::route($siteTypes[$item->site_type]['route'], ['_token' => csrf_token()])!!}">
+                        @else
+                            <a href="#"></a>
+                        @endif
+                            {!! $item->site_name !!}
                         </a>
                     </td>
 
                     <!--STATUS-->
                     <td style="text-align: center;">
-                        @if($item->status && (isset($config_status['list'][$item->status])))
+                        @if(isset($item->status) && (isset($config_status['list'][$item->status])))
                             <i class="fa fa-circle" style="color:{!! $config_status['color'][$item->status] !!}" title='{!! $config_status["list"][$item->status] !!}'></i>
                         @else
                         <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
