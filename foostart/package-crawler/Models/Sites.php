@@ -14,6 +14,11 @@ class Sites extends FooModel {
 
         parent::__construct($attributes);
 
+        if (isset($attributes['perPage'])) {
+            $this->perPage = $attributes['perPage'];
+        } else {
+            $this->perPage = -1;
+        }
     }
 
     public function setConfigs() {
@@ -226,7 +231,12 @@ class Sites extends FooModel {
      * @return ELOQUENT OBJECT
      */
     public function paginateItems(array $params, $elo) {
-        $items = $elo->paginate($this->perPage);
+
+        if ($this->perPage > 0 ) {
+            $items = $elo->paginate($this->perPage);
+        } else {
+            $items = $elo->get();
+        }
 
         return $items;
     }

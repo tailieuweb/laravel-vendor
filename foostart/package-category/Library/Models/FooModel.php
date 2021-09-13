@@ -84,6 +84,10 @@ class FooModel extends Model
         if ($this->config_file) {
             $this->config = config($this->config_file);
         }
+
+        if (!empty($attributes['perPage'])) {
+            $this->perPage = $attributes['perPage'];
+        }
     }
 
     /**
@@ -241,11 +245,11 @@ class FooModel extends Model
 
 
     /**
-     * @param int $per_page
+     * @param int $perPage
      */
-    public function setPerPage($per_page)
+    public function setPerPage($perPage)
     {
-        $this->per_page = $per_page;
+        $this->perPage = $perPage;
     }
 
     /**
@@ -253,7 +257,7 @@ class FooModel extends Model
      */
     public function getPerPage()
     {
-        return $this->per_page;
+        return $this->perPage;
     }
 
     /**

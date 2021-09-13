@@ -1103,6 +1103,7 @@ return array(
     'Foostart\\Contact\\Models\\Contact' => $vendorDir . '/foostart/package-contact/Models/Contact.php',
     'Foostart\\Contact\\Validators\\ContactValidator' => $vendorDir . '/foostart/package-contact/Validators/ContactValidator.php',
     'Foostart\\Contact\\Validators\\SampleValidator' => $vendorDir . '/foostart/package-contact/Validators/SampleValidator.php',
+    'Foostart\\Crawler\\Commands\\WorkCommand' => $vendorDir . '/foostart/package-crawler/Commands/WorkCommand.php',
     'Foostart\\Crawler\\Constants\\CrawlerConstants' => $vendorDir . '/foostart/package-crawler/Constants/CrawlerConstants.php',
     'Foostart\\Crawler\\Controllers\\Admin\\BaseCrawlerAdminController' => $vendorDir . '/foostart/package-crawler/Controllers/Admin/BaseCrawlerAdminController.php',
     'Foostart\\Crawler\\Controllers\\Admin\\CrawlerAdminController' => $vendorDir . '/foostart/package-crawler/Controllers/Admin/CrawlerAdminController.php',

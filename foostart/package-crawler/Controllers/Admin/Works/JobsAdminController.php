@@ -93,9 +93,11 @@ class JobsAdminController extends BaseCrawlerAdminController {
         //Export
         if (isset($params['export'])) {
             $jobExport = new JobExport();
-            $jobExport->jobExport = $items;
-            $jobExport->exportJobs($items);
-            return $jobExport->exportJobs($items);
+            $this->obj_item->setPerPage(-1);
+            $allItems = $this->obj_item->selectItems($params);
+            $jobExport->jobExport = $allItems;
+            $jobExport->exportJobs($allItems);
+            return $jobExport->exportJobs($allItems);
         }
         return view($this->page_views['admin']['items'], $this->data_view);
     }

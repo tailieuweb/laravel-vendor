@@ -25,9 +25,11 @@ class WorksJobs extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'site_id',
+            'root_id',
             'job_name',
             'job_url',
             'job_description',
+            'job_requirements',
             'job_overview',
         ]);
 
@@ -35,6 +37,10 @@ class WorksJobs extends FooModel {
         $this->fields = array_merge($this->fields, [
              'site_id' => [
                 'name' => 'site_id',
+                'type' => 'Int',
+            ],
+            'root_id' => [
+                'name' => 'root_id',
                 'type' => 'Int',
             ],
             'job_name' => [
@@ -53,6 +59,10 @@ class WorksJobs extends FooModel {
                 'name' => 'job_description',
                 'type' => 'Text',
             ],
+            'job_requirements' => [
+                'name' => 'job_requirements',
+                'type' => 'Text',
+            ],
             'job_overview' => [
                 'name' => 'job_overview',
                 'type' => 'Text',
@@ -66,7 +76,9 @@ class WorksJobs extends FooModel {
             'job_image',
             //Relation
             'job_url',
+            'root_id',
             'job_description',
+            'job_requirements',
             'job_overview',
         ]);
 
@@ -81,6 +93,8 @@ class WorksJobs extends FooModel {
         //check valid fields for filter
         $this->valid_filter_fields = [
             'keyword',
+            'job_url',
+            'root_id',
             'status',
         ];
 
@@ -135,9 +149,11 @@ class WorksJobs extends FooModel {
         $elo = $this->createSelect($elo);
 
         //id
-        $elo = $elo->where($this->primaryKey, $params['id']);
+        if (!empty($params['id'])) {
+            $elo = $elo->where($this->primaryKey, $params['id']);
+        }
 
-        //first item
+       //first item
         $item = $elo->first();
 
         return $item;
@@ -174,11 +190,18 @@ class WorksJobs extends FooModel {
                                 $elo = $elo->where($this->table . '.'.$this->field_status, '=', $value);
                             }
                             break;
+                        case 'job_url':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.job_url','LIKE', "%{$value}%");
+                            }
+                            break;
+
 
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
                                     $elo->where($this->table . '.job_description', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.job_requirements','LIKE', "%{$value}%")
                                     ->orWhere($this->table . '.job_url','LIKE', "%{$value}%")
                                     ->orWhere($this->table . '.job_name','LIKE', "%{$value}%")
                                     ->orWhere($this->table . '.job_overview','LIKE', "%{$value}%");
@@ -215,7 +238,13 @@ class WorksJobs extends FooModel {
      * @return ELOQUENT OBJECT
      */
     public function paginateItems(array $params, $elo) {
-        $items = $elo->paginate($this->perPage);
+
+        if (isset($this->perPage) && ($this->perPage > 0)) {
+            $items = $elo->paginate($this->perPage);
+        } else {
+            $items = $elo->get();
+        }
+
 
         return $items;
     }
@@ -261,13 +290,22 @@ class WorksJobs extends FooModel {
     public function insertItem($params = []) {
 
         $dataFields = $this->getDataFields($params, $this->fields);
+        if ($dataFields['job_url']) {
+            $_params = [
+                'job_url' => $params['job_url']
+            ];
+            $isExisting = $this->selectItem($_params);
+            if (empty($isExisting)) {
+                $item = self::create($dataFields);
 
-        $item = self::create($dataFields);
+                $key = $this->primaryKey;
+                $item->id = $item->$key;
 
-        $key = $this->primaryKey;
-        $item->id = $item->$key;
+                return $item;
+            }
 
-        return $item;
+        }
+
     }
 
 

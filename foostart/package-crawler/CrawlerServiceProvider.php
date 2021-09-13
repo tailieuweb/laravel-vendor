@@ -5,6 +5,7 @@ use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
 use URL,
     Route;
 use Illuminate\Http\Request;
+use Foostart\Crawler\Commands\JobCommand;
 
 class CrawlerServiceProvider extends ServiceProvider {
 
@@ -42,6 +43,8 @@ class CrawlerServiceProvider extends ServiceProvider {
         // public seeders
         $this->publishSeeders();
 
+        // Register commands
+        $this->registerCommands();
     }
 
     /**
@@ -116,6 +119,14 @@ class CrawlerServiceProvider extends ServiceProvider {
         $this->publishes([
             __DIR__ . '/database/seeders' => $this->app->databasePath() . '/seeders',
         ]);
+    }
+
+    public function registerCommands() {
+        $this->app->singleton('crawler.job', function ($app) {
+            return new JobCommand;
+        });
+
+        $this->commands('crawler.job');
     }
 
 }

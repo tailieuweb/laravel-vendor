@@ -28,7 +28,7 @@ class CreateCrawlerWorksCategoriesTable extends FoostartMigration
             // Other attributes
             $table->string($this->prefix_column . 'name', 500)->comment('Name');
             $table->string($this->prefix_column . 'url', 255)->comment('Url');
-            $table->string($this->prefix_column . 'image', 255)->comment('Image');
+            $table->string($this->prefix_column . 'image', 255)->nullable()->comment('Image');
             $table->text($this->prefix_column . 'overview')->nullable()->comment('Overview');
             $table->text($this->prefix_column . 'description')->nullable()->comment('Description');
 

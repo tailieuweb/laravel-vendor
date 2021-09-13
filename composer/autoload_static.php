@@ -1793,6 +1793,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Contact\\Models\\Contact' => __DIR__ . '/..' . '/foostart/package-contact/Models/Contact.php',
         'Foostart\\Contact\\Validators\\ContactValidator' => __DIR__ . '/..' . '/foostart/package-contact/Validators/ContactValidator.php',
         'Foostart\\Contact\\Validators\\SampleValidator' => __DIR__ . '/..' . '/foostart/package-contact/Validators/SampleValidator.php',
+        'Foostart\\Crawler\\Commands\\WorkCommand' => __DIR__ . '/..' . '/foostart/package-crawler/Commands/WorkCommand.php',
         'Foostart\\Crawler\\Constants\\CrawlerConstants' => __DIR__ . '/..' . '/foostart/package-crawler/Constants/CrawlerConstants.php',
         'Foostart\\Crawler\\Controllers\\Admin\\BaseCrawlerAdminController' => __DIR__ . '/..' . '/foostart/package-crawler/Controllers/Admin/BaseCrawlerAdminController.php',
         'Foostart\\Crawler\\Controllers\\Admin\\CrawlerAdminController' => __DIR__ . '/..' . '/foostart/package-crawler/Controllers/Admin/CrawlerAdminController.php',

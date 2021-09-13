@@ -1,10 +1,10 @@
 <?php
 $withs = [
-    'counter' => '5%',
-    'id' => '10%',
-    'site_name' => '45%',
+    'counter' => '7%',
+    'id' => '8%',
+    'site_name' => '35%',
     'status' => '10%',
-    'updated_at' => '15%',
+    'updated_at' => '25%',
     'operations' => '15%',
 ];
 ?>

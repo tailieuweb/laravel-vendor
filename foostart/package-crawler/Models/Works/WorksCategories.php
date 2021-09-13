@@ -15,6 +15,9 @@ class WorksCategories extends FooModel {
 
         parent::__construct($attributes);
 
+        if (isset($attributes['perPage'])) {
+            $this->perPage = $attributes['perPage'];
+        }
     }
 
     public function setConfigs() {
@@ -80,6 +83,7 @@ class WorksCategories extends FooModel {
         //check valid fields for filter
         $this->valid_filter_fields = [
             'keyword',
+            'site_id',
             'status',
         ];
 
@@ -168,8 +172,13 @@ class WorksCategories extends FooModel {
                     switch($column)
                     {
                         case 'category_name':
+                        if (!empty($value)) {
+                            $elo = $elo->where($this->table . '.category_name', '=', $value);
+                        }
+                        break;
+                        case 'site_id':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.category_name', '=', $value);
+                                $elo = $elo->where($this->table . '.site_id', '=', $value);
                             }
                             break;
                         case 'category_url':
@@ -221,7 +230,11 @@ class WorksCategories extends FooModel {
      * @return ELOQUENT OBJECT
      */
     public function paginateItems(array $params, $elo) {
-        $items = $elo->paginate($this->perPage);
+        if ($this->perPage > 0 ) {
+            $items = $elo->paginate($this->perPage);
+        } else {
+            $items = $elo->get();
+        }
 
         return $items;
     }

@@ -80,6 +80,13 @@ class Patterns extends FooModel {
     }
 
     /**
+     * Get the values for the pattern
+     */
+    public function values()
+    {
+        return $this->hasMany(RegularExpressions::class, 'pattern_id', 'pattern_id');
+    }
+    /**
      * Gest list of items
      * @param type $params
      * @return object list of categories
@@ -212,7 +219,12 @@ class Patterns extends FooModel {
      * @return ELOQUENT OBJECT
      */
     public function paginateItems(array $params, $elo) {
-        $items = $elo->paginate($this->perPage);
+
+        if (isset($this->perPage) && ($this->perPage > 0)) {
+            $items = $elo->paginate($this->perPage);
+        } else {
+            $items = $elo->get();
+        }
 
         return $items;
     }

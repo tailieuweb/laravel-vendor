@@ -88,17 +88,28 @@
                 </div>
             </div>
 
-             <!--DESCRIPTION-->
+            <!--DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
                 'name' => 'job_description',
                 'label' => trans($plang_admin.'.labels.job_description'),
                 'value' => @$item->job_description,
                 'description' => trans($plang_admin.'.descriptions.job_description'),
-                'rows' => 25,
+                'rows' => 15,
                 'tinymce' => true,
                 'errors' => $errors,
             ])
             <!--/DESCRIPTION-->
+            <!--REQUIREMENTS-->
+            @include('package-category::admin.partials.textarea', [
+                'name' => 'job_requirements',
+                'label' => trans($plang_admin.'.labels.job_requirements'),
+                'value' => @$item->job_description,
+                'description' => trans($plang_admin.'.descriptions.job_requirements'),
+                'rows' => 15,
+                'tinymce' => true,
+                'errors' => $errors,
+            ])
+            <!--/REQUIREMENTS-->
         </div>
         <!--/MENU #1-->
 

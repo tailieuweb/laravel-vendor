@@ -37,7 +37,7 @@ View::composer([
          */
         $sidebar_items = [
             trans('crawler-admin.sidebar.add') => [
-                'url' => URL::route('crawler.site.edit', []),
+                'url' => URL::route('crawler.pattern.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.list_patterns') => [

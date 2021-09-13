@@ -56,6 +56,7 @@ class WorksSeeder extends FoostartSeeder
                     "job_image" => "job_image_".$i,
                     "job_overview" => "job_overview_".$i,
                     "job_description" => "job_description_".$i,
+                    "job_requirements" => "job_requirements_".$i,
                 ];
                 $this->obj_works_jobs->create($work_job);
 
