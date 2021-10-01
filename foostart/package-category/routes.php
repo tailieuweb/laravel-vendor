@@ -23,7 +23,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/contexts/list', [
+        Route::get('admin/contexts', [
             'as' => 'contexts.list',
             'uses' => 'ContextAdminController@index'
         ]);
@@ -109,7 +109,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/categories/list', [
+        Route::get('admin/categories', [
             'as' => 'categories.list',
             'uses' => 'CategoryAdminController@index'
         ]);
