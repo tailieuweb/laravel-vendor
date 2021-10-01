@@ -1,5 +1,5 @@
 # Foostart: Package Acl
-
+git remote set-url origin git@github.com-foostart:foostart/package-acl.git
 * Access control list
 * Verson: 8.x
 * Support: Laravel 8x
