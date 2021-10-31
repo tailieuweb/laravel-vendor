@@ -92,14 +92,14 @@ class UserController extends Controller
         try {
             $user_leader = $this->user_repository->isLeader();
             $user = $this->user_repository->find($request->get('id'));
-
             if (!$this->user_repository->canUpdate($user)) {
 
                 return Redirect::route("users.list")->withErrors('User cant update');
             }
 
         } catch (JacopoExceptionsInterface $e) {
-            return Redirect::route("users.list")->withErrors('User not found');
+            $user = new User();
+//            return Redirect::route("users.list")->withErrors('User not found');
         }
         $presenter = new UserPresenter($user);
         // display view

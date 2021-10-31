@@ -127,7 +127,7 @@ return [
         'group' => 'Group search',
         'btn-reset' => 'Reset',
         'btn-submit' => 'Search',
-        'btn-advance' => 'Search advance',
+        'btn-advance' => 'Advanced search',
     ],
 
 
