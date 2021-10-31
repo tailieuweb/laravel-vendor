@@ -3,12 +3,12 @@
 <head>
 <meta content='en' http-equiv='content-language'>
 <meta charset='utf-8'>
-<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"a2159222e4","applicationID":"3826099","transactionName":"dQoIRERZCVVWQBhGAVcXBVgZXApbQA==","queueTime":0,"applicationTime":391,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"a2159222e4","applicationID":"3826099","transactionName":"dQoIRERZCVVWQBhGAVcXBVgZXApbQA==","queueTime":0,"applicationTime":311,"agent":""}</script>
 <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"a2159222e4",applicationID:"3826099"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
 <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 <title>IT Jobs in Viet Nam | ITviec</title>
-<meta content='1917 top IT jobs for you in Viet Nam on ITviec.com. Leading companies, high salary. Get your new job now!' name='description'>
-<meta content='1917 top IT jobs for you in Viet Nam on ITviec.com. Leading companies, high salary. Get your new job now!' property='og:description'>
+<meta content='2113 top IT jobs for you in Viet Nam on ITviec.com. Leading companies, high salary. Get your new job now!' name='description'>
+<meta content='2113 top IT jobs for you in Viet Nam on ITviec.com. Leading companies, high salary. Get your new job now!' property='og:description'>
 <meta content='IT Jobs in Viet Nam | ITviec' property='og:title'>
 <meta content='https://itviec.com/it-jobs' property='og:url'>
 <link href='https://itviec.com/it-jobs' rel='canonical'>
@@ -39,7 +39,7 @@
 <link href='https://itviec.com/assets/apple-touch-icon-76x76-c65466eedcd29e6176f309d76d4c54a5c2a61c35e879b1959973d9f4bc2c8d71.png' rel='apple-touch-icon' sizes='76x76'>
 <link href='https://itviec.com/assets/apple-touch-icon-60x60-5582a73e3408cbdcfd92c0af62ad7da73a2d53f603f88d3662dc392fd614f8a5.png' rel='apple-touch-icon' sizes='60x60'>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="2FRQyEbqYabHctmhlmiHbsP9Oz28ytDx1V269Luc4u32a1061qaV21yxRP7oSnt6o20ue1qefr9HONCD3MJwPA" />
+<meta name="csrf-token" content="kEYtsRWCWNB7SmIXCE_c7lElcvY4MOvo8Nwx76s0gTIWLs8cEhreEHv2Fz3i-bMopmyUtXakqAEX8pFnWg69XA" />
 <meta name="tracking-token" content="a98379174c1ebbc46a85b41c3123f91d04e285e8693b3eb5a7eba7ce111ef64993cafbb931d66f86c45333b76a798d39472ccf964015e9f447e1c97d9afad601" />
 <meta name="tracking-url" content="https://tracking.itviec.com" />
 <meta name="google-signin-client_id" content="854148892592-ojr6qf0k1bqbm0fm5ohgt7ep8bbiv1sn.apps.googleusercontent.com" />
@@ -9863,7 +9863,7 @@
 <g>
 <path style="fill:#338AF3;" d="M96.643,456.348h318.713c23.363-18.608,43.399-41.21,59.069-66.783H37.574
 		C53.245,415.137,73.281,437.74,96.643,456.348z" />
- <path style="fill:#338AF3;" d="M256,0c0,22.261,0,55.652,0,55.652h159.357C371.627,20.824,316.249,0,256,0z" />
+<path style="fill:#338AF3;" d="M256,0c0,22.261,0,55.652,0,55.652h159.357C371.627,20.824,316.249,0,256,0z" />
 </g>
 <g>
 <path id="SVGCleanerId_0_1_" style="fill:#338AF3;" d="M256,189.217h247.181c-6.419-23.814-16.175-46.255-28.755-66.783H256
@@ -10677,32 +10677,32 @@
 <div>
 <a class="cat-menu__sub-menu--item" href="/companies/cmc-global">CMC Global</a>
 <a class="cat-menu__sub-menu--item" href="/companies/fpt-software">FPT Software</a>
-<a class="cat-menu__sub-menu--item" href="/companies/viettel-group">Viettel Group</a>
 <a class="cat-menu__sub-menu--item" href="/companies/money-forward-vietnam-co-ltd">MONEY FORWARD VIETNAM CO.,LTD</a>
-<a class="cat-menu__sub-menu--item" href="/companies/saigon-technology-solutions">Saigon Technology Solutions</a>
+<a class="cat-menu__sub-menu--item" href="/companies/viettel-group">Viettel Group</a>
+<a class="cat-menu__sub-menu--item" href="/companies/hcl-vietnam-company-limited">HCL Vietnam Company Limited</a>
 <a class="cat-menu__sub-menu--item" href="/companies/techcombank">Techcombank</a>
+<a class="cat-menu__sub-menu--item" href="/companies/saigon-technology-solutions">Saigon Technology Solutions</a>
 <a class="cat-menu__sub-menu--item" href="/companies/dek-technologies">DEK Technologies</a>
-<a class="cat-menu__sub-menu--item" href="/companies/gft-technologies-vietnam">GFT Technologies Vietnam</a>
 </div>
 <div>
-<a class="cat-menu__sub-menu--item" href="/companies/hitachi-vantara">Hitachi Vantara</a>
-<a class="cat-menu__sub-menu--item" href="/companies/kms-technology">KMS Technology</a>
 <a class="cat-menu__sub-menu--item" href="/companies/home-credit-vietnam">Home Credit Vietnam </a>
+<a class="cat-menu__sub-menu--item" href="/companies/titan-technology-corporation">Titan Technology Corporation</a>
 <a class="cat-menu__sub-menu--item" href="/companies/nakivo">Nakivo</a>
+<a class="cat-menu__sub-menu--item" href="/companies/gft-technologies-vietnam">GFT Technologies Vietnam</a>
+<a class="cat-menu__sub-menu--item" href="/companies/zalo">Zalo</a>
+<a class="cat-menu__sub-menu--item" href="/companies/hitachi-vantara">Hitachi Vantara</a>
+<a class="cat-menu__sub-menu--item" href="/companies/nfq-asia">NFQ Asia</a>
 <a class="cat-menu__sub-menu--item" href="/companies/opswat-software-vietnam">OPSWAT Software Vietnam</a>
+</div>
+<div>
+<a class="cat-menu__sub-menu--item" href="/companies/kms-technology">KMS Technology</a>
+<a class="cat-menu__sub-menu--item" href="/companies/bbv-vietnam">bbv Vietnam</a>
+<a class="cat-menu__sub-menu--item" href="/companies/devblock-vietnam">DEVBLOCK VIETNAM</a>
 <a class="cat-menu__sub-menu--item" href="/companies/tymeglobal">TymeGlobal</a>
 <a class="cat-menu__sub-menu--item" href="/companies/simple-tech-investment">Simple Tech Investment</a>
-<a class="cat-menu__sub-menu--item" href="/companies/deliveree-on-demand-logistics">Deliveree On-Demand Logistics</a>
-</div>
-<div>
-<a class="cat-menu__sub-menu--item" href="/companies/zalo">Zalo</a>
-<a class="cat-menu__sub-menu--item" href="/companies/titan-technology-corporation">Titan Technology Corporation</a>
 <a class="cat-menu__sub-menu--item" href="/companies/capgemini-vietnam">Capgemini Vietnam</a>
-<a class="cat-menu__sub-menu--item" href="/companies/axon">AXON</a>
+<a class="cat-menu__sub-menu--item" href="/companies/parcel-perform">Parcel Perform</a>
 <a class="cat-menu__sub-menu--item" href="/companies/m_service-momo">M_Service (MoMo)</a>
-<a class="cat-menu__sub-menu--item" href="/companies/hansen-technologies">Hansen Technologies</a>
-<a class="cat-menu__sub-menu--item" href="/companies/propzy">PROPZY</a>
-<a class="cat-menu__sub-menu--item" href="/companies/skedulo-vietnam">Skedulo Vietnam</a>
 <div class='cat-menu__sub-menu--item view-all'>
 <a href="/jobs-company-index">View all Jobs by company</a>
 </div>
@@ -10848,16 +10848,16 @@
 
 <div id='jobs'>
 <h1>
-1,917 IT jobs in Vietnam
+2,113 IT jobs in Vietnam
 </h1>
 <div class='first-group'>
-<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='1' data-search--job-selection-job-url='/it-jobs/php-developer-php-javascript-aws-starboard-asia-co-ltd-5343/content'>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='1' data-search--job-selection-job-url='/it-jobs/backend-developer-golang-nodejs-net-sendo-vn-3055/content'>
 <div class='job_content'>
 <div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='A brand new 100% Japan-based company specialized in developing web and business application'>
-<a target="_blank" href="/companies/starboard-asia-co-ltd"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMmdwREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--8038c2d3ebca10cf79bf83670d875d6db1b54b18/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/starboard-asia-co-ltd-logo.png'>
-<img alt='Starboard Asia Co.,ltd. Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMmdwREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--8038c2d3ebca10cf79bf83670d875d6db1b54b18/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/starboard-asia-co-ltd-logo.png' size='65x65'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='Công ty Cổ phần Công nghệ Sen Đỏ - Đơn vị sở hữu sàn TMĐT hàng đầu Việt Nam'>
+<a target="_blank" href="/companies/sendo-vn"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMFpkRGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bc7463131b6c09e23c6320c0a799acd97895cfec/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/sendo-vn-logo.jpg'>
+<img alt='Sendo.vn Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMFpkRGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bc7463131b6c09e23c6320c0a799acd97895cfec/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/sendo-vn-logo.jpg' size='65x65'>
 </picture>
 </a></div>
 <div class='clearfix'></div>
@@ -10865,7 +10865,76 @@
 <div class='job__description'>
 <div class='job__body'>
 <div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/php-developer-php-javascript-aws-starboard-asia-co-ltd-5343">PHP Developer (PHP, JavaScript, AWS)</a>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/backend-developer-golang-nodejs-net-sendo-vn-3055">Backend Developer (Golang/ Nodejs/.Net)</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/golang"><span>
+Golang
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/nodejs"><span>
+NodeJS
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/.net"><span>
+.NET
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+4m
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+4m
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/product-owner-product-manager-sendo-vn-2450/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='Công ty Cổ phần Công nghệ Sen Đỏ - Đơn vị sở hữu sàn TMĐT hàng đầu Việt Nam'>
+<a target="_blank" href="/companies/sendo-vn"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMFpkRGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bc7463131b6c09e23c6320c0a799acd97895cfec/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/sendo-vn-logo.jpg'>
+<img alt='Sendo.vn Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMFpkRGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bc7463131b6c09e23c6320c0a799acd97895cfec/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/sendo-vn-logo.jpg' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/product-owner-product-manager-sendo-vn-2450">Product Owner/Product Manager</a>
 </h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
 <svg class='svg-icon__icon'>
 <use xlink:href='#usd_icon'></use>
@@ -10877,13 +10946,13 @@
 <div class='hidden-xs'>
 <ul class='benefits'>
 <li>
-Attractive salary/ bonus
+Premium Healthcare plan
 </li>
 <li>
-Opportunity to onsite in Japan
+Attractive salary package
 </li>
 <li>
-Company trip/ Team building
+18 days off paid annual leave
 </li>
 </ul>
 </div>
@@ -10893,13 +10962,546 @@ Company trip/ Team building
 </div>
 <ul class='benefits'>
 <li>
-Attractive salary/ bonus
+Premium Healthcare plan
 </li>
 <li>
-Opportunity to onsite in Japan
+Attractive salary package
 </li>
 <li>
-Company trip/ Team building
+18 days off paid annual leave
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/product-manager"><span>
+Product Manager
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/business-analyst"><span>
+Business Analyst
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/scrum"><span>
+Scrum
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+11m
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+11m
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/net-developers-mvc-mysql-tri-nam-group-co-jsc-5409/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title=' Là đơn vị cung ứng - tư vấn các giải pháp và dịch vụ công nghệ thông tin và truyền thông'>
+<a target="_blank" href="/companies/tri-nam-group-co-jsc"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMHpvR1E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--8842cdb624d68227125f7e5f8418dd13751cc85f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/z2077567364518_4b8d4045dd6c4232c13f3fab1161937f%20(1).jpg'>
+<img alt='Tri Nam Group Co.,JSC Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMHpvR1E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--8842cdb624d68227125f7e5f8418dd13751cc85f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/z2077567364518_4b8d4045dd6c4232c13f3fab1161937f%20(1).jpg' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/net-developers-mvc-mysql-tri-nam-group-co-jsc-5409">.NET Developers (MVC, MySQL)</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+<ul class='benefits'>
+<li>
+Môi trường làm việc lý tưởng
+</li>
+<li>
+Đào tạo và phát triển
+</li>
+<li>
+Quyền lợi ngập tràn
+</li>
+</ul>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ha Noi</div>
+</div>
+<ul class='benefits'>
+<li>
+Môi trường làm việc lý tưởng
+</li>
+<li>
+Đào tạo và phát triển
+</li>
+<li>
+Quyền lợi ngập tràn
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/.net"><span>
+.NET
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/mysql"><span>
+MySQL
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/angularjs"><span>
+AngularJS
+</span>
+</a>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/fresher-accepted"><span>
+Fresher Accepted
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+28m
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ha Noi</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+28m
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/nodejs-reactjs-developer-upto-3000-the-away-group-viet-nam-2524/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='Away Digital Teams'>
+<a target="_blank" href="/companies/the-away-group-viet-nam"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK0taSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1d355070b86af14e0daa91afcef26a07d93db792/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/MicrosoftTeams-image%20(22).png'>
+<img alt='The Away Group Viet Nam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK0taSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1d355070b86af14e0daa91afcef26a07d93db792/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/MicrosoftTeams-image%20(22).png' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/nodejs-reactjs-developer-upto-3000-the-away-group-viet-nam-2524">NodeJS - ReactJS Developer - upto $3000</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/nodejs"><span>
+NodeJS
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/css"><span>
+CSS
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/reactjs"><span>
+ReactJS
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+36m
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+36m
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/giam-doc-dam-bao-an-ninh-thong-tin-techcombank-4022/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='Techcombank- The leading commercial bank in Vietnam'>
+<a target="_blank" href="/companies/techcombank"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMDg1REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--877e2a12570edd47f200cd0aad26f33d29fe74f0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/techcombank-logo.png'>
+<img alt='Techcombank Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMDg1REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--877e2a12570edd47f200cd0aad26f33d29fe74f0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/techcombank-logo.png' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/giam-doc-dam-bao-an-ninh-thong-tin-techcombank-4022">Giám Đốc Đảm Bảo An Ninh thông tin </a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/manager"><span>
+Manager
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/agile"><span>
+Agile
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/networking"><span>
+Networking
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+40m
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+40m
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/senior-frontend-engineer-angular-hcl-vietnam-company-limited-4310/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='A $10.17 Bn G2000 Organization with 168,977 employees and operations in 50 countries'>
+<a target="_blank" href="/companies/hcl-vietnam-company-limited"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNjEzSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--e8b2fefe087556b5c4712d88ce10515b88263570/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/imgpsh_fullsize_anim%20(3).png'>
+<img alt='HCL Vietnam Company Limited Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNjEzSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--e8b2fefe087556b5c4712d88ce10515b88263570/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/imgpsh_fullsize_anim%20(3).png' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/senior-frontend-engineer-angular-hcl-vietnam-company-limited-4310">Senior Frontend Engineer (Angular)</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ha Noi</div>
+<div class='text'>Ho Chi Minh</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/angular"><span>
+Angular
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/agile"><span>
+Agile
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/angularjs"><span>
+AngularJS
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+48m
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ha Noi</span>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+48m
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/security-awareness-training-lead-swiss-post-solutions-vietnam-4207/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='The international leading IT company, awarded TOP 5 ICT in Vietnam'>
+<a target="_blank" href="/companies/swiss-post-solutions-vietnam"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK3duREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--717e7fdcf5fd4d6a04359060e0edf65419aca1cd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/swiss-post-solutions-vietnam-logo.png'>
+<img alt='Swiss Post Solutions Vietnam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK3duREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--717e7fdcf5fd4d6a04359060e0edf65419aca1cd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/swiss-post-solutions-vietnam-logo.png' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/security-awareness-training-lead-swiss-post-solutions-vietnam-4207">Training and Security Awareness Lead </a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/english"><span>
+English
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/product-manager"><span>
+Product Manager
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/scrum"><span>
+Scrum
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+54m
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+54m
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/jr-sr-drupal-developer-php-agile-shutta-0413/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='A Digital Transformation Group'>
+<a target="_blank" href="/companies/shutta"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNC9KSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--c6867eccd5c5845814beecf0e708a0f881d832dd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/Shutta_Circle_Icon_WHITE.png'>
+<img alt='Shutta Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNC9KSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--c6867eccd5c5845814beecf0e708a0f881d832dd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/Shutta_Circle_Icon_WHITE.png' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/jr-sr-drupal-developer-php-agile-shutta-0413">Jr/Sr Drupal Developer (PHP, Agile)</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/drupal"><span>
+Drupal
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/agile"><span>
+Agile
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/php"><span>
+PHP
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+1h
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+1h
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/backend-engineer-php-laravel-mysql-vitalify-asia-5530/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='Develop cool products (web/mobile) &amp; AI data science.'>
+<a target="_blank" href="/companies/vitalify-asia"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMndwREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--609791978429402a8ef4a604d652bfad8c7b52ad/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/vitalify-asia-logo.jpg'>
+<img alt='Vitalify Asia Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMndwREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--609791978429402a8ef4a604d652bfad8c7b52ad/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/vitalify-asia-logo.jpg' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/backend-engineer-php-laravel-mysql-vitalify-asia-5530"> Backend Engineer (PHP, Laravel, MySQL)</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+<ul class='benefits'>
+<li>
+Salary is up to $1,500
+</li>
+<li>
+Review salaries every 6 months
+</li>
+<li>
+Provide MacBook Air or Pro
+</li>
+</ul>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+<ul class='benefits'>
+<li>
+Salary is up to $1,500
+</li>
+<li>
+Review salaries every 6 months
+</li>
+<li>
+Provide MacBook Air or Pro
 </li>
 </ul>
 </div>
@@ -10910,17 +11512,17 @@ Company trip/ Team building
 <a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/php"><span>
 PHP
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/javascript"><span>
-JavaScript
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/mysql"><span>
+MySQL
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/aws"><span>
-AWS
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/laravel"><span>
+Laravel
 </span>
 </a>
 <div class='visible-xs'>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-17m
+1h
 </span>
 </div>
 </div>
@@ -10936,19 +11538,19 @@ AWS
 </div>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-17m
+1h
 </span>
 </div>
 </div>
 </div>
 </div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/mobile-dev-react-native-ios-android-bao-hiem-vietinbank-vbi-4526/content'>
+<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/data-scientist-prudential-vietnam-assurance-5738/content'>
 <div class='job_content'>
 <div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Tổng Công Ty Bảo Hiểm Ngân Hàng TMCP Công Thương Việt Nam (VBI)'>
-<a target="_blank" href="/companies/bao-hiem-vietinbank-vbi"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd284REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--7ea72e3571d62a905284ed45470bd4f0a57c0f37/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/vbi-vietinbank-insurance-logo.png'>
-<img alt='Bảo hiểm VietinBank (VBI) Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd284REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--7ea72e3571d62a905284ed45470bd4f0a57c0f37/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/vbi-vietinbank-insurance-logo.png' size='65x65'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='One of the leading life insurance company'>
+<a target="_blank" href="/companies/prudential-vietnam-assurance"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMGtwREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--7aa30183a8e9d9f6ec5ea1af1cbc6ea93bf0dc83/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/prudential-vietnam-assurance-logo.png'>
+<img alt='Prudential Vietnam Assurance Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMGtwREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--7aa30183a8e9d9f6ec5ea1af1cbc6ea93bf0dc83/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/prudential-vietnam-assurance-logo.png' size='65x65'>
 </picture>
 </a></div>
 <div class='clearfix'></div>
@@ -10956,7 +11558,98 @@ AWS
 <div class='job__description'>
 <div class='job__body'>
 <div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/mobile-dev-react-native-ios-android-bao-hiem-vietinbank-vbi-4526">5 Mobile Dev (Flutter, React Native)</a>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/data-scientist-prudential-vietnam-assurance-5738">Data Scientist</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+<ul class='benefits'>
+<li>
+Attractive Package
+</li>
+<li>
+Endless growth-company
+</li>
+<li>
+20 days of annual leave
+</li>
+</ul>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+<ul class='benefits'>
+<li>
+Attractive Package
+</li>
+<li>
+Endless growth-company
+</li>
+<li>
+20 days of annual leave
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/python"><span>
+Python
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/sql"><span>
+SQL
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/data-analyst"><span>
+Data Analyst
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+1h
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+1h
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/mobile-apps-developer-ios-android-south-telecom-2605/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='South Telecom là Nhà cung cấp dịch vụ số DSP (Digital Service Provider)'>
+<a target="_blank" href="/companies/south-telecom"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOXJ3Rmc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--79177074af1b5ce69434a72f563795fef9bf2525/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/LOGO%20SOUTH%20TELECOM.png'>
+<img alt='South Telecom Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOXJ3Rmc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--79177074af1b5ce69434a72f563795fef9bf2525/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/LOGO%20SOUTH%20TELECOM.png' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/mobile-apps-developer-ios-android-south-telecom-2605">Mobile Apps Developer (iOS/ Android)</a>
 </h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
 <svg class='svg-icon__icon'>
 <use xlink:href='#usd_icon'></use>
@@ -10969,21 +11662,25 @@ AWS
 </div>
 <div class='visible-xs'>
 <div class='city'>
-<div class='text'>Ha Noi</div>
+<div class='text'>Ho Chi Minh</div>
 </div>
 </div>
 </div>
 </div>
 <div class='job-bottom'>
 <div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/flutter"><span>
-Flutter
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/ios"><span>
+iOS
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/oop"><span>
+OOP
 </span>
 </a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/android"><span>
 Android
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/ios"><span>
-iOS
+</a>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/fresher-accepted"><span>
+Fresher Accepted
 </span>
 </a>
 <div class='visible-xs'>
@@ -11000,7 +11697,7 @@ iOS
 <div class="feature new text">Hot</div>
 <div class='city'>
 <div class='address'>
-<span class='text'>Ha Noi</span>
+<span class='text'>Ho Chi Minh</span>
 </div>
 </div>
 <div class='distance-time-job-posted'>
@@ -11011,13 +11708,13 @@ iOS
 </div>
 </div>
 </div>
-<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/devops-engineer-money-forward-vietnam-co-ltd-3407/content'>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/engineering-manager-pricing-engine-global-fashion-group-2837/content'>
 <div class='job_content'>
 <div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Top 1 Fintech Company'>
-<a target="_blank" href="/companies/money-forward-vietnam-co-ltd"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOVVIRFE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9d351bcd040296ef5ce833fba08705f0aa7c360a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/money-forward-vi-t-nam-logo.png'>
-<img alt='MONEY FORWARD VIETNAM CO.,LTD Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOVVIRFE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9d351bcd040296ef5ce833fba08705f0aa7c360a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/money-forward-vi-t-nam-logo.png' size='65x65'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='Global Fashion Group (GFG) is the leading fashion and lifestyle destination in growth markets'>
+<a target="_blank" href="/companies/global-fashion-group"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMWpKRXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--78a35ba3459688ae0293503efadf33f149ff12db/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/GFG%20logo%202.jpg'>
+<img alt='Global Fashion Group Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMWpKRXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--78a35ba3459688ae0293503efadf33f149ff12db/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/GFG%20logo%202.jpg' size='65x65'>
 </picture>
 </a></div>
 <div class='clearfix'></div>
@@ -11025,7 +11722,7 @@ iOS
 <div class='job__description'>
 <div class='job__body'>
 <div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/devops-engineer-money-forward-vietnam-co-ltd-3407">DevOps Engineer</a>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/engineering-manager-pricing-engine-global-fashion-group-2837">Engineering Manager - Pricing Engine</a>
 </h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
 <svg class='svg-icon__icon'>
 <use xlink:href='#usd_icon'></use>
@@ -11035,52 +11732,30 @@ iOS
 </a></div>
 </div>
 <div class='hidden-xs'>
-<ul class='benefits'>
-<li>
-English-speaking environment
-</li>
-<li>
-Build user-centric culture
-</li>
-<li>
-Truly value members&#39; opinion
-</li>
-</ul>
 </div>
 <div class='visible-xs'>
 <div class='city'>
-<div class='text'>Ha Noi</div>
+<div class='text'>Ho Chi Minh</div>
 </div>
-<ul class='benefits'>
-<li>
-English-speaking environment
-</li>
-<li>
-Build user-centric culture
-</li>
-<li>
-Truly value members&#39; opinion
-</li>
-</ul>
 </div>
 </div>
 </div>
 <div class='job-bottom'>
 <div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/devops"><span>
-DevOps
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/nodejs"><span>
+NodeJS
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/mysql"><span>
-MySQL
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/python"><span>
+Python
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/system-engineer"><span>
-System Engineer
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/reactjs"><span>
+ReactJS
 </span>
 </a>
 <div class='visible-xs'>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-2h
+1h
 </span>
 </div>
 </div>
@@ -11091,24 +11766,24 @@ System Engineer
 <div class="feature new text">Hot</div>
 <div class='city'>
 <div class='address'>
-<span class='text'>Ha Noi</span>
+<span class='text'>Ho Chi Minh</span>
 </div>
 </div>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-2h
+1h
 </span>
 </div>
 </div>
 </div>
 </div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/associate-it-risk-assurance-pwc-vietnam-5517/content'>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/net-software-engineers-c-asp-net-epam-4758/content'>
 <div class='job_content'>
 <div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='https://www.pwc.com/'>
-<a target="_blank" href="/companies/pwc-vietnam"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMU1hR3c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d59f3caff8773859979ad3836a21d0a5884014d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/Screen%20Shot%202020-12-16%20at%201.41.15%20PM.png'>
-<img alt='PwC Vietnam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMU1hR3c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d59f3caff8773859979ad3836a21d0a5884014d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/Screen%20Shot%202020-12-16%20at%201.41.15%20PM.png' size='65x65'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='A leading global provider of digital platform engineering and software development services'>
+<a target="_blank" href="/companies/epam"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBL1ZlRXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--0edf2548385b5433f29094e28a152488c9f56abc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/EPAM_LOGO_Primary.png'>
+<img alt='EPAM Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBL1ZlRXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--0edf2548385b5433f29094e28a152488c9f56abc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/EPAM_LOGO_Primary.png' size='65x65'>
 </picture>
 </a></div>
 <div class='clearfix'></div>
@@ -11116,7 +11791,7 @@ System Engineer
 <div class='job__description'>
 <div class='job__body'>
 <div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/associate-it-risk-assurance-pwc-vietnam-5517">Senior Cyber Security Consultant</a>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/net-software-engineers-c-asp-net-epam-4758">.NET Software Engineers (C#, ASP.NET)</a>
 </h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
 <svg class='svg-icon__icon'>
 <use xlink:href='#usd_icon'></use>
@@ -11137,20 +11812,20 @@ System Engineer
 </div>
 <div class='job-bottom'>
 <div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/sql"><span>
-SQL
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/.net"><span>
+.NET
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/python"><span>
-Python
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/csharp"><span>
+C#
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/ruby"><span>
-Ruby
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/english"><span>
+English
 </span>
 </a>
 <div class='visible-xs'>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-3h
+1h
 </span>
 </div>
 </div>
@@ -11167,19 +11842,19 @@ Ruby
 </div>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-3h
+1h
 </span>
 </div>
 </div>
 </div>
 </div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/10-jr-mid-net-web-dev-c-sql-oracle-bao-hiem-vietinbank-vbi-3626/content'>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/senior-backend-dev-java-kotlin-spring-artstuff-1646/content'>
 <div class='job_content'>
 <div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Tổng Công Ty Bảo Hiểm Ngân Hàng TMCP Công Thương Việt Nam (VBI)'>
-<a target="_blank" href="/companies/bao-hiem-vietinbank-vbi"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd284REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--7ea72e3571d62a905284ed45470bd4f0a57c0f37/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/vbi-vietinbank-insurance-logo.png'>
-<img alt='Bảo hiểm VietinBank (VBI) Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd284REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--7ea72e3571d62a905284ed45470bd4f0a57c0f37/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/vbi-vietinbank-insurance-logo.png' size='65x65'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='At Artstuff, We Create a Woah!'>
+<a target="_blank" href="/companies/artstuff"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBM1c3SGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ff5a05a1cf5d9f7467e60fd16b7198f7e5a1e8bb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/Artboard%201.png'>
+<img alt='Artstuff Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBM1c3SGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ff5a05a1cf5d9f7467e60fd16b7198f7e5a1e8bb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/Artboard%201.png' size='65x65'>
 </picture>
 </a></div>
 <div class='clearfix'></div>
@@ -11187,7 +11862,327 @@ Ruby
 <div class='job__description'>
 <div class='job__body'>
 <div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/10-jr-mid-net-web-dev-c-sql-oracle-bao-hiem-vietinbank-vbi-3626">10 Jr/Mid .NET Web Dev (C#, SQL/Oracle) </a>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/senior-backend-dev-java-kotlin-spring-artstuff-1646">Senior Backend Dev (Java/Kotlin/Spring)</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java"><span>
+Java
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/spring"><span>
+Spring
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/kotlin"><span>
+Kotlin
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+1h
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+1h
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/qc-engineer-qa-qc-tester-fiahub-3726/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='Started as a Singapore fiat-crypto exchange, we are building a bridge to the future of money.'>
+<a target="_blank" href="/companies/fiahub"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBendLSGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f19bbf96f397542d1b8b9deb24d93055da7becc2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/123209177_1258004291246273_4573060381174638788_n.png'>
+<img alt='Fiahub Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBendLSGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f19bbf96f397542d1b8b9deb24d93055da7becc2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/123209177_1258004291246273_4573060381174638788_n.png' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/qc-engineer-qa-qc-tester-fiahub-3726">QC Engineer (QA QC, Tester)</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+<ul class='benefits'>
+<li>
+Lean and world-class team
+</li>
+<li>
+Self-develop career path
+</li>
+<li>
+Competitive salary, ESOP
+</li>
+</ul>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+<ul class='benefits'>
+<li>
+Lean and world-class team
+</li>
+<li>
+Self-develop career path
+</li>
+<li>
+Competitive salary, ESOP
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/qa-qc"><span>
+QA QC
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/agile"><span>
+Agile
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/tester"><span>
+Tester
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+2h
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+2h
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/backend-dev-c-java-nodejs-1300-humax-vietnam-2721/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='HUMAX is to enable users to access diverse contents any time, anywhere they want!'>
+<a target="_blank" href="/companies/humax-vietnam"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNFRlR1E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5884a27a02569ce063f61d9bc33066a689147c16/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/logo.png'>
+<img alt='Humax Vietnam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNFRlR1E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5884a27a02569ce063f61d9bc33066a689147c16/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/logo.png' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/backend-dev-c-java-nodejs-1300-humax-vietnam-2721">Backend Dev (C#, Java, NodeJs) ~ $1300</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+<ul class='benefits'>
+<li>
+Flexible working time, no OT
+</li>
+<li>
+KPI Incentive~15monthly salary
+</li>
+<li>
+Premium Insurance for Family
+</li>
+</ul>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ha Noi</div>
+</div>
+<ul class='benefits'>
+<li>
+Flexible working time, no OT
+</li>
+<li>
+KPI Incentive~15monthly salary
+</li>
+<li>
+Premium Insurance for Family
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/csharp"><span>
+C#
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/nodejs"><span>
+NodeJS
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java"><span>
+Java
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+2h
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ha Noi</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+2h
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/mid-sr-fullstack-reactjs-nodejs-1-more-team-ltd-vietnam-4907/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='1 More Team is fast-growing tech company that delivers off-shore team to accelerate business success'>
+<a target="_blank" href="/companies/1-more-team-ltd-vietnam"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOXJJSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bb6e8b291f88d7bb886b64a0f6f3364153159f34/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/Untitled-1.jpg'>
+<img alt='1 More Team LTD Vietnam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOXJJSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bb6e8b291f88d7bb886b64a0f6f3364153159f34/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/Untitled-1.jpg' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/mid-sr-fullstack-reactjs-nodejs-1-more-team-ltd-vietnam-4907"> [Mid - Sr] Fullstack (ReactJS, NodeJS)</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ho Chi Minh</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/reactjs"><span>
+ReactJS
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/javascript"><span>
+JavaScript
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/nodejs"><span>
+NodeJS
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+2h
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ho Chi Minh</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+2h
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/net-software-engineer-up-to-1500-kofax-vietnam-0741/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='A leading IT Group in the Information Capture Field'>
+<a target="_blank" href="/companies/kofax-vietnam"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNGNvREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--659f1d4477533d121985232f8241a61e8b732929/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/kofax-vietnam-logo.jpg'>
+<img alt='Kofax Vietnam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNGNvREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--659f1d4477533d121985232f8241a61e8b732929/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/kofax-vietnam-logo.jpg' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/net-software-engineer-up-to-1500-kofax-vietnam-0741">.NET Software Engineer - Up to $1500</a>
 </h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
 <svg class='svg-icon__icon'>
 <use xlink:href='#usd_icon'></use>
@@ -11210,1027 +12205,17 @@ Ruby
 <a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/.net"><span>
 .NET
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/csharp"><span>
-C#
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/sql"><span>
-SQL
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-3h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ha Noi</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-3h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/sr-react-native-full-13th-salary-bonus-dfo-global-performance-commerce-5406/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='A Commitment to make your time with us the most transformation time in your career to date.'>
-<a target="_blank" href="/companies/dfo-global-performance-commerce"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNFJwSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5dc05dbf75efc9d24b8f130877981ddbc08bdca3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/new%20logo-SIGNON.png'>
-<img alt='DFO Global Performance Commerce Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNFJwSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5dc05dbf75efc9d24b8f130877981ddbc08bdca3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/new%20logo-SIGNON.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/sr-react-native-full-13th-salary-bonus-dfo-global-performance-commerce-5406">Sr React Native (Full 13th Salary Bonus)</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ho Chi Minh</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/react-native"><span>
-React Native
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/android"><span>
-Android
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/reactjs"><span>
-ReactJS
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-6h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ho Chi Minh</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-6h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/frontend-dev-reactjs-reactnative-vuejs-beetsoft-2402/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='&quot;Be Excellent Together”'>
-<a target="_blank" href="/companies/beetsoft"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMEFyREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--66d2024fd16cb6ac57b9a8b939db98c9202a5474/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/beetsoft-logo.jpg'>
-<img alt='Beetsoft Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMEFyREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--66d2024fd16cb6ac57b9a8b939db98c9202a5474/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/beetsoft-logo.jpg' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/frontend-dev-reactjs-reactnative-vuejs-beetsoft-2402">Frontend Dev (ReactJS/ReactNative/VueJS)</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ha Noi</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/reactjs"><span>
-ReactJS
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/react-native"><span>
-React Native
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/vuejs"><span>
-VueJS
-</span>
-</a>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/fresher-accepted"><span>
-Fresher Accepted
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ha Noi</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/backend-dev-java-spring-sql-1800-10x-technology-and-consulting-4928/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Our Work-In-Progress Products (from 10X with Love)'>
-<a target="_blank" href="/companies/10x-technology-and-consulting"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK0JNSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5d7cb6adc80d731fa72d28fa5a3eaab87e9f9ed0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/10X%20Company&#39;s%20Logo%20-%20Trang%20Nguyen.png'>
-<img alt='10X Technology and Consulting Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK0JNSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5d7cb6adc80d731fa72d28fa5a3eaab87e9f9ed0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/10X%20Company&#39;s%20Logo%20-%20Trang%20Nguyen.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/backend-dev-java-spring-sql-1800-10x-technology-and-consulting-4928">Backend Dev (Java, Spring, SQL) ~$1800</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ho Chi Minh</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java"><span>
-Java
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/sql"><span>
-SQL
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/spring"><span>
-Spring
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ho Chi Minh</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/php-developer-base-inc-0055/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='BASE ENTERPRISE - THE PLATFORM COMPANY'>
-<a target="_blank" href="/companies/base-inc"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK296REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--180b39c9834d2b981316930f0947f65168fa382d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/base-inc-logo.png'>
-<img alt='Base Inc. Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK296REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--180b39c9834d2b981316930f0947f65168fa382d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/base-inc-logo.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/php-developer-base-inc-0055">(Fr/Sn) PHP Dev (Javascript/HTML5)~$2000</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ha Noi</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/php"><span>
-PHP
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/html5"><span>
-HTML5
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/javascript"><span>
-JavaScript
-</span>
-</a>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/fresher-accepted"><span>
-Fresher Accepted
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ha Noi</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/senior-java-developer-contractor-sun-life-vietnam-insurance-company-limited-3423/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='At Sun Life, we hire the best and brightest. Are you ready to shine?'>
-<a target="_blank" href="/companies/sun-life-vietnam-insurance-company-limited"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNndjSHc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b6beaa4884b0f68025fd03bdc3473e7ad912f976/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/logo-sun-life.jpg'>
-<img alt='Sun Life Vietnam Insurance Company Limited Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNndjSHc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b6beaa4884b0f68025fd03bdc3473e7ad912f976/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/logo-sun-life.jpg' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/senior-java-developer-contractor-sun-life-vietnam-insurance-company-limited-3423">Senior Java Developer (Contractor)</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ho Chi Minh</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java"><span>
-Java
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/spring"><span>
-Spring
-</span>
-</a>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/fresher-accepted"><span>
-Fresher Accepted
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ho Chi Minh</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/data-analyst_python-sql-1500-2000-larion-4158/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='One of the leading software outsourcing services and business solutions provider'>
-<a target="_blank" href="/companies/larion"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNkVvREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--a287fc89bc78d116c0b75da87a2fcc98d71c1c8e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/larion-logo.png'>
-<img alt='LARION Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNkVvREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--a287fc89bc78d116c0b75da87a2fcc98d71c1c8e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/larion-logo.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/data-analyst_python-sql-1500-2000-larion-4158">Data Analyst_Python, SQL (1500-2000$)</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ho Chi Minh</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/sql"><span>
-SQL
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/python"><span>
-Python
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/english"><span>
-English
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ho Chi Minh</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/react-native-dev-ios-android-2000-base-inc-2729/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='BASE ENTERPRISE - THE PLATFORM COMPANY'>
-<a target="_blank" href="/companies/base-inc"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK296REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--180b39c9834d2b981316930f0947f65168fa382d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/base-inc-logo.png'>
-<img alt='Base Inc. Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK296REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--180b39c9834d2b981316930f0947f65168fa382d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/base-inc-logo.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/react-native-dev-ios-android-2000-base-inc-2729">(Fr/Sn) React Native (iOs/Android)~$2000</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ha Noi</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/react-native"><span>
-React Native
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/android"><span>
-Android
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/ios"><span>
-iOS
-</span>
-</a>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/fresher-accepted"><span>
-Fresher Accepted
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ha Noi</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/15-java-dev-sql-oracle-up-to-1500-telsoft-jsc-2024/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Hoạt động trong lĩnh vực cung cấp giải pháp về công nghệ'>
-<a target="_blank" href="/companies/telsoft-jsc"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNHdxREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--c3bfc0c5231c6c17a26b1b4fa48a3a5f6fee38c4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/telsoft-jsc-logo.png'>
-<img alt='Telsoft JSC Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNHdxREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--c3bfc0c5231c6c17a26b1b4fa48a3a5f6fee38c4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/telsoft-jsc-logo.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/15-java-dev-sql-oracle-up-to-1500-telsoft-jsc-2024">15 Java Dev (SQL, Oracle) - Up to $1500</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ha Noi</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java"><span>
-Java
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/oracle"><span>
-Oracle
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/angular"><span>
-Angular
-</span>
-</a>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/fresher-accepted"><span>
-Fresher Accepted
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ha Noi</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-7h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/senior-business-analyst-waverley-software-1612/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Waverley is a leading US based software engineering company'>
-<a target="_blank" href="/companies/waverley-software"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNy9yRXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--85fe2bfd9e9615963a3ed4a215d6112cd63dfb80/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/waverley_logo_vertical.png'>
-<img alt='Waverley Software Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNy9yRXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--85fe2bfd9e9615963a3ed4a215d6112cd63dfb80/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/waverley_logo_vertical.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/senior-business-analyst-waverley-software-1612">Senior Business Analyst</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ho Chi Minh</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/business-analyst"><span>
-Business Analyst
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/agile"><span>
-Agile
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/english"><span>
-English
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ho Chi Minh</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/cyber-security-consultant-pwc-vietnam-1353/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='https://www.pwc.com/'>
-<a target="_blank" href="/companies/pwc-vietnam"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMU1hR3c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d59f3caff8773859979ad3836a21d0a5884014d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/Screen%20Shot%202020-12-16%20at%201.41.15%20PM.png'>
-<img alt='PwC Vietnam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMU1hR3c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d59f3caff8773859979ad3836a21d0a5884014d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/Screen%20Shot%202020-12-16%20at%201.41.15%20PM.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/cyber-security-consultant-pwc-vietnam-1353">Cyber Security Consultant</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ho Chi Minh</div>
-<div class='text'>Ha Noi</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/sql"><span>
-SQL
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/networking"><span>
-Networking
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/tester"><span>
-Tester
-</span>
-</a>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/fresher-accepted"><span>
-Fresher Accepted
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ho Chi Minh</span>
-<span class='text'>Ha Noi</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/pre-sales-ky-su-giai-phap-infomed-viet-nam-jsc-3235/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Công ty Cổ phần INFOMED'>
-<a target="_blank" href="/companies/infomed-viet-nam-jsc"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNHMwSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--e4efac5191490231658d01661b71a012e815c9cc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/Infomed%20m%E1%BB%9Bi.jpg'>
-<img alt='Infomed Viet Nam JSC Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNHMwSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--e4efac5191490231658d01661b71a012e815c9cc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/Infomed%20m%E1%BB%9Bi.jpg' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/pre-sales-ky-su-giai-phap-infomed-viet-nam-jsc-3235">Presales (Business Analyst)</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ha Noi</div>
-<div class='text'>Ho Chi Minh</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/business-analyst"><span>
-Business Analyst
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/networking"><span>
-Networking
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ha Noi</span>
-<span class='text'>Ho Chi Minh</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job super-hot-job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/sr-back-end-engineer-nodejs-php-mysql-c2c-tech-hub-1006/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='C2C Tech Hub'>
-<a target="_blank" href="/companies/c2c-tech-hub"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeW8wSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5636d938ab12dfa15e32db52340ceb745b581836/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/c2c%20tech%20hub%20-%20Hai%20Dang%20Phan.png'>
-<img alt='C2C Tech Hub Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeW8wSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5636d938ab12dfa15e32db52340ceb745b581836/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/c2c%20tech%20hub%20-%20Hai%20Dang%20Phan.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/sr-back-end-engineer-nodejs-php-mysql-c2c-tech-hub-1006">Sr Back-End Engineer (NodeJS/JavaScript)</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-<ul class='benefits'>
-<li>
-Flexible working hours.
-</li>
-<li>
-Annual health checkup.
-</li>
-<li>
-Competitive salary
-</li>
-</ul>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ho Chi Minh</div>
-</div>
-<ul class='benefits'>
-<li>
-Flexible working hours.
-</li>
-<li>
-Annual health checkup.
-</li>
-<li>
-Competitive salary
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/nodejs"><span>
-NodeJS
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/javascript"><span>
-JavaScript
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/aws"><span>
-AWS
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ho Chi Minh</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/web-developer-php-c-mysql-cisbox-0240/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Cisbox Ltd is a 100% subsidiary of the German based cisbox Group. '>
-<a target="_blank" href="/companies/cisbox"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeFU0REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--e27de455483198e328976bede0dd9a91301762b4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/cisbox-logo.png'>
-<img alt='CISBOX Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeFU0REE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--e27de455483198e328976bede0dd9a91301762b4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/cisbox-logo.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/web-developer-php-c-mysql-cisbox-0240">Web Developer (PHP/C#/MySQL)</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ho Chi Minh</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/php"><span>
-PHP
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/mysql"><span>
-MySQL
-</span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/csharp"><span>
-C#
-</span>
-</a>
-<div class='visible-xs'>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='city_and_posted_date hidden-xs'>
-<div class="feature new text">Hot</div>
-<div class='city'>
-<div class='address'>
-<span class='text'>Ho Chi Minh</span>
-</div>
-</div>
-<div class='distance-time-job-posted'>
-<span class='distance-time highlight'>
-8h
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/data-science-engineer-ai-python-cloud-panasonic-vietnam-group-panasonic-r-d-center-vietnam-prdcv-0029/content'>
-<div class='job_content'>
-<div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='Let’s Challenge Together! And Update Yourself!'>
-<a target="_blank" href="/companies/panasonic-vietnam-group-panasonic-r-d-center-vietnam-prdcv"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMWJ1R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2a2557c4d8a170c33d56ca5dd9fe6d35a9555577/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/Logo-min.png'>
-<img alt='Panasonic Vietnam Group – Panasonic R&amp;D Center Vietnam (PRDCV) Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMWJ1R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2a2557c4d8a170c33d56ca5dd9fe6d35a9555577/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/Logo-min.png' size='65x65'>
-</picture>
-</a></div>
-<div class='clearfix'></div>
-</div>
-<div class='job__description'>
-<div class='job__body'>
-<div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/data-science-engineer-ai-python-cloud-panasonic-vietnam-group-panasonic-r-d-center-vietnam-prdcv-0029">Data Science Engineer (AI/Python/Cloud)</a>
-</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
-<svg class='svg-icon__icon'>
-<use xlink:href='#usd_icon'></use>
-</svg>
-<div class='svg-icon__text'>
-<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
-</a></div>
-</div>
-<div class='hidden-xs'>
-</div>
-<div class='visible-xs'>
-<div class='city'>
-<div class='text'>Ha Noi</div>
-</div>
-</div>
-</div>
-</div>
-<div class='job-bottom'>
-<div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/python"><span>
-Python
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/c++"><span>
+C++
 </span>
 </a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java"><span>
 Java
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/cloud"><span>
-Cloud
-</span>
 </a>
 <div class='visible-xs'>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-9h
+2h
 </span>
 </div>
 </div>
@@ -12246,19 +12231,19 @@ Cloud
 </div>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-9h
+2h
 </span>
 </div>
 </div>
 </div>
 </div>
-<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/project-manager-fpt-software-1346/content'>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/java-software-engineer-up-to-1500-kofax-vietnam-0645/content'>
 <div class='job_content'>
 <div class='logo'>
-<div class='logo-wrapper' data-controller='utils--tooltip' title='The leading provider of software outsourcing services in Vietnam'>
-<a target="_blank" href="/companies/fpt-software"><picture>
-<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOEJwSFE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--61bb4901a74cef186408525de025b905e8ecf1ea/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/logo%20FSOFT%20d%E1%BB%8Dc.png'>
-<img alt='FPT Software Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOEJwSFE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--61bb4901a74cef186408525de025b905e8ecf1ea/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--d55b6722f71e82d147ad94b8445be27797820f9f/logo%20FSOFT%20d%E1%BB%8Dc.png' size='65x65'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='A leading IT Group in the Information Capture Field'>
+<a target="_blank" href="/companies/kofax-vietnam"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNGNvREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--659f1d4477533d121985232f8241a61e8b732929/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/kofax-vietnam-logo.jpg'>
+<img alt='Kofax Vietnam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNGNvREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--659f1d4477533d121985232f8241a61e8b732929/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/kofax-vietnam-logo.jpg' size='65x65'>
 </picture>
 </a></div>
 <div class='clearfix'></div>
@@ -12266,7 +12251,7 @@ Cloud
 <div class='job__description'>
 <div class='job__body'>
 <div class='details'>
-<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/project-manager-fpt-software-1346">Project Manager</a>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/java-software-engineer-up-to-1500-kofax-vietnam-0645">Java Software Engineer - Up to $1500</a>
 </h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
 <svg class='svg-icon__icon'>
 <use xlink:href='#usd_icon'></use>
@@ -12286,20 +12271,20 @@ Cloud
 </div>
 <div class='job-bottom'>
 <div class='tag-list'>
-<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/project-manager"><span>
-Project Manager
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java"><span>
+Java
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/english"><span>
-English
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/javascript"><span>
+JavaScript
 </span>
-</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/manager"><span>
-Manager
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/.net"><span>
+.NET
 </span>
 </a>
 <div class='visible-xs'>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-9h
+2h
 </span>
 </div>
 </div>
@@ -12315,7 +12300,76 @@ Manager
 </div>
 <div class='distance-time-job-posted'>
 <span class='distance-time highlight'>
-9h
+2h
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='job' data-action='click-&gt;search--job-selection#select' data-controller='search--job-selection' data-search--job-selection-auto-select='0' data-search--job-selection-job-url='/it-jobs/mobile-software-engineer-kofax-vietnam-0508/content'>
+<div class='job_content'>
+<div class='logo'>
+<div class='logo-wrapper' data-controller='utils--tooltip' title='A leading IT Group in the Information Capture Field'>
+<a target="_blank" href="/companies/kofax-vietnam"><picture>
+<source data-srcset='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNGNvREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--659f1d4477533d121985232f8241a61e8b732929/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b463bdd256cf502ad47897818e63b1477749f99e/kofax-vietnam-logo.jpg'>
+<img alt='Kofax Vietnam Vietnam Small Logo' class='lazyload' data-src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNGNvREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--659f1d4477533d121985232f8241a61e8b732929/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--e48ed52d99e56a5ff9747052d860ea1b318b2d76/kofax-vietnam-logo.jpg' size='65x65'>
+</picture>
+</a></div>
+<div class='clearfix'></div>
+</div>
+<div class='job__description'>
+<div class='job__body'>
+<div class='details'>
+<h2 class="title"><a target="_blank" data-controller="utm-tracking" href="/it-jobs/mobile-software-engineer-kofax-vietnam-0508">Mobile Software Engineer.</a>
+</h2><div class='svg-icon svg-icon--rounded svg-icon--grey svg-icon--bold'>
+<svg class='svg-icon__icon'>
+<use xlink:href='#usd_icon'></use>
+</svg>
+<div class='svg-icon__text'>
+<a class="ilink ilink--grey ilink--dotted ilink--direction" rel="nofollow" href="/sign_in">Sign in to view
+</a></div>
+</div>
+<div class='hidden-xs'>
+</div>
+<div class='visible-xs'>
+<div class='city'>
+<div class='text'>Ha Noi</div>
+</div>
+</div>
+</div>
+</div>
+<div class='job-bottom'>
+<div class='tag-list'>
+<a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/hybrid"><span>
+Hybrid
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/javascript"><span>
+JavaScript
+</span>
+</a><a class="job__skill ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/react-native"><span>
+React Native
+</span>
+</a>
+<div class='visible-xs'>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+2h
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='city_and_posted_date hidden-xs'>
+<div class="feature new text">Hot</div>
+<div class='city'>
+<div class='address'>
+<span class='text'>Ha Noi</span>
+</div>
+</div>
+<div class='distance-time-job-posted'>
+<span class='distance-time highlight'>
+2h
 </span>
 </div>
 </div>
@@ -12334,7 +12388,7 @@ Manager
 <a>&hellip;</a>
 </li>
 <li>
-<a data-controller="search--pagination" data-action="ajax:success-&gt;search--pagination#paginate" data-remote="true" href="/it-jobs/?page=96&amp;source=search_job">96</a>
+<a data-controller="search--pagination" data-action="ajax:success-&gt;search--pagination#paginate" data-remote="true" href="/it-jobs/?page=106&amp;source=search_job">106</a>
 </li>
 <li>
 <a rel="next" data-controller="search--pagination" data-action="ajax:success-&gt;search--pagination#paginate" data-remote="true" href="/it-jobs/?page=2&amp;source=search_job">></a>
@@ -12346,7 +12400,7 @@ Manager
 <div class='clearfix'></div>
 </div>
 <script type='application/ld+json'>
-{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://itviec.com/it-jobs/php-developer-php-javascript-aws-starboard-asia-co-ltd-5343"},{"@type":"ListItem","position":2,"url":"https://itviec.com/it-jobs/mobile-dev-react-native-ios-android-bao-hiem-vietinbank-vbi-4526"},{"@type":"ListItem","position":3,"url":"https://itviec.com/it-jobs/devops-engineer-money-forward-vietnam-co-ltd-3407"},{"@type":"ListItem","position":4,"url":"https://itviec.com/it-jobs/associate-it-risk-assurance-pwc-vietnam-5517"},{"@type":"ListItem","position":5,"url":"https://itviec.com/it-jobs/10-jr-mid-net-web-dev-c-sql-oracle-bao-hiem-vietinbank-vbi-3626"},{"@type":"ListItem","position":6,"url":"https://itviec.com/it-jobs/sr-react-native-full-13th-salary-bonus-dfo-global-performance-commerce-5406"},{"@type":"ListItem","position":7,"url":"https://itviec.com/it-jobs/frontend-dev-reactjs-reactnative-vuejs-beetsoft-2402"},{"@type":"ListItem","position":8,"url":"https://itviec.com/it-jobs/backend-dev-java-spring-sql-1800-10x-technology-and-consulting-4928"},{"@type":"ListItem","position":9,"url":"https://itviec.com/it-jobs/php-developer-base-inc-0055"},{"@type":"ListItem","position":10,"url":"https://itviec.com/it-jobs/senior-java-developer-contractor-sun-life-vietnam-insurance-company-limited-3423"},{"@type":"ListItem","position":11,"url":"https://itviec.com/it-jobs/data-analyst_python-sql-1500-2000-larion-4158"},{"@type":"ListItem","position":12,"url":"https://itviec.com/it-jobs/react-native-dev-ios-android-2000-base-inc-2729"},{"@type":"ListItem","position":13,"url":"https://itviec.com/it-jobs/15-java-dev-sql-oracle-up-to-1500-telsoft-jsc-2024"},{"@type":"ListItem","position":14,"url":"https://itviec.com/it-jobs/senior-business-analyst-waverley-software-1612"},{"@type":"ListItem","position":15,"url":"https://itviec.com/it-jobs/cyber-security-consultant-pwc-vietnam-1353"},{"@type":"ListItem","position":16,"url":"https://itviec.com/it-jobs/pre-sales-ky-su-giai-phap-infomed-viet-nam-jsc-3235"},{"@type":"ListItem","position":17,"url":"https://itviec.com/it-jobs/sr-back-end-engineer-nodejs-php-mysql-c2c-tech-hub-1006"},{"@type":"ListItem","position":18,"url":"https://itviec.com/it-jobs/web-developer-php-c-mysql-cisbox-0240"},{"@type":"ListItem","position":19,"url":"https://itviec.com/it-jobs/data-science-engineer-ai-python-cloud-panasonic-vietnam-group-panasonic-r-d-center-vietnam-prdcv-0029"},{"@type":"ListItem","position":20,"url":"https://itviec.com/it-jobs/project-manager-fpt-software-1346"}]}
+{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://itviec.com/it-jobs/backend-developer-golang-nodejs-net-sendo-vn-3055"},{"@type":"ListItem","position":2,"url":"https://itviec.com/it-jobs/product-owner-product-manager-sendo-vn-2450"},{"@type":"ListItem","position":3,"url":"https://itviec.com/it-jobs/net-developers-mvc-mysql-tri-nam-group-co-jsc-5409"},{"@type":"ListItem","position":4,"url":"https://itviec.com/it-jobs/nodejs-reactjs-developer-upto-3000-the-away-group-viet-nam-2524"},{"@type":"ListItem","position":5,"url":"https://itviec.com/it-jobs/giam-doc-dam-bao-an-ninh-thong-tin-techcombank-4022"},{"@type":"ListItem","position":6,"url":"https://itviec.com/it-jobs/senior-frontend-engineer-angular-hcl-vietnam-company-limited-4310"},{"@type":"ListItem","position":7,"url":"https://itviec.com/it-jobs/security-awareness-training-lead-swiss-post-solutions-vietnam-4207"},{"@type":"ListItem","position":8,"url":"https://itviec.com/it-jobs/jr-sr-drupal-developer-php-agile-shutta-0413"},{"@type":"ListItem","position":9,"url":"https://itviec.com/it-jobs/backend-engineer-php-laravel-mysql-vitalify-asia-5530"},{"@type":"ListItem","position":10,"url":"https://itviec.com/it-jobs/data-scientist-prudential-vietnam-assurance-5738"},{"@type":"ListItem","position":11,"url":"https://itviec.com/it-jobs/mobile-apps-developer-ios-android-south-telecom-2605"},{"@type":"ListItem","position":12,"url":"https://itviec.com/it-jobs/engineering-manager-pricing-engine-global-fashion-group-2837"},{"@type":"ListItem","position":13,"url":"https://itviec.com/it-jobs/net-software-engineers-c-asp-net-epam-4758"},{"@type":"ListItem","position":14,"url":"https://itviec.com/it-jobs/senior-backend-dev-java-kotlin-spring-artstuff-1646"},{"@type":"ListItem","position":15,"url":"https://itviec.com/it-jobs/qc-engineer-qa-qc-tester-fiahub-3726"},{"@type":"ListItem","position":16,"url":"https://itviec.com/it-jobs/backend-dev-c-java-nodejs-1300-humax-vietnam-2721"},{"@type":"ListItem","position":17,"url":"https://itviec.com/it-jobs/mid-sr-fullstack-reactjs-nodejs-1-more-team-ltd-vietnam-4907"},{"@type":"ListItem","position":18,"url":"https://itviec.com/it-jobs/net-software-engineer-up-to-1500-kofax-vietnam-0741"},{"@type":"ListItem","position":19,"url":"https://itviec.com/it-jobs/java-software-engineer-up-to-1500-kofax-vietnam-0645"},{"@type":"ListItem","position":20,"url":"https://itviec.com/it-jobs/mobile-software-engineer-kofax-vietnam-0508"}]}
 </script>
 <div class='search-page__divider'></div>
 <div class='company-spotlight'>
@@ -12379,11 +12433,8 @@ Ho Chi Minh
 </a></div>
 <div class='company-spotlight__jobs'>
 <a data-controller="utm-tracking" class="company-spotlight__job-item" href="/it-jobs/senior-database-developer-sql-ssis-nashtech-4726">Senior Database Developer (SQL, SSIS)</a>
-<a data-controller="utm-tracking" class="company-spotlight__job-item" href="/it-jobs/senior-software-engineer-c-net-core-nashtech-5541">Senior Software Engineer(C#, .NET, Core)</a>
-<a data-controller="utm-tracking" class="company-spotlight__job-item" href="/it-jobs/senior-java-developer-spring-j2ee-nashtech-5306">Senior Java Developer (Spring, J2EE)</a>
 </div>
-<a rel="nofollow" data-controller="utm-tracking" class="company-spotlight__other-jobs ilink ilink--red ilink--direction" href="/companies/nashtech#our-jobs">View 4 jobs
-</a></div>
+</div>
 </div>
 </div>
 <div class='search-page__job-preview hidden-xs'></div>
@@ -12404,8 +12455,8 @@ Ho Chi Minh
 <script type='application/ld+json'>
 {"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"name":"IT Jobs","item":"https://itviec.com/it-jobs","@type":"ListItem","position":1}]}
 </script>
-<div data-controller='tracking' data-tracking-content='' data-tracking-ip-address='2402:800:63a7:9b3f:5cf9:f339:1ffb:ca1a' data-tracking-skill-tags='' data-tracking-source-ids='[&quot;&quot;]' data-tracking-sources='[&quot;search_job&quot;]' data-tracking-user-id=''></div>
-<div data-controller='tracking' data-tracking-content='' data-tracking-ip-address='2402:800:63a7:9b3f:5cf9:f339:1ffb:ca1a' data-tracking-skill-tags='' data-tracking-source-ids='[86]' data-tracking-sources='[&quot;show_branding&quot;]' data-tracking-user-id=''></div>
+<div data-controller='tracking' data-tracking-content='' data-tracking-ip-address='2402:800:63a7:9869:c82c:6a5b:87a0:5880' data-tracking-skill-tags='' data-tracking-source-ids='[&quot;&quot;]' data-tracking-sources='[&quot;search_job&quot;]' data-tracking-user-id=''></div>
+<div data-controller='tracking' data-tracking-content='' data-tracking-ip-address='2402:800:63a7:9869:c82c:6a5b:87a0:5880' data-tracking-skill-tags='' data-tracking-source-ids='[86]' data-tracking-sources='[&quot;show_branding&quot;]' data-tracking-user-id=''></div>
 <div class='clearfix'></div>
 </div>
 

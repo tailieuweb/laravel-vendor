@@ -29,7 +29,7 @@ class Jobs {
                 $site = $this->siteFactory->createObject($siteWork);
                 if (!empty($site)) {
                     $patterns = $this->obj_patterns->selectItems(['site_id' => $siteWork->site_id]);
-                    //$site->crawlJobUrlByCategory($siteWork, $patterns);
+                    $site->crawlJobUrlByCategory($siteWork, $patterns);
                     $site->crawlJobDetailByUrl($siteWork, $patterns);
                 }
             }
