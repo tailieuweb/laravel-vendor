@@ -45,7 +45,8 @@ return [
         'crawler_works_jobs' => 'Crawler Jobs',
         'permissions' => 'Permissions',
         'operations' => 'Operations',
-        'contexts' => 'Contextes',
+        'contexts' => 'Contexts',
+        'pexcel' => 'Pexcels',
     ],
 
 

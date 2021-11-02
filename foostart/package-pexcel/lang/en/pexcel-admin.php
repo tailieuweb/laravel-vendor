@@ -54,6 +54,7 @@ return [
        'contact-status' => 'Contact status',
         'any'   => 'Any',
         'order' => 'Order',
+        'counter' => '#',
         'id'    => 'ID',
         'context-ref' => 'Ref',
         'key' => 'Key',
@@ -211,6 +212,7 @@ return [
         'title-backup' => 'Backups',
         'config' => 'Configurations',
         'pexcel-status' => 'Status',
+        'id' => 'ID',
     ],
 
 
