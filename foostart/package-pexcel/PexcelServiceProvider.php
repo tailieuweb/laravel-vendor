@@ -1,14 +1,12 @@
-<?php
+<?php namespace Foostart\Pexcel;
 
-namespace Foostart\Pexcel;
-
-use Illuminate\Support\ServiceProvider;
+use Foostart\Category\FooServiceProvider;
 use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
 use URL,
     Route;
 use Illuminate\Http\Request;
 
-class PexcelServiceProvider extends ServiceProvider {
+class PexcelServiceProvider extends FooServiceProvider {
 
     /**
      * Bootstrap the application services.
@@ -27,17 +25,22 @@ class PexcelServiceProvider extends ServiceProvider {
         require __DIR__ . "/composers.php";
 
         // publish config
-        $this->publishConfig();
+        $this->publishConfig(__DIR__);
 
         // publish lang
-        $this->publishLang();
+        $this->publishLang(__DIR__);
 
         // publish views
-        //$this->publishViews();
+//        $this->publishViews(__DIR__);
 
         // publish assets
-        //$this->publishAssets();
+//        $this->publishAssets(__DIR__);
 
+        // public migrations
+        $this->publishMigrations(__DIR__);
+
+        // public seeders
+        $this->publishSeeders(__DIR__);
     }
 
     /**
@@ -45,7 +48,8 @@ class PexcelServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         include __DIR__ . '/routes.php';
     }
 
@@ -54,21 +58,10 @@ class PexcelServiceProvider extends ServiceProvider {
      * @source: vendor/foostart/package-pexcel/config
      * @destination: config/
      */
-    protected function publishConfig() {
+    protected function publishConfig(string $dir = '') {
         $this->publishes([
-            __DIR__ . '/config/package-pexcel.php' => config_path('package-pexcel.php'),
+            $dir . '/config/package-pexcel.php' => config_path('package-pexcel.php'),
                 ], 'config');
-    }
-
-    /**
-     * Public language to system
-     * @source: vendor/foostart/package-pexcel/lang
-     * @destination: resources/lang
-     */
-    protected function publishLang() {
-        $this->publishes([
-            __DIR__ . '/lang' => base_path('resources/lang'),
-        ]);
     }
 
     /**
@@ -76,17 +69,10 @@ class PexcelServiceProvider extends ServiceProvider {
      * @source: vendor/foostart/package-pexcel/Views
      * @destination: resources/views/vendor/package-pexcel
      */
-    protected function publishViews() {
+    protected function publishViews(string $dir = '') {
 
         $this->publishes([
-            __DIR__ . '/Views' => base_path('resources/views/vendor/package-pexcel'),
+            $dir . '/Views' => base_path('resources/views/vendor/package-pexcel'),
         ]);
     }
-
-    protected function publishAssets() {
-        $this->publishes([
-            __DIR__ . '/public' => public_path('packages/foostart'),
-        ]);
-    }
-
 }

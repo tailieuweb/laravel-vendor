@@ -5,26 +5,21 @@ use Foostart\Category\Helpers\FoostartSeeder;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use Foostart\Crawler\Models\Sites;
-use Foostart\Crawler\Models\RegularExpressions;
-use Foostart\Crawler\Models\Patterns;
+use Foostart\Pexcel\Models\Pexcel;
 
 
 class PexcelSeeder extends FoostartSeeder
 {
-    public $obj_site;
-    public $obj_re;
-    public $obj_pattern;
+    private $obj_pexcel;
 
     public function __construct() {
         // Table name
-        $this->table = 'pexcel_reader';
+        $this->table = 'pexcels';
         // Prefix column
-        $this->prefix_column = 'pexcel_reader_';
+        $this->prefix_column = 'pexcel_';
+        // Pexcel object
+        $this->obj_pexcel = new Pexcel();
 
-        $this->obj_site = new Sites();
-        $this->obj_pattern = new Patterns();
-        $this->obj_re = new RegularExpressions();
     }
     /**
      * Run the database seeds.
@@ -33,11 +28,11 @@ class PexcelSeeder extends FoostartSeeder
      */
     public function run()
     {
-        //Create context for user/level
-        DB::table('pexcel_reader')->insert([
-            $this->prefix_context . 'name' => 'Admin crawlers',
-            $this->prefix_context . 'key' => 'abee417e2dddc5240b586d454e',
-            $this->prefix_context . 'ref' => 'admin/crawlers',
+        //Create sample data
+        DB::table('contexts')->insert([
+            $this->prefix_context . 'name' => 'Admin pexcels',
+            $this->prefix_context . 'key' => 'abee417e2dddc5240b586d455',
+            $this->prefix_context . 'ref' => 'admin/pexcels',
             'status' => 99,
             'created_user_id' => 1,
             'updated_user_id' => 1,
@@ -45,7 +40,6 @@ class PexcelSeeder extends FoostartSeeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        $this->call('Database\Seeders\WorksSeeder');
         $this->createSampleData();
     }
 
@@ -60,40 +54,15 @@ class PexcelSeeder extends FoostartSeeder
              * crawler_sites
              */
             for($i = 0; $i < FoostartConstants::SAMPLE_DATA_SIZE; $i++) {
-                $site = [
-                    "site_name" => "site_name".$i,
-                    "site_slug" => "site_slug_".$i,
-                    "site_url" => "site_url_".$i,
-                    "site_type" => $i,
-                    "site_description" => "site_description_".$i,
+                $pexcel = [
+                    $this->prefix_column . 'name' => "name_".$i,
+                    'category_id' => $i,
+                    $this->prefix_column . 'range_data' => "C10:F100",
+                    $this->prefix_column . 'value' => json_encode(['i' => $i]),
+                    $this->prefix_column . 'file_path' => '/files/1/1-pexcels/thong-ke-viec-lam.xls',
+                    $this->prefix_column . 'description' => 'Description ' . $i,
                 ];
-                $this->obj_site->create($site);
-
-            }
-
-            /**
-             * crawler_patterns
-             */
-            for($i = 0; $i < FoostartConstants::SAMPLE_DATA_SIZE; $i++) {
-                $pattern = [
-                    "site_id" => $i,
-                    "pattern_name" => "pattern_name_".$i,
-                    "pattern_machine_name" => "pattern_machine_name_".$i,
-                    "pattern_description" => "pattern_description_".$i,
-                ];
-                $this->obj_pattern->create($pattern);
-
-            }
-
-            /**
-             * crawler_regular_expressions
-             */
-            for($i = 0; $i < FoostartConstants::SAMPLE_DATA_SIZE; $i++) {
-                $re = [
-                    "pattern_id" => $i,
-                    "regular_expression_value" => "pattern_name_".$i,
-                ];
-                $this->obj_re->create($re);
+                $this->obj_pexcel->create($pexcel);
 
             }
         }

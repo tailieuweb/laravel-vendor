@@ -1,14 +1,13 @@
 <?php
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateCrawlerPatternsTable extends FoostartMigration
+class CreatePexcelsTable extends FoostartMigration
 {
     public function __construct() {
-        $this->table = 'pexcel_reader';
-        $this->prefix_column = 'pexcel_reader_';
+        $this->table = 'pexcels';
+        $this->prefix_column = 'pexcel_';
     }
     /**
      * Run the migrations.
@@ -26,10 +25,10 @@ class CreateCrawlerPatternsTable extends FoostartMigration
             $table->integer('category_id')->comment('Category ID');
 
             // Other attributes
-            $table->string($this->prefix_column . 'name', 55)->comment('Name');
-            $table->string($this->prefix_column . 'image', 55)->comment('Name');
-            $table->string($this->prefix_column . 'file', 55)->comment('Name');
-            $table->string($this->prefix_column . 'overview', 55)->comment('Machine name');
+            $table->string($this->prefix_column . 'name', 255)->comment('Name');
+            $table->string($this->prefix_column . 'range_data', 25)->comment('Range data');
+            $table->text($this->prefix_column . 'value')->comment('Json value');
+            $table->string($this->prefix_column . 'file_path', 255)->comment('File path');
             $table->text($this->prefix_column . 'description')->nullable()->comment('Description');
 
             //Set common columns
