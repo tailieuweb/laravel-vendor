@@ -154,6 +154,7 @@ return [
      */
     'sidebars' => [
         'users-list' => 'Users list',
+        'upload-user' => 'Upload',
         'add-user' => 'Add user',
         'groups-list' => 'List of groups',
         'add-group' => 'Add group',

@@ -110,5 +110,13 @@ return [
             "link" => '/admin/crawler/work/job',
             "permissions" => [$admin, "_permission-editor"]
         ],
+
+        //Pexcel
+        [
+            "name" => "acl-admin.menu.pexcel",
+            "route" => "pexcel",
+            "link" => '/admin/pexcel',
+            "permissions" => [$admin, "_permission-editor"]
+        ],
     ]
 ];
