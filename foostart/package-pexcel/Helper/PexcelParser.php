@@ -4,6 +4,7 @@ namespace Foostart\Pexcel\Helper;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Foostart\Pexcel\Helper\UserPexcelParser;
 
 class PexcelParser implements  FromCollection
 {
@@ -25,11 +26,17 @@ class PexcelParser implements  FromCollection
      * @param type $pexcel
      * @return type
      */
-    public function read_data($pexcel)
+    public function read_data($pexcel, $type)
     {
-        $pexcel_files = json_decode($pexcel->pexcel_files);
+
+        $pexcel_files = json_decode($pexcel->pexcel_file_path);
 
         $pexcel_file_path = realpath(base_path('public/' . $pexcel_files[0]));
+
+        if ($type == 'user') {
+            $obj_user = new UserPexcelParser();
+            $obj_user->read_data();
+        }
 
         $data = array();
 
@@ -43,9 +50,9 @@ class PexcelParser implements  FromCollection
         }, 'UTF-8')->get();
         $results = $data->toArray();
 
-        $students = $this->parseExcel($results);
+        $raw_data = $this->parseExcel($results);
 
-        return $students;
+        return $raw_data;
     }
     private function parseExcel($filedata) {
         $data = array();

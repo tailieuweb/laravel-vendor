@@ -4,9 +4,9 @@ $withs = [
     'counter' => '7%',
     'id' => '8%',
     'name' => '40%',
-    'updated_at' => '40%',
-    'operations' => '10%',
+    'updated_at' => '20%',
     'status' => '5%',
+    'operations' => '10%',
 ];
 ?>
 <div style="min-height: 50px;">
@@ -149,6 +149,14 @@ $withs = [
                    ])
                    !!}">
                     <i class="fa fa-edit f-tb-icon"></i>
+                </a>
+
+                <!--raw-->
+                <a href="{!! URL::route('pexcel.raw', [ 'id' => $item->id,
+                                                        '_token' => csrf_token()
+                                                        ])
+                   !!}">
+                    <i class="fa fa-list-ol" aria-hidden="true"></i>
                 </a>
 
                 <!--copy-->

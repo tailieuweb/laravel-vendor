@@ -105,6 +105,14 @@ Route::group(['middleware' => ['web']], function () {
         ]);
 
         /**
+         * raw
+         */
+        Route::get('admin/pexcel/raw', [
+            'as' => 'pexcel.raw',
+            'uses' => 'PexcelAdminController@raw'
+        ]);
+
+        /**
          * trash
          */
          Route::get('admin/pexcel/trash', [

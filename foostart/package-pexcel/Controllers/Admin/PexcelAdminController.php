@@ -22,6 +22,7 @@ use Foostart\Pexcel\Models\Pexcel;
 use Foostart\Category\Models\Category;
 use Foostart\Pexcel\Validators\PexcelValidator;
 use Foostart\Pexcel\Helper\PexcelParser;
+use Foostart\Pexcel\Helper\UserPexcelParser;
 
 class PexcelAdminController extends FooController {
 
@@ -402,9 +403,6 @@ class PexcelAdminController extends FooController {
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 
-
-
-
     /**
      * View data file form excel
      * @param Request $request
@@ -440,6 +438,54 @@ class PexcelAdminController extends FooController {
 
         //get data from file excel
         $items = $obj_parser->read_data($item);
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'items' => $items,
+            'categories' => $categories,
+            'request' => $request,
+            'context' => $context,
+            'statuses' => $this->statuses,
+        ));
+        return view($this->page_views['admin']['view'], $this->data_view);
+    }
+
+    /**
+     * View data file form excel
+     * @param Request $request
+     */
+    public function raw(Request $request) {
+
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['id'] = $request->get('id', NULL);
+
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+
+            if (empty($item)) {
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
+            }
+        }
+
+        //get categories by context
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($params);
+        }
+
+        //get data from file excel
+        $category = $this->obj_category->getCategoryById($item->category_id);
+
+        if ($category->category_name == 'user') {
+            $obj_parser = new UserPexcelParser();
+            $items = $obj_parser->readData($item, $category->category_name);
+        }
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
