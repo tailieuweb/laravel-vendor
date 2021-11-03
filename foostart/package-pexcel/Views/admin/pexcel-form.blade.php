@@ -6,18 +6,20 @@
 
     <!--BUTTONS-->
     <div class='btn-form'>
-        <!-- DELETE BUTTON -->
-        @if($item)
+        @if(isset($item) && $item->deleted_at)
+            <a href="{!! URL::route('pexcel.restore',['id' => $item->id, '_token' => csrf_token()]) !!}"
+               class="btn btn-success pull-right margin-left-5 restore">
+                {!! trans($plang_admin.'.buttons.restore') !!}
+            </a>
+        @elseif (isset($item))
             <a href="{!! URL::route('pexcel.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
-            class="btn btn-danger pull-right margin-left-5 delete">
+               class="btn btn-warning pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}
             </a>
-        @endif
-        <!-- DELETE BUTTON -->
-
-        <!-- SAVE BUTTON -->
-        {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
-        <!-- /SAVE BUTTON -->
+    @endif
+    <!-- SAVE BUTTON -->
+    {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
+    <!-- /SAVE BUTTON -->
     </div>
     <!--/BUTTONS-->
 
@@ -57,7 +59,16 @@
             <!--/PEXCEL NAME-->
 
             <div class="row">
-                <div class='col-md-6'>
+                <div class="col-md-4">
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'range_data',
+                        'label' => trans($plang_admin.'.labels.range_data'),
+                        'value' => @$item->pexcel_range_data,
+                        'description' => trans($plang_admin.'.descriptions.range_data'),
+                        'errors' => $errors,
+                    ])
+                </div>
+                <div class='col-md-4'>
                     <!-- LIST OF CATEGORIES -->
                     @include('package-category::admin.partials.select_single', [
                         'name' => 'category_id',
@@ -72,15 +83,15 @@
                     <!-- /LIST OF CATEGORIES -->
                 </div>
 
-                <div class='col-md-6'>
+                <div class='col-md-4'>
                     <!--STATUS-->
-                @include('package-category::admin.partials.select_single', [
-                    'name' => 'status',
-                    'label' => trans($plang_admin.'.labels.pexcel-status'),
-                    'value' => @$item->status,
-                    'description' => trans($plang_admin.'.descriptions.pexcel-status'),
-                    'items' => $status,
-                ])
+                    @include('package-category::admin.partials.select_single', [
+                        'name' => 'status',
+                        'label' => trans($plang_admin.'.labels.pexcel-status'),
+                        'value' => @$item->status,
+                        'description' => trans($plang_admin.'.descriptions.pexcel-status'),
+                        'items' => $status,
+                    ])
                     <!--/STATUS-->
                 </div>
             </div>

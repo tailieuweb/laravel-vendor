@@ -20,7 +20,6 @@
         <!-- SAVE BUTTON -->
             {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
         <!-- /SAVE BUTTON -->
-
     </div>
     <!--/BUTTONS-->
 

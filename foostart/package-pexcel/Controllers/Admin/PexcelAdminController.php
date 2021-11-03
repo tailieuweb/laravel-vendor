@@ -452,13 +452,41 @@ class PexcelAdminController extends FooController {
         return view($this->page_views['admin']['view'], $this->data_view);
     }
 
-    public function download(Request $request){
+    /**
+     * Delete existing item
+     * @return view list of items
+     * @date 27/12/2017
+     */
+    public function restore(Request $request) {
 
-        $obj_parser = new PexcelParser();
-        $obj_parser->export_items();
-        var_dump(111);
-        die();
+        $item = NULL;
+        $flag = TRUE;
+        $params = array_merge($this->getUser(), $request->all());
+        $id = (int)$request->get('id');
+        $ids = $request->get('ids');
 
+        $is_valid_request = $this->isValidRequest($request);
+
+        if ($is_valid_request && (!empty($id) || !empty($ids))) {
+
+            $ids = !empty($id)?[$id]:$ids;
+
+            foreach ($ids as $id) {
+
+                $params['id'] = $id;
+
+                if (!$this->obj_item->restoreItem($params)) {
+                    $flag = FALSE;
+                }
+            }
+            if ($flag) {
+                return Redirect::route($this->root_router.'.pexcel.list')
+                    ->withMessage(trans($this->plang_admin.'.actions.restore-ok'));
+            }
+        }
+
+        return Redirect::route($this->root_router.'.pexcel.list')
+            ->withMessage(trans($this->plang_admin.'.actions.restore-error'));
     }
 
 }

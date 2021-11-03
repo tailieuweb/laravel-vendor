@@ -26,6 +26,7 @@ class Pexcel extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'pexcel_name',
+            'pexcel_range_data',
             'pexcel_description',
             'pexcel_file_path',
             //Relation
@@ -36,6 +37,10 @@ class Pexcel extends FooModel {
         $this->fields = array_merge($this->fields, [
             'pexcel_name' => [
                 'name' => 'pexcel_name',
+                'type' => 'Text',
+            ],
+            'pexcel_range_data' => [
+                'name' => 'range_data',
                 'type' => 'Text',
             ],
             'pexcel_description' => [
@@ -56,6 +61,7 @@ class Pexcel extends FooModel {
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
             'pexcel_name',
+            'pexcel_range_data',
             'pexcel_description',
             'pexcel_file_path',
             //Relation
@@ -297,4 +303,20 @@ class Pexcel extends FooModel {
             $pluck_status = config('package-pexcel.status.list');
             return $pluck_status;
      }
+
+    /**
+     *
+     * @param ARRAY $input list of parameters
+     * @return boolean TRUE incase restore successfully otherwise return FALSE
+     */
+    public function restoreItem(array $input) {
+
+        $item = $this->withTrashed()->find($input['id']);
+
+        if ($item) {
+            $item->restore();
+        }
+
+        return FALSE;
+    }
 }
