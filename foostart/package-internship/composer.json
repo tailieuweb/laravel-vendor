@@ -1,0 +1,21 @@
+{
+    "name": "foostart/package-internship",
+    "description": "Manage internship",
+    "keywords": [
+        "foostart"        
+    ],
+    "authors": [
+        {
+            "name": "FooStart",
+            "email": "foostart.com@gmail.com",
+            "homepage": "http://foostart.com"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Foostart\\Internship\\": "/"
+        }
+    },
+    "minimum-stability": "dev"
+}

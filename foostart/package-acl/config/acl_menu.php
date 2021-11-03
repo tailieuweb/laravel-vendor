@@ -125,5 +125,12 @@ return [
             "link" => '/admin/company',
             "permissions" => []
         ],
+        // Course
+        [
+            "name" => "acl-admin.menu.course",
+            "route" => "company",
+            "link" => '/admin/course',
+            "permissions" => []
+        ],
     ]
 ];

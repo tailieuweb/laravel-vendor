@@ -1,0 +1,24 @@
+{
+    "name": "foostart/package-courses",
+    "description": "Manage courses",
+    "keywords": [
+        "foostart",
+        "laravel 5 package course"
+    ],
+    "authors": [
+        {
+            "name": "FooStart",
+            "email": "foostart.com@gmail.com",
+            "homepage": "http://foostart.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Foostart\\Courses\\": "/"
+        }
+    },
+    "minimum-stability": "dev"
+}
