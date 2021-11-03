@@ -96,6 +96,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
     {
         $per_page = Config::get('acl_base.users_per_page');
         $user_repository_search = $user_repository_search ? $user_repository_search : new UserRepositorySearchFilter($per_page, $this->user_leader);
+
         return $user_repository_search->all($input_filter);
     }
 

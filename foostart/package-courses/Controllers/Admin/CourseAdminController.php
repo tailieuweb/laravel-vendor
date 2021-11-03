@@ -21,6 +21,8 @@ use Foostart\Category\Models\Category;
 use Foostart\Courses\Validators\CourseValidator;
 use Illuminate\Support\Facades\DB;
 
+use Foostart\Category\Helpers\FoostartCategory;
+
 class CourseAdminController extends FooController {
 
     public $obj_item = NULL;
@@ -86,6 +88,8 @@ class CourseAdminController extends FooController {
             'config_status' => $this->obj_item->config_status
         ));
 
+
+
         return view($this->page_views['admin']['items'], $this->data_view);
     }
 
@@ -121,6 +125,13 @@ class CourseAdminController extends FooController {
             $params['context_id'] = $context->context_id;
             $categories = $this->obj_category->pluckSelect($params);
         }
+
+        $obj_category = new FoostartCategory();
+        $params_level = $request->all();
+        $params_level['_key'] = $obj_category->getContextKeyByRef('user/level');
+        $pluck_select_category_level = $obj_category->pluckSelect($params_level);
+
+        //Get list of teachers
 
         // display view
         $this->data_view = array_merge($this->data_view, array(

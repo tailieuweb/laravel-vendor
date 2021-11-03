@@ -117,17 +117,6 @@
                 </div>
             </div>
 
-             <!--DESCRIPTION-->
-            @include('package-category::admin.partials.textarea', [
-                'name' => 'course_description',
-                'label' => trans($plang_admin.'.labels.course_description'),
-                'value' => @$item->course_description,
-                'description' => trans($plang_admin.'.descriptions.course_description'),
-                'rows' => 25,
-                'tinymce' => true,
-                'errors' => $errors,
-            ])
-            <!--/DESCRIPTION-->
         </div>
         <!--/END MENU1-->
         <!--OTHER-->
@@ -142,6 +131,17 @@
                 'lfm_config' => TRUE
             ])
             <!--/SITE IMAGE-->
+            <!--DESCRIPTION-->
+            @include('package-category::admin.partials.textarea', [
+                'name' => 'course_description',
+                'label' => trans($plang_admin.'.labels.course_description'),
+                'value' => @$item->course_description,
+                'description' => trans($plang_admin.'.descriptions.course_description'),
+                'rows' => 25,
+                'tinymce' => true,
+                'errors' => $errors,
+            ])
+            <!--/DESCRIPTION-->
         </div>
 
     </div>

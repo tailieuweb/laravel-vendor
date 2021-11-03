@@ -225,6 +225,11 @@ class UserController extends Controller
             ->withMessage(Config::get('acl_messages.flash.success.user_permission_add_success'));
     }
 
+    /**
+     * Edit profile page
+     * @param Request $request
+     * @return mixed
+     */
     public function editProfile(Request $request)
     {
         $user_id = $request->get('user_id');
