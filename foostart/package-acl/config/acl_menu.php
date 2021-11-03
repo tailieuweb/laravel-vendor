@@ -129,7 +129,7 @@ return [
         [
             "name" => "acl-admin.menu.course",
             "route" => "company",
-            "link" => '/admin/course',
+            "link" => '/admin/courses',
             "permissions" => []
         ],
     ]

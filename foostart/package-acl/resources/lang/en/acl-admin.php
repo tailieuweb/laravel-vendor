@@ -10,6 +10,8 @@ return [
      */
     'breadcrumbs' => [
         'admin' => 'Admin',
+        'courses' => 'Courses',
+        'course' => 'Course',
         'groups' => 'Groups',
         'edit' => 'Edit',
         'list' => 'List',
@@ -38,6 +40,7 @@ return [
      */
     'menu' => [
         'dashboard' => 'Dashboard',
+        'course' => 'Course',
         'users' => 'Users',
         'groups' => 'Groups',
         'posts' => 'Posts',

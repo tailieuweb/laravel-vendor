@@ -1,7 +1,7 @@
 <div class="panel panel-info">
     <div class="panel-heading">
         <h3 class="panel-title bariol-thin"><i class="fa fa-search"></i>
-            <?php echo trans($plang_admin.'.labels.title-search-course') ?>
+            <?php echo trans($plang_admin.'.labels.title-search-courses') ?>
         </h3>
     </div>
     <div class="panel-body">

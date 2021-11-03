@@ -1,6 +1,4 @@
-<?php
-
-namespace Foostart\Course;
+<?php namespace Foostart\Courses;
 
 use Illuminate\Support\ServiceProvider;
 use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
@@ -21,7 +19,7 @@ class CoursesServiceProvider extends ServiceProvider {
 //        $this->generateContextKey();
 
         // load view
-        $this->loadViewsFrom(__DIR__ . '/Views', 'package-course');
+        $this->loadViewsFrom(__DIR__ . '/Views', 'package-courses');
 
         // include view composers
         require __DIR__ . "/composers.php";
@@ -57,7 +55,7 @@ class CoursesServiceProvider extends ServiceProvider {
 
     /**
      * Public config to system
-     * @source: vendor/foostart/package-course/config
+     * @source: vendor/foostart/package-courses/config
      * @destination: config/
      */
     protected function publishConfig() {
@@ -68,7 +66,7 @@ class CoursesServiceProvider extends ServiceProvider {
 
     /**
      * Public language to system
-     * @source: vendor/foostart/package-course/lang
+     * @source: vendor/foostart/package-courses/lang
      * @destination: resources/lang
      */
     protected function publishLang() {
@@ -79,19 +77,19 @@ class CoursesServiceProvider extends ServiceProvider {
 
     /**
      * Public view to system
-     * @source: vendor/foostart/package-course/Views
-     * @destination: resources/views/vendor/package-course
+     * @source: vendor/foostart/package-courses/Views
+     * @destination: resources/views/vendor/package-courses
      */
     protected function publishViews() {
 
         $this->publishes([
-            __DIR__ . '/Views' => base_path('resources/views/vendor/package-course'),
+            __DIR__ . '/Views' => base_path('resources/views/vendor/package-courses'),
         ]);
     }
 
     protected function publishAssets() {
         $this->publishes([
-            __DIR__ . '/public' => public_path('packages/foostart/package-course'),
+            __DIR__ . '/public' => public_path('packages/foostart/package-courses'),
         ]);
     }
 
@@ -105,7 +103,7 @@ class CoursesServiceProvider extends ServiceProvider {
 
     /**
      * Publish seeders
-     * @source: foostart/package-course/database/seeders
+     * @source: foostart/package-courses/database/seeders
      * @destination: database/seeders
      */
     protected function publishSeeders()

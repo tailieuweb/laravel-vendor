@@ -1166,36 +1166,46 @@
         },
         {
             "name": "foostart/package-courses",
-            "version": "1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "2.0.0",
+            "version_normalized": "2.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/foostart/package-courses.git",
-                "reference": "11de29f0055ab868355d749e082367e1467337e8"
+                "reference": "60d43fa451a0ca458c56c215ae570e4d86a0760b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/foostart/package-courses/zipball/11de29f0055ab868355d749e082367e1467337e8",
-                "reference": "11de29f0055ab868355d749e082367e1467337e8",
+                "url": "https://api.github.com/repos/foostart/package-courses/zipball/60d43fa451a0ca458c56c215ae570e4d86a0760b",
+                "reference": "60d43fa451a0ca458c56c215ae570e4d86a0760b",
                 "shasum": ""
             },
-            "time": "2021-07-01T19:23:39+00:00",
+            "time": "2021-11-03T21:16:19+00:00",
             "type": "library",
             "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Courses\\": "/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "hoanghuulong",
-                    "email": "hoanghuulong.krn@gamil.com"
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
                 }
             ],
-            "description": "This is package-course",
+            "description": "Manage company",
+            "keywords": [
+                "foostart",
+                "laravel 5 package company"
+            ],
             "support": {
                 "issues": "https://github.com/foostart/package-courses/issues",
-                "source": "https://github.com/foostart/package-courses/tree/1.0.0"
+                "source": "https://github.com/foostart/package-courses/tree/2.0.0"
             },
             "install-path": "../foostart/package-courses"
         },

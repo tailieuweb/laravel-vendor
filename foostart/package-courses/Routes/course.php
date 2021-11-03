@@ -12,18 +12,18 @@ Route::group(['middleware' => ['web']], function () {
      * Common
      */
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
-        'namespace' => 'Foostart\Course\Controllers\Admin',
+        'namespace' => 'Foostart\Courses\Controllers\Admin',
     ], function () {
 
         /**
          * configs
          */
-        Route::get('admin/course/config', [
-            'as' => 'Course.config',
+        Route::get('admin/courses/config', [
+            'as' => 'course.config',
             'uses' => 'CourseAdminController@config'
         ]);
 
-        Route::post('admin/course/config', [
+        Route::post('admin/courses/config', [
             'as' => 'course.config',
             'uses' => 'CourseAdminController@config'
         ]);
@@ -31,12 +31,12 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * language
          */
-        Route::get('admin/course/lang', [
+        Route::get('admin/courses/lang', [
             'as' => 'course.lang',
             'uses' => 'CourseAdminController@lang'
         ]);
 
-        Route::post('admin/course/lang', [
+        Route::post('admin/courses/lang', [
             'as' => 'course.lang',
             'uses' => 'CourseAdminController@lang'
         ]);
@@ -47,7 +47,7 @@ Route::group(['middleware' => ['web']], function () {
      * Course
      */
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
-        'namespace' => 'Foostart\Course\Controllers\Admin',
+        'namespace' => 'Foostart\Courses\Controllers\Admin',
     ], function () {
 
         /*
@@ -55,16 +55,16 @@ Route::group(['middleware' => ['web']], function () {
           | Manage companies
           |-----------------------------------------------------------------------
           | 1. List of companies
-          | 2. Edit course
-          | 3. Delete course
-          | 4. Add new course
+          | 2. Edit courses
+          | 3. Delete courses
+          | 4. Add new courses
           |
         */
 
         /**
          * list
          */
-        Route::get('admin/course', [
+        Route::get('admin/courses', [
             'as' => 'course',
             'uses' => 'CourseAdminController@index'
         ]);
@@ -72,7 +72,15 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * edit-add
          */
-        Route::get('admin/course/edit', [
+        Route::get('admin/courses/edit', [
+            'as' => 'course.edit',
+            'uses' => 'CourseAdminController@edit'
+        ]);
+
+        /**
+         * class
+         */
+        Route::get('admin/courses/class/', [
             'as' => 'course.edit',
             'uses' => 'CourseAdminController@edit'
         ]);
@@ -80,7 +88,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * copy
          */
-        Route::get('admin/course/copy', [
+        Route::get('admin/courses/copy', [
             'as' => 'course.copy',
             'uses' => 'CourseAdminController@copy'
         ]);
@@ -88,7 +96,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * post
          */
-        Route::post('admin/course/edit', [
+        Route::post('admin/courses/edit', [
             'as' => 'course.post',
             'uses' => 'CourseAdminController@post'
         ]);
@@ -96,7 +104,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * delete
          */
-        Route::get('admin/course/delete', [
+        Route::get('admin/courses/delete', [
             'as' => 'course.delete',
             'uses' => 'CourseAdminController@delete'
         ]);
@@ -104,7 +112,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * restore
          */
-        Route::get('admin/course/restore', [
+        Route::get('admin/courses/restore', [
             'as' => 'course.restore',
             'uses' => 'CourseAdminController@restore'
         ]);
@@ -112,7 +120,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * trash
          */
-        Route::get('admin/course/trash', [
+        Route::get('admin/courses/trash', [
             'as' => 'course.trash',
             'uses' => 'CourseAdminController@trash'
         ]);
@@ -120,7 +128,7 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * search
          */
-        Route::get('admin/course/search', [
+        Route::get('admin/courses/search', [
             'as' => 'course.search',
             'uses' => 'CourseAdminController@search'
         ]);

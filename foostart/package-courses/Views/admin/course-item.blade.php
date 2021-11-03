@@ -9,13 +9,13 @@ $withs = [
 ];
 ?>
 
-@if(!empty($course) && (!$course->isEmpty()) )
+@if(!empty($courses) && (!$courses->isEmpty()) )
     <div style="min-height: 50px;">
         <div>
-            @if($course->total() == 1)
+            @if($courses->total() == 1)
                 {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
             @else
-                {!! trans($plang_admin.'.descriptions.counters', ['number' => $course->total()]) !!}
+                {!! trans($plang_admin.'.descriptions.counters', ['number' => $courses->total()]) !!}
             @endif
         </div>
 
@@ -116,8 +116,8 @@ $withs = [
         </thead>
 
         <tbody>
-            <?php $counter = $course->perPage() * ($course->currentPage() - 1) + 1;  ?>
-            @foreach($course as $item)
+            <?php $counter = $courses->perPage() * ($courses->currentPage() - 1) + 1;  ?>
+            @foreach($courses as $item)
                 <tr>
                     <!--COUNTER-->
                     <td>
@@ -193,7 +193,7 @@ $withs = [
     </table>
     </div>
     <div class="paginator">
-        {!! $course->appends($request->except(['page']) )->render($pagination_view)  !!}
+        {!! $courses->appends($request->except(['page']) )->render($pagination_view)  !!}
     </div>
 @else
     <!--SEARCH RESULT MESSAGE-->

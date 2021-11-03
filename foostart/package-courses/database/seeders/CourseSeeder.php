@@ -2,7 +2,7 @@
 
 use Foostart\Acl\Library\Constants\FoostartConstants;
 use Foostart\Category\Helpers\FoostartSeeder;
-use Foostart\Course\Models\Course;
+use Foostart\Courses\Models\Course;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -30,9 +30,9 @@ class CourseSeeder extends FoostartSeeder
     {
         //Create sample data
         DB::table('contexts')->insert([
-            $this->prefix_context . 'name' => 'Admin course',
+            $this->prefix_context . 'name' => 'Admin courses',
             $this->prefix_context . 'key' => 'abee417e2dddc5240b586d499',
-            $this->prefix_context . 'ref' => 'admin/course',
+            $this->prefix_context . 'ref' => 'admin/courses',
             'status' => 99,
             'created_user_id' => 1,
             'updated_user_id' => 1,

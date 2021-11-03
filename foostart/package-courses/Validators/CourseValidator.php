@@ -1,9 +1,9 @@
-<?php namespace Foostart\Course\Validators;
+<?php namespace Foostart\Courses\Validators;
 
 use Foostart\Category\Library\Validators\FooValidator;
 use Event;
 use \LaravelAcl\Library\Validators\AbstractValidator;
-use Foostart\Course\Models\Course;
+use Foostart\Courses\Models\Course;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
@@ -87,7 +87,6 @@ class CourseValidator extends FooValidator
         //set rules
         self::$rules = [
             'course_name' => ["required"],
-            'course_url' => ["required"],
         ];
 
         //validate

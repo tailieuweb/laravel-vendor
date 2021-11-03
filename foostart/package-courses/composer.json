@@ -1,9 +1,9 @@
 {
-    "name": "foostart/package-courses",
-    "description": "Manage courses",
+    "name": "foostart/package-coursess",
+    "description": "Manage company",
     "keywords": [
         "foostart",
-        "laravel 5 package course"
+        "laravel 5 package company"
     ],
     "authors": [
         {

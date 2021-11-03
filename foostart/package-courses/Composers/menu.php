@@ -16,13 +16,13 @@ use Foostart\Category\Helpers\SortTable;
 */
 View::composer([
                 // Course
-                'package-course::admin.course-edit',
-                'package-course::admin.course-form',
-                'package-course::admin.course-items',
-                'package-course::admin.course-item',
-                'package-course::admin.course-search',
-                'package-course::admin.course-config',
-                'package-course::admin.course-lang',
+                'package-courses::admin.course-edit',
+                'package-courses::admin.course-form',
+                'package-courses::admin.course-items',
+                'package-courses::admin.course-item',
+                'package-courses::admin.course-search',
+                'package-courses::admin.course-config',
+                'package-courses::admin.course-lang',
 
     ], function ($view) {
 
@@ -37,7 +37,7 @@ View::composer([
         $plang_front = 'course-front';
 
         $fooCategory = new FooCategory();
-        $key = $fooCategory->getContextKeyByRef('admin/course');
+        $key = $fooCategory->getContextKeyByRef('admin/courses');
 
         /**
          * $sidebar_items
@@ -47,7 +47,7 @@ View::composer([
                 'url' => URL::route('course.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('course-admin.sidebar.list_companies') => [
+            trans('course-admin.sidebar.courses') => [
                 "url" => URL::route('course', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
@@ -71,8 +71,8 @@ View::composer([
          */
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
-            'id' => trans($plang_admin.'.fields.course_id'),
-            'course_name' => trans($plang_admin.'.fields.course_name'),
+            'id' => trans($plang_admin.'.fields.courses_id'),
+            'course_name' => trans($plang_admin.'.fields.courses_name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),
         ];

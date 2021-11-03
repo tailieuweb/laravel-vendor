@@ -1,11 +1,11 @@
-<?php namespace Foostart\Course\Controllers\Admin;
+<?php namespace Foostart\Courses\Controllers\Admin;
 
 /*
 |-----------------------------------------------------------------------
 | CrawlerAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
-| @webcourse: http://foostart.com
+| @webcourses: http://foostart.com
 | @date: 28/12/2017
 |
 */
@@ -15,10 +15,10 @@ use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
-use Foostart\Course\Controllers\Admin\BaseCourseAdminController;
-use Foostart\Course\Models\Course;
+use Foostart\Courses\Controllers\Admin\BaseCourseAdminController;
+use Foostart\Courses\Models\Course;
 use Foostart\Category\Models\Category;
-use Foostart\Course\Validators\CourseValidator;
+use Foostart\Courses\Validators\CourseValidator;
 use Illuminate\Support\Facades\DB;
 
 class CourseAdminController extends FooController {
@@ -43,7 +43,7 @@ class CourseAdminController extends FooController {
         $this->plang_front = 'course-front';
 
         // package name
-        $this->package_name = 'package-course';
+        $this->package_name = 'package-courses';
         $this->package_base_name = 'course';
 
         // root routers
@@ -64,7 +64,7 @@ class CourseAdminController extends FooController {
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
 
         // //set category
-        $this->category_ref_name = 'admin/course';
+        $this->category_ref_name = 'admin/courses';
     }
 
     /**
@@ -76,11 +76,11 @@ class CourseAdminController extends FooController {
 
         $params = $request->all();
 
-        $course = $this->obj_item->selectItems($params);
+        $courses = $this->obj_item->selectItems($params);
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
-            'course' => $course,
+            'courses' => $courses,
             'request' => $request,
             'params' => $params,
             'config_status' => $this->obj_item->config_status
@@ -330,9 +330,9 @@ class CourseAdminController extends FooController {
     public function lang(Request $request) {
         $is_valid_request = $this->isValidRequest($request);
         // display view
-        $langs = config('package-course.langs');
+        $langs = config('package-courses.langs');
         $lang_paths = [];
-        $package_path = realpath(base_path('vendor/foostart/package-course'));
+        $package_path = realpath(base_path('vendor/foostart/package-courses'));
 
         if (!empty($langs) && is_array($langs)) {
             foreach ($langs as $key => $value) {
@@ -423,7 +423,7 @@ class CourseAdminController extends FooController {
             $item = $this->obj_item->selectItem($params, FALSE);
 
             if (empty($item)) {
-                return Redirect::route($this->root_router.'.course')
+                return Redirect::route($this->root_router)
                                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
             }
 

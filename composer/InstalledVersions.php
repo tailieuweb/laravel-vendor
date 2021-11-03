@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '0ec65b011e09f072ff0d3a366511d9c097a73a33',
+    'reference' => '17bd081b4fe177f887abaf82e3e4f9267a20c52c',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -222,12 +222,12 @@ private static $installed = array (
     ),
     'foostart/package-courses' => 
     array (
-      'pretty_version' => '1.0.0',
-      'version' => '1.0.0.0',
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '11de29f0055ab868355d749e082367e1467337e8',
+      'reference' => '60d43fa451a0ca458c56c215ae570e4d86a0760b',
     ),
     'foostart/package-crawler' => 
     array (
@@ -631,7 +631,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '0ec65b011e09f072ff0d3a366511d9c097a73a33',
+      'reference' => '17bd081b4fe177f887abaf82e3e4f9267a20c52c',
     ),
     'laravel/sail' => 
     array (

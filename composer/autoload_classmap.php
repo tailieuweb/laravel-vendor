@@ -1111,6 +1111,7 @@ return array(
     'Foostart\\Contact\\Models\\Contact' => $vendorDir . '/foostart/package-contact/Models/Contact.php',
     'Foostart\\Contact\\Validators\\ContactValidator' => $vendorDir . '/foostart/package-contact/Validators/ContactValidator.php',
     'Foostart\\Contact\\Validators\\SampleValidator' => $vendorDir . '/foostart/package-contact/Validators/SampleValidator.php',
+    'Foostart\\Courses\\CoursesServiceProvider' => $vendorDir . '/foostart/package-courses/CoursesServiceProvider.php',
     'Foostart\\Crawler\\Commands\\JobCommand' => $vendorDir . '/foostart/package-crawler/Commands/JobCommand.php',
     'Foostart\\Crawler\\Constants\\CrawlerConstants' => $vendorDir . '/foostart/package-crawler/Constants/CrawlerConstants.php',
     'Foostart\\Crawler\\Controllers\\Admin\\BaseCrawlerAdminController' => $vendorDir . '/foostart/package-crawler/Controllers/Admin/BaseCrawlerAdminController.php',

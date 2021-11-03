@@ -224,6 +224,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
             'Foostart\\Front\\' => 15,
             'Foostart\\Filemanager\\' => 21,
             'Foostart\\Crawler\\' => 17,
+            'Foostart\\Courses\\' => 17,
             'Foostart\\Contact\\' => 17,
             'Foostart\\Company\\' => 17,
             'Foostart\\Category\\' => 18,
@@ -582,6 +583,10 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Crawler\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-crawler',
+        ),
+        'Foostart\\Courses\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-courses',
         ),
         'Foostart\\Contact\\' => 
         array (
@@ -1811,6 +1816,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Contact\\Models\\Contact' => __DIR__ . '/..' . '/foostart/package-contact/Models/Contact.php',
         'Foostart\\Contact\\Validators\\ContactValidator' => __DIR__ . '/..' . '/foostart/package-contact/Validators/ContactValidator.php',
         'Foostart\\Contact\\Validators\\SampleValidator' => __DIR__ . '/..' . '/foostart/package-contact/Validators/SampleValidator.php',
+        'Foostart\\Courses\\CoursesServiceProvider' => __DIR__ . '/..' . '/foostart/package-courses/CoursesServiceProvider.php',
         'Foostart\\Crawler\\Commands\\JobCommand' => __DIR__ . '/..' . '/foostart/package-crawler/Commands/JobCommand.php',
         'Foostart\\Crawler\\Constants\\CrawlerConstants' => __DIR__ . '/..' . '/foostart/package-crawler/Constants/CrawlerConstants.php',
         'Foostart\\Crawler\\Controllers\\Admin\\BaseCrawlerAdminController' => __DIR__ . '/..' . '/foostart/package-crawler/Controllers/Admin/BaseCrawlerAdminController.php',

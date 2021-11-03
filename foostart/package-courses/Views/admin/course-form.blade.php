@@ -56,7 +56,7 @@
             ])
             <!--/NAME-->
 
-            <!--SITE SLUG-->
+            <!--SLUG-->
             @include('package-category::admin.partials.input_slug', [
                 'name' => 'course_slug',
                 'id' => 'course_slug',
@@ -66,30 +66,33 @@
                 'description' => trans($plang_admin.'.descriptions.slug'),
                 'errors' => $errors,
             ])
-            <!--/SITE SLUG-->
+            <!--/SLUG-->
 
-            <!--WEBSITE-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'course_website',
-                'label' => trans($plang_admin.'.labels.course_website'),
-                'value' => @$item->course_website,
-                'description' => trans($plang_admin.'.descriptions.course_website'),
-                'errors' => $errors,
-            ])
-            <!-- /WEBSITE-->
-
-            <!--ADDRESS-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'course_address',
-                'label' => trans($plang_admin.'.labels.course_address'),
-                'value' => @$item->course_address,
-                'description' => trans($plang_admin.'.descriptions.course_address'),
-                'errors' => $errors,
-            ])
-            <!-- /ADDRESS-->
 
             <div class="row">
-                <div class='col-md-6'>
+                <div class='col-md-3'>
+                    <!--START DATE-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'course_start_date',
+                        'label' => trans($plang_admin.'.labels.course_start_date'),
+                        'value' => @$item->course_start_date,
+                        'description' => trans($plang_admin.'.descriptions.course_start_date'),
+                        'errors' => $errors,
+                    ])
+                    <!-- /START DATE-->
+                </div>
+                <div class='col-md-3'>
+                    <!--END DATE-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'course_end_date',
+                        'label' => trans($plang_admin.'.labels.course_end_date'),
+                        'value' => @$item->course_end_date,
+                        'description' => trans($plang_admin.'.descriptions.course_end_date'),
+                        'errors' => $errors,
+                    ])
+                    <!-- /END DATE-->
+                </div>
+                <div class='col-md-3'>
                     <!--CATEGORY ID-->
                     @include('package-category::admin.partials.select_single', [
                         'name' => 'category_id',
@@ -101,7 +104,7 @@
                     <!--/CATEGORY ID-->
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <!--STATUS-->
                     @include('package-category::admin.partials.select_single', [
                         'name' => 'status',

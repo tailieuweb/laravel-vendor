@@ -1,4 +1,4 @@
-<?php namespace Foostart\Course\Constants;
+<?php namespace Foostart\Courses\Constants;
 
 class CourseConstants {
 

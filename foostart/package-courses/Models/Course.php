@@ -1,4 +1,4 @@
-<?php namespace Foostart\Course\Models;
+<?php namespace Foostart\Courses\Models;
 
 use Foostart\Category\Library\Models\FooModel;
 
@@ -119,7 +119,7 @@ class Course extends FooModel {
     }
 
     /**
-     * Get a course by {id}
+     * Get a courses by {id}
      * @param ARRAY $params list of parameters
      * @return OBJECT crawler
      */
