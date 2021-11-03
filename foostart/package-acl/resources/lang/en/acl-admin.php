@@ -26,6 +26,7 @@ return [
         'category' => 'Category',
         'pattern' => 'Pattern',
         'pexcel' => 'Pexcel',
+        'company' => 'Company',
     ],
 
     /***********************************************************************
@@ -47,6 +48,7 @@ return [
         'operations' => 'Operations',
         'contexts' => 'Contexts',
         'pexcel' => 'Pexcels',
+        'company' => 'Company',
     ],
 
 

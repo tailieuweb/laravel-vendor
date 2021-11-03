@@ -118,5 +118,12 @@ return [
             "link" => '/admin/pexcel',
             "permissions" => [$admin, "_permission-editor"]
         ],
+        // Company
+        [
+            "name" => "acl-admin.menu.company",
+            "route" => "company",
+            "link" => '/admin/company',
+            "permissions" => []
+        ],
     ]
 ];
