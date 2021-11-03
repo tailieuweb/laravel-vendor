@@ -62,10 +62,6 @@ class PexcelAdminController extends FooController {
             ]
         ];
 
-        $this->data_view['status'] = $this->obj_item->getPluckStatus();
-
-
-        $this->statuses = config('package-pexcel.status.list');
         // //set category
         $this->category_ref_name = 'admin/pexcels';
     }
@@ -145,7 +141,7 @@ class PexcelAdminController extends FooController {
 
         $item = NULL;
 
-        $params = array_merge($request->all(), $this->getUser());
+        $params = array_merge($this->getUser(), $request->all());
 
         $is_valid_request = $this->isValidRequest($request);
 

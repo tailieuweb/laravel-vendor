@@ -37,12 +37,6 @@
             </a>
         </li>
 
-        <!--MENU 3-->
-        <li>
-            <a data-toggle="tab" href="#menu_3">
-                {!! trans($plang_admin.'.tabs.menu_3') !!}
-            </a>
-        </li>
     </ul>
     <!--/TAB MENU-->
 
@@ -80,13 +74,13 @@
 
                 <div class='col-md-6'>
                     <!--STATUS-->
-                    @include('package-category::admin.partials.radio', [
-                        'name' => 'pexcel_status',
-                        'label' => trans($plang_admin.'.labels.pexcel-status'),
-                        'value' => @$item->pexcel_status,
-                        'description' => trans($plang_admin.'.descriptions.pexcel-status'),
-                        'items' => $statuses,
-                    ])
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'status',
+                    'label' => trans($plang_admin.'.labels.pexcel-status'),
+                    'value' => @$item->status,
+                    'description' => trans($plang_admin.'.descriptions.pexcel-status'),
+                    'items' => $statuses,
+                ])
                     <!--/STATUS-->
                 </div>
             </div>
@@ -94,7 +88,7 @@
             @include('package-category::admin.partials.input_files', [
                 'name' => 'files',
                 'label' => trans($plang_admin.'.labels.files'),
-                'value' => @$item->pexcel_files,
+                'value' => @$item->pexcel_file_path,
                 'description' => trans($plang_admin.'.descriptions.files'),
                 'errors' => $errors,
             ])
@@ -103,18 +97,6 @@
 
         <!--MENU 2-->
         <div id="menu_2" class="tab-pane fade">
-            <div class="row">
-            <!--PEXCEL OVERVIEW-->
-            @include('package-category::admin.partials.textarea', [
-                'name' => 'pexcel_overview',
-                'label' => trans($plang_admin.'.labels.overview'),
-                'value' => @$item->pexcel_overview,
-                'description' => trans($plang_admin.'.descriptions.overview'),
-                'tinymce' => false,
-                'errors' => $errors,
-            ])
-            <!--/PEXCEL OVERVIEW-->
-
             <!--PEXCEL DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
                 'name' => 'pexcel_description',
@@ -126,23 +108,6 @@
                 'errors' => $errors,
             ])
             <!--/PEXCEL DESCRIPTION-->
-            </div>
-        </div>
-
-        <!--MENU 3-->
-        <div id="menu_3" class="tab-pane fade">
-            <div class="row">
-            <!--PEXCEL IMAGE-->
-            @include('package-category::admin.partials.input_image', [
-                'name' => 'pexcel_image',
-                'label' => trans($plang_admin.'.labels.image'),
-                'value' => @$item->pexcel_image,
-                'description' => trans($plang_admin.'.descriptions.image'),
-                'errors' => $errors,
-                'lfm_config' => false,
-            ])
-            <!--/PEXCEL IMAGE-->
-            </div>
         </div>
 
     </div>

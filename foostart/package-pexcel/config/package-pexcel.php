@@ -7,10 +7,6 @@ return [
             'min' => 3,
             'max' => 255,
         ],
-        'pexcel_overview' => [
-            'min' => 10,
-            'max' => 255,
-        ],
         'pexcel_description' => [
             'min' => 25,
             'max' => 0,//unlimit
@@ -33,7 +29,7 @@ return [
 
 
 
-    
+
     /*
     |--------------------------------------------------------------------------
     | ITEM STATUS

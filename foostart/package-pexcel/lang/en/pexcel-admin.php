@@ -181,6 +181,7 @@ return [
     */
     'fields' => [
         'id' => 'Pexcel ID',
+        'category_id' => 'Category ID',
         'name' => 'Pexcel name',
         'description' => 'Pexcel Description',
         'overview' => 'Pexcel Overview',

@@ -26,13 +26,10 @@ class Pexcel extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'pexcel_name',
-            'pexcel_overview',
             'pexcel_description',
-            'pexcel_image',
-            'pexcel_files',
+            'pexcel_file_path',
             //Relation
-            'category_id',
-            'user_id',
+            'category_id'
         ]);
 
         //list of fields for inserting
@@ -41,19 +38,11 @@ class Pexcel extends FooModel {
                 'name' => 'pexcel_name',
                 'type' => 'Text',
             ],
-            'pexcel_overview' => [
-                'name' => 'pexcel_overview',
-                'type' => 'Text',
-            ],
             'pexcel_description' => [
                 'name' => 'pexcel_description',
                 'type' => 'Text',
             ],
-            'pexcel_image' => [
-                'name' => 'pexcel_image',
-                'type' => 'Text',
-            ],
-            'pexcel_files' => [
+            'pexcel_file_path' => [
                 'name' => 'files',
                 'type' => 'Json',
             ],
@@ -62,20 +51,13 @@ class Pexcel extends FooModel {
                 'name' => 'category_id',
                 'type' => 'Int',
             ],
-            'user_id' => [
-                'name' => 'user_id',
-                'type' => 'Int',
-            ],
-
         ]);
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
             'pexcel_name',
-            'pexcel_overview',
             'pexcel_description',
-            'pexcel_image',
-            'pexcel_files',
+            'pexcel_file_path',
             //Relation
             'user_id',
             'category_id',
@@ -85,6 +67,7 @@ class Pexcel extends FooModel {
         $this->valid_ordering_fields = [
             'pexcel_name',
             'updated_at',
+            'id',
             $this->field_status,
         ];
         //check valid fields for filter
@@ -187,8 +170,7 @@ class Pexcel extends FooModel {
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
                                     $elo->where($this->table . '.pexcel_name', 'LIKE', "%{$value}%")
-                                            ->orWhere($this->table . '.pexcel_description', 'LIKE', "%{$value}%")
-                                            ->orWhere($this->table . '.pexcel_overview', 'LIKE', "%{$value}%");
+                                            ->orWhere($this->table . '.pexcel_description', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -238,8 +220,12 @@ class Pexcel extends FooModel {
             $id = $params['id'];
         }
         $field_status = $this->field_status;
-
-        $pexcel = $this->selectItem($params);
+        // Get item by id
+        $_params['id'] = $id;
+        if (!empty($params['id']) && empty($_params['id'])) {
+            $_params['id'] = $params['id'];
+        }
+        $pexcel = $this->selectItem($_params);
 
         if (!empty($pexcel)) {
             $dataFields = $this->getDataFields($params, $this->fields);

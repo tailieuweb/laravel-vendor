@@ -53,7 +53,6 @@
                 @endif
                 <!-- /END ERROR NAME -->
 
-
                 {{-- successful message --}}
                 @if(Session::get('message'))
                     <div class='panel-success'>

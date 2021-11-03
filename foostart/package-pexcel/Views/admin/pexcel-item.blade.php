@@ -130,15 +130,13 @@ $withs = [
             <td> {!! $item->pexcel_name !!} </td>
 
              <!--STATUS-->
-                 <td style="text-align: center;">
-
-                     <?php $status = config('package-pexcel.status'); ?>
-                     @if($item->pexcel_status && (isset($status['list'][$item->pexcel_status])))
-                         <i class="fa fa-circle" style="color:{!! $status['color'][$item->pexcel_status] !!}" title='{!! $status["list"][$item->pexcel_status] !!}'></i>
-                    @else
-                     <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
-                     @endif
-                 </td>
+            <td style="text-align: center;">
+                @if($item->status && (isset($config_status['list'][$item->status])))
+                    <i class="fa fa-circle" style="color:{!! $config_status['color'][$item->status] !!}" title='{!! $config_status["list"][$item->status] !!}'></i>
+                @else
+                    <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
+                @endif
+            </td>
 
 
             <!--UPDATED AT-->

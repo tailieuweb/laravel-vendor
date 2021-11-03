@@ -17,8 +17,7 @@ class PexcelValidator extends FooValidator
         // add rules
         self::$rules = [
             'pexcel_name' => ["required"],
-            'pexcel_overview' => ["required"],
-            'pexcel_description' => ["required"],
+            'category_id' => ["required"],
         ];
 
         // set configs
@@ -36,8 +35,7 @@ class PexcelValidator extends FooValidator
         {
             self::$messages = [
                 'pexcel_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
-                'pexcel_overview.required'      => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.overview')]),
-                'pexcel_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
+                'category_id.required'          => trans($this->lang_admin.'.errors.required'),
             ];
         });
 
@@ -64,23 +62,9 @@ class PexcelValidator extends FooValidator
                 'min' => $_ln['pexcel_name']['min'],
                 'max' => $_ln['pexcel_name']['max'],
             ],
-            'overview' => [
-                'key' => 'pexcel_overview',
-                'label' => trans($this->lang_admin.'.fields.overview'),
-                'min' => $_ln['pexcel_overview']['min'],
-                'max' => $_ln['pexcel_overview']['max'],
-            ],
-            'description' => [
-                'key' => 'pexcel_description',
-                'label' => trans($this->lang_admin.'.fields.description'),
-                'min' => $_ln['pexcel_description']['min'],
-                'max' => $_ln['pexcel_description']['max'],
-            ],
         ];
 
         $flag = $this->isValidLength($input['pexcel_name'], $params['name']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['pexcel_overview'], $params['overview']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['pexcel_description'], $params['description']) ? $flag : FALSE;
 
         return $flag;
     }
