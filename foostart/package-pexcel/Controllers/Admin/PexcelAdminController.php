@@ -35,8 +35,7 @@ class PexcelAdminController extends FooController {
         // models
         $this->obj_item = new Pexcel(array('perPage' => 10));
         $this->obj_category = new Category();
-        //statuses
-        $this->statuses = config('package-pexcel.status.list');
+
         // validators
         $this->obj_validator = new PexcelValidator();
 
@@ -64,6 +63,7 @@ class PexcelAdminController extends FooController {
 
         // //set category
         $this->category_ref_name = 'admin/pexcels';
+        $this->data_view['status'] = $this->obj_item->getPluckStatus();
     }
 
     /**
@@ -82,7 +82,7 @@ class PexcelAdminController extends FooController {
             'items' => $items,
             'request' => $request,
             'params' => $params,
-            'statuses' => $this->statuses,
+            'config_status' => $this->obj_item->config_status
         ));
 
         return view($this->page_views['admin']['items'], $this->data_view);

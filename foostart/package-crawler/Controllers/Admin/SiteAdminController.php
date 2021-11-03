@@ -9,8 +9,6 @@
 | @date: 28/12/2017
 |
 */
-
-
 use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
@@ -62,14 +60,10 @@ class SiteAdminController extends BaseCrawlerAdminController {
         ];
 
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
-
-        $this->statuses = config('package-crawler.status.list');
         $this->obj_sample = config('package-crawler.sample.list');
-
 
         // //set category
         $this->category_ref_name = 'admin/crawlers';
-
     }
 
     /**

@@ -79,7 +79,7 @@
                     'label' => trans($plang_admin.'.labels.pexcel-status'),
                     'value' => @$item->status,
                     'description' => trans($plang_admin.'.descriptions.pexcel-status'),
-                    'items' => $statuses,
+                    'items' => $status,
                 ])
                     <!--/STATUS-->
                 </div>

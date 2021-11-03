@@ -138,7 +138,6 @@ $withs = [
                 @endif
             </td>
 
-
             <!--UPDATED AT-->
             <td> {!! $item->updated_at !!} </td>
 
