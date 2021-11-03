@@ -56,6 +56,9 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
             "activated" => $input["activated"],
             "banned" => isset($input["banned"]) ? $input["banned"] : 0
         );
+        if (!empty($input['user_name'])) {
+            $data['user_name'] = $input['user_name'];
+        }
 
         try {
             $user = $this->sentry->createUser($data);

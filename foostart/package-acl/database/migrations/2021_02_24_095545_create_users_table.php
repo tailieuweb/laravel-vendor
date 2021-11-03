@@ -22,7 +22,7 @@ class CreateUsersTable extends FoostartMigration
         Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id')->comment('User id');
             $table->string('email', 100)->comment('User email');
-            $table->string('username', 100)->nullable()->comment('User name');
+            $table->string('user_name', 100)->nullable()->comment('User name');
             $table->string('password')->comment('User password');
             $table->text('permissions')->nullable();
             $table->boolean('activated')->default(0);

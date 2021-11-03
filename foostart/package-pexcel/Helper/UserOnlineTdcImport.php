@@ -34,7 +34,7 @@ class UserOnlineTdcImport implements ToCollection
     public function getStudentInfo($data) {
         $info = [
             'order' => 0,
-            'username' => 1,
+            'user_name' => 1,
             'first_name' => 2,
             'last_name' => 3,
         ];
@@ -47,8 +47,8 @@ class UserOnlineTdcImport implements ToCollection
             for ($i = 0; $i < count($rangeData); $i++) {
                 $studentInfo[] = [
                     'order' => $rangeData[$i][$info['order']],
-                    'email' => $rangeData[$i][$info['username']] . '@mail.tdc.edu.vn',
-                    'username' => $rangeData[$i][$info['username']],
+                    'email' => $rangeData[$i][$info['user_name']] . '@mail.tdc.edu.vn',
+                    'user_name' => $rangeData[$i][$info['user_name']],
                     'first_name' => $rangeData[$i][$info['first_name']],
                     'last_name' => $rangeData[$i][$info['last_name']],
                 ];

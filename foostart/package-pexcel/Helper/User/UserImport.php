@@ -1,6 +1,7 @@
 <?php namespace Foostart\Pexcel\Helper\User;
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class UserImport
 {
@@ -15,18 +16,20 @@ class UserImport
         for($i = 0; $i < count($users); $i++) {
 
             $user_data = [
-                "email" => $users[$i]['email'],
-                "password" => $users[$i]['username'],
+                "email" => Str::lower($users[$i]['email']),
+                "user_name" => Str::lower($users[$i]['user_name']),
+                "password" => Str::lower($users[$i]['user_name']),
                 "activated" => 1
             ];
+
             try {
                 $user = $user_repository->create($user_data);
+                $user->first_name = $users[$i]['first_name'];
+                $user->last_name = $users[$i]['last_name'];
                 $profile_repository->attachEmptyProfile($user);
             } catch (\Throwable $e) {
-                
+                dd($e->getMessage());
             }
-
         }
     }
-
 }

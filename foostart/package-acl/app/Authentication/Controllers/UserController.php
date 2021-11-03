@@ -269,6 +269,11 @@ class UserController extends Controller
             ->withMessage(Config::get('acl_messages.flash.success.user_profile_edit_success'));
     }
 
+    /**
+     * Edit own profile
+     * @param Request $request
+     * @return mixed
+     */
     public function editOwnProfile(Request $request)
     {
         $logged_user = $this->auth->getLoggedUser();
