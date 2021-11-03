@@ -1071,6 +1071,55 @@
             "install-path": "../foostart/package-category"
         },
         {
+            "name": "foostart/package-company",
+            "version": "2.0.0",
+            "version_normalized": "2.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-company.git",
+                "reference": "fc8b3b8f6224e1be7ee121684a238ff62b90e9f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-company/zipball/fc8b3b8f6224e1be7ee121684a238ff62b90e9f3",
+                "reference": "fc8b3b8f6224e1be7ee121684a238ff62b90e9f3",
+                "shasum": ""
+            },
+            "require": {
+                "foostart/package-filemanager": "*",
+                "foostart/package-slideshow": "*"
+            },
+            "time": "2021-01-09T03:35:12+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Company\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Manage company",
+            "keywords": [
+                "foostart",
+                "laravel 5 package company"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-company/issues",
+                "source": "https://github.com/foostart/package-company/tree/2.0.0"
+            },
+            "install-path": "../foostart/package-company"
+        },
+        {
             "name": "foostart/package-contact",
             "version": "10.0.0",
             "version_normalized": "10.0.0.0",
@@ -1114,6 +1163,41 @@
                 "source": "https://github.com/foostart/package-contact/tree/7.0.0"
             },
             "install-path": "../foostart/package-contact"
+        },
+        {
+            "name": "foostart/package-courses",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-courses.git",
+                "reference": "11de29f0055ab868355d749e082367e1467337e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-courses/zipball/11de29f0055ab868355d749e082367e1467337e8",
+                "reference": "11de29f0055ab868355d749e082367e1467337e8",
+                "shasum": ""
+            },
+            "time": "2021-07-01T19:23:39+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "hoanghuulong",
+                    "email": "hoanghuulong.krn@gamil.com"
+                }
+            ],
+            "description": "This is package-course",
+            "support": {
+                "issues": "https://github.com/foostart/package-courses/issues",
+                "source": "https://github.com/foostart/package-courses/tree/1.0.0"
+            },
+            "install-path": "../foostart/package-courses"
         },
         {
             "name": "foostart/package-crawler",
@@ -1282,6 +1366,50 @@
                 "source": "https://github.com/foostart/package-front/tree/10.0.0"
             },
             "install-path": "../foostart/package-front"
+        },
+        {
+            "name": "foostart/package-internship",
+            "version": "1.0.1",
+            "version_normalized": "1.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-internship.git",
+                "reference": "58edb1001ff703cc85fb11667f7410f277e79100"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-internship/zipball/58edb1001ff703cc85fb11667f7410f277e79100",
+                "reference": "58edb1001ff703cc85fb11667f7410f277e79100",
+                "shasum": ""
+            },
+            "time": "2021-11-03T18:01:03+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Internship\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Manage internship",
+            "keywords": [
+                "foostart"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-internship/issues",
+                "source": "https://github.com/foostart/package-internship/tree/1.0.1"
+            },
+            "install-path": "../foostart/package-internship"
         },
         {
             "name": "foostart/package-module",

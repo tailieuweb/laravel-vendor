@@ -220,10 +220,12 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
             'Foostart\\Post\\' => 14,
             'Foostart\\Pexcel\\' => 16,
             'Foostart\\Module\\' => 16,
+            'Foostart\\Internship\\' => 20,
             'Foostart\\Front\\' => 15,
             'Foostart\\Filemanager\\' => 21,
             'Foostart\\Crawler\\' => 17,
             'Foostart\\Contact\\' => 17,
+            'Foostart\\Company\\' => 17,
             'Foostart\\Category\\' => 18,
             'Foostart\\Acl\\' => 13,
             'Fideloper\\Proxy\\' => 16,
@@ -565,6 +567,10 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             0 => __DIR__ . '/..' . '/foostart/package-module',
         ),
+        'Foostart\\Internship\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-internship',
+        ),
         'Foostart\\Front\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-front',
@@ -580,6 +586,10 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Contact\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-contact',
+        ),
+        'Foostart\\Company\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-company',
         ),
         'Foostart\\Category\\' => 
         array (
@@ -881,6 +891,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Database\\Seeders\\CrawlerSeeder' => __DIR__ . '/../..' . '/database/seeders/CrawlerSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\ModulesSeeder' => __DIR__ . '/../..' . '/database/seeders/ModulesSeeder.php',
+        'Database\\Seeders\\PexcelSeeder' => __DIR__ . '/../..' . '/database/seeders/PexcelSeeder.php',
         'Database\\Seeders\\PostsSeeder' => __DIR__ . '/../..' . '/database/seeders/PostsSeeder.php',
         'Database\\Seeders\\SamplesSeeder' => __DIR__ . '/../..' . '/database/seeders/SamplesSeeder.php',
         'Database\\Seeders\\StackOverflowSeeder' => __DIR__ . '/../..' . '/database/seeders/StackOverflowSeeder.php',
@@ -1785,6 +1796,11 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Category\\Models\\Context' => __DIR__ . '/..' . '/foostart/package-category/Models/Context.php',
         'Foostart\\Category\\Validators\\CategoryValidator' => __DIR__ . '/..' . '/foostart/package-category/Validators/CategoryValidator.php',
         'Foostart\\Category\\Validators\\ContextValidator' => __DIR__ . '/..' . '/foostart/package-category/Validators/ContextValidator.php',
+        'Foostart\\Company\\CompanyServiceProvider' => __DIR__ . '/..' . '/foostart/package-company/CompanyServiceProvider.php',
+        'Foostart\\Company\\Controllers\\Admin\\CompanyAdminController' => __DIR__ . '/..' . '/foostart/package-company/Controllers/Admin/CompanyAdminController.php',
+        'Foostart\\Company\\Controllers\\Front\\CompanyFrontController' => __DIR__ . '/..' . '/foostart/package-company/Controllers/Front/CompanyFrontController.php',
+        'Foostart\\Company\\Models\\Company' => __DIR__ . '/..' . '/foostart/package-company/Models/Company.php',
+        'Foostart\\Company\\Validators\\CompanyValidator' => __DIR__ . '/..' . '/foostart/package-company/Validators/CompanyValidator.php',
         'Foostart\\Contact\\ContactServiceProvider' => __DIR__ . '/..' . '/foostart/package-contact/ContactServiceProvider.php',
         'Foostart\\Contact\\Controllers\\Admin\\ContactAdminController' => __DIR__ . '/..' . '/foostart/package-contact/Controllers/Admin/ContactAdminController.php',
         'Foostart\\Contact\\Controllers\\Admin\\MailController' => __DIR__ . '/..' . '/foostart/package-contact/Controllers/Admin/MailController.php',
@@ -1891,6 +1907,9 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Pexcel\\Controllers\\Admin\\PexcelAdminController' => __DIR__ . '/..' . '/foostart/package-pexcel/Controllers/Admin/PexcelAdminController.php',
         'Foostart\\Pexcel\\Controllers\\User\\PexcelUserController' => __DIR__ . '/..' . '/foostart/package-pexcel/Controllers/User/PexcelUserController.php',
         'Foostart\\Pexcel\\Helper\\PexcelParser' => __DIR__ . '/..' . '/foostart/package-pexcel/Helper/PexcelParser.php',
+        'Foostart\\Pexcel\\Helper\\UserOnlineTdcImport' => __DIR__ . '/..' . '/foostart/package-pexcel/Helper/UserOnlineTdcImport.php',
+        'Foostart\\Pexcel\\Helper\\UserPexcelParser' => __DIR__ . '/..' . '/foostart/package-pexcel/Helper/UserPexcelParser.php',
+        'Foostart\\Pexcel\\Helper\\User\\UserImport' => __DIR__ . '/..' . '/foostart/package-pexcel/Helper/User/UserImport.php',
         'Foostart\\Pexcel\\Models\\Pexcel' => __DIR__ . '/..' . '/foostart/package-pexcel/Models/Pexcel.php',
         'Foostart\\Pexcel\\PexcelServiceProvider' => __DIR__ . '/..' . '/foostart/package-pexcel/PexcelServiceProvider.php',
         'Foostart\\Pexcel\\Validators\\PexcelAdminValidator' => __DIR__ . '/..' . '/foostart/package-pexcel/Validators/PexcelAdminValidator.php',

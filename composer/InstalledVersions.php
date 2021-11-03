@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '6ba1bb35efbd61732349412846905d20dfcdea61',
+    'reference' => '0ec65b011e09f072ff0d3a366511d9c097a73a33',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -202,6 +202,15 @@ private static $installed = array (
       ),
       'reference' => 'b9f709385553284ae8e557cd8741bcba39edef31',
     ),
+    'foostart/package-company' => 
+    array (
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fc8b3b8f6224e1be7ee121684a238ff62b90e9f3',
+    ),
     'foostart/package-contact' => 
     array (
       'pretty_version' => '10.0.0',
@@ -210,6 +219,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '20a43272db0790c9cdc0d699171dc71a157efceb',
+    ),
+    'foostart/package-courses' => 
+    array (
+      'pretty_version' => '1.0.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '11de29f0055ab868355d749e082367e1467337e8',
     ),
     'foostart/package-crawler' => 
     array (
@@ -237,6 +255,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '068dd8c80a16b91549528c3d6c1caac664f5a278',
+    ),
+    'foostart/package-internship' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '58edb1001ff703cc85fb11667f7410f277e79100',
     ),
     'foostart/package-module' => 
     array (
@@ -604,7 +631,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '6ba1bb35efbd61732349412846905d20dfcdea61',
+      'reference' => '0ec65b011e09f072ff0d3a366511d9c097a73a33',
     ),
     'laravel/sail' => 
     array (
