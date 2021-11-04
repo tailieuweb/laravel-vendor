@@ -24,6 +24,7 @@ class CreateCourseTable extends FoostartMigration
 
             // Relation
             $table->integer('category_id')->comment('Category ID');
+            $table->integer('teacher_id')->comment('User teacher ID');
 
             // Other attributes
             $table->string($this->prefix_column . 'name', 255)->comment('Course name');

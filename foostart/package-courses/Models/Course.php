@@ -29,6 +29,7 @@ class Course extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'category_id',
+            'teacher_id',
             'course_name',
             'course_slug',
             'course_start_date',
@@ -51,6 +52,10 @@ class Course extends FooModel {
                 'name' => 'category_id',
                 'type' => 'Int',
             ],
+            'teacher_id' => [
+                'name' => 'teacher_id',
+                'type' => 'Int',
+            ],
              'course_start_date' => [
                 'name' => 'course_start_date',
                 'type' => 'Text',
@@ -70,6 +75,7 @@ class Course extends FooModel {
             'course_name',
             'course_slug',
             'category_id',
+            'teacher_id',
             'course_start_date',
             'course_end_date',
             'course_description',

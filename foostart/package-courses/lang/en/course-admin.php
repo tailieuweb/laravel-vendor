@@ -168,6 +168,7 @@ return [
     */
     'form' => [
         'keyword' => 'Keyword',
+        'teacher_id' => 'Teacher',
         'category_id' => 'Category',
         'sorting' => 'Sorting',
         'no-selected' => 'No selected',
@@ -190,6 +191,7 @@ return [
     */
     'descriptions' => [
         'form' => 'Crawler form',
+        'teacher_id' => 'Teacher',
         'course_image' => 'Course_image',
         'course_start_date' => 'Course start date',
         'course_end_date' => 'Course end date',

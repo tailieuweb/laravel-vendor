@@ -68,6 +68,16 @@
             ])
             <!--/SLUG-->
 
+            <!--TEACHER ID-->
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'teacher_id',
+                'label' => trans($plang_admin.'.form.teacher_id'),
+                'value' => @$item->teacher_id,
+                'items' => $teachers,
+                'description' => trans($plang_admin.'.descriptions.teacher_id'),
+            ])
+            <!--/TEACHER ID-->
+
 
             <div class="row">
                 <div class='col-md-3'>

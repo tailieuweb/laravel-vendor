@@ -17,6 +17,7 @@ class CourseValidator extends FooValidator
         // add rules
         self::$rules = [
             'course_name' => ["required"],
+            'teacher_id' => ["required"],
         ];
 
         // set configs

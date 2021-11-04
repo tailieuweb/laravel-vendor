@@ -24,6 +24,7 @@ class UserRepositorySearchFilter
     //Check filter name is valid
     private $valid_fields_filter = [
         'keyword',
+        'level_id',
         'email',
         'full_name',
         'first_name',
@@ -61,8 +62,13 @@ class UserRepositorySearchFilter
 
         $q = $this->createAllSelect($q);
 
-        $sql = $q->toSql();//Debug: removed
-        return $q->paginate($this->per_page);
+        $users = null;
+        if ($this->per_page == 0) {
+            $users = $q->get();
+        } else {
+            $users = $q->paginate($this->per_page);
+        }
+        return $users;
     }
 
     /**
@@ -126,6 +132,11 @@ class UserRepositorySearchFilter
                         case 'last_name':
                             if (!empty($value)) {
                                 $q = $q->where($this->profile_table_name . '.last_name', 'LIKE', "%{$value}%");
+                            }
+                            break;
+                        case 'level_id':
+                            if (!empty($value)) {
+                                $q = $q->where($this->profile_table_name . '.level_id', $input_filter['level_id']);
                             }
                             break;
                         case 'sex':
