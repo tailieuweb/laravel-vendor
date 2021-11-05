@@ -36,7 +36,7 @@ $withs = [
                 <!--OPERATIONS-->
                 <th style='width:{{ $withs['operations'] }}'>
                     <span class='lb-delete-all'>
-                        {{ trans($plang_admin.'.columns.operations') }}
+                        {{ trans($plang_admin.'.columns.diary_operations') }}
                     </span>
                 </th>
             </tr>

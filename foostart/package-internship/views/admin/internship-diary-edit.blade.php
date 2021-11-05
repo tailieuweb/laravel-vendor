@@ -38,10 +38,6 @@
                     </h3>
                 </div>
 
-                <!--DESCRIPTION-->
-                <div class='panel-description'>
-                    {!! trans($plang_admin.'.descriptions.diary_form') !!}</h4>
-                </div>
 
                 <!-- ERRORS NAME  -->
                 @if($errors->count() > 0)

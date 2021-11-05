@@ -31,17 +31,13 @@
                     <h3 class="panel-title bariol-thin">
                         {!! !empty($item->id)
                             ?
-                            '<i class="fa fa-pencil"></i>'.trans($plang_admin.'.pages.title-edit')
+                            '<i class="fa fa-pencil"></i>'.trans($plang_admin.'.pages.internship-company-title-edit')
                             :
-                            '<i class="fa fa-users"></i>'.trans($plang_admin.'.pages.title-add')
+                            '<i class="fa fa-users"></i>'.trans($plang_admin.'.pages.internship-company-title-add')
                         !!}
                     </h3>
                 </div>
 
-                <!--DESCRIPTION-->
-                <div class='panel-description'>
-                    {!! trans($plang_admin.'.descriptions.company_form') !!}</h4>
-                </div>
 
                 <!-- ERRORS NAME  -->
                 @if($errors->count() > 0)

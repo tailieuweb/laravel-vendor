@@ -45,9 +45,9 @@ View::composer([
          * $sidebar_items
          */
         $sidebar_items = [
-            trans('internship-admin.sidebar.list_courses') => [
+            trans('internship-admin.sidebar.list_internship_courses') => [
                 "url" => URL::route('internship', []),
-                'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
+                'icon' => '<i class="fa fa-newspaper-o" aria-hidden="true"></i>'
             ],
         ];
 
@@ -117,9 +117,9 @@ View::composer([
      * $sidebar_items
      */
     $sidebar_items = [
-        trans('internship-admin.sidebar.list_courses') => [
+        trans('internship-admin.sidebar.list_internship_courses') => [
             "url" => URL::route('internship', []),
-            'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
+            'icon' => '<i class="fa fa-newspaper-o" aria-hidden="true"></i>'
         ],
     ];
 

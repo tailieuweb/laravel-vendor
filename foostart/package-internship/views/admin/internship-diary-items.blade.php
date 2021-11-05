@@ -16,15 +16,10 @@
                     <!--HEADING-->
                     <div class="panel-heading">
                         <h3 class="panel-title bariol-thin"><i class="fa fa-list-ul" aria-hidden="true"></i>
-                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search-diary') : trans($plang_admin.'.pages.title-course') !!}
+                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search-diary') : trans($plang_admin.'.pages.internship-title-diary') !!}
                         </h3>
                     </div>
 
-                    <!--DESCRIPTION-->
-                    <div class='panel-info panel-description'>
-                        {!! trans($plang_admin.'.descriptions.list') !!}</h4>
-                    </div>
-                    <!--/DESCRIPTION-->
 
                     <!--MESSAGE-->
                     <?php $message = Session::get('message'); ?>
@@ -50,7 +45,7 @@
                             <div class="col-md-12">
                             <a href="{!! URL::route('internship.diary.edit',['course_id' => $course_id, 'internship_id' => $internship_id, '_token' => csrf_token()]) !!}"
                                class="btn btn-success pull-left margin-left-5 restore">
-                                {!! trans($plang_admin.'.buttons.add') !!}
+                                {!! trans($plang_admin.'.buttons.diary_add') !!}
                             </a>
                             </div>
                         </div>

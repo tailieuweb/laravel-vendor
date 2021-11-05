@@ -16,14 +16,14 @@
     <ul class="nav nav-tabs">
         <!--MENU 1-->
         <li class="active">
-            <a data-toggle="tab" href="#menu_1">
-                {!! trans($plang_admin.'.tabs.menu-1') !!}
+            <a data-toggle="tab" href="#menu_1_company_require">
+                {!! trans($plang_admin.'.tabs.menu_1_company_require') !!}
             </a>
         </li>
         <!--OTHER-->
         <li>
-            <a data-toggle="tab" href="#menu_3">
-                {!! trans($plang_admin.'.tabs.other') !!}
+            <a data-toggle="tab" href="#menu_2_company_other">
+                {!! trans($plang_admin.'.tabs.menu_2_company_other') !!}
             </a>
         </li>
     </ul>
@@ -33,14 +33,14 @@
     <div class="tab-content">
 
         <!--MENU 1-->
-        <div id="menu_1" class="tab-pane fade in active">
+        <div id="menu_1_company_require" class="tab-pane fade in active">
 
             <!--NAME-->
             @include('package-category::admin.partials.input_text', [
                 'name' => 'company_name',
-                'label' => trans($plang_admin.'.labels.company_name'),
+                'label' => trans($plang_admin.'.labels.internship_company_name'),
                 'value' => @$item->company_name,
-                'description' => trans($plang_admin.'.descriptions.company_name'),
+                'description' => trans($plang_admin.'.descriptions.internship_company_name'),
                 'errors' => $errors,
             ])
             <!--/NAME-->
@@ -70,9 +70,9 @@
             <!--ADDRESS-->
             @include('package-category::admin.partials.input_text', [
                 'name' => 'company_address',
-                'label' => trans($plang_admin.'.labels.company_address'),
+                'label' => trans($plang_admin.'.labels.internship_company_address'),
                 'value' => @$item->company_address,
-                'description' => trans($plang_admin.'.descriptions.company_address'),
+                'description' => trans($plang_admin.'.descriptions.internship_company_address'),
                 'errors' => $errors,
             ])
             <!-- /ADDRESS-->
@@ -82,10 +82,10 @@
                     <!--CATEGORY ID-->
                     @include('package-category::admin.partials.select_single', [
                         'name' => 'category_id',
-                        'label' => trans($plang_admin.'.form.category_id'),
+                        'label' => trans($plang_admin.'.labels.internship_category_id'),
                         'value' => @$item->category_id,
                         'items' => $categories,
-                        'description' => trans($plang_admin.'.descriptions.category_id'),
+                        'description' => trans($plang_admin.'.descriptions.internship_category_id'),
                     ])
                     <!--/CATEGORY ID-->
                 </div>
@@ -94,9 +94,9 @@
                     <!--COMPANY PHONE-->
                     @include('package-category::admin.partials.input_text', [
                         'name' => 'company_phone',
-                        'label' => trans($plang_admin.'.labels.company_phone'),
+                        'label' => trans($plang_admin.'.labels.internship_company_phone'),
                         'value' => @$item->company_phone,
-                        'description' => trans($plang_admin.'.descriptions.company_phone'),
+                        'description' => trans($plang_admin.'.descriptions.internship_company_phone'),
                         'errors' => $errors,
                     ])
                     <!-- /COMPANY PHONE-->
@@ -108,9 +108,9 @@
                     <!--COMPANY INSTRUCTOR-->
                     @include('package-category::admin.partials.input_text', [
                         'name' => 'company_instructor',
-                        'label' => trans($plang_admin.'.labels.company_instructor'),
+                        'label' => trans($plang_admin.'.labels.internship_company_instructor'),
                         'value' => @$item->company_instructor,
-                        'description' => trans($plang_admin.'.descriptions.company_instructor'),
+                        'description' => trans($plang_admin.'.descriptions.internship_company_instructor'),
                         'errors' => $errors,
                     ])
                     <!-- /COMPANY INSTRUCTOR-->
@@ -120,23 +120,39 @@
                     <!--COMPANY INSTRUCTOR PHONE-->
                     @include('package-category::admin.partials.input_text', [
                         'name' => 'company_instructor_phone',
-                        'label' => trans($plang_admin.'.labels.company_instructor_phone'),
+                        'label' => trans($plang_admin.'.labels.internship_company_instructor_phone'),
                         'value' => @$item->company_instructor_phone,
-                        'description' => trans($plang_admin.'.descriptions.company_instructor_phone'),
+                        'description' => trans($plang_admin.'.descriptions.internship_company_instructor_phone'),
                         'errors' => $errors,
                     ])
                     <!-- /COMPANY INSTRUCTOR-->
                 </div>
             </div>
 
+
+
+        </div>
+        <!--/END MENU1-->
+        <!--OTHER-->
+        <div id="menu_2_company_other" class="tab-pane fade">
+            <!--SITE IMAGE-->
+            @include('package-category::admin.partials.input_image', [
+                'name' => 'company_image',
+                'label' => trans($plang_admin.'.labels.internship_company_image'),
+                'value' => @$item->company_image,
+                'description' => trans($plang_admin.'.descriptions.internship_company_image'),
+                'errors' => $errors,
+                'lfm_config' => TRUE
+            ])
+            <!--/SITE IMAGE-->
             <div class="row">
                 <div class='col-md-6'>
                     <!--WEBSITE-->
                 @include('package-category::admin.partials.input_text', [
                     'name' => 'company_website',
-                    'label' => trans($plang_admin.'.labels.company_website'),
+                    'label' => trans($plang_admin.'.labels.internship_company_website'),
                     'value' => @$item->company_website,
-                    'description' => trans($plang_admin.'.descriptions.company_website'),
+                    'description' => trans($plang_admin.'.descriptions.internship_company_website'),
                     'errors' => $errors,
                 ])
                 <!-- /WEBSITE-->
@@ -146,40 +162,24 @@
                     <!--COMPANY TAX CODE-->
                 @include('package-category::admin.partials.input_text', [
                     'name' => 'company_tax_code',
-                    'label' => trans($plang_admin.'.labels.company_tax_code'),
+                    'label' => trans($plang_admin.'.labels.internship_company_tax_code'),
                     'value' => @$item->company_tax_code,
-                    'description' => trans($plang_admin.'.descriptions.company_tax_code'),
+                    'description' => trans($plang_admin.'.descriptions.internship_company_tax_code'),
                     'errors' => $errors,
                 ])
                 <!-- /COMPANY TAX CODE-->
                 </div>
             </div>
-
-
-        </div>
-        <!--/END MENU1-->
-        <!--OTHER-->
-        <div id="menu_3" class="tab-pane fade">
-            <!--SITE IMAGE-->
-            @include('package-category::admin.partials.input_image', [
-                'name' => 'company_image',
-                'label' => trans($plang_admin.'.labels.company_image'),
-                'value' => @$item->company_image,
-                'description' => trans($plang_admin.'.descriptions.company_image'),
-                'errors' => $errors,
-                'lfm_config' => TRUE
-            ])
-            <!--/SITE IMAGE-->
             <!--DESCRIPTION-->
-        @include('package-category::admin.partials.textarea', [
-            'name' => 'company_description',
-            'label' => trans($plang_admin.'.labels.company_description'),
-            'value' => @$item->company_description,
-            'description' => trans($plang_admin.'.descriptions.company_description'),
-            'rows' => 25,
-            'tinymce' => true,
-            'errors' => $errors,
-        ])
+            @include('package-category::admin.partials.textarea', [
+                'name' => 'company_description',
+                'label' => trans($plang_admin.'.labels.internship_company_description'),
+                'value' => @$item->company_description,
+                'description' => trans($plang_admin.'.descriptions.internship_company_description'),
+                'rows' => 25,
+                'tinymce' => true,
+                'errors' => $errors,
+            ])
         <!--/DESCRIPTION-->
         </div>
 

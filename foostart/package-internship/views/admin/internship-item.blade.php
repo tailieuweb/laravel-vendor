@@ -3,6 +3,8 @@ $withs = [
     'counter' => '7%',
     'id' => '8%',
     'course_name' => '35%',
+    'company' => '35%',
+    'diary' => '35%',
     'status' => '10%',
     'updated_at' => '25%',
     'operations' => '15%',
@@ -10,26 +12,6 @@ $withs = [
 ?>
 
 @if(!empty($classes))
-    <div style="min-height: 50px;">
-        <div>
-            @if(count($classes) == 1)
-                {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
-            @else
-                {!! trans($plang_admin.'.descriptions.counters', ['number' => count($classes)]) !!}
-            @endif
-        </div>
-
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
-                                                                            "class"=>"btn btn-warning delete btn-delete-all",
-                                                                            "title"=> trans($plang_admin.'.hint.delete-in-trash'),
-                                                                            'name'=>'del-trash'))
-        !!}
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
-                                                                            "class"=>"btn btn-danger delete btn-delete-all",
-                                                                            "title"=> trans($plang_admin.'.hint.delete-forever'),
-                                                                            'name'=>'del-forever'))
-        !!}
-    </div>
 
     <div class="table-responsive">
     <table class="table table-hover">
@@ -45,15 +27,21 @@ $withs = [
                 <!--NAME-->
                 <?php $name = 'course_name' ?>
                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.columns.course_name') !!}
+                    {!! trans($plang_admin.'.columns.internship_course_name') !!}
                 </th>
 
-                <!--OPERATIONS-->
-                <th style='width:{{ $withs['operations'] }}'>
-                    <span class='lb-delete-all'>
-                        {{ trans($plang_admin.'.columns.operations') }}
-                    </span>
+                <!--COMPANY-->
+                <?php $name = 'company' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.columns.internship_company_name') !!}
                 </th>
+
+                <!--DIARY-->
+                <?php $name = 'diary' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.columns.internship_diary') !!}
+                </th>
+
             </tr>
 
         </thead>
@@ -72,8 +60,7 @@ $withs = [
                         {!! $item['course']['course_name'] !!}
                     </td>
 
-
-                    <!--OPERATOR-->
+                    <!--COMPANY-->
                     <td>
                         <!--Edit company-->
                         <a href="{!! URL::route('internship.edit_company', [   'course_id' => $item['course_id'],
@@ -82,7 +69,10 @@ $withs = [
                                 !!}">
                             <i class="fa fa-edit f-tb-icon"></i>
                         </a>
+                    </td>
 
+                    <!--DIARY-->
+                    <td>
                         <!--Diary-->
                         <a href="{!! URL::route('internship.diary', ['course_id' => $item['course_id'],
                                                                     '_token' => csrf_token()
@@ -90,7 +80,6 @@ $withs = [
                                 !!}">
                             <i class="fa fa-stack-exchange" aria-hidden="true"></i>
                         </a>
-
                     </td>
 
                 </tr>

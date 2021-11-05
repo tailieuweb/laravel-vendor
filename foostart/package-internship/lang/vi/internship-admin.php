@@ -28,6 +28,7 @@ return [
     */
     'sidebar' => [
         'list' => 'Items',
+        'list_internship_courses' => 'Báo cáo thực tập',
         'internship_diary_add' => 'Add',
         'internship_diary_list' => 'Diary',
         'add' => 'Add new',
@@ -60,6 +61,10 @@ return [
     */
     'columns' => [
         'order' => 'Order',
+        'diary_operations' => 'Thao tác',
+        'internship_company_name' => 'Công ty thực tập',
+        'internship_diary' => 'Nhật ký thực tập',
+        'internship_course_name' => 'Môn học',
         'start_date' => 'Ngày đầu tuần',
         'end_date' => 'Ngày cuối tuần',
         'course_name' => 'Course name',
@@ -102,8 +107,13 @@ return [
     */
     'pages' => [
         'title-list' => 'List of companies',
+        'internship-company-title-edit' => 'Thông tin công ty thực tập',
+        'internship-company-title-add' => 'Thông tin công ty thực tập',
+        'title-list' => 'List of companies',
+        'title-internship-course' => 'Danh sách môn thực tập',
         'title-course' => 'List of courses',
-        'title-list-search-diary' => 'Diary',
+        'title-list-search-diary' => 'Nhật ký thực tập',
+        'internship-title-diary' => 'Nhật ký thực tập',
         'title-list-pattern' => 'List of patterns',
         'title-list-search' => 'Search results',
         'title-list-pattern-search' => 'Search results',
@@ -147,6 +157,7 @@ return [
     */
     'buttons' => [
         'search' => 'Search',
+        'diary_add' => 'Thêm mới báo cáo tuần',
         'reset' => 'Resest',
         'add' => 'Add',
         'save' => 'Save',
@@ -197,6 +208,16 @@ return [
     */
     'descriptions' => [
         'form' => 'Crawler form',
+        'internship_company_tax_code' => 'Thông tin mã số thuế của công ty',
+        'internship_company_website' => 'Địa chỉ website của công ty',
+        'internship_company_description' => 'Mô tả sơ lược về công ty thực tập',
+        'internship_company_image' => 'Hình đại diện công ty thực tập',
+        'internship_company_name' => 'Tên chính xác công ty thực tập',
+        'internship_company_address' => 'Nhập địa chỉ chính xác công ty thực tập (số nhà, đường, phường, quận, thành phố)',
+        'internship_category_id' => 'Lĩnh vực kinh doanh của công ty thực tập',
+        'internship_company_phone' => 'Số điện thoại của công ty thực tập, có thể cùng số với người hướng dẫn thực tập',
+        'internship_company_instructor' => 'Họ và tên người hướng dẫn thực tập tại công ty',
+        'internship_company_instructor_phone' => 'Số điện thoại của người hướng dẫn thực tập tại công ty',
         'diary_mon' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
         'diary_tue' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
         'diary_wed' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
@@ -342,6 +363,16 @@ return [
     */
     'labels' => [
         'name' => 'Internship name',
+        'internship_company_website' => 'Địa chỉ website',
+        'internship_company_tax_code' => 'Mã số thuế',
+        'internship_company_description' => 'Mô tả sơ lược về công ty',
+        'internship_company_image' => 'Ảnh đại diện công ty',
+        'internship_company_name' => 'Tên công ty',
+        'internship_company_address' => 'Địa chỉ công ty',
+        'internship_category_id' => 'Lĩnh vực hoạt động',
+        'internship_company_phone' => 'Số điện thoại công ty',
+        'internship_company_instructor' => 'Người hướng dẫn thực tập',
+        'internship_company_instructor_phone' => 'Số điện thoại người hướng dẫn',
         'diary_mon' => 'Nhật ký thực tập thứ 2',
         'diary_tue' => 'Nhật ký thực tập thứ 3',
         'diary_wed' => 'Nhật ký thực tập thứ 4',
@@ -452,6 +483,8 @@ return [
         'other'  => 'Other',
         'basic'  => 'Basic',
         'advance' => 'Advance',
+        'menu_1_company_require' => 'Thông tin bắt buộc',
+        'menu_2_company_other' => 'Thông tin thêm',
     ],
 
 
