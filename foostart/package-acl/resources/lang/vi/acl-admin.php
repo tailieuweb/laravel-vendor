@@ -11,6 +11,7 @@ return [
     'breadcrumbs' => [
         'admin' => 'Admin',
         'diary' => 'Diary',
+        'diary_edit' => 'Nhật ký thực tập',
         'edit_company' => 'Edit company',
         'internship' => 'Internship',
         'courses' => 'Courses',

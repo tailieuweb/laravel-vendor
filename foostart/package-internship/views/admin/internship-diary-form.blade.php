@@ -4,6 +4,7 @@
 
 {!! Form::open(['route'=>['internship.diary.post',
                             'course_id' => $course_id,
+                            'internship_id' => $internship_id,
                             'internship_diary_id' => $internship_diary_id,
                             ],  'files'=>true, 'method' => 'post'])  !!}
 

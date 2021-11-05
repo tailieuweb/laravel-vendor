@@ -509,15 +509,15 @@ class InternshipAdminController extends FooController {
      * @date 27/12/2017
      */
     public function postDiary(Request $request) {
-
+        //Get user info
         $user = $this->getUser();
-        $params = $request->all();
         $obj_class_user = new ClassesUsers();
+
+        //Get class by user
         $params = [
             'user_id' => $user['user_id']
         ];
         $classes = $obj_class_user->selectItems($params);
-
         $classes = $classes->toArray();
 
         //Check valid course
@@ -534,31 +534,29 @@ class InternshipAdminController extends FooController {
                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
         }
 
+        //Check valid internship
         $item = NULL;
-
         $params = array_merge($this->getUser(), $request->all());
-
         $is_valid_request = $this->isValidRequest($request);
-
         $course_id = (int) $request->get('course_id');
 
-            $_params = [];
-            $_params['course_id'] = $request->get('course_id', NULL);
-            $_params['user_id'] = $user['user_id'];
+        $_params = [];
+        $_params['course_id'] = $request->get('course_id', NULL);
+        $_params['user_id'] = $user['user_id'];
 
-            $item = $this->obj_item->selectItem($_params, FALSE);
+        $item = $this->obj_item->selectItem($_params, FALSE);
 
-            //Check valid internship_id
-            $internship_id = $request->get('internship_id');
+        //Check valid internship_id
+        $internship_id = $request->get('internship_id');
 
-            if ($internship_id != $item->internship_id) {
-                return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id, 'internship_id' => $item->internship_id])
-                    ->withMessage(trans($this->plang_admin.'.actions.add-error'));
-            }
+        if ($internship_id != $item->internship_id) {
+            return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id, 'internship_id' => $item->internship_id])
+                ->withMessage(trans($this->plang_admin.'.actions.add-error'));
+        }
 
-            //Internship diary item
-            $obj_internship_diary = new InternshipDiary();
-            $internship_diary_id = $request->get('internship_diary_id');
+        //Internship diary item
+        $obj_internship_diary = new InternshipDiary();
+        $internship_diary_id = $request->get('internship_diary_id');
 
             if (!empty($internship_diary_id)) {
                 //Update
@@ -578,6 +576,10 @@ class InternshipAdminController extends FooController {
             } else {
                 //Add new
                 $item = $obj_internship_diary->insertItem($params);
+                return Redirect::route($this->root_router.'.diary', ["course_id" => $course_id,
+                    'internship_diary_id' => $item->internship_diary_id,
+                    'internship_id' => $internship_id])
+                    ->withMessage(trans($this->plang_admin.'.actions.add-ok'));
 
             }
 
