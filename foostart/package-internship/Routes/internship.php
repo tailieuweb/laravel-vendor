@@ -77,6 +77,16 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'internship.edit_company',
             'uses' => 'InternshipAdminController@editCompany'
         ]);
+
+        /**
+         * edit-add
+         * diary
+         */
+        Route::get('admin/internship/edit_diary', [
+            'as' => 'internship.edit_diary',
+            'uses' => 'InternshipAdminController@editDiary'
+        ]);
+
         /**
          * post
          */

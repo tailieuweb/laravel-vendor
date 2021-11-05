@@ -245,6 +245,155 @@ class InternshipAdminController extends FooController {
     }
 
     /**
+     * Edit existing item by {id} parameters OR
+     * Add new item
+     * @return view edit page
+     * @date 26/12/2017
+     */
+    public function editDiary(Request $request) {
+
+        $user = $this->getUser();
+        $params = $request->all();
+        $obj_class_user = new ClassesUsers();
+        $params = [
+            'user_id' => $user['user_id']
+        ];
+        $classes = $obj_class_user->selectItems($params);
+
+        $classes = $classes->toArray();
+
+        //Check valid course
+        $course_id = $request->get('course_id');
+        $flag = false;
+        foreach ($classes as $class) {
+            if ($class['course_id'] == $course_id) {
+                $flag = true;
+                break;
+            }
+        }
+        if (!$flag) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
+
+
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['course_id'] = $request->get('course_id', NULL);
+        $params['user_id'] = $user['user_id'];
+
+        if (!empty($params['course_id'])) {
+            $item = $this->obj_item->selectItem($params, FALSE);
+
+        }
+
+        //get categories by context
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($params);
+        }
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'item' => $item,
+            'categories' => $categories,
+            'request' => $request,
+            'context' => $context,
+            'course_id' => $course_id,
+        ));
+        return view($this->page_views['admin']['edit_company'], $this->data_view);
+    }
+
+    /**
+     * Processing data from POST method: add new item, edit existing item
+     * @return view edit page
+     * @date 27/12/2017
+     */
+    public function postDiary(Request $request) {
+        $user = $this->getUser();
+        $params = $request->all();
+        $obj_class_user = new ClassesUsers();
+        $params = [
+            'user_id' => $user['user_id']
+        ];
+        $classes = $obj_class_user->selectItems($params);
+
+        $classes = $classes->toArray();
+
+        //Check valid course
+        $course_id = $request->get('course_id', 0);
+        $flag = false;
+        foreach ($classes as $class) {
+            if ($class['course_id'] == $course_id) {
+                $flag = true;
+                break;
+            }
+        }
+        if (!$flag) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
+
+        $item = NULL;
+
+        $params = array_merge($this->getUser(), $request->all());
+
+        $is_valid_request = $this->isValidRequest($request);
+
+        $course_id = (int) $request->get('course_id');
+
+        if ($is_valid_request && $this->obj_validator->validate($params)) {// valid data
+
+            $_params = [];
+            $_params['course_id'] = $request->get('course_id', NULL);
+            $_params['user_id'] = $user['user_id'];
+
+            $item = $this->obj_item->selectItem($_params, FALSE);
+
+            // update existing item
+            if (!empty($item)) {
+
+                $params['id'] = $item->internship_id;
+                $item = $this->obj_item->updateItem($params);
+
+                // message
+                return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
+                    ->withMessage(trans($this->plang_admin.'.actions.edit-ok'));
+
+
+                // add new item
+            } else {
+
+                $item = $this->obj_item->insertItem($params);
+
+                if (!empty($item)) {
+
+                    //message
+                    return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
+                        ->withMessage(trans($this->plang_admin.'.actions.add-ok'));
+                } else {
+
+                    //message
+                    return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
+                        ->withMessage(trans($this->plang_admin.'.actions.add-error'));
+                }
+
+            }
+
+        } else { // invalid data
+
+            $errors = $this->obj_validator->getErrors();
+
+            // passing the id incase fails editing an already existing item
+            return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
+                ->withInput()->withErrors($errors);
+        }
+    }
+
+    /**
      * Delete existing item
      * @return view list of items
      * @date 27/12/2017

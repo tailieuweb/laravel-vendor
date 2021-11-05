@@ -75,12 +75,20 @@ $withs = [
 
                     <!--OPERATOR-->
                     <td>
-                        <!--edit-->
+                        <!--Edit company-->
                         <a href="{!! URL::route('internship.edit_company', [   'course_id' => $item['course_id'],
                                                                     '_token' => csrf_token()
                                                                 ])
                                 !!}">
                             <i class="fa fa-edit f-tb-icon"></i>
+                        </a>
+
+                        <!--Edit diary-->
+                        <a href="{!! URL::route('internship.edit_diary', ['course_id' => $item['course_id'],
+                                                                    '_token' => csrf_token()
+                                                                ])
+                                !!}">
+                            <i class="fa fa-stack-exchange" aria-hidden="true"></i>
                         </a>
 
                     </td>
