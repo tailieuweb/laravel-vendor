@@ -28,6 +28,8 @@ return [
     */
     'sidebar' => [
         'list' => 'Items',
+        'internship_diary_add' => 'Add',
+        'internship_diary_list' => 'Diary',
         'add' => 'Add new',
         'trash' => 'Trash',
         'config' => 'Configurations',
@@ -98,6 +100,7 @@ return [
     'pages' => [
         'title-list' => 'List of companies',
         'title-course' => 'List of courses',
+        'title-list-search-diary' => 'Diary',
         'title-list-pattern' => 'List of patterns',
         'title-list-search' => 'Search results',
         'title-list-pattern-search' => 'Search results',
@@ -191,6 +194,7 @@ return [
     */
     'descriptions' => [
         'form' => 'Crawler form',
+        'diary_form' => 'Diary',
         'company_form' => 'Edit company',
         'company_image' => 'Company image',
         'internship_address' => 'Internship address',
@@ -326,6 +330,8 @@ return [
     */
     'labels' => [
         'name' => 'Internship name',
+        'diary_start_date' => 'Start date',
+        'diary_end_date' => 'End date',
         'company_phone' => 'Company phone',
         'company_instructor_phone' => 'Company instructor phone',
         'company_tax_code' => 'Company tax code',
@@ -414,13 +420,13 @@ return [
     |
       */
     'tabs' => [
-        'menu-1' => 'Basic',
-        'menu-2' => 'Advance',
-        'menu-3' => 'Other',
-        'menu-4' => 'Assigner',
-        'menu-5' => 'Answer',
-        'menu-6' => 'Menu 6',
-        'menu-7' => 'Menu 7',
+        'menu_1' => 'Date',
+        'menu_2' => 'Mon',
+        'menu_3' => 'Tue',
+        'menu_4' => 'Wed',
+        'menu_5' => 'Thu',
+        'menu_6' => 'Fri',
+        'menu_7' => 'Sat',
         'menu-8' => 'Menu 8',
         'menu-9' => 'Menu 9',
         'menu-9' => 'Menu 9',

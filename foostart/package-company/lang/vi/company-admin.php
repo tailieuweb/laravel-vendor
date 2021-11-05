@@ -166,6 +166,7 @@ return [
     */
     'form' => [
         'keyword' => 'Keyword',
+        'category_id' => 'Category',
         'sorting' => 'Sorting',
         'no-selected' => 'No selected',
         'status' => 'Status',
@@ -187,6 +188,8 @@ return [
     */
     'descriptions' => [
         'form' => 'Crawler form',
+        'company_address' => 'Company address',
+        'category_id' => 'Category',
         'update' => 'Update crawler',
         'name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category' => 'Click <a href=":href">here</a> to manage list of categories by token.',
@@ -242,7 +245,6 @@ return [
         'pattern_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'company_website' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        'category_id' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -314,7 +316,8 @@ return [
     |
     */
     'labels' => [
-        'name' => 'Crawler name',
+        'name' => 'Company name',
+        'company_address' => 'Company address',
         'overview' => 'Crawler overview',
         'description' => 'Crawler description',
         'image' => 'Crawler image',

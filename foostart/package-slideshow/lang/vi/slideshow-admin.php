@@ -10,7 +10,8 @@ return [
     |
     */
     'menus' => [
-        'top-menu' => 'slideshows'
+        'top-menu' => 'Slideshows',
+        'undo' => 'Undo slideshows',
     ],
 
 
@@ -29,6 +30,10 @@ return [
         'trash' => 'Trash',
         'config' => 'Configurations',
         'lang' => 'Languages',
+        'style' => 'Style',
+        'category' => 'Categories',
+        'add-style' => 'Add style',
+        'list-style' => 'List of styles',
     ],
 
 
@@ -79,6 +84,8 @@ return [
         'add' => 'Add',
         'save' => 'Save',
         'delete' => 'Delete',
+        'delete-in-trash' => 'In trash',
+        'delete-forever' => 'Forever',
     ],
 
 
@@ -152,12 +159,14 @@ return [
     |
     */
     'fields' => [
-        'id' => 'slideshow ID',
-        'name' => 'slideshow name',
+        'id' => 'Slideshow ID',
+        'name' => 'Slideshow name',
         'description' => 'Description',
         'overview' => 'Overview',
         'slug' => 'Slug',
-        'updated_at' => 'Updated at'
+        'updated_at' => 'Updated at',
+        'id-style' => 'Style ID',
+        'name-style' => 'Style name',
     ],
 
 
@@ -171,11 +180,19 @@ return [
     |
     */
     'labels' => [
-        'name' => 'slideshow name',
+        'name' => 'Slideshow name',
+        'overview' => 'Slideshow overview',
+        'description' => 'Slideshow description',
         'category' => 'Category name',
         'title-search' => 'Search slideshow',
         'title-backup' => 'Backups',
         'config' => 'Configurations',
+        'name-style' => 'New style',
+        'view-file' => 'View file',
+        'view-content' => 'View content',
+        'style-select' => 'Slect style',
+        'images' => 'Images',
+        'image' => 'Image',
     ],
 
 
@@ -246,4 +263,65 @@ return [
         'delete-ok' => 'Delete item successfully',
         'delete-error' => 'Delete item failed',
     ],
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Descriptions
+    |-----------------------------------------------------------------------
+    | Descriptions
+    |
+    */
+    'descriptions' => [
+        'form' => 'Slideshow form',
+        'update' => 'Update slideshow',
+        'name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'slug' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'category' => 'Click <a href=":href">here</a> to manage list of categories by token.',
+        'slideshow' => 'Click <a href=":href">here</a> to manage list of slideshow',
+        'overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'image' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'files' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'status' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'list' => 'List of items',
+        'counters' => 'There are <b>:number</b> items',
+        'counter' => 'There is <b>:number</b> item',
+        'not-found' => 'Not found items',
+        'config' => 'List of configurations',
+        'lang' => 'List of languages',
+        'form-style' => 'Style form',
+        'name-style' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'view-style' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'view-content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'style-select' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'images' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+    ],
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Order by
+    |-----------------------------------------------------------------------
+    | Order by
+    |
+    */
+    'order_by' => [
+        'asc' => 'ASC',
+        'desc' => 'DESC'
+    ],
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Hint
+    |-----------------------------------------------------------------------
+    | The list of hint
+    |
+    */
+    'hint' => [
+        'delete-forever' => 'Delete forever',
+        'delete-in-trash' => 'Delete in trash',
+    ],
+
 ];

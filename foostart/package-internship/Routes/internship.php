@@ -78,14 +78,43 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'InternshipAdminController@editCompany'
         ]);
 
+        //////////////////////////////////////////////////////
         /**
-         * edit-add
          * diary
+         * list
          */
-        Route::get('admin/internship/edit_diary', [
-            'as' => 'internship.edit_diary',
+        Route::get('admin/internship/diary', [
+            'as' => 'internship.diary',
+            'uses' => 'InternshipAdminController@diary'
+        ]);
+
+        /**
+         * diary
+         * edit
+         */
+        Route::get('admin/internship/diary_edit', [
+            'as' => 'internship.diary.edit',
             'uses' => 'InternshipAdminController@editDiary'
         ]);
+
+        /**
+         * diary
+         * post
+         */
+        Route::post('admin/internship/diary_edit', [
+            'as' => 'internship.diary.post',
+            'uses' => 'InternshipAdminController@postDiary'
+        ]);
+
+        /**
+         * diary
+         * delete
+         */
+        Route::post('admin/internship/diary_delete', [
+            'as' => 'internship.diary.delete',
+            'uses' => 'InternshipAdminController@deleteDiary'
+        ]);
+        /////////////////////////////////////////////////////
 
         /**
          * post

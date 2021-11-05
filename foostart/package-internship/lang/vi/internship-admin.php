@@ -10,7 +10,7 @@ return [
     |
     */
     'menus' => [
-        'top-menu' => 'Companies'
+        'top-menu' => 'Internship'
     ],
 
 
@@ -28,6 +28,8 @@ return [
     */
     'sidebar' => [
         'list' => 'Items',
+        'internship_diary_add' => 'Add',
+        'internship_diary_list' => 'Diary',
         'add' => 'Add new',
         'trash' => 'Trash',
         'config' => 'Configurations',
@@ -42,6 +44,7 @@ return [
         'questions' => 'Questions',
         'list_jobs' => 'Jobs',
         'list_categories' => 'Categories',
+        'list_courses' => 'Courses',
     ],
 
 
@@ -57,6 +60,10 @@ return [
     */
     'columns' => [
         'order' => 'Order',
+        'start_date' => 'Ngày đầu tuần',
+        'end_date' => 'Ngày cuối tuần',
+        'course_name' => 'Course name',
+        'week' => 'Tuần',
         '#' => '#',
         'counter' => '#',
         'id' => 'Id',
@@ -95,6 +102,8 @@ return [
     */
     'pages' => [
         'title-list' => 'List of companies',
+        'title-course' => 'List of courses',
+        'title-list-search-diary' => 'Diary',
         'title-list-pattern' => 'List of patterns',
         'title-list-search' => 'Search results',
         'title-list-pattern-search' => 'Search results',
@@ -166,6 +175,7 @@ return [
     */
     'form' => [
         'keyword' => 'Keyword',
+        'category_id' => 'Category',
         'sorting' => 'Sorting',
         'no-selected' => 'No selected',
         'status' => 'Status',
@@ -187,6 +197,20 @@ return [
     */
     'descriptions' => [
         'form' => 'Crawler form',
+        'diary_mon' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
+        'diary_tue' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
+        'diary_wed' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
+        'diary_thu' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
+        'diary_fri' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
+        'diary_sat' => 'Nhập thông tin công việc được giao, nội dung đã thực hiện, nhận xét của người hướng dẫn ',
+        'diary_start_date' => 'Nhập ngày đầu tuần theo định dạng dd/mm/yyy. Ví dụ 13/11/2021',
+        'diary_end_date' => 'Nhập ngày cuối tuần theo định dạng dd/mm/yyy. Ví dụ 13/11/2021',
+        'form' => 'Crawler form',
+        'diary_form' => 'Nhật ký thực tập trong tuần',
+        'company_form' => 'Edit company',
+        'company_image' => 'Company image',
+        'internship_address' => 'Internship address',
+        'category_id' => 'Category',
         'update' => 'Update crawler',
         'name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category' => 'Click <a href=":href">here</a> to manage list of categories by token.',
@@ -242,7 +266,10 @@ return [
         'pattern_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'internship_website' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        'category_id' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'company_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'company_website' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'company_address' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'company_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -314,7 +341,26 @@ return [
     |
     */
     'labels' => [
-        'name' => 'Crawler name',
+        'name' => 'Internship name',
+        'diary_mon' => 'Nhật ký thực tập thứ 2',
+        'diary_tue' => 'Nhật ký thực tập thứ 3',
+        'diary_wed' => 'Nhật ký thực tập thứ 4',
+        'diary_thu' => 'Nhật ký thực tập thứ 5',
+        'diary_fri' => 'Nhật ký thực tập thứ 6',
+        'diary_sat' => 'Nhật ký thực tập thứ 7',
+        'diary_start_date' => 'Ngày đầu tuần',
+        'diary_end_date' => 'Ngày cuối tuần',
+        'company_phone' => 'Company phone',
+        'company_instructor_phone' => 'Company instructor phone',
+        'company_tax_code' => 'Company tax code',
+        'company_image' => 'Company name',
+        'company_instructor' => 'Company instructor',
+        'title-search-company' => 'Search company',
+        'company_name' => 'Company name',
+        'company_website' => 'Company website',
+        'company_address' => 'Company address',
+        'company_description' => 'Company description',
+        'internship_address' => 'Internship address',
         'overview' => 'Crawler overview',
         'description' => 'Crawler description',
         'image' => 'Crawler image',
@@ -392,13 +438,13 @@ return [
     |
       */
     'tabs' => [
-        'menu-1' => 'Basic',
-        'menu-2' => 'Advance',
-        'menu-3' => 'Other',
-        'menu-4' => 'Assigner',
-        'menu-5' => 'Answer',
-        'menu-6' => 'Menu 6',
-        'menu-7' => 'Menu 7',
+        'menu_1_date' => 'Tuần thực tập',
+        'menu_2_mon' => 'Thứ 2',
+        'menu_3_tue' => 'Thứ 3',
+        'menu_4_wed' => 'Thứ 4',
+        'menu_5_thu' => 'Thứ 5',
+        'menu_6_fri' => 'Thứ 6',
+        'menu_7_sat' => 'Thứ 7',
         'menu-8' => 'Menu 8',
         'menu-9' => 'Menu 9',
         'menu-9' => 'Menu 9',

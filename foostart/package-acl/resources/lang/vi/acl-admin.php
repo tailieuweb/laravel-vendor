@@ -3,6 +3,39 @@
 return [
     /***********************************************************************
      * |-----------------------------------------------------------------------
+     * | Breadcrumbs
+     * |-----------------------------------------------------------------------
+     * | Top menu
+     * |
+     */
+    'breadcrumbs' => [
+        'admin' => 'Admin',
+        'diary' => 'Diary',
+        'edit_company' => 'Edit company',
+        'internship' => 'Internship',
+        'courses' => 'Courses',
+        'course' => 'Course',
+        'groups' => 'Groups',
+        'edit' => 'Edit',
+        'list' => 'List',
+        'users' => 'Users',
+        'sites' => 'Sites',
+        'site' => 'Site',
+        'permissions' => 'Permissions',
+        'crawler' => 'Crawlers',
+        'works' => 'Works',
+        'work' => 'Work',
+        'jobs' => 'Jobs',
+        'job' => 'Job',
+        'categories' => 'Categories',
+        'category' => 'Category',
+        'pattern' => 'Pattern',
+        'pexcel' => 'Pexcel',
+        'company' => 'Company',
+    ],
+
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
      * | MAIN MENU ADMIN
      * |-----------------------------------------------------------------------
      * | Top menu
@@ -10,11 +43,19 @@ return [
      */
     'menu' => [
         'dashboard' => 'Dashboard',
+        'internship' => 'Internship',
+        'course' => 'Course',
         'users' => 'Users',
         'groups' => 'Groups',
+        'posts' => 'Posts',
+        'sites' => 'Sites',
+        'crawler_works' => 'Crawler works',
+        'crawler_works_jobs' => 'Crawler Jobs',
         'permissions' => 'Permissions',
         'operations' => 'Operations',
         'contexts' => 'Contexts',
+        'pexcel' => 'Pexcels',
+        'company' => 'Company',
     ],
 
 
@@ -26,19 +67,22 @@ return [
      */
     'order' => [
         'name' => 'Order',
+        'id' => 'ID',
         'no-selected' => 'No selected',
         'by-asc' => 'ASC',
         'by-desc' => 'DESC',
     ],
 
     'sex' => [
-        0 => 'Any',
         1 => 'Female',
         2 => 'Male',
         3 => 'Other',
     ],
     'banned' => [
-        0 => 'Any',
+        1 => 'Yes',
+        2 => 'No',
+    ],
+    'active' => [
         1 => 'Yes',
         2 => 'No',
     ],
@@ -56,9 +100,32 @@ return [
         'reset' => 'Reset',
         'submit' => 'Submit',
         'delete' => 'Delete',
+        'trash' => 'Trash',
+        'restore' => 'Restore',
+        'edit-profile' => 'Edit profile',
+        'upload-avatar' => 'Update avatar',
         'update-avatar' => 'Update avatar',
+        'search' => 'Search',
+        'save' => 'Save',
+        'delete-in-trash' => 'Trash',
+        'delete-forever' => 'Delete forever',
     ],
 
+
+    /*
+    |-----------------------------------------------------------------------
+    | Hint
+    |-----------------------------------------------------------------------
+    | The list of hint
+    |
+    */
+    'hint' => [
+        'delete-forever' => 'Delete forever',
+        'delete-in-trash' => 'Delete in trash',
+        'deleted' => 'In trash',
+        'available' => 'Available',
+        'inactive' => 'Inactive'
+    ],
 
     /***********************************************************************
      * |-----------------------------------------------------------------------
@@ -79,6 +146,9 @@ return [
         'permission-edit' => 'Edit permission page',
         'group-list' => 'List of groups',
         'group-edit' => 'Edit group page',
+
+        'title-config' => 'Current configurations',
+        'title-lang' => 'Manage languages',
     ],
 
 
@@ -94,6 +164,7 @@ return [
      */
     'sidebars' => [
         'users-list' => 'Users list',
+        'upload-user' => 'Upload',
         'add-user' => 'Add user',
         'groups-list' => 'List of groups',
         'add-group' => 'Add group',
@@ -138,6 +209,13 @@ return [
      */
     'labels' => [
         'email' => 'Email',
+        'diary_mon' => 'Email',
+        'email' => 'Email',
+        'email' => 'Email',
+        'email' => 'Email',
+        'email' => 'Email',
+        'start_date' => 'Ngày đầu tuần',
+        'end_date' => 'Ngày cuối tuần',
         'first_name' => 'First name',
         'last_name' => 'Last name',
         'full_name' => 'Full name',
@@ -175,6 +253,13 @@ return [
         'overview' => 'Overview',
         'general-data' => 'General data',
         'group-name' => 'Group name',
+        'title-backup' => 'Backups',
+        'config' => 'Configurations',
+        'filename' => 'File name',
+        'order' => 'Order',
+        'id' => 'ID',
+        'keyword' => 'Keyword',
+        'counter' => '#',
     ],
 
 
@@ -187,6 +272,7 @@ return [
     'messages' => [
         'message-last-login' => 'not logged yet.',
         'user-delete' => 'Are you sure to delete this item?',
+        'user-restore' => 'Are you sure to restore this item?',
         'permission-not-found' => 'No permissions found.',
         'empty-data' => 'Empty data',
     ],
@@ -243,4 +329,75 @@ return [
         'group-name' => 'Group name',
         'group-permissions' => 'Permissions',
     ],
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Description
+    |-----------------------------------------------------------------------
+    | Description
+    |
+    */
+    'descriptions' => [
+        'category-form' => 'Category form',
+        'overview' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'description' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'context-form' => 'Context form',
+        'update' => 'Update category',
+        'category-name' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'category' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'list' => 'List of items',
+        'counters' => 'There are <b>:number</b> items',
+        'counter' => 'There is <b>:number</b> item',
+        'not-found' => 'Not found items',
+        'config' => 'List of configurations',
+        'lang' => 'List of languages',
+        'category-slug' => 'Category Slug',
+        'context-name' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'context-ref' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'context-key' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'context-status' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'status' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+    ],
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Table column
+    |-----------------------------------------------------------------------
+    | The list of columns in table
+    |
+    */
+    'columns' => [
+        'any' => 'Any',
+        'order' => '#',
+        'id' => 'ID',
+        'user-full-name' => 'User full name',
+        'operations' => 'Operations',
+        'updated_at' => 'Updated at',
+        'filename' => 'File name',
+        'context-ref' => 'Ref',
+        'context-status' => 'Status',
+        'key' => 'Key',
+        'status' => 'Status',
+    ],
+
 ];

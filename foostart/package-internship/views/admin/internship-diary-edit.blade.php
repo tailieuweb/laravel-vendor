@@ -1,7 +1,7 @@
 <!--
 | @TITLE
-| Update existing company
-| Add new company
+| Update existing diary
+| Add new diary
 |
 |-------------------------------------------------------------------------------
 | @REQUIRED
@@ -40,7 +40,7 @@
 
                 <!--DESCRIPTION-->
                 <div class='panel-description'>
-                    {!! trans($plang_admin.'.descriptions.company_form') !!}</h4>
+                    {!! trans($plang_admin.'.descriptions.diary_form') !!}</h4>
                 </div>
 
                 <!-- ERRORS NAME  -->
@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
 
-                            @include('package-internship::admin.internship-company-form')
+                            @include('package-internship::admin.internship-diary-form')
 
                         </div>
                     </div>
@@ -74,6 +74,5 @@
         <div class='col-md-3'>
             @include('package-internship::admin.internship-search')
         </div>
-
 </div>
 @stop

@@ -10,7 +10,6 @@ return [
     |
     */
     'menus' => [
-        'top-menu' => 'Samples'
     ],
 
 
@@ -47,7 +46,7 @@ return [
     */
     'columns' => [
         'order' => '#',
-        'name' => 'Sample name',
+        'name' => 'Front name',
         'operations' => 'Operations',
         'updated_at' => 'Updated at',
         'filename' => 'File name',
@@ -62,6 +61,7 @@ return [
     |
     */
     'pages' => [
+        'title-home' => 'WikiCase 2.0',
         'title-list' => 'List of samples',
         'title-list-search' => 'Search results',
         'title-edit' => 'Edit sample',
@@ -121,7 +121,7 @@ return [
     |
     */
     'description' => [
-        'form' => 'Sample form',
+        'form' => 'Front form',
         'update' => 'Update sample',
         'name' => '<blockquote class="quote-card">
               <p>
@@ -170,8 +170,8 @@ return [
     |
     */
     'fields' => [
-        'id' => 'Sample ID',
-        'name' => 'Sample name',
+        'id' => 'Front ID',
+        'name' => 'Front name',
         'description' => 'Description',
         'overview' => 'Overview',
         'slug' => 'Slug',
@@ -191,7 +191,7 @@ return [
     |
     */
     'labels' => [
-        'name' => 'Sample name',
+        'name' => 'Front name',
         'category' => 'Category name',
         'title-search' => 'Search sample',
         'title-backup' => 'Backups',

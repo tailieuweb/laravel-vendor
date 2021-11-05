@@ -10,6 +10,7 @@ return [
      */
     'breadcrumbs' => [
         'admin' => 'Admin',
+        'diary' => 'Diary',
         'edit_company' => 'Edit company',
         'internship' => 'Internship',
         'courses' => 'Courses',
@@ -208,6 +209,8 @@ return [
      */
     'labels' => [
         'email' => 'Email',
+        'start_date' => 'Start date',
+        'end_date' => 'End date',
         'first_name' => 'First name',
         'last_name' => 'Last name',
         'full_name' => 'Full name',

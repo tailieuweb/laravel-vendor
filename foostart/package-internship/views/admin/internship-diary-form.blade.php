@@ -2,7 +2,10 @@
 | List of elements in company form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['internship.post_company', 'course_id' => $course_id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['internship.diary.post',
+                            'course_id' => $course_id,
+                            'internship_diary_id' => $internship_diary_id,
+                            ],  'files'=>true, 'method' => 'post'])  !!}
 
     <!--BUTTONS-->
     <div class='btn-form'>
@@ -14,16 +17,46 @@
 
     <!--TAB MENU-->
     <ul class="nav nav-tabs">
-        <!--MENU 1-->
+        <!--Date-->
         <li class="active">
-            <a data-toggle="tab" href="#menu_1">
-                {!! trans($plang_admin.'.tabs.menu-1') !!}
+            <a data-toggle="tab" href="#menu_1_date">
+                {!! trans($plang_admin.'.tabs.menu_1_date') !!}
             </a>
         </li>
-        <!--OTHER-->
+        <!--Mon-->
         <li>
-            <a data-toggle="tab" href="#menu_3">
-                {!! trans($plang_admin.'.tabs.other') !!}
+            <a data-toggle="tab" href="#menu_2_mon">
+                {!! trans($plang_admin.'.tabs.menu_2_mon') !!}
+            </a>
+        </li>
+        <!--Tue-->
+        <li>
+            <a data-toggle="tab" href="#menu_3_tue">
+                {!! trans($plang_admin.'.tabs.menu_3_tue') !!}
+            </a>
+        </li>
+        <!--Wed-->
+        <li>
+            <a data-toggle="tab" href="#menu_4_wed">
+                {!! trans($plang_admin.'.tabs.menu_4_wed') !!}
+            </a>
+        </li>
+        <!--Thu-->
+        <li>
+            <a data-toggle="tab" href="#menu_5_thu">
+                {!! trans($plang_admin.'.tabs.menu_5_thu') !!}
+            </a>
+        </li>
+        <!--Fri-->
+        <li>
+            <a data-toggle="tab" href="#menu_6_fri">
+                {!! trans($plang_admin.'.tabs.menu_6_fri') !!}
+            </a>
+        </li>
+        <!--Sat-->
+        <li>
+            <a data-toggle="tab" href="#menu_7_sat">
+                {!! trans($plang_admin.'.tabs.menu_7_sat') !!}
             </a>
         </li>
     </ul>
@@ -32,155 +65,114 @@
     <!--TAB CONTENT-->
     <div class="tab-content">
 
-        <!--MENU 1-->
-        <div id="menu_1" class="tab-pane fade in active">
-
-            <!--NAME-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'company_name',
-                'label' => trans($plang_admin.'.labels.company_name'),
-                'value' => @$item->company_name,
-                'description' => trans($plang_admin.'.descriptions.company_name'),
-                'errors' => $errors,
-            ])
-            <!--/NAME-->
-
-            <!--SITE SLUG-->
-            @include('package-category::admin.partials.input_slug', [
-                'name' => 'company_slug',
-                'id' => 'company_slug',
-                'ref' => 'company_name',
-                'label' => trans($plang_admin.'.labels.slug'),
-                'value' => @$item->company_slug,
-                'description' => trans($plang_admin.'.descriptions.slug'),
-                'errors' => $errors,
-                'hidden' => true,
-            ])
-            <!--/SITE SLUG-->
-
-            <!--SITE SLUG-->
-                @include('package-category::admin.partials.input_slug', [
-                    'name' => 'course_id',
-                    'id' => 'course_id',
-                    'value' => @$item->course_id,
-                    'hidden' => true,
-                ])
-                <!--/SITE SLUG-->
-
-            <!--ADDRESS-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'company_address',
-                'label' => trans($plang_admin.'.labels.company_address'),
-                'value' => @$item->company_address,
-                'description' => trans($plang_admin.'.descriptions.company_address'),
-                'errors' => $errors,
-            ])
-            <!-- /ADDRESS-->
-
+        <!--DATE-->
+        <div id="menu_1_date" class="tab-pane fade in active">
             <div class="row">
-                <div class='col-md-6'>
-                    <!--CATEGORY ID-->
-                    @include('package-category::admin.partials.select_single', [
-                        'name' => 'category_id',
-                        'label' => trans($plang_admin.'.form.category_id'),
-                        'value' => @$item->category_id,
-                        'items' => $categories,
-                        'description' => trans($plang_admin.'.descriptions.category_id'),
-                    ])
-                    <!--/CATEGORY ID-->
-                </div>
-
+            <div class="col-md-12">
                 <div class="col-md-6">
-                    <!--COMPANY PHONE-->
+                    <!--START DATE-->
                     @include('package-category::admin.partials.input_text', [
-                        'name' => 'company_phone',
-                        'label' => trans($plang_admin.'.labels.company_phone'),
-                        'value' => @$item->company_phone,
-                        'description' => trans($plang_admin.'.descriptions.company_phone'),
+                        'name' => 'diary_start_date',
+                        'label' => trans($plang_admin.'.labels.diary_start_date'),
+                        'value' => @$diary->diary_start_date,
+                        'description' => trans($plang_admin.'.descriptions.diary_start_date'),
                         'errors' => $errors,
                     ])
-                    <!-- /COMPANY PHONE-->
+                    <!--/START DATE-->
                 </div>
-            </div>
-
-            <div class="row">
-                <div class='col-md-6'>
-                    <!--COMPANY INSTRUCTOR-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'company_instructor',
-                        'label' => trans($plang_admin.'.labels.company_instructor'),
-                        'value' => @$item->company_instructor,
-                        'description' => trans($plang_admin.'.descriptions.company_instructor'),
-                        'errors' => $errors,
-                    ])
-                    <!-- /COMPANY INSTRUCTOR-->
-                </div>
-
-                <div class='col-md-6'>
-                    <!--COMPANY INSTRUCTOR PHONE-->
-                    @include('package-category::admin.partials.input_text', [
-                        'name' => 'company_instructor_phone',
-                        'label' => trans($plang_admin.'.labels.company_instructor_phone'),
-                        'value' => @$item->company_instructor_phone,
-                        'description' => trans($plang_admin.'.descriptions.company_instructor_phone'),
-                        'errors' => $errors,
-                    ])
-                    <!-- /COMPANY INSTRUCTOR-->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class='col-md-6'>
-                    <!--WEBSITE-->
-                @include('package-category::admin.partials.input_text', [
-                    'name' => 'company_website',
-                    'label' => trans($plang_admin.'.labels.company_website'),
-                    'value' => @$item->company_website,
-                    'description' => trans($plang_admin.'.descriptions.company_website'),
-                    'errors' => $errors,
-                ])
-                <!-- /WEBSITE-->
-                </div>
-
                 <div class="col-md-6">
-                    <!--COMPANY TAX CODE-->
-                @include('package-category::admin.partials.input_text', [
-                    'name' => 'company_tax_code',
-                    'label' => trans($plang_admin.'.labels.company_tax_code'),
-                    'value' => @$item->company_tax_code,
-                    'description' => trans($plang_admin.'.descriptions.company_tax_code'),
-                    'errors' => $errors,
-                ])
-                <!-- /COMPANY TAX CODE-->
+                    <!--END DATE-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'diary_end_date',
+                        'label' => trans($plang_admin.'.labels.diary_end_date'),
+                        'value' => @$diary->diary_end_date,
+                        'description' => trans($plang_admin.'.descriptions.diary_end_date'),
+                        'errors' => $errors,
+                    ])
+                    <!--/END DATE-->`
                 </div>
             </div>
+            </div>
+        </div>
+        <!--/END DATE-->
 
+        <!--MON-->
+        <div id="menu_2_mon" class="tab-pane fade">
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'diary_mon',
+            'label' => trans($plang_admin.'.labels.diary_mon'),
+            'value' => @$item->diary_mon,
+            'description' => trans($plang_admin.'.descriptions.diary_mon'),
+            'tinymce' => false,
+            'errors' => $errors,
+            'rows' => 20,
+            ])
+        </div>
+
+        <!--TUE-->
+        <div id="menu_3_tue" class="tab-pane fade">
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'diary_tue',
+            'label' => trans($plang_admin.'.labels.diary_tue'),
+            'value' => @$item->diary_tue,
+            'description' => trans($plang_admin.'.descriptions.diary_tue'),
+            'tinymce' => false,
+            'errors' => $errors,
+            'rows' => 20,
+            ])
+        </div>
+
+        <!--WED-->
+        <div id="menu_4_wed" class="tab-pane fade">
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'diary_wed',
+            'label' => trans($plang_admin.'.labels.diary_wed'),
+            'value' => @$item->diary_wed,
+            'description' => trans($plang_admin.'.descriptions.diary_wed'),
+            'tinymce' => false,
+            'errors' => $errors,
+            'rows' => 20,
+            ])
 
         </div>
-        <!--/END MENU1-->
-        <!--OTHER-->
-        <div id="menu_3" class="tab-pane fade">
-            <!--SITE IMAGE-->
-            @include('package-category::admin.partials.input_image', [
-                'name' => 'company_image',
-                'label' => trans($plang_admin.'.labels.company_image'),
-                'value' => @$item->company_image,
-                'description' => trans($plang_admin.'.descriptions.company_image'),
-                'errors' => $errors,
-                'lfm_config' => TRUE
-            ])
-            <!--/SITE IMAGE-->
-            <!--DESCRIPTION-->
-        @include('package-category::admin.partials.textarea', [
-            'name' => 'company_description',
-            'label' => trans($plang_admin.'.labels.company_description'),
-            'value' => @$item->company_description,
-            'description' => trans($plang_admin.'.descriptions.company_description'),
-            'rows' => 25,
-            'tinymce' => true,
+
+        <!--THU-->
+        <div id="menu_5_thu" class="tab-pane fade">
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'diary_thu',
+            'label' => trans($plang_admin.'.labels.diary_thu'),
+            'value' => @$item->diary_thu,
+            'description' => trans($plang_admin.'.descriptions.diary_thu'),
+            'tinymce' => false,
             'errors' => $errors,
-        ])
-        <!--/DESCRIPTION-->
+            'rows' => 20,
+            ])
+        </div>
+
+        <!--FRI-->
+        <div id="menu_6_fri" class="tab-pane fade">
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'diary_fri',
+            'label' => trans($plang_admin.'.labels.diary_fri'),
+            'value' => @$item->diary_fri,
+            'description' => trans($plang_admin.'.descriptions.diary_fri'),
+            'tinymce' => false,
+            'errors' => $errors,
+            'rows' => 20,
+            ])
+        </div>
+
+        <!--SAT-->
+        <div id="menu_7_sat" class="tab-pane fade">
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'diary_sat',
+            'label' => trans($plang_admin.'.labels.diary_sat'),
+            'value' => @$item->diary_mon,
+            'description' => trans($plang_admin.'.descriptions.diary_sat'),
+            'tinymce' => false,
+            'errors' => $errors,
+            'rows' => 20,
+            ])
         </div>
 
     </div>
@@ -189,6 +181,8 @@
     <!--HIDDEN FIELDS-->
     <div class='hidden-field'>
         {!! Form::hidden('id',@$item->id) !!}
+        {!! Form::hidden('course_id', $course_id) !!}
+        {!! Form::hidden('internship_id', $internship_id) !!}
         {!! Form::hidden('context',$request->get('context',null)) !!}
     </div>
     <!--/HIDDEN FIELDS-->

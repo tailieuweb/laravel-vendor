@@ -28,6 +28,7 @@ return [
     */
     'sidebar' => [
         'list' => 'Items',
+        'courses' => 'List of courses',
         'add' => 'Add new',
         'trash' => 'Trash',
         'config' => 'Configurations',
@@ -56,7 +57,11 @@ return [
     |
     */
     'columns' => [
-        'order' => 'Order',
+        'user_name' => 'User name',
+        'phone' => 'Phone',
+        'first_name' => 'First name',
+        'last_name' => 'Last name',
+        'course_name' => 'Course name',
         '#' => '#',
         'counter' => '#',
         'id' => 'Id',
@@ -166,6 +171,8 @@ return [
     */
     'form' => [
         'keyword' => 'Keyword',
+        'teacher_id' => 'Teacher',
+        'category_id' => 'Category',
         'sorting' => 'Sorting',
         'no-selected' => 'No selected',
         'status' => 'Status',
@@ -187,6 +194,13 @@ return [
     */
     'descriptions' => [
         'form' => 'Crawler form',
+        'teacher_id' => 'Teacher',
+        'course_image' => 'Course_image',
+        'course_start_date' => 'Course start date',
+        'course_end_date' => 'Course end date',
+        'course_name' => 'Course name',
+        'courses_address' => 'Course address',
+        'category_id' => 'Category',
         'update' => 'Update crawler',
         'name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category' => 'Click <a href=":href">here</a> to manage list of categories by token.',
@@ -242,7 +256,6 @@ return [
         'pattern_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'courses_website' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        'category_id' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -314,7 +327,12 @@ return [
     |
     */
     'labels' => [
-        'name' => 'Crawler name',
+        'name' => 'Course name',
+        'course_image' => 'Course image',
+        'course_start_date' => 'Course start date',
+        'course_end_date' => 'Course end date',
+        'course_name' => 'Course name',
+        'courses_address' => 'Course address',
         'overview' => 'Crawler overview',
         'description' => 'Crawler description',
         'image' => 'Crawler image',

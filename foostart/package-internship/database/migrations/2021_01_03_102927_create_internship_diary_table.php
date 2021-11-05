@@ -8,7 +8,8 @@ class CreateInternshipDiaryTable extends FoostartMigration
 {
     public function __construct() {
         $this->table = 'internship_diary';
-        $this->prefix_column = 'diary_';
+        $this->prefix_column_diary = 'diary_';
+        $this->prefix_column = 'internship_diary_';
     }
     /**
      * Run the migrations.
@@ -26,15 +27,14 @@ class CreateInternshipDiaryTable extends FoostartMigration
             $table->integer('internship_id')->comment('Internship ID');
 
             // Other attributes
-            $table->string($this->prefix_column . 'start_date', 255)->comment('Start date');
-            $table->string($this->prefix_column . 'end_date', 255)->nullable()->comment('End date');
-            $table->text($this->prefix_column . 'mon')->nullable()->comment('Mon');
-            $table->text($this->prefix_column . 'tue')->nullable()->comment('Tue');
-            $table->text($this->prefix_column . 'wed')->nullable('Wed');
-            $table->text($this->prefix_column . 'thu')->nullable()->comment('Thu');
-            $table->text($this->prefix_column . 'fri')->nullable()->comment('Fri');
-            $table->text($this->prefix_column . 'sat')->nullable('Sat');
-            $table->text($this->prefix_column . 'sun')->nullable('Sun');
+            $table->string($this->prefix_column_diary . 'start_date', 255)->comment('Start date');
+            $table->string($this->prefix_column_diary . 'end_date', 255)->nullable()->comment('End date');
+            $table->text($this->prefix_column_diary . 'mon')->nullable()->comment('Mon');
+            $table->text($this->prefix_column_diary . 'tue')->nullable()->comment('Tue');
+            $table->text($this->prefix_column_diary . 'wed')->nullable()->comment('Wed');
+            $table->text($this->prefix_column_diary . 'thu')->nullable()->comment('Thu');
+            $table->text($this->prefix_column_diary . 'fri')->nullable()->comment('Fri');
+            $table->text($this->prefix_column_diary . 'sat')->nullable()->comment('Sat');;
 
             //Set common columns
             $this->setCommonColumns($table);
