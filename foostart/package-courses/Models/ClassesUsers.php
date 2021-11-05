@@ -2,7 +2,7 @@
 
 use Foostart\Category\Library\Models\FooModel;
 
-class Course extends FooModel {
+class ClassesUsers extends FooModel {
 
     /**
      * @table categories
@@ -24,73 +24,36 @@ class Course extends FooModel {
     public function setConfigs() {
 
         //table name
-        $this->table = 'course';
+        $this->table = 'classes_users';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'category_id',
-            'teacher_id',
-            'course_enroll_file_path',
-            'course_name',
-            'course_slug',
-            'course_start_date',
-            'course_end_date',
-            'course_image',
-            'course_description',
+            'course_id',
+            'user_id',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'course_name' => [
-                'name' => 'course_name',
-                'type' => 'Text',
-            ],
-            'course_slug' => [
-                'name' => 'course_slug',
-                'type' => 'Text',
-            ],
-            'course_enroll_file_path' => [
-                'name' => 'files',
-                'type' => 'Json',
-            ],
-            'category_id' => [
-                'name' => 'category_id',
+            'course_id' => [
+                'name' => 'course_id',
                 'type' => 'Int',
             ],
-            'teacher_id' => [
-                'name' => 'teacher_id',
+            'user_id' => [
+                'name' => 'user_id',
                 'type' => 'Int',
-            ],
-             'course_start_date' => [
-                'name' => 'course_start_date',
-                'type' => 'Text',
-            ],
-            'course_end_date' => [
-                'name' => 'course_end_date',
-                'type' => 'Text',
-            ],
-            'course_description' => [
-                'name' => 'course_description',
-                'type' => 'Text',
             ],
         ]);
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'course_name',
-            'course_slug',
-            'category_id',
-            'course_enroll_file_path',
-            'teacher_id',
-            'course_start_date',
-            'course_end_date',
-            'course_description',
+            'course_id',
+            'user_id',
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
             'course_id',
-            'course_name',
+            'user_id',
             'updated_at',
             $this->field_status,
         ];
@@ -98,10 +61,12 @@ class Course extends FooModel {
         $this->valid_filter_fields = [
             'keyword',
             'status',
+            'user_id',
+            'course_id'
         ];
 
         //primary key
-        $this->primaryKey = 'course_id';
+        $this->primaryKey = 'class_user_id';
 
     }
 
@@ -151,7 +116,9 @@ class Course extends FooModel {
         $elo = $this->createSelect($elo);
 
         //id
-        $elo = $elo->where($this->primaryKey, $params['id']);
+        if (!empty($params['id'])) {
+            $elo = $elo->where($this->primaryKey, $params['id']);
+        }
 
         //first item
         $item = $elo->first();
@@ -183,14 +150,14 @@ class Course extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'course_name':
+                        case 'course_id':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.course_name', '=', $value);
+                                $elo = $elo->where($this->table . '.course_id', '=', $value);
                             }
                             break;
-                        case 'course_website':
+                        case 'user_id':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.course_website', '=', $value);
+                                $elo = $elo->where($this->table . '.user_id', '=', $value);
                             }
                             break;
                         case 'status':
@@ -202,10 +169,8 @@ class Course extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.course_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.course_website', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.course_tax_code', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.course_description','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.course_id', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.user_id', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;

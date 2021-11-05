@@ -32,6 +32,7 @@ class CreateCourseTable extends FoostartMigration
             $table->string($this->prefix_column . 'start_date', 255)->nullable()->comment('Course start date');
             $table->string($this->prefix_column . 'end_date', 255)->nullable()->comment('Course end date');
 
+            $table->string($this->prefix_column . 'enroll_file_path', 255)->nullable()->comment('Enroll file path');
             $table->string($this->prefix_column . 'image', 255)->nullable()->comment('Course image');
             $table->text($this->prefix_column . 'description')->nullable()->comment('Course description');
 

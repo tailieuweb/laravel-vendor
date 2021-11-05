@@ -165,6 +165,22 @@ $withs = [
                             <i class="fa fa-edit f-tb-icon"></i>
                         </a>
 
+                        <!--raw-->
+                        <a href="{!! URL::route('course.raw', [ 'id' => $item->id,
+                                                        '_token' => csrf_token()
+                                                        ])
+                                !!}">
+                            <i class="fa fa-list-ol" aria-hidden="true"></i>
+                        </a>
+
+                        <!--raw-->
+                        <a href="{!! URL::route('course.view', [ 'id' => $item->id,
+                                                        '_token' => csrf_token()
+                                                        ])
+                                !!}">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+
                         <!--copy-->
                         <a href="{!! URL::route('course.copy',[    'cid' => $item->id,
                                                                     '_token' => csrf_token(),

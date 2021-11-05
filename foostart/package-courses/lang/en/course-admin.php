@@ -57,7 +57,10 @@ return [
     |
     */
     'columns' => [
-        'order' => 'Order',
+        'user_name' => 'User name',
+        'phone' => 'Phone',
+        'first_name' => 'First name',
+        'last_name' => 'Last name',
         'course_name' => 'Course name',
         '#' => '#',
         'counter' => '#',

@@ -11,9 +11,12 @@
 */
 
 use Foostart\Category\Library\Controllers\FooController;
+use Foostart\Courses\Models\ClassesUsers;
+use Foostart\Pexcel\Helper\CourseEnrollParser;
 use Illuminate\Http\Request;
-use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
+use URL, Route, Redirect;
 
 use Foostart\Courses\Controllers\Admin\BaseCourseAdminController;
 use Foostart\Courses\Models\Course;
@@ -55,6 +58,7 @@ class CourseAdminController extends FooController {
         $this->page_views = [
             'admin' => [
                 'items' => $this->package_name.'::admin.'.$this->package_base_name.'-items',
+                'view' => $this->package_name.'::admin.'.$this->package_base_name.'-view',
                 'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
                 'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
                 'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
@@ -160,6 +164,9 @@ class CourseAdminController extends FooController {
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
+
+
+
 
     /**
      * Processing data from POST method: add new item, edit existing item
@@ -300,6 +307,92 @@ class CourseAdminController extends FooController {
 
         return Redirect::route($this->root_router)
             ->withMessage(trans($this->plang_admin.'.actions.restore-error'));
+    }
+
+    /**
+     * View data file form excel
+     * @param Request $request
+     */
+    public function raw(Request $request) {
+
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['id'] = $request->get('id', NULL);
+
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+
+            if (empty($item)) {
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
+            }
+        }
+
+        $obj_parser = new CourseEnrollParser($item);
+        $items = $obj_parser->readData($item);
+
+        return Redirect::route($this->root_router);
+    }
+
+
+    /**
+     * View data file form excel
+     * @param Request $request
+     */
+    public function view(Request $request) {
+
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['id'] = $request->get('id', NULL);
+
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+
+            if (empty($item)) {
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
+            }
+        }
+
+        $obj_class_user = new ClassesUsers();
+        $items = $obj_class_user->selectItems();
+        $items = $items->toArray();
+        //
+        $user_repository = App::make('user_repository');
+        $profile_repository = App::make('profile_repository');
+
+        $obj_user = new UserRepositorySearchFilter(0);
+
+        for ($i = 0; $i < count($items); $i++) {
+            $params = [
+                'id' => $items[$i]['user_id']
+            ];
+            $user_info = $obj_user->all($params)->first();
+
+            if (!empty($user_info)) {
+                $items[$i]['email'] = $user_info->email;
+                $items[$i]['user_name'] = $user_info->user_name;
+                $items[$i]['first_name'] = $user_info->first_name;
+                $items[$i]['last_name'] = $user_info->last_name;
+                $items[$i]['phone'] = $user_info->phone;
+            }
+        }
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'item' => $item,
+            'items' => $items,
+            'request' => $request,
+
+        ));
+        return view($this->page_views['admin']['view'], $this->data_view);
+
     }
 
     /**

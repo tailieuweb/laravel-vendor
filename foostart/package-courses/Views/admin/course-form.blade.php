@@ -68,17 +68,6 @@
             ])
             <!--/SLUG-->
 
-            <!--TEACHER ID-->
-            @include('package-category::admin.partials.select_single', [
-                'name' => 'teacher_id',
-                'label' => trans($plang_admin.'.form.teacher_id'),
-                'value' => @$item->teacher_id,
-                'items' => $teachers,
-                'description' => trans($plang_admin.'.descriptions.teacher_id'),
-            ])
-            <!--/TEACHER ID-->
-
-
             <div class="row">
                 <div class='col-md-3'>
                     <!--START DATE-->
@@ -124,6 +113,31 @@
                         'description' => trans($plang_admin.'.descriptions.status'),
                     ])
                     <!--/STATUS-->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class='col-md-6'>
+                    <!--TEACHER ID-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'teacher_id',
+                    'label' => trans($plang_admin.'.form.teacher_id'),
+                    'value' => @$item->teacher_id,
+                    'items' => $teachers,
+                    'description' => trans($plang_admin.'.descriptions.teacher_id'),
+                ])
+                <!--/TEACHER ID-->
+                </div>
+                <div class='col-md-6'>
+                    <!--PEXCEL FILES-->
+                @include('package-category::admin.partials.input_files', [
+                    'name' => 'files',
+                    'label' => trans($plang_admin.'.labels.files'),
+                    'value' => @$item->course_enroll_file_path,
+                    'description' => trans($plang_admin.'.descriptions.files'),
+                    'errors' => $errors,
+                ])
+                <!--/PEXCEL FILES-->
                 </div>
             </div>
 

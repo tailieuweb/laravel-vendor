@@ -116,7 +116,20 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'course.restore',
             'uses' => 'CourseAdminController@restore'
         ]);
-
+        /**
+         * raw
+         */
+        Route::get('admin/courses/raw', [
+            'as' => 'course.raw',
+            'uses' => 'CourseAdminController@raw'
+        ]);
+        /**
+         * view
+         */
+        Route::get('admin/courses/view', [
+            'as' => 'course.view',
+            'uses' => 'CourseAdminController@view'
+        ]);
         /**
          * trash
          */

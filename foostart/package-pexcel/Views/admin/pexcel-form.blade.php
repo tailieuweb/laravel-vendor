@@ -95,7 +95,7 @@
                     <!--/STATUS-->
                 </div>
             </div>
-             <!--PEXCEL FILES-->
+            <!--PEXCEL FILES-->
             @include('package-category::admin.partials.input_files', [
                 'name' => 'files',
                 'label' => trans($plang_admin.'.labels.files'),

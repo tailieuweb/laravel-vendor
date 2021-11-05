@@ -23,6 +23,8 @@ View::composer([
                 'package-courses::admin.course-search',
                 'package-courses::admin.course-config',
                 'package-courses::admin.course-lang',
+                'package-courses::admin.course-view',
+                'package-courses::admin.course-view-item',
 
     ], function ($view) {
 

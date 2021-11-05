@@ -28,7 +28,7 @@ class UserImport
                 $user->last_name = $users[$i]['last_name'];
                 $profile_repository->attachEmptyProfile($user);
             } catch (\Throwable $e) {
-                dd($e->getMessage());
+
             }
         }
     }

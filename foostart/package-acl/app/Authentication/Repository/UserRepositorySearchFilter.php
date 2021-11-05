@@ -26,6 +26,7 @@ class UserRepositorySearchFilter
         'keyword',
         'level_id',
         'email',
+        'user_name',
         'full_name',
         'first_name',
         'last_name',
@@ -122,6 +123,16 @@ class UserRepositorySearchFilter
                         case 'email':
                             if (!empty($value)) {
                                 $q = $q->where($this->user_table_name . '.email', 'LIKE', "%{$value}%");
+                            }
+                            break;
+                        case 'id':
+                            if (!empty($value)) {
+                                $q = $q->where($this->user_table_name . '.id',  '=', $value);
+                            }
+                            break;
+                        case 'user_name':
+                            if (!empty($value)) {
+                                $q = $q->where($this->user_table_name . '.user_name', '=', $value);
                             }
                             break;
                         case 'first_name':
@@ -278,6 +289,7 @@ class UserRepositorySearchFilter
             $this->user_table_name . '.*',
             $this->profile_table_name . '.first_name',
             $this->profile_table_name . '.last_name',
+            $this->profile_table_name . '.phone',
             $this->profile_table_name . '.code',
             $this->groups_table_name . '.name'
         );
