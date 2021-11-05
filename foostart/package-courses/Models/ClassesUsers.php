@@ -4,6 +4,7 @@ use Foostart\Category\Library\Models\FooModel;
 
 class ClassesUsers extends FooModel {
 
+    protected $with = array('course');
     /**
      * @table categories
      * @param array $attributes
@@ -344,5 +345,10 @@ class ClassesUsers extends FooModel {
          $items = $elo->pluck('course_name', $this->primaryKey);
 
         return $items;
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id', 'course_id');
     }
 }

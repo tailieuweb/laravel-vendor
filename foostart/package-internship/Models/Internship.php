@@ -1,8 +1,8 @@
-<?php namespace Foostart\Courses\Models;
+<?php namespace Foostart\Internship\Models;
 
 use Foostart\Category\Library\Models\FooModel;
 
-class Course extends FooModel {
+class Internship extends FooModel {
 
     /**
      * @table categories
@@ -24,73 +24,72 @@ class Course extends FooModel {
     public function setConfigs() {
 
         //table name
-        $this->table = 'course';
+        $this->table = 'internship';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'category_id',
-            'teacher_id',
-            'course_enroll_file_path',
-            'course_name',
-            'course_slug',
-            'course_start_date',
-            'course_end_date',
-            'course_image',
-            'course_description',
+            'internship_name',
+            'internship_slug',
+            'internship_website',
+            'internship_tax_code',
+            'internship_address',
+            'internship_image',
+            'internship_description',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'course_name' => [
-                'name' => 'course_name',
+            'internship_name' => [
+                'name' => 'internship_name',
                 'type' => 'Text',
             ],
-            'course_slug' => [
-                'name' => 'course_slug',
+            'internship_slug' => [
+                'name' => 'internship_slug',
                 'type' => 'Text',
-            ],
-            'course_enroll_file_path' => [
-                'name' => 'files',
-                'type' => 'Json',
             ],
             'category_id' => [
                 'name' => 'category_id',
                 'type' => 'Int',
             ],
-            'teacher_id' => [
-                'name' => 'teacher_id',
-                'type' => 'Int',
-            ],
-             'course_start_date' => [
-                'name' => 'course_start_date',
+             'internship_website' => [
+                'name' => 'internship_website',
                 'type' => 'Text',
             ],
-            'course_end_date' => [
-                'name' => 'course_end_date',
+            'internship_tax_code' => [
+                'name' => 'internship_tax_code',
                 'type' => 'Text',
             ],
-            'course_description' => [
-                'name' => 'course_description',
+            'internship_address' => [
+                'name' => 'internship_address',
+                'type' => 'Text',
+            ],
+            'internship_image' => [
+                'name' => 'internship_image',
+                'type' => 'Text',
+            ],
+            'internship_description' => [
+                'name' => 'internship_description',
                 'type' => 'Text',
             ],
         ]);
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'course_name',
-            'course_slug',
+            'internship_name',
+            'internship_slug',
             'category_id',
-            'course_enroll_file_path',
-            'teacher_id',
-            'course_start_date',
-            'course_end_date',
-            'course_description',
+            'internship_website',
+            'internship_tax_code',
+            'internship_address',
+            'internship_image',
+            'internship_description',
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'course_id',
-            'course_name',
+            'internship_id',
+            'internship_name',
             'updated_at',
             $this->field_status,
         ];
@@ -101,7 +100,7 @@ class Course extends FooModel {
         ];
 
         //primary key
-        $this->primaryKey = 'course_id';
+        $this->primaryKey = 'internship_id';
 
     }
 
@@ -131,7 +130,7 @@ class Course extends FooModel {
     }
 
     /**
-     * Get a courses by {id}
+     * Get a internship by {id}
      * @param ARRAY $params list of parameters
      * @return OBJECT crawler
      */
@@ -183,14 +182,14 @@ class Course extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'course_name':
+                        case 'internship_name':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.course_name', '=', $value);
+                                $elo = $elo->where($this->table . '.internship_name', '=', $value);
                             }
                             break;
-                        case 'course_website':
+                        case 'internship_website':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.course_website', '=', $value);
+                                $elo = $elo->where($this->table . '.internship_website', '=', $value);
                             }
                             break;
                         case 'status':
@@ -202,10 +201,10 @@ class Course extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.course_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.course_website', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.course_tax_code', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.course_description','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.internship_name', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.internship_website', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.internship_tax_code', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.internship_description','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -227,7 +226,7 @@ class Course extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.course_id as id'
+                            $this->table . '.internship_id as id'
                 );
 
         return $elo;
@@ -272,7 +271,7 @@ class Course extends FooModel {
 
             $item->save();
               //add new attribute
-            $item->id = $item->course_id;
+            $item->id = $item->internship_id;
 
 
             return $item;
@@ -374,15 +373,10 @@ class Course extends FooModel {
      */
      public function pluckSelect($params = array()) {
 
-         $elo = self::orderBy('course_name', 'ASC');
+         $elo = self::orderBy('internship_name', 'ASC');
 
-         $items = $elo->pluck('course_name', $this->primaryKey);
+         $items = $elo->pluck('internship_name', $this->primaryKey);
 
         return $items;
-    }
-
-    public function classes_users()
-    {
-        return $this->hasMany(ClassesUsers::class);
     }
 }

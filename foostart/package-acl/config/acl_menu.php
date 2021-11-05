@@ -132,5 +132,12 @@ return [
             "link" => '/admin/courses',
             "permissions" => []
         ],
+        // Internship
+        [
+            "name" => "acl-admin.menu.internship",
+            "route" => "internship",
+            "link" => '/admin/internship',
+            "permissions" => []
+        ],
     ]
 ];

@@ -11,17 +11,19 @@ use Foostart\Category\Helpers\SortTable;
 |   $sidebar_items
 |   $sorting
 |   $order_by
-|   $plang_admin = 'post-admin'
-|   $plang_front = 'post-front'
+|   $plang_admin = 'internship-admin'
+|   $plang_front = 'internship-front'
 */
 View::composer([
-                'package-post::admin.post-edit',
-                'package-post::admin.post-form',
-                'package-post::admin.post-items',
-                'package-post::admin.post-item',
-                'package-post::admin.post-search',
-                'package-post::admin.post-config',
-                'package-post::admin.post-lang',
+                // Internship
+                'package-internship::admin.internship-edit',
+                'package-internship::admin.internship-form',
+                'package-internship::admin.internship-items',
+                'package-internship::admin.internship-item',
+                'package-internship::admin.internship-search',
+                'package-internship::admin.internship-config',
+                'package-internship::admin.internship-lang',
+
     ], function ($view) {
 
         //Order by params
@@ -31,35 +33,34 @@ View::composer([
          * $plang-admin
          * $plang-front
          */
-
-        $plang_admin = 'post-admin';
-        $plang_front = 'post-front';
+        $plang_admin = 'internship-admin';
+        $plang_front = 'internship-front';
 
         $fooCategory = new FooCategory();
-        $key = $fooCategory->getContextKeyByRef('admin/posts');
+        $key = $fooCategory->getContextKeyByRef('admin/internship');
 
         /**
          * $sidebar_items
          */
         $sidebar_items = [
-            trans('post-admin.sidebar.add') => [
-                'url' => URL::route('posts.edit', []),
+            trans('internship-admin.sidebar.add') => [
+                'url' => URL::route('internship.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('post-admin.sidebar.list') => [
-                "url" => URL::route('posts.list', []),
+            trans('internship-admin.sidebar.list_courses') => [
+                "url" => URL::route('internship', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            trans('post-admin.sidebar.category') => [
-                'url'  => URL::route('categories.list',['_key='.$key]),
+            trans('pexcel-admin.sidebar.category') => [
+                'url' => URL::route('categories.list', ['_key=' . $key]),
                 'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
-            trans('post-admin.sidebar.config') => [
-                "url" => URL::route('posts.config', []),
+            trans('internship-admin.sidebar.config') => [
+                "url" => URL::route('internship.config', []),
                 'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
             ],
-            trans('post-admin.sidebar.lang') => [
-                "url" => URL::route('posts.lang', []),
+            trans('internship-admin.sidebar.lang') => [
+                "url" => URL::route('internship.lang', []),
                 'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
             ],
         ];
@@ -70,16 +71,14 @@ View::composer([
          */
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
-            'id' => trans($plang_admin.'.fields.id'),
-            'post_name' => trans($plang_admin.'.fields.name'),
-            'status' => trans($plang_admin.'.columns.status'),
+            'id' => trans($plang_admin.'.fields.internship_id'),
+            'internship_name' => trans($plang_admin.'.fields.internship_name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
+            'status' => trans($plang_admin.'.fields.status'),
         ];
         $sortTable = new SortTable();
         $sortTable->setOrders($orders);
         $sorting = $sortTable->linkOrders();
-
-
 
         //Order by
         $order_by = [
