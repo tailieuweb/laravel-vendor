@@ -101,7 +101,7 @@
             @include('package-category::admin.partials.textarea', [
             'name' => 'diary_mon',
             'label' => trans($plang_admin.'.labels.diary_mon'),
-            'value' => @$item->diary_mon,
+            'value' => @$diary->diary_mon,
             'description' => trans($plang_admin.'.descriptions.diary_mon'),
             'tinymce' => false,
             'errors' => $errors,
@@ -114,7 +114,7 @@
             @include('package-category::admin.partials.textarea', [
             'name' => 'diary_tue',
             'label' => trans($plang_admin.'.labels.diary_tue'),
-            'value' => @$item->diary_tue,
+            'value' => @$diary->diary_tue,
             'description' => trans($plang_admin.'.descriptions.diary_tue'),
             'tinymce' => false,
             'errors' => $errors,
@@ -127,7 +127,7 @@
             @include('package-category::admin.partials.textarea', [
             'name' => 'diary_wed',
             'label' => trans($plang_admin.'.labels.diary_wed'),
-            'value' => @$item->diary_wed,
+            'value' => @$diary->diary_wed,
             'description' => trans($plang_admin.'.descriptions.diary_wed'),
             'tinymce' => false,
             'errors' => $errors,
@@ -141,7 +141,7 @@
             @include('package-category::admin.partials.textarea', [
             'name' => 'diary_thu',
             'label' => trans($plang_admin.'.labels.diary_thu'),
-            'value' => @$item->diary_thu,
+            'value' => @$diary->diary_thu,
             'description' => trans($plang_admin.'.descriptions.diary_thu'),
             'tinymce' => false,
             'errors' => $errors,
@@ -154,7 +154,7 @@
             @include('package-category::admin.partials.textarea', [
             'name' => 'diary_fri',
             'label' => trans($plang_admin.'.labels.diary_fri'),
-            'value' => @$item->diary_fri,
+            'value' => @$diary->diary_fri,
             'description' => trans($plang_admin.'.descriptions.diary_fri'),
             'tinymce' => false,
             'errors' => $errors,
@@ -167,7 +167,7 @@
             @include('package-category::admin.partials.textarea', [
             'name' => 'diary_sat',
             'label' => trans($plang_admin.'.labels.diary_sat'),
-            'value' => @$item->diary_mon,
+            'value' => @$diary->diary_sat,
             'description' => trans($plang_admin.'.descriptions.diary_sat'),
             'tinymce' => false,
             'errors' => $errors,

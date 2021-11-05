@@ -110,7 +110,7 @@ Route::group(['middleware' => ['web']], function () {
          * diary
          * delete
          */
-        Route::post('admin/internship/diary_delete', [
+        Route::get('admin/internship/diary_delete', [
             'as' => 'internship.diary.delete',
             'uses' => 'InternshipAdminController@deleteDiary'
         ]);

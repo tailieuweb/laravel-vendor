@@ -105,6 +105,7 @@ class InternshipDiary extends FooModel {
         $this->valid_filter_fields = [
             'keyword',
             'internship_id',
+            'id',
             'status',
         ];
 

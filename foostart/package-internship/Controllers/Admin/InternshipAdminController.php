@@ -353,7 +353,7 @@ class InternshipAdminController extends FooController {
                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
         }
 
-
+        //Check internship
         $item = NULL;
         $categories = NULL;
 
@@ -373,7 +373,11 @@ class InternshipAdminController extends FooController {
         $internship_diary_id = $request->get('internship_diary_id');
         if (!empty($internship_diary_id)) {
             $obj_internship_diary = new InternshipDiary();
-            $diary = $obj_internship_diary->selectItems(['id' => $internship_diary_id]);
+            $diary = $obj_internship_diary->selectItem(['id' => $internship_diary_id]);
+            if (empty($diary)) {
+                return Redirect::route($this->root_router)
+                    ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+            }
         }
 
         //get categories by context
@@ -404,6 +408,101 @@ class InternshipAdminController extends FooController {
         return view($this->page_views['admin']['edit-diary'], $this->data_view);
     }
 
+    /**
+     * Edit existing item by {id} parameters OR
+     * Add new item
+     * @return view edit page
+     * @date 26/12/2017
+     */
+    public function deleteDiary(Request $request) {
+
+        //Get user info
+        $user = $this->getUser();
+        $obj_class_user = new ClassesUsers();
+
+        //Get list of class
+        $params = [
+            'user_id' => $user['user_id']
+        ];
+        $classes = $obj_class_user->selectItems($params);
+        $classes = $classes->toArray();
+
+        //Check valid course
+        $course_id = $request->get('course_id');
+        $flag = false;
+        foreach ($classes as $class) {
+            if ($class['course_id'] == $course_id) {
+                $flag = true;
+                break;
+            }
+        }
+        if (!$flag) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
+
+        //Check internship
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['course_id'] = $request->get('course_id', NULL);
+        $params['user_id'] = $user['user_id'];
+        $item = $this->obj_item->selectItem($params, FALSE);
+
+        if (empty($item)) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
+
+        //Get diary
+        $diary = null;
+        $internship_diary_id = $request->get('internship_diary_id');
+        if (!empty($internship_diary_id)) {
+            $obj_internship_diary = new InternshipDiary();
+            $diary = $obj_internship_diary->selectItem(['id' => $internship_diary_id]);
+            if (empty($diary)) {
+                return Redirect::route($this->root_router)
+                    ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+            }
+        }
+
+        //get categories by context
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($params);
+        }
+
+        //Check internship_id
+        $internship_id = $request->get('internship_id');
+        if ($internship_id != $item->internship_id) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
+
+        //Check internship diary id
+        $internship_diary_id = $request->get('internship_diary_id');
+        if ($internship_diary_id != $diary->internship_diary_id) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
+        if ($internship_id != $diary->internship_id) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
+
+        //Delete
+        $obj_internship_diary = new InternshipDiary();
+        $obj_internship_diary->deleteItem(['id'=> $internship_diary_id], 'delete-forever');
+
+        return Redirect::route($this->root_router.'.diary', ["course_id" => $course_id,
+            '_token' => $request->get('_token', 'secret'),
+            'internship_id' => $internship_id])
+            ->withMessage(trans($this->plang_admin.'.actions.delete-ok'));
+
+
+    }
     /**
      * Processing data from POST method: add new item, edit existing item
      * @return view edit page
@@ -443,8 +542,6 @@ class InternshipAdminController extends FooController {
 
         $course_id = (int) $request->get('course_id');
 
-
-
             $_params = [];
             $_params['course_id'] = $request->get('course_id', NULL);
             $_params['user_id'] = $user['user_id'];
@@ -455,7 +552,7 @@ class InternshipAdminController extends FooController {
             $internship_id = $request->get('internship_id');
 
             if ($internship_id != $item->internship_id) {
-                return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
+                return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id, 'internship_id' => $item->internship_id])
                     ->withMessage(trans($this->plang_admin.'.actions.add-error'));
             }
 
@@ -465,14 +562,24 @@ class InternshipAdminController extends FooController {
 
             if (!empty($internship_diary_id)) {
                 //Update
-                $item = $obj_internship_diary->selectItem(['id' => $internship_diary_id]);
+                $_item = $obj_internship_diary->selectItem(['id' => $internship_diary_id]);
+                if (!empty($_item)) {
+                    $params['id'] = $internship_diary_id;
+                    $obj_internship_diary->updateItem($params);
+                    return Redirect::route($this->root_router.'.diary.edit', ["course_id" => $course_id,
+                                                                        'internship_diary_id' => $internship_diary_id,
+                                                                        'internship_id' => $internship_id])
+                        ->withMessage(trans($this->plang_admin.'.actions.edit-ok'));
+
+                } else {
+                    return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id, 'internship_id' => $item->internship_id])
+                        ->withMessage(trans($this->plang_admin.'.actions.add-error'));
+                }
             } else {
                 //Add new
                 $item = $obj_internship_diary->insertItem($params);
 
             }
-        return Redirect::route($this->root_router.'.diary.edit', ["course_id" => $course_id, 'internship_id' => $internship_id])
-            ->withMessage(trans($this->plang_admin.'.actions.edit-ok'));
 
     }
 
