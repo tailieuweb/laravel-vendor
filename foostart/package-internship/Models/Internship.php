@@ -28,74 +28,106 @@ class Internship extends FooModel {
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
+            //Company info
             'category_id',
-            'internship_name',
-            'internship_slug',
-            'internship_website',
-            'internship_tax_code',
-            'internship_address',
-            'internship_image',
-            'internship_description',
+            'user_id',
+            'course_id',
+            'company_name',
+            'company_slug',
+            'company_website',
+            'company_address',
+            'company_description',
+            'company_image',
+            'company_tax_code',
+            'company_phone',
+            'company_instructor',
+            'company_instructor_phone',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'internship_name' => [
-                'name' => 'internship_name',
+            'company_instructor_phone' => [
+                'name' => 'company_instructor_phone',
                 'type' => 'Text',
             ],
-            'internship_slug' => [
-                'name' => 'internship_slug',
+            'company_instructor' => [
+                'name' => 'company_instructor',
+                'type' => 'Text',
+            ],
+            'company_phone' => [
+                'name' => 'company_phone',
                 'type' => 'Text',
             ],
             'category_id' => [
                 'name' => 'category_id',
                 'type' => 'Int',
             ],
-             'internship_website' => [
-                'name' => 'internship_website',
+            'user_id' => [
+                'name' => 'user_id',
+                'type' => 'Int',
+            ],
+            'course_id' => [
+                'name' => 'course_id',
+                'type' => 'Int',
+            ],
+            'company_name' => [
+                'name' => 'company_name',
                 'type' => 'Text',
             ],
-            'internship_tax_code' => [
-                'name' => 'internship_tax_code',
+            'company_slug' => [
+                'name' => 'company_slug',
                 'type' => 'Text',
             ],
-            'internship_address' => [
-                'name' => 'internship_address',
+             'company_website' => [
+                'name' => 'company_website',
                 'type' => 'Text',
             ],
-            'internship_image' => [
-                'name' => 'internship_image',
+            'company_tax_code' => [
+                'name' => 'company_tax_code',
                 'type' => 'Text',
             ],
-            'internship_description' => [
-                'name' => 'internship_description',
+            'company_address' => [
+                'name' => 'company_address',
+                'type' => 'Text',
+            ],
+            'company_image' => [
+                'name' => 'company_image',
+                'type' => 'Text',
+            ],
+            'company_description' => [
+                'name' => 'company_description',
                 'type' => 'Text',
             ],
         ]);
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'internship_name',
-            'internship_slug',
             'category_id',
-            'internship_website',
-            'internship_tax_code',
-            'internship_address',
-            'internship_image',
-            'internship_description',
+            'course_id',
+            'user_id',
+            'company_name',
+            'company_slug',
+            'company_website',
+            'company_address',
+            'company_description',
+            'company_image',
+            'company_tax_code',
+            'company_phone',
+            'company_instructor',
+            'company_instructor_phone',
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
             'internship_id',
-            'internship_name',
             'updated_at',
             $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
             'keyword',
+            'course_id',
+            'user_id',
             'status',
         ];
 
@@ -150,7 +182,9 @@ class Internship extends FooModel {
         $elo = $this->createSelect($elo);
 
         //id
-        $elo = $elo->where($this->primaryKey, $params['id']);
+        if (!empty($params['id'])) {
+            $elo = $elo->where($this->primaryKey, $params['id']);
+        }
 
         //first item
         $item = $elo->first();
@@ -182,14 +216,14 @@ class Internship extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'internship_name':
+                        case 'course_id':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.internship_name', '=', $value);
+                                $elo = $elo->where($this->table . '.course_id', '=', $value);
                             }
                             break;
-                        case 'internship_website':
+                        case 'user_id':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.internship_website', '=', $value);
+                                $elo = $elo->where($this->table . '.user_id', '=', $value);
                             }
                             break;
                         case 'status':

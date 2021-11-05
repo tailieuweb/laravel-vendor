@@ -54,7 +54,7 @@ class InternshipAdminController extends FooController {
         $this->page_views = [
             'admin' => [
                 'items' => $this->package_name.'::admin.'.$this->package_base_name.'-items',
-                'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
+                'edit_company'  => $this->package_name.'::admin.'.$this->package_base_name.'-company-edit',
                 'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
                 'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
                 'sample'  => $this->package_name.'::admin.'.$this->package_base_name.'-sample',
@@ -65,7 +65,7 @@ class InternshipAdminController extends FooController {
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
 
         // //set category
-        $this->category_ref_name = 'admin/internship';
+        $this->category_ref_name = 'admin/company';
     }
 
     /**
@@ -82,7 +82,7 @@ class InternshipAdminController extends FooController {
         ];
         $classes = $obj_class_user->selectItems($params);
 
-
+        $classes = $classes->toArray();
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
@@ -101,24 +101,43 @@ class InternshipAdminController extends FooController {
      * @return view edit page
      * @date 26/12/2017
      */
-    public function edit(Request $request) {
+    public function editCompany(Request $request) {
+
+        $user = $this->getUser();
+        $params = $request->all();
+        $obj_class_user = new ClassesUsers();
+        $params = [
+            'user_id' => $user['user_id']
+        ];
+        $classes = $obj_class_user->selectItems($params);
+
+        $classes = $classes->toArray();
+
+        //Check valid course
+        $course_id = $request->get('course_id');
+        $flag = false;
+        foreach ($classes as $class) {
+            if ($class['course_id'] == $course_id) {
+                $flag = true;
+                break;
+            }
+        }
+        if (!$flag) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
+
 
         $item = NULL;
         $categories = NULL;
 
         $params = $request->all();
-        $params['id'] = $request->get('id', NULL);
+        $params['course_id'] = $request->get('course_id', NULL);
+        $params['user_id'] = $user['user_id'];
 
-        $context = $this->obj_item->getContext($this->category_ref_name);
-
-        if (!empty($params['id'])) {
-
+        if (!empty($params['course_id'])) {
             $item = $this->obj_item->selectItem($params, FALSE);
 
-            if (empty($item)) {
-                return Redirect::route($this->root_router)
-                                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
-            }
         }
 
         //get categories by context
@@ -134,8 +153,9 @@ class InternshipAdminController extends FooController {
             'categories' => $categories,
             'request' => $request,
             'context' => $context,
+            'course_id' => $course_id,
         ));
-        return view($this->page_views['admin']['edit'], $this->data_view);
+        return view($this->page_views['admin']['edit_company'], $this->data_view);
     }
 
     /**
@@ -143,7 +163,30 @@ class InternshipAdminController extends FooController {
      * @return view edit page
      * @date 27/12/2017
      */
-    public function post(Request $request) {
+    public function postCompany(Request $request) {
+        $user = $this->getUser();
+        $params = $request->all();
+        $obj_class_user = new ClassesUsers();
+        $params = [
+            'user_id' => $user['user_id']
+        ];
+        $classes = $obj_class_user->selectItems($params);
+
+        $classes = $classes->toArray();
+
+        //Check valid course
+        $course_id = $request->get('course_id', 0);
+        $flag = false;
+        foreach ($classes as $class) {
+            if ($class['course_id'] == $course_id) {
+                $flag = true;
+                break;
+            }
+        }
+        if (!$flag) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
+        }
 
         $item = NULL;
 
@@ -151,29 +194,26 @@ class InternshipAdminController extends FooController {
 
         $is_valid_request = $this->isValidRequest($request);
 
-        $id = (int) $request->get('id');
+        $course_id = (int) $request->get('course_id');
 
         if ($is_valid_request && $this->obj_validator->validate($params)) {// valid data
 
+            $_params = [];
+            $_params['course_id'] = $request->get('course_id', NULL);
+            $_params['user_id'] = $user['user_id'];
+
+            $item = $this->obj_item->selectItem($_params, FALSE);
+
             // update existing item
-            if (!empty($id)) {
+            if (!empty($item)) {
 
-                $item = $this->obj_item->find($id);
-
-                if (!empty($item)) {
-
-                    $params['id'] = $id;
+                    $params['id'] = $item->internship_id;
                     $item = $this->obj_item->updateItem($params);
 
                     // message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
+                    return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
                                     ->withMessage(trans($this->plang_admin.'.actions.edit-ok'));
-                } else {
 
-                    // message
-                    return Redirect::route($this->root_router)
-                                    ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
-                }
 
             // add new item
             } else {
@@ -183,12 +223,12 @@ class InternshipAdminController extends FooController {
                 if (!empty($item)) {
 
                     //message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
+                    return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
                                     ->withMessage(trans($this->plang_admin.'.actions.add-ok'));
                 } else {
 
                     //message
-                    return Redirect::route($this->root_router.'.edit', ["id" => $item->id])
+                    return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
                                     ->withMessage(trans($this->plang_admin.'.actions.add-error'));
                 }
 
@@ -199,7 +239,7 @@ class InternshipAdminController extends FooController {
             $errors = $this->obj_validator->getErrors();
 
             // passing the id incase fails editing an already existing item
-            return Redirect::route($this->root_router.'.edit', $id ? ["id" => $id]: [])
+            return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id])
                     ->withInput()->withErrors($errors);
         }
     }

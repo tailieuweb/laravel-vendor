@@ -23,6 +23,8 @@ View::composer([
                 'package-internship::admin.internship-search',
                 'package-internship::admin.internship-config',
                 'package-internship::admin.internship-lang',
+                'package-internship::admin.internship-company-edit',
+                'package-internship::admin.internship-company-form',
 
     ], function ($view) {
 
@@ -43,25 +45,9 @@ View::composer([
          * $sidebar_items
          */
         $sidebar_items = [
-            trans('internship-admin.sidebar.add') => [
-                'url' => URL::route('internship.edit', []),
-                'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
-            ],
             trans('internship-admin.sidebar.list_courses') => [
                 "url" => URL::route('internship', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
-            ],
-            trans('pexcel-admin.sidebar.category') => [
-                'url' => URL::route('categories.list', ['_key=' . $key]),
-                'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
-            ],
-            trans('internship-admin.sidebar.config') => [
-                "url" => URL::route('internship.config', []),
-                'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
-            ],
-            trans('internship-admin.sidebar.lang') => [
-                "url" => URL::route('internship.lang', []),
-                'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
             ],
         ];
 
@@ -72,7 +58,6 @@ View::composer([
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
             'id' => trans($plang_admin.'.fields.internship_id'),
-            'internship_name' => trans($plang_admin.'.fields.internship_name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
             'status' => trans($plang_admin.'.fields.status'),
         ];

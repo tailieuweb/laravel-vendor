@@ -2,21 +2,10 @@
 | List of elements in company form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['company.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['internship.post_company', 'course_id' => $course_id],  'files'=>true, 'method' => 'post'])  !!}
 
     <!--BUTTONS-->
     <div class='btn-form'>
-        @if(isset($item) && $item->deleted_at)
-            <a href="{!! URL::route('company.restore',['id' => $item->id, '_token' => csrf_token()]) !!}"
-               class="btn btn-success pull-right margin-left-5 restore">
-                {!! trans($plang_admin.'.buttons.restore') !!}
-            </a>
-        @elseif (isset($item))
-            <a href="{!! URL::route('company.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
-               class="btn btn-warning pull-right margin-left-5 delete">
-                {!! trans($plang_admin.'.buttons.delete') !!}
-            </a>
-        @endif
         <!-- SAVE BUTTON -->
             {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
         <!-- /SAVE BUTTON -->
@@ -65,18 +54,18 @@
                 'value' => @$item->company_slug,
                 'description' => trans($plang_admin.'.descriptions.slug'),
                 'errors' => $errors,
+                'hidden' => true,
             ])
             <!--/SITE SLUG-->
 
-            <!--WEBSITE-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'company_website',
-                'label' => trans($plang_admin.'.labels.company_website'),
-                'value' => @$item->company_website,
-                'description' => trans($plang_admin.'.descriptions.company_website'),
-                'errors' => $errors,
-            ])
-            <!-- /WEBSITE-->
+            <!--SITE SLUG-->
+                @include('package-category::admin.partials.input_slug', [
+                    'name' => 'course_id',
+                    'id' => 'course_id',
+                    'value' => @$item->course_id,
+                    'hidden' => true,
+                ])
+                <!--/SITE SLUG-->
 
             <!--ADDRESS-->
             @include('package-category::admin.partials.input_text', [
@@ -102,29 +91,71 @@
                 </div>
 
                 <div class="col-md-6">
-                    <!--STATUS-->
-                    @include('package-category::admin.partials.select_single', [
-                        'name' => 'status',
-                        'label' => trans($plang_admin.'.form.status'),
-                        'value' => @$item->status,
-                        'items' => $status,
-                        'description' => trans($plang_admin.'.descriptions.status'),
+                    <!--COMPANY PHONE-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'company_phone',
+                        'label' => trans($plang_admin.'.labels.company_phone'),
+                        'value' => @$item->company_phone,
+                        'description' => trans($plang_admin.'.descriptions.company_phone'),
+                        'errors' => $errors,
                     ])
-                    <!--/STATUS-->
+                    <!-- /COMPANY PHONE-->
                 </div>
             </div>
 
-             <!--DESCRIPTION-->
-            @include('package-category::admin.partials.textarea', [
-                'name' => 'company_description',
-                'label' => trans($plang_admin.'.labels.company_description'),
-                'value' => @$item->company_description,
-                'description' => trans($plang_admin.'.descriptions.company_description'),
-                'rows' => 25,
-                'tinymce' => true,
-                'errors' => $errors,
-            ])
-            <!--/DESCRIPTION-->
+            <div class="row">
+                <div class='col-md-6'>
+                    <!--COMPANY INSTRUCTOR-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'company_instructor',
+                        'label' => trans($plang_admin.'.labels.company_instructor'),
+                        'value' => @$item->company_instructor,
+                        'description' => trans($plang_admin.'.descriptions.company_instructor'),
+                        'errors' => $errors,
+                    ])
+                    <!-- /COMPANY INSTRUCTOR-->
+                </div>
+
+                <div class='col-md-6'>
+                    <!--COMPANY INSTRUCTOR PHONE-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'company_instructor_phone',
+                        'label' => trans($plang_admin.'.labels.company_instructor_phone'),
+                        'value' => @$item->company_instructor_phone,
+                        'description' => trans($plang_admin.'.descriptions.company_instructor_phone'),
+                        'errors' => $errors,
+                    ])
+                    <!-- /COMPANY INSTRUCTOR-->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class='col-md-6'>
+                    <!--WEBSITE-->
+                @include('package-category::admin.partials.input_text', [
+                    'name' => 'company_website',
+                    'label' => trans($plang_admin.'.labels.company_website'),
+                    'value' => @$item->company_website,
+                    'description' => trans($plang_admin.'.descriptions.company_website'),
+                    'errors' => $errors,
+                ])
+                <!-- /WEBSITE-->
+                </div>
+
+                <div class="col-md-6">
+                    <!--COMPANY TAX CODE-->
+                @include('package-category::admin.partials.input_text', [
+                    'name' => 'company_tax_code',
+                    'label' => trans($plang_admin.'.labels.company_tax_code'),
+                    'value' => @$item->company_tax_code,
+                    'description' => trans($plang_admin.'.descriptions.company_tax_code'),
+                    'errors' => $errors,
+                ])
+                <!-- /COMPANY TAX CODE-->
+                </div>
+            </div>
+
+
         </div>
         <!--/END MENU1-->
         <!--OTHER-->
@@ -139,6 +170,17 @@
                 'lfm_config' => TRUE
             ])
             <!--/SITE IMAGE-->
+            <!--DESCRIPTION-->
+        @include('package-category::admin.partials.textarea', [
+            'name' => 'company_description',
+            'label' => trans($plang_admin.'.labels.company_description'),
+            'value' => @$item->company_description,
+            'description' => trans($plang_admin.'.descriptions.company_description'),
+            'rows' => 25,
+            'tinymce' => true,
+            'errors' => $errors,
+        ])
+        <!--/DESCRIPTION-->
         </div>
 
     </div>

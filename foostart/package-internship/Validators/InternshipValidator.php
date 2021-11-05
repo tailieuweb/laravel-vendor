@@ -16,7 +16,8 @@ class InternshipValidator extends FooValidator
     {
         // add rules
         self::$rules = [
-            'internship_name' => ["required"],
+            'company_name' => ["required"],
+            'category_id' => ["required"],
         ];
 
         // set configs
@@ -33,7 +34,7 @@ class InternshipValidator extends FooValidator
         Event::listen('validating', function($input)
         {
             self::$messages = [
-                'internship_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
+                'company_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
                 ];
         });
 
@@ -55,14 +56,14 @@ class InternshipValidator extends FooValidator
 
         $params = [
             'name' => [
-                'key' => 'internship_name',
-                'label' => trans($this->lang_admin.'.fields.name'),
-                'min' => $_ln['internship_name']['min'],
-                'max' => $_ln['internship_name']['max'],
+                'key' => 'company_name',
+                'label' => trans($this->lang_admin.'.fields.company_name'),
+                'min' => $_ln['company_name']['min'],
+                'max' => $_ln['company_name']['max'],
             ],
         ];
 
-        $flag = $this->isValidLength($input['internship_name'], $params['name']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['company_name'], $params['name']) ? $flag : FALSE;
 
         return $flag;
     }
@@ -86,8 +87,7 @@ class InternshipValidator extends FooValidator
     public function userValidate($input) {
         //set rules
         self::$rules = [
-            'internship_name' => ["required"],
-            'internship_url' => ["required"],
+            'company_name' => ["required"],
         ];
 
         //validate

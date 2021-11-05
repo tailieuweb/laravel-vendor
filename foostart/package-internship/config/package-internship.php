@@ -3,7 +3,7 @@ return [
 
     //Number of worlds
     'length' => [
-        'internship_name' => [
+        'company_name' => [
             'min' => 2,
             'max' => 255,
         ],

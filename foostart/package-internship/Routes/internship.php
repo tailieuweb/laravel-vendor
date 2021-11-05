@@ -71,10 +71,18 @@ Route::group(['middleware' => ['web']], function () {
 
         /**
          * edit-add
+         * company
          */
-        Route::get('admin/internship/edit', [
-            'as' => 'internship.edit',
-            'uses' => 'InternshipAdminController@edit'
+        Route::get('admin/internship/edit_company', [
+            'as' => 'internship.edit_company',
+            'uses' => 'InternshipAdminController@editCompany'
+        ]);
+        /**
+         * post
+         */
+        Route::post('admin/internship/edit_company', [
+            'as' => 'internship.post_company',
+            'uses' => 'InternshipAdminController@postCompany'
         ]);
 
         /**
@@ -85,13 +93,7 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'InternshipAdminController@copy'
         ]);
 
-        /**
-         * post
-         */
-        Route::post('admin/internship/edit', [
-            'as' => 'internship.post',
-            'uses' => 'InternshipAdminController@post'
-        ]);
+
 
         /**
          * delete

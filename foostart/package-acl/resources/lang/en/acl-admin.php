@@ -10,6 +10,7 @@ return [
      */
     'breadcrumbs' => [
         'admin' => 'Admin',
+        'edit_company' => 'Edit company',
         'internship' => 'Internship',
         'courses' => 'Courses',
         'course' => 'Course',

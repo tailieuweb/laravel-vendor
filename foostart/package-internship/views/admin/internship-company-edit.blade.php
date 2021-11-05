@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
 
-                            @include('package-company::admin.company-form')
+                            @include('package-internship::admin.internship-company-form')
 
                         </div>
                     </div>
@@ -72,7 +72,7 @@
         </div>
 
         <div class='col-md-3'>
-            @include('package-company::admin.company-search')
+            @include('package-internship::admin.internship-search')
         </div>
 
 </div>

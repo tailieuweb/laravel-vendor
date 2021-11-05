@@ -47,7 +47,7 @@
                     <div class="panel-body">
                         {!! Form::open(['route'=>['company.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-company::admin.company-item')
+                            @include('package-internship::admin.internship-item')
 
                             {!! csrf_field(); !!}
 
@@ -61,7 +61,7 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-company::admin.company-search')
+                @include('package-internship::admin.internship-search')
             </div>
             <!--/SEARCH-->
     </div>

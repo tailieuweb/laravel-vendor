@@ -58,6 +58,7 @@ return [
     */
     'columns' => [
         'order' => 'Order',
+        'course_name' => 'Course name',
         '#' => '#',
         'counter' => '#',
         'id' => 'Id',
@@ -190,6 +191,8 @@ return [
     */
     'descriptions' => [
         'form' => 'Crawler form',
+        'company_form' => 'Edit company',
+        'company_image' => 'Company image',
         'internship_address' => 'Internship address',
         'category_id' => 'Category',
         'update' => 'Update crawler',
@@ -247,6 +250,10 @@ return [
         'pattern_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'internship_website' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'company_name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'company_website' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'company_address' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'company_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     ],
 
 
@@ -319,6 +326,16 @@ return [
     */
     'labels' => [
         'name' => 'Internship name',
+        'company_phone' => 'Company phone',
+        'company_instructor_phone' => 'Company instructor phone',
+        'company_tax_code' => 'Company tax code',
+        'company_image' => 'Company name',
+        'company_instructor' => 'Company instructor',
+        'title-search-company' => 'Search company',
+        'company_name' => 'Company name',
+        'company_website' => 'Company website',
+        'company_address' => 'Company address',
+        'company_description' => 'Company description',
         'internship_address' => 'Internship address',
         'overview' => 'Crawler overview',
         'description' => 'Crawler description',
