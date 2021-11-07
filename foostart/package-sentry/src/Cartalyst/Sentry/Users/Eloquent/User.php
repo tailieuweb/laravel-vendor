@@ -91,6 +91,7 @@ class User extends BaseSentryModel implements UserInterface
      * @var string
      */
     protected static $loginAttribute = 'email';
+    protected static $loginOtherAttribute = 'user_name';
 
     /**
      * The hasher the model uses.
@@ -152,6 +153,16 @@ class User extends BaseSentryModel implements UserInterface
     public function getLoginName()
     {
         return static::$loginAttribute;
+    }
+
+    /**
+     * Returns the other name for the user's login.
+     *
+     * @return string
+     */
+    public function getLoginOtherName()
+    {
+        return static::$loginOtherAttribute;
     }
 
     /**

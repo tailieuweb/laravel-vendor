@@ -90,7 +90,8 @@ class Provider implements ProviderInterface
     {
         $model = $this->createModel();
 
-        if (!$user = $model->newQuery()->where($model->getLoginName(), '=', $login)->first()) {
+        if (!$user = $model->newQuery()->where($model->getLoginName(), '=', $login)
+                                       ->orWhere($model->getLoginOtherName(), '=', $login)->first()) {
             throw new UserNotFoundException("A user could not be found with a login value of [$login].");
         }
 
@@ -126,7 +127,8 @@ class Provider implements ProviderInterface
             if (in_array($credential, $hashableAttributes)) {
                 $hashedCredentials = array_merge($hashedCredentials, array($credential => $value));
             } else {
-                $query = $query->where($credential, '=', $value);
+                $query = $query->where($credential, '=', $value)
+                                ->orWhere($model->getLoginOtherName(), '=', $value);//TODO: upgrade later
             }
         }
 

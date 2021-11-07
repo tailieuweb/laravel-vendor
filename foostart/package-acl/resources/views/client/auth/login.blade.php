@@ -30,7 +30,8 @@
                                         'placeholder' => trans($plang_front.'.labels.email'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                         'required' => true,
-                                        'errors' => $errors
+                                        'errors' => $errors,
+                                        'value' => 'admin',//TODO: debug
                                     ])
 
                         </div>
@@ -41,7 +42,7 @@
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
                                         'required' => true,
                                         'errors' => $errors,
-                                        'type' => 'password'
+                                        'type' => 'password',
                                     ])
                         </div>
                     </div>
