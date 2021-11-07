@@ -20,11 +20,6 @@
                         </h3>
                     </div>
 
-                    <!--DESCRIPTION-->
-                    <div class='panel-info panel-description'>
-                        {!! trans($plang_admin.'.descriptions.list') !!}</h4>
-                    </div>
-                    <!--/DESCRIPTION-->
 
                     <!--MESSAGE-->
                     <?php $message = Session::get('message'); ?>

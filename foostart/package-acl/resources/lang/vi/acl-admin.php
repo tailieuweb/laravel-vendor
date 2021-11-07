@@ -10,12 +10,14 @@ return [
      */
     'breadcrumbs' => [
         'admin' => 'Admin',
+        'view' => 'View',
         'diary' => 'Diary',
         'diary_edit' => 'Nhật ký thực tập',
         'edit_company' => 'Edit company',
         'internship' => 'Internship',
         'courses' => 'Courses',
         'course' => 'Course',
+        'class' => 'Lớp học',
         'groups' => 'Groups',
         'edit' => 'Edit',
         'list' => 'List',
@@ -356,7 +358,7 @@ return [
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               </p>',
         'list' => 'List of items',
-        'counters' => 'There are <b>:number</b> items',
+        'counters' => 'Có <b>:number</b> items',
         'counter' => 'There is <b>:number</b> item',
         'not-found' => 'Not found items',
         'config' => 'List of configurations',

@@ -13,9 +13,9 @@ $withs = [
     <div style="min-height: 50px;">
         <div>
             @if($courses->total() == 1)
-                {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
+                {!! trans($plang_admin.'.descriptions.course_counter', ['number' => 1]) !!}
             @else
-                {!! trans($plang_admin.'.descriptions.counters', ['number' => $courses->total()]) !!}
+                {!! trans($plang_admin.'.descriptions.course_countes', ['number' => $courses->total()]) !!}
             @endif
         </div>
 

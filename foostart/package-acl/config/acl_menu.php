@@ -130,7 +130,7 @@ return [
             "name" => "acl-admin.menu.course",
             "route" => "company",
             "link" => '/admin/courses',
-            "permissions" => []
+            "permissions" => [$admin, "_permission-editor"]
         ],
         // Internship
         [

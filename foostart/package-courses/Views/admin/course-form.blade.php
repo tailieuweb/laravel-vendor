@@ -27,14 +27,14 @@
     <ul class="nav nav-tabs">
         <!--MENU 1-->
         <li class="active">
-            <a data-toggle="tab" href="#menu_1">
-                {!! trans($plang_admin.'.tabs.menu-1') !!}
+            <a data-toggle="tab" href="#menu_1_require">
+                {!! trans($plang_admin.'.tabs.menu_1_require') !!}
             </a>
         </li>
         <!--OTHER-->
         <li>
-            <a data-toggle="tab" href="#menu_3">
-                {!! trans($plang_admin.'.tabs.other') !!}
+            <a data-toggle="tab" href="#menu_2_other">
+                {!! trans($plang_admin.'.tabs.menu_2_other') !!}
             </a>
         </li>
     </ul>
@@ -44,7 +44,7 @@
     <div class="tab-content">
 
         <!--MENU 1-->
-        <div id="menu_1" class="tab-pane fade in active">
+        <div id="menu_1_require" class="tab-pane fade in active">
 
             <!--NAME-->
             @include('package-category::admin.partials.input_text', [
@@ -65,6 +65,7 @@
                 'value' => @$item->course_slug,
                 'description' => trans($plang_admin.'.descriptions.slug'),
                 'errors' => $errors,
+                'hidden' => true
             ])
             <!--/SLUG-->
 
@@ -144,7 +145,7 @@
         </div>
         <!--/END MENU1-->
         <!--OTHER-->
-        <div id="menu_3" class="tab-pane fade">
+        <div id="menu_2_other" class="tab-pane fade">
             <!--SITE IMAGE-->
             @include('package-category::admin.partials.input_image', [
                 'name' => 'course_image',

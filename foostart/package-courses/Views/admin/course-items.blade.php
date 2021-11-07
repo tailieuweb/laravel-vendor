@@ -16,15 +16,9 @@
                     <!--HEADING-->
                     <div class="panel-heading">
                         <h3 class="panel-title bariol-thin"><i class="fa fa-list-ul" aria-hidden="true"></i>
-                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search-courses') : trans($plang_admin.'.pages.title-courses') !!}
+                            {!! $request->all() ? trans($plang_admin.'.pages.title_list_search_courses') : trans($plang_admin.'.pages.title_courses') !!}
                         </h3>
                     </div>
-
-                    <!--DESCRIPTION-->
-                    <div class='panel-info panel-description'>
-                        {!! trans($plang_admin.'.descriptions.list') !!}</h4>
-                    </div>
-                    <!--/DESCRIPTION-->
 
                     <!--MESSAGE-->
                     <?php $message = Session::get('message'); ?>

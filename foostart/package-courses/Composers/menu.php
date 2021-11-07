@@ -53,7 +53,7 @@ View::composer([
                 "url" => URL::route('course', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            trans('pexcel-admin.sidebar.category') => [
+            trans('pexcel-admin.sidebar.course_category') => [
                 'url' => URL::route('categories.list', ['_key=' . $key]),
                 'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],

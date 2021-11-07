@@ -15,22 +15,12 @@ $withs = [
     <div style="min-height: 50px;">
         <div>
             @if(count($items) == 1)
-                {!! trans($plang_admin.'.descriptions.counter', ['number' => 1]) !!}
+                {!! trans($plang_admin.'.descriptions.student_counter', ['number' => 1]) !!}
             @else
-                {!! trans($plang_admin.'.descriptions.counters', ['number' => count($items)]) !!}
+                {!! trans($plang_admin.'.descriptions.student_counter', ['number' => count($items)]) !!}
             @endif
         </div>
 
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
-                                                                            "class"=>"btn btn-warning delete btn-delete-all",
-                                                                            "title"=> trans($plang_admin.'.hint.delete-in-trash'),
-                                                                            'name'=>'del-trash'))
-        !!}
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
-                                                                            "class"=>"btn btn-danger delete btn-delete-all",
-                                                                            "title"=> trans($plang_admin.'.hint.delete-forever'),
-                                                                            'name'=>'del-forever'))
-        !!}
     </div>
 
     <div class="table-responsive">
