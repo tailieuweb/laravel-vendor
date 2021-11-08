@@ -212,6 +212,9 @@ return [
      */
     'labels' => [
         'email' => 'Email',
+        'permission_keyword' => 'Keyword',
+        'permission_name' => 'Tên quyền sử dụng',
+        'permission_description' => 'Mô tả về quyền sử dụng',
         'diary_mon' => 'Email',
         'email' => 'Email',
         'email' => 'Email',
@@ -292,6 +295,7 @@ return [
     */
     'form' => [
         'any' => 'Any',
+        'keyword' => 'Từ khóa',
     ],
     'banned' => [
         'yes' => 'Yes',
@@ -343,6 +347,7 @@ return [
     */
     'descriptions' => [
         'category-form' => 'Category form',
+        'permission_description' => 'Permission description',
         'overview' => '<p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               </p>',

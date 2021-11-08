@@ -128,9 +128,16 @@ return [
         // Course
         [
             "name" => "acl-admin.menu.course",
-            "route" => "company",
+            "route" => "course",
             "link" => '/admin/courses',
-            "permissions" => [$admin, "_permission-editor"]
+            "permissions" => [$admin]
+        ],
+        // Courses by teacher
+        [
+            "name" => "acl-admin.menu.course",
+            "route" => "teacher.course",
+            "link" => '/admin/courses/list',
+            "permissions" => [$admin, "_teacher"]
         ],
         // Internship
         [

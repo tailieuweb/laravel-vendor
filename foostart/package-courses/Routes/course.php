@@ -62,7 +62,7 @@ Route::group(['middleware' => ['web']], function () {
         */
 
         /**
-         * list
+         * admin page
          */
         Route::get('admin/courses', [
             'as' => 'course',
@@ -145,5 +145,94 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'course.search',
             'uses' => 'CourseAdminController@search'
         ]);
+
+        /**
+         * list of courses by teacher
+         */
+        Route::get('admin/courses/list', [
+            'as' => 'teacher.course',
+            'uses' => 'CourseAdminController@coursesByTeacher'
+        ]);
+        /**
+         * Edit course by teacher
+         */
+        Route::get('admin/courses/teacher/edit', [
+            'as' => 'teacher.course.edit',
+            'uses' => 'CourseAdminController@edit'
+        ]);
+        /**
+         * Enroll student to course by teacher
+         */
+        Route::get('admin/courses/teacher/raw', [
+            'as' => 'teacher.course.raw',
+            'uses' => 'CourseAdminController@raw'
+        ]);
+        /**
+         * View list of students on course by teacher
+         */
+        Route::get('admin/courses/teacher/view', [
+            'as' => 'teacher.course.view',
+            'uses' => 'CourseAdminController@view'
+        ]);
+    });
+
+
+    /*******************
+     * Teacher
+     */
+    /****************************************************************************
+     * Course
+     */
+    Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
+        'namespace' => 'Foostart\Courses\Controllers\Admin',
+    ], function () {
+
+        /*
+          |-----------------------------------------------------------------------
+          | Manage companies
+          |-----------------------------------------------------------------------
+          | 1. List of companies
+          | 2. Edit courses
+          | 3. Delete courses
+          | 4. Add new courses
+          |
+        */
+
+        /**
+         * list of courses by teacher
+         */
+        Route::get('admin/courses/list', [
+            'as' => 'teacher.course',
+            'uses' => 'CourseTeacherController@coursesByTeacher'
+        ]);
+        /**
+         * Edit course by teacher
+         */
+        Route::get('admin/courses/teacher/edit', [
+            'as' => 'teacher.course.edit',
+            'uses' => 'CourseTeacherController@editCourseByTeacher'
+        ]);
+        /**
+         * Post course by teacher
+         */
+        Route::post('admin/courses/teacher/edit', [
+            'as' => 'teacher.course.post',
+            'uses' => 'CourseTeacherController@postCourseByTeacher'
+        ]);
+        /**
+         * Enroll student to course by teacher
+         */
+        Route::get('admin/courses/teacher/raw', [
+            'as' => 'teacher.course.raw',
+            'uses' => 'CourseTeacherController@rawCourseByTeacher'
+        ]);
+        /**
+         * View list of students on course by teacher
+         */
+        Route::get('admin/courses/teacher/view', [
+            'as' => 'teacher.course.view',
+            'uses' => 'CourseTeacherController@viewCourseByTeacher'
+        ]);
     });
 });
+

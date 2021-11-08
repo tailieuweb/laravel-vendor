@@ -56,7 +56,7 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-courses::admin.course-search')
+                @include('package-courses::teacher.course-search')
             </div>
             <!--/SEARCH-->
     </div>

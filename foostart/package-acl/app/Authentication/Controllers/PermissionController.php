@@ -60,6 +60,7 @@ class PermissionController extends Controller
         // display view
         $this->data_view = array_merge($this->data_view, array(
             "permission" => $obj,
+            'request' => $request
         ));
         return View::make('package-acl::admin.permission.edit')->with($this->data_view);
     }

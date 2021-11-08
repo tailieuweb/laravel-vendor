@@ -109,7 +109,7 @@ $withs = [
                     </a>
                 </td>
                 <td>{!! $permission->permission !!}</td>
-                <td>{!! $permission->description !!}</td>
+                <td>{!! $permission->name !!}</td>
                 <td class="text-center">
                     {!! $permission->deleted_at ? '<i class="fa fa-circle-o red" title="In trash"></i>' :
                                             '<i class="fa fa-circle green" title="Available"></i>' !!}

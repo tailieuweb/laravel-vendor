@@ -95,3 +95,80 @@ View::composer([
         $view->with('plang_admin', $plang_admin);
         $view->with('plang_front', $plang_front);
 });
+
+
+
+/*
+|-----------------------------------------------------------------------
+| GLOBAL VARIABLES
+|-----------------------------------------------------------------------
+|   $sidebar_items
+|   $sorting
+|   $order_by
+|   $plang_admin = 'course-admin'
+|   $plang_front = 'course-front'
+*/
+View::composer([
+    // Course
+    'package-courses::teacher.course-edit',
+    'package-courses::teacher.course-form',
+    'package-courses::teacher.course-items',
+    'package-courses::teacher.course-item',
+    'package-courses::teacher.course-search',
+    'package-courses::teacher.course-view',
+    'package-courses::teacher.course-view-item',
+], function ($view) {
+
+    //Order by params
+    $params = Request::all();
+
+    /**
+     * $plang-admin
+     * $plang-front
+     */
+    $plang_admin = 'course-admin';
+    $plang_front = 'course-front';
+
+    $fooCategory = new FooCategory();
+    $key = $fooCategory->getContextKeyByRef('admin/courses');
+
+    /**
+     * $sidebar_items
+     */
+    $sidebar_items = [
+        trans('course-admin.sidebar.courses') => [
+            "url" => URL::route('teacher.course', []),
+            'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
+        ],
+
+    ];
+
+    /**
+     * $sorting
+     * $order_by
+     */
+    $orders = [
+        '' => trans($plang_admin.'.form.no-selected'),
+        'id' => trans($plang_admin.'.fields.courses_id'),
+        'course_name' => trans($plang_admin.'.fields.courses_name'),
+        'updated_at' => trans($plang_admin.'.fields.updated_at'),
+        'status' => trans($plang_admin.'.fields.status'),
+    ];
+    $sortTable = new SortTable();
+    $sortTable->setOrders($orders);
+    $sorting = $sortTable->linkOrders();
+
+    //Order by
+    $order_by = [
+        'asc' => trans('category-admin.order.by-asc'),
+        'desc' => trans('category-admin.order.by-des'),
+    ];
+
+    // assign to view
+    $view->with('sidebar_items', $sidebar_items );
+    $view->with('order_by', $order_by);
+    $view->with('sorting', $sorting);
+    $view->with('plang_admin', $plang_admin);
+    $view->with('plang_front', $plang_front);
+});
+

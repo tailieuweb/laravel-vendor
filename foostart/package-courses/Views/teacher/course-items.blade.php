@@ -16,10 +16,9 @@
                     <!--HEADING-->
                     <div class="panel-heading">
                         <h3 class="panel-title bariol-thin"><i class="fa fa-list-ul" aria-hidden="true"></i>
-                            {!! $request->all() ? trans($plang_admin.'.pages.title-list-search-courses') : trans($plang_admin.'.pages.title-courses') !!}
+                            {!! $request->all() ? trans($plang_admin.'.pages.title_list_search_courses') : trans($plang_admin.'.pages.title_courses') !!}
                         </h3>
                     </div>
-
 
                     <!--MESSAGE-->
                     <?php $message = Session::get('message'); ?>
@@ -40,13 +39,7 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['course.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
-
-                            @include('package-courses::teacher.course-view-item')
-
-                            {!! csrf_field(); !!}
-
-                        {!! Form::close() !!}
+                        @include('package-courses::teacher.course-item')
                     </div>
                     <!--/BODY-->
 
@@ -56,7 +49,7 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-courses::admin.course-search')
+                @include('package-courses::teacher.course-search')
             </div>
             <!--/SEARCH-->
     </div>

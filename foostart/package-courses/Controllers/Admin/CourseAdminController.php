@@ -62,8 +62,13 @@ class CourseAdminController extends FooController {
                 'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
                 'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
                 'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
-                'sample'  => $this->package_name.'::admin.'.$this->package_base_name.'-sample',
                 'mail'  => $this->package_name.'::admin.'.$this->package_base_name.'-mail',
+            ],
+            'teacher' => [
+                'items' => $this->package_name.'::admin.'.$this->package_base_name.'-items',
+                'view' => $this->package_name.'::admin.'.$this->package_base_name.'-view',
+                'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
+                'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
             ]
         ];
 
@@ -93,8 +98,33 @@ class CourseAdminController extends FooController {
         ));
 
 
-
         return view($this->page_views['admin']['items'], $this->data_view);
+    }
+
+    /**
+     * Show list of items
+     * @return view list of items
+     * @date 27/12/2017
+     */
+    public function coursesByTeacher(Request $request) {
+
+        //Get current logged user
+        $user = $this->getUser();
+        $teacher_id = $user['user_id'];
+
+        $params = array_merge($this->getUser(), $request->all());
+
+        $courses = $this->obj_item->selectItems($params, $teacher_id);
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'courses' => $courses,
+            'request' => $request,
+            'params' => $params,
+            'config_status' => $this->obj_item->config_status
+        ));
+
+        return view($this->page_views['teacher']['items'], $this->data_view);
     }
 
     /**

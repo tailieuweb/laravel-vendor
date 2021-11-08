@@ -110,7 +110,7 @@ class Course extends FooModel {
      * @param type $params
      * @return object list of categories
      */
-    public function selectItems($params = array()) {
+    public function selectItems($params = array(), $teacher_id = null) {
 
         //join to another tables
         $elo = $this->joinTable();
@@ -123,6 +123,11 @@ class Course extends FooModel {
 
         //order filters
         $elo = $this->orderingFilters($params, $elo);
+
+        //get courses by teacher id
+        if (!empty($teacher_id)) {
+            $elo->where('teacher_id', '=', $teacher_id);
+        }
 
         //paginate items
         $items = $this->paginateItems($params, $elo);
