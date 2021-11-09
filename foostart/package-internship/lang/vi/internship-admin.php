@@ -543,5 +543,6 @@ return [
         'edit-error' => 'Edit item failed',
         'delete-ok' => 'Delete item successfully',
         'delete-error' => 'Delete item failed',
+        'internship_diary_unavailable_error' => 'Chưa nhập thông tin công ty thực tập, chưa thể nhập nhật ký thực tập',
     ],
 ];

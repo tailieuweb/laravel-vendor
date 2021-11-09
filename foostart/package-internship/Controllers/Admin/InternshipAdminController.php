@@ -76,12 +76,17 @@ class InternshipAdminController extends FooController {
      * @date 27/12/2017
      */
     public function index(Request $request) {
+
+        //Get current logged user
         $user = $this->getUser();
+
         $params = $request->all();
         $obj_class_user = new ClassesUsers();
         $params = [
             'user_id' => $user['user_id']
         ];
+
+        //Get class by user
         $classes = $obj_class_user->selectItems($params);
 
         $classes = $classes->toArray();
@@ -274,7 +279,7 @@ class InternshipAdminController extends FooController {
             }
         }
         if (!$flag) {
-            return Redirect::route($this->root_router)
+            return Redirect::route($this->root_router, ["course_id" => $course_id])
                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
         }
 
@@ -298,6 +303,12 @@ class InternshipAdminController extends FooController {
             if (!empty($diaries)) {
                 $diaries = $diaries->toArray();
             }
+        }
+
+        //Check unavailable internship
+        if (empty($item)) {
+            return Redirect::route($this->root_router)
+                ->withMessage(trans($this->plang_admin.'.actions.internship_diary_unavailable_error'));
         }
 
         //get categories by context
