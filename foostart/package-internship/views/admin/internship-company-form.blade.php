@@ -135,16 +135,7 @@
         <!--/END MENU1-->
         <!--OTHER-->
         <div id="menu_2_company_other" class="tab-pane fade">
-            <!--SITE IMAGE-->
-            @include('package-category::admin.partials.input_image', [
-                'name' => 'company_image',
-                'label' => trans($plang_admin.'.labels.internship_company_image'),
-                'value' => @$item->company_image,
-                'description' => trans($plang_admin.'.descriptions.internship_company_image'),
-                'errors' => $errors,
-                'lfm_config' => TRUE
-            ])
-            <!--/SITE IMAGE-->
+
             <div class="row">
                 <div class='col-md-6'>
                     <!--WEBSITE-->

@@ -20,6 +20,7 @@ use Foostart\Internship\Controllers\Admin\BaseInternshipAdminController;
 use Foostart\Internship\Models\Internship;
 use Foostart\Category\Models\Category;
 use Foostart\Internship\Validators\InternshipValidator;
+use Foostart\Internship\Validators\InternshipDiaryValidator;
 use Illuminate\Support\Facades\DB;
 
 class InternshipAdminController extends FooController {
@@ -29,6 +30,7 @@ class InternshipAdminController extends FooController {
 
     public $statuses = NULL;
     public $obj_sample = NULL;
+    public $obj_validator_diary = NULL;
     public function __construct() {
 
         parent::__construct();
@@ -38,6 +40,8 @@ class InternshipAdminController extends FooController {
 
         // validators
         $this->obj_validator = new InternshipValidator();
+        $this->obj_validator_diary = new InternshipDiaryValidator();
+
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
         $this->plang_admin = 'internship-admin';
@@ -569,30 +573,45 @@ class InternshipAdminController extends FooController {
         $obj_internship_diary = new InternshipDiary();
         $internship_diary_id = $request->get('internship_diary_id');
 
+        $is_valid_request = $this->isValidRequest($request);
+        if ($is_valid_request && $this->obj_validator_diary->validate($params)) {// valid data
             if (!empty($internship_diary_id)) {
                 //Update
                 $_item = $obj_internship_diary->selectItem(['id' => $internship_diary_id]);
                 if (!empty($_item)) {
                     $params['id'] = $internship_diary_id;
                     $obj_internship_diary->updateItem($params);
-                    return Redirect::route($this->root_router.'.diary.edit', ["course_id" => $course_id,
-                                                                        'internship_diary_id' => $internship_diary_id,
-                                                                        'internship_id' => $internship_id])
-                        ->withMessage(trans($this->plang_admin.'.actions.edit-ok'));
+                    return Redirect::route($this->root_router . '.diary.edit', ["course_id" => $course_id,
+                        'internship_diary_id' => $internship_diary_id,
+                        'internship_id' => $internship_id])
+                        ->withMessage(trans($this->plang_admin . '.actions.edit-ok'));
 
                 } else {
-                    return Redirect::route($this->root_router.'.edit_company', ["course_id" => $course_id, 'internship_id' => $item->internship_id])
-                        ->withMessage(trans($this->plang_admin.'.actions.add-error'));
+                    return Redirect::route($this->root_router . '.edit_company', ["course_id" => $course_id,
+                        'internship_id' => $item->internship_id])
+                        ->withMessage(trans($this->plang_admin . '.actions.add-error'));
                 }
             } else {
                 //Add new
                 $item = $obj_internship_diary->insertItem($params);
-                return Redirect::route($this->root_router.'.diary', ["course_id" => $course_id,
+                return Redirect::route($this->root_router . '.diary', ["course_id" => $course_id,
                     'internship_diary_id' => $item->internship_diary_id,
                     'internship_id' => $internship_id])
-                    ->withMessage(trans($this->plang_admin.'.actions.add-ok'));
+                    ->withMessage(trans($this->plang_admin . '.actions.add-ok'));
 
             }
+        }else { // invalid data
+
+            $errors = $this->obj_validator_diary->getErrors();
+
+            // passing the id incase fails editing an already existing item
+            return Redirect::route($this->root_router.'.diary.edit', [
+                "course_id" => $course_id,
+                'internship_diary_id' => $item->internship_diary_id,
+                'internship_id' => $internship_id
+                ])
+                ->withInput()->withErrors($errors);
+        }
 
     }
 

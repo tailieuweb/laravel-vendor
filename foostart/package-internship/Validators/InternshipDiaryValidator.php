@@ -7,7 +7,7 @@ use Foostart\Internship\Models\Internship;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
-class InternshipValidator extends FooValidator
+class InternshipDiaryValidator extends FooValidator
 {
 
     protected $obj_crawler;
@@ -16,12 +16,8 @@ class InternshipValidator extends FooValidator
     {
         // add rules
         self::$rules = [
-            'category_id' => ["required"],
-            'company_name' => ["required"],
-            'company_phone' => ["required"],
-            'company_instructor' => ["required"],
-            'company_instructor_phone' => ["required"],
-            'company_address' => ["required"],
+            'diary_start_date' => ["required"],
+            'diary_end_date' => ["required"],
         ];
 
         // set configs
@@ -38,16 +34,10 @@ class InternshipValidator extends FooValidator
         Event::listen('validating', function($input)
         {
             self::$messages = [
-                'category_id.required'          => trans($this->lang_admin.'.errors.category_id_required'),
-                'company_name.required'          => trans($this->lang_admin.'.errors.company_name_required'),
-                'company_phone.required'          => trans($this->lang_admin.'.errors.company_phone_required'),
-                'company_instructor.required'          => trans($this->lang_admin.'.errors.company_instructor_required'),
-                'company_instructor_phone.required'          => trans($this->lang_admin.'.errors.company_instructor_phone_required'),
-                'company_address.required'          => trans($this->lang_admin.'.errors.company_address_required'),
+                'diary_start_date.required'          => trans($this->lang_admin.'.errors.diary_start_date_required'),
+                'diary_end_date.required'          => trans($this->lang_admin.'.errors.diary_end_date_required'),
             ];
         });
-
-
     }
 
     /**
@@ -59,20 +49,6 @@ class InternshipValidator extends FooValidator
 
         $flag = parent::validate($input);
         $this->errors = $this->errors ? $this->errors : new MessageBag();
-
-        //Check length
-        $_ln = self::$configs['length'];
-
-        $params = [
-            'name' => [
-                'key' => 'company_name',
-                'label' => trans($this->lang_admin.'.fields.company_name'),
-                'min' => $_ln['company_name']['min'],
-                'max' => $_ln['company_name']['max'],
-            ],
-        ];
-
-        $flag = $this->isValidLength($input['company_name'], $params['name']) ? $flag : FALSE;
 
         return $flag;
     }
@@ -96,7 +72,8 @@ class InternshipValidator extends FooValidator
     public function userValidate($input) {
         //set rules
         self::$rules = [
-            'company_name' => ["required"],
+            'diary_start_date' => ["required"],
+            'diary_end_date' => ["required"],
         ];
 
         //validate

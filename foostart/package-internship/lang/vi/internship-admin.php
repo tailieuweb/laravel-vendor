@@ -307,7 +307,16 @@ return [
     'errors' => [
         'required' => ':attribute is required',
         'required_length' => '<b> :attribute </b> allows from: <b>:minlength</b> to <b>:maxlength</b> characters.',
-        'required_min_length' =>'<b> :attribute </b> allows from: <b>:minlength</b> characters.',
+        'required_min_length' =>'<b> :attribute </b> yêu cầu từ <b>:minlength</b>  đến <b>:maxlength</b> ký tự',
+        'company_name_required_min_length' =>'<b> Tên công ty </b> yêu cầu từ <b>:minlength</b>  đến <b>:maxlength</b> ký tự',
+        'category_id_required' => ':Danh mục công ty yêu cầu nhập',
+        'company_name_required' => ':Danh mục công ty yêu cầu nhập',
+        'company_phone_required' => 'Số điện thoại công ty yêu cầu nhập',
+        'company_instructor_required' => 'Người hướng dẫn tại công ty yêu cầu nhập',
+        'company_instructor_phone_required' => 'Số điện thoại người hướng dẫn tại công ty yêu cầu nhập',
+        'company_address_required' => 'Địa chỉ công ty yêu cầu nhập',
+        'diary_start_date_required' => 'Ngày đầu tuần yêu cầu nhập',
+        'diary_end_date_required' => 'Ngày cuối tuần yêu cầu nhập',
     ],
 
 
