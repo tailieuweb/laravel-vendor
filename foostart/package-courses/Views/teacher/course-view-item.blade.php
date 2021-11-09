@@ -74,7 +74,7 @@ $withs = [
                 <!--OPERATIONS-->
                 <th style='width:{{ $withs['operations'] }}'>
                     <span class='lb-delete-all'>
-                        {{ trans($plang_admin.'.columns.operations') }}
+                        {{ trans($plang_admin.'.columns.teacher_view_student') }}
                     </span>
                 </th>
             </tr>
@@ -126,12 +126,26 @@ $withs = [
                     <td>
 
 
-                        <!--view-->
-                        <a href="{!! URL::route('course.view', [ 'id' => $item['id'],
+                        <!--View company-->
+                        <a href="{!! URL::route('internship.edit_company', [
+                                                        'course_id' => $item['course_id'],
+                                                        'student_id' => $item['user_id'],
+                                                        'teacher_id' => $item['course']['teacher_id'],
                                                         '_token' => csrf_token()
                                                         ])
                                 !!}">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                        </a>
+
+                        <!--View diary-->
+                        <a href="{!! URL::route('internship.diary', [
+                                                         'course_id' => $item['course_id'],
+                                                        'student_id' => $item['user_id'],
+                                                        'teacher_id' => $item['course']['teacher_id'],
+                                                        '_token' => csrf_token()
+                                                        ])
+                                !!}">
+                            <i class="fa fa-th-list" aria-hidden="true"></i>
                         </a>
 
 

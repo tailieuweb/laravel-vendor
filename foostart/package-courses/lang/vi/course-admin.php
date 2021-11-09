@@ -58,6 +58,7 @@ return [
     */
     'columns' => [
         'user_name' => 'MSSV',
+        'teacher_view_student' => 'Thông tin',
         'phone' => 'Số điện thoại',
         'first_name' => 'Họ',
         'last_name' => 'Tên',
