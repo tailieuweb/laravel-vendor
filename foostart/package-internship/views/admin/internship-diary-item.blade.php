@@ -66,14 +66,28 @@ $withs = [
                     <!--OPERATOR-->
                     <td>
                         <!--Edit diary-->
-                        <a href="{!! URL::route('internship.diary.edit', [   'course_id' => $course_id,
+                        @if ($request->get('teacher_id'))
+                            <a href="{!! URL::route('internship.diary.edit', [   'course_id' => $course_id,
+                                                                            'internship_id' => $internship_id,
+                                                                            'internship_diary_id' => $item['internship_diary_id'],
+                                                                            'student_id' => $request->get('student_id'),
+                                                                            'teacher_id' => $request->get('teacher_id'),
+                                                                    '_token' => csrf_token()
+                                                                ])
+                                !!}">
+                                <i class="fa fa-edit f-tb-icon"></i>
+                            </a>
+                        @else
+                            <a href="{!! URL::route('internship.diary.edit', [   'course_id' => $course_id,
                                                                             'internship_id' => $internship_id,
                                                                             'internship_diary_id' => $item['internship_diary_id'],
                                                                     '_token' => csrf_token()
                                                                 ])
                                 !!}">
-                            <i class="fa fa-edit f-tb-icon"></i>
-                        </a>
+                                <i class="fa fa-edit f-tb-icon"></i>
+                            </a>
+                        @endif
+
 
                         <!--Delete diary-->
                         <a href="{!! URL::route('internship.diary.delete', [   'course_id' => $course_id,
