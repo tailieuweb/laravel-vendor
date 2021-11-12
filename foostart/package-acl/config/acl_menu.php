@@ -30,7 +30,7 @@ return [
             "name" => "acl-admin.menu.dashboard",
             "route" => "dashboard",
             "link" => '/admin/users/dashboard',
-            "permissions" => []
+            "permissions" => [$admin]
         ],
 
         /*
@@ -123,7 +123,7 @@ return [
             "name" => "acl-admin.menu.company",
             "route" => "company",
             "link" => '/admin/company',
-            "permissions" => []
+            "permissions" => [$admin]
         ],
         // Course
         [
