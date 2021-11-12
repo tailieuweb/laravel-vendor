@@ -39,7 +39,7 @@ class HomeController extends FrontController {
      * Home page
      */
     public function index(Request $request) {
-
+        return Redirect::route('admin.home');
         //init
         $user = $this->getUser();
 
