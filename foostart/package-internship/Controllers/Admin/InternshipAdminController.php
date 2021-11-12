@@ -102,7 +102,7 @@ class InternshipAdminController extends FooController {
             'params' => $params,
             'config_status' => $this->obj_item->config_status
         ));
-
+        dd(view($this->page_views['admin']['items'], $this->data_view));
         return view($this->page_views['admin']['items'], $this->data_view);
     }
 
