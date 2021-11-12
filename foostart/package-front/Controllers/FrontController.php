@@ -70,16 +70,16 @@ class FrontController extends Controller {
     public function __construct() {
 
         //set root source blocks
-        $this->root_source_blocks = realpath(config($this->package_name.'.dir.root_source_blocks'));
-
-        //set directory of list of blocks
-        $dir_source_blocks = config($this->package_name.'.dir.source_blocks');
-
-        if (!file_exists($dir_source_blocks)) {
-            mkdir($dir_source_blocks, 0755    , true);
-        }
-        $this->dir_source_blocks = realpath($dir_source_blocks);
-        $this->dir_target_blocks = realpath(__DIR__ . '/..');
+//        $this->root_source_blocks = realpath(config($this->package_name.'.dir.root_source_blocks'));
+//
+//        //set directory of list of blocks
+//        $dir_source_blocks = config($this->package_name.'.dir.source_blocks');
+//
+//        if (!file_exists($dir_source_blocks)) {
+//            mkdir($dir_source_blocks, 0755    , true);
+//        }
+//        $this->dir_source_blocks = realpath($dir_source_blocks);
+//        $this->dir_target_blocks = realpath(__DIR__ . '/..');
 
         //object category
         $this->obj_category = new FooCategory();

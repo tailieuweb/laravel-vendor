@@ -3,7 +3,6 @@
 use Illuminate\Session\TokenMismatchException;
 
 Route::group(['middleware' => ['web']], function () {
-    return redirect('/admin');
     Route::group(['middleware' => [],
         'namespace' => 'Foostart\Front\Controllers',
             ], function () {
