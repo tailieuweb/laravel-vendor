@@ -79,14 +79,13 @@
                         @endif
                     </div>
 
-                    {!! Form::label('remember','Remember me') !!}
+                    {!! Form::label('remember','Ghi nhớ đăng nhập') !!}
                     {!! Form::checkbox('remember')!!}
                     <input type="submit" value="Login" class="btn btn-info btn-block">
                     {!! Form::close() !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                            {!! link_to_route('user.recovery-password','Forgot password?') !!}
-                            or <a href="{!! URL::route('user.signup') !!}"><i class="fa fa-sign-in"></i> Signup here</a>
+                            {!! link_to_route('user.recovery-password','Quên mật khẩu?') !!}
                         </div>
                     </div>
                 </div>

@@ -164,6 +164,7 @@ class CourseAdminController extends FooController {
         $params_level = $request->all();
         $params_level['_key'] = $obj_category->getContextKeyByRef('user/level');
         $pluck_select_category_level = $obj_category->pluckSelect($params_level);
+
         $level_id_teacher = 0;
         foreach($pluck_select_category_level as $key => $value) {
             if ($value == 'Teacher') {
@@ -175,6 +176,7 @@ class CourseAdminController extends FooController {
         //Get list of teachers
         $obj_user = new UserRepositorySearchFilter(0);
         $params = ['level_id' => $level_id_teacher];
+
         $users = $obj_user->all($params);
 
         $teachers = [];
