@@ -34,7 +34,7 @@ class PexcelAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Pexcel(array('perPage' => 10));
+        $this->obj_item = new Pexcel(array('perPage' => 30));
         $this->obj_category = new Category();
 
         // validators

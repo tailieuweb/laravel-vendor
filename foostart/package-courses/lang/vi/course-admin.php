@@ -341,7 +341,7 @@ return [
         'course_description' => 'Giới thiệu sơ lược về lớp học',
         'course_start_date' => 'Ngày bắt đầu',
         'course_end_date' => 'Ngày kết thúc',
-        'course_name' => 'Năm học - Học kỳ',
+        'course_name' => 'Tên học phần',
         'courses_address' => 'Course address',
         'overview' => 'Crawler overview',
         'description' => 'Crawler description',

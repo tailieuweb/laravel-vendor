@@ -589,12 +589,44 @@ class CourseAdminController extends FooController {
             $item->id = NULL;
         }
 
-        $categories = $this->obj_category->pluckSelect($params);
+        //get categories by context
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($params);
+        }
+
+        $obj_category = new FoostartCategory();
+        $params_level = $request->all();
+        $params_level['_key'] = $obj_category->getContextKeyByRef('user/level');
+        $pluck_select_category_level = $obj_category->pluckSelect($params_level);
+
+        $level_id_teacher = 0;
+        foreach($pluck_select_category_level as $key => $value) {
+            if ($value == 'Teacher') {
+                $level_id_teacher = $key;
+                break;
+            }
+        }
+
+        //Get list of teachers
+        $obj_user = new UserRepositorySearchFilter(0);
+        $params = ['level_id' => $level_id_teacher];
+
+        $users = $obj_user->all($params);
+
+        $teachers = [];
+        if (!empty($users)) {
+            foreach ($users as $user) {
+                $teachers[$user->id] = $user->first_name . ' ' . $user->last_name;
+            }
+        }
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'categories' => $categories,
+            'teachers' => $teachers,
             'request' => $request,
             'context' => $context,
         ));
