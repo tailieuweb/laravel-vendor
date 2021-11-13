@@ -10,7 +10,7 @@ class CourseEnrollParser extends  PexcelParser
     public function __construct($item = null)
     {
         $this->item = $item;
-        $this->enrollImport = new EnrollOnlineTdcImport($item);
+        $this->enrollImport = new EnrollOnlineTdcImport($item);//has param constructor
     }
 
     public function readData($pexcel) {

@@ -58,21 +58,10 @@ class InternshipValidator extends FooValidator
     public function validate($input) {
 
         $flag = parent::validate($input);
+
         $this->errors = $this->errors ? $this->errors : new MessageBag();
 
-        //Check length
-        $_ln = self::$configs['length'];
-
-        $params = [
-            'name' => [
-                'key' => 'company_name',
-                'label' => trans($this->lang_admin.'.fields.company_name'),
-                'min' => $_ln['company_name']['min'],
-                'max' => $_ln['company_name']['max'],
-            ],
-        ];
-
-        $flag = $this->isValidLength($input['company_name'], $params['name']) ? $flag : FALSE;
+dd($this->errors);
 
         return $flag;
     }

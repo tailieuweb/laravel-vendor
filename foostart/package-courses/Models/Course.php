@@ -170,7 +170,8 @@ class Course extends FooModel {
      * @return ELOQUENT OBJECT
      */
     protected function joinTable(array $params = []){
-        return $this->withTrashed();
+//        return $this->withTrashed();//TODO: bug
+        return $this;
     }
 
     /**

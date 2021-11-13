@@ -133,7 +133,8 @@ class ClassesUsers extends FooModel {
      * @return ELOQUENT OBJECT
      */
     protected function joinTable(array $params = []){
-        return $this->withTrashed();
+//        return $this->withTrashed();//TODO
+        return $this;
     }
 
     /**
@@ -272,7 +273,8 @@ class ClassesUsers extends FooModel {
      */
     public function deleteItem(array $input, $delete_type) {
 
-        $item = $this->withTrashed()->find($input['id']);
+//        $item = $this->withTrashed()->find($input['id']);
+        $item = $this->find($input['id']);
 
         if ($item) {
             switch ($delete_type) {

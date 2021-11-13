@@ -154,13 +154,6 @@ $withs = [
                             <i class="fa fa-edit f-tb-icon"></i>
                         </a>
 
-                        <!--raw-->
-                        <a href="{!! URL::route('teacher.course.raw', [ 'id' => $item->id,
-                                                        '_token' => csrf_token()
-                                                        ])
-                                !!}">
-                            <i class="fa fa-list-ol" aria-hidden="true"></i>
-                        </a>
 
                         <!--view-->
                         <a href="{!! URL::route('teacher.course.view', [ 'id' => $item->id,

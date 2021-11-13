@@ -167,13 +167,7 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'teacher.course.raw',
             'uses' => 'CourseAdminController@raw'
         ]);
-        /**
-         * View list of students on course by teacher
-         */
-        Route::get('admin/courses/teacher/view', [
-            'as' => 'teacher.course.view',
-            'uses' => 'CourseAdminController@view'
-        ]);
+
     });
 
 

@@ -37,7 +37,7 @@ class CourseAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new Course(array('perPage' => 10));
+        $this->obj_item = new Course(array('perPage' => 30));
         $this->obj_category = new Category();
 
         // validators
@@ -385,16 +385,21 @@ class CourseAdminController extends FooController {
         if (!empty($params['id'])) {
 
             $item = $this->obj_item->selectItem($params, FALSE);
-
-            if (empty($item)) {
-                return Redirect::route($this->root_router . '.list')
-                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
-            }
         }
 
+        if (empty($params['id'] || empty($item))) {
+            return Redirect::route($this->root_router . '.list')
+                ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
+        }
+
+        // Get student by course id
         $obj_class_user = new ClassesUsers();
-        $items = $obj_class_user->selectItems();
+        $_params = [
+            'course_id' => $params['id']
+        ];
+        $items = $obj_class_user->selectItems($_params);
         $items = $items->toArray();
+
         //
         $user_repository = App::make('user_repository');
         $profile_repository = App::make('profile_repository');

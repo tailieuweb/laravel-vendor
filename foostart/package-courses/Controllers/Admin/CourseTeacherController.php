@@ -270,24 +270,29 @@ class CourseTeacherController extends FooController {
      */
     public function viewCourseByTeacher(Request $request) {
 
+        $user = $this->getUser();
         $item = NULL;
         $categories = NULL;
 
         $params = $request->all();
         $params['id'] = $request->get('id', NULL);
 
+        //Check valid course id
         if (!empty($params['id'])) {
-
             $item = $this->obj_item->selectItem($params, FALSE);
 
-            if (empty($item)) {
+            if (empty($item) || ($item->teacher_id != $user['user_id'])) {
                 return Redirect::route($this->root_router.'.course')
                     ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
             }
-        }
 
+        }
+        // Get students by teacher
         $obj_class_user = new ClassesUsers();
-        $items = $obj_class_user->selectItems();
+        $_params = [
+            'course_id' => $params['id']
+        ];
+        $items = $obj_class_user->selectItems($_params);
         $items = $items->toArray();
         //
         $user_repository = App::make('user_repository');

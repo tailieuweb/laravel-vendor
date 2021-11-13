@@ -24,23 +24,27 @@ class EnrollImport
 
         for($i = 0; $i < count($users); $i++) {
 
-            $user_data = [
-                "course_id" => $this->item->course_id,
-                "user_id" => $users[$i]['id'],
-            ];
+            //Existing user
+            if (!empty($users[$i]['id'])) {
+                $user_data = [
+                    "course_id" => $this->item->course_id,
+                    "user_id" => $users[$i]['id'],
+                ];
 
-            try {
-                $item = $obj_class_user->selectItem($user_data);
-                if (!empty($item)) {
-                    $item->deleteItem(['id' => $item->class_user_id], 'delete-forever');
+                try {
+                    $item = $obj_class_user->selectItem($user_data);
+                    if (!empty($item)) {
+                        $item->deleteItem(['id' => $item->class_user_id], 'delete-forever');
+                    }
+
+                    $obj_class_user->insertItem($user_data);
+
+
+                } catch (\Throwable $e) {
+                    dd($e);
                 }
-
-                $obj_class_user->insertItem($user_data);
-
-
-            } catch (\Throwable $e) {
-                dd($e);
             }
+
         }
     }
 

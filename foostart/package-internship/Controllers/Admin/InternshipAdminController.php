@@ -121,10 +121,10 @@ class InternshipAdminController extends FooController {
         $teacher_id = $request->get('teacher_id');
 
         //Check teacher is valid
-        if ($user['user_id'] != $teacher_id) {
+        if (!empty($teacher_id) && ($user['user_id'] != $teacher_id) ) {
             return Redirect::route('teacher.course')
                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
-        } else {
+        } elseif ($user['user_id'] == $teacher_id) {
             return $this->editCompanyByTeacher($request);
         }
 
@@ -265,6 +265,7 @@ class InternshipAdminController extends FooController {
      * @date 27/12/2017
      */
     public function postCompany(Request $request) {
+
         $user = $this->getUser();
         $params = $request->all();
         $obj_class_user = new ClassesUsers();
@@ -297,6 +298,7 @@ class InternshipAdminController extends FooController {
 
         $course_id = (int) $request->get('course_id');
 
+        dd($this->obj_validator->validate($params));
         if ($is_valid_request && $this->obj_validator->validate($params)) {// valid data
 
             $_params = [];

@@ -10,6 +10,7 @@ return [
      */
     'breadcrumbs' => [
         'admin' => 'Admin',
+        'teacher' => 'Teacher',
         'view' => 'View',
         'diary' => 'Diary',
         'diary_edit' => 'Nhật ký thực tập',
