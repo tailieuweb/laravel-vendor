@@ -23,7 +23,7 @@ use Foostart\Internship\Validators\InternshipValidator;
 use Foostart\Internship\Validators\InternshipDiaryValidator;
 use Illuminate\Support\Facades\DB;
 
-class InternshipAdminController extends FooController {
+class InternshipDiaryAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -39,8 +39,7 @@ class InternshipAdminController extends FooController {
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new InternshipValidator();
-
+        $this->obj_validator_diary = new InternshipDiaryValidator();
 
         //$this->obj_validator_sample = new SampleValidator();
         // set language files
@@ -298,7 +297,7 @@ class InternshipAdminController extends FooController {
 
         $course_id = (int) $request->get('course_id');
 
-
+        dd($this->obj_validator->validate($params));
         if ($is_valid_request && $this->obj_validator->validate($params)) {// valid data
 
             $_params = [];

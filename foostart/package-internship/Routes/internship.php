@@ -85,7 +85,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/internship/diary', [
             'as' => 'internship.diary',
-            'uses' => 'InternshipAdminController@diary'
+            'uses' => 'InternshipDiaryAdminController@diary'
         ]);
 
         /**
@@ -94,7 +94,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/internship/diary_edit', [
             'as' => 'internship.diary.edit',
-            'uses' => 'InternshipAdminController@editDiary'
+            'uses' => 'InternshipDiaryAdminController@editDiary'
         ]);
 
         /**
@@ -103,7 +103,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::post('admin/internship/diary_edit', [
             'as' => 'internship.diary.post',
-            'uses' => 'InternshipAdminController@postDiary'
+            'uses' => 'InternshipDiaryAdminController@postDiary'
         ]);
 
         /**
@@ -112,7 +112,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/internship/diary_delete', [
             'as' => 'internship.diary.delete',
-            'uses' => 'InternshipAdminController@deleteDiary'
+            'uses' => 'InternshipDiaryAdminController@deleteDiary'
         ]);
         /////////////////////////////////////////////////////
 

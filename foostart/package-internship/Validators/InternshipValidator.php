@@ -61,8 +61,6 @@ class InternshipValidator extends FooValidator
 
         $this->errors = $this->errors ? $this->errors : new MessageBag();
 
-dd($this->errors);
-
         return $flag;
     }
 
