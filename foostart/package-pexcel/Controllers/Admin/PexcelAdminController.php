@@ -482,7 +482,7 @@ class PexcelAdminController extends FooController {
         //get data from file excel
         $category = $this->obj_category->getCategoryById($item->category_id);
 
-        if ($category->category_name == 'user') {
+        if ($category->category_name == 'User') {
             $obj_parser = new UserPexcelParser();
             $items = $obj_parser->readData($item, $category->category_name);
         }
