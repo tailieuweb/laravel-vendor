@@ -26,7 +26,7 @@ class CreatePexcelsTable extends FoostartMigration
 
             // Other attributes
             $table->string($this->prefix_column . 'name', 255)->comment('Name');
-            $table->string($this->prefix_column . 'range_data', 25)->comment('Range data');
+            $table->string($this->prefix_column . 'range_data', 25)->nullable()->comment('Range data');
             $table->text($this->prefix_column . 'value')->nullable()->comment('Json value');
             $table->string($this->prefix_column . 'file_path', 255)->comment('File path');
             $table->text($this->prefix_column . 'description')->nullable()->comment('Description');
