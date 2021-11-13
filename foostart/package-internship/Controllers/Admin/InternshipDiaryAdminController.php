@@ -360,15 +360,13 @@ class InternshipDiaryAdminController extends FooController {
         $teacher_id = $request->get('teacher_id');
 
         //Check teacher is valid
-        if ($user['user_id'] != $teacher_id) {
+
+        if (!empty($teacher_id) && ($user['user_id'] != $teacher_id)) {
             return Redirect::route('teacher.course')
                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
-        } else {
+        } elseif ($user['user_id'] == $teacher_id) {
             return $this->diaryByTeacher($request);
         }
-
-
-
         $params = $request->all();
         $obj_class_user = new ClassesUsers();
         $params = [
@@ -551,10 +549,10 @@ class InternshipDiaryAdminController extends FooController {
         $teacher_id = $request->get('teacher_id');
 
         //Check teacher is valid
-        if ($user['user_id'] != $teacher_id) {
+        if (!empty($teacher_id) && ($user['user_id'] != $teacher_id)) {
             return Redirect::route('teacher.course')
                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
-        } else {
+        } elseif($user['user_id'] == $teacher_id) {
             return $this->editDiaryByTeacher($request);
         }
 

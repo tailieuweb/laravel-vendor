@@ -20,7 +20,7 @@ View::composer(['package-acl::admin.dashboard.*'], function ($view) use ($plang_
 
     $view->with('sidebar_items', [
         trans($plang_admin . '.menu.dashboard') => [
-            'url' => URL::route('dashboard.default'),
+            'url' => URL::route('admin.home'),
             'icon' => '<i class="fa fa-tachometer"></i>'
         ]
     ]);

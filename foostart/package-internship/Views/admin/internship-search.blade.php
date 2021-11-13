@@ -1,44 +1,50 @@
 <div class="panel panel-info">
     <div class="panel-heading">
-        <h3 class="panel-title bariol-thin"><i class="fa fa-search"></i>
-            <?php echo trans($plang_admin.'.labels.title-search-company') ?>
+        <h3 class="panel-title bariol-thin">
+            Thông tin cần biết
         </h3>
     </div>
     <div class="panel-body">
 
-        {!! Form::open(['route' => 'company','method' => 'get']) !!}
-
-            <!--BUTTONS-->
-            <div class="form-group">
-                <a href="{!! URL::route('company', ['context' => @$params['context']]) !!}" class="btn btn-default search-reset">
-                    {!! trans($plang_admin.'.buttons.reset') !!}
-                </a>
-                {!! Form::submit(trans($plang_admin.'.buttons.search').'', ["class" => "btn btn-info", 'id' => 'search-submit']) !!}
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h3><i class="fa fa-dashboard"></i> Internship</h3>
+                <hr/>
             </div>
 
-            <!-- KEYWORD -->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'keyword',
-                'label' => trans($plang_admin.'.form.keyword'),
-                'value' => @$params['keyword'],
-            ])
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nội dung</th>
+                        <th scope="col">Link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Tài liệu hướng dẫn sử dụng hệ thống Internship</td>
+                        <td><a href="https://docs.google.com/spreadsheets/d/1v2eXhnEx4aVxHGzSY2-AnWNeSrkhpnHYca8HmgdlgwE/edit?usp=sharing">
+                                Tài liệu hướng dẫn
+                            </a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Biểu mẫu thực tập</td>
+                        <td><a href="https://drive.google.com/drive/folders/11JH_bLiEdd6dwEVltc1TVb7cC8lPfZ4n?usp=sharing">
+                                Biểu mẫu
+                            </a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Gặp vấn đề, sự cố</td>
+                        <td><a href="https://docs.google.com/spreadsheets/d/1thn1xTb76Y0eyGMw-7qFCNCuwlU03LM26agJfNq5n5k/edit?usp=sharing">
+                                Cần hỗ trợ
+                            </a></td>
+                    </tr>
+                    </tbody>
+                </table>
 
-            <!-- STATUS -->
-            @include('package-category::admin.partials.select_single', [
-                'name' => 'status',
-                'label' => trans($plang_admin.'.form.status'),
-                'value' => @$params['status']?$params['status']:'99',
-                'items' => $status,
-            ])
-
-            <!--SORTING-->
-            @include('package-category::admin.partials.sorting')
-
-            <div class='hidden-field'>
-                {!! Form::hidden('context',@$request->get('context',null)) !!}
-                {!! csrf_field() !!}
-            </div>
-
-        {!! Form::close() !!}
+        </div>
     </div>
 </div>
