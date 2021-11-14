@@ -298,7 +298,6 @@ class InternshipAdminController extends FooController {
 
         $course_id = (int) $request->get('course_id');
 
-
         if ($is_valid_request && $this->obj_validator->validate($params)) {// valid data
 
             $_params = [];
