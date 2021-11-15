@@ -265,17 +265,23 @@ class CourseTeacherController extends FooController {
 
 
     /**
-     * View data file form excel
+     * View list of students by teacher
      * @param Request $request
      */
     public function viewCourseByTeacher(Request $request) {
 
+        // Get user info
         $user = $this->getUser();
         $item = NULL;
-        $categories = NULL;
 
         $params = $request->all();
         $params['id'] = $request->get('id', NULL);
+
+        //Not existing id, id is not numberic
+        if (empty($params['id']) || !is_numeric($params['id'])) {
+            return Redirect::route($this->root_router.'.course')
+                ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
+        }
 
         //Check valid course id
         if (!empty($params['id'])) {
@@ -287,6 +293,7 @@ class CourseTeacherController extends FooController {
             }
 
         }
+
         // Get students by teacher
         $obj_class_user = new ClassesUsers();
         $_params = [
@@ -294,12 +301,9 @@ class CourseTeacherController extends FooController {
         ];
         $items = $obj_class_user->selectItems($_params);
         $items = $items->toArray();
-        //
-        $user_repository = App::make('user_repository');
-        $profile_repository = App::make('profile_repository');
 
+        //Update students info
         $obj_user = new UserRepositorySearchFilter(0);
-
         for ($i = 0; $i < count($items); $i++) {
             $params = [
                 'id' => $items[$i]['user_id']
@@ -312,6 +316,12 @@ class CourseTeacherController extends FooController {
                 $items[$i]['first_name'] = $user_info->first_name;
                 $items[$i]['last_name'] = $user_info->last_name;
                 $items[$i]['phone'] = $user_info->phone;
+            } else {
+                $items[$i]['email'] = 'Invalid student';
+                $items[$i]['user_name'] = 'Invalid student';
+                $items[$i]['first_name'] = 'Invalid student';
+                $items[$i]['last_name'] = 'Invalid student';
+                $items[$i]['phone'] = 'Invalid student';
             }
         }
 
