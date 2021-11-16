@@ -183,6 +183,10 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'users.profile.changeavatar',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@changeAvatar'
         ]);
+        Route::post('/admin/users/profile/selfavatar', [
+            'as' => 'users.profile.changeselfavatar',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@changeSelfAvatar'
+        ]);
         Route::get('/admin/users/profile/self', [
             'as' => 'users.selfprofile.edit',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editOwnProfile'

@@ -55,7 +55,7 @@ return [
   | The admin login redirection url
   |
   */
-    "admin_login_redirect_url" => "/admin/users/dashboard",
+    "admin_login_redirect_url" => "/admin",
 
     /*
     |--------------------------------------------------------------------------

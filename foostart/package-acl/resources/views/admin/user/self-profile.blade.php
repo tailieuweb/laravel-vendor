@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             @if(! $use_gravatar)
-                                @include('package-acl::admin.user.partials.avatar_upload')
+                                @include('package-acl::admin.user.partials.selfavatar_upload')
                             @else
                                 @include('package-acl::admin.user.partials.show_gravatar')
                             @endif
@@ -88,7 +88,7 @@
                                     <div class="form-group">
                                         {!! Form::label('sex',trans($plang_admin.'.labels.sex').':') !!}
                                         <?php $sex_values = trans('acl-admin.sex'); ?>
-                                        {!! Form::select('sex', $sex_values, '', ["class" => "form-control"]) !!}
+                                        {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                                     </div>
                                     <span class="text-danger">{!! $errors->first('sex') !!}</span>
 

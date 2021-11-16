@@ -414,6 +414,30 @@ class UserController extends Controller
             ->withMessage(Config::get('acl_messages.flash.success.avatar_edit_success'));
     }
 
+
+    public function changeSelfAvatar(Request $request)
+    {
+        $user_id = $request->get('user_id');
+        $profile_id = $request->get('user_profile_id');
+
+        // validate input
+        $validator = new UserProfileAvatarValidator();
+        if (!$validator->validate($request->all())) {
+            return Redirect::route('users.selfprofile.edit')
+                ->withInput()->withErrors($validator->getErrors());
+        }
+
+        // change picture
+        try {
+            $this->profile_repository->updateAvatar($profile_id);
+        } catch (NotFoundException $e) {
+            return Redirect::route('users.selfprofile.edit')->withInput()
+                ->withErrors(new MessageBag(['avatar' => Config::get('acl_messages.flash.error.')]));
+        }
+
+        return Redirect::route('users.selfprofile.edit')
+            ->withMessage(Config::get('acl_messages.flash.success.avatar_edit_success'));
+    }
     public function refreshCaptcha()
     {
         return View::make('package-acl::client.auth.captcha-image')
