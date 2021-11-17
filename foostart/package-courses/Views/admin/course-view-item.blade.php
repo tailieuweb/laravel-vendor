@@ -110,17 +110,15 @@ $withs = [
                         {!! $item['email'] !!}
                     </td>
 
-                    <!--UPDATED AT-->
+                    <!--PHONE-->
                     <td> {!! $item['phone'] !!} </td>
 
                     <!--STATUS-->
-                    <td style="text-align: center;">
-                        @if(isset($item['status']) && (isset($config_status['list'][$item['status']])))
-                            <i class="fa fa-circle" style="color:{!! $config_status['color'][$item->status] !!}" title='{!! $config_status["list"][$item['status']] !!}'></i>
-                        @else
-                            <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
-                        @endif
-                    </td>
+                    @if(isset($item['company_name']) && (isset($config_status['list'][99])))
+                        <i class="fa fa-circle" style="color:{!! $config_status['color'][99] !!}" title='{!! $config_status["list"][99] !!}'></i>
+                    @else
+                        <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
+                    @endif
 
                     <!--OPERATOR-->
                     <td>
