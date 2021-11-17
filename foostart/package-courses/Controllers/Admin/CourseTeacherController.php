@@ -12,6 +12,7 @@
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Courses\Models\ClassesUsers;
+use Foostart\Internship\Models\Internship;
 use Foostart\Pexcel\Helper\CourseEnrollParser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -64,6 +65,7 @@ class CourseTeacherController extends FooController {
         ];
 
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
+        $this->data_view['config_status'] = $this->obj_item->config_status; //TODO:
 
         // //set category
         $this->category_ref_name = 'admin/courses';
@@ -325,6 +327,24 @@ class CourseTeacherController extends FooController {
             }
         }
 
+        //Get company info
+        if (!empty($items)) {
+            $obj_internship = new Internship();
+            foreach ($items as $index => $item) {
+                $_params = [
+                    'user_id' => $item['user_id'],
+                    'course_id' => $item['course_id'],
+                ];
+                $internship = $obj_internship->selectItem($_params);
+
+                //Add company info to user
+                if (!empty($internship)) {
+                    //Set company info
+                    $items[$index]['company_name'] = $internship->company_name;
+                }
+            }
+        }
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
@@ -332,6 +352,7 @@ class CourseTeacherController extends FooController {
             'request' => $request,
 
         ));
+
         return view($this->page_views['teacher']['view'], $this->data_view);
 
     }
