@@ -11,7 +11,7 @@
                 <h3><i class="fa fa-dashboard"></i> Internship</h3>
                 <hr/>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <table class="table">
                     <thead>
                     <tr>

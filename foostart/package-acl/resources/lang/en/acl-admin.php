@@ -225,7 +225,7 @@ return [
         'login-data' => 'Login data',
         'password' => 'Password',
         'change-password' => 'Change password',
-        'confirm-password' => 'Confirm password',
+        'confirm-password' => 'Xác nhận lại mật khẩu',
         'confirm-change-password' => 'Confirm change password',
         'banned' => 'Banned',
         'user-profile' => 'User profile',

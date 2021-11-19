@@ -17,6 +17,7 @@ class InternshipValidator extends FooValidator
         // add rules
         self::$rules = [
             'category_id' => ["required"],
+            'student_class' => ["required"],
             'company_name' => ["required"],
             'company_phone' => ["required"],
             'company_instructor' => ["required"],
@@ -39,6 +40,7 @@ class InternshipValidator extends FooValidator
         {
             self::$messages = [
                 'category_id.required'          => trans($this->lang_admin.'.errors.category_id_required'),
+                'student_class.required'          => trans($this->lang_admin.'.errors.student_class_required'),
                 'company_name.required'          => trans($this->lang_admin.'.errors.company_name_required'),
                 'company_phone.required'          => trans($this->lang_admin.'.errors.company_phone_required'),
                 'company_instructor.required'          => trans($this->lang_admin.'.errors.company_instructor_required'),

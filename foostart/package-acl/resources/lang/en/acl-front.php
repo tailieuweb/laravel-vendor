@@ -166,7 +166,7 @@ return [
         'login-data' => 'Login data',
         'password' => 'Password',
         'change-password' => 'Change password',
-        'confirm_password' => 'Confirm password',
+        'confirm_password' => 'Xác nhận lại mật khẩu',
         'confirm-change-password' => 'Confirm change password',
         'banned' => 'Banned',
         'user-profile' => 'User profile',

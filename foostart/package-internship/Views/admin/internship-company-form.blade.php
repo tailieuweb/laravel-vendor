@@ -35,6 +35,16 @@
         <!--MENU 1-->
         <div id="menu_1_company_require" class="tab-pane fade in active">
 
+            <!--STUDENT CLASS-->
+            @include('package-category::admin.partials.input_text', [
+                'name' => 'student_class',
+                'label' => trans($plang_admin.'.labels.student_class'),
+                'value' => @$item->student_class,
+                'description' => trans($plang_admin.'.descriptions.student_class'),
+                'errors' => $errors,
+            ])
+            <!--/NAME-->
+
             <!--NAME-->
             @include('package-category::admin.partials.input_text', [
                 'name' => 'company_name',

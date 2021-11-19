@@ -39,6 +39,33 @@
 
                     <!--BODY-->
                     <div class="panel-body">
+                        <div class="alert alert-warning" role="alert">
+                            <h4>Hồ sơ sinh viên thực tập chỉ <b>hợp lệ</b> khi có đủ thông tin sau</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <caption>Thông tin sinh viên</caption>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">1. Họ và tên</li>
+                                        <li class="list-group-item">2. Số điện thoại</li>
+                                        <li class="list-group-item">3. Mã số sinh viên (đã được tạo, là tài khoản đăng nhập)</li>
+                                        <li class="list-group-item">4. Lớp (cập nhật tại thông tin công ty)</li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <caption>Thông tin công ty</caption>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">1. Tên công ty</li>
+                                        <li class="list-group-item">2. Địa chỉ công ty</li>
+                                        <li class="list-group-item">3. Số điện thoại</li>
+                                        <li class="list-group-item">4. Người hướng dẫn tại công ty</li>
+                                        <li class="list-group-item">5. Số điện thoại người hướng dẫn</li>
+                                        <li class="list-group-item">6. Lĩnh vực hoạt động</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
                         {!! Form::open(['route'=>['company.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
                             @include('package-internship::admin.internship-item')

@@ -208,6 +208,7 @@ return [
     */
     'descriptions' => [
         'form' => 'Crawler form',
+        'student_class' => 'Lớp sinh viên, ví dụ: CD19TT3, CD19TT1, CD19TT2, ...',
         'internship_company_tax_code' => 'Thông tin mã số thuế của công ty',
         'internship_company_website' => 'Địa chỉ website của công ty',
         'internship_company_description' => 'Mô tả sơ lược về công ty thực tập',
@@ -309,8 +310,9 @@ return [
         'required_length' => '<b> :attribute </b> allows from: <b>:minlength</b> to <b>:maxlength</b> characters.',
         'required_min_length' =>'<b> :attribute </b> yêu cầu từ <b>:minlength</b>  đến <b>:maxlength</b> ký tự',
         'company_name_required_min_length' =>'<b> Tên công ty </b> yêu cầu từ <b>:minlength</b>  đến <b>:maxlength</b> ký tự',
-        'category_id_required' => ':Danh mục công ty yêu cầu nhập',
-        'company_name_required' => ':Danh mục công ty yêu cầu nhập',
+        'category_id_required' => 'Danh mục công ty yêu cầu nhập',
+        'student_class_required' => 'Tên lớp học yêu cầu nhập',
+        'company_name_required' => 'Danh mục công ty yêu cầu nhập',
         'company_phone_required' => 'Số điện thoại công ty yêu cầu nhập',
         'company_instructor_required' => 'Người hướng dẫn tại công ty yêu cầu nhập',
         'company_instructor_phone_required' => 'Số điện thoại người hướng dẫn tại công ty yêu cầu nhập',
@@ -372,6 +374,7 @@ return [
     */
     'labels' => [
         'name' => 'Internship name',
+        'student_class' => 'Lớp sinh viên',
         'internship_company_website' => 'Địa chỉ website',
         'internship_company_tax_code' => 'Mã số thuế',
         'internship_company_description' => 'Mô tả sơ lược về công ty',
