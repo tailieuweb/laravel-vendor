@@ -48,7 +48,7 @@
                                         <li class="list-group-item">1. Họ và tên</li>
                                         <li class="list-group-item">2. Số điện thoại</li>
                                         <li class="list-group-item">3. Mã số sinh viên (đã được tạo, là tài khoản đăng nhập)</li>
-                                        <li class="list-group-item">4. Lớp (cập nhật tại thông tin công ty)</li>
+                                        <li class="list-group-item"><b>4. Lớp (cập nhật tại thông tin công ty)</b></li>
 
                                     </ul>
                                 </div>
