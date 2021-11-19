@@ -22,6 +22,12 @@ class EnrollImport
 
         $obj_class_user = new ClassesUsers();
 
+        //Clear course with course_id
+        $_params = [
+            'course_id' => $this->item->course_id
+        ];
+        $obj_class_user->deleteItems($_params, 'delete-forever');
+
         for($i = 0; $i < count($users); $i++) {
 
             //Existing user

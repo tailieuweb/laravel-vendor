@@ -292,6 +292,32 @@ class ClassesUsers extends FooModel {
     /**
      *
      * @param ARRAY $input list of parameters
+     * @return boolean TRUE incase delete successfully otherwise return FALSE
+     */
+    public function deleteItems(array $input, $delete_type = 'delete-trash') {
+
+            $deleteRows = NULL;
+
+            if (!empty($input['course_id'])) {
+                $deleteRows = $this->where('course_id', $input['course_id']);
+            }
+
+            if (!empty($deleteRows)) {
+                switch ($delete_type) {
+                    case 'delete-trash':
+                        return $deleteRows->delete();
+                    case 'delete-forever':
+                        return $deleteRows->forceDelete();
+                }
+            }
+
+
+        return FALSE;
+    }
+
+    /**
+     *
+     * @param ARRAY $input list of parameters
      * @return boolean TRUE incase restore successfully otherwise return FALSE
      */
     public function restoreItem(array $input) {
