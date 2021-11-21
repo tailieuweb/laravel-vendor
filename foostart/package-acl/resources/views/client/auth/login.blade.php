@@ -30,8 +30,7 @@
                                         'placeholder' => trans($plang_front.'.labels.email'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                         'required' => true,
-                                        'errors' => $errors,
-                                        'value' => 'admin',//TODO: debug
+                                        'errors' => $errors                                        
                                     ])
 
                         </div>
@@ -42,7 +41,7 @@
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
                                         'required' => true,
                                         'errors' => $errors,
-                                        'type' => 'password',
+                                        'type' => 'password'
                                     ])
                         </div>
                     </div>
@@ -85,7 +84,7 @@
                     {!! Form::close() !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-
+				 {!! link_to_route('user.recovery-password','Quên mật khẩu?') !!}
                         </div>
                     </div>
                 </div>
