@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '17bd081b4fe177f887abaf82e3e4f9267a20c52c',
+    'reference' => 'f1efb46b1ef628ec19cde31cd1847f44dd9be4d3',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -315,12 +315,12 @@
     ),
     'gregwar/captcha' => 
     array (
-      'pretty_version' => 'v1.1.1',
-      'version' => '1.1.1.0',
+      'pretty_version' => 'v1.1.9',
+      'version' => '1.1.9.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1240ab993ca713680573b2d4166900da5f758623',
+      'reference' => '4bb668e6b40e3205a020ca5ee4ca8cff8b8780c5',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -607,7 +607,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '17bd081b4fe177f887abaf82e3e4f9267a20c52c',
+      'reference' => 'f1efb46b1ef628ec19cde31cd1847f44dd9be4d3',
     ),
     'laravel/sail' => 
     array (

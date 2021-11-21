@@ -209,7 +209,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
-            'Gregwar\\Captcha\\' => 16,
+            'Gregwar\\' => 8,
             'GrahamCampbell\\ResultType\\' => 26,
         ),
         'F' => 
@@ -536,9 +536,9 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'Gregwar\\Captcha\\' => 
+        'Gregwar\\' => 
         array (
-            0 => __DIR__ . '/..' . '/gregwar/captcha',
+            0 => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (
@@ -1820,6 +1820,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Contact\\Validators\\SampleValidator' => __DIR__ . '/..' . '/foostart/package-contact/Validators/SampleValidator.php',
         'Foostart\\Courses\\Constants\\CourseConstants' => __DIR__ . '/..' . '/foostart/package-courses/Constants/CourseConstants.php',
         'Foostart\\Courses\\Controllers\\Admin\\CourseAdminController' => __DIR__ . '/..' . '/foostart/package-courses/Controllers/Admin/CourseAdminController.php',
+        'Foostart\\Courses\\Controllers\\Admin\\CourseTeacherController' => __DIR__ . '/..' . '/foostart/package-courses/Controllers/Admin/CourseTeacherController.php',
         'Foostart\\Courses\\CoursesServiceProvider' => __DIR__ . '/..' . '/foostart/package-courses/CoursesServiceProvider.php',
         'Foostart\\Courses\\Models\\ClassesUsers' => __DIR__ . '/..' . '/foostart/package-courses/Models/ClassesUsers.php',
         'Foostart\\Courses\\Models\\Course' => __DIR__ . '/..' . '/foostart/package-courses/Models/Course.php',
@@ -1913,9 +1914,11 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Front\\Validators\\FrontValidator' => __DIR__ . '/..' . '/foostart/package-front/Validators/FrontValidator.php',
         'Foostart\\Internship\\Constants\\InternshipConstants' => __DIR__ . '/..' . '/foostart/package-internship/Constants/InternshipConstants.php',
         'Foostart\\Internship\\Controllers\\Admin\\InternshipAdminController' => __DIR__ . '/..' . '/foostart/package-internship/Controllers/Admin/InternshipAdminController.php',
+        'Foostart\\Internship\\Controllers\\Admin\\InternshipDiaryAdminController' => __DIR__ . '/..' . '/foostart/package-internship/Controllers/Admin/InternshipDiaryAdminController.php',
         'Foostart\\Internship\\InternshipServiceProvider' => __DIR__ . '/..' . '/foostart/package-internship/InternshipServiceProvider.php',
         'Foostart\\Internship\\Models\\Internship' => __DIR__ . '/..' . '/foostart/package-internship/Models/Internship.php',
         'Foostart\\Internship\\Models\\InternshipDiary' => __DIR__ . '/..' . '/foostart/package-internship/Models/InternshipDiary.php',
+        'Foostart\\Internship\\Validators\\InternshipDiaryValidator' => __DIR__ . '/..' . '/foostart/package-internship/Validators/InternshipDiaryValidator.php',
         'Foostart\\Internship\\Validators\\InternshipValidator' => __DIR__ . '/..' . '/foostart/package-internship/Validators/InternshipValidator.php',
         'Foostart\\Module\\Controllers\\Admin\\ModuleAdminController' => __DIR__ . '/..' . '/foostart/package-module/Controllers/Admin/ModuleAdminController.php',
         'Foostart\\Module\\Controllers\\Front\\ModuleController' => __DIR__ . '/..' . '/foostart/package-module/Controllers/Front/ModuleController.php',
@@ -1958,11 +1961,11 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
         'GrahamCampbell\\ResultType\\Result' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Result.php',
         'GrahamCampbell\\ResultType\\Success' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Success.php',
-        'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilder.php',
-        'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilderInterface.php',
-        'Gregwar\\Captcha\\ImageFileHandler' => __DIR__ . '/..' . '/gregwar/captcha/ImageFileHandler.php',
-        'Gregwar\\Captcha\\PhraseBuilder' => __DIR__ . '/..' . '/gregwar/captcha/PhraseBuilder.php',
-        'Gregwar\\Captcha\\PhraseBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/PhraseBuilderInterface.php',
+        'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/CaptchaBuilder.php',
+        'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/CaptchaBuilderInterface.php',
+        'Gregwar\\Captcha\\ImageFileHandler' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/ImageFileHandler.php',
+        'Gregwar\\Captcha\\PhraseBuilder' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/PhraseBuilder.php',
+        'Gregwar\\Captcha\\PhraseBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/PhraseBuilderInterface.php',
         'GuzzleHttp\\BodySummarizer' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/BodySummarizer.php',
         'GuzzleHttp\\BodySummarizerInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/BodySummarizerInterface.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
