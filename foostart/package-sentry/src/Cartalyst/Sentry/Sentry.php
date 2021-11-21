@@ -237,6 +237,7 @@ class Sentry
             if (!$userArray = $this->session->get() and !$userArray = $this->cookie->get()) {
                 return false;
             }
+            $userArray = explode('|', $userArray);//TODO:
 
             // Now check our user is an array with two elements,
             // the username followed by the persist code
@@ -302,8 +303,9 @@ class Sentry
         $this->user = $user;
 
         // Create an array of data to persist to the session and / or cookie
-        $toPersist = array($user->getId(), $user->getPersistCode());
+//        $toPersist = array($user->getId(), $user->getPersistCode());//TODO: hacked code: Cookie/CookieJar.php on line 70
 
+        $toPersist = $user->getId() .'|' . $user->getPersistCode();
         // Set sessions
         $this->session->put($toPersist);
 
