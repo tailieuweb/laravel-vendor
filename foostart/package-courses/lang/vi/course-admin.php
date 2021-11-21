@@ -216,7 +216,7 @@ return [
         'files' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'list' => 'List of items',
         'counters' => 'There are <b>:number</b> items',
-        'student_counter' => 'Có <b>:number</b> trong lớp học',
+        'student_counter' => 'Có <b>:number</b> sinh viên trong lớp học',
         'counter' => 'There is <b>:number</b> item',
         'course_counter' => 'Có <b>:number</b> lớp đã được tạo',
         'course_counters' => 'Có <b>:number</b> lớp đã được tạo',
