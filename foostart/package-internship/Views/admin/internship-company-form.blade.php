@@ -1,8 +1,14 @@
 <!------------------------------------------------------------------------------
 | List of elements in company form
 |------------------------------------------------------------------------------->
-
-{!! Form::open(['route'=>['internship.post_company', 'course_id' => $course_id],  'files'=>true, 'method' => 'post'])  !!}
+@if (!empty($student_id) && !empty($teacher_id))
+{!! Form::open(['route'=>['internship.post_company', 'course_id' => $course_id,
+                                                    'student_id' => $student_id,
+                                                    'teacher_id' => $teacher_id,
+                            ],  'files'=>true, 'method' => 'post'])  !!}
+@else
+    {!! Form::open(['route'=>['internship.post_company', 'course_id' => $course_id],  'files'=>true, 'method' => 'post'])  !!}
+@endif
 
     <!--BUTTONS-->
     <div class='btn-form'>
