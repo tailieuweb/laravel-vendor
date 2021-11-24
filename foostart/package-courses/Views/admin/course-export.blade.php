@@ -2,12 +2,11 @@
 $withs = [
     'counter' => '5%',
     'user_name' => '10%',
-    'first_name' => '15%',
-    'last_name' => '10%',
-    'phone' => '15%',
-    'email' => '15%',
-    'status' => '10%',
-    'operations' => '15%',
+    'full_name' => '15%',
+    'phone' => '10%',
+    'class' => '10%',
+    'company' => '30%',
+    'instructor' => '20%',
 ];
 $plang_admin = 'course-admin';
 
@@ -47,22 +46,10 @@ $plang_admin = 'course-admin';
                     {!! trans($plang_admin.'.columns.user_name') !!}
                 </th>
 
-                <!--FIRST NAME-->
-                <?php $name = 'first_name' ?>
+                <!--FULL NAME-->
+                <?php $name = 'full_name' ?>
                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.columns.first_name') !!}
-                </th>
-
-                <!--LAST NAME-->
-                <?php $name = 'last_name' ?>
-                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.columns.last_name') !!}
-                </th>
-
-                <!--Email-->
-                <?php $name = 'email' ?>
-                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.columns.email') !!}
+                    {!! trans($plang_admin.'.columns.full_name') !!}
                 </th>
 
                 <!-- PHONE -->
@@ -71,6 +58,23 @@ $plang_admin = 'course-admin';
                     {!! trans($plang_admin.'.columns.phone') !!}
                 </th>
 
+                <!--CLASS-->
+                <?php $name = 'class' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.columns.class') !!}
+                </th>
+
+                <!--COMPANY-->
+                <?php $name = 'company' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.columns.company') !!}
+                </th>
+
+                <!--INSTRUCTOR-->
+                <?php $name = 'instructor' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    {!! trans($plang_admin.'.columns.company') !!}
+                </th>
 
             </tr>
 
@@ -85,29 +89,41 @@ $plang_admin = 'course-admin';
                         <?php echo $counter; $counter++ ?>
                     </td>
 
-                    <!--NAME-->
+                    <!--USER NAME-->
                     <td>
                         {!! $item['user_name'] !!}
                     </td>
 
-                    <!--FIRST NAME-->
+                    <!--FULL NAME-->
                     <td>
-                        {!! $item['first_name'] !!}
-                    </td>
-
-                    <!--LAST NAME-->
-                    <td>
-                        {!! $item['last_name'] !!}
-                    </td>
-
-                    <!--Email-->
-                    <td>
-                        {!! $item['email'] !!}
+                        {!! $item['first_name'] . ' ' . $item['last_name'] !!}
                     </td>
 
                     <!--PHONE-->
-                    <td> {!! $item['phone'] !!} </td>
+                    <td>
+                        {!! $item['phone'] !!}
+                    </td>
 
+                    <!--CLASS-->
+                    <td>
+                        {!! $item['student_class'] !!}
+                    </td>
+
+                    <!--COMPANY-->
+                    <td> {!!
+                            $item['company_name'] . "<br><br>" .
+                            "Địa chỉ: " . $item['company_address'] . "<br><br>" .
+                            "Số điện thoại: " . $item['company_phone'] . "<br>"
+                        !!}
+                    </td>
+
+                    <!--INSTRUCTOR-->
+                    <td> {!!
+                            $item['company_instructor'] . "<br><br>" .
+                            "Số điện thoại: ". $item['company_instructor_phone'] . "<br>"
+
+                        !!}
+                    </td>
 
                 </tr>
             @endforeach

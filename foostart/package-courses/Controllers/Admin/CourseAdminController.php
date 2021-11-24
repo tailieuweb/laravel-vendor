@@ -531,7 +531,12 @@ class CourseAdminController extends FooController {
                 //Add company info to user
                 if (!empty($internship)) {
                     //Set company info
+                    $items[$index]['student_class'] = $internship->student_class;
                     $items[$index]['company_name'] = $internship->company_name;
+                    $items[$index]['company_address'] = $internship->company_address;
+                    $items[$index]['company_phone'] = $internship->company_phone;
+                    $items[$index]['company_instructor'] = $internship->company_instructor;
+                    $items[$index]['company_instructor_phone'] = $internship->company_instructor_phone;
 
                     if (empty($internship->company_name)) {
                         $counterUnCompany++;
@@ -558,7 +563,7 @@ class CourseAdminController extends FooController {
 
         $objCourseExport->view = $this->page_views['admin']['export'];
 
-        return  Excel::download($objCourseExport, 'invoice.xlsx');
+        return  Excel::download($objCourseExport, $courseName.'.xlsx');
 
         return view($this->page_views['admin']['view'], $this->data_view);
 
