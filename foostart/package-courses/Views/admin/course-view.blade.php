@@ -42,7 +42,7 @@
                     <div class="panel-body">
                         {!! Form::open(['route'=>['course.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-courses::teacher.course-view-item')
+                            @include('package-courses::admin.course-view-item')
 
                             {!! csrf_field(); !!}
 

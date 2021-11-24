@@ -394,6 +394,7 @@ class CourseAdminController extends FooController {
                 ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
         }
 
+        $courseName = $item->course_name;
         // Get student by course id
         $obj_class_user = new ClassesUsers();
         $_params = [
@@ -424,6 +425,7 @@ class CourseAdminController extends FooController {
         }
 
         //Get company info
+        $counterUnCompany = 0;
         if (!empty($items)) {
             $obj_internship = new Internship();
             foreach ($items as $index => $item) {
@@ -437,6 +439,12 @@ class CourseAdminController extends FooController {
                 if (!empty($internship)) {
                     //Set company info
                     $items[$index]['company_name'] = $internship->company_name;
+
+                    if (empty($internship->company_name)) {
+                        $counterUnCompany++;
+                    }
+                } else {
+                    $counterUnCompany++;
                 }
             }
         }
@@ -445,8 +453,9 @@ class CourseAdminController extends FooController {
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'items' => $items,
+            'counterUnCompany' => $counterUnCompany,
             'request' => $request,
-
+            'courseName' => $courseName
         ));
 
         return view($this->page_views['admin']['view'], $this->data_view);

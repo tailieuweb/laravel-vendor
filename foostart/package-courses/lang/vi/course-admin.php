@@ -217,6 +217,7 @@ return [
         'list' => 'List of items',
         'counters' => 'There are <b>:number</b> items',
         'student_counter' => 'Có <b>:number</b> sinh viên trong lớp học',
+        'counter_uncompany' => 'Có <b>:number</b> sinh viên chưa có công ty',
         'counter' => 'There is <b>:number</b> item',
         'course_counter' => 'Có <b>:number</b> lớp đã được tạo',
         'course_counters' => 'Có <b>:number</b> lớp đã được tạo',

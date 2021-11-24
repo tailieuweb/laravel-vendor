@@ -14,19 +14,32 @@ $withs = [
 @if(!empty($items))
     <div style="min-height: 50px;">
         <div>
+            <p>{!! $courseName !!}</p>
+        </div>
+        <div>
             @if(count($items) == 1)
                 {!! trans($plang_admin.'.descriptions.student_counter', ['number' => 1]) !!}
             @else
                 {!! trans($plang_admin.'.descriptions.student_counter', ['number' => count($items)]) !!}
             @endif
         </div>
+        <div>
+            {!! trans($plang_admin.'.descriptions.counter_uncompany', ['number' => $counterUnCompany]) !!}
+        </div>
 
     </div>
 
     <div class="table-responsive">
-    <table class="table table-hover">
+        <div>
+            <!--Export-->
+            <a class='btn-form btn btn-info pull-left' href="#">
+                Export
+            </a>
+            <!--/BUTTONS-->
+        </div>
+        <table class="table table-hover">
 
-        <thead>
+            <thead>
             <tr style="height: 50px;">
 
                 <!--COUNTER-->
@@ -74,14 +87,14 @@ $withs = [
                 <!--OPERATIONS-->
                 <th style='width:{{ $withs['operations'] }}'>
                     <span class='lb-delete-all'>
-                        {{ trans($plang_admin.'.columns.operations') }}
+                        {{ trans($plang_admin.'.columns.teacher_view_student') }}
                     </span>
                 </th>
             </tr>
 
-        </thead>
+            </thead>
 
-        <tbody>
+            <tbody>
             <?php $counter =  1;  ?>
             @foreach($items as $item)
                 <tr>
@@ -114,64 +127,51 @@ $withs = [
                     <td> {!! $item['phone'] !!} </td>
 
                     <!--STATUS-->
-                    @if(isset($item['company_name']) && (isset($config_status['list'][99])))
-                        <i class="fa fa-circle" style="color:{!! $config_status['color'][99] !!}" title='{!! $config_status["list"][99] !!}'></i>
-                    @else
-                        <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
-                    @endif
+                    <td style="text-align: center;">
+
+                        @if(isset($item['company_name']) && (isset($config_status['list'][99])))
+                            <i class="fa fa-circle" style="color:{!! $config_status['color'][99] !!}" title='{!! $config_status["list"][99] !!}'></i>
+                        @else
+                            <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
+                        @endif
+                    </td>
 
                     <!--OPERATOR-->
                     <td>
-                        <!--edit-->
-                        <a href="{!! URL::route('course.edit', [   'id' => $item['id'],
-                                                                    '_token' => csrf_token()
-                                                                ])
-                                !!}">
-                            <i class="fa fa-edit f-tb-icon"></i>
-                        </a>
 
-                        <!--raw-->
-                        <a href="{!! URL::route('course.raw', [ 'id' => $item['id'],
+
+                        <!--View company-->
+                        <a href="{!! URL::route('internship.edit_company', [
+                                                        'course_id' => $item['course_id'],
+                                                        'student_id' => $item['user_id'],
+                                                        'teacher_id' => $item['course']['teacher_id'],
                                                         '_token' => csrf_token()
                                                         ])
                                 !!}">
-                            <i class="fa fa-list-ol" aria-hidden="true"></i>
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
                         </a>
 
-                        <!--view-->
-                        <a href="{!! URL::route('course.view', [ 'id' => $item['id'],
+                        <!--View diary-->
+                        <a href="{!! URL::route('internship.diary', [
+                                                         'course_id' => $item['course_id'],
+                                                        'student_id' => $item['user_id'],
+                                                        'teacher_id' => $item['course']['teacher_id'],
                                                         '_token' => csrf_token()
                                                         ])
                                 !!}">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            <i class="fa fa-th-list" aria-hidden="true"></i>
                         </a>
 
-                        <!--copy-->
-                        <a href="{!! URL::route('course.copy',[    'cid' => $item['id'],
-                                                                    '_token' => csrf_token(),
-                                                                ])
-                                 !!}"
-                            class="margin-left-5">
-                            <i class="fa fa-files-o f-tb-icon" aria-hidden="true"></i>
-                        </a>
 
-                        <!--delete-->
-                        <a href="{!! URL::route('course.delete',[  'id' => $item['id'],
-                                                                    '_token' => csrf_token(),
-                                                                  ])
-                                 !!}"
-                           class="margin-left-5 delete">
-                            <i class="fa fa-trash-o f-tb-icon"></i>
-                        </a>
 
                     </td>
 
                 </tr>
             @endforeach
 
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
     </div>
 
 @else
