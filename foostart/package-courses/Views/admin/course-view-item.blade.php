@@ -32,7 +32,11 @@ $withs = [
     <div class="table-responsive">
         <div>
             <!--Export-->
-            <a class='btn-form btn btn-info pull-left' href="#">
+            <a class='btn-form btn btn-info pull-left' href="{!! URL::route('course.export', [
+                                                        'id' => $request->get('id'),
+                                                        '_token' => csrf_token()
+                                                        ])
+                                !!}">
                 Export
             </a>
             <!--/BUTTONS-->

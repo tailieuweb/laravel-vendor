@@ -130,6 +130,15 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'course.view',
             'uses' => 'CourseAdminController@view'
         ]);
+
+        /**
+         * view
+         */
+        Route::get('admin/courses/export', [
+            'as' => 'course.export',
+            'uses' => 'CourseAdminController@export'
+        ]);
+
         /**
          * trash
          */

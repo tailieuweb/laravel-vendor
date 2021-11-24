@@ -14,10 +14,12 @@ use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Courses\Models\ClassesUsers;
 use Foostart\Internship\Models\Internship;
 use Foostart\Pexcel\Helper\CourseEnrollParser;
+use Foostart\Pexcel\Helper\CourseExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use URL, Route, Redirect;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Foostart\Courses\Controllers\Admin\BaseCourseAdminController;
 use Foostart\Courses\Models\Course;
@@ -60,6 +62,7 @@ class CourseAdminController extends FooController {
             'admin' => [
                 'items' => $this->package_name.'::admin.'.$this->package_base_name.'-items',
                 'view' => $this->package_name.'::admin.'.$this->package_base_name.'-view',
+                'export' => $this->package_name.'::admin.'.$this->package_base_name.'-export',
                 'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
                 'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
                 'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
@@ -457,6 +460,105 @@ class CourseAdminController extends FooController {
             'request' => $request,
             'courseName' => $courseName
         ));
+
+        return view($this->page_views['admin']['view'], $this->data_view);
+
+    }
+
+    /**
+     * View data file form excel
+     * @param Request $request
+     */
+    public function export(Request $request) {
+
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['id'] = $request->get('id', NULL);
+
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+        }
+
+        if (empty($params['id'] || empty($item))) {
+            return Redirect::route($this->root_router . '.list')
+                ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
+        }
+
+        $courseName = $item->course_name;
+        // Get student by course id
+        $obj_class_user = new ClassesUsers();
+        $_params = [
+            'course_id' => $params['id']
+        ];
+        $items = $obj_class_user->selectItems($_params);
+        $items = $items->toArray();
+
+        //
+        $user_repository = App::make('user_repository');
+        $profile_repository = App::make('profile_repository');
+
+        $obj_user = new UserRepositorySearchFilter(0);
+
+        for ($i = 0; $i < count($items); $i++) {
+            $params = [
+                'id' => $items[$i]['user_id']
+            ];
+            $user_info = $obj_user->all($params)->first();
+
+            if (!empty($user_info)) {
+                $items[$i]['email'] = $user_info->email;
+                $items[$i]['user_name'] = $user_info->user_name;
+                $items[$i]['first_name'] = $user_info->first_name;
+                $items[$i]['last_name'] = $user_info->last_name;
+                $items[$i]['phone'] = $user_info->phone;
+            }
+        }
+
+        //Get company info
+        $counterUnCompany = 0;
+        if (!empty($items)) {
+            $obj_internship = new Internship();
+            foreach ($items as $index => $item) {
+                $_params = [
+                    'user_id' => $item['user_id'],
+                    'course_id' => $item['course_id'],
+                ];
+                $internship = $obj_internship->selectItem($_params);
+
+                //Add company info to user
+                if (!empty($internship)) {
+                    //Set company info
+                    $items[$index]['company_name'] = $internship->company_name;
+
+                    if (empty($internship->company_name)) {
+                        $counterUnCompany++;
+                    }
+                } else {
+                    $counterUnCompany++;
+                }
+            }
+        }
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'item' => $item,
+            'items' => $items,
+            'counterUnCompany' => $counterUnCompany,
+            'request' => $request,
+            'courseName' => $courseName
+        ));
+
+        $objCourseExport = new CourseExport();
+        $objCourseExport->course = $items;
+        $objCourseExport->courseName = $courseName;
+        $objCourseExport->counterUnCompany = $counterUnCompany;
+
+        $objCourseExport->view = $this->page_views['admin']['export'];
+
+        return  Excel::download($objCourseExport, 'invoice.xlsx');
 
         return view($this->page_views['admin']['view'], $this->data_view);
 
