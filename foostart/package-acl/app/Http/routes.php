@@ -13,7 +13,7 @@ use Illuminate\Session\TokenMismatchException;
  * User login and logout
  */
 Route::group(['middleware' => ['web']], function () {
-    //Login by Facebook, Google
+    // by Facebook, Google
     Route::get('login/google', [
         'as' => 'user.login.google',
         'uses' => 'Foostart\Acl\Authentication\Controllers\LoginController@redirectToProvider',

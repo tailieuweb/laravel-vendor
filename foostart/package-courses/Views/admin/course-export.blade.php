@@ -111,16 +111,16 @@ $plang_admin = 'course-admin';
 
                     <!--COMPANY-->
                     <td> {!!
-                            $item['company_name'] . "<br><br>" .
-                            "Địa chỉ: " . $item['company_address'] . "<br><br>" .
-                            "Số điện thoại: " . $item['company_phone'] . "<br>"
+                            htmlentities($item['company_name']) . "<br><br>" .
+                            htmlentities("Địa chỉ: " . $item['company_address']) . "<br><br>" .
+                            htmlentities("Số điện thoại: " . $item['company_phone'])
                         !!}
                     </td>
 
                     <!--INSTRUCTOR-->
                     <td> {!!
-                            $item['company_instructor'] . "<br><br>" .
-                            "Số điện thoại: ". $item['company_instructor_phone'] . "<br>"
+                            htmlentities($item['company_instructor']) . "<br><br>" .
+                            htmlentities("Số điện thoại: ". $item['company_instructor_phone'])
 
                         !!}
                     </td>
