@@ -204,6 +204,8 @@ class Validator implements ValidatorContract
     protected $implicitRules = [
         'Accepted',
         'AcceptedIf',
+        'Declined',
+        'DeclinedIf',
         'Filled',
         'Present',
         'Required',
@@ -235,6 +237,7 @@ class Validator implements ValidatorContract
         'Lt',
         'Lte',
         'AcceptedIf',
+        'DeclinedIf',
         'RequiredIf',
         'RequiredUnless',
         'RequiredWith',
@@ -244,6 +247,7 @@ class Validator implements ValidatorContract
         'Prohibited',
         'ProhibitedIf',
         'ProhibitedUnless',
+        'Prohibits',
         'Same',
         'Unique',
     ];
@@ -465,7 +469,6 @@ class Validator implements ValidatorContract
      * Remove the given attribute.
      *
      * @param  string  $attribute
-     *
      * @return void
      */
     protected function removeAttribute($attribute)
@@ -1125,6 +1128,8 @@ class Validator implements ValidatorContract
 
         foreach ((array) $attribute as $key) {
             $response = (new ValidationRuleParser($this->data))->explode([$key => $rules]);
+
+            $this->implicitAttributes = array_merge($response->implicitAttributes, $this->implicitAttributes);
 
             foreach ($response->rules as $ruleKey => $ruleValue) {
                 if ($callback($payload, $this->dataForSometimesIteration($ruleKey, ! Str::endsWith($key, '.*')))) {
