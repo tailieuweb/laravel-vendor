@@ -158,7 +158,7 @@ class Provider implements ProviderInterface {
 			}
 			else if ($credential == $passwordName)
 			{
-				if (method_exists($this->hasher, 'needsRehashed') && 
+				if (method_exists($this->hasher, 'needsRehashed') &&
 					$this->hasher->needsRehashed($user->{$credential}))
 				{
 					// The algorithm used to create the hash is outdated and insecure.
@@ -372,5 +372,10 @@ class Provider implements ProviderInterface {
 			forward_static_call_array(array($this->model, 'setHasher'), array($this->hasher));
 		}
 	}
+
+	public function truncate() {
+        $model = $this->createModel();
+        //return $model->truncate();
+    }
 
 }

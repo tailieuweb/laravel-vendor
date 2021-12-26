@@ -32,14 +32,22 @@ class UserSeeder extends Seeder
             "email" => $this->admin_email,
             "user_name" => $this->admin_user_name,
             "password" => $this->admin_password,
-            "activated" => 1
+            "activated" => 1,
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
+        $user = null;
+        try {
+            $user = $user_repository->create($user_data);
+        }catch (\Throwable $e) {
 
-        $user = $user_repository->create($user_data);
+        }
+
         $profile_repository->attachEmptyProfile($user);
-
         $superadmin_group = $this->getSuperadminGroup($group_repository);
+        dd($superadmin_group);
         $user_repository->addGroup($user->id, $superadmin_group->id);
+
 
         $this->createSampleData();
 
@@ -60,7 +68,7 @@ class UserSeeder extends Seeder
      */
     private function createSampleData() {
 
-        $isCreateSampleData =  env('DB_SAMPLE_TEST', FoostartConstants::IS_CREATE_SAMPLE_DATA);
+        $isCreateSampleData =  env('DB_SAMPLE_TEST', 0);
         if ($isCreateSampleData == FoostartConstants::IS_CREATE_SAMPLE_DATA) {
 
             $user_repository = App::make('user_repository');
@@ -72,11 +80,17 @@ class UserSeeder extends Seeder
                 $user_data = [
                     "email" => $this->admin_email . $u,
                     "password" => $this->admin_password,
-                    "activated" => 1
+                    "activated" => 1,
+                    'created_user_id' => 1,
+                    'updated_user_id' => 1
                 ];
 
-                $user = $user_repository->create($user_data);
-                $profile_repository->attachEmptyProfile($user);
+                try {
+                    $user = $user_repository->create($user_data);
+                    $profile_repository->attachEmptyProfile($user);
+                }catch (\Throwable $e) {
+                }
+
             }
         }
     }

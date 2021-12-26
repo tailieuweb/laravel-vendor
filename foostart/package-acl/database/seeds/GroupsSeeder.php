@@ -23,21 +23,27 @@ class GroupsSeeder extends Seeder
 
         $group1 = [
             "name" => "superadmin",
-            "permissions" => ["_superadmin" => 1]
+            "permissions" => ["_superadmin" => 1],
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
 
         $group_repository->create($group1);
 
         $group2 = [
             "name" => "editor",
-            "permissions" => ["_user-editor" => 1, "_group-editor" => 1]
+            "permissions" => ["_user-editor" => 1, "_group-editor" => 1],
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
 
         $group_repository->create($group2);
 
         $group3 = [
             "name" => "base admin",
-            "permissions" => ["_user-editor" => 1]
+            "permissions" => ["_user-editor" => 1],
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
 
         $group_repository->create($group3);
@@ -50,13 +56,15 @@ class GroupsSeeder extends Seeder
      * Create sample data for testing
      */
     private function createSampleData() {
-       $isCreateSampleData =  env('DB_SAMPLE_TEST', FoostartConstants::IS_CREATE_SAMPLE_DATA);
+       $isCreateSampleData =  env('DB_SAMPLE_TEST');
        if ($isCreateSampleData == FoostartConstants::IS_CREATE_SAMPLE_DATA) {
            $group_repository = App::make('group_repository');
             for($i = 0; $i < FoostartConstants::SAMPLE_DATA_SIZE; $i++) {
                 $group = [
                     "name" => "group_test_".$i,
-                    "permissions" => ["permission_test_".$i => 1]
+                    "permissions" => ["permission_test_".$i => 1],
+                    'created_user_id' => 1,
+                    'updated_user_id' => 1
                 ];
                 $group_repository->create($group);
             }

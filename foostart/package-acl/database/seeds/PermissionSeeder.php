@@ -23,27 +23,36 @@ class PermissionSeeder extends Seeder
         $permission1 = [
             "name" => "superadmin",
             "permission" => "_superadmin",
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
         $permission_repository->create($permission1);
         $permission2 = [
             "name" => "user editor",
             "permission" => "_user-editor",
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
         $permission_repository->create($permission2);
         $permission3 = [
             "name" => "group editor",
             "permission" => "_group-editor",
-
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
         $permission_repository->create($permission3);
         $permission4 = [
             "name" => "permission editor",
             "permission" => "_permission-editor",
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
         $permission_repository->create($permission4);
         $permission5 = [
             "name" => "profile type editor",
             "permission" => "_profile-editor",
+            'created_user_id' => 1,
+            'updated_user_id' => 1
         ];
         $permission_repository->create($permission5);
 
@@ -57,13 +66,16 @@ class PermissionSeeder extends Seeder
     private function createSampleData() {
         $permission_repository = App::make('permission_repository');
 
-        $isCreateSampleData =  env('DB_SAMPLE_TEST', FoostartConstants::IS_CREATE_SAMPLE_DATA);
+        $isCreateSampleData =  env('DB_SAMPLE_TEST');
+
         if ($isCreateSampleData == FoostartConstants::IS_CREATE_SAMPLE_DATA) {
             $group_repository = App::make('group_repository');
             for($i = 0; $i < FoostartConstants::SAMPLE_DATA_SIZE; $i++) {
                 $permission = [
                     "name" => "Permission test ".$i,
                     "permission" => "permission_test_".$i,
+                    'created_user_id' => 1,
+                    'updated_user_id' => 1
                 ];
                 $permission_repository->create($permission);
             }
