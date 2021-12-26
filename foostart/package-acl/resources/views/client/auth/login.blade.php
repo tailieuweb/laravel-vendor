@@ -30,7 +30,7 @@
                                         'placeholder' => trans($plang_front.'.labels.email'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                         'required' => true,
-                                        'errors' => $errors                                        
+                                        'errors' => $errors
                                     ])
 
                         </div>
@@ -78,13 +78,13 @@
                         @endif
                     </div>
 
-                    {!! Form::label('remember','Ghi nhớ đăng nhập') !!}
+                    {!! Form::label('remember',trans($plang_front.'.labels.remember')) !!}
                     {!! Form::checkbox('remember')!!}
                     <input type="submit" value="Login" class="btn btn-info btn-block">
                     {!! Form::close() !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-				 {!! link_to_route('user.recovery-password','Quên mật khẩu?') !!}
+				 {!! link_to_route('user.recovery-password',trans($plang_front.'.labels.forgot_password')) !!}
                         </div>
                     </div>
                 </div>

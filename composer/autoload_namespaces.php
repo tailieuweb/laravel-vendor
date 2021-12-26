@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
+    'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'Cartalyst\\Sentry' => array($vendorDir . '/foostart/package-sentry/src'),
 );

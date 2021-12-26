@@ -196,6 +196,8 @@ return [
         'recovery-email' => 'Recovery email',
         'captcha' => 'Captcha',
         'new_password' => 'New password',
+        'remember' => 'Remember me?',
+        'forgot_password' => 'Forgot password?',
     ],
 
 
