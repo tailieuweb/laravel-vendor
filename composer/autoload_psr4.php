@@ -79,6 +79,7 @@ return array(
     'Foostart\\Post\\' => array($vendorDir . '/foostart/package-post'),
     'Foostart\\Pexcel\\' => array($vendorDir . '/foostart/package-pexcel'),
     'Foostart\\Filemanager\\' => array($vendorDir . '/foostart/package-filemanager/src'),
+    'Foostart\\English\\' => array($vendorDir . '/foostart/package-english'),
     'Foostart\\Category\\' => array($vendorDir . '/foostart/package-category'),
     'Foostart\\Acl\\' => array($vendorDir . '/foostart/package-acl/app'),
     'Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),

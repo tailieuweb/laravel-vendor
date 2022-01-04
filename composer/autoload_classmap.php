@@ -193,6 +193,7 @@ return array(
     'Database\\Seeders\\CategorySeeder' => $baseDir . '/database/seeders/CategorySeeder.php',
     'Database\\Seeders\\ContextSeeder' => $baseDir . '/database/seeders/ContextSeeder.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
+    'Database\\Seeders\\PexcelSeeder' => $baseDir . '/database/seeders/PexcelSeeder.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
     'DeepCopy\\Exception\\PropertyException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

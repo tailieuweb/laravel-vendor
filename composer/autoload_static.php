@@ -158,6 +158,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
             'Foostart\\Post\\' => 14,
             'Foostart\\Pexcel\\' => 16,
             'Foostart\\Filemanager\\' => 21,
+            'Foostart\\English\\' => 17,
             'Foostart\\Category\\' => 18,
             'Foostart\\Acl\\' => 13,
             'Faker\\' => 6,
@@ -495,6 +496,10 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             0 => __DIR__ . '/..' . '/foostart/package-filemanager/src',
         ),
+        'Foostart\\English\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-english',
+        ),
         'Foostart\\Category\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-category',
@@ -797,6 +802,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Database\\Seeders\\CategorySeeder' => __DIR__ . '/../..' . '/database/seeders/CategorySeeder.php',
         'Database\\Seeders\\ContextSeeder' => __DIR__ . '/../..' . '/database/seeders/ContextSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\PexcelSeeder' => __DIR__ . '/../..' . '/database/seeders/PexcelSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

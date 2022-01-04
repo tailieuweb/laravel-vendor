@@ -1079,6 +1079,51 @@
             "install-path": "../foostart/package-category"
         },
         {
+            "name": "foostart/package-english",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-english.git",
+                "reference": "f5f766f4d89d65dc46e4ed510cadb5b0015f3831"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-english/zipball/f5f766f4d89d65dc46e4ed510cadb5b0015f3831",
+                "reference": "f5f766f4d89d65dc46e4ed510cadb5b0015f3831",
+                "shasum": ""
+            },
+            "time": "2021-12-26T16:31:44+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\English\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Practice English",
+            "keywords": [
+                "foostart",
+                "laravel 8 package post"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-english/issues",
+                "source": "https://github.com/foostart/package-english/tree/1.0.0"
+            },
+            "install-path": "../foostart/package-english"
+        },
+        {
             "name": "foostart/package-filemanager",
             "version": "2021.12.26",
             "version_normalized": "2021.12.26.0",
