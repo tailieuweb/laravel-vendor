@@ -27,6 +27,7 @@ class Post extends FooModel {
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'post_name',
+            'token',
             'post_slug',
             'post_overview',
             'post_description',
@@ -41,6 +42,10 @@ class Post extends FooModel {
         $this->fields = array_merge($this->fields, [
             'post_name' => [
                 'name' => 'post_name',
+                'type' => 'Text',
+            ],
+            'token' => [
+                'name' => 'token',
                 'type' => 'Text',
             ],
             'post_slug' => [
@@ -77,6 +82,7 @@ class Post extends FooModel {
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
             'post_name',
+            'token',
             'post_slug',
             'post_overview',
             'post_description',
@@ -266,7 +272,7 @@ class Post extends FooModel {
                 }
             }
         } elseif ($by_status) {
-            
+
             $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
 
         }
