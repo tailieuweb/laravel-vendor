@@ -97,6 +97,7 @@ class Course extends FooModel {
         //check valid fields for filter
         $this->valid_filter_fields = [
             'keyword',
+            'category_id',
             'status',
         ];
 
@@ -197,6 +198,11 @@ class Course extends FooModel {
                         case 'course_website':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.course_website', '=', $value);
+                            }
+                            break;
+                        case 'category_id':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.category_id', '=', $value);
                             }
                             break;
                         case 'status':

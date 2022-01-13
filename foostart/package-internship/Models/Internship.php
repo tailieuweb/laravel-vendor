@@ -33,6 +33,7 @@ class Internship extends FooModel {
             'user_id',
             'course_id',
             'student_class',
+            'student_phone',
             'company_name',
             'company_slug',
             'company_website',
@@ -75,6 +76,10 @@ class Internship extends FooModel {
                 'name' => 'student_class',
                 'type' => 'Text',
             ],
+            'student_phone' => [
+                'name' => 'student_phone',
+                'type' => 'Text',
+            ],
             'company_name' => [
                 'name' => 'company_name',
                 'type' => 'Text',
@@ -111,6 +116,7 @@ class Internship extends FooModel {
             'course_id',
             'user_id',
             'student_class',
+            'student_phone',
             'company_name',
             'company_slug',
             'company_website',

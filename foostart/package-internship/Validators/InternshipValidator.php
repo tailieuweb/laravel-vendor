@@ -18,10 +18,11 @@ class InternshipValidator extends FooValidator
         self::$rules = [
             'category_id' => ["required"],
             'student_class' => ["required"],
+            'student_phone' => ["required","regex:/(0)[\d]{9}/", "max:11"],
             'company_name' => ["required"],
-            'company_phone' => ["required"],
+            'company_phone' => ["required","regex:/(0)[0-9]{9}|(0)[0-9]{10}/", "max:11"],
             'company_instructor' => ["required"],
-            'company_instructor_phone' => ["required"],
+            'company_instructor_phone' => ["required","regex:/(0)[0-9]{10}|(0)[0-9]{11}/", "max:11"],
             'company_address' => ["required"],
         ];
 
@@ -41,10 +42,17 @@ class InternshipValidator extends FooValidator
             self::$messages = [
                 'category_id.required'          => trans($this->lang_admin.'.errors.category_id_required'),
                 'student_class.required'          => trans($this->lang_admin.'.errors.student_class_required'),
+                'student_phone.required'          => trans($this->lang_admin.'.errors.student_phone_required'),
+                'student_phone.regex'          => trans($this->lang_admin.'.errors.student_phone_regex'),
+                'student_phone.max'          => trans($this->lang_admin.'.errors.student_phone_max_string'),
                 'company_name.required'          => trans($this->lang_admin.'.errors.company_name_required'),
                 'company_phone.required'          => trans($this->lang_admin.'.errors.company_phone_required'),
+                'company_phone.regex'          => trans($this->lang_admin.'.errors.company_phone_regex'),
+                'company_phone.max'          => trans($this->lang_admin.'.errors.company_phone_max_string'),
                 'company_instructor.required'          => trans($this->lang_admin.'.errors.company_instructor_required'),
                 'company_instructor_phone.required'          => trans($this->lang_admin.'.errors.company_instructor_phone_required'),
+                'company_instructor_phone.regex'          => trans($this->lang_admin.'.errors.company_instructor_phone_regex'),
+                'company_instructor_phone.max'          => trans($this->lang_admin.'.errors.company_instructor_phone_max_string'),
                 'company_address.required'          => trans($this->lang_admin.'.errors.company_address_required'),
             ];
         });

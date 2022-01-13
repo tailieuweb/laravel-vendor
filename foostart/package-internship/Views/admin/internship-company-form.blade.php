@@ -41,15 +41,32 @@
         <!--MENU 1-->
         <div id="menu_1_company_require" class="tab-pane fade in active">
 
-            <!--STUDENT CLASS-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'student_class',
-                'label' => trans($plang_admin.'.labels.student_class'),
-                'value' => @$item->student_class,
-                'description' => trans($plang_admin.'.descriptions.student_class'),
-                'errors' => $errors,
-            ])
-            <!--/NAME-->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <!--STUDENT CLASS-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'student_class',
+                        'label' => trans($plang_admin.'.labels.student_class'),
+                        'value' => @$item->student_class,
+                        'description' => trans($plang_admin.'.descriptions.student_class'),
+                        'errors' => $errors,
+                    ])
+                    <!--/NAME-->
+                </div>
+                <div class="col-md-6">
+                    <!--STUDENT PHONE-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'student_phone',
+                        'label' => trans($plang_admin.'.labels.student_phone'),
+                        'value' => @$item->student_phone,
+                        'description' => trans($plang_admin.'.descriptions.student_phone'),
+                        'errors' => $errors,
+                    ])
+                    <!--/NAME-->
+                </div>
+            </div>
+
 
             <!--NAME-->
             @include('package-category::admin.partials.input_text', [

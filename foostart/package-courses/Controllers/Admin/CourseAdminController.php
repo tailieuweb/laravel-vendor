@@ -94,11 +94,20 @@ class CourseAdminController extends FooController {
 
         $courses = $this->obj_item->selectItems($params);
 
+
+        //get categories by context
+        $categories = [];
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $_params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($_params);
+        }
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'courses' => $courses,
             'request' => $request,
             'params' => $params,
+            'categories' => $categories,
             'config_status' => $this->obj_item->config_status
         ));
 

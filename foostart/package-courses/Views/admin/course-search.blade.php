@@ -23,6 +23,14 @@
                 'value' => @$params['keyword'],
             ])
 
+            <!-- CATEGORY -->
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'category_id',
+                'label' => trans($plang_admin.'.form.category'),
+                'value' => @$params['category_id'],
+                'items' => $categories,
+            ])
+
             <!-- STATUS -->
             @include('package-category::admin.partials.select_single', [
                 'name' => 'status',

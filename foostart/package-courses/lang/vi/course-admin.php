@@ -355,7 +355,7 @@ return [
         'category' => 'Category name',
         'title-search' => 'Search crawler',
         'title-categories' => 'Search categories',
-        'title-search-courses' => 'Search companies',
+        'title-search-courses' => 'Tìm kiếm khóa học',
         'title-search-pattern' => 'Search patterns',
         'course-search' => 'Search courses',
         'title-backup' => 'Backups',
