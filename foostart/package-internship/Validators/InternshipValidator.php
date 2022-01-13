@@ -20,9 +20,9 @@ class InternshipValidator extends FooValidator
             'student_class' => ["required"],
             'student_phone' => ["required","regex:/(0)[\d]{9}/", "max:11"],
             'company_name' => ["required"],
-            'company_phone' => ["required","regex:/(0)[0-9]{9}|(0)[0-9]{10}/", "max:11"],
+            'company_phone' => ["required","regex:/(0)[\d]{9}|(0)[\d]{10}/", "max:11"],
             'company_instructor' => ["required"],
-            'company_instructor_phone' => ["required","regex:/(0)[0-9]{10}|(0)[0-9]{11}/", "max:11"],
+            'company_instructor_phone' => ["required","regex:/(0)[\d]{9}|(0)[\d]{10}/", "max:11"],
             'company_address' => ["required"],
         ];
 

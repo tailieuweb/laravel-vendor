@@ -461,12 +461,21 @@ class CourseAdminController extends FooController {
             }
         }
 
+        //get categories by context
+        $categories = [];
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $_params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($_params);
+        }
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'items' => $items,
             'counterUnCompany' => $counterUnCompany,
             'request' => $request,
+            'categories' => $categories,
             'courseName' => $courseName
         ));
 
