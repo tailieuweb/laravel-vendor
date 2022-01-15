@@ -187,6 +187,7 @@ return [
         'courses_id' => 'Site',
         'courses' => 'Site',
         'courses_type' => 'Site type',
+        'category' => 'Khóa học',
     ],
 
 
