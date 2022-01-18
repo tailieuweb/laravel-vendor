@@ -19,6 +19,11 @@ $withs = [
             @endif
         </div>
 
+        {!! Form::submit(trans($plang_admin.'.buttons.exportByTeacher'), array(
+                                                                   "class"=>"btn btn-primary btn-export-by-teacher",
+                                                                   "title"=> trans($plang_admin.'.hint.button_export_by_teacher'),
+                                                                   'name'=>'export_by_teacher'))
+        !!}
         {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
                                                                             "class"=>"btn btn-warning delete btn-delete-all",
                                                                             "title"=> trans($plang_admin.'.hint.delete-in-trash'),
@@ -29,6 +34,7 @@ $withs = [
                                                                             "title"=> trans($plang_admin.'.hint.delete-forever'),
                                                                             'name'=>'del-forever'))
         !!}
+
     </div>
 
     <div class="table-responsive">

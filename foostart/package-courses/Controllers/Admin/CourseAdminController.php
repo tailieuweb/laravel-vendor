@@ -15,6 +15,7 @@ use Foostart\Courses\Models\ClassesUsers;
 use Foostart\Internship\Models\Internship;
 use Foostart\Pexcel\Helper\CourseEnrollParser;
 use Foostart\Pexcel\Helper\CourseExport;
+use Foostart\Pexcel\Helper\CourseExportTeacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
@@ -28,6 +29,7 @@ use Foostart\Courses\Validators\CourseValidator;
 use Illuminate\Support\Facades\DB;
 use Foostart\Acl\Authentication\Repository\UserRepositorySearchFilter;
 use Foostart\Category\Helpers\FoostartCategory;
+
 
 class CourseAdminController extends FooController {
 
@@ -281,12 +283,49 @@ class CourseAdminController extends FooController {
     }
 
     /**
+     * @param Request $request
+     */
+    public function exportByTeacher(Request $request) {
+
+        $id = (int)$request->get('id');
+        $ids = $request->get('ids');
+
+        $is_valid_request = $this->isValidRequest($request);
+
+        if ($is_valid_request && (!empty($id) || !empty($ids))) {
+
+            $ids = !empty($id)?[$id]:$ids;
+
+            $courseExportTeacher = new CourseExportTeacher();
+            $courseExportTeacher->ids = $ids;
+
+            return Excel::download($courseExportTeacher, 'courseExportTeacher.xlsx');
+
+            $flag = false;
+            if ($flag) {
+                return Redirect::route($this->root_router)
+                    ->withMessage(trans($this->plang_admin.'.actions.delete-ok'));
+            }
+        }
+
+        return Redirect::route($this->root_router)
+            ->withMessage(trans($this->plang_admin.'.actions.export_by_teacher_null'));
+
+
+    }
+
+    /**
      * Delete existing item
      * @return view list of items
      * @date 27/12/2017
      */
     public function delete(Request $request) {
 
+        //Detect exporting by teacher
+        $isExportByTeacher = $request->get('export_by_teacher', null);
+        if ($isExportByTeacher) {
+           return Redirect::route($this->root_router.'.exportByTeacher', $request->all());
+        }
         $item = NULL;
         $flag = TRUE;
         $params = array_merge($this->getUser(), $request->all());
@@ -550,6 +589,7 @@ class CourseAdminController extends FooController {
                 if (!empty($internship)) {
                     //Set company info
                     $items[$index]['student_class'] = $internship->student_class;
+                    $items[$index]['student_phone'] = $internship->student_phone;
                     $items[$index]['company_name'] = $internship->company_name;
                     $items[$index]['company_address'] = $internship->company_address;
                     $items[$index]['company_phone'] = $internship->company_phone;
@@ -582,8 +622,6 @@ class CourseAdminController extends FooController {
         $objCourseExport->view = $this->page_views['admin']['export'];
 
         return  Excel::download($objCourseExport, $courseName.'.xlsx');
-
-        return view($this->page_views['admin']['view'], $this->data_view);
 
     }
 

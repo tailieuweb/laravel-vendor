@@ -101,26 +101,26 @@ $plang_admin = 'course-admin';
 
                     <!--PHONE-->
                     <td>
-                        {!! $item['phone'] !!}
+                        {!! @$item['student_phone'] !!}
                     </td>
 
                     <!--CLASS-->
                     <td>
-                        {!! $item['student_class'] !!}
+                        {!! @$item['student_class'] !!}
                     </td>
 
                     <!--COMPANY-->
                     <td> {!!
-                            htmlentities($item['company_name']) . "<br><br>" .
-                            htmlentities("Địa chỉ: " . $item['company_address']) . "<br><br>" .
-                            htmlentities("Số điện thoại: " . $item['company_phone'])
+                            htmlentities(@$item['company_name']) . "<br><br>" .
+                            htmlentities("Địa chỉ: " . @$item['company_address']) . "<br><br>" .
+                            htmlentities("Số điện thoại: " . @$item['company_phone'])
                         !!}
                     </td>
 
                     <!--INSTRUCTOR-->
                     <td> {!!
-                            htmlentities($item['company_instructor']) . "<br><br>" .
-                            htmlentities("Số điện thoại: ". $item['company_instructor_phone'])
+                            htmlentities(@$item['company_instructor']) . "<br><br>" .
+                            htmlentities("Số điện thoại: ". @$item['company_instructor_phone'])
 
                         !!}
                     </td>

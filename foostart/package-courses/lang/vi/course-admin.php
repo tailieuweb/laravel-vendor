@@ -163,6 +163,7 @@ return [
         'crawl_answer' => 'Crawl answer',
         'restore' => 'Restore',
         'export' => 'Export',
+        'exportByTeacher' => 'Export',
     ],
 
 

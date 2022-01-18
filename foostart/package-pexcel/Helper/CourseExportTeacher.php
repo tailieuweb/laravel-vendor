@@ -3,10 +3,11 @@
 namespace Foostart\Pexcel\Helper;
 
 use App\Invoice;
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
-class CourseExport implements FromView {
+class CourseExportTeacher implements FromCollection {
 
     public $course;
     public $view;
@@ -15,19 +16,13 @@ class CourseExport implements FromView {
 
     public $ids;
 
-    public function view(): View
-    {
 
-        return view($this->view, [
-            'items' => $this->course,
-            'courseName' => $this->courseName,
-            'counterUnCompany' => $this->counterUnCompany
-        ]);
-    }
 
-    public function query()
+    public function collection()
     {
-        $sql = "SELECT *, count(*)
+        $this->ids = join(",",$this->ids);
+        $sql ="
+                    SELECT *, count(*)
                     FROM (
                         SELECT
                             internship.`course_id`,
@@ -37,13 +32,20 @@ class CourseExport implements FromView {
                         FROM internship
                         INNER JOIN `classes_users`
                             ON `internship`.user_id = `classes_users`.user_id
-                        WHERE (internship.`course_id` ) IN (1)
-                        GROUP BY internship.user_id
-                        ORDER BY internship.course_id
+                        WHERE (internship.`course_id`  IN (" . $this->ids . "))
+                        GROUP BY internship.`user_id`
+                        ORDER BY internship.`course_id`
                     ) AS company_info
                     GROUP BY company_info.company_instructor_phone
-                    ORDER BY course_id;
+                    ORDER BY company_info.course_id;
                 ";
+
+
+        $data = DB::select(DB::raw(
+                $sql
+                ));
+
+        return new Collection($data);
     }
 
 }

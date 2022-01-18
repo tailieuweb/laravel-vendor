@@ -140,6 +140,14 @@ Route::group(['middleware' => ['web']], function () {
         ]);
 
         /**
+         * Export by teacher
+         */
+        Route::get('admin/courses/exportByTeacher', [
+            'as' => 'course.exportByTeacher',
+            'uses' => 'CourseAdminController@exportByTeacher'
+        ]);
+
+        /**
          * trash
          */
         Route::get('admin/courses/trash', [
