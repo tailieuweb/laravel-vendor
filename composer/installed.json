@@ -930,6 +930,449 @@
             "install-path": "../filp/whoops"
         },
         {
+            "name": "foostart/package-acl",
+            "version": "2022.02.091",
+            "version_normalized": "2022.02.091.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-acl.git",
+                "reference": "4d7144b4167962582513ed8dbed6e0b1d806467c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-acl/zipball/4d7144b4167962582513ed8dbed6e0b1d806467c",
+                "reference": "4d7144b4167962582513ed8dbed6e0b1d806467c",
+                "shasum": ""
+            },
+            "require": {
+                "foostart/package-category": "*",
+                "foostart/package-collectivehtml": "*",
+                "foostart/package-sentry": "*",
+                "gregwar/captcha": "1.1.9",
+                "intervention/image": "2.*"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~5.7",
+                "sebastian/exporter": "^2.0"
+            },
+            "time": "2022-02-08T18:37:28+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Acl\\": "app/"
+                },
+                "classmap": [
+                    "database"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "foostart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://www.foostart.com"
+                }
+            ],
+            "description": "Laravel authentication and ACL package with a cool admin panel. Laravel 7x",
+            "keywords": [
+                "Authentication",
+                "acl",
+                "admin panel",
+                "laravel",
+                "profile",
+                "signup"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-acl/issues",
+                "source": "https://github.com/foostart/package-acl/tree/2022.02.091"
+            },
+            "install-path": "../foostart/package-acl"
+        },
+        {
+            "name": "foostart/package-category",
+            "version": "2022.02.09",
+            "version_normalized": "2022.02.09.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-category.git",
+                "reference": "6ab98eba5407f4f345faca2e363828a925cf12c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-category/zipball/6ab98eba5407f4f345faca2e363828a925cf12c5",
+                "reference": "6ab98eba5407f4f345faca2e363828a925cf12c5",
+                "shasum": ""
+            },
+            "require": {
+                "foostart/package-post": "*"
+            },
+            "time": "2021-12-26T16:16:02+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Category\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Create overview category can intergrate other project",
+            "keywords": [
+                "foostart",
+                "laravel 5 package category"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-category/issues",
+                "source": "https://github.com/foostart/package-category/tree/2022.02.09"
+            },
+            "install-path": "../foostart/package-category"
+        },
+        {
+            "name": "foostart/package-collectivehtml",
+            "version": "2022.02.091",
+            "version_normalized": "2022.02.091.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-collectivehtml.git",
+                "reference": "6706319c8b465fac7c334328df86ce4a9a2d245a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-collectivehtml/zipball/6706319c8b465fac7c334328df86ce4a9a2d245a",
+                "reference": "6706319c8b465fac7c334328df86ce4a9a2d245a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/session": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/view": "^6.0|^7.0|^8.0|^9.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.0|^7.0|^8.0|^9.0",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~8.5"
+            },
+            "time": "2022-02-08T18:35:54+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "support": {
+                "issues": "https://github.com/LaravelCollective/html/issues",
+                "source": "https://github.com/LaravelCollective/html"
+            },
+            "install-path": "../foostart/package-collectivehtml"
+        },
+        {
+            "name": "foostart/package-filemanager",
+            "version": "2022.02.09",
+            "version_normalized": "2022.02.09.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-filemanager.git",
+                "reference": "cf35d81672f4a859060dc58fc40a8464893387f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-filemanager/zipball/cf35d81672f4a859060dc58fc40a8464893387f6",
+                "reference": "cf35d81672f4a859060dc58fc40a8464893387f6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-exif": "*",
+                "ext-fileinfo": "*",
+                "illuminate/support": ">=4.2.0",
+                "intervention/image": "2.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpspec/phpspec": "~2.1",
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing."
+            },
+            "time": "2021-09-06T14:23:10+00:00",
+            "bin": [
+                "bin/debug"
+            ],
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Foostart\\Filemanager\\FilemanagerServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Filemanager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "foostart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://www.foostart.com"
+                }
+            ],
+            "description": "A file upload/editor intended for use with Laravel 5 and CKEditor / TinyMCE",
+            "keywords": [
+                "CKEditor",
+                "file",
+                "filemanager",
+                "image",
+                "laravel",
+                "manager",
+                "tinymce",
+                "upload"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-filemanager/issues",
+                "source": "https://github.com/foostart/package-filemanager/tree/2022.02.09"
+            },
+            "install-path": "../foostart/package-filemanager"
+        },
+        {
+            "name": "foostart/package-post",
+            "version": "2022.02.09",
+            "version_normalized": "2022.02.09.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-post.git",
+                "reference": "e82f6d83b5e0446958cf2c634d522aec7c8e0e27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-post/zipball/e82f6d83b5e0446958cf2c634d522aec7c8e0e27",
+                "reference": "e82f6d83b5e0446958cf2c634d522aec7c8e0e27",
+                "shasum": ""
+            },
+            "require": {
+                "foostart/package-filemanager": "*",
+                "foostart/package-slideshow": "*"
+            },
+            "time": "2022-02-08T05:56:34+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Post\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Manage post",
+            "keywords": [
+                "foostart",
+                "laravel 8 package post"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-post/issues",
+                "source": "https://github.com/foostart/package-post/tree/2022.02.09"
+            },
+            "install-path": "../foostart/package-post"
+        },
+        {
+            "name": "foostart/package-sentry",
+            "version": "2022.02.09",
+            "version_normalized": "2022.02.09.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-sentry.git",
+                "reference": "7748534a3fb4f90b9604bb8430041506bdd7a2ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-sentry/zipball/7748534a3fb4f90b9604bb8430041506bdd7a2ec",
+                "reference": "7748534a3fb4f90b9604bb8430041506bdd7a2ec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "illuminate/cookie": "~5.4",
+                "illuminate/database": "~5.4",
+                "illuminate/http": "~5.4",
+                "illuminate/session": "~5.4",
+                "ircmaxell/password-compat": "1.0.*",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~5.7"
+            },
+            "suggest": {
+                "happydemon/txt": "Required Text helpers when using the Kohana implementation",
+                "illuminate/database": "Default sentry user, group and throttling implementations.",
+                "ircmaxell/password-compat": "Default hashing uses PHP 5.5 password_* functions, with forward-compatible support."
+            },
+            "time": "2021-12-26T10:19:26+00:00",
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "frameworks": [
+                    "Laravel 5"
+                ],
+                "versions": {
+                    "1": "1.1/master",
+                    "2": "master"
+                },
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Cartalyst\\Sentry": "src/"
+                },
+                "classmap": [
+                    "src/Cartalyst/Sentry/Groups/Exceptions.php",
+                    "src/Cartalyst/Sentry/Throttling/Exceptions.php",
+                    "src/Cartalyst/Sentry/Users/Exceptions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Foostart",
+                    "email": "foostart.com@gmail.com"
+                }
+            ],
+            "description": "PHP 5.3+ Sentry fork for laravel authentication acl package",
+            "keywords": [
+                "auth",
+                "codeigniter",
+                "fuelphp",
+                "kohana",
+                "laravel",
+                "security"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-sentry/issues",
+                "source": "https://github.com/foostart/package-sentry/tree/2022.02.09"
+            },
+            "install-path": "../foostart/package-sentry"
+        },
+        {
+            "name": "foostart/package-slideshow",
+            "version": "2022.02.09",
+            "version_normalized": "2022.02.09.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-slideshow.git",
+                "reference": "34646190f596faded37d4956533a8563d2654cfa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-slideshow/zipball/34646190f596faded37d4956533a8563d2654cfa",
+                "reference": "34646190f596faded37d4956533a8563d2654cfa",
+                "shasum": ""
+            },
+            "time": "2021-09-06T14:30:26+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Slideshow\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Create overview slideshow can intergrate other project",
+            "keywords": [
+                "foostart",
+                "laravel 5 package slideshow"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-slideshow/issues",
+                "source": "https://github.com/foostart/package-slideshow/tree/2022.02.09"
+            },
+            "install-path": "../foostart/package-slideshow"
+        },
+        {
             "name": "fruitcake/laravel-cors",
             "version": "v2.0.5",
             "version_normalized": "2.0.5.0",
@@ -1077,6 +1520,66 @@
                 }
             ],
             "install-path": "../graham-campbell/result-type"
+        },
+        {
+            "name": "gregwar/captcha",
+            "version": "v1.1.9",
+            "version_normalized": "1.1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gregwar/Captcha.git",
+                "reference": "4bb668e6b40e3205a020ca5ee4ca8cff8b8780c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gregwar/Captcha/zipball/4bb668e6b40e3205a020ca5ee4ca8cff8b8780c5",
+                "reference": "4bb668e6b40e3205a020ca5ee4ca8cff8b8780c5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.0",
+                "symfony/finder": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4"
+            },
+            "time": "2020-03-24T14:39:05+00:00",
+            "type": "captcha",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Gregwar\\": "src/Gregwar"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Passault",
+                    "email": "g.passault@gmail.com",
+                    "homepage": "http://www.gregwar.com/"
+                },
+                {
+                    "name": "Jeremy Livingston",
+                    "email": "jeremy.j.livingston@gmail.com"
+                }
+            ],
+            "description": "Captcha generator",
+            "homepage": "https://github.com/Gregwar/Captcha",
+            "keywords": [
+                "bot",
+                "captcha",
+                "spam"
+            ],
+            "support": {
+                "issues": "https://github.com/Gregwar/Captcha/issues",
+                "source": "https://github.com/Gregwar/Captcha/tree/master"
+            },
+            "install-path": "../gregwar/captcha"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1463,6 +1966,93 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "install-path": "../hamcrest/hamcrest-php"
+        },
+        {
+            "name": "intervention/image",
+            "version": "2.7.1",
+            "version_normalized": "2.7.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image.git",
+                "reference": "744ebba495319501b873a4e48787759c72e3fb8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/744ebba495319501b873a4e48787759c72e3fb8c",
+                "reference": "744ebba495319501b873a4e48787759c72e3fb8c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "guzzlehttp/psr7": "~1.1 || ^2.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.2",
+                "phpunit/phpunit": "^4.8 || ^5.7 || ^7.5.15"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing.",
+                "intervention/imagecache": "Caching extension for the Intervention Image library"
+            },
+            "time": "2021-12-16T16:49:26+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Intervention\\Image\\ImageServiceProvider"
+                    ],
+                    "aliases": {
+                        "Image": "Intervention\\Image\\Facades\\Image"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src/Intervention/Image"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.com",
+                    "homepage": "http://olivervogel.com/"
+                }
+            ],
+            "description": "Image handling and manipulation library with support for Laravel integration",
+            "homepage": "http://image.intervention.io/",
+            "keywords": [
+                "gd",
+                "image",
+                "imagick",
+                "laravel",
+                "thumbnail",
+                "watermark"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/image/issues",
+                "source": "https://github.com/Intervention/image/tree/2.7.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/interventionphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Intervention",
+                    "type": "github"
+                }
+            ],
+            "install-path": "../intervention/image"
         },
         {
             "name": "laravel/framework",
