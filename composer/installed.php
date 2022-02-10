@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '5f67c746a1f06074e7126172dfb4973192153041',
+    'reference' => '70c2332fea64498bab9e1edbe792989761acd854',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -159,6 +159,15 @@
       array (
       ),
       'reference' => 'cf35d81672f4a859060dc58fc40a8464893387f6',
+    ),
+    'foostart/package-pexcel' => 
+    array (
+      'pretty_version' => '2022.02.09',
+      'version' => '2022.02.09.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0c19ae9a9bd4b551272e17fcc9ec054a7922158e',
     ),
     'foostart/package-post' => 
     array (
@@ -506,7 +515,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '5f67c746a1f06074e7126172dfb4973192153041',
+      'reference' => '70c2332fea64498bab9e1edbe792989761acd854',
     ),
     'laravel/sail' => 
     array (
@@ -579,6 +588,15 @@
       array (
       ),
       'reference' => 'aa70e813a6ad3d1558fc927863d47309b4c23e69',
+    ),
+    'maatwebsite/excel' => 
+    array (
+      'pretty_version' => 'v1.1.5',
+      'version' => '1.1.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0c67aba8387726458d42461eae91a3415593bbc4',
     ),
     'mockery/mockery' => 
     array (
@@ -707,6 +725,15 @@
       array (
       ),
       'reference' => '93ebd0014cab80c4ea9f5e297ea48672f1b87706',
+    ),
+    'phpoffice/phpexcel' => 
+    array (
+      'pretty_version' => '1.8.1',
+      'version' => '1.8.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '372c7cbb695a6f6f1e62649381aeaa37e7e70b32',
     ),
     'phpoption/phpoption' => 
     array (
