@@ -318,7 +318,6 @@ class Post extends FooModel
         if (empty($id)) {
             $id = $params['id'];
         }
-        $field_status = $this->field_status;
 
         //get post item by conditions
         $_params = [

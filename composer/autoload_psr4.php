@@ -75,6 +75,7 @@ return array(
     'Gregwar\\' => array($vendorDir . '/gregwar/captcha/src/Gregwar'),
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
     'Fruitcake\\Cors\\' => array($vendorDir . '/fruitcake/laravel-cors/src'),
+    'Foostart\\Task\\' => array($vendorDir . '/foostart/package-task'),
     'Foostart\\Slideshow\\' => array($vendorDir . '/foostart/package-slideshow'),
     'Foostart\\Post\\' => array($vendorDir . '/foostart/package-post'),
     'Foostart\\Pexcel\\' => array($vendorDir . '/foostart/package-pexcel'),

@@ -107,5 +107,13 @@ return [
             "link" => '/admin/pexcel',
             "permissions" => [$admin, "_permission-editor"]
         ],
+
+        //Task
+        [
+            "name" => "task-admin.menus.top-menu",
+            "route" => "task",
+            "link" => '/admin/task',
+            "permissions" => [$admin]
+        ],
     ]
 ];

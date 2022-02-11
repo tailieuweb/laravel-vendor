@@ -1475,6 +1475,51 @@
             "install-path": "../foostart/package-slideshow"
         },
         {
+            "name": "foostart/package-task",
+            "version": "2022.02.11",
+            "version_normalized": "2022.02.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-task.git",
+                "reference": "a179e0278e42b2576fc41bfb92437f5e546fe9e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-task/zipball/a179e0278e42b2576fc41bfb92437f5e546fe9e0",
+                "reference": "a179e0278e42b2576fc41bfb92437f5e546fe9e0",
+                "shasum": ""
+            },
+            "time": "2018-04-23T16:40:42+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Task\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Create overview task can intergrate other project",
+            "keywords": [
+                "foostart",
+                "laravel 5 package task"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-task/issues",
+                "source": "https://github.com/foostart/package-task/tree/master"
+            },
+            "install-path": "../foostart/package-task"
+        },
+        {
             "name": "fruitcake/laravel-cors",
             "version": "v2.0.5",
             "version_normalized": "2.0.5.0",

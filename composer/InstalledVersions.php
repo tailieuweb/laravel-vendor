@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '539fbecb8964d22792fde5c84e18b3fb35d17ba8',
+    'reference' => 'd5ec06b43e12ac669d043f59311cfe775844029c',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -246,6 +246,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '34646190f596faded37d4956533a8563d2654cfa',
+    ),
+    'foostart/package-task' => 
+    array (
+      'pretty_version' => '2022.02.11',
+      'version' => '2022.02.11.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a179e0278e42b2576fc41bfb92437f5e546fe9e0',
     ),
     'fruitcake/laravel-cors' => 
     array (
@@ -559,7 +568,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '539fbecb8964d22792fde5c84e18b3fb35d17ba8',
+      'reference' => 'd5ec06b43e12ac669d043f59311cfe775844029c',
     ),
     'laravel/sail' => 
     array (
