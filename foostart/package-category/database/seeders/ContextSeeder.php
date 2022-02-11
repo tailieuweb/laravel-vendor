@@ -80,4 +80,17 @@ class ContextSeeder extends FoostartSeeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }
+
+    private function pexcelCreateContext() {
+        DB::table($this->table)->insert([
+            $this->prefix_context . 'name' => 'Admin pexcel',
+            $this->prefix_context . 'key' => 'ab7e417e1dddc5e5240b586d454f',
+            $this->prefix_context . 'ref' => 'admin/pexcel',
+            'status' => 99,
+            'created_user_id' => 1,
+            'updated_user_id' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+    }
 }
