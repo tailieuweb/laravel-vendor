@@ -23,9 +23,8 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
 
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="panel panel-info">
 
                 <!--TITLE BAR-->
@@ -73,10 +72,9 @@
             </div>
         </div>
 
-        <div class='col-md-4'>
+        <div class='col-md-3'>
             @include('package-task::admin.task-search')
         </div>
 
-    </div>
 </div>
 @stop

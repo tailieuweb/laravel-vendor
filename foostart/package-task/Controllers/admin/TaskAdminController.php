@@ -118,12 +118,25 @@ class TaskAdminController extends FooController {
             $categories = $this->obj_category->pluckSelect($params);
         }
 
+        //Get list of members for assignee
+        $members = [
+            1 => 'Test1',
+            2 => 'Test2',
+        ];
+        //Get list of invited members of task
+        $invitedMembers = [
+            3 => 'Invited 1',
+            4 => 'Invited 2'
+        ];
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'categories' => $categories,
             'request' => $request,
             'context' => $context,
+            'members' => $members,
+            'invitedMembers' => $invitedMembers,
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
     }

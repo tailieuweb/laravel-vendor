@@ -46,10 +46,11 @@
 
     <!--MENU 4-->
     <li>
-        <a data-toggle="tab" href="#menu_10">
-            {!! trans($plang_admin.'.tabs.menu_10') !!}
+        <a data-toggle="tab" href="#menu_4">
+            {!! trans($plang_admin.'.tabs.menu_4') !!}
         </a>
     </li>
+
 </ul>
 <!--/TAB MENU-->
 
@@ -61,11 +62,11 @@
 
         <!--TASK NAME-->
         @include('package-category::admin.partials.input_text', [
-        'name' => 'task_name',
-        'label' => trans($plang_admin.'.labels.name'),
-        'value' => @$item->task_name,
-        'description' => trans($plang_admin.'.descriptions.name'),
-        'errors' => $errors,
+            'name' => 'task_name',
+            'label' => trans($plang_admin.'.labels.name'),
+            'value' => @$item->task_name,
+            'description' => trans($plang_admin.'.descriptions.name'),
+            'errors' => $errors,
         ])
         <!--/TASK NAME-->
 
@@ -82,18 +83,33 @@
         ])
         <!--/TASK SLUG-->
 
-        <!-- LIST OF CATEGORIES -->
-        @include('package-category::admin.partials.select_single', [
-        'name' => 'category_id',
-        'label' => trans($plang_admin.'.labels.category'),
-        'items' => $categories,
-        'value' => @$itemds->category_id,
-        'description' => trans($plang_admin.'.descriptions.category', [
-        'href' => URL::route('categories.list', ['_key' => $context->context_key])
-        ]),
-        'errors' => $errors,
-        ])
-        <!-- /LIST OF CATEGORIES -->
+        <div class="row">
+            <div class="col-md-6">
+                <!--STATUS-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'status',
+                    'label' => trans($plang_admin.'.form.status'),
+                    'value' => @$item->status,
+                    'items' => $status,
+                    'description' => trans($plang_admin.'.descriptions.status'),
+                ])
+            </div>
+            <div class="col-md-6">
+                <!-- LIST OF CATEGORIES -->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'category_id',
+                    'label' => trans($plang_admin.'.labels.category'),
+                    'items' => $categories,
+                    'value' => @$item->category_id,
+                    'description' => trans($plang_admin.'.descriptions.category', [
+                    'href' => URL::route('categories.list', ['_key' => $context->context_key])
+                    ]),
+                    'errors' => $errors,
+                ])
+                <!-- /LIST OF CATEGORIES -->
+            </div>
+        </div>
+
     </div>
 
     <!--MENU 2-->
@@ -144,6 +160,76 @@
         ])
         <!--/SAMPLE FILES-->
     </div>
+
+    <!--MENU 4-->
+    <div id="menu_4" class="tab-pane fade">
+        <div class="row">
+            <div class="col-md-4">
+                <!--Invite member-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'invite_member',
+                    'label' => trans($plang_admin.'.labels.invite_member'),
+                    'items' => @$members,
+                    'description' => trans($plang_admin.'.descriptions.invite_member'),
+                    'errors' => $errors,
+                ])
+                <!--/Invite member-->
+            </div>
+            <div class="col-md-8">
+                <div class="btn-button-member-assignee" style="padding: 25px">
+                    <!-- Add member -->
+                    <span class="btn btn-primary pull-left margin-left-5 add_member">
+                        {!! trans($plang_admin.'.buttons.add_member') !!}
+                    </span>
+
+                    <!-- Add all -->
+                    <span class="btn btn-success pull-left margin-left-5 add_all_members">
+                        {!! trans($plang_admin.'.buttons.add_all_member') !!}
+                    </span>
+
+                    <!-- Reset all -->
+                    <span class="btn btn-warning pull-left margin-left-5 reset_invited">
+                        {!! trans($plang_admin.'.buttons.reset_invited') !!}
+                    </span>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @if(!empty($invitedMembers))
+                    <span>Invited members: {{count($invitedMembers)}}</span>
+                    <table class="table table-hover invited-members">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Member</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--item template-->
+                            <tr class="item-template invited-member">
+                                <td class="member-counter"></td>
+                                <td class="member-info">
+                                    <input type="hidden" name="invited_member_id[]">
+                                    <span class="member-name"></span>
+                                </td>
+                                <td class="delete-member">
+                                    <a href="javascript:;" class="trash">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                @else
+                    <span>No invited members</span>
+                @endif
+            </div>
+        </div>
+
+    </div>
 </div>
 <!--/TAB CONTENT-->
 
@@ -158,3 +244,81 @@
 <!------------------------------------------------------------------------------
 | End list of elements in task form
 |------------------------------------------------------------------------------>
+
+@section('footer_scripts')
+    @parent
+
+    <script type='text/javascript'>
+
+        $(document).ready(function () {
+            (function ($) {
+                //All members
+                var members = <?php echo json_encode($members) ?>;
+                //Invited members
+                var invitedMembers = <?php echo json_encode($invitedMembers) ?>;
+                displayInvitedMembers();
+
+                //Add event click deleting item
+                $('.invited-member .delete-member').click(function () {
+                    //Get member id
+                    var member_id = $(this).parent().find('input').val();
+                    if (invitedMembers.hasOwnProperty(member_id)) {
+                        delete invitedMembers[member_id];
+                        displayInvitedMembers();
+                    }
+
+                    return false;
+                });
+
+                //Add new member
+                $('.add_member').click(function() {
+                    var member_id = $('#invite_member').find(":selected").val();
+                    var member_name = $('#invite_member').find(":selected").text();
+
+                    if ($.isNumeric(member_id) && !invitedMembers.hasOwnProperty(member_id)) {
+                        invitedMembers[member_id] = member_name;
+                        displayInvitedMembers();
+                    }
+
+                });
+                //Add all members
+                $('.add_all_members').click(function() {
+                    //Set all members to invited
+                    invitedMembers = JSON.parse(JSON.stringify(members));
+                    //Display
+                    displayInvitedMembers();
+                });
+                //Reset invited
+                $('.reset_invited').click(function (){
+                    invitedMembers = {};
+                    displayInvitedMembers();
+                });
+
+                function displayInvitedMembers() {
+                    //Empty table invited members
+                    var item = $('.invited-members' ).find('.item-template').clone(true);
+                    $('.invited-members tbody').empty();
+                    item.appendTo($('.invited-members tbody'));
+
+                    //Display invited members
+                    var counter = 1;
+
+                    $.each( invitedMembers, function( id, name ) {
+                        var item = $('.invited-members' ).find('.item-template').clone(true).removeClass('item-template');
+                        item.find('.member-counter').html(counter);
+                        item.find('input').val(id);
+                        item.find('.member-name').html(name);
+                        //append to last item
+                        item.appendTo($('.invited-members tbody'));
+
+                        counter++;
+
+                    });
+
+                }
+
+            })(jQuery);
+        });
+
+    </script>
+@endsection

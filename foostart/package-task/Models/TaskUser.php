@@ -3,7 +3,7 @@
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends FooModel {
+class TaskUser extends FooModel {
 
     /**
      * @table categories
@@ -20,49 +20,28 @@ class Task extends FooModel {
     public function setConfigs() {
 
         //table name
-        $this->table = 'tasks';
+        $this->table = 'task_user';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'category_id',
-            'task_name',
-            'task_order',
-            'task_slug',
-            'task_overview',
-            'task_description',
-            'task_image',
-            'task_files',
+            'user_id',
+            'task_id',
+            'notes',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'task_name' => [
-                'name' => 'task_name',
-                'type' => 'Text',
-            ],
-            'task_slug' => [
-                'name' => 'task_slug',
-                'type' => 'Text',
-            ],
-            'category_id' => [
-                'name' => 'category_id',
+            'user_id' => [
+                'name' => 'user_id',
                 'type' => 'Int',
             ],
-            'task_overview' => [
-                'name' => 'task_overview',
-                'type' => 'Text',
+            'task_id' => [
+                'name' => 'user_id',
+                'type' => 'Int',
             ],
-            'task_description' => [
-                'name' => 'task_description',
+            'notes' => [
+                'name' => 'notes',
                 'type' => 'Text',
-            ],
-            'task_image' => [
-                'name' => 'task_image',
-                'type' => 'Text',
-            ],
-            'task_files' => [
-                'name' => 'files',
-                'type' => 'Json',
             ],
         ]);
 
