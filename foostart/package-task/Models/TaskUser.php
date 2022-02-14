@@ -247,6 +247,39 @@ class TaskUser extends FooModel {
         }
     }
 
+    /**
+     *
+     * @param ARRAY $params list of parameters
+     * @param INT $id is primary key
+     * @return type
+     */
+    public function updateItems($params = []) {
+
+        //get task item by conditions
+        $_params = [
+            'task_id' => $params['task_id'],
+        ];
+        $taskUsers = $this->selectItems($_params);
+
+        if (!empty($taskUsers)) {
+
+            foreach ($taskUsers as $taskUser) {
+                if (is)
+            }
+            $dataFields = $this->getDataFields($params, $this->fields);
+
+            foreach ($dataFields as $key => $value) {
+                $task->$key = $value;
+            }
+
+            $task->save();
+
+            return $task;
+        } else {
+            return NULL;
+        }
+    }
+
 
     /**
      *

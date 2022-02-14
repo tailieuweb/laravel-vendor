@@ -11,6 +11,8 @@
 */
 
 
+use Foostart\Acl\Authentication\Repository\UserRepositorySearchFilter;
+use Foostart\Category\Helpers\FoostartCategory;
 use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
@@ -129,13 +131,19 @@ class TaskAdminController extends FooController {
             4 => 'Invited 2'
         ];
 
+        /**
+         * Get list of teachers
+         */
+        $teachers = $this->getTeachers();
+
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'categories' => $categories,
             'request' => $request,
             'context' => $context,
-            'members' => $members,
+            'members' => $teachers,
             'invitedMembers' => $invitedMembers,
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
@@ -405,5 +413,33 @@ class TaskAdminController extends FooController {
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 
+    public function getTeachers() {
+        $obj_category = new FoostartCategory();
+        $params_level = [];
+        $params_level['_key'] = $obj_category->getContextKeyByRef('user/level');
+        $pluck_select_category_level = $obj_category->pluckSelect($params_level);
+
+        $level_id_teacher = -1;
+        foreach($pluck_select_category_level as $key => $value) {
+            if ($value == 'Teacher') {
+                $level_id_teacher = $key;
+                break;
+            }
+        }
+
+        //Get list of teachers
+        $obj_user = new UserRepositorySearchFilter(0);
+        $params = ['level_id' => $level_id_teacher];
+
+        $users = $obj_user->all($params);
+
+        $teachers = [];
+        if (!empty($users)) {
+            foreach ($users as $user) {
+                $teachers[$user->id] = $user->first_name . ' ' . $user->last_name;
+            }
+        }
+        return $teachers;
+    }
 
 }

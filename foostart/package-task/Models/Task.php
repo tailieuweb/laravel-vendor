@@ -2,9 +2,11 @@
 
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
+use Foostart\Task\Models\TaskUser;
 
 class Task extends FooModel {
 
+    protected $objTaskUser;
     /**
      * @table categories
      * @param array $attributes
@@ -14,7 +16,7 @@ class Task extends FooModel {
         $this->setConfigs();
 
         parent::__construct($attributes);
-
+        $this->objTaskUser = new TaskUser();
     }
 
     public function setConfigs() {
@@ -261,6 +263,13 @@ class Task extends FooModel {
             }
 
             $task->save();
+
+            //Add assignee to task
+            $_params = [
+              'task_id' => $task->task_id,
+              'invited_member_id' => $params['invited_member_id']
+            ];
+            $this->objTaskUser->updateItems($_params);
 
             return $task;
         } else {
