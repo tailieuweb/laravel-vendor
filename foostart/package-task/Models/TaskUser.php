@@ -73,7 +73,8 @@ class TaskUser extends FooModel {
         $this->primaryKey = 'task_id';
 
         //the number of items on page
-        $this->perPage = 10;
+        $this->perPage = 0;
+        $this->is_pagination = false;
 
 
     }
@@ -98,7 +99,11 @@ class TaskUser extends FooModel {
         $elo = $this->orderingFilters($params, $elo);
 
         //paginate items
-        $items = $this->paginateItems($params, $elo);
+        if ($this->is_pagination) {
+            $items = $this->paginateItems($params, $elo);
+        } else {
+            $items = $elo->get();
+        }
 
         return $items;
     }
@@ -181,9 +186,6 @@ class TaskUser extends FooModel {
                     }
                 }
             }
-        } elseif ($by_status) {
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
-
         }
 
         return $elo;
@@ -255,6 +257,11 @@ class TaskUser extends FooModel {
      */
     public function updateItems($params = []) {
 
+        //parse user id from submitted form
+        $user_ids = $this->parseUserIds($params);
+        if (empty($user_ids)) {
+            return;
+        }
         //get task item by conditions
         $_params = [
             'task_id' => $params['task_id'],
@@ -264,17 +271,17 @@ class TaskUser extends FooModel {
         if (!empty($taskUsers)) {
 
             foreach ($taskUsers as $taskUser) {
-                if (is)
+                if (!is_array())
             }
             $dataFields = $this->getDataFields($params, $this->fields);
 
             foreach ($dataFields as $key => $value) {
-                $task->$key = $value;
+//                $task->$key = $value;
             }
 
-            $task->save();
+//            $task->save();
 
-            return $task;
+//            return $task;
         } else {
             return NULL;
         }
@@ -307,7 +314,7 @@ class TaskUser extends FooModel {
      * @param ARRAY $input list of parameters
      * @return boolean TRUE incase delete successfully otherwise return FALSE
      */
-    public function deleteItem($input = [], $delete_type) {
+    public function deleteItem($input = [], $delete_type = 'delete-trash') {
 
         $item = $this->find($input['id']);
 
@@ -324,6 +331,68 @@ class TaskUser extends FooModel {
         }
 
         return FALSE;
+    }
+
+    /**
+     * Parse user_id from submitted form
+     * @param $invited_member_id
+     * @return array
+     */
+    public function parseUserIds($invited_member_id) {
+        $userIds = [];
+        if (!empty($invited_member_id) && is_array($invited_member_id)) {
+            foreach ($invited_member_id as $id) {
+                //Check valid id
+                $_id = (int) $id;
+                if (!empty($_id)) {
+                    $userIds[] = $_id;
+                }
+            }
+        }
+
+        return $userIds;
+    }
+
+    /**
+     * @param $taskUsers
+     * @return array
+     */
+    public function parseInvitedUserIds($taskUsers) {
+        $invitedUserIds = [];
+        //
+        if (!empty($taskUsers)) {
+            foreach ($taskUsers as $taskUser) {
+                $invitedUserIds[] = $taskUser->user_id;
+            }
+        }
+
+        return $invitedUserIds;
+    }
+
+    /**
+     * @param $userIds
+     * @param $invitedUserIds
+     */
+    public function resetAssignee($userIds, $invitedUserIds) {
+        $assignees = [
+            'add' => [],
+            'delete' => []
+        ];
+
+        //add
+        foreach ($userIds as $id) {
+            if (!in_array($id, $invitedUserIds)) {
+                $assignees['add'][] = $id;
+            }
+        }
+        //delete
+        foreach ($invitedUserIds as $id) {
+            if (!in_array($id,$invitedUserIds)) {
+                $assignees['delete'] = $id;
+            }
+        }
+
+        return $assignees;
     }
 
 }
