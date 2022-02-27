@@ -271,7 +271,7 @@ class TaskUser extends FooModel {
         if (!empty($taskUsers)) {
 
             foreach ($taskUsers as $taskUser) {
-                if (!is_array())
+//                if (!is_array())
             }
             $dataFields = $this->getDataFields($params, $this->fields);
 
