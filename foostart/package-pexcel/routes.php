@@ -5,10 +5,7 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * FRONT
  */
-Route::get('pexcel', [
-    'as' => 'pexcel',
-    'uses' => 'Foostart\Pexcel\Controllers\Front\PexcelFrontController@index'
-]);
+
 
 
 /**

@@ -5,10 +5,6 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * FRONT
  */
-Route::get('task', [
-    'as' => 'task',
-    'uses' => 'Foostart\Task\Controllers\Front\TaskFrontController@index'
-]);
 
 
 /**
