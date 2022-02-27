@@ -1234,6 +1234,7 @@ return array(
     'Foostart\\Slideshow\\SlideshowServiceProvider' => $vendorDir . '/foostart/package-slideshow/SlideshowServiceProvider.php',
     'Foostart\\Slideshow\\Validators\\SlideshowValidator' => $vendorDir . '/foostart/package-slideshow/Validators/SlideshowValidator.php',
     'Foostart\\Slideshow\\Validators\\StyleValidator' => $vendorDir . '/foostart/package-slideshow/Validators/StyleValidator.php',
+    'Foostart\\Task\\Controllers\\Admin\\TaskAdminController' => $vendorDir . '/foostart/package-task/Controllers/Admin/TaskAdminController.php',
     'Foostart\\Task\\Models\\Task' => $vendorDir . '/foostart/package-task/Models/Task.php',
     'Foostart\\Task\\Models\\TaskUser' => $vendorDir . '/foostart/package-task/Models/TaskUser.php',
     'Foostart\\Task\\TaskServiceProvider' => $vendorDir . '/foostart/package-task/TaskServiceProvider.php',
