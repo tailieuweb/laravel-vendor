@@ -47,14 +47,9 @@ class TaskUser extends FooModel {
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'task_name',
-            'task_slug',
-            'task_order',
-            'category_id',
-            'task_overview',
-            'task_description',
-            'task_image',
-            'task_files',
+            'user_id',
+            'task_id',
+            'notes'
         ]);
 
         //check valid fields for ordering
@@ -67,10 +62,11 @@ class TaskUser extends FooModel {
         $this->valid_filter_fields = [
             'keyword',
             'status',
+            'task_id'
         ];
 
         //primary key
-        $this->primaryKey = 'task_id';
+        $this->primaryKey = 'assignee_id';
 
         //the number of items on page
         $this->perPage = 0;
@@ -167,6 +163,11 @@ class TaskUser extends FooModel {
                                 $elo = $elo->where($this->table . '.task_name', '=', $value);
                             }
                             break;
+                        case 'task_id':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.task_id', '=', $value);
+                            }
+                            break;
                         case 'status':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.'.$this->field_status, '=', $value);
@@ -199,7 +200,7 @@ class TaskUser extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.task_id as id'
+                            $this->table . '.assignee_id as id'
                 );
 
         return $elo;
@@ -258,10 +259,8 @@ class TaskUser extends FooModel {
     public function updateItems($params = []) {
 
         //parse user id from submitted form
-        $user_ids = $this->parseUserIds($params);
-        if (empty($user_ids)) {
-            return;
-        }
+        $user_ids = $this->parseUserIds($params['invited_member_id']);
+
         //get task item by conditions
         $_params = [
             'task_id' => $params['task_id'],
@@ -269,19 +268,27 @@ class TaskUser extends FooModel {
         $taskUsers = $this->selectItems($_params);
 
         if (!empty($taskUsers)) {
-
+            $invitedUserIds = [];
             foreach ($taskUsers as $taskUser) {
-//                if (!is_array())
+                $invitedUserIds[] = $taskUser->user_id;
             }
-            $dataFields = $this->getDataFields($params, $this->fields);
+            //Get actionUser
+            $actionUsers = $this->resetAssignee($user_ids, $invitedUserIds);
 
-            foreach ($dataFields as $key => $value) {
-//                $task->$key = $value;
+            //Add
+            foreach ($actionUsers['add'] as $user_id) {
+                $_data = [
+                  'task_id' => $params['task_id'],
+                    'user_id' => $user_id
+                ];
+                $this->insertItem($_data);
             }
-
-//            $task->save();
-
-//            return $task;
+            //Delete
+            foreach ($taskUsers as $taskUser) {
+                if (in_array($taskUser->id, $actionUsers['delete'])) {
+                    $this->deleteItem(['id' => $taskUser->id]);
+                }
+            }
         } else {
             return NULL;
         }
@@ -321,16 +328,14 @@ class TaskUser extends FooModel {
         if ($item) {
             switch ($delete_type) {
                 case 'delete-trash':
-                    return $item->fdelete($item);
-                    break;
+                    return $item->delete();
                 case 'delete-forever':
                     return $item->delete();
-                    break;
             }
 
         }
 
-        return FALSE;
+        return TRUE;
     }
 
     /**
@@ -387,8 +392,8 @@ class TaskUser extends FooModel {
         }
         //delete
         foreach ($invitedUserIds as $id) {
-            if (!in_array($id,$invitedUserIds)) {
-                $assignees['delete'] = $id;
+            if (!in_array($id, $userIds)) {
+                $assignees['delete'][] = $id;
             }
         }
 

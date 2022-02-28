@@ -121,10 +121,7 @@ class TaskAdminController extends FooController {
         }
 
         //Get list of members for assignee
-        $members = [
-            1 => 'Test1',
-            2 => 'Test2',
-        ];
+        $members = [];
         //Get list of invited members of task
         $invitedMembers = [
             3 => 'Invited 1',
@@ -439,6 +436,7 @@ class TaskAdminController extends FooController {
                 $teachers[$user->id] = $user->first_name . ' ' . $user->last_name;
             }
         }
+
         return $teachers;
     }
 
