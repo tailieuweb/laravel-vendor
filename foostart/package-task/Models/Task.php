@@ -295,6 +295,13 @@ class Task extends FooModel {
         $key = $this->primaryKey;
         $item->id = $item->$key;
 
+        //Add assignee to task
+        $_params = [
+            'task_id' => $item->id,
+            'invited_member_id' => $params['invited_member_id']
+        ];
+        $this->objTaskUser->updateItems($_params);
+
         return $item;
     }
 
@@ -323,4 +330,11 @@ class Task extends FooModel {
         return FALSE;
     }
 
+    /**
+     * Get the list of user id
+     */
+    public function assignee()
+    {
+        return $this->hasMany(TaskUser::class,'task_id', 'task_id');
+    }
 }

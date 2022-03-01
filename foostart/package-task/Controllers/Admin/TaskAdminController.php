@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Task\Models\Task;
+use Foostart\Task\Models\TaskUser;
 use Foostart\Category\Models\Category;
 use Foostart\Task\Validators\TaskValidator;
 
@@ -26,6 +27,7 @@ use Foostart\Task\Validators\TaskValidator;
 class TaskAdminController extends FooController {
 
     public $obj_item = NULL;
+    public $obj_task_user = NULL;
     public $obj_category = NULL;
 
     public function __construct() {
@@ -33,6 +35,7 @@ class TaskAdminController extends FooController {
         parent::__construct();
         // models
         $this->obj_item = new Task(array('perPage' => 10));
+        $this->obj_task_user = new TaskUser();
         $this->obj_category = new Category();
 
         // validators
@@ -102,7 +105,8 @@ class TaskAdminController extends FooController {
         $params['id'] = $request->get('id', NULL);
 
         $context = $this->obj_item->getContext($this->category_ref_name);
-
+        $invitedMembers = [];
+        $task_user = NULL;
         if (!empty($params['id'])) {
 
             $item = $this->obj_item->selectItem($params, FALSE);
@@ -111,6 +115,12 @@ class TaskAdminController extends FooController {
                 return Redirect::route($this->root_router.'.list')
                                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
             }
+
+            //Get list of invited members of task
+            $_params = [
+                'task_id' => $item->id
+            ];
+            $task_user = $this->obj_task_user->selectItems($_params);
         }
 
         //get categories by context
@@ -120,18 +130,12 @@ class TaskAdminController extends FooController {
             $categories = $this->obj_category->pluckSelect($params);
         }
 
-        //Get list of members for assignee
-        $members = [];
-        //Get list of invited members of task
-        $invitedMembers = [
-            3 => 'Invited 1',
-            4 => 'Invited 2'
-        ];
-
         /**
+         * Get list of members for assignee
          * Get list of teachers
          */
         $teachers = $this->getTeachers();
+        $invitedMembers = $this->getInvitedMembers($teachers, $task_user);
 
 
         // display view
@@ -438,6 +442,19 @@ class TaskAdminController extends FooController {
         }
 
         return $teachers;
+    }
+
+    public function getInvitedMembers($teachers, $task_user) {
+        $invitedMembers = [];
+
+        if (!empty($task_user)) {
+            foreach ($task_user as $item) {
+                if (!empty($teachers[$item->user_id])) {
+                    $invitedMembers[$item->user_id] = $teachers[$item->user_id];
+                }
+            }
+        }
+        return $invitedMembers;
     }
 
 }

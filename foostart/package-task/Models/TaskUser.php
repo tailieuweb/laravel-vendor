@@ -36,7 +36,7 @@ class TaskUser extends FooModel {
                 'type' => 'Int',
             ],
             'task_id' => [
-                'name' => 'user_id',
+                'name' => 'task_id',
                 'type' => 'Int',
             ],
             'notes' => [
@@ -62,7 +62,8 @@ class TaskUser extends FooModel {
         $this->valid_filter_fields = [
             'keyword',
             'status',
-            'task_id'
+            'task_id',
+            'user_id'
         ];
 
         //primary key
@@ -98,7 +99,7 @@ class TaskUser extends FooModel {
         if ($this->is_pagination) {
             $items = $this->paginateItems($params, $elo);
         } else {
-            $items = $elo->get();
+            $items = $elo->with('task')->get();
         }
 
         return $items;
@@ -125,10 +126,18 @@ class TaskUser extends FooModel {
         $elo = $this->createSelect($elo);
 
         //id
-        $elo = $elo->where($this->primaryKey, $params['id']);
+        if (!empty($params['id'])) {
+            $elo = $elo->where($this->primaryKey, $params['id']);
+        }
+        if (!empty($params['user_id'])) {
+            $elo = $elo->where($this->primaryKey, $params['user_id']);
+        }
+        if (!empty($params['task_id'])) {
+            $elo = $elo->where($this->primaryKey, $params['task_id']);
+        }
 
         //first item
-        $item = $elo->first();
+        $item = $elo->with('task')->first();
 
         return $item;
     }
@@ -166,6 +175,11 @@ class TaskUser extends FooModel {
                         case 'task_id':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.task_id', '=', $value);
+                            }
+                            break;
+                        case 'user_id':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.user_id', '=', $value);
                             }
                             break;
                         case 'status':
@@ -278,14 +292,14 @@ class TaskUser extends FooModel {
             //Add
             foreach ($actionUsers['add'] as $user_id) {
                 $_data = [
-                  'task_id' => $params['task_id'],
+                    'task_id' => $params['task_id'],
                     'user_id' => $user_id
                 ];
                 $this->insertItem($_data);
             }
             //Delete
             foreach ($taskUsers as $taskUser) {
-                if (in_array($taskUser->id, $actionUsers['delete'])) {
+                if (in_array($taskUser->user_id, $actionUsers['delete'])) {
                     $this->deleteItem(['id' => $taskUser->id]);
                 }
             }
@@ -398,6 +412,14 @@ class TaskUser extends FooModel {
         }
 
         return $assignees;
+    }
+
+    /**
+     * Get the task
+     */
+    public function task()
+    {
+        return $this->belongsTo(Task::class,'task_id', 'task_id');
     }
 
 }
