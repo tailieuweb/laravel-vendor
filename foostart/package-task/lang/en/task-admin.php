@@ -52,6 +52,7 @@ return [
         'operations' => 'Operations',
         'updated_at' => 'Updated at',
         'filename' => 'File name',
+        'status' => 'Status',
     ],
 
 
@@ -126,6 +127,7 @@ return [
     */
     'descriptions' => [
         'form' => 'Task form',
+        'notes' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'update' => 'Update task',
         'name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category' => 'Click <a href=":href">here</a> to manage list of categories by token.',
@@ -206,6 +208,7 @@ return [
         'config' => 'Configurations',
         'slug' => 'Task slug',
         'invite_member' => 'Invite members',
+        'notes' => 'Notes',
     ],
 
 
@@ -236,6 +239,8 @@ return [
         'other'  => 'Other',
         'basic'  => 'Basic',
         'advance' => 'Advance',
+        'usermenu_1' => 'Confirm',
+        'usermenu_2' => 'Task info',
     ],
 
 

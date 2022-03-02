@@ -115,5 +115,13 @@ return [
             "link" => '/admin/task',
             "permissions" => [$admin]
         ],
+
+        //User Task
+        [
+            "name" => "task-admin.menus.top-menu",
+            "route" => "usertask.list",
+            "link" => '/user/task',
+            "permissions" => []
+        ],
     ]
 ];

@@ -6,6 +6,31 @@ use Illuminate\Session\TokenMismatchException;
  * FRONT
  */
 
+Route::group(['middleware' => ['web']], function () {
+
+    Route::group(['middleware' => ['admin_logged', 'can_see'],
+        'namespace' => 'Foostart\Task\Controllers\User',
+    ], function () {
+
+        Route::get('user/task', [
+            'as' => 'usertask.list',
+            'uses' => 'TaskUserController@taskList'
+        ]);
+        Route::get('user/task/edit', [
+            'as' => 'usertask.edit',
+            'uses' => 'TaskUserController@taskEdit'
+        ]);
+        Route::post('user/task/edit', [
+            'as' => 'usertask.post',
+            'uses' => 'TaskUserController@taskPost'
+        ]);
+        Route::get('user/task/view', [
+            'as' => 'usertask.view',
+            'uses' => 'TaskUserController@taskView'
+        ]);
+
+    });
+});
 
 /**
  * ADMINISTRATOR
@@ -36,6 +61,8 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'task.list',
             'uses' => 'TaskAdminController@index'
         ]);
+
+
 
         /**
          * edit-add

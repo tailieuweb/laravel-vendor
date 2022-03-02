@@ -70,7 +70,7 @@ class TaskUser extends FooModel {
         $this->primaryKey = 'assignee_id';
 
         //the number of items on page
-        $this->perPage = 0;
+        $this->perPage = 10;
         $this->is_pagination = false;
 
 
@@ -95,11 +95,22 @@ class TaskUser extends FooModel {
         //order filters
         $elo = $this->orderingFilters($params, $elo);
 
+        $elo = $elo->with('tasks');
+
+        if (!empty($params['keyword'])) {
+            $elo = $elo->where(function ($query) use ($params) {
+                $query->whereRelation('tasks', 'task_name', 'LIKE', "%{$params['keyword']}%");
+                $query->orWhereRelation('tasks', 'task_description', 'LIKE', "%{$params['keyword']}%");
+                $query->orWhereRelation('tasks', 'task_overview', 'LIKE', "%{$params['keyword']}%");
+            });
+
+        }
+
         //paginate items
         if ($this->is_pagination) {
             $items = $this->paginateItems($params, $elo);
         } else {
-            $items = $elo->with('task')->get();
+            $items = $elo->get();
         }
 
         return $items;
@@ -129,15 +140,10 @@ class TaskUser extends FooModel {
         if (!empty($params['id'])) {
             $elo = $elo->where($this->primaryKey, $params['id']);
         }
-        if (!empty($params['user_id'])) {
-            $elo = $elo->where($this->primaryKey, $params['user_id']);
-        }
-        if (!empty($params['task_id'])) {
-            $elo = $elo->where($this->primaryKey, $params['task_id']);
-        }
+
 
         //first item
-        $item = $elo->with('task')->first();
+        $item = $elo->with('tasks')->first();
 
         return $item;
     }
@@ -187,15 +193,6 @@ class TaskUser extends FooModel {
                                 $elo = $elo->where($this->table . '.'.$this->field_status, '=', $value);
                             }
                             break;
-                        case 'keyword':
-                            if (!empty($value)) {
-                                $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.task_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.task_description','LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.task_overview','LIKE', "%{$value}%");
-                                });
-                            }
-                            break;
                         default:
                             break;
                     }
@@ -226,7 +223,7 @@ class TaskUser extends FooModel {
      * @return ELOQUENT OBJECT
      */
     public function paginateItems(array $params = [], $elo) {
-        $items = $elo->paginate($this->perPage);
+        $items = $elo->with('tasks')->paginate($this->perPage);
 
         return $items;
     }
@@ -417,7 +414,7 @@ class TaskUser extends FooModel {
     /**
      * Get the task
      */
-    public function task()
+    public function tasks()
     {
         return $this->belongsTo(Task::class,'task_id', 'task_id');
     }
