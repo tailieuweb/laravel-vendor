@@ -84,17 +84,39 @@
         <!--/TASK SLUG-->
 
         <div class="row">
-            <div class="col-md-6">
-                <!--STATUS-->
-                @include('package-category::admin.partials.select_single', [
-                    'name' => 'status',
-                    'label' => trans($plang_admin.'.form.status'),
-                    'value' => @$item->status,
-                    'items' => $status,
-                    'description' => trans($plang_admin.'.descriptions.status'),
+            <div class='col-md-4'>
+                <!--START DATE-->
+                <?php $task_start_date = null ?>
+                @if(isset($item->task_end_date))
+                    <?php $task_start_date = date('d-m-Y', strtotime($item->task_start_date)) ?>
+                @endif
+                @include('package-category::admin.partials.input_date', [
+                    'name' => 'task_start_date',
+                    'id' => 'datepicker_start_date',
+                    'label' => trans($plang_admin.'.labels.start_date'),
+                    'value' => $task_start_date,
+                    'description' => trans($plang_admin.'.descriptions.start_date'),
+                    'errors' => $errors,
                 ])
+                <!--/START DATE-->
             </div>
-            <div class="col-md-6">
+            <div class='col-md-4'>
+                <!--END DATE-->
+                <?php $task_end_date = null ?>
+                @if(isset($item->task_end_date))
+                    <?php $task_end_date = date('d-m-Y', strtotime($item->task_end_date)) ?>
+                @endif
+                @include('package-category::admin.partials.input_date', [
+                    'name' => 'task_end_date',
+                    'id' => 'datepicker_end_date',
+                    'label' => trans($plang_admin.'.labels.end_date'),
+                    'value' => $task_end_date,
+                    'description' => trans($plang_admin.'.descriptions.end_date'),
+                    'errors' => $errors,
+                ])
+                <!--/END DATE-->
+            </div>
+            <div class="col-md-4">
                 <!-- LIST OF CATEGORIES -->
                 @include('package-category::admin.partials.select_single', [
                     'name' => 'category_id',
@@ -106,8 +128,42 @@
                     ]),
                     'errors' => $errors,
                 ])
-                <!-- /LIST OF CATEGORIES -->
+            <!-- /LIST OF CATEGORIES -->
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <!--SIZE-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'task_size',
+                    'label' => trans($plang_admin.'.form.task_size'),
+                    'value' => @$item->task_size,
+                    'items' => $size,
+                    'description' => trans($plang_admin.'.descriptions.task_size'),
+                ])
+            </div>
+            <div class="col-md-4">
+                <!--PRIORITY-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'task_priority',
+                    'label' => trans($plang_admin.'.form.task_priority'),
+                    'value' => @$item->task_priority,
+                    'items' => $priority,
+                    'description' => trans($plang_admin.'.descriptions.task_priority'),
+                ])
+            </div>
+            <div class="col-md-4">
+                <!--STATUS-->
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'status',
+                    'label' => trans($plang_admin.'.form.status'),
+                    'value' => @$item->status,
+                    'items' => $status,
+                    'description' => trans($plang_admin.'.descriptions.status'),
+                ])
+            </div>
+
         </div>
 
     </div>
@@ -197,7 +253,7 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                @if(!empty($invitedMembers))
+
                     <span>Invited members: {{count($invitedMembers)}}</span>
                     <table class="table table-hover invited-members">
                         <thead>
@@ -223,9 +279,6 @@
                             </tr>
                         </tbody>
                     </table>
-                @else
-                    <span>No invited members</span>
-                @endif
             </div>
         </div>
 
@@ -247,7 +300,9 @@
 
 @section('footer_scripts')
     @parent
-
+    {!! HTML::script('packages/foostart/js/form-table.js')  !!}
+    {!! HTML::script('packages/foostart/js/vendor/moment-with-locales-2.29.1.min.js') !!}
+    {!! HTML::script('packages/foostart/js/vendor/bootstrap-datetimepicker-4.17.47.min.js') !!}
     <script type='text/javascript'>
 
         $(document).ready(function () {
@@ -318,7 +373,26 @@
                 }
 
             })(jQuery);
+
+            //https://getdatepicker.com/4/#bootstrap-3-datepicker-v4-docs
+            $(function () {
+                $('#datepicker_start_date').datetimepicker({
+                    format: 'DD-MM-YYYY'
+                });
+                $('#datepicker_end_date').datetimepicker({
+                    useCurrent: false, //Important! See issue #1075
+                    format: 'DD-MM-YYYY'
+                });
+                $("#datepicker_start_date").on("dp.change", function (e) {
+                    $('#datepicker_end_date').data("DateTimePicker").minDate(e.date);
+                });
+                $("#datepicker_end_date").on("dp.change", function (e) {
+                    $('#datepicker_start_date').data("DateTimePicker").maxDate(e.date);
+                });
+            });
         });
+
+
 
     </script>
 @endsection

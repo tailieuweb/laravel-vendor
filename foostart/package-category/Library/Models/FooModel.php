@@ -9,6 +9,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Foostart\Category\Models\Context;
+use Carbon\Carbon;
 
 class FooModel extends Model
 {
@@ -288,7 +289,7 @@ class FooModel extends Model
         $value = NULL;
 
         if (isset($params[$key])) {
-            $value = (int)$params[$key];
+            $value = Carbon::parse($params[$key])->format('Y-m-d');
         }
 
         return $value;

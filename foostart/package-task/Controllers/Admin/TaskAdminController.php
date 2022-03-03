@@ -63,6 +63,8 @@ class TaskAdminController extends FooController {
         ];
 
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
+        $this->data_view['size'] = $this->getConfigSize()['list'];
+        $this->data_view['priority'] = $this->getConfigPriority()['list'];
 
         // //set category
         $this->category_ref_name = 'admin/task';
@@ -137,6 +139,8 @@ class TaskAdminController extends FooController {
         $teachers = $this->getTeachers();
         $invitedMembers = $this->getInvitedMembers($teachers, $task_user);
 
+        $size = $this->getConfigSize();
+        $priority = $this->getConfigPriority();
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
@@ -146,6 +150,8 @@ class TaskAdminController extends FooController {
             'context' => $context,
             'members' => $teachers,
             'invitedMembers' => $invitedMembers,
+            'size' => $size['list'],
+            'priority' => $priority['list'],
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
@@ -455,6 +461,20 @@ class TaskAdminController extends FooController {
             }
         }
         return $invitedMembers;
+    }
+
+    public function getConfigSize()
+    {
+        $config_size = config('package-task.size');
+
+        return $config_size;
+    }
+
+    public function getConfigPriority()
+    {
+        $config_priority = config('package-task.priority');
+
+        return $config_priority;
     }
 
 }

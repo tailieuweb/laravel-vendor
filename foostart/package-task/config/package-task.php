@@ -97,5 +97,35 @@ return [
             6  => '#ef4522',
         ]
     ],
+    'size' => [
+        'small' => 1,
+        'medium' => 2,
+        'large' => 3,
+        'list' => [
+            1 => 'Small',
+            2 => 'Medium',
+            3 => 'Large'
+        ],
+        'color' => [
+            1 => '#5bc0de',
+            2  => '#a8aac2',
+            3  => '#a8bbc2'
+        ]
+    ],
+    'priority' => [
+        'low' => 1,
+        'medium' => 2,
+        'high' => 3,
+        'list' => [
+            1 => 'Low',
+            2 => 'Medium',
+            3 => 'High'
+        ],
+        'color' => [
+            1 => '#5bc0de',
+            2  => '#a8aac2',
+            3  => '#a8bbc2'
+        ]
+    ],
 
 ];
