@@ -1913,6 +1913,7 @@ class ComposerStaticInitda26cd55fd7ef84ae953135c71b932a3
         'Foostart\\Slideshow\\Validators\\SlideshowValidator' => __DIR__ . '/..' . '/foostart/package-slideshow/Validators/SlideshowValidator.php',
         'Foostart\\Slideshow\\Validators\\StyleValidator' => __DIR__ . '/..' . '/foostart/package-slideshow/Validators/StyleValidator.php',
         'Foostart\\Task\\Controllers\\Admin\\TaskAdminController' => __DIR__ . '/..' . '/foostart/package-task/Controllers/Admin/TaskAdminController.php',
+        'Foostart\\Task\\Controllers\\User\\TaskUserController' => __DIR__ . '/..' . '/foostart/package-task/Controllers/User/TaskUserController.php',
         'Foostart\\Task\\Models\\Task' => __DIR__ . '/..' . '/foostart/package-task/Models/Task.php',
         'Foostart\\Task\\Models\\TaskUser' => __DIR__ . '/..' . '/foostart/package-task/Models/TaskUser.php',
         'Foostart\\Task\\TaskServiceProvider' => __DIR__ . '/..' . '/foostart/package-task/TaskServiceProvider.php',

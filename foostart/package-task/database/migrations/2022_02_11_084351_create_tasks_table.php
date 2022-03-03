@@ -9,7 +9,7 @@ class CreateTasksTable extends FoostartMigration
 {
     public function __construct()
     {
-        $this->table = 'task';
+        $this->table = 'tasks';
         $this->prefix_column = 'task_';
     }
 
