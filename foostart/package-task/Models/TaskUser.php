@@ -244,16 +244,21 @@ class TaskUser extends FooModel {
         $_params = [
             'id' => $id,
         ];
-        $task = $this->selectItem($_params);
+        $taskUser = $this->selectItem($_params);
 
-        if (!empty($task)) {
+        if (!empty($taskUser)) {
             $dataFields = $this->getDataFields($params, $this->fields);
 
             foreach ($dataFields as $key => $value) {
-                $task->$key = $value;
+                $taskUser->$key = $value;
             }
 
-            $task->save();
+            $taskUser->save();
+
+            //Update task info
+            $task = new Task();
+            $task_id = $params['task_id'];
+            $task->updateItem($params, $task_id);
 
             return $task;
         } else {

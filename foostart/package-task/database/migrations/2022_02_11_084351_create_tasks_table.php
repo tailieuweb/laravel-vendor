@@ -9,7 +9,7 @@ class CreateTasksTable extends FoostartMigration
 {
     public function __construct()
     {
-        $this->table = 'task';
+        $this->table = 'tasks';
         $this->prefix_column = 'task_';
     }
 
@@ -30,7 +30,11 @@ class CreateTasksTable extends FoostartMigration
 
 
             // Other attributes
-            $table->string($this->prefix_column . 'name', 255)->comment('Post name');
+            $table->string($this->prefix_column . 'name', 255)->comment('Task name');
+            $table->date($this->prefix_column . 'start_date')->nullable()->comment('Task start date');
+            $table->date($this->prefix_column . 'end_date')->nullable()->comment('Task end date');
+            $table->tinyInteger($this->prefix_column . 'size')->nullable()->comment('Task size');
+            $table->tinyInteger($this->prefix_column . 'priority')->nullable()->comment('Task priority');
             $table->integer($this->prefix_column . 'order')->nullable()->comment('Order in list of categories');
             $table->string($this->prefix_column . 'slug', 1000)->comment('Slug in URL');
             $table->string($this->prefix_column . 'overview', 1000)->comment('Post overview');

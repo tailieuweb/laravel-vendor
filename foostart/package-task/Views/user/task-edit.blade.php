@@ -15,7 +15,7 @@
 |
 |_______________________________________________________________________________
 -->
-@extends('package-acl::admin.layouts.base-2cols')
+@extends('package-task::admin.task-layout')
 
 @section('title')
     {{ trans($plang_admin.'.pages.title-edit') }}

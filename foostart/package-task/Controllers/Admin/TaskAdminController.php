@@ -59,10 +59,17 @@ class TaskAdminController extends FooController {
                 'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
                 'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
                 'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
-            ]
+            ],
+            'teacher' => [
+                'items' => $this->package_name.'::teacher.'.$this->package_base_name.'-items',
+                'tasks' => $this->package_name.'::teacher.'.$this->package_base_name.'-teacher-items',
+                'view'  => $this->package_name.'::teacher.'.$this->package_base_name.'-view',
+            ],
         ];
 
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
+        $this->data_view['size'] = $this->getConfigSize()['list'];
+        $this->data_view['priority'] = $this->getConfigPriority()['list'];
 
         // //set category
         $this->category_ref_name = 'admin/task';
@@ -137,6 +144,8 @@ class TaskAdminController extends FooController {
         $teachers = $this->getTeachers();
         $invitedMembers = $this->getInvitedMembers($teachers, $task_user);
 
+        $size = $this->getConfigSize();
+        $priority = $this->getConfigPriority();
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
@@ -146,6 +155,8 @@ class TaskAdminController extends FooController {
             'context' => $context,
             'members' => $teachers,
             'invitedMembers' => $invitedMembers,
+            'size' => $size['list'],
+            'priority' => $priority['list'],
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
@@ -455,6 +466,166 @@ class TaskAdminController extends FooController {
             }
         }
         return $invitedMembers;
+    }
+
+    public function getConfigSize()
+    {
+        $config_size = config('package-task.size');
+
+        return $config_size;
+    }
+
+    public function getConfigPriority()
+    {
+        $config_priority = config('package-task.priority');
+
+        return $config_priority;
+    }
+
+    public function teachers(Request $request) {
+
+        $params = $request->all();
+
+        $teachers = $this->teachersTasks($this->getTeachers());
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'items' => $teachers,
+            'request' => $request,
+            'params' => $params,
+        ));
+
+
+
+        return view($this->page_views['teacher']['items'], $this->data_view);
+
+
+    }
+
+    public function teachersTasks($teachers) {
+
+
+        $teachersTasks = [];
+        foreach ($teachers as $index => $value) {
+            //
+            $_params = [
+              'user_id' => $index
+            ];
+            $this->obj_task_user->is_pagination = false;
+            $tasks = $this->obj_task_user->selectItems($_params);
+            //
+            $teachersTasks[] = [
+                'id' => $index,
+                'name' => $value,
+                'total' => 0,
+                'assigned' => 0,
+                'canceled' => 0,
+                'done' => 0,
+                'declined' => 0,
+                'inprogress' => 0,
+                'pending' => 0,
+                'tasks' => $tasks,
+            ];
+        }
+
+        //Update info
+        $status = $this->getConfigStatus();
+        $size = $this->getConfigSize();
+        $priority = $this->getConfigPriority();
+
+        if (!empty($teachersTasks)) {
+            foreach($teachersTasks as $index => $item) {
+                if (!empty($item['tasks'])) {
+                    //total
+                    $teachersTasks[$index]['total'] = $item['tasks']->count();
+
+                    //Other info
+                    $assigned = 0;
+                    $canceled = 0;
+                    $done = 0;
+                    $declined = 0;
+                    $inprogress = 0;
+                    $pending = 0;
+                    foreach ($item['tasks'] as $_item) {
+                        switch ($_item->status) {
+                            case $status['assigned']:
+                                $assigned++;
+                                break;
+                            case $status['canceled']:
+                                $canceled++;
+                                break;
+                            case $status['done']:
+                                $done++;
+                                break;
+                            case $status['declined']:
+                                $declined++;
+                                break;
+                            case $status['inprogress']:
+                                $inprogress++;
+                                break;
+                            case $status['pending']:
+                                $pending++;
+                                break;
+                        }
+                    }
+
+                }
+
+                $teachersTasks[$index]['assigned'] = $assigned;
+                $teachersTasks[$index]['canceled'] = $canceled;
+                $teachersTasks[$index]['done'] = $done;
+                $teachersTasks[$index]['declined'] = $declined;
+                $teachersTasks[$index]['inprogress'] = $inprogress;
+                $teachersTasks[$index]['pending'] = $pending;
+
+            }
+        }
+
+        return $teachersTasks;
+    }
+
+    public function teachersByTask(Request $request, $user_id) {
+
+        //Get user id
+        $params = [
+            'user_id' => $user_id
+        ];
+        $this->obj_task_user->is_pagination = true;
+        $params = array_merge($request->all(), $params);
+        $assignedTask = $this->obj_task_user->selectItems($params);
+
+        $config_status = $this->getConfigStatus();
+        $status = $this->getPluckStatus();
+
+        // display view
+
+        $this->data_view = array_merge($this->data_view, array(
+            'items' => $assignedTask,
+            'request' => $request,
+            'params' => $params,
+            'config_status' => $config_status,
+            'status' => $status
+        ));
+
+        return view($this->page_views['teacher']['tasks'], $this->data_view);
+    }
+    public function getConfigStatus()
+    {
+        $config_status = config('package-task.status');
+
+        return $config_status;
+    }
+    /**
+     * Get list of statuses to push to select
+     * @return ARRAY list of statuses
+     */
+    public function getPluckStatus()
+    {
+        $config_status = config('package-task.status');
+        $pluck_status = [];
+        if ($config_status && $config_status['list']) {
+            $pluck_status = $config_status['list'];
+        }
+        return $pluck_status;
     }
 
 }

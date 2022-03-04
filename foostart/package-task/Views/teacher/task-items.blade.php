@@ -46,7 +46,7 @@
                     <div class="panel-body">
                         {!! Form::open(['route'=>['task.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-task::admin.task-item')
+                            @include('package-task::teacher.task-item')
 
                             {!! csrf_field(); !!}
 

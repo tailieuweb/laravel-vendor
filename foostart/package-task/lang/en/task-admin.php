@@ -33,6 +33,7 @@ return [
         'config' => 'Configurations',
         'lang' => 'Languages',
         'category' => 'Categories',
+        'teachers' => 'Teachers',
     ],
 
 
@@ -53,6 +54,15 @@ return [
         'updated_at' => 'Updated at',
         'filename' => 'File name',
         'status' => 'Status',
+        'total' => 'Total',
+        'assigned' => 'Assigned',
+        'canceled' => 'Canceled',
+        'done' => 'Done',
+        'declined' => 'Declined',
+        'inprogress' => 'In progress',
+        'teacher_name' => 'Teacher name',
+        'pending' => 'Pending',
+        'tasks' => 'Tasks',
     ],
 
 
@@ -112,6 +122,10 @@ return [
         'sorting' => 'Sorting',
         'no-selected' => 'No selected',
         'status' => 'Status',
+        'task_size' => 'Task size',
+        'task_priority' => 'Task priority',
+        'start_date' => 'Start date',
+        'end_date' => 'End date',
     ],
 
 
@@ -127,6 +141,10 @@ return [
     */
     'descriptions' => [
         'form' => 'Task form',
+        'start_date' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
+        'end_date' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
+        'task_size' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'task_priority' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'notes' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'update' => 'Update task',
         'name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
@@ -198,6 +216,8 @@ return [
     */
     'labels' => [
         'name' => 'Task name',
+        'start_date' => 'Start date',
+        'end_date' => 'End date',
         'overview' => 'Task overview',
         'description' => 'Task description',
         'image' => 'Task image',

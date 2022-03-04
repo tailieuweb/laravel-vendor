@@ -1,5 +1,6 @@
 <?php namespace Foostart\Task\Models;
 
+use Carbon\Carbon;
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 use Foostart\Task\Models\TaskUser;
@@ -28,7 +29,11 @@ class Task extends FooModel {
         $this->fillable = array_merge($this->fillable, [
             'category_id',
             'task_name',
-            'task_order',
+            'task_name',
+            'task_start_date',
+            'task_end_date',
+            'task_size',
+            'task_priority',
             'task_slug',
             'task_overview',
             'task_description',
@@ -41,6 +46,22 @@ class Task extends FooModel {
             'task_name' => [
                 'name' => 'task_name',
                 'type' => 'Text',
+            ],
+            'task_start_date' => [
+                'name' => 'task_start_date',
+                'type' => 'Date',
+            ],
+            'task_end_date' => [
+                'name' => 'task_end_date',
+                'type' => 'Date',
+            ],
+            'task_size' => [
+                'name' => 'task_size',
+                'type' => 'Int',
+            ],
+            'task_priority' => [
+                'name' => 'task_priority',
+                'type' => 'Int',
             ],
             'task_slug' => [
                 'name' => 'task_slug',
@@ -71,6 +92,10 @@ class Task extends FooModel {
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
             'task_name',
+            'task_start_date',
+            'task_end_date',
+            'task_size',
+            'task_priority',
             'task_slug',
             'task_order',
             'category_id',
@@ -83,11 +108,19 @@ class Task extends FooModel {
         //check valid fields for ordering
         $this->valid_ordering_fields = [
             'task_name',
+            'task_start_date',
+            'task_end_date',
+            'task_size',
+            'task_priority',
             'updated_at',
             $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
+            'task_start_date',
+            'task_end_date',
+            'task_size',
+            'task_priority',
             'keyword',
             'status',
         ];
@@ -174,12 +207,41 @@ class Task extends FooModel {
         //filter
         if ($this->isValidFilters($params) && (!empty($params)))
         {
+
             foreach($params as $column => $value)
             {
                 if($this->isValidValue($value))
                 {
                     switch($column)
                     {
+                        case 'task_start_date':
+                            if (!empty($value)) {
+                                $value =  Carbon::parse($value)->format('Y-m-d');
+
+                                if (!empty($value)) {
+                                    $elo = $elo->where($this->table . '.task_start_date', '>=', $value);
+                                }
+                            }
+
+                            break;
+                        case 'task_end_date':
+                            if (!empty($value)) {
+                                $value = Carbon::parse($value)->format('Y-m-d');
+                                if (!empty($value)) {
+                                    $elo = $elo->where($this->table . '.task_end_date', '<=', $value);
+                                }
+                            }
+                            break;
+                        case 'task_size':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.task_size', '=', $value);
+                            }
+                            break;
+                        case 'task_priority':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.task_priority', '=', $value);
+                            }
+                            break;
                         case 'task_name':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.task_name', '=', $value);
@@ -205,7 +267,7 @@ class Task extends FooModel {
                 }
             }
         } elseif ($by_status) {
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
+            //$elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
 
         }
 
@@ -265,11 +327,13 @@ class Task extends FooModel {
             $task->save();
 
             //Add assignee to task
-            $_params = [
-              'task_id' => $task->task_id,
-              'invited_member_id' => $params['invited_member_id']
-            ];
-            $this->objTaskUser->updateItems($_params);
+            if (array_key_exists('invited_member_id', $params)) {
+                $_params = [
+                    'task_id' => $task->task_id,
+                    'invited_member_id' => $params['invited_member_id']
+                ];
+                $this->objTaskUser->updateItems($_params);
+            }
 
             return $task;
         } else {
@@ -296,11 +360,14 @@ class Task extends FooModel {
         $item->id = $item->$key;
 
         //Add assignee to task
-        $_params = [
-            'task_id' => $item->id,
-            'invited_member_id' => $params['invited_member_id']
-        ];
-        $this->objTaskUser->updateItems($_params);
+        if (array_key_exists('invited_member_id', $params)) {
+            $_params = [
+                'task_id' => $item->id,
+                'invited_member_id' => $params['invited_member_id']
+            ];
+            $this->objTaskUser->updateItems($_params);
+        }
+
 
         return $item;
     }
