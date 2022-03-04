@@ -67,6 +67,11 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'TaskAdminController@teachers'
         ]);
 
+        Route::get('admin/task/teachers/{id}', [
+            'as' => 'task.teachersView',
+            'uses' => 'TaskAdminController@teachersByTask'
+        ]);
+
 
 
         /**

@@ -62,6 +62,7 @@ class TaskAdminController extends FooController {
             ],
             'teacher' => [
                 'items' => $this->package_name.'::teacher.'.$this->package_base_name.'-items',
+                'tasks' => $this->package_name.'::teacher.'.$this->package_base_name.'-teacher-items',
                 'view'  => $this->package_name.'::teacher.'.$this->package_base_name.'-view',
             ],
         ];
@@ -520,6 +521,51 @@ class TaskAdminController extends FooController {
         }
 
         return $teachersTasks;
+    }
+
+    public function teachersByTask(Request $request, $user_id) {
+
+        //Get user id
+        $params = [
+            'user_id' => $user_id
+        ];
+        $this->obj_task_user->is_pagination = true;
+        $params = array_merge($request->all(), $params);
+        $assignedTask = $this->obj_task_user->selectItems($params);
+
+        $config_status = $this->getConfigStatus();
+        $status = $this->getPluckStatus();
+
+        // display view
+
+        $this->data_view = array_merge($this->data_view, array(
+            'items' => $assignedTask,
+            'request' => $request,
+            'params' => $params,
+            'config_status' => $config_status,
+            'status' => $status
+        ));
+
+        return view($this->page_views['teacher']['tasks'], $this->data_view);
+    }
+    public function getConfigStatus()
+    {
+        $config_status = config('package-task.status');
+
+        return $config_status;
+    }
+    /**
+     * Get list of statuses to push to select
+     * @return ARRAY list of statuses
+     */
+    public function getPluckStatus()
+    {
+        $config_status = config('package-task.status');
+        $pluck_status = [];
+        if ($config_status && $config_status['list']) {
+            $pluck_status = $config_status['list'];
+        }
+        return $pluck_status;
     }
 
 }

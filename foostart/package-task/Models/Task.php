@@ -267,7 +267,7 @@ class Task extends FooModel {
                 }
             }
         } elseif ($by_status) {
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
+            //$elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
 
         }
 
@@ -327,11 +327,13 @@ class Task extends FooModel {
             $task->save();
 
             //Add assignee to task
-            $_params = [
-              'task_id' => $task->task_id,
-              'invited_member_id' => $params['invited_member_id']
-            ];
-            $this->objTaskUser->updateItems($_params);
+            if (array_key_exists('invited_member_id', $params)) {
+                $_params = [
+                    'task_id' => $task->task_id,
+                    'invited_member_id' => $params['invited_member_id']
+                ];
+                $this->objTaskUser->updateItems($_params);
+            }
 
             return $task;
         } else {
@@ -358,11 +360,14 @@ class Task extends FooModel {
         $item->id = $item->$key;
 
         //Add assignee to task
-        $_params = [
-            'task_id' => $item->id,
-            'invited_member_id' => $params['invited_member_id']
-        ];
-        $this->objTaskUser->updateItems($_params);
+        if (array_key_exists('invited_member_id', $params)) {
+            $_params = [
+                'task_id' => $item->id,
+                'invited_member_id' => $params['invited_member_id']
+            ];
+            $this->objTaskUser->updateItems($_params);
+        }
+
 
         return $item;
     }

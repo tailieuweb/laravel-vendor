@@ -129,7 +129,12 @@ $counter = 1;
             <td> {!! $item['pending'] !!} </td>
 
             <!--TASKS-->
-            <td> {!! $item['tasks'] !!} </td>
+            <td>
+                <a href="{!! URL::route('task.teachersView', $item['id'])!!}"
+                   class="margin-left-5">
+                    <i class="fa fa-list-ul" aria-hidden="true"></i>
+                </a>
+            </td>
 
 
         </tr>

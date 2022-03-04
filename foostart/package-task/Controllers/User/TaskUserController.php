@@ -4,6 +4,8 @@ namespace Foostart\Task\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Foostart\Category\Library\Controllers\FooController;
+use Foostart\Category\Models\Category;
+use Foostart\Task\Models\Task;
 use Illuminate\Http\Request;
 
 use URL,
@@ -16,11 +18,15 @@ class TaskUserController extends FooController
 {
 
     public $taskUser;
+    public $task;
+    public $obj_category;
     public $data = array();
+    public $category_ref_name;
 
     public function __construct() {
         $this->taskUser = new TaskUser();
-
+        $this->task = new Task(array('perPage' => 10));
+        $this->obj_category = new Category();
         // set language files
         $this->plang_admin = 'task-admin';
         $this->plang_front = 'task-front';
@@ -40,6 +46,7 @@ class TaskUserController extends FooController
         ];
 
         $this->data_view['status'] = $this->taskUser->getPluckStatus();
+        $this->category_ref_name = 'admin/task';
     }
 
     /*
@@ -115,16 +122,28 @@ class TaskUserController extends FooController
         //Get user id
         $user_id = $user['user_id'];
         //Get task id
+        $assignedTask = null;
         $task_id = $request->get('id');
-        $params = [
-            'user_id' => (int)$user_id,
-            'task_id' => (int)$task_id
-        ];
-        $assignedTask = $this->taskUser->selectItem($params);
+        if (!empty($task_id)) {
+            $params = [
+                'user_id' => (int)$user_id,
+                'task_id' => (int)$task_id
+            ];
+            $assignedTask = $this->taskUser->selectItem($params);
+        }
+
 
         $status = $this->getPluckStatus();
         $size = $this->getConfigSize();
         $priority = $this->getConfigPriority();
+
+        //get categories by context
+        $categories = [];
+        $context = $this->task->getContext($this->category_ref_name);
+        if ($context) {
+            $params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($params);
+        }
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
@@ -132,8 +151,10 @@ class TaskUserController extends FooController
             'request' => $request,
             'params' => $params,
             'status' => $status,
-            'size' => $size,
-            'priority' => $priority,
+            'size' => $size['list'],
+            'priority' => $priority['list'],
+            'categories' => $categories,
+            'context' => $context,
         ));
 
         return view($this->page_views['user']['edit'], $this->data_view);
@@ -145,12 +166,15 @@ class TaskUserController extends FooController
         //Get user id
         $user_id = $user['user_id'];
         //Get task id
+        $assignedTask = null;
         $task_id = $request->get('id');
-        $params = [
-            'user_id' => (int)$user_id,
-            'task_id' => (int)$task_id
-        ];
-        $assignedTask = $this->taskUser->selectItem($params);
+        if (!empty($task_id)) {
+            $params = [
+                'user_id' => (int)$user_id,
+                'task_id' => (int)$task_id
+            ];
+            $assignedTask = $this->taskUser->selectItem($params);
+        }
         $data = $request->all();
         if (!empty($assignedTask)) {
             //Update
@@ -160,6 +184,21 @@ class TaskUserController extends FooController
             //message
             return Redirect::route('usertask.edit', ["id" => $task_id])
                 ->withMessage(trans($this->plang_admin.'.actions.add-ok'));
+        } else {
+            //Insert task
+            $obj_task = new Task();
+            $task = $obj_task->insertItem($data);
+
+            //Insert task user
+            $_params = [
+              'user_id' => $user_id,
+              'task_id' => $task->id,
+              'status' => $data['status'],
+                'notes' => $data['notes']
+            ];
+            $this->taskUser->insertItem($_params);
+            $task_id = $task->id;
+
         }
 
         //message

@@ -23,6 +23,8 @@ View::composer([
                 'package-task::admin.task-lang',
                 'package-task::teacher.task-items',
                 'package-task::teacher.task-view',
+                'package-task::teacher.task-teacher-view',
+                'package-task::teacher.task-teacher-items',
     ], function ($view) {
 
         /**
@@ -75,6 +77,7 @@ View::composer([
             '' => trans($plang_admin.'.form.no-selected'),
             'id' => trans($plang_admin.'.fields.id'),
             'task_name' => trans($plang_admin.'.fields.name'),
+            'status' => trans($plang_admin.'.fields.status'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
         ];
         $sorting = [
@@ -167,6 +170,10 @@ View::composer([
      */
     $view->with('sidebar_items', [
 
+        trans('task-admin.sidebar.add') => [
+            "url" => URL::route('usertask.edit', []),
+            'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
+        ],
         trans('task-admin.sidebar.list') => [
             "url" => URL::route('usertask.list', []),
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
