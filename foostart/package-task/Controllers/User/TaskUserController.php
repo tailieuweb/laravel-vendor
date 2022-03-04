@@ -123,6 +123,8 @@ class TaskUserController extends FooController
         $assignedTask = $this->taskUser->selectItem($params);
 
         $status = $this->getPluckStatus();
+        $size = $this->getConfigSize();
+        $priority = $this->getConfigPriority();
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
@@ -130,6 +132,8 @@ class TaskUserController extends FooController
             'request' => $request,
             'params' => $params,
             'status' => $status,
+            'size' => $size,
+            'priority' => $priority,
         ));
 
         return view($this->page_views['user']['edit'], $this->data_view);
@@ -213,5 +217,19 @@ class TaskUserController extends FooController
     }
 
 
+
+    public function getConfigSize()
+    {
+        $config_size = config('package-task.size');
+
+        return $config_size;
+    }
+
+    public function getConfigPriority()
+    {
+        $config_priority = config('package-task.priority');
+
+        return $config_priority;
+    }
 
 }

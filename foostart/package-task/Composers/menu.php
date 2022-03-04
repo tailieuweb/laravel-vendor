@@ -21,6 +21,8 @@ View::composer([
                 'package-task::admin.task-search',
                 'package-task::admin.task-config',
                 'package-task::admin.task-lang',
+                'package-task::teacher.task-items',
+                'package-task::teacher.task-view',
     ], function ($view) {
 
         /**
@@ -45,6 +47,10 @@ View::composer([
             ],
             trans('task-admin.sidebar.list') => [
                 "url" => URL::route('task.list', []),
+                'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
+            ],
+            trans('task-admin.sidebar.teachers') => [
+                "url" => URL::route('task.teachers', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('task-admin.sidebar.category') => [
@@ -141,6 +147,7 @@ View::composer([
     'package-task::user.task-items',
     'package-task::user.task-item',
     'package-task::user.task-search',
+
 ], function ($view) {
 
     /**

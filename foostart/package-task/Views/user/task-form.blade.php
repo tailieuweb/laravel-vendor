@@ -2,7 +2,7 @@
 | List of elements in task form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['usertask.post', 'id' => @$item->task->task_id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['usertask.post', 'id' => @$item->tasks->task_id],  'files'=>true, 'method' => 'post'])  !!}
 
 <!--BUTTONS-->
 <div class='btn-form'>
@@ -63,17 +63,17 @@
     <div id="menu_2" class="tab-pane fade">
         <!--TASK NAME-->
         <div class="task_name">
-            Tên công việc: {{$item->task->task_name}}
+            Tên công việc: {{$item->tasks->task_name}}
         </div>
         <!--/TASK NAME-->
         <!--TASK OVERVIEW-->
         <div class="task_name">
-            Sơ lược: {{$item->task->task_overview}}
+            Sơ lược: {{$item->tasks->task_overview}}
         </div>
         <!--/TASK OVERVIEW-->
         <!--TASK DESCRIPTION-->
         <div class="task_name">
-            Sơ lược: {{$item->task->task_description}}
+            Sơ lược: {{$item->tasks->task_description}}
         </div>
         <!--/TASK DESCRIPTION-->
 

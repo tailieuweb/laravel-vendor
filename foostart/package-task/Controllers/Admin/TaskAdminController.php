@@ -59,7 +59,11 @@ class TaskAdminController extends FooController {
                 'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
                 'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
                 'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
-            ]
+            ],
+            'teacher' => [
+                'items' => $this->package_name.'::teacher.'.$this->package_base_name.'-items',
+                'view'  => $this->package_name.'::teacher.'.$this->package_base_name.'-view',
+            ],
         ];
 
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
@@ -475,6 +479,47 @@ class TaskAdminController extends FooController {
         $config_priority = config('package-task.priority');
 
         return $config_priority;
+    }
+
+    public function teachers(Request $request) {
+
+        $params = $request->all();
+
+        $teachers = $this->teachersTasks($this->getTeachers());
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'items' => $teachers,
+            'request' => $request,
+            'params' => $params,
+        ));
+
+
+
+        return view($this->page_views['teacher']['items'], $this->data_view);
+
+
+    }
+
+    public function teachersTasks($teachers) {
+        $teachersTasks = [];
+        foreach ($teachers as $index => $value) {
+            $teachersTasks[] = [
+                'id' => $index,
+                'name' => $value,
+                'total' => 0,
+                'assigned' => 0,
+                'canceled' => 0,
+                'done' => 0,
+                'declined' => 0,
+                'inprogress' => 0,
+                'pending' => 0,
+                'tasks' => 0,
+            ];
+
+
+        }
+
+        return $teachersTasks;
     }
 
 }

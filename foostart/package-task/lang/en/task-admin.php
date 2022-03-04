@@ -33,6 +33,7 @@ return [
         'config' => 'Configurations',
         'lang' => 'Languages',
         'category' => 'Categories',
+        'teachers' => 'Teachers',
     ],
 
 
@@ -53,6 +54,15 @@ return [
         'updated_at' => 'Updated at',
         'filename' => 'File name',
         'status' => 'Status',
+        'total' => 'Total',
+        'assigned' => 'Assigned',
+        'canceled' => 'Canceled',
+        'done' => 'Done',
+        'declined' => 'Declined',
+        'inprogress' => 'In progress',
+        'teacher_name' => 'Teacher name',
+        'pending' => 'Pending',
+        'tasks' => 'Tasks',
     ],
 
 
