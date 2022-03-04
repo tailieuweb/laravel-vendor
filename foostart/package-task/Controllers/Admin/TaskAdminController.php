@@ -502,8 +502,17 @@ class TaskAdminController extends FooController {
     }
 
     public function teachersTasks($teachers) {
+
+
         $teachersTasks = [];
         foreach ($teachers as $index => $value) {
+            //
+            $_params = [
+              'user_id' => $index
+            ];
+            $this->obj_task_user->is_pagination = false;
+            $tasks = $this->obj_task_user->selectItems($_params);
+            //
             $teachersTasks[] = [
                 'id' => $index,
                 'name' => $value,
@@ -514,10 +523,61 @@ class TaskAdminController extends FooController {
                 'declined' => 0,
                 'inprogress' => 0,
                 'pending' => 0,
-                'tasks' => 0,
+                'tasks' => $tasks,
             ];
+        }
 
+        //Update info
+        $status = $this->getConfigStatus();
+        $size = $this->getConfigSize();
+        $priority = $this->getConfigPriority();
 
+        if (!empty($teachersTasks)) {
+            foreach($teachersTasks as $index => $item) {
+                if (!empty($item['tasks'])) {
+                    //total
+                    $teachersTasks[$index]['total'] = $item['tasks']->count();
+
+                    //Other info
+                    $assigned = 0;
+                    $canceled = 0;
+                    $done = 0;
+                    $declined = 0;
+                    $inprogress = 0;
+                    $pending = 0;
+                    foreach ($item['tasks'] as $_item) {
+                        switch ($_item->status) {
+                            case $status['assigned']:
+                                $assigned++;
+                                break;
+                            case $status['canceled']:
+                                $canceled++;
+                                break;
+                            case $status['done']:
+                                $done++;
+                                break;
+                            case $status['declined']:
+                                $declined++;
+                                break;
+                            case $status['inprogress']:
+                                $inprogress++;
+                                break;
+                            case $status['pending']:
+                                $pending++;
+                                break;
+                        }
+                    }
+
+                }
+
+                $teachersTasks[$index]['assigned'] = $assigned;
+                $teachersTasks[$index]['canceled'] = $canceled;
+                $teachersTasks[$index]['done'] = $done;
+                $teachersTasks[$index]['declined'] = $declined;
+                $teachersTasks[$index]['inprogress'] = $inprogress;
+                $teachersTasks[$index]['pending'] = $pending;
+
+            }
         }
 
         return $teachersTasks;

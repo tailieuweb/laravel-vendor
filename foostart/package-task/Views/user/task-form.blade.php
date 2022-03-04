@@ -154,16 +154,7 @@
                     'description' => trans($plang_admin.'.descriptions.task_priority'),
                 ])
             </div>
-            <div class="col-md-4">
-                <!--STATUS-->
-                @include('package-category::admin.partials.select_single', [
-                    'name' => 'status',
-                    'label' => trans($plang_admin.'.form.status'),
-                    'value' => @$item->tasks->status,
-                    'items' => $status,
-                    'description' => trans($plang_admin.'.descriptions.status'),
-                ])
-            </div>
+            
 
         </div>
 
