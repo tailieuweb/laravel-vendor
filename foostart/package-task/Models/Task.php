@@ -374,7 +374,7 @@ class Task extends FooModel {
     }
 
     public function pushingNotifaction($deviceToken, $data, $notification) {
-        $api_file = storage_path('app\mobirace-3f0df-firebase-adminsdk-f6p60-cbb4e40e25.json');
+        $api_file = storage_path('app/mobirace-3f0df-firebase-adminsdk-f6p60-cbb4e40e25.json');
         $factory = (new Factory)->withServiceAccount($api_file);
         $messaging = $factory->createMessaging();
 
