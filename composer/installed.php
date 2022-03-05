@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'b959ba2f5fd17e0f11035fec79244f249983bc36',
+    'reference' => '9dde45622462b2b3b801db6b11f68a0d140068a2',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -19,6 +19,24 @@
       array (
       ),
       'reference' => '73e5b88775c64ccc0b84fb60836b30dc9d92ac4a',
+    ),
+    'beste/clock' => 
+    array (
+      'pretty_version' => '1.0.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '10c02d2b49809168903a6b2e15f5001001972a2e',
+    ),
+    'beste/json' => 
+    array (
+      'pretty_version' => '1.0.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6b02a023ffb0ca92d612ce4f5a3b4c2bd6e17df3',
     ),
     'brick/math' => 
     array (
@@ -151,6 +169,15 @@
       ),
       'reference' => 'd7f08a622b3346766325488aa32ddc93ccdecc75',
     ),
+    'fig/http-message-util' => 
+    array (
+      'pretty_version' => '1.1.5',
+      'version' => '1.1.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9d94dc0154230ac39e5bf89398b324a86f63f765',
+    ),
     'filp/whoops' => 
     array (
       'pretty_version' => '2.14.5',
@@ -258,6 +285,42 @@
       array (
       ),
       'reference' => '3a066e5cac32e2d1cdaacd6b961692778f37b5fc',
+    ),
+    'google/auth' => 
+    array (
+      'pretty_version' => 'v1.18.0',
+      'version' => '1.18.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '21dd478e77b0634ed9e3a68613f74ed250ca9347',
+    ),
+    'google/cloud-core' => 
+    array (
+      'pretty_version' => 'v1.44.0',
+      'version' => '1.44.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '72706f7d1824777f42294a3c9ccdaddaad670017',
+    ),
+    'google/cloud-storage' => 
+    array (
+      'pretty_version' => 'v1.26.1',
+      'version' => '1.26.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1382afef595c2ced1c5e39ead91d903e8ebc8e22',
+    ),
+    'google/crc32' => 
+    array (
+      'pretty_version' => 'v0.1.0',
+      'version' => '0.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a8525f0dea6fca1893e1bae2f6e804c5f7d007fb',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -546,6 +609,24 @@
         0 => '*',
       ),
     ),
+    'kreait/firebase-php' => 
+    array (
+      'pretty_version' => '6.2.0',
+      'version' => '6.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7eee99eb882957350573f3986fae6d2912ad348a',
+    ),
+    'kreait/firebase-tokens' => 
+    array (
+      'pretty_version' => '2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b3a2666a716d518277fd85fa2e4462c6b4d1f1d3',
+    ),
     'laravel/framework' => 
     array (
       'pretty_version' => 'v8.83.0',
@@ -562,7 +643,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'b959ba2f5fd17e0f11035fec79244f249983bc36',
+      'reference' => '9dde45622462b2b3b801db6b11f68a0d140068a2',
     ),
     'laravel/passport' => 
     array (
@@ -620,12 +701,12 @@
     ),
     'lcobucci/jwt' => 
     array (
-      'pretty_version' => '4.0.4',
-      'version' => '4.0.4.0',
+      'pretty_version' => '4.1.5',
+      'version' => '4.1.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '55564265fddf810504110bd68ca311932324b0e9',
+      'reference' => 'fe2d89f2eaa7087af4aa166c6f480ef04e000582',
     ),
     'league/commonmark' => 
     array (
@@ -755,6 +836,15 @@
       array (
         0 => '^1.0',
       ),
+    ),
+    'mtdowling/jmespath.php' => 
+    array (
+      'pretty_version' => '2.6.1',
+      'version' => '2.6.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9b87907a81b87bc76d19a7fb2d61e61486ee9edb',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -1003,6 +1093,22 @@
       ),
       'reference' => '597cb647654ede35e43b137926dfdfef0fb11743',
     ),
+    'psr/cache' => 
+    array (
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '213f9dbc5b9bfbc4f8db86d2838dc968752ce13b',
+    ),
+    'psr/clock-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
     'psr/container' => 
     array (
       'pretty_version' => '1.1.2',
@@ -1158,6 +1264,24 @@
       array (
         0 => '4.2.3',
       ),
+    ),
+    'riverline/multipart-parser' => 
+    array (
+      'pretty_version' => '2.0.9',
+      'version' => '2.0.9.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ebba10245b5a6e03a673ff52c547d05029caedab',
+    ),
+    'rize/uri-template' => 
+    array (
+      'pretty_version' => '0.3.4',
+      'version' => '0.3.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2a874863c48d643b9e2e254ab288ec203060a0b8',
     ),
     'sebastian/cli-parser' => 
     array (
