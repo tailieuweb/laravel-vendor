@@ -154,7 +154,7 @@
                     'description' => trans($plang_admin.'.descriptions.task_priority'),
                 ])
             </div>
-            
+
 
         </div>
 

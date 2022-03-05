@@ -333,12 +333,55 @@ class Task extends FooModel {
                     'invited_member_id' => $params['invited_member_id']
                 ];
                 $this->objTaskUser->updateItems($_params);
+
+                //push notification
+                $this->pushNotification($params);
             }
 
             return $task;
         } else {
             return NULL;
         }
+    }
+
+    public function pushNotification($params) {
+        $app_key = "AAAA_07p2p8:APA91bEGHg4nc9I1I2WjHWx9EAK4vw3u6pbx_hgKfXuyY9P5s3T8NPBGK3MIxiZmz3Jr_r_KwTsKELSDro-sxT4BGkfphHZwpiURcSAvI2_nngbRyIPohQt6SAZiwiq0381l02T9lqCV";
+//        $app_key = " AIzaSyBBsbNkKwpjEw_A5HUt4p77fbwB3DJZuFE";
+        $device_token = "dlE8UD2bTDeDERsjrKaHH5:APA91bENYXsL1JvP-oriZJhne8oMjgki6wTL3SbW1L0RYBcYKlF7lESXmK2oip-UfLD7lRxVFa8by5ygXs2LngQGg2TB69aD5kiNrbbtl5JWS3B7b6Uk4CYUvOeSJXbLv0kwiscDP6i4";
+
+        $this->sendCloudMessaseToAndroid($app_key, $device_token, 'test');
+    }
+
+    function sendCloudMessaseToAndroid($serverKey, $deviceToken = "", $message = "test", $data = array()) {
+
+        $url = 'https://fcm.googleapis.com/fcm/send';
+
+        $fields = array (
+            'registration_ids' => array (
+                $deviceToken
+            ),
+            'data' => array (
+                "message" => $message
+            )
+        );
+        $fields = json_encode ( $fields );
+
+        $headers = array (
+            'Authorization: key=' . $serverKey,
+            'Content-Type: application/json'
+        );
+
+        $ch = curl_init ();
+        curl_setopt ( $ch, CURLOPT_URL, $url );
+        curl_setopt ( $ch, CURLOPT_POST, true );
+        curl_setopt ( $ch, CURLOPT_HTTPHEADER, $headers );
+        curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+        curl_setopt ( $ch, CURLOPT_POSTFIELDS, $fields );
+
+        $result = curl_exec ( $ch );
+
+        curl_close ( $ch );
+        return $result;
     }
 
 
