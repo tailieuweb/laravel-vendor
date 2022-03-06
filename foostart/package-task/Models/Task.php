@@ -357,11 +357,11 @@ class Task extends FooModel {
                     if (!empty($user_profile)) {
                         $data = [
                             'title' => 'Khoa CNTT',
-                            'body' => 'Bạn có công việc mới'
+                            'body' => 'aaaa'
                         ];
                         $notification = [
                             'title' => 'Khoa CNTT',
-                            'body' => 'Bạn có công việc mới'
+                            'body' => 'bbbb'
                         ];
                         $this->pushingNotifaction($user_profile->device_token, $data, $notification);
                     }
