@@ -4,6 +4,8 @@ use Carbon\Carbon;
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 use Foostart\Task\Models\TaskUser;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\Messaging\CloudMessage;
 
 class Task extends FooModel {
 
@@ -345,42 +347,45 @@ class Task extends FooModel {
     }
 
     public function pushNotification($params) {
-        $app_key = "AAAA_07p2p8:APA91bEGHg4nc9I1I2WjHWx9EAK4vw3u6pbx_hgKfXuyY9P5s3T8NPBGK3MIxiZmz3Jr_r_KwTsKELSDro-sxT4BGkfphHZwpiURcSAvI2_nngbRyIPohQt6SAZiwiq0381l02T9lqCV";
-//        $app_key = " AIzaSyBBsbNkKwpjEw_A5HUt4p77fbwB3DJZuFE";
-        $device_token = "dlE8UD2bTDeDERsjrKaHH5:APA91bENYXsL1JvP-oriZJhne8oMjgki6wTL3SbW1L0RYBcYKlF7lESXmK2oip-UfLD7lRxVFa8by5ygXs2LngQGg2TB69aD5kiNrbbtl5JWS3B7b6Uk4CYUvOeSJXbLv0kwiscDP6i4";
 
-        $this->sendCloudMessaseToAndroid($app_key, $device_token, 'test');
+        $profile_repository = \App::make('profile_repository');
+
+        if (!empty($params['invited_member_id'])) {
+            foreach ($params['invited_member_id'] as $user_id) {
+                if (!empty($user_id)) {
+                    $user_profile = $profile_repository->getFromUserId($user_id);
+                    if (!empty($user_profile)) {
+                        $data = [
+                            'title' => 'Khoa CNTT',
+                            'body' => 'Bạn có công việc mới'
+                        ];
+                        $notification = [
+                            'title' => 'Khoa CNTT',
+                            'body' => 'Bạn có công việc mới'
+                        ];
+                        $this->pushingNotifaction($user_profile->device_token, $data, $notification);
+                    }
+                }
+            }
+
+
+        }
+
     }
 
-    function sendCloudMessaseToAndroid($serverKey, $deviceToken = "", $message = "test", $data = array()) {
+    public function pushingNotifaction($deviceToken, $data, $notification) {
+        $api_file = storage_path('app\mobirace-3f0df-firebase-adminsdk-f6p60-cbb4e40e25.json');
+        $factory = (new Factory)->withServiceAccount($api_file);
+        $messaging = $factory->createMessaging();
 
-        $url = 'https://fcm.googleapis.com/fcm/send';
+        $message = CloudMessage::fromArray([
+            'token' => $deviceToken,
+            'notification' => $notification, // optional
+            'data' => $data, // optional
+        ]);
 
-        $fields = array (
-            'registration_ids' => array (
-                $deviceToken
-            ),
-            'data' => array (
-                "message" => $message
-            )
-        );
-        $fields = json_encode ( $fields );
+        $result = $messaging->send($message);
 
-        $headers = array (
-            'Authorization: key=' . $serverKey,
-            'Content-Type: application/json'
-        );
-
-        $ch = curl_init ();
-        curl_setopt ( $ch, CURLOPT_URL, $url );
-        curl_setopt ( $ch, CURLOPT_POST, true );
-        curl_setopt ( $ch, CURLOPT_HTTPHEADER, $headers );
-        curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
-        curl_setopt ( $ch, CURLOPT_POSTFIELDS, $fields );
-
-        $result = curl_exec ( $ch );
-
-        curl_close ( $ch );
         return $result;
     }
 
