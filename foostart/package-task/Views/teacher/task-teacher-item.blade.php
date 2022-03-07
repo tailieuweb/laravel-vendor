@@ -1,23 +1,27 @@
 @if(!empty($items) && (!$items->isEmpty()) )
 <?php
-$withs = [
-    'order' => '5%',
-    'name' => '50%',
-    'status' => '10%',
-    'updated_at' => '20%',
-    'operations' => '10%',
-    'delete' => '5%',
-];
+    $withs = [
+        'order' => '5%',
+        'name' => '30%',
+        'status' => '10%',
+        'start_date' => '10%',
+        'end_date' => '10%',
+        'updated_at' => '10%',
+        'operations' => '10%',
+        'task_start_date' => '10%',
+        'task_end_date' => '10%',
 
-global $counter;
-$nav = $items->toArray();
-$counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
+    ];
+
+    global $counter;
+    $nav = $items->toArray();
+    $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 ?>
 <caption>
     @if($nav['total'] == 1)
-    {!! trans($plang_admin.'.descriptions.counter', ['number' => $nav['total']]) !!}
+    {!! trans($plang_admin.'.description.counter-task-teacher', ['number' => $nav['total']]) !!}
     @else
-    {!! trans($plang_admin.'.descriptions.counters', ['number' => $nav['total']]) !!}
+    {!! trans($plang_admin.'.description.counters-task-teacher', ['number' => $nav['total']]) !!}
     @endif
 </caption>
 
@@ -48,8 +52,37 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 
             <!-- STATUS -->
             <?php $name = 'status' ?>
-
             <th class="hidden-xs" style='width:{{ $withs['updated_at'] }}'>{!! trans($plang_admin.'.columns.status') !!}
+                <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                    @if($sorting['items'][$name] == 'asc')
+                        <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                    @elseif($sorting['items'][$name] == 'desc')
+                        <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                    @else
+                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                    @endif
+                </a>
+            </th>
+
+            <!-- START DATE -->
+            <?php $name = 'task_start_date' ?>
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                Ngày bắt đầu
+                <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                    @if($sorting['items'][$name] == 'asc')
+                        <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                    @elseif($sorting['items'][$name] == 'desc')
+                        <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                    @else
+                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                    @endif
+                </a>
+            </th>
+
+            <!-- END DATE -->
+            <?php $name = 'task_end_date' ?>
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                Ngày kết thúc
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -100,6 +133,12 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 
             <!--STATUS-->
             <td> {!! @$status[$item->status] !!} </td>
+            <!--START DATE-->
+
+            <td> {!! $item->tasks->task_start_date !!} </td>
+
+            <!--END DATE-->
+            <td> {!! $item->tasks->task_end_date !!} </td>
 
             <!--UPDATED AT-->
             <td> {!!

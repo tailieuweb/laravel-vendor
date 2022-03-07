@@ -613,7 +613,7 @@ class TaskAdminController extends FooController {
         $status = $this->getPluckStatus();
 
         // display view
-
+        $this->breadcrumbs[4] = $this->updateBreadcrum($this->breadcrumbs[4]);
         $this->data_view = array_merge($this->data_view, array(
             'items' => $assignedTask,
             'request' => $request,
@@ -623,6 +623,15 @@ class TaskAdminController extends FooController {
         ));
 
         return view($this->page_views['teacher']['tasks'], $this->data_view);
+    }
+    public function updateBreadcrum($breadcrum) {
+        $teachers = $this->getTeachers();
+        $request = new Request();
+        $segment = request()->segments();
+        $user_id = end($segment);
+
+        $breadcrum['label']  = $teachers[$user_id];
+        return $breadcrum;
     }
     public function getConfigStatus()
     {

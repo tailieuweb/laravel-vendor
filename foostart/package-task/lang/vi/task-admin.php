@@ -56,9 +56,18 @@ return [
         'updated_at' => 'Ngày cập nhật',
         'filename' => 'File',
         'status' => 'Trạng thái',
-        'start_date ' => 'Ngày bắt đầu',
-        'end_date ' => 'Ngày kết thúc',
-        'asdf ' => 'Ngày kết thúc',
+        'start_date' => 'Ngày bắt đầu',
+        'end_date' => 'Ngày kết thúc',
+        'teacher_name' => 'Thành viên',
+        'total' => 'Total',
+        'assigned' => 'Assigned',
+        'canceled' => 'Canceled',
+        'done' => 'Done',
+        'declined' => 'Declined',
+        'inprogress' => 'In progress',
+        'pending' => 'Pending',
+        'tasks' => 'Tasks',
+
     ],
 
 
@@ -77,6 +86,8 @@ return [
         'title-delete' => 'Delete task',
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage languages',
+        'title-list-teachers' => 'Thống kê công việc theo thành viên phụ trách',
+        'title-list-task-teacher' => 'Thống kê công việc theo thành viên phụ trách',
     ],
 
 
@@ -148,7 +159,7 @@ return [
         'list' => 'List of items',
         'task-list' => 'Quản lý các công việc đã tạo',
         'counters' => 'Có <b>:number</b> công việc',
-        'counters-teacher' => 'Có <b>:number</b> GV',
+        'counters-teachers' => 'Có <b>:number</b> GV',
         'counter' => 'Có <b>:number</b> công việc',
         'not-found' => 'Not found items',
         'config' => 'List of configurations',
@@ -164,6 +175,9 @@ return [
         'files' => 'Đính kèm file liên quan đến công việc cần xử lý',
         'invite_member' => 'Mời thành viên phụ trách công việc từ danh sách đã có',
         'invited_member_counter' => 'Có <b>:number</b> thành viên phụ trách xử lý công việc',
+        'list-task-teacher' => 'Thống kê số công việc phụ trách theo từng thành viên',
+        'counters-task-teacher' => 'Có <b>:number</b> công việc',
+        'counter-task-teacher' => 'Có <b>:number</b> công việc',
     ],
 
 
