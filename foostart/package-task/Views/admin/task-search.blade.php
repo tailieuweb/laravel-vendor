@@ -28,7 +28,8 @@
                 'name' => 'task_start_date',
                 'label' => trans($plang_admin.'.form.start_date'),
                 'value' => @$params['task_start_date']?$params['task_start_date']:'',
-                'id' => 'search_start_date'
+                'id' => 'search_start_date',
+                'errors' => null,
             ])
 
             <!-- END DATE -->
@@ -36,7 +37,8 @@
                 'name' => 'task_end_date',
                 'label' => trans($plang_admin.'.form.end_date'),
                 'value' => @$params['task_end_date']?$params['task_end_date']:'',
-                'id' => 'search_end_date'
+                'id' => 'search_end_date',
+                'errors' => null,
             ])
             <!-- STATUS -->
             @include('package-category::admin.partials.select_single', [
@@ -44,6 +46,7 @@
                 'label' => trans($plang_admin.'.form.status'),
                 'value' => @$params['status']?$params['status']:'99',
                 'items' => $status,
+                'errors' => null,
             ])
             <!-- SIZE -->
             @include('package-category::admin.partials.select_single', [
@@ -51,6 +54,7 @@
                 'label' => trans($plang_admin.'.form.task_size'),
                 'value' => @$params['task_size']?$params['task_size']:'',
                 'items' => $size,
+                'errors' => null,
             ])
             <!-- PRIORITY -->
             @include('package-category::admin.partials.select_single', [
@@ -58,6 +62,7 @@
                 'label' => trans($plang_admin.'.form.task_priority'),
                 'value' => @$params['task_priority']?$params['task_priority']:'',
                 'items' => $priority,
+                'errors' => null,
             ])
 
             <!--SORTING-->
@@ -73,6 +78,9 @@
 </div>
 @section('footer_scripts')
     @parent
+    {!! HTML::script('packages/foostart/js/form-table.js')  !!}
+    {!! HTML::script('packages/foostart/js/vendor/moment-with-locales-2.29.1.min.js') !!}
+    {!! HTML::script('packages/foostart/js/vendor/bootstrap-datetimepicker-4.17.47.min.js') !!}
     <script type='text/javascript'>
         $(document).ready(function () {
             //https://getdatepicker.com/4/#bootstrap-3-datepicker-v4-docs

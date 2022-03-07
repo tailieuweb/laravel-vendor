@@ -65,7 +65,7 @@
             'name' => 'task_name',
             'label' => trans($plang_admin.'.labels.name'),
             'value' => @$item->task_name,
-            'description' => trans($plang_admin.'.descriptions.name'),
+            'description' => trans($plang_admin.'.description.name'),
             'errors' => $errors,
         ])
         <!--/TASK NAME-->
@@ -77,7 +77,7 @@
             'ref' => 'task_name',
             'label' => trans($plang_admin.'.labels.slug'),
             'value' => @$item->task_slug,
-            'description' => trans($plang_admin.'.descriptions.slug'),
+            'description' => trans($plang_admin.'.description.slug'),
             'errors' => $errors,
             'hidden' => true,
         ])
@@ -95,7 +95,7 @@
                     'id' => 'datepicker_start_date',
                     'label' => trans($plang_admin.'.labels.start_date'),
                     'value' => $task_start_date,
-                    'description' => trans($plang_admin.'.descriptions.start_date'),
+                    'description' => trans($plang_admin.'.description.start_date'),
                     'errors' => $errors,
                 ])
                 <!--/START DATE-->
@@ -111,7 +111,7 @@
                     'id' => 'datepicker_end_date',
                     'label' => trans($plang_admin.'.labels.end_date'),
                     'value' => $task_end_date,
-                    'description' => trans($plang_admin.'.descriptions.end_date'),
+                    'description' => trans($plang_admin.'.description.end_date'),
                     'errors' => $errors,
                 ])
                 <!--/END DATE-->
@@ -123,7 +123,7 @@
                     'label' => trans($plang_admin.'.labels.category'),
                     'items' => $categories,
                     'value' => @$item->category_id,
-                    'description' => trans($plang_admin.'.descriptions.category', [
+                    'description' => trans($plang_admin.'.description.category', [
                     'href' => URL::route('categories.list', ['_key' => $context->context_key])
                     ]),
                     'errors' => $errors,
@@ -140,7 +140,7 @@
                     'label' => trans($plang_admin.'.form.task_size'),
                     'value' => @$item->task_size,
                     'items' => $size,
-                    'description' => trans($plang_admin.'.descriptions.task_size'),
+                    'description' => trans($plang_admin.'.description.task_size'),
                 ])
             </div>
             <div class="col-md-4">
@@ -150,7 +150,7 @@
                     'label' => trans($plang_admin.'.form.task_priority'),
                     'value' => @$item->task_priority,
                     'items' => $priority,
-                    'description' => trans($plang_admin.'.descriptions.task_priority'),
+                    'description' => trans($plang_admin.'.description.task_priority'),
                 ])
             </div>
             <div class="col-md-4">
@@ -160,7 +160,7 @@
                     'label' => trans($plang_admin.'.form.status'),
                     'value' => @$item->status,
                     'items' => $status,
-                    'description' => trans($plang_admin.'.descriptions.status'),
+                    'description' => trans($plang_admin.'.description.status'),
                 ])
             </div>
 
@@ -175,7 +175,7 @@
         'name' => 'task_overview',
         'label' => trans($plang_admin.'.labels.overview'),
         'value' => @$item->task_overview,
-        'description' => trans($plang_admin.'.descriptions.overview'),
+        'description' => trans($plang_admin.'.description.overview'),
         'tinymce' => false,
         'errors' => $errors,
         ])
@@ -186,7 +186,7 @@
         'name' => 'task_description',
         'label' => trans($plang_admin.'.labels.description'),
         'value' => @$item->task_description,
-        'description' => trans($plang_admin.'.descriptions.description'),
+        'description' => trans($plang_admin.'.description.description'),
         'rows' => 50,
         'tinymce' => true,
         'errors' => $errors,
@@ -201,7 +201,7 @@
         'name' => 'task_image',
         'label' => trans($plang_admin.'.labels.image'),
         'value' => @$item->task_image,
-        'description' => trans($plang_admin.'.descriptions.image'),
+        'description' => trans($plang_admin.'.description.image'),
         'errors' => $errors,
         ])
         <!--/SAMPLE IMAGE-->
@@ -211,7 +211,7 @@
         'name' => 'files',
         'label' => trans($plang_admin.'.labels.files'),
         'value' => @$item->task_files,
-        'description' => trans($plang_admin.'.descriptions.files'),
+        'description' => trans($plang_admin.'.description.files'),
         'errors' => $errors,
         ])
         <!--/SAMPLE FILES-->
@@ -226,7 +226,7 @@
                     'name' => 'invite_member',
                     'label' => trans($plang_admin.'.labels.invite_member'),
                     'items' => @$members,
-                    'description' => trans($plang_admin.'.descriptions.invite_member'),
+                    'description' => trans($plang_admin.'.description.invite_member'),
                     'errors' => $errors,
                 ])
                 <!--/Invite member-->
@@ -254,13 +254,14 @@
         <div class="row">
             <div class="col-md-6">
 
-                    <span>Invited members: {{count($invitedMembers)}}</span>
+                    <span>{!! trans($plang_admin.'.description.invited_member_counter', ['number' => count($invitedMembers)]) !!}</span>
+
                     <table class="table table-hover invited-members">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Member</th>
-                                <th>Action</th>
+                                <th>{!! trans($plang_admin.'.labels.member_name') !!}</th>
+                                <th>{!! trans($plang_admin.'.labels.action') !!}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -297,7 +298,10 @@
 <!------------------------------------------------------------------------------
 | End list of elements in task form
 |------------------------------------------------------------------------------>
-
+@section('head_css')
+    @parent
+    {!! HTML::style('packages/foostart/css/bootstrap-datetimepicker-4.17.47.css') !!}
+@endsection
 @section('footer_scripts')
     @parent
     {!! HTML::script('packages/foostart/js/form-table.js')  !!}

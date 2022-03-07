@@ -127,7 +127,7 @@ $description = empty($description) ? '' : $description;
     </div>
 
     <!--errors-->
-    @if ($errors->has($name))
+    @if (!empty($errors) && $errors->has($name))
         <ul class='error-item'>
             @foreach($errors->get($name) as $error)
                 @if($error)

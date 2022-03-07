@@ -25,14 +25,6 @@ return [
     "list" => [
 
 
-        //Dashboard page
-        [
-            "name" => "acl-admin.menu.dashboard",
-            "route" => "dashboard",
-            "link" => '/admin/users/dashboard',
-            "permissions" => [$admin]
-        ],
-
         /*
         |-----------------------------------------------------------------------
         | Admin permissions
@@ -92,21 +84,6 @@ return [
             "permissions" => [$admin, '_user-editor']
         ],
 
-        //Posts
-        [
-            "name" => "acl-admin.menu.posts",
-            "route" => "posts",
-            "link" => '/admin/posts',
-            "permissions" => [$admin, "_permission-editor"]
-        ],
-
-        //Pexcel
-        [
-            "name" => "acl-admin.menu.pexcel",
-            "route" => "pexcel",
-            "link" => '/admin/pexcel',
-            "permissions" => [$admin, "_permission-editor"]
-        ],
 
         //Task
         [
@@ -118,7 +95,7 @@ return [
 
         //User Task
         [
-            "name" => "task-admin.menus.top-menu",
+            "name" => "task-admin.menus.top-usermenu",
             "route" => "usertask.list",
             "link" => '/user/task',
             "permissions" => []

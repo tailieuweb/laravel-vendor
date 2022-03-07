@@ -1,99 +1,166 @@
 @if(!empty($items) && (!$items->isEmpty()) )
-<?php
-$withs = [
-    'order' => '5%',
-    'name' => '40%',
-    'updated_at' => '40%',
-    'operations' => '10%',
-    'delete' => '5%',
-];
+    <?php
+        $withs = [
+            'order' => '5%',
+            'name' => '30%',
+            'status' => '10%',
+            'task_start_date' => '10%',
+            'task_end_date' => '10%',
+            'updated_at' => '10%',
+            'operations' => '10%',
+        ];
 
-global $counter;
-$nav = $items->toArray();
-$counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
-?>
-<caption>
-    @if($nav['total'] == 1)
-    {!! trans($plang_admin.'.descriptions.counter', ['number' => $nav['total']]) !!}
-    @else
-    {!! trans($plang_admin.'.descriptions.counters', ['number' => $nav['total']]) !!}
-    @endif
-</caption>
+        global $counter;
+        $nav = $items->toArray();
+        $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
+    ?>
 
-<table class="table table-hover" id="tbTask">
+    <div class="btn-delete-top">
+        <div>
+            @if($nav['total'] == 1)
+            {!! trans($plang_admin.'.description.counter', ['number' => $nav['total']]) !!}
+            @else
+            {!! trans($plang_admin.'.description.counters', ['number' => $nav['total']]) !!}
+            @endif
+        </div>
+        {!! Form::submit(trans($plang_admin.'.buttons.del-trash'), array(
+                                    "class"=>"btn btn-danger delete btn-delete-all del-trash",
+                                    'name'=>'del-trash'))
+                                    !!}
+        {!! Form::submit(trans($plang_admin.'.buttons.del-forever'), array(
+                                    "class"=>"btn btn-warning delete btn-delete-all del-forever",
+                                    'name'=>'del-forever'))
+                                    !!}
+    </div>
 
-    <thead>
-        <tr style="height: 50px;">
+    <table class="table table-hover" id="tbTask">
 
-            <!--ORDER-->
-            <th style='width:{{ $withs['order'] }}'>
-                {{ trans($plang_admin.'.columns.order') }}
-            </th>
+        <thead>
+            <tr style="height: 50px;">
 
-            <!-- NAME -->
-            <?php $name = 'task_name' ?>
+                <!--ORDER-->
+                <th style='width:{{ $withs['order'] }}'>
+                    {{ trans($plang_admin.'.columns.order') }}
+                    <span class="del-checkbox pull-right">
+                        <input type="checkbox" id="selecctall"/>
+                        <label for="del-checkbox"></label>
+                    </span>
+                </th>
 
-            <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.name') !!}
-                <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
-                    @if($sorting['items'][$name] == 'asc')
-                    <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-                    @elseif($sorting['items'][$name] == 'desc')
-                    <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-                    @else
-                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                    @endif
-                </a>
-            </th>
+                <!-- NAME -->
+                <?php $name = 'task_name' ?>
+                <th class="hidden-xs" style='width:{{ $withs['name'] }}'>
+                    {!! trans($plang_admin.'.columns.name') !!}
+                    <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                        @if($sorting['items'][$name] == 'asc')
+                            <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                        @elseif($sorting['items'][$name] == 'desc')
+                            <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                        @else
+                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        @endif
+                    </a>
+                </th>
 
-            <!-- NAME -->
-            <?php $name = 'updated_at' ?>
+                <!-- STATUS -->
+                <?php $name = 'status' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}; text-align: center;'>
+                    {!! trans($plang_admin.'.columns.status') !!}
+                    <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                        @if($sorting['items'][$name] == 'asc')
+                            <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                        @elseif($sorting['items'][$name] == 'desc')
+                            <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                        @else
+                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        @endif
+                    </a>
+                </th>
 
-            <th class="hidden-xs" style='width:{{ $withs['updated_at'] }}'>{!! trans($plang_admin.'.columns.updated_at') !!}
-                <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
-                    @if($sorting['items'][$name] == 'asc')
-                    <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-                    @elseif($sorting['items'][$name] == 'desc')
-                    <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-                    @else
-                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                    @endif
-                </a>
-            </th>
+                <!-- START DATE -->
+                <?php $name = 'task_start_date' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    Ngày bắt đầu
+                    <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                        @if($sorting['items'][$name] == 'asc')
+                            <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                        @elseif($sorting['items'][$name] == 'desc')
+                            <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                        @else
+                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        @endif
+                    </a>
+                </th>
 
-            <!--OPERATIONS-->
-            <th style='width:{{ $withs['operations'] }};'>
-                <span class='lb-delete-all'>
-                    {{ trans($plang_admin.'.columns.operations') }}
-                </span>
-                <div class="colDel" style="display: none;">
-                    {!! Form::submit(trans($plang_admin.'.buttons.delete'), array("class"=>"btn btn-danger pull-right delete btn-delete-all del-trash", 'name'=>'del-trash')) !!}
-                    {!! Form::submit(trans($plang_admin.'.buttons.delete'), array("class"=>"btn btn-warning pull-right delete btn-delete-all del-forever", 'name'=>'del-forever')) !!}
-                </div>
-            </th>
+                <!-- END DATE -->
+                <?php $name = 'task_end_date' ?>
+                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                    Ngày kết thúc
+                    <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                        @if($sorting['items'][$name] == 'asc')
+                            <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                        @elseif($sorting['items'][$name] == 'desc')
+                            <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                        @else
+                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        @endif
+                    </a>
+                </th>
 
-            <!--DELETE-->
-            <th style='width:{{ $withs['delete'] }}'>
-                <span class="del-checkbox pull-right">
-                    <input type="checkbox" id="selecctall" onchange="checkAllCheckBox()" />
-                    <label for="del-checkbox"></label>
-                </span>
-            </th>
+                <!-- UPDATED AT -->
+                <?php $name = 'updated_at' ?>
+                <th class="hidden-xs" style='width:{{ $withs['updated_at'] }}'>{!! trans($plang_admin.'.columns.updated_at') !!}
+                    <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                        @if($sorting['items'][$name] == 'asc')
+                            <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                        @elseif($sorting['items'][$name] == 'desc')
+                            <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                        @else
+                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        @endif
+                    </a>
+                </th>
 
-        </tr>
+                <!--OPERATIONS-->
+                <th style='width:{{ $withs['operations'] }};'>
+                    <span class='lb-delete-all'>
+                        {{ trans($plang_admin.'.columns.operations') }}
+                    </span>
+                </th>
 
-    </thead>
+            </tr>
+        </thead>
 
     <tbody>
         @foreach($items as $item)
         <tr>
             <!--COUNTER-->
-            <td> <?php
-                echo $counter;
-                $counter++
-                ?> </td>
+            <td>
+                <?php echo $counter; $counter++  ?>
+                <span class='box-item pull-right'>
+                    <input type="checkbox" id="<?php echo $item->id ?>" name="ids[]" value="{!! $item->id !!}">
+                    <label for="box-item"></label>
+                </span>
+            </td>
 
             <!--NAME-->
             <td> {!! $item->task_name !!} </td>
+
+            <!--STATUS-->
+            <td style="text-align: center;">
+                @if($item->status && (isset($config_status['list'][$item->status])))
+                    <i class="fa fa-circle" style="color:{!! $config_status['color'][$item->status] !!}"
+                       title='{!! $config_status["list"][$item->status] !!}'></i>
+                @else
+                    <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
+                @endif
+            </td>
+
+            <!--START DATE-->
+            <td> {!! $item->task_start_date !!} </td>
+
+            <!--END DATE-->
+            <td> {!! $item->task_end_date !!} </td>
 
             <!--UPDATED AT-->
             <td> {!! $item->updated_at !!} </td>
@@ -128,14 +195,6 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 
             </td>
 
-            <!--DELETE-->
-            <td>
-                <span class='box-item pull-right'>
-                    <input type="checkbox" id="<?php echo $item->id ?>" name="ids[]" value="{!! $item->id !!}" onchange="checkedCheckBox()">
-                    <label for="box-item"></label>
-                </span>
-            </td>
-
         </tr>
         @endforeach
 
@@ -150,7 +209,7 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 <!--SEARCH RESULT MESSAGE-->
 <span class="text-warning">
     <h5>
-        {{ trans($plang_admin.'.descriptions.not-found') }}
+        {{ trans($plang_admin.'.description.not-found') }}
     </h5>
 </span>
 <!--/SEARCH RESULT MESSAGE-->
@@ -161,26 +220,7 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 {!! HTML::script('packages/foostart/package-task/js/form-table.js')  !!}
 @stop
 
-<script>
-    function checkAllCheckBox() {
-        var checkboxes = $('#tbTask').find(':checkbox');
-        var isCheckedAll = $("#selecctall:checked").length; // if length is 0 that checkbox was unchecked, otherwise
-
-        if (isCheckedAll) {
-            $(".colDel").show();
-        } else {
-            $(".colDel").hide();
-        }
-        for (var i = 1; i < checkboxes.length; i++) {
-            checkboxes[i].checked = isCheckedAll;
-        }
-    }
-    function checkedCheckBox(){
-        var check = $("input[name='ids[]']:checked").length;
-        if(check){
-            $(".colDel").show();
-        }else {
-            $(".colDel").hide();
-        }
-    }
-</script>
+@section('footer_scripts')
+    @parent
+    {!! HTML::script('packages/foostart/js/form-table.js')  !!}
+@stop

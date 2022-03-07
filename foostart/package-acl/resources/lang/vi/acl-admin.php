@@ -9,7 +9,8 @@ return [
      * |
      */
     'breadcrumbs' => [
-        'admin' => 'Admin',
+        'admin' => 'Quản trị',
+        'task' => 'Quản lý công việc',
         'teacher' => 'Teacher',
         'view' => 'View',
         'diary' => 'Diary',

@@ -63,6 +63,7 @@ return [
         'teacher_name' => 'Teacher name',
         'pending' => 'Pending',
         'tasks' => 'Tasks',
+        'asdf' => 'Tasks',
     ],
 
 

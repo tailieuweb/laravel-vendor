@@ -17,8 +17,11 @@ class TaskValidator extends FooValidator
         // add rules
         self::$rules = [
             'task_name' => ["required"],
-            'task_overview' => ["required"],
-            'task_description' => ["required"],
+            'task_start_date' => ["required"],
+            'task_end_date' => ["required"],
+            'category_id' => ["required"],
+            'task_size' => ["required"],
+            'task_priority' => ["required"],
         ];
 
         // set configs
@@ -35,9 +38,12 @@ class TaskValidator extends FooValidator
         Event::listen('validating', function($input)
         {
             self::$messages = [
-                'task_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.name')]),
-                'task_overview.required'      => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.overview')]),
-                'task_description.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.description')]),
+                'task_name.required'          => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.task_name')]),
+                'task_start_date.required'      => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.task_start_date')]),
+                'task_end_date.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.task_end_date')]),
+                'category_id.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.category_id')]),
+                'task_size.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.task_size')]),
+                'task_priority.required'   => trans($this->lang_admin.'.errors.required', ['attribute' => trans($this->lang_admin.'.fields.task_priority')]),
             ];
         });
 
@@ -64,23 +70,9 @@ class TaskValidator extends FooValidator
                 'min' => $_ln['task_name']['min'],
                 'max' => $_ln['task_name']['max'],
             ],
-            'overview' => [
-                'key' => 'task_overview',
-                'label' => trans($this->lang_admin.'.fields.overview'),
-                'min' => $_ln['task_overview']['min'],
-                'max' => $_ln['task_overview']['max'],
-            ],
-            'description' => [
-                'key' => 'task_description',
-                'label' => trans($this->lang_admin.'.fields.description'),
-                'min' => $_ln['task_description']['min'],
-                'max' => $_ln['task_description']['max'],
-            ],
-        ];
 
+        ];
         $flag = $this->isValidLength($input['task_name'], $params['name']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['task_overview'], $params['overview']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['task_description'], $params['description']) ? $flag : FALSE;
 
         return $flag;
     }
