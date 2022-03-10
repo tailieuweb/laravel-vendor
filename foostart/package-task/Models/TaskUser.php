@@ -256,11 +256,12 @@ class TaskUser extends FooModel {
             $taskUser->save();
 
             //Update task info
-            $task = new Task();
-            $task_id = $params['task_id'];
-            $task->updateItem($params, $task_id);
-
-            return $task;
+            if (!empty($params['task_name'])) {
+                $task = new Task();
+                $task_id = $params['task_id'];
+                $task->updateItem($params, $task_id);
+            }
+            return $taskUser;
         } else {
             return NULL;
         }
