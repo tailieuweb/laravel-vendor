@@ -13,7 +13,7 @@
 -->
 
 <!-- LIST OF ERRORS  -->
-@if($errors->all())
+@if(!empty($errors) && $errors->all())
     <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
             ×

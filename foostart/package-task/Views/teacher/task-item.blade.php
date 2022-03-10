@@ -20,9 +20,9 @@ $counter = 1;
 ?>
 <caption>
     @if(count($items) == 1)
-    {!! trans($plang_admin.'.descriptions.counter', ['number' => count($items)] )!!}
+    {!! trans($plang_admin.'.description.counter-teachers', ['number' => count($items)] )!!}
     @else
-    {!! trans($plang_admin.'.descriptions.counters', ['number' => count($items)]) !!}
+    {!! trans($plang_admin.'.description.counters-teachers', ['number' => count($items)]) !!}
     @endif
 </caption>
 <div class="table-responsive">

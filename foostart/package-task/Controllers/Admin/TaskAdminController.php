@@ -87,10 +87,13 @@ class TaskAdminController extends FooController {
 
         $items = $this->obj_item->selectItems($params);
 
+        $config_status = $this->getConfigStatusSystem();
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'items' => $items,
             'request' => $request,
+            'config_status' => $config_status,
             'params' => $params,
         ));
 
@@ -412,14 +415,27 @@ class TaskAdminController extends FooController {
             $item->id = NULL;
         }
 
-        $categories = $this->obj_category->pluckSelect($params);
+        /**
+         * Get list of members for assignee
+         * Get list of teachers
+         */
+        $teachers = $this->getTeachers();
 
+        $categories = $this->obj_category->pluckSelect($params);
+        $invitedMembers = [];
+
+        $size = $this->getConfigSize();
+        $priority = $this->getConfigPriority();
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'categories' => $categories,
             'request' => $request,
             'context' => $context,
+            'members' => $teachers,
+            'invitedMembers' => $invitedMembers,
+            'size' => $size['list'],
+            'priority' => $priority['list'],
         ));
 
         return view($this->page_views['admin']['edit'], $this->data_view);
@@ -597,7 +613,7 @@ class TaskAdminController extends FooController {
         $status = $this->getPluckStatus();
 
         // display view
-
+        $this->breadcrumbs[4] = $this->updateBreadcrum($this->breadcrumbs[4]);
         $this->data_view = array_merge($this->data_view, array(
             'items' => $assignedTask,
             'request' => $request,
@@ -608,9 +624,25 @@ class TaskAdminController extends FooController {
 
         return view($this->page_views['teacher']['tasks'], $this->data_view);
     }
+    public function updateBreadcrum($breadcrum) {
+        $teachers = $this->getTeachers();
+        $request = new Request();
+        $segment = request()->segments();
+        $user_id = end($segment);
+
+        $breadcrum['label']  = $teachers[$user_id];
+        return $breadcrum;
+    }
     public function getConfigStatus()
     {
         $config_status = config('package-task.status');
+
+        return $config_status;
+    }
+
+    public function getConfigStatusSystem()
+    {
+        $config_status = config('package-category.status');
 
         return $config_status;
     }

@@ -9,7 +9,9 @@ return [
      * |
      */
     'breadcrumbs' => [
-        'admin' => 'Admin',
+        'admin' => 'Quản trị',
+        'teachers' => 'Thành viên',
+        'task' => 'Quản lý công việc',
         'teacher' => 'Teacher',
         'view' => 'View',
         'diary' => 'Diary',
@@ -36,6 +38,8 @@ return [
         'pattern' => 'Pattern',
         'pexcel' => 'Pexcel',
         'company' => 'Company',
+        '2' => 'Phan Thanh Nhuần',
+        '3' => 'Phan Thị Thể',
     ],
 
     /***********************************************************************

@@ -44,19 +44,19 @@ return [
     */
     'columns' => [
         'any' => 'Any',
-        'order' => 'Order',
+        'order' => 'Thứ tự',
         'counter' => '#',
         'id' => 'ID',
-        'category-name' => 'Category name',
+        'category-name' => 'Danh mục',
         'user-full-name' => 'User full name',
         'context-name' => 'Context name',
-        'operations' => 'Operations',
-        'updated_at' => 'Updated at',
+        'operations' => 'Thao tác',
+        'updated_at' => 'Ngày cập nhật',
         'filename' => 'File name',
         'context-ref' => 'Ref',
         'context-status' => 'Status',
         'key' => 'Key',
-        'status' => 'Status',
+        'status' => 'Trạng thái',
         '#' => '#',
         'url' => 'Url',
     ],
@@ -151,9 +151,9 @@ return [
         'update' => 'Update category',
         'category-name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'category' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        'list' => 'List of items',
-        'counters' => 'There are <b>:number</b> items',
-        'counter' => 'There is <b>:number</b> item',
+        'list' => 'Danh sách danh mục',
+        'counters' => 'Có <b>:number</b> danh mục',
+        'counter' => 'Có <b>:number</b> danh mục',
         'not-found' => 'Not found items',
         'config' => 'List of configurations',
         'lang' => 'List of languages',
@@ -299,9 +299,9 @@ return [
     |
     */
     'headings' => [
-        'form-search' => 'Search categorys',
-        'list' => 'List of categorys',
-        'search' => 'Search results',
+        'form-search' => 'Tìm kiếm danh mục',
+        'list' => 'Danh sách danh mục',
+        'search' => 'Tìm kiếm danh mục',
     ],
 
 

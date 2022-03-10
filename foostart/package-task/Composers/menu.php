@@ -78,6 +78,8 @@ View::composer([
             'id' => trans($plang_admin.'.fields.id'),
             'task_name' => trans($plang_admin.'.fields.name'),
             'status' => trans($plang_admin.'.fields.status'),
+            'task_start_date' => trans($plang_admin.'.fields.start_date'),
+            'task_end_date' => trans($plang_admin.'.fields.end_date'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
         ];
         $sorting = [
@@ -137,8 +139,8 @@ View::composer([
 
         //Order by
         $order_by = [
-            'asc' => trans('foostart.order_by.asc'),
-            'desc' => trans('foostart.order_by.desc'),
+            'asc' => trans('task-admin.form.order_by_asc'),
+            'desc' => trans('task-admin.form.order_by_desc'),
         ];
         $view->with('order_by', $order_by);
 });
@@ -249,8 +251,8 @@ View::composer([
 
     //Order by
     $order_by = [
-        'asc' => trans('foostart.order_by.asc'),
-        'desc' => trans('foostart.order_by.desc'),
+        'asc' => trans('task-admin.form.order_by_asc'),
+        'desc' => trans('task-admin.form.order_by_desc'),
     ];
     $view->with('order_by', $order_by);
 });

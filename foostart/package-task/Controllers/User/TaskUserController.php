@@ -54,6 +54,7 @@ class TaskUserController extends FooController
      */
     public function index(Request $request)
     {
+
         //Get user id
         $user_id = $request->get('user_id');
         $params = [
@@ -61,7 +62,7 @@ class TaskUserController extends FooController
         ];
         $assignedTask = $this->taskUser->selectItems($params);
 
-        return response($assignedTask->toJson(), 200);
+        return response($assignedTask->toArray(), 200);
     }
 
 

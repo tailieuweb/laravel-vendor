@@ -179,7 +179,7 @@
 
 
     <!--errors-->
-    @if ($errors->has($name))
+    @if (!empty($errors) && $errors->has($name))
         <ul class='alert alert-danger error-item'>
             @foreach($errors->get($name) as $error)
                 @if($error)

@@ -87,7 +87,7 @@ $lfm_config = empty($lfm_config) ? FALSE : TRUE;
     @endif
 
 <!--errors-->
-    @if ($errors->has($name))
+    @if (!empty($errors) && $errors->has($name))
         <ul class='error-item'>
             @foreach($errors->get($name) as $error)
                 @if($error)

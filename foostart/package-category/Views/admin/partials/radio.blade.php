@@ -62,7 +62,7 @@ $description = empty($description) ? '' : $description;
     </span>
     @endif
 <!--errors-->
-    @if ($errors->has($name))
+    @if (!empty($errors) && $errors->has($name))
         <ul class='error-item'>
             @foreach($errors->get($name) as $error)
                 @if($error)
