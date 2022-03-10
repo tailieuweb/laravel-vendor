@@ -78,7 +78,7 @@ class TaskUserController extends FooController
         ];
         $assignedTask = $this->taskUser->selectItems($params);
 
-        return response($assignedTask->toJson(), 200);
+        return response($assignedTask->toArray(), 200);
     }
 
     /**
