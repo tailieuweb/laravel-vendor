@@ -337,6 +337,8 @@ class Task extends FooModel {
                 $this->objTaskUser->updateItems($_params);
 
                 //push notification
+                $params['task_id'] = $task->task_id;
+                $params['task_name'] = $task->task_name;
                 $this->pushNotification($params);
             }
 
@@ -356,12 +358,14 @@ class Task extends FooModel {
                     $user_profile = $profile_repository->getFromUserId($user_id);
                     if (!empty($user_profile)) {
                         $data = [
-                            'title' => 'Khoa CNTT',
-                            'body' => 'Bạn có công việc mới'
+                            'title' => 'Khoa CNTT - Thông báo công việc',
+                            'body' => $params['task_name'],
+                            'task_id' => $params['task_id']
                         ];
                         $notification = [
-                            'title' => 'Khoa CNTT',
-                            'body' => 'Bạn có công việc mới'
+                            'title' => 'Khoa CNTT - Thông báo công việc',
+                            'body' => $params['task_name'],
+                            'task_id' => $params['task_id']
                         ];
                         $this->pushingNotifaction($user_profile->device_token, $data, $notification);
                     }
