@@ -215,12 +215,23 @@ class TaskUserController extends FooController
         $user_id = $request->get('user_id');
         //Get task id
         $task_id = $request->get('task_id');
+        //Get status
+        $statusText = $request->get('status');
+        $status = 0;
+        $configStatus = $this->getConfigStatus();
+        foreach ($configStatus['list'] as $key => $value) {
+            if ($value == $statusText) {
+                $status = $key;
+                break;
+            }
+        }
         $params = [
             'user_id' => (int)$user_id,
             'task_id' => (int)$task_id
         ];
         $assignedTask = $this->taskUser->selectItem($params);
         $data = $request->all();
+        $data['status'] = $status;
         if (!empty($assignedTask)) {
             //Update
             $data['id'] = $assignedTask->assignee_id;
