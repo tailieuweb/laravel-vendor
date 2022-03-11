@@ -77,8 +77,9 @@ class TaskUserController extends FooController
             'task_id' => $task_id
         ];
         $assignedTask = $this->taskUser->selectItems($params);
+        $task = $assignedTask->first();
 
-        return response($assignedTask->toArray(), 200);
+        return response($task->toArray(), 200);
     }
 
     /**
