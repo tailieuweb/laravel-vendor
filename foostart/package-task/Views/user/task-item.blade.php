@@ -2,7 +2,7 @@
 <?php
 $withs = [
     'order' => '5%',
-    'name' => '50%',
+    'name' => '30%',
     'status' => '10%',
     'updated_at' => '20%',
     'operations' => '10%',
@@ -15,9 +15,9 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 ?>
 <caption>
     @if($nav['total'] == 1)
-    {!! trans($plang_admin.'.descriptions.counter', ['number' => $nav['total']]) !!}
+    {!! trans($plang_admin.'.description.counter', ['number' => $nav['total']]) !!}
     @else
-    {!! trans($plang_admin.'.descriptions.counters', ['number' => $nav['total']]) !!}
+    {!! trans($plang_admin.'.description.counters', ['number' => $nav['total']]) !!}
     @endif
 </caption>
 

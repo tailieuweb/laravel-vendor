@@ -388,7 +388,13 @@ class Task extends FooModel {
             'data' => $data, // optional
         ]);
 
-        $result = $messaging->send($message);
+        $result = '';
+        try {
+            $result = $messaging->send($message);
+        } catch (\Throwable $e) {
+
+        }
+
 
         return $result;
     }

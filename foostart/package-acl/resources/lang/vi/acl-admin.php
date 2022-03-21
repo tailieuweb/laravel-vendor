@@ -38,6 +38,7 @@ return [
         'pattern' => 'Pattern',
         'pexcel' => 'Pexcel',
         'company' => 'Company',
+        '1' => 'Admin System',
         '2' => 'Phan Thanh Nhuần',
         '3' => 'Phan Thị Thể',
     ],
@@ -250,7 +251,7 @@ return [
         'vat' => 'Vat',
         'city' => 'Thành phố',
         'country' => 'Country',
-        'level' => 'Level',
+        'level' => 'Type',
         'address' => 'Địa chỉ',
         'custom-fields' => 'Custom fields',
         'change-avt' => 'Cập nhật ảnh đại diện',
@@ -268,6 +269,7 @@ return [
         'id' => 'ID',
         'keyword' => 'Keyword',
         'counter' => '#',
+        'device_token' => 'Device token',
     ],
 
 

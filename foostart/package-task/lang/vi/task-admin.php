@@ -156,7 +156,7 @@ return [
         'update' => 'Update task',
         'name' => 'Tên công việc thực hiện',
         'category' => 'Danh mục công việc',
-        'list' => 'List of items',
+        'list' => 'Thống kê số công việc phụ trách',
         'task-list' => 'Quản lý các công việc đã tạo',
         'counters' => 'Có <b>:number</b> công việc',
         'counters-teachers' => 'Có <b>:number</b> GV',
@@ -178,6 +178,7 @@ return [
         'list-task-teacher' => 'Thống kê số công việc phụ trách theo từng thành viên',
         'counters-task-teacher' => 'Có <b>:number</b> công việc',
         'counter-task-teacher' => 'Có <b>:number</b> công việc',
+        'notes' => 'Phản hồi, trao đổi về công việc được phân công phụ trách',
     ],
 
 
@@ -256,6 +257,7 @@ return [
         'reset_invited' => 'Xóa tất cả',
         'member_name' => 'Thành viên',
         'action' => 'Thao tác',
+        'notes' => 'Ghi chú',
     ],
 
 
@@ -279,6 +281,8 @@ return [
         'menu_5' => 'Other',
         'menu_6' => 'Other',
         'menu_7' => 'Other',
+        'usermenu_1' => 'Xác nhận',
+        'usermenu_2' => 'Mô tả công việc',
     ],
 
 
