@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the league/commonmark package.
  *
@@ -12,12 +14,14 @@
  * file that was distributed with this source code.
  */
 
-namespace League\CommonMark\Inline\Element;
+namespace League\CommonMark\Node;
 
-class Strong extends AbstractInline
+/**
+ * Interface for a node which directly contains line(s) of text
+ */
+interface StringContainerInterface
 {
-    public function isContainer(): bool
-    {
-        return true;
-    }
+    public function setLiteral(string $literal): void;
+
+    public function getLiteral(): string;
 }

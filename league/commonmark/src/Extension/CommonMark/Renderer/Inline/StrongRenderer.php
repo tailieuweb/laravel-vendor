@@ -5,24 +5,28 @@ declare(strict_types=1);
 /*
  * This file is part of the league/commonmark package.
  *
- * (c) Colin O'Dell <colinodell@gmail.com> and uAfrica.com (http://uafrica.com)
+ * (c) Colin O'Dell <colinodell@gmail.com>
+ *
+ * Original code based on the CommonMark JS reference parser (https://bitly.com/commonmark-js)
+ *  - (c) John MacFarlane
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace League\CommonMark\Extension\Strikethrough;
+namespace League\CommonMark\Extension\CommonMark\Renderer\Inline;
 
+use League\CommonMark\Extension\CommonMark\Node\Inline\Strong;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 use League\CommonMark\Util\HtmlElement;
 use League\CommonMark\Xml\XmlNodeRendererInterface;
 
-final class StrikethroughRenderer implements NodeRendererInterface, XmlNodeRendererInterface
+final class StrongRenderer implements NodeRendererInterface, XmlNodeRendererInterface
 {
     /**
-     * @param Strikethrough $node
+     * @param Strong $node
      *
      * {@inheritDoc}
      *
@@ -30,14 +34,16 @@ final class StrikethroughRenderer implements NodeRendererInterface, XmlNodeRende
      */
     public function render(Node $node, ChildNodeRendererInterface $childRenderer): \Stringable
     {
-        Strikethrough::assertInstanceOf($node);
+        Strong::assertInstanceOf($node);
 
-        return new HtmlElement('del', $node->data->get('attributes'), $childRenderer->renderNodes($node->children()));
+        $attrs = $node->data->get('attributes');
+
+        return new HtmlElement('strong', $attrs, $childRenderer->renderNodes($node->children()));
     }
 
     public function getXmlTagName(Node $node): string
     {
-        return 'strikethrough';
+        return 'strong';
     }
 
     /**
