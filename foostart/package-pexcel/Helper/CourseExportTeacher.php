@@ -25,7 +25,7 @@ class CourseExportTeacher implements FromCollection {
                     SELECT *, count(*)
                     FROM (
                         SELECT
-                            internship.`course_id`,
+                            classes_users.`course_id`,
                             company_name,
                             company_instructor_phone,
                             CONCAT_WS('\n', company_address, company_phone) as company_address
