@@ -195,11 +195,6 @@ class Course extends FooModel {
                                 $elo = $elo->where($this->table . '.course_name', '=', $value);
                             }
                             break;
-                        case 'course_website':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.course_website', '=', $value);
-                            }
-                            break;
                         case 'category_id':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.category_id', '=', $value);
@@ -215,8 +210,6 @@ class Course extends FooModel {
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
                                     $elo->where($this->table . '.course_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.course_website', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.course_tax_code', 'LIKE', "%{$value}%")
                                     ->orWhere($this->table . '.course_description','LIKE', "%{$value}%");
                                 });
                             }
