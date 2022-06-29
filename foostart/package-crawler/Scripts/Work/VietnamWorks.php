@@ -21,7 +21,7 @@ class VietnamWorks extends BaseSite {
     public function getJobsByCategory($category) {
 
         //Request URL
-        $url = 'https://jf8q26wwud-2.algolianet.com/1/indexes/*/queries?';
+        $url = 'https://ms.vietnamworks.com/job-search/v1.0/search';
 
         //Query string parameters
         $queryStringParameters = [
@@ -33,29 +33,71 @@ class VietnamWorks extends BaseSite {
         $url = $url . http_build_query($queryStringParameters);
         //$url = 'https://jf8q26wwud-2.algolianet.com/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(3.35.1)%3B%20Browser&x-algolia-application-id=JF8Q26WWUD&x-algolia-api-key=ecef10153e66bbd6d54f08ea005b60fc';
         $header = [
+            "Accept" => '*/*',
+            'Accept-Language' => 'en-US,en;q=0.9,vi;q=0.8',
             'Connection' => 'keep-alive',
-            'sec-ch-ua' => '"Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"',
-            'accept' => 'application/json',
-            'sec-ch-ua-mobile' => '?0',
-            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
-            'content-type' => 'application/x-www-form-urlencoded',
+            'Content-Type' => 'application/json',
             'Origin' => 'https://www.vietnamworks.com',
-            'Sec-Fetch-Site' => 'cross-site',
+            'Referer' => 'https://www.vietnamworks.com/',
+            'Sec-Fetch-Site' => 'same-site',
             'Sec-Fetch-Mode' => 'cors',
             'Sec-Fetch-Dest' => 'empty',
-            'Referer' => 'https://www.vietnamworks.com/',
-            'Accept-Language' => 'en-US,en;q=0.9,vi;q=0.8'
+            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36',
+            'X-Source' => 'Page-Container',
+            'sec-ch-ua' => '" Not A;Brand";v="99", "Chromium";v="101", "Google Chrome";v="101"',
+            'sec-ch-ua-mobile' => '?0',
+            'sec-ch-ua-platform' => '"Windows"',
         ];
         $queryFormData = [
+            'filter' => [
+                [
+                    'field' => 'industries.industryId',
+                    'value' => '-1,35',
+                ],
+                [
+                    'field' => 'workingLocations.cityId',
+                    'value' => '29',
+                ]
+            ],
             "hitsPerPage" => $this->hitsPerPage,
-            "attributesToRetrieve" => '["*","-jobRequirement","-jobDescription"]',
-            "attributesToHighlight"=> '[]',
-            "query" => '',
-            'facetFilters' => '[["categoryIds:35"]]',
-            'filters' => '',
-            'numericFilters'=> '["expiredDate >= 1631424990"]',
-            'page' => 2,
-            'restrictSearchableAttributes' => '["jobTitle","skills","company"]'
+            'order' => [
+              [
+                  'field' => "priorityOrder",
+                  'value' => '-1,35',
+              ]
+            ],
+            'page' => 0,
+            'query' => '',
+            'ranges' => [],
+            'retrieveFields' => [
+                "benefits",
+                "jobTitle",
+                "salaryMax",
+                "isSalaryVisible",
+                "jobLevelVI",
+                "isShowLogo",
+                "salaryMin",
+                "companyLogo",
+                "userId",
+                "jobLevel",
+                "jobId",
+                "companyId",
+                "approvedOn",
+                "isAnonymous",
+                "alias",
+                "expiredOn",
+                "industries",
+                "workingLocations",
+                "services",
+                "companyName",
+                "salary",
+                "onlineOn",
+                "simpleServices",
+                "visibilityDisplay",
+                "isShowLogoInSearch",
+                "priorityOrder",
+            ],
+
         ];
         $http = new Client;
         $total = 1000;

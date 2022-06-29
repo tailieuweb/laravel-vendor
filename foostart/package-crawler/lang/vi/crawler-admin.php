@@ -95,6 +95,7 @@ return [
     */
     'pages' => [
         'title-list' => 'List of sites',
+        'title-jobs' => 'Crawler Jobs',
         'title-list-pattern' => 'List of patterns',
         'title-list-search' => 'Search results',
         'title-list-pattern-search' => 'Search results',
@@ -241,6 +242,7 @@ return [
         'site_type' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'pattern_description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'job_overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'not-found' => 'Chưa có thông tin công việc.',
     ],
 
 
@@ -371,7 +373,8 @@ return [
         'title-search-categories' => 'Search categories',
         'category_overview' => 'Category overview',
         'slug' => 'Site lug',
-        'job_overview' => 'Job overview'
+        'job_overview' => 'Job overview',
+        'title-search-jobs' => 'Tìm kiếm',
     ],
 
 
