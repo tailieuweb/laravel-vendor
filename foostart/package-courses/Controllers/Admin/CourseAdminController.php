@@ -490,7 +490,7 @@ class CourseAdminController extends FooController {
                 if (!empty($internship)) {
                     //Set company info
                     $items[$index]['company_name'] = $internship->company_name;
-
+                    $items[$index]['phone'] = $internship->student_phone;
                     if (empty($internship->company_name)) {
                         $counterUnCompany++;
                     }
@@ -507,7 +507,10 @@ class CourseAdminController extends FooController {
             $_params['context_id'] = $context->context_id;
             $categories = $this->obj_category->pluckSelect($_params);
         }
-
+        //Sort name ascending
+        $items = collect($items)->sortBy(function($item) {
+            return [$item['last_name']];
+        });
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
@@ -604,6 +607,11 @@ class CourseAdminController extends FooController {
                 }
             }
         }
+
+        //Sort name ascending
+        $items = collect($items)->sortBy(function($item) {
+            return [$item['last_name']];
+        });
 
         // display view
         $this->data_view = array_merge($this->data_view, array(

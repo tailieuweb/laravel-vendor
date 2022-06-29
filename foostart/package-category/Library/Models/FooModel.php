@@ -171,7 +171,6 @@ class FooModel extends Model
      */
     protected function orderingFilters(array $params, $elo)
     {
-
         //order
         if (!empty($params['order'])) {
             foreach ($params['order'] as $_key => $_value) {
