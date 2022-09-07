@@ -14,15 +14,16 @@
 
     <title>{{ trans('package-filemanager::lfm.title-page') }}</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('vendor/package-filemanager/img/folder.png') }}">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    {!! HTML::style('packages/foostart/css/bootstrap-3.3.7.min.css') !!}
+    {!! HTML::style('packages/foostart/css/font-awesome-4.7.0.min.css') !!}
     <link rel="stylesheet" href="{{ asset('vendor/package-filemanager/css/cropper.min.css') }}">
     <style>{!! \File::get(base_path('vendor/foostart/package-filemanager/public/css/lfm.css')) !!}</style>
     {{-- Use the line below instead of the above if you need to cache the css. --}}
     {{-- <link rel="stylesheet" href="{{ asset('/vendor/package-filemanager/css/lfm.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('vendor/package-filemanager/css/mfb.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/package-filemanager/css/dropzone.min.css') }}">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.css">
+    {!! HTML::script('packages/foostart/js/vendor/jquery-2.2.4.min.js') !!}
+    {!! HTML::script('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') !!}
 </head>
 <body>
 <div class="container-fluid" id="wrapper">
