@@ -21,7 +21,6 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'abdde736cf4d9a9bffd1fd9c9f31a8bd' => __DIR__ . '/..' . '/foostart/package-collectivehtml/src/helpers.php',
@@ -119,6 +118,8 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         array (
             'MyCLabs\\Enum\\' => 13,
             'Monolog\\' => 8,
+            'MatthiasMullie\\PathConverter\\' => 29,
+            'MatthiasMullie\\Minify\\' => 22,
             'Matrix\\' => 7,
             'Maatwebsite\\Excel\\' => 18,
         ),
@@ -153,6 +154,7 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
             'Foostart\\Slideshow\\' => 19,
             'Foostart\\Post\\' => 14,
             'Foostart\\Pexcel\\' => 16,
+            'Foostart\\Front\\' => 15,
             'Foostart\\Filemanager\\' => 21,
             'Foostart\\Category\\' => 18,
             'Foostart\\Acl\\' => 13,
@@ -404,6 +406,14 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'MatthiasMullie\\PathConverter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/path-converter/src',
+        ),
+        'MatthiasMullie\\Minify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
+        ),
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
@@ -493,6 +503,10 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'Foostart\\Pexcel\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-pexcel',
+        ),
+        'Foostart\\Front\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-front',
         ),
         'Foostart\\Filemanager\\' => 
         array (
@@ -788,6 +802,7 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'Database\\Seeders\\CategorySeeder' => __DIR__ . '/../..' . '/database/seeders/CategorySeeder.php',
         'Database\\Seeders\\ContextSeeder' => __DIR__ . '/../..' . '/database/seeders/ContextSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\PexcelSeeder' => __DIR__ . '/../..' . '/database/seeders/PexcelSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -1663,6 +1678,16 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'Foostart\\Filemanager\\Middlewares\\CreateDefaultFolder' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Middlewares/CreateDefaultFolder.php',
         'Foostart\\Filemanager\\Middlewares\\MultiUser' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Middlewares/MultiUser.php',
         'Foostart\\Filemanager\\Traits\\LfmHelpers' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Traits/LfmHelpers.php',
+        'Foostart\\Front\\Controllers\\AboutController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/AboutController.php',
+        'Foostart\\Front\\Controllers\\FrontController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/FrontController.php',
+        'Foostart\\Front\\Controllers\\HomeController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/HomeController.php',
+        'Foostart\\Front\\Controllers\\RuleController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/RuleController.php',
+        'Foostart\\Front\\Controllers\\RulesController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/RulesController.php',
+        'Foostart\\Front\\Controllers\\SearchController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/SearchController.php',
+        'Foostart\\Front\\Controllers\\SigninController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/SigninController.php',
+        'Foostart\\Front\\FrontServiceProvider' => __DIR__ . '/..' . '/foostart/package-front/FrontServiceProvider.php',
+        'Foostart\\Front\\Models\\Front' => __DIR__ . '/..' . '/foostart/package-front/Models/Front.php',
+        'Foostart\\Front\\Validators\\FrontValidator' => __DIR__ . '/..' . '/foostart/package-front/Validators/FrontValidator.php',
         'Foostart\\Pexcel\\Controllers\\Admin\\PexcelAdminController' => __DIR__ . '/..' . '/foostart/package-pexcel/Controllers/Admin/PexcelAdminController.php',
         'Foostart\\Pexcel\\Controllers\\User\\PexcelUserController' => __DIR__ . '/..' . '/foostart/package-pexcel/Controllers/User/PexcelUserController.php',
         'Foostart\\Pexcel\\Helper\\CourseEnrollParser' => __DIR__ . '/..' . '/foostart/package-pexcel/Helper/CourseEnrollParser.php',
@@ -1818,6 +1843,7 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'HTMLPurifier_AttrDef_HTML_Bool' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/HTML/Bool.php',
         'HTMLPurifier_AttrDef_HTML_Class' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/HTML/Class.php',
         'HTMLPurifier_AttrDef_HTML_Color' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/HTML/Color.php',
+        'HTMLPurifier_AttrDef_HTML_ContentEditable' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/HTML/ContentEditable.php',
         'HTMLPurifier_AttrDef_HTML_FrameTarget' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/HTML/FrameTarget.php',
         'HTMLPurifier_AttrDef_HTML_ID' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/HTML/ID.php',
         'HTMLPurifier_AttrDef_HTML_Length' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/HTML/Length.php',
@@ -3865,6 +3891,16 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'Matrix\\Operators\\Multiplication' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Multiplication.php',
         'Matrix\\Operators\\Operator' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Operator.php',
         'Matrix\\Operators\\Subtraction' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Subtraction.php',
+        'MatthiasMullie\\Minify\\CSS' => __DIR__ . '/..' . '/matthiasmullie/minify/src/CSS.php',
+        'MatthiasMullie\\Minify\\Exception' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exception.php',
+        'MatthiasMullie\\Minify\\Exceptions\\BasicException' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/BasicException.php',
+        'MatthiasMullie\\Minify\\Exceptions\\FileImportException' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/FileImportException.php',
+        'MatthiasMullie\\Minify\\Exceptions\\IOException' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/IOException.php',
+        'MatthiasMullie\\Minify\\JS' => __DIR__ . '/..' . '/matthiasmullie/minify/src/JS.php',
+        'MatthiasMullie\\Minify\\Minify' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Minify.php',
+        'MatthiasMullie\\PathConverter\\Converter' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/Converter.php',
+        'MatthiasMullie\\PathConverter\\ConverterInterface' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/ConverterInterface.php',
+        'MatthiasMullie\\PathConverter\\NoConverter' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/NoConverter.php',
         'MigrationCartalystSentryInstallThrottle' => __DIR__ . '/..' . '/foostart/package-acl/database/migrations/2021_02_24_225988_migration_cartalyst_sentry_install_throttle.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
@@ -4463,6 +4499,7 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'PHPUnit\\Util\\Annotation\\DocBlock' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Annotation/DocBlock.php',
         'PHPUnit\\Util\\Annotation\\Registry' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Annotation/Registry.php',
         'PHPUnit\\Util\\Blacklist' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Blacklist.php',
+        'PHPUnit\\Util\\Cloner' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Cloner.php',
         'PHPUnit\\Util\\Color' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Color.php',
         'PHPUnit\\Util\\ErrorHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/ErrorHandler.php',
         'PHPUnit\\Util\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Exception.php',
