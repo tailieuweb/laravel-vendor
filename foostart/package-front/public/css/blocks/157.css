@@ -1,0 +1,104 @@
+.type-157 {
+  margin-top: 2rem;
+}
+.type-157 a {
+  color: lightslategrey;
+}
+.type-157 a:hover {
+  color: #f5ce31 !important;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.type-157 a,
+.type-157 a:hover,
+.type-157 a:active,
+.type-157 a:visited,
+.type-157 a:focus {
+  text-decoration: none;
+}
+.type-157 .mask {
+  position: relative;
+  display: inline-block;
+  -webkit-mask: url(../images/php.jpg) center;
+}
+.type-157 .mask:hover:after,
+.type-157 .mask:focus {
+  opacity: 1;
+  top: -30%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: 1s, 1s, .15s;
+  transition-timing-function: ease;
+}
+.type-157 .mask:active:after {
+  opacity: 0;
+}
+.type-157 .mask:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -210%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+}
+.type-157 .shine:after {
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-157 .list_new_view {
+  margin-bottom: 1.5rem;
+  background: #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0,0,0,0.2);
+}
+.type-157 .list_new_view .top_news_block_desc {
+  font-size: 0.9em;
+  padding: 1.5rem;
+}
+.type-157 .list_new_view .top_news_block_desc .topnewstime {
+  padding-left: 1.5rem;
+  margin-top: -0.7rem;
+  text-align: center;
+  padding-left: 0;
+}
+.type-157 .list_new_view .top_news_block_desc h4 {
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+}
+.type-157 .top_news_block_thumb img {
+  max-width: 100%;
+  width: 100%;
+}
+.type-157 .title {
+  margin-top: -0.3rem;
+}
+.type-157 .topnewsdate {
+  font-family: 'Prata', serif;
+  font-size: 3.1em;
+  line-height: 1em;
+  margin-left: 1.5rem;
+}
+.type-157 .topnewsmonth {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  margin-left: 1.5rem;
+}
+.type-157 .shortdesc {
+  border-left: 0.1rem solid #666;
+}
+@media (min-width: 992px) {
+  .type-157 .sidebar {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .type-157 .sidebar {
+    width: 96rem;
+  }
+}
+@media (max-width: 480px) {
+  .type-157 .sidebar {
+    padding: 0;
+  }
+}

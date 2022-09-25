@@ -1,0 +1,56 @@
+.type-178 .video {
+  padding: 0;
+}
+.type-178 .video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 3rem;
+  height: 0;
+  overflow: hidden;
+}
+.type-178 .video-container iframe,
+.type-178 .video-container object,
+.type-178 .video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.type-178 .crossedbg {
+  background: url(../images/bg_cr_grey.png);
+  height: 1.5rem;
+}
+.type-178 .panel {
+  background: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.type-178 .panel-body {
+  background: #fff;
+  padding: 1.5rem 0 0 1.5rem;
+}
+.type-178 .panel-default {
+  border: none;
+}
+.type-178 .panel-heading {
+  border: none !important;
+  background: none !important;
+  padding: 2rem 0 0;
+}
+.type-178 .panel-heading h2 {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.type-178 .panel-heading span {
+  font-weight: normal;
+  font-size: 1.75rem;
+}
+.type-178 a {
+  color: lightslategrey;
+}
+.type-178 a:hover {
+  color: #f5ce31 !important;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}

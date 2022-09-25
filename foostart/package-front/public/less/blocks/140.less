@@ -1,0 +1,81 @@
+@import "../../var/var.less";
+.type-140 {
+    overflow: hidden;
+    /*------------------GENERAL--------------------*/
+    .panel {
+        background: none;
+        box-shadow: none;
+        img {
+            max-width: 100%;
+            &:hover{
+                opacity: 0.8;
+                transition: all 0.5s ease;
+            }
+        }
+    }
+    .panel-default {
+        border: none;
+    }   
+    .panel-body{
+        padding:1.5rem 0 0 0;
+    }
+    .panel-heading {
+        border: none !important;
+        background: none !important;
+        padding: 2rem 0 0;
+        h2 {
+            font-weight: bold;
+            font-size: @font-size-heading-5 + 1;
+            span {
+                font-weight: normal;
+                font-size: @font-size-heading-5 + .5;
+            }
+        }
+
+    }
+    .crossedbg {
+        background: url(../images/bg_cr_grey.png);
+        height: 1.5rem;
+    }
+    /*------------------END GENERAL--------------------*/
+
+    .panel-body {
+        background: @color_white;
+        .left{
+            p{
+                a{
+                    color:lightslategrey;
+                    &:hover{
+                        color: @color_Cylindrical_coordinate;
+                        transition: all 0.5s ease;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        .right{
+            a{
+                -webkit-mask: url(../images/aboutfit.jpg) center center;
+                .hover-img;
+            }
+        }
+    }
+
+
+    /*-------------REPONSIVE--------------*/
+    @media (min-width: @md-992){
+        .content{
+            padding: 0;
+        }
+    }
+    @media (min-width: @sm-768){
+        .content{
+            width: 96rem;
+        }
+    }
+    @media (max-width: @xs-480){
+        .content{
+            padding: 0;
+        }
+    }
+}

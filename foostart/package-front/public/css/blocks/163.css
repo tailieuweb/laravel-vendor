@@ -1,0 +1,64 @@
+.type-163 .panel {
+  background: none;
+  box-shadow: none;
+}
+.type-163 .panel-default {
+  border: none;
+}
+.type-163 .panel-heading {
+  border: none !important;
+  background: none !important;
+  padding: 2rem 0 0;
+}
+.type-163 .panel-heading h2 {
+  font-weight: bold;
+  font-size: 1.8em;
+}
+.type-163 .panel-heading h2>span {
+  font-weight: normal;
+  font-size: 1em;
+}
+.type-163 .crossedbg {
+  background: url(../images/bg_cr_grey.png);
+  height: 1.5rem;
+}
+.type-163 .panel-body {
+  background: #fff;
+}
+.type-163 address {
+  margin-bottom: 2rem;
+  font-style: normal;
+  line-height: 1.42857143;
+}
+.type-163 .itdcadd {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+.type-163 .itdcadd li {
+  margin: 1rem 0;
+}
+.type-163 .Date-Time {
+  padding-left: 0.5rem;
+}
+.type-163 .Date-time-Secondline {
+  padding-left: 3.2rem;
+}
+.type-163 #map-canvas {
+  height: 45rem;
+}
+@media (min-width: 992px) {
+  .type-163 .address {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .type-163 .address {
+    width: 96rem;
+  }
+}
+@media (max-width: 480px) {
+  .type-163 .address {
+    padding: 0;
+  }
+}

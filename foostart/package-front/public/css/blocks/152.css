@@ -1,0 +1,106 @@
+.type-152 a:hover,
+.type-152 a:focus {
+  text-decoration: underline;
+}
+.type-152 .productdot {
+  position: absolute;
+  width: 0%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 0;
+  background: #42a7a9;
+  height: 2px;
+  transition-duration: 0.5s;
+}
+.type-152 .boxshow:hover .productdot {
+  width: 100%;
+}
+.type-152 .panel {
+  background: none;
+  box-shadow: none;
+}
+.type-152 .panel-default {
+  border: none;
+}
+.type-152 .panel-heading {
+  border: none !important;
+  background: none !important;
+  padding: 2rem 0 0;
+}
+.type-152 .panel-heading h2 {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.type-152 .panel-heading h2 span {
+  font-weight: normal;
+  font-size: 2.25rem;
+}
+.type-152 .crossedbg {
+  background: url(../images/bg_cr_grey.png);
+  height: 1.5rem;
+}
+.type-152 .mask a {
+  position: relative;
+  display: inline-block;
+  -webkit-mask: url(../images/thcs_thumb.jpg) center;
+  mask: url('#mask-firefox');
+}
+.type-152 .mask a:hover:after {
+  opacity: 1;
+  top: -30%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: 1s, 1s, .15s;
+  transition-timing-function: ease;
+}
+.type-152 .mask a:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -210%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-152 .dep_item {
+  padding: 1rem;
+  background: #fff;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  margin-bottom: 0.1rem;
+  cursor: pointer;
+}
+.type-152 .dep_network {
+  border-left: 1rem #45b29d solid;
+  color: #45b29d;
+}
+.type-152 .dep_software {
+  border-left: 1rem #efc94c solid;
+  color: #efc94c;
+}
+.type-152 .dep_graphic {
+  border-left: 1rem #e27a3f solid;
+  color: #e27a3f;
+}
+.type-152 .dep_informatics {
+  border-left: 1rem #992255 solid;
+  color: #992255;
+}
+.type-152 .dep_name {
+  padding: 1.5rem 0;
+}
+@media (min-width: 768px) {
+  .type-152 .slidebar {
+    width: 96rem;
+  }
+}
+@media (max-width: 480px) {
+  .type-152 .slidebar {
+    padding: 0;
+  }
+}

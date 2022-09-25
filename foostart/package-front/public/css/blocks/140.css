@@ -1,0 +1,86 @@
+.type-140 {
+  overflow: hidden;
+}
+.type-140 .panel {
+  background: none;
+  box-shadow: none;
+}
+.type-140 .panel img {
+  max-width: 100%;
+}
+.type-140 .panel img:hover {
+  opacity: 0.8;
+  transition: all 0.5s ease;
+}
+.type-140 .panel-default {
+  border: none;
+}
+.type-140 .panel-body {
+  padding: 1.5rem 0 0 0;
+}
+.type-140 .panel-heading {
+  border: none !important;
+  background: none !important;
+  padding: 2rem 0 0;
+}
+.type-140 .panel-heading h2 {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.type-140 .panel-heading h2 span {
+  font-weight: normal;
+  font-size: 2rem;
+}
+.type-140 .crossedbg {
+  background: url(../images/bg_cr_grey.png);
+  height: 1.5rem;
+}
+.type-140 .panel-body {
+  background: #fff;
+}
+.type-140 .panel-body .left p a {
+  color: lightslategrey;
+}
+.type-140 .panel-body .left p a:hover {
+  color: #f5ce31;
+  transition: all 0.5s ease;
+  text-decoration: none;
+}
+.type-140 .panel-body .right a {
+  -webkit-mask: url(../images/aboutfit.jpg) center center;
+  display: inline-block;
+}
+.type-140 .panel-body .right a:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -400%;
+  width: 150%;
+  height: 150%;
+  opacity: 0;
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-140 .panel-body .right a:hover:after {
+  opacity: 1;
+  top: -20%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: .8s, .8s, .15s;
+  transition-timing-function: ease;
+}
+@media (min-width: 992px) {
+  .type-140 .content {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .type-140 .content {
+    width: 96rem;
+  }
+}
+@media (max-width: 480px) {
+  .type-140 .content {
+    padding: 0;
+  }
+}

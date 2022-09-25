@@ -1,0 +1,53 @@
+.type-164 #feedbackForm {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.type-164 .help-block {
+  display: none;
+}
+.type-164 .panel {
+  background: none;
+  box-shadow: none;
+}
+.type-164 .panel-default {
+  border: none;
+}
+.type-164 .panel-heading {
+  border: none !important;
+  background: none !important;
+  padding: 2rem 0 0;
+}
+.type-164 .panel-heading h2 {
+  font-weight: bold;
+  font-size: 1.8em;
+}
+.type-164 .panel-heading h2>span {
+  font-weight: normal;
+  font-size: 1em;
+}
+.type-164 .crossedbg {
+  background: url(../images/bg_cr_grey.png);
+  height: 1.5rem;
+}
+.type-164 .panel-body {
+  background: #fff;
+  padding: 1.5rem 0 0 0;
+}
+.type-164 .btn-primary:hover {
+  transition: all 0.5s ease;
+}
+@media (min-width: 992px) {
+  .type-164 .address {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .type-164 .address {
+    width: 96rem;
+  }
+}
+@media (max-width: 480px) {
+  .type-164 .address {
+    padding: 0;
+  }
+}

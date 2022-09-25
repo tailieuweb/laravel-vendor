@@ -1,0 +1,93 @@
+@import "../../var/var.less";
+.type-154 {
+    /*------------------GENERAL--------------------*/
+    .panel{
+        background: none;
+    }
+    .panel-default {
+        border: none;
+    }   
+    .panel-heading {
+        border: none !important;
+        background: none !important;
+        padding: 2rem 0 0;
+        h2 {
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+        h2>span {
+            font-weight: normal;
+            font-size: 2.25rem;
+        }
+    }
+    .crossedbg {
+        background: url(../images/bg_cr_grey.png);
+        height: 1.5rem;
+    }
+    /*------------------END GENERAL--------------------*/
+    /*------------------STUDENT--------------------*/
+    .feedback_owner {
+        margin: 0;
+        .feedback_thumb img {
+            border-radius: 50%;
+        }
+        .feedback_name {
+            color: @color_Cylindrical_coordinate;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-size: 1.2em;
+        }
+        .feedback_title {
+            margin: 0.5rem 0 0;
+        }
+        .mobile{
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        cursor: pointer;
+
+    }
+    a {
+        position: relative;
+        -webkit-mask: url(../images/sv.jpg) center center;
+        border-radius: 50%;
+        img{
+            max-width: 100%;
+            width: 100%;
+            border-radius: 50%;
+        }
+        .hover-img;
+    }
+    .shine:after {
+        transform: rotate(30deg);
+    }
+    .shine:after {
+        background: linear-gradient(
+            to right, 
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.13) 77%,
+            rgba(255, 255, 255, 0.5) 92%,
+            rgba(255, 255, 255, 0.0) 100%
+            );			
+    }
+
+    /*------------------/END STUDENT--------------------*/
+    /*------------------REPONSIVE--------------*/
+    @media (min-width: 992px){
+        .sidebar{
+            padding: 0;
+        }
+    }
+    @media (min-width: 768px){
+        .sidebar{
+            width: 96rem;
+        }
+    }
+    @media (max-width: 480px){
+        .sidebar{
+            padding: 0;
+        }
+    }
+}
+

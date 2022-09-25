@@ -1,0 +1,80 @@
+.type-146 {
+  margin-top: 7rem;
+  overflow: hidden;
+}
+.type-146 .teacher .profview {
+  text-align: center;
+  margin-top: 2rem;
+}
+.type-146 .teacher .profview .profview_thumb {
+  padding: 0.8rem;
+  background: url(../images/bg_cr_grey.png);
+  border-radius: 50%;
+}
+.type-146 .teacher .profview .profview_thumb_wrap {
+  overflow: hidden;
+  border-radius: 50%;
+}
+.type-146 .teacher .profview .profview_thumb_wrap a {
+  -webkit-mask: url(../images/TieuKimCuong) center center;
+  display: inline-block;
+}
+.type-146 .teacher .profview .profview_thumb_wrap a:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -400%;
+  width: 150%;
+  height: 150%;
+  opacity: 0;
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-146 .teacher .profview .profview_thumb_wrap a:hover:after {
+  opacity: 1;
+  top: -20%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: .8s, .8s, .15s;
+  transition-timing-function: ease;
+}
+.type-146 .teacher .profview .profview_thumb_wrap a img {
+  max-width: 100%;
+}
+.type-146 .teacher .profview .prof_name {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: lightslategrey;
+}
+.type-146 .teacher .profview .prof_name a {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: lightslategrey;
+  text-decoration: none;
+}
+.type-146 .teacher .profview .prof_name a:hover {
+  color: #f5ce31;
+  transition: all 0.5s ease;
+}
+.type-146 .teacher .profview .prof_title {
+  text-align: center;
+}
+.type-146 .teacher .prof_list .profview:nth-child(4n+1) {
+  clear: both;
+}
+@media (min-width: 992px) {
+  .type-146 .teacher {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .type-146 .teacher {
+    width: 96rem;
+  }
+}
+@media (max-width: 480px) {
+  .type-146 .teacher {
+    padding: 0;
+  }
+}

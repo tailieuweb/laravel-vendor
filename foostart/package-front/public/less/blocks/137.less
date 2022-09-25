@@ -1,0 +1,230 @@
+@import "../../var/var.less";
+.type-137{
+    .event{
+        padding: 0;
+    }
+    .eventlocation {
+        font-size: @font-size-heading-5 - 0.3 ;
+    }
+    /*------------------GENERAL--------------------*/
+    .panel {
+        background: none;
+        box-shadow: none;
+    }
+    .panel-default {
+        border: none;
+    }   
+    .panel-heading {
+        border: none !important;
+        background: none !important;
+        padding: 2rem 0 0;
+        h2 {
+            font-weight: bold;
+            font-size: @font-size-heading-5 + 1  ;
+            span {
+                font-weight: normal;
+                font-size: @font-size-heading-5 + 1 ;
+            }
+        }
+    }
+    .crossedbg {
+        background: url(../images/bg_cr_grey.png);
+        height: 1.5rem;
+    }
+    /*------------------END GENERAL--------------------*/
+
+    /*------------------TOP EVENTS TIMELINE--------------------*/
+    .bodytimeline {
+        padding: 0;
+        background: none;
+    }
+    .timeline {
+        list-style: none;
+        padding: 2rem 0 2rem;
+        position: relative;
+        .timeline-left,
+        .timeline-right{
+            position: relative;
+            .timeline-panel {
+                /*        width: 46%;*/
+                float: left;
+                position: relative;
+                &:before{
+                    position: absolute;
+                    top: 2.7rem;
+                    right: -1.5rem;
+                    display: inline-block;
+                    border-top: 0.1rem solid @color_border_gray;
+                    content: " ";
+                    width: 100%;
+                }
+            }
+            &:after{
+                clear: both;
+                content: " ";
+                display: table;
+            }
+            &:before{
+                content: " ";
+                display: table;
+            }
+        }
+        .timeline-badge {
+            width: 1.8rem;
+            height: 1.8rem;
+            position: absolute;
+            top: 1.9rem;
+            margin-left: -1rem;
+            background-color: @color_white;
+            border: 0.2rem solid @color_border_gray;
+            border-radius: 50%;
+            z-index: 5;
+        }
+        .eventtime {
+            width: 5.6rem;
+            height: 5.6rem;
+            background: @color_Cylindrical_coordinate;
+            border-radius: 50%;
+            position: relative;
+            float: left;
+            .eventtimecover {
+                position: absolute;
+                top: 0.9rem;
+                left: 1rem;
+            }
+            .eventdm {
+                float: left;
+            }
+            .eventday {
+                font-weight: bold;
+                font-size: @font-size-heading-5 + .5;
+                border-bottom: 0.1rem #4e4e4e solid;
+                line-height: 1.8rem;
+            }
+            .eventmonth {
+                text-align: center;
+            }
+            .eventyear {
+                float: left;
+                margin-top: 1.4rem;
+            }
+        }
+        .eventdetails {
+            margin-right: -0.5rem;
+            float: right;
+            width: 59%;
+            margin-top: 0.7rem;
+            .eventlocation {
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-weight: bold;
+            }
+            .eventdesc {
+                margin-top: 1.5rem;
+                a{
+                    color: lightslategrey;
+                    &:hover{
+                        color: @color_Cylindrical_coordinate !important;
+                        text-decoration: none;
+                        transition: all 0.5s ease;
+                    }
+					&:focus{
+						color: @color_Cylindrical_coordinate !important;
+                        text-decoration: none;
+                        transition: all 0.5s ease;
+					}
+                    
+                }
+            }
+        }
+        .timeline-right{
+            .timeline-panel{
+                float: right;
+                &:before{
+                    position: absolute;
+                    top: 2.7rem;
+                    right: 0.5rem;
+                    display: inline-block;
+                    border-top: 0.1rem solid @color_border_gray;
+                    content: " ";
+                    width: 100%;
+                }
+            }
+            .eventtime{
+                float: right;
+            }
+        }
+        &:before{
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 0.2rem;
+            background-color: @color_border_gray;
+            left: 50%;
+            margin-left: -0.15rem;
+        }
+    }
+
+    /*------------------/END TOP EVENTS TIMELINE--------------------*/
+    /*--------Reponsive--------*/
+    @media (min-width: @sm-768){
+        .event{
+            width: 96rem;
+        }
+        .timeline-badge{
+            left: 50%;
+        }
+        .timeline-panel {
+            width: 46%;
+        }
+        .timeline{
+            margin: 0;
+        }
+        .timeline .timeline-right .timeline-panel:before{
+            right: 2.5rem;
+        }
+        .timeline .timeline-left .timeline-panel:before{
+            right: -2rem;
+        }
+    }
+    @media (max-width: @sm-768) {
+        .bodytimeline{
+            margin-left: 2rem;
+        }
+        .timeline{
+            margin-right: 5rem;
+            .eventtime {
+                float: right;
+            }
+            .eventdetails {
+                text-align: left;
+                float: left;
+            }
+            .timeline-left,
+            .timeline-right {
+                margin-bottom: 1.5rem;
+                .timeline-panel {
+                    width: 100%;
+                    padding-left: 2rem;
+                    &:before{
+                        width: 99%;
+                        left: 0.5rem;
+                    }
+                }
+            }
+            &:before{
+                left: 0rem;
+            }
+        }
+    }
+    @media (max-width: @xs-480){
+        .panel-default{
+            padding: 0;
+        }
+    }
+    @media (max-width: @md-992){
+        .eventdetails{
+            width: 80% !important;
+        }
+    }
+}

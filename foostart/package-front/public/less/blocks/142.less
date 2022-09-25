@@ -1,0 +1,123 @@
+@import "../../var/var.less";
+.type-142 {
+    .sidebar{
+        padding:0;
+    }
+    overflow: hidden;
+    a{
+        color:lightslategrey;
+    }
+    a:hover, a:focus {
+        color: @color_Cylindrical_coordinate;
+        transition: all 0.5s ease;
+        text-decoration: none;
+    }
+
+    /*------------------GENERAL--------------------*/
+    .panel {
+        background: none;
+        box-shadow: none;
+    }
+    .panel-default {
+        border: none;
+    }   
+    .panel-heading {
+        border: none !important;
+        background: none !important;
+        padding: 2rem 0 0;
+        h2 {
+            font-weight: bold;
+            font-size: @font-size-heading-5 + 1;
+            span {
+                font-weight: normal;
+                font-size: @font-size-heading-5 + 1;
+            }
+        }
+    }
+    .crossedbg {
+        background: url(../images/bg_cr_grey.png);
+        height: 1.5rem;
+    }
+    /*------------------/END GENERAL--------------------*/
+
+    /*------------------LIST TITLE POSTS--------------------*/
+    .panel-body {
+        background: @color_white;
+        padding: 0 0 0 1.5rem;
+    }
+    .list-group {
+        list-style: disc;
+        margin-bottom: 0;
+    }
+    .list-group-item {
+        border: none;
+        border-bottom: 0.1rem @color_border_gray solid;
+        margin-bottom: 0;
+        padding: 0.5rem 0 1.5rem 0;
+        &:first-child{
+            padding-top:1rem;
+            border-top-right-radius: 0.4rem;
+            border-top-left-radius: 0.4rem;
+        }
+        &:before{
+            font-family: Arial, Helvetica, sans-serif;
+            color: @color_Cylindrical_coordinate;
+            content: "\2022";
+            font-size: 2.5rem;
+            padding-right: 1rem;
+            position: relative;
+            top: 0.5rem;
+        }
+    }
+    .effect;
+    /*------------------/END LIST TITLE POSTS--------------------*/
+
+    /*------------------TOP TECHNOLOGIESS--------------------*/
+    .toparticle > .thumb{ 
+        a{
+            -webkit-mask: url(../images/files.png) @align @align;
+            .hover-img;
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .toparticle {
+        padding-left:0;
+        margin-top: 2.5rem;
+        .content{
+            padding-left:1.5rem;
+            h4 {
+                font-weight: bold;
+                font-size: @font-size-heading-5 + .5;
+                line-height: 2.5rem;
+                a{
+                    color: lightslategrey;
+                    &:hover{
+                        color: @color_Cylindrical_coordinate ;
+                    }
+                }
+            }
+        }
+    }
+
+    /*------------------/END TOP TECHNOLOGIES--------------------*/
+
+    /*------------------REPONSIVE--------------*/
+    @media (min-width: @md-992){
+        .sidebar{
+            padding: 0;
+        }
+    }
+    @media (min-width: @sm-768){
+        .sidebar{
+            width: 96rem;
+        }
+    }
+    @media (max-width: @xs-480){
+        .sidebar{
+            padding: 0;
+        }
+    }
+}

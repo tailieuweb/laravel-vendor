@@ -1,0 +1,53 @@
+.type-176 {
+  overflow: hidden;
+}
+.type-176 .event {
+  padding: 0;
+}
+.type-176 .panel-default {
+  border: none;
+}
+.type-176 .panel-default a {
+  -webkit-mask: url(../images/tdc-en.jpg) center center;
+  display: inline-block;
+}
+.type-176 .panel-default a:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -400%;
+  width: 150%;
+  height: 150%;
+  opacity: 0;
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-176 .panel-default a:hover:after {
+  opacity: 1;
+  top: -20%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: .8s, .8s, .15s;
+  transition-timing-function: ease;
+}
+.type-176 .panel {
+  background: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.type-176 .panel-heading {
+  border: none !important;
+  background: none !important;
+  padding: 2rem 0 0;
+}
+.type-176 .panel-heading h2 {
+  font-weight: bold;
+  font-size: 2.25rem;
+}
+.type-176 .panel-heading h2 span {
+  font-weight: normal;
+}
+.type-176 .crossedbg {
+  background: url(../images/bg_cr_grey.png);
+  height: 1.5rem;
+}

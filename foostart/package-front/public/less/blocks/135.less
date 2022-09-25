@@ -1,0 +1,105 @@
+@import "../../var/var.less";
+.type-135{
+    overflow: hidden;
+    .prof_profile {
+        margin-top: 5.5rem;     
+        background: @color_white;
+        a {
+            -webkit-mask: url(../images/VoThanhTrung.jpg) center center;
+            position: relative;
+            img{
+                max-width: 100%;
+                width: 100%;
+            }
+           .hover-img;
+        }
+        .prof_ide {
+            background: @color_Cylindrical_coordinate;            
+            position: relative;
+            .prof_fullname {
+                font-weight: 800;
+                text-transform: capitalize;
+                border-right: 0.1rem #333 solid;
+                display: table-cell;
+                vertical-align: middle;
+                padding-right: 1.5rem;
+            }
+            .prof_title {
+                display: table-cell;
+                vertical-align: middle;
+                text-transform: uppercase;
+                font-style: italic;
+                padding-left: 1.5rem;
+            }
+            &:before{
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 3rem;
+                border-width: 1.2rem 1.2rem 0;
+                border-style: solid;
+                border-color: @color_Cylindrical_coordinate transparent;
+                display: block;
+                width: 0;
+            }
+        }
+        .prof_contact {
+            padding: 3rem;
+            font-style: italic / 2;
+            .prof_dep {
+                font-weight: bold;
+                font-size: @font-size-heading-5;
+            }
+            .inf-contact{
+                padding-top:2rem;
+                .inf{
+                    padding:0.5rem 0;
+                }
+            }
+        }
+    }
+
+
+    .col-md-8, .col-md-4{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /*-------REPONSIVE----------*/
+    @media (min-width: @sm-768){       
+        .profile{
+            width: 96rem;
+            padding: 0;
+            .prof_ava {
+                padding-left: 1.5rem;
+            }
+            .prof_info{
+                padding-right: 1.5rem;
+                .prof_ide {
+                    padding: 3rem;
+                    .prof_fullname {
+                        font-size: @font-size-heading-5 + 0.5;
+                    }
+                    .prof_title {
+                        font-size: @font-size-heading-5;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: @sm-768){
+        .prof_ide {
+            padding: 1.5rem;
+            .prof_fullname {
+                font-size: @font-size-heading-5;
+            }
+            .prof_title {
+                font-size: @font-size-heading-5 - 0.5;
+            }
+        }
+        .employees{
+            padding: 0;
+        }
+    }
+    /*-------END REPONSIVE----------*/
+}
+

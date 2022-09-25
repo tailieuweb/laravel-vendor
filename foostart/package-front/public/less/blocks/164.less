@@ -1,0 +1,61 @@
+@import "../../var/var.less";
+.type-164 {
+    /*------------------GENERAL--------------------*/
+    #feedbackForm{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .help-block{
+        display: none;
+    }
+    .panel {
+        background: none;
+        box-shadow: none;
+    }
+    .panel-default {
+        border: none;
+    }   
+    .panel-heading {
+        border: none !important;
+        background: none !important;
+        padding: 2rem 0 0;
+        h2 {
+            font-weight: bold;
+            font-size: 1.8em;
+        }
+        h2>span {
+            font-weight: normal;
+            font-size: 1em;
+        }
+    }
+    .crossedbg {
+        background: url(../images/bg_cr_grey.png);
+        height: 1.5rem;
+    }
+    .panel-body {
+        background: @color_white;
+        padding: 1.5rem 0 0 0;
+
+    }
+    .btn-primary:hover{
+        transition: all 0.5s ease;
+    }
+    /*------------------/END GENERAL--------------------*/
+    /*---------------REPONSIVE-------------*/
+    @media (min-width: @md-992){
+        .address{
+            padding: 0;
+        }
+    }
+    @media (min-width: @sm-768){
+        .address{
+            width: 96rem;
+        }
+    }
+    @media (max-width: @xs-480){
+        .address{
+            padding: 0;
+        }
+    }
+
+}

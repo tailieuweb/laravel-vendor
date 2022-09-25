@@ -1,0 +1,102 @@
+@import "../../var/var.less";
+.type-153 {
+    a{
+        color:lightslategrey;
+        &:hover{
+            color: @color_Cylindrical_coordinate !important;
+            text-decoration: none;
+            transition: all 0.5s ease;
+        }
+    }
+    a, a:hover, a:active, a:visited, a:focus {
+        text-decoration:none;
+    }
+
+    /*------------------GENERAL--------------------*/
+    .panel {
+        background: none;
+        box-shadow: none;
+    }
+    .panel-default {
+        border: none;
+    }   
+    .panel-heading {
+        border: none !important;
+        background: none !important;
+        padding: 3rem 0 0;
+        h2 {
+            font-weight: bold;
+            font-size: 1.8em;
+        }
+        h2>span {
+            font-weight: normal;
+            font-size: 1em;
+        }
+    }
+
+    .crossedbg {
+        background: url(../images/bg_cr_grey.png);
+        height: 1.5rem;
+    }
+    .effect;
+    /*------------------/END GENERAL--------------------*/
+
+    /*------------------TOP WORKS & TOP ALUMNUS--------------------*/
+    .panel-body {
+        background:@color_white;
+        padding:0;
+    }
+    .list-group {
+        list-style: disc;
+        margin-bottom: 0;
+    }
+    .list-group-item {
+        margin: 0;
+        padding: 0.5rem 1.5rem 1rem 1.5rem;
+        border: none;
+        border-bottom: 0.1rem @color_border_gray solid;
+
+
+    }
+    .list-group-item:first-child {
+        border-top-right-radius: 0.4rem;
+        border-top-left-radius: 0.4rem;
+    }
+    .list-group-item:before {
+        font-family: Arial, Helvetica, sans-serif;
+        color: @color_Cylindrical_coordinate;
+        content: "\2022";
+        font-size: 2em;
+        padding-right: .5em;
+        position: relative;
+        top: .15em;
+    }
+
+    /*------------------/END TOP WORKS & TOP ALUMNUS--------------------*/
+
+    /*------------------RECENT NEWS--------------------*/
+    .on-recent-news {
+
+        span {
+            font-size: 1.1rem; 
+            color: #bfbfbf;
+        }
+    }
+    /*------------------/END RECENT NEWS--------------------*/
+    /*------------------REPONSIVE--------------*/
+    @media (min-width: 992px){
+        .sidebar{
+            padding: 0;
+        }
+    }
+    @media (min-width: 768px){
+        .sidebar{
+            width: 96rem;
+        }
+    }
+    @media (max-width: 480px){
+        .sidebar{
+            padding: 0;
+        }
+    }
+}

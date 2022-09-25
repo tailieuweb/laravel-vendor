@@ -13,18 +13,42 @@ return [
 
     ],
     'block_ids' => [
-        7,
-        60,
-        73,
-        129,
-        261,
-        282,
-        859,
-        1100,
-        1222,
-        1272,
-        2034,
-        2038
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        146,
+        147,
+        151,
+        152,
+        153,
+        154,
+        155,
+        157,
+        158,
+        161,
+        162,
+        163,
+        164,
+        165,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
     ],
 
 
@@ -32,67 +56,290 @@ return [
       |-----------------------------------------------------------------------
       | List of configs on page
       |-----------------------------------------------------------------------
-      |
+      | 1-Home page
+      | 2-News list page
+      | 3-News detail page
+      | 4-Personnel list page
+      | 5-Personnel detail page
+      | 6-Student list page
+      | 7-Student detail page
+      | 8-Thematic list page
+      | 9-Thematic detail page
+      | 10-Contact page
+      | 11-Other page page
      */
     'page_config' => [
 
-        //home page
+        /**
+         * | 1-Home page
+         */
         'home' => [
             'ids' => [
-                2034,
-                2038,
-                261,
-                1222,
-                859,
-                7
+                133,
+                134,
+                136,
+                137,
+                138,
+                139,
+                140,
+                141,
+                142,
+                177,
+                178,
             ],
             'libs' => [
-                2038 => [
+                134 => [
                     'js' => [
-                        'swiper.min'
+                        'swiper.min',
+                    ],
+                    'css' => [
+                        'swiper.min',
+                    ]
+                ],
+                141 => [
+                    'js' => [
+                        'ekko-lightbox-min',
+                    ],
+                    'css' => [
+                    ]
+                ]
+            ]
+        ],//| 1-Home page
+
+
+        /**
+         * | 2-News list page
+         */
+        'news_list' => [
+            'ids' => [
+                133,
+                137,
+                143,
+                144,
+                152,
+                153,
+                171,
+                177,
+            ],
+            'libs' => [
+            ]
+        ],//| 2-News list page
+
+
+        /**
+         * | 3-News detail page
+         */
+        'news_detail' => [
+            'ids' => [
+                133,
+                136,
+                143,
+                152,
+                153,
+                155,
+                158,
+                171,
+                177,
+                179,
+            ],
+            'libs' => [
+            ]
+        ],//| 3-News detail page
+
+
+        /**
+         * | 4-Personnel list page
+         */
+        'personnel_list' => [
+            'ids' => [
+                133,
+                146,
+                147,
+                152,
+                153,
+                177,
+            ],
+            'libs' => [
+            ]
+        ],//| 4-Personnel list page
+
+        /**
+         * | 5-Personnel detail page
+         */
+        'personnel_detail' => [
+            'ids' => [
+                133,
+                135,
+                147,
+                152,
+                153,
+                155,
+                177,
+
+            ],
+            'libs' => [
+            ]
+        ],//| 5-Personnel detail page
+
+        /**
+         * | 6-Student list page
+         */
+        'student_list' => [
+            'ids' => [
+                133,
+                137,
+                138,
+                143,
+                144,
+                151,
+                153,
+                154,
+                155,
+                157,
+                158,
+                177,
+
+            ],
+            'libs' => [
+            ]
+        ],//| 6-Student list page
+
+        /**
+         * | 7-Student detail page
+         */
+        'student_detail' => [
+            'ids' => [
+                133,
+                136,
+                143,
+                152,
+                153,
+                155,
+                158,
+                171,
+                177,
+                179,
+            ],
+            'libs' => [
+            ]
+        ],//| 7-Student detail page
+
+        /**
+         * | 8-Thematic list page
+         */
+        'thematic_list' => [
+            'ids' => [
+                133,
+                143,
+                158,
+                170,
+                177,
+
+            ],
+            'libs' => [
+            ]
+        ],//| 8-Thematic list page
+
+        /**
+         * | 9-Thematic detail page
+         */
+        'thematic_detail' => [
+            'ids' => [
+                133,
+                143,
+                152,
+                153,
+                155,
+                158,
+                171,
+                177,
+                179,
+            ],
+            'libs' => [
+            ]
+        ],//| 9-Thematic detail page
+
+        /**
+         * | 10-Contact page
+         */
+        'contact' => [
+            'ids' => [
+                133,
+                163,
+                164,
+                177,
+            ],
+            'libs' => [
+            ]
+        ],//| 10-Contact page
+
+        /**
+         * | 11-Intro
+         */
+        'intro' => [
+            'ids' => [
+                133,
+                136,
+                137,
+                165,
+                176,
+                177,
+            ],
+            'libs' => [
+            ]
+        ],//| 11-Intro
+
+        /**
+         * | 12-Admissions
+         */
+        'admissions' => [
+            'ids' => [
+                133,
+                162,
+                172,
+                177,
+            ],
+            'libs' => [
+                172 => [
+                    'css' => [
+                        'Cube_Animation',
                     ]
                 ],
             ]
-        ], //home page
+        ],//| 12-Admissions
 
-
-        //rule page
-        'rule' => [
+        /**
+         * | 13-Brochure
+         */
+        'brochure' => [
             'ids' => [
-                2034,
-                60,
-                7,
-                129,
+                133,
+                173,
+                177,
+            ],
+            'libs' => [
+                173 => [
+                    'js' => [
+                        'turn.min',
+                    ]
+                ],
+            ]
+        ],//| 13-Brochure
+
+        /**
+         * | 14-Aao
+         */
+        'aao' => [
+            'ids' => [
+                133,
+                161,
+                177
             ],
             'libs' => [
             ]
-        ], //rule page
-
-
-        //rules page
-        'rules' => [
-            'ids' => [
-                2034,
-                129,
-                7,
-            ],
-            'libs' => [
-            ]
-        ], //checklist page
-
-
-        //contact page
-        'contact' => [
-            'ids' => [
-                2034,
-                282,
-                7,
-            ],
-            'libs' => [
-            ]
-        ], //contact page
-
+        ],//| 14-Aao
     ],
+
 
 
 
@@ -151,7 +398,7 @@ return [
     */
     'dir' => [
         'status' => TRUE,
-        'root_source_blocks' => 'E:\dev\1-blocks\1-sources',
-        'source_blocks' => 'K:\dev\5-theptinhuy.com\trunk\public\templates\blocks',
+        'root_source_blocks' => 'D:\1-github-workspace\1-tailieuweb\2-project-fit\1-templates\1-blocks',
+        'source_blocks' => 'D:\1-github-workspace\1-tailieuweb\1-laravel-8x\dev\1-templates\1-blocks',
     ],
 ];

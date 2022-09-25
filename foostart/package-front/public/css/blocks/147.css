@@ -1,0 +1,42 @@
+.type-147 {
+  margin-bottom: 1.5rem;
+}
+.type-147 .teacher .panel-heading {
+  border: none !important;
+  background: none !important;
+  padding: 2rem 0 0;
+}
+.type-147 .teacher .panel-heading h2 {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.type-147 .teacher .panel-heading h2 span {
+  font-weight: normal;
+  font-size: 2.25rem;
+}
+.type-147 .teacher .panel-heading p {
+  margin: 0 0 1rem;
+}
+.type-147 .desc {
+  margin: -0.8rem 0 0 0;
+  text-align: justify;
+}
+.type-147 .name {
+  margin: -0.5rem 0 1rem 0;
+}
+@media (min-width: 992px) {
+  .type-147 .teacher {
+    padding: 20;
+  }
+}
+@media (min-width: 768px) {
+  .type-147 .teacher {
+    width: 96rem;
+    padding: 20;
+  }
+}
+@media (max-width: 480px) {
+  .type-147 .teacher {
+    padding: 20;
+  }
+}

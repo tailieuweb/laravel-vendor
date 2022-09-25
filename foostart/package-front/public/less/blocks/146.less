@@ -1,0 +1,68 @@
+@import "../../var/var.less";
+.type-146{
+	margin-top:7rem;
+    overflow: hidden;
+    .teacher{
+        .profview {
+            text-align: center;
+            margin-top: 2rem;
+            .profview_thumb {
+                padding: 0.8rem;
+                background: url(../images/bg_cr_grey.png);
+                border-radius: 50%;
+            }
+            .profview_thumb_wrap {
+                overflow: hidden;
+                border-radius: 50%;
+                a{
+                    -webkit-mask: url(../images/TieuKimCuong) center center;
+                    .hover-img;
+                    img {
+                        max-width: 100%;
+                    }
+                }
+            }
+
+            .prof_name{
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                font-size: @font-size-heading-5;
+                font-weight: bold;
+                color: lightslategrey;
+                a {
+                    font-family: 'Open Sans Condensed', sans-serif;
+                    color: lightslategrey;
+                    text-decoration: none;
+                    &:hover{
+                        color: @color_Cylindrical_coordinate;
+                        transition: all 0.5s ease;
+                    }
+                }
+
+            }
+            .prof_title{
+                text-align: center;
+            }
+        }
+        .prof_list{
+            .profview:nth-child(4n+1) {
+                clear: both;
+            }
+        }
+    }
+    /*------REPONSIVE----------*/
+    @media (min-width: @md-992){
+        .teacher{padding: 0;}
+    }
+    @media (min-width: @sm-768){
+        .teacher{
+            width: 96rem;
+        }
+    }
+    @media (max-width: @xs-480){
+        .teacher{
+            padding: 0;
+        }
+    }
+    /*------END REPONSIVE----------*/
+}

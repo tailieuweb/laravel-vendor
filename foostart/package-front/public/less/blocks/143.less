@@ -1,0 +1,163 @@
+@import "../../var/var.less";
+.type-143{
+    overflow: hidden;
+    .news{width: 96rem; padding: 0;}
+    .top_news_block{
+        margin-top: 5.5rem;
+        background: @color_white;
+        .thumb{
+            a{
+                -webkit-mask: url(../images/news-3.jpg) center center;
+                .hover-img;
+                img {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+        .top_news_block_desc {
+            font-size: @font-size-heading-5 - 0.5 ;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            h4 {              
+                text-transform: uppercase;
+                font-size: @font-size-heading-5 ;
+                font-weight: bold;
+                margin-top: 0;
+            }
+            .topnewstime {
+                text-align: center;
+                padding-left: 0;
+                .topnewsdate {
+                    font-family: 'Prata', serif;
+                    font-size: @font-size-heading-5 + 2.5;
+                    line-height: 3rem;
+                    margin-left: 1.5rem;
+                }   
+                .topnewsmonth {
+                    text-transform: uppercase;
+                    font-size: @font-size-heading-5 - .5;
+                    margin-left: 1.5rem;
+                }
+            }
+            .shortdesc {
+                border-left: 0.1rem solid #666;
+                a{
+                    color:lightslategrey;
+                    &:hover{
+                        text-decoration: none;
+                        color:@color_Cylindrical_coordinate;
+                        transition: all 0.5s ease;
+                    }
+					&:focus{
+					 text-decoration: none;
+                        color:@color_Cylindrical_coordinate;
+                        transition: all 0.5s ease;
+					}
+                }
+            }
+            .topnewsmonth, p{
+                color: #333;
+                font-size: @font-size-heading-5 - .25;
+            }
+        }
+    }
+    /*----Reponsive----*/
+    @media (max-width: @lg-1200){
+        .top_news_block {
+            margin-top: 0;
+        }
+    }
+    @media (max-width: @xs-480){
+        .news{
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    @media (min-width: @md-992){
+        .row {
+            margin-left: -1.5rem !important;
+            margin-right: -1.5rem !important;
+        }
+    }
+    @media (max-width: @sm-768){
+        .news{width: auto;}
+    }
+    @media (min-width: @sm-768) and (max-width: @md-992){
+        .top_col{
+            margin-top:1.5rem;
+        }
+    }
+    @media (min-width : 72rem) and (max-width :@sm-768)    {
+        .topnewstime{
+            text-align: right !important;
+            padding-right: 2rem;
+            .topnewsdate{
+                margin-right: 2rem !important;
+                font-size: @font-size-heading-5 + 2.5 !important;
+            }
+            .topnewsmonth{
+                font-size: @font-size-heading-5 !important;
+            }
+        }
+        .shortdesc{
+            p{
+                width: 85%;
+            }
+        }
+    }
+    @media (min-width : 65rem) and (max-width :72rem)    {
+        .topnewstime{
+            text-align: right !important;
+            padding-right: 4rem;
+            .topnewsdate{
+                margin-right: 1rem !important;
+                font-size: @font-size-heading-5 + 1.5 !important;
+            }
+            .topnewsmonth{
+                font-size: @font-size-heading-5 - 0.5 !important;
+            }
+        }
+        .shortdesc{
+            p{
+                width: 85%;
+            }
+        }
+    }
+    @media (min-width : 60rem) and (max-width :65rem)    {
+        .topnewstime{
+            text-align: right !important;
+            padding-right: 3rem;
+            .topnewsdate{
+                margin-right: 1rem !important;
+                font-size: @font-size-heading-5 + 2.5 !important;
+            }
+            .topnewsmonth{
+                font-size: @font-size-heading-5 - .25 !important;
+            }
+        }
+        .shortdesc{
+            p{
+                width: 90%;
+            }
+        }
+    }
+    @media (min-width : 57rem) and (max-width :60rem)    {
+        .topnewstime{
+            text-align: right !important;
+            padding-right: 4rem;
+            .topnewsdate{
+                margin-right: 1rem !important;
+                font-size: @font-size-heading-5 + 2.5 !important;
+            }
+            .topnewsmonth{
+                font-size: @font-size-heading-5 - .25 !important;
+            }
+        }
+        .shortdesc{
+            p{
+                width: 95%;
+            }
+        }
+    }
+}

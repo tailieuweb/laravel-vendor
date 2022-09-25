@@ -1,0 +1,45 @@
+@import "../../var/var.less";
+.type-147{
+    margin-bottom:1.5rem;
+    .teacher{
+        .panel-heading {
+            border: none !important;
+            background: none !important;
+            padding: 2rem 0 0;
+            h2 {
+                font-weight: bold;
+                font-size: 2.5rem;
+                span {
+                    font-weight: normal;
+                    font-size: 2.25rem;
+                }
+            }
+            p {
+                margin: 0 0 1rem;
+            }
+        }
+    }
+    .desc{
+        margin: -.8rem 0 0 0;
+        text-align: justify;
+    }
+    .name{
+        margin: -.5rem 0 1rem 0;
+    }
+    /*------REPONSIVE----------*/
+    @media (min-width: 992px){
+        .teacher{padding: 20;}
+    }
+    @media (min-width: 768px){
+        .teacher{
+            width: 96rem;
+            padding: 20;
+        }
+    }
+    @media (max-width: 480px){
+        .teacher{
+            padding: 20;
+        }
+    }
+    /*------END REPONSIVE----------*/
+}

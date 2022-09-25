@@ -30,15 +30,18 @@ Step 4: Set config dir block
 
 config/package-front.php
 
-'dir' => [
-        'source_blocks' => '*\trunk\public\template',
-        'asset' => '*\trunk\public\packages\foostart\package-front\\',
-],
+    'dir' => [
+        'status' => TRUE,
+        'root_source_blocks' => 'source root directory',
+        'source_blocks' => 'copy to source dev',
+    ],
 
-Step 5: Install blocks
+Step 5: Copy blocks
 
+Access URL: */copy-blocks
+
+Step 6: Install blocks
 Access URL: */install-blocks
-
 
 Step 6: Convert LESS to CSS
 

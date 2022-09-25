@@ -1,0 +1,120 @@
+.type-155 .panel {
+  background: none;
+  box-shadow: none;
+}
+.type-155 .panel-default {
+  border: none;
+}
+.type-155 .panel-heading {
+  border: none !important;
+  background: none !important;
+  padding: 2rem 0 0;
+}
+.type-155 .panel-heading h2 {
+  font-weight: bold;
+  font-size: 1.8em;
+}
+.type-155 .panel-heading h2>span {
+  font-weight: normal;
+  font-size: 1em;
+}
+.type-155 .crossedbg {
+  background: url(../images/bg_cr_grey.png);
+  height: 1.5rem;
+}
+.type-155 a {
+  position: relative;
+  -webkit-mask: url(../images/oth_logo.gif) center center;
+  display: inline-block;
+}
+.type-155 a img {
+  max-width: 100%;
+  width: 100%;
+}
+.type-155 a:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -400%;
+  width: 150%;
+  height: 150%;
+  opacity: 0;
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-155 a:hover:after {
+  opacity: 1;
+  top: -20%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: .8s, .8s, .15s;
+  transition-timing-function: ease;
+}
+.type-155 .shine:after {
+  transform: rotate(30deg);
+}
+.type-155 .shine:after {
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-155 .panel-body {
+  background: #fff;
+}
+.type-155 .list-group {
+  list-style: disc;
+  margin-bottom: 0;
+}
+.type-155 .list-group-item {
+  border: none;
+  border-bottom: 0.1rem #d9d9d9 solid;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 1.5rem;
+}
+.type-155 .list-group-item:first-child {
+  border-top-right-radius: 0.4rem;
+  border-top-left-radius: 0.4rem;
+}
+.type-155 .list-group-item:before {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f5ce31;
+  content: "\2022";
+  font-size: 2em;
+  padding-right: .5em;
+  position: relative;
+  top: .15em;
+}
+.type-155 .list-group-item:last-child {
+  border: none;
+}
+.type-155 .contest_item img {
+  display: block;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  transition: all 0.5s;
+}
+.type-155 .contest_list .contest_item {
+  padding: 0;
+}
+.type-155 .img-left {
+  padding-right: 0.3rem !important;
+}
+.type-155 .img-right {
+  padding-left: 0.3rem !important;
+}
+@media (min-width: 992px) {
+  .type-155 .sidebar {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .type-155 .sidebar {
+    width: 96rem;
+  }
+}
+@media (max-width: 480px) {
+  .type-155 .sidebar {
+    padding: 0;
+  }
+}

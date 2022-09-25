@@ -1,0 +1,59 @@
+@import "../../var/var.less";
+.type-338{
+    .effect;
+    #catenav {
+        background: @color_Cylindrical_coordinate;
+        margin: 5.5rem 0 2.5rem;
+        h4 {
+            font-size: 1em;
+            padding: 1.5rem 0;
+            margin: 0;
+            line-height: 2rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+        a {
+            color: #000;
+            transition: color 0.5s ease-in-out;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+    .boxshow a{
+        text-decoration: none;
+    }
+    .title{
+        margin-right: 1.5rem;
+    }
+    .auto-width{
+        padding: 0;
+    }
+    /*--REPONSIVE--*/
+    @media (min-width:  @sm-768){
+        .special{
+            width: 96rem;
+        }
+        .navbar-nav {
+            padding: 0;
+        }
+        .auto-width {
+            width: auto;
+        }
+
+
+    }
+    @media (max-width: @sm-768){
+        .title{
+            margin-right: 0rem;
+        }
+        .title a{
+            padding-left: 1rem;
+        }
+    }
+    @media (max-width: @xs-480){
+        .navbar-nav {
+            padding: 0 1.5rem;
+        }
+    }
+}

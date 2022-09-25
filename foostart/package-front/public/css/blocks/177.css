@@ -1,0 +1,33 @@
+.type-177 {
+  background: #003b7a;
+  color: #fff;
+  padding: 3rem 0;
+}
+.type-177 h4 {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+.type-177 .bottom-link {
+  list-style: none;
+  padding-left: 0px;
+}
+.type-177 .bottom-link li {
+  border-bottom: 0.1rem dotted #0060c5;
+  padding: 1.5rem 0;
+}
+.type-177 a {
+  color: #fff;
+}
+.type-177 a:hover {
+  color: #f5ce31 !important;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.type-177 .footerinfo a {
+  color: lightslategrey;
+}
+.type-177 .footerinfo a:hover {
+  color: #f5ce31 !important;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}

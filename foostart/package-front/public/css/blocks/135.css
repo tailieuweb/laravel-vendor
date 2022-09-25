@@ -1,0 +1,119 @@
+.type-135 {
+  overflow: hidden;
+}
+.type-135 .prof_profile {
+  margin-top: 5.5rem;
+  background: #fff;
+}
+.type-135 .prof_profile a {
+  -webkit-mask: url(../images/VoThanhTrung.jpg) center center;
+  position: relative;
+  display: inline-block;
+}
+.type-135 .prof_profile a img {
+  max-width: 100%;
+  width: 100%;
+}
+.type-135 .prof_profile a:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -400%;
+  width: 150%;
+  height: 150%;
+  opacity: 0;
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-135 .prof_profile a:hover:after {
+  opacity: 1;
+  top: -20%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: .8s, .8s, .15s;
+  transition-timing-function: ease;
+}
+.type-135 .prof_profile .prof_ide {
+  background: #f5ce31;
+  position: relative;
+}
+.type-135 .prof_profile .prof_ide .prof_fullname {
+  font-weight: 800;
+  text-transform: capitalize;
+  border-right: 0.1rem #333 solid;
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 1.5rem;
+}
+.type-135 .prof_profile .prof_ide .prof_title {
+  display: table-cell;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-style: italic;
+  padding-left: 1.5rem;
+}
+.type-135 .prof_profile .prof_ide:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 3rem;
+  border-width: 1.2rem 1.2rem 0;
+  border-style: solid;
+  border-color: #f5ce31 transparent;
+  display: block;
+  width: 0;
+}
+.type-135 .prof_profile .prof_contact {
+  padding: 3rem;
+  font-style: italic / 2;
+}
+.type-135 .prof_profile .prof_contact .prof_dep {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.type-135 .prof_profile .prof_contact .inf-contact {
+  padding-top: 2rem;
+}
+.type-135 .prof_profile .prof_contact .inf-contact .inf {
+  padding: 0.5rem 0;
+}
+.type-135 .col-md-8,
+.type-135 .col-md-4 {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .type-135 .profile {
+    width: 96rem;
+    padding: 0;
+  }
+  .type-135 .profile .prof_ava {
+    padding-left: 1.5rem;
+  }
+  .type-135 .profile .prof_info {
+    padding-right: 1.5rem;
+  }
+  .type-135 .profile .prof_info .prof_ide {
+    padding: 3rem;
+  }
+  .type-135 .profile .prof_info .prof_ide .prof_fullname {
+    font-size: 2rem;
+  }
+  .type-135 .profile .prof_info .prof_ide .prof_title {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .type-135 .prof_ide {
+    padding: 1.5rem;
+  }
+  .type-135 .prof_ide .prof_fullname {
+    font-size: 1.5rem;
+  }
+  .type-135 .prof_ide .prof_title {
+    font-size: 1rem;
+  }
+  .type-135 .employees {
+    padding: 0;
+  }
+}

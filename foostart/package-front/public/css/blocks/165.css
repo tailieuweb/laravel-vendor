@@ -1,0 +1,67 @@
+.type-165 .title {
+  margin-top: 4.5rem;
+}
+.type-165 .title h1 {
+  font-size: 2.1em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.type-165 .overviewline {
+  border-bottom: 0.1rem solid #cecece;
+  margin: 2.5rem 0 1.5rem;
+  position: relative;
+}
+.type-165 .overviewline:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5rem;
+  border-width: 1.2rem 1.2rem 0;
+  border-style: solid;
+  border-color:  transparent;
+  display: block;
+  width: 0;
+}
+.type-165 .overviewline:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5.1rem;
+  border-width: 1.1rem 1.1rem 0;
+  border-style: solid;
+  border-color: #f5f5f5 transparent;
+  display: block;
+  width: 0;
+}
+.type-165 .maincontent {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.7em;
+}
+.type-165 .maincontent img {
+  width: 100%;
+  max-width: 100%;
+}
+.type-165 .images_Center {
+  text-align: center;
+  padding-top: 1rem;
+}
+@media (min-width: 992px) {
+  .type-165 .intro {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .type-165 .intro {
+    width: 96rem;
+  }
+}
+@media (max-width: 480px) {
+  .type-165 .intro {
+    padding: 0;
+  }
+  .type-165 .maincontent {
+    padding: 0 1.5rem;
+  }
+}

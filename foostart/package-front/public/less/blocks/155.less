@@ -1,0 +1,120 @@
+@import "../../var/var.less";
+.type-155 {
+    /*------------------GENERAL--------------------*/
+    .panel {
+        background: none;
+        box-shadow: none;
+    }
+    .panel-default {
+        border: none;
+    }   
+    .panel-heading {
+        border: none !important;
+        background: none !important;
+        padding: 2rem 0 0;
+        h2 {
+            font-weight: bold;
+            font-size: 1.8em;
+        }
+        h2>span {
+            font-weight: normal;
+            font-size: 1em;
+        }
+    }
+    .crossedbg {
+        background: url(../images/bg_cr_grey.png);
+        height: 1.5rem;
+    }
+    a {
+        position: relative;
+        -webkit-mask: url(../images/oth_logo.gif) center center;
+        img{
+            max-width: 100%;
+            width: 100%;
+        }
+        .hover-img;
+    }
+    .shine:after {
+        transform: rotate(30deg);
+    }
+    .shine:after {
+        background: linear-gradient(
+            to right, 
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.13) 77%,
+            rgba(255, 255, 255, 0.5) 92%,
+            rgba(255, 255, 255, 0.0) 100%
+            );			
+    }
+    /*------------------END GENERAL--------------------*/
+
+    /*------------------TOP WORKS & TOP ALUMNUS--------------------*/
+    .panel-body {
+        background: @color_white;
+    }
+    .list-group {
+        list-style: disc;
+        margin-bottom: 0;
+    }
+    .list-group-item {
+        border: none;
+        border-bottom: 0.1rem @color_border_gray solid;
+        margin-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0 1.5rem;
+    }
+    .list-group-item:first-child {
+        border-top-right-radius: 0.4rem;
+        border-top-left-radius: 0.4rem;
+    }
+    .list-group-item:before {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #f5ce31;
+        content: "\2022";
+        font-size: 2em;
+        padding-right: .5em;
+        position: relative;
+        top: .15em;
+    }
+    .list-group-item:last-child {
+        border: none;
+    }
+    .contest_item{
+        img {
+            display: block;
+            margin: 0;
+            width: 100%;
+            height: auto;
+            transition: all 0.5s;
+        }
+
+    }
+    /*------------------END TOP WORKS & TOP ALUMNUS--------------------*/
+
+    .contest_list .contest_item {
+        padding: 0;
+    }
+    .img-left{
+        padding-right: 0.3rem!important;
+    }
+    .img-right{
+        padding-left: 0.3rem!important;
+    }
+    /*---------------REPONSIVE-------------*/
+    @media (min-width: 992px){
+        .sidebar{
+            padding: 0;
+        }
+    }
+    @media (min-width: 768px){
+        .sidebar{
+            width: 96rem;
+        }
+    }
+    @media (max-width: 480px){
+        .sidebar{
+            padding: 0;
+        }
+    }
+}

@@ -1,0 +1,57 @@
+.type-136 {
+  overflow: hidden;
+}
+.type-136 .img {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.type-136 .img a {
+  position: relative;
+  -webkit-mask: url(../images/tuyensinh.jpg) center center;
+  border-radius: 50%;
+  display: inline-block;
+}
+.type-136 .img a img {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.type-136 .img a:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -400%;
+  width: 150%;
+  height: 150%;
+  opacity: 0;
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-136 .img a:hover:after {
+  opacity: 1;
+  top: -20%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: .8s, .8s, .15s;
+  transition-timing-function: ease;
+}
+@media (min-width: 992px) {
+  .type-136 .sidebar {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .type-136 .sidebar {
+    width: 96rem;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 992px) {
+  .type-136 .sidebar {
+    padding: 0;
+  }
+}
+@media (max-width: 480px) {
+  .type-136 .sidebar {
+    padding: 0;
+  }
+}

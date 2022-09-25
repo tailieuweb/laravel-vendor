@@ -1,0 +1,175 @@
+.type-144 .news {
+  padding: 0;
+  overflow: hidden;
+}
+.type-144 .news .list_news {
+  margin-top: 4.5rem;
+}
+.type-144 .news .list_news .list_new_view {
+  margin-bottom: 1.5rem;
+  background: #fff;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_thumb a {
+  -webkit-mask: url(../images/posts-1.jpg) center center;
+  display: inline-block;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_thumb a:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -110%;
+  left: -400%;
+  width: 150%;
+  height: 150%;
+  opacity: 0;
+  background: linear-gradient(to right,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.13) 77%,rgba(255,255,255,0.5) 92%,rgba(255,255,255,0) 100%);
+}
+.type-144 .news .list_news .list_new_view .top_news_block_thumb a:hover:after {
+  opacity: 1;
+  top: -20%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: .8s, .8s, .15s;
+  transition-timing-function: ease;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_thumb a img {
+  max-width: 100%;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_desc {
+  font-size: 1.25rem;
+  padding-top: 1.5rem;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_desc .topnewstime {
+  margin-top: 1.2rem;
+  text-align: center;
+  padding-left: 0;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_desc .topnewstime .topnewsdate {
+  font-size: 4rem;
+  line-height: 1rem;
+  margin-left: 1.5rem;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_desc .topnewstime .topnewsmonth {
+  text-transform: uppercase;
+  font-size: -1rem;
+  margin-left: 1.5rem;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_desc .shortdesc {
+  border-left: 0.1rem solid #666;
+  padding-right: 3rem;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_desc .shortdesc h4 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_desc .shortdesc a {
+  color: lightslategrey;
+  transition: all 0.5s ease;
+}
+.type-144 .news .list_news .list_new_view .top_news_block_desc .shortdesc a:hover {
+  color: #f5ce31;
+  transition: all 0.5s ease;
+  text-decoration: none;
+}
+.type-144 .news .pagination-centered {
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .type-144 .news {
+    width: 96rem;
+  }
+  .type-144 .topnewstime {
+    text-align: right !important;
+    padding-right: 2rem;
+  }
+  .type-144 .topnewstime .topnewsdate {
+    margin-right: 1rem !important;
+    font-size: 4rem !important;
+  }
+  .type-144 .topnewstime .topnewsmonth {
+    font-size: 1.25rem !important;
+  }
+}
+@media (max-width: 320px) {
+  .type-144 .topnewsmonth {
+    font-size: -2.5rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .type-144 .news {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 720px) and (max-width: 767px) {
+  .type-144 .topnewstime {
+    text-align: right !important;
+    padding-right: 1rem;
+  }
+  .type-144 .topnewstime .topnewsdate {
+    margin-right: 1rem !important;
+    font-size: 3rem !important;
+  }
+  .type-144 .topnewstime .topnewsmonth {
+    font-size: 1rem !important;
+  }
+  .type-144 .shortdesc p {
+    width: 80%;
+  }
+}
+@media (min-width: 650px) and (max-width: 720px) {
+  .type-144 .topnewstime {
+    text-align: right !important;
+    padding-right: 1rem;
+  }
+  .type-144 .topnewstime .topnewsdate {
+    margin-right: 1rem !important;
+    font-size: 3rem !important;
+  }
+  .type-144 .topnewstime .topnewsmonth {
+    font-size: 1rem !important;
+  }
+  .type-144 .shortdesc p {
+    width: 85%;
+  }
+}
+@media (min-width: 600px) and (max-width: 650px) {
+  .type-144 .topnewstime {
+    text-align: right !important;
+    padding-right: 2rem;
+  }
+  .type-144 .topnewstime .topnewsdate {
+    margin-right: 1rem !important;
+    font-size: 4rem !important;
+  }
+  .type-144 .topnewstime .topnewsmonth {
+    font-size: 1.25rem !important;
+  }
+  .type-144 .shortdesc p {
+    width: 90%;
+  }
+}
+@media (min-width: 570px) and (max-width: 600px) {
+  .type-144 .topnewstime {
+    text-align: right !important;
+    padding-right: 4rem;
+  }
+  .type-144 .topnewstime .topnewsdate {
+    margin-right: 1rem !important;
+    font-size: 4rem !important;
+  }
+  .type-144 .topnewstime .topnewsmonth {
+    font-size: 1.25rem !important;
+  }
+  .type-144 .shortdesc p {
+    width: 95%;
+  }
+}
+@media (min-width: 992px) {
+  .type-144 .row {
+    margin-left: -1.5rem !important;
+    margin-right: -1.5rem !important;
+  }
+}

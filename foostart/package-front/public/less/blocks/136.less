@@ -1,0 +1,45 @@
+@import "../../var/var.less";
+.type-136 {
+    overflow: hidden;
+    .padding(){
+        padding:0;
+    }
+    .img{
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        a {
+            position: relative;
+            -webkit-mask: url(../images/tuyensinh.jpg) center center;
+            border-radius: 50%;
+            img{
+                max-width: 100%;
+                width: 100%;
+                border-radius: 50%;
+            }
+            .hover-img;
+        }
+    }
+
+    /*------REPONSIVE---------*/
+    @media (min-width: @md-992){
+        .sidebar{
+            .padding;
+        }
+
+    }
+    @media (min-width: @sm-768){
+        .sidebar{
+            width: 96rem;
+        }
+    }
+    @media only screen and (min-width: @xs-480) and (max-width: @md-992){
+        .sidebar{
+            .padding;
+        }
+    }
+    @media (max-width: @xs-480){
+        .sidebar{
+            .padding;
+        }
+    }
+}
