@@ -406,7 +406,12 @@ class SlideshowAdminController extends FooController
             $item->id = NULL;
         }
 
-        $categories = $this->obj_category->pluckSelect($params);
+        $context = $this->obj_item->getContext($this->category_ref_name);
+        if ($context) {
+            $params['context_id'] = $context->context_id;
+            $categories = $this->obj_category->pluckSelect($params);
+        }
+
 
         //get slideshow style
         $styles = $this->obj_style->pluckSelect();

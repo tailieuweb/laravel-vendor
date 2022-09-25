@@ -79,7 +79,7 @@ class StyleValidator extends FooValidator
     public function loadConfigs()
     {
 
-        $configs = config('package-style');
+        $configs = config('package-slideshow');
         return $configs;
     }
 

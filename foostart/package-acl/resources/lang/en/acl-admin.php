@@ -34,6 +34,8 @@ return [
         'company' => 'Company',
         'posts' => 'Posts',
         'dashboard' => 'Dashboard',
+        'styles' => 'Styles',
+        'slideshows' => 'Slideshows',
     ],
 
     /***********************************************************************
@@ -58,6 +60,7 @@ return [
         'contexts' => 'Contexts',
         'pexcel' => 'Pexcels',
         'company' => 'Company',
+        'slideshow' => 'Slideshow',
     ],
 
 

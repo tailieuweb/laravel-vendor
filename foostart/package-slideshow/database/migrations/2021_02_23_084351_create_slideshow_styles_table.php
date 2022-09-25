@@ -28,11 +28,11 @@ class CreateSlideshowStylesTable extends FoostartMigration
             // Relation
             // Other attributes
             $table->string($this->prefix_column . 'name', 255)->comment('Style name');
-            $table->string($this->prefix_column . 'image', 255)->comment('Style image');
-            $table->string($this->prefix_column . 'view_file', 255)->comment('View file');
-            $table->string($this->prefix_column . 'js_file', 1000)->comment('Js file');
-            $table->string($this->prefix_column . 'css_file', 1000)->comment('Css file');
-            $table->text($this->prefix_column . 'view_content')->comment('View content');
+            $table->string($this->prefix_column . 'image', 255)->comment('Style image')->nullable();
+            $table->string($this->prefix_column . 'view_file', 255)->comment('View file')->nullable();
+            $table->string($this->prefix_column . 'js_file', 1000)->comment('Js file')->nullable();
+            $table->string($this->prefix_column . 'css_file', 1000)->comment('Css file')->nullable();;
+            $table->text($this->prefix_column . 'view_content')->comment('View content')->nullable();
 
             //Set common columns
             $this->setCommonColumns($table);

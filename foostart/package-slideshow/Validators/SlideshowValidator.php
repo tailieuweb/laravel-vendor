@@ -19,6 +19,7 @@ class SlideshowValidator extends FooValidator
             'slideshow_name' => ["required"],
             'slideshow_overview' => ["required"],
             'slideshow_description' => ["required"],
+            'style_id' => ["required"],
         ];
 
         // set configs

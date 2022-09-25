@@ -4,7 +4,7 @@ return [
     //Number of worlds
     'length' => [
         'slideshow_name' => [
-            'min' => 10,
+            'min' => 3,
             'max' => 255,
         ],
         'slideshow_overview' => [
@@ -14,6 +14,10 @@ return [
         'slideshow_description' => [
             'min' => 255,
             'max' => 0,//unlimit
+        ],
+        'style_name' => [
+            'min' => 3,
+            'max' => 255,
         ],
     ],
     'per_page' => 1,

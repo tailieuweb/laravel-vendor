@@ -276,7 +276,7 @@ class Slideshow extends FooModel
                 $slideshow->$key = $value;
             }
 
-            $slideshow->$field_status = $this->status['publish'];
+            $slideshow->$field_status = $this->config_status['publish'];
 
             $slideshow->save();
 
@@ -297,7 +297,7 @@ class Slideshow extends FooModel
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $dataFields[$this->field_status] = $this->status['publish'];
+        $dataFields[$this->field_status] = $this->config_status['publish'];
 
 
         $item = self::create($dataFields);
