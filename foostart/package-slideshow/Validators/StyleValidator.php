@@ -18,8 +18,6 @@ class StyleValidator extends FooValidator
         // add rules
         self::$rules = [
             'style_name' => ["required"],
-            'style_view_file' => ["required"],
-            'style_view_content' => ["required"],
         ];
 
         // set configs

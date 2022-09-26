@@ -18,6 +18,7 @@ use Foostart\Acl\Authentication\Repository\EloquentUserProfileRepository;
 use Foostart\Acl\Authentication\Repository\SentryGroupRepository;
 use Foostart\Acl\Authentication\Repository\SentryUserRepository;
 use Foostart\Acl\Authentication\Services\UserRegisterService;
+use Illuminate\Pagination\Paginator;
 
 class AuthenticationServiceProvider extends ServiceProvider
 {
@@ -80,6 +81,8 @@ class AuthenticationServiceProvider extends ServiceProvider
         $this->setupPublishDataCommand();
 
         $this->overwriteSentryConfig();
+
+        Paginator::useBootstrapThree();
     }
 
     protected function overwriteSentryConfig()

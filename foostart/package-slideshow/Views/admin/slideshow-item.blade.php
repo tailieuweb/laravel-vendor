@@ -1,11 +1,10 @@
 @if(!empty($items) && (!$items->isEmpty()) )
     <?php
     $withs = [
-        'order' => '5%',
+        'order' => '7%',
         'name' => '40%',
         'updated_at' => '40%',
         'operations' => '10%',
-        'delete' => '5%',
     ];
 
     global $counter;
