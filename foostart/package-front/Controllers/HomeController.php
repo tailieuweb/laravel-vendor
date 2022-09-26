@@ -12,6 +12,7 @@
 |
 */
 
+use Foostart\Slideshow\Models\Slideshow;
 use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
@@ -54,6 +55,12 @@ class HomeController extends FrontController {
 //        $pg_rules = $this->obj_post->getItemsByCategories($pg_categories->childs);
 //        $qc_rules = $this->obj_post->getItemsByCategories($qc_categories->childs);
 
+
+        /**
+         * Get slideshow
+         */
+        $obj_slideshow = new Slideshow();
+        $slideshow = $obj_slideshow->getSlideshowByCategorySlug('home-banner');
 
         // display view
         $this->data_view = array_merge($this->data_view, array(

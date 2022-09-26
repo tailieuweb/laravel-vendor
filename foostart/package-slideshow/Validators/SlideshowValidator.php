@@ -18,8 +18,7 @@ class SlideshowValidator extends FooValidator
         self::$rules = [
             'slideshow_name' => ["required"],
             'slideshow_overview' => ["required"],
-            'slideshow_description' => ["required"],
-            'style_id' => ["required"],
+            'category_id' => ["required"],
         ];
 
         // set configs
@@ -37,7 +36,7 @@ class SlideshowValidator extends FooValidator
             self::$messages = [
                 'slideshow_name.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.name')]),
                 'slideshow_overview.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.overview')]),
-                'slideshow_description.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.description')]),
+                'slideshow_description.required' => trans($this->lang_admin . '.errors.required', ['attribute' => trans($this->lang_admin . '.fields.category_id')]),
             ];
         });
 
@@ -80,8 +79,6 @@ class SlideshowValidator extends FooValidator
         ];
 
         $flag = $this->isValidLength($input['slideshow_name'], $params['name']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['slideshow_overview'], $params['overview']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['slideshow_description'], $params['description']) ? $flag : FALSE;
 
         return $flag;
     }

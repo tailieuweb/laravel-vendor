@@ -1,6 +1,8 @@
 <?php namespace Foostart\Slideshow\Models;
 
 use Foostart\Category\Library\Models\FooModel;
+use Foostart\Category\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class Slideshow extends FooModel
 {
@@ -382,4 +384,31 @@ class Slideshow extends FooModel
         return $items;
     }
 
+
+    public function getSlideshowByCategorySlug($category_slug) {
+        $binding = [
+          'category_slug' => $category_slug
+        ];
+        // Get category by category_slug
+        $sql = '
+            SELECT
+                slideshows.*,
+                categories.category_name, categories.category_slug,
+                slideshow_styles.style_name,
+                slideshow_styles.style_view_file,
+                slideshow_styles.style_js_file,
+                slideshow_styles.style_css_file,
+                slideshow_styles.style_view_content
+            FROM slideshows
+            INNER JOIN categories ON slideshows.category_id = categories.category_id
+            LEFT JOIN slideshow_styles ON slideshows.style_id = slideshow_styles.style_id
+            WHERE categories.category_slug = :category_slug
+            LIMIT 1;
+        ';
+        $slideshow =\DB::select(DB::raw($sql), $binding);
+        if (!empty($slideshow)) {
+            return $slideshow[0];
+        }
+        return $slideshow;
+    }
 }
