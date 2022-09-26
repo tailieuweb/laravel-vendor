@@ -965,7 +965,7 @@ rather shyly, 'I--I hardly know, sir, just at present--at least I know
 who I WAS when I got up this morning, but I think I must have been
 changed several times since then.'
 
-'What do you mean by that?' said the Caterpillar sternly. 'Explain
+'What do you mean by that?' said the Caterpillar sternly. 'Explain1
 yourself!'
 
 'I can't explain MYSELF, I'm afraid, sir' said Alice, 'because I'm not
@@ -2690,7 +2690,7 @@ the Gryphon added 'Come, let's hear some of YOUR adventures.'
 Alice a little timidly: 'but it's no use going back to yesterday,
 because I was a different person then.'
 
-'Explain all that,' said the Mock Turtle.
+'Explain1 all that,' said the Mock Turtle.
 
 'No, no! The adventures first,' said the Gryphon in an impatient tone:
 'explanations take such a dreadful time.'
