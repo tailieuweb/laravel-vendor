@@ -151,6 +151,7 @@ return [
     'errors' => [
         'required' => ':attribute is required',
         'required_length' => 'Allow from: <b>:minlength</b> to <b>:maxlength</b>. characters',
+        'existing_view' => 'File is existing'
     ],
 
 

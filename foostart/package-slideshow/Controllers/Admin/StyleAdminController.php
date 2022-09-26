@@ -144,12 +144,12 @@ class StyleAdminController extends FooController
 
         $id = (int)$request->get('id');
 
-        $view_style_path = $package_path = realpath(base_path(config('package-slideshow.view-style-path')));
+        $params['view_style_path'] = $package_path =  realpath(__DIR__ . '/../..'.'/Views/customization');
 
         if ($is_valid_request && $this->obj_validator->validate($params)) {// valid data
 
             // update existing item
-            if (!empty($id)) {
+            if (!empty($id) & $this->obj_validator->isExistingView($params)) {
 
                 $item = $this->obj_item->find($id);
 
@@ -159,7 +159,7 @@ class StyleAdminController extends FooController
                     $item = $this->obj_item->updateItem($params);
 
                     //save to file
-                    file_put_contents($view_style_path . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
+                    file_put_contents($params['view_style_path'] . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
                     // message
                     return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
                         ->withMessage(trans($this->plang_admin . '.actions.edit-ok'));
@@ -171,10 +171,10 @@ class StyleAdminController extends FooController
                 }
 
                 // add new item
-            } else {
+            } else if (!$this->obj_validator->isExistingView($params)){
 
                 //save to file
-                file_put_contents($view_style_path . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
+                file_put_contents($params['view_style_path'] . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
                 //insert
                 $item = $this->obj_item->insertItem($params);
 
@@ -192,14 +192,14 @@ class StyleAdminController extends FooController
 
             }
 
-        } else { // invalid data
-
-            $errors = $this->obj_validator->getErrors();
-
-            // passing the id incase fails editing an already existing item
-            return Redirect::route($this->root_router . '.edit', $id ? ["id" => $id] : [])
-                ->withInput()->withErrors($errors);
         }
+
+        $errors = $this->obj_validator->getErrors();
+
+        // passing the id incase fails editing an already existing item
+        return Redirect::route($this->root_router . '.edit', $id ? ["id" => $id] : [])
+            ->withInput()->withErrors($errors);
+
     }
 
     /**

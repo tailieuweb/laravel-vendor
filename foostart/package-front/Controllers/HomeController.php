@@ -54,6 +54,7 @@ class HomeController extends FrontController {
 //        $pg_rules = $this->obj_post->getItemsByCategories($pg_categories->childs);
 //        $qc_rules = $this->obj_post->getItemsByCategories($qc_categories->childs);
 
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'request' => $request,

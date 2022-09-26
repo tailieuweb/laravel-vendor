@@ -4,6 +4,7 @@ use Foostart\Category\Library\Validators\FooValidator;
 use Event;
 use \LaravelAcl\Library\Validators\AbstractValidator;
 use Foostart\Slideshow\Models\Style;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
@@ -28,8 +29,8 @@ class StyleValidator extends FooValidator
         $this->obj_style = new Style();
 
         // language
-        $this->lang_front = 'style-front';
-        $this->lang_admin = 'style-admin';
+        $this->lang_front = 'slideshow-admin';
+        $this->lang_admin = 'slideshow-admin';
 
         // event listening
         Event::listen('validating', function ($input) {
@@ -57,7 +58,7 @@ class StyleValidator extends FooValidator
         //Check length
         $_ln = self::$configs['length'];
 
-        $params = [
+        $_params = [
             'name' => [
                 'key' => 'style_name',
                 'label' => trans($this->lang_admin . '.fields.name'),
@@ -66,9 +67,23 @@ class StyleValidator extends FooValidator
             ],
         ];
 
-        $flag = $this->isValidLength($input['style_name'], $params['name']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['style_name'], $_params['name']) ? $flag : FALSE;
 
         return $flag;
+    }
+
+    /***
+     * @param array $params
+     * @return bool
+     */
+    public function isExistingView(array $params): bool {
+        $fileDir = $params['view_style_path'] . '/' . $params['style_view_file'] . '.blade.php';
+        if (File::exists($fileDir)) {
+            // Add message error
+            $this->errors->add('style_view_file', trans($this->lang_admin . '.errors.existing_view'));
+            return true;
+        }
+        return false;
     }
 
 
