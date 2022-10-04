@@ -151,7 +151,7 @@ return [
         'permission-edit' => 'Edit permission page',
         'group-list' => 'List of groups',
         'group-edit' => 'Edit group page',
-
+        'login' => 'Login',
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage languages',
     ],
