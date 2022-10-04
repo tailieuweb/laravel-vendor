@@ -31,6 +31,10 @@ Route::group(['middleware' => ['web']], function () {
         "as" => "user.login",
         "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getClientLogin'
     ]);
+    Route::post('/login', [
+        "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@postClientLogin',
+        "as" => "user.login"
+    ]);
     Route::get('/user/logout', [
         "as" => "user.logout",
         "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getLogout'
@@ -39,10 +43,7 @@ Route::group(['middleware' => ['web']], function () {
         "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@postAdminLogin',
         "as" => "user.login.process"
     ]);
-    Route::post('/login', [
-        "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@postClientLogin',
-        "as" => "user.login"
-    ]);
+
 
     /**
      * Password recovery

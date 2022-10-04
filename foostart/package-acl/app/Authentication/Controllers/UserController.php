@@ -116,7 +116,7 @@ class UserController extends Controller
      * @return mixed
      */
     public function postEditUser(Request $request)
-    {
+    { 
         $id = $request->get('id');
 
         DbHelper::startTransaction();

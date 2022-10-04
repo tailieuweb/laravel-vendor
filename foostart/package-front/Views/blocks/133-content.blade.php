@@ -21,6 +21,7 @@
                         <li><a href="{{ url('/brochure') }}">Brochure</a></li>
                         <li><a href="http://lib.tdc.edu.vn/Default.aspx?ModuleId=4981ae8d-1c44-4b94-913f-73b283c51351">Tài liệu chuyên ngành</a></li>
                         <li><a href="{{ url('/lien-he') }}">Liên hệ</a></li>
+                        <li><a href="{{ url('/login') }}">Đăng nhập</a></li>
                     </ul>
                 </div>
             </nav>

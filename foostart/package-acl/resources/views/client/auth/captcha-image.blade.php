@@ -1,5 +1,5 @@
 <img src="{!! $captcha->getImageSrcTag() !!}">
-
+<label>{!! $captcha->getValue() !!}</label>
 @section('footer_scripts')
     @parent
 

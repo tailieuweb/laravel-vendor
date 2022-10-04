@@ -276,6 +276,7 @@ return [
         'user-restore' => 'Are you sure to restore this item?',
         'permission-not-found' => 'No permissions found.',
         'empty-data' => 'Empty data',
+        'captcha-error' => 'The captcha is not valid, please try again.'
     ],
 
 
