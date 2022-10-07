@@ -31,18 +31,17 @@
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                         'required' => true,
                                         'errors' => $errors,
-                                        'value' => 'a@b.c'
                                     ])
 
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             @include('package-category::front.partials.input_text', [
                                         'name' => 'password',
+                                        'type' => 'password',
                                         'placeholder' => trans($plang_front.'.labels.password'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
                                         'required' => true,
                                         'errors' => $errors,
-                                        'value' => '123456'
                                     ])
                         </div>
                     </div>
