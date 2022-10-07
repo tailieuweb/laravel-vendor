@@ -6,6 +6,9 @@
  * @author Foostart foostart.com@gmail.com
  */
 
+use Cartalyst\Sentry\Hashing\NativeHasher;
+use Cartalyst\Sentry\Throttling\Eloquent\Provider as ThrottleProvider;
+use Cartalyst\Sentry\Users\Eloquent\Provider as UserProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Foostart\Acl\Authentication\Exceptions\PermissionException;
@@ -111,18 +114,26 @@ class UserController extends Controller
     }
 
     /**
-     *
+     * Submit user profile form
      * @param Request $request
      * @return mixed
      */
     public function postEditUser(Request $request)
-    { 
+    {
         $id = $request->get('id');
 
         DbHelper::startTransaction();
         try {
             $user = $this->f->process($request->all());
             $this->profile_repository->attachEmptyProfile($user);
+            // Reset suspended
+            $isResetSuspened = $request->get('suspended', null) ? false : true;
+            if ($isResetSuspened) {
+                $userProvider = new UserProvider(new NativeHasher);
+                $throttleProvider = new ThrottleProvider($userProvider);
+                $throttle = $throttleProvider->findByUserId($user->id);
+                $throttle->unsuspend();
+            }
         } catch (JacopoExceptionsInterface $e) {
             DbHelper::rollback();
             $errors = $this->f->getErrors();

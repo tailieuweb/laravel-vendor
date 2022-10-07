@@ -77,6 +77,7 @@ class AuthController extends Controller
     }
 
     /**
+     * User login at url: /login
      * Post client login
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse

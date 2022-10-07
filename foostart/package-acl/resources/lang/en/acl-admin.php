@@ -261,6 +261,7 @@ return [
         'id' => 'ID',
         'keyword' => 'Keyword',
         'counter' => '#',
+        'suspended' => 'Suspended',
     ],
 
 
