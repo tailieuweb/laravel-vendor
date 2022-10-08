@@ -1,17 +1,19 @@
 <?php namespace Foostart\Branch\Models;
 
 use Foostart\Category\Library\Models\FooModel;
-use Illuminate\Database\Eloquent\Model;
 use Foostart\Comment\Models\Comment;
 
-class Branch extends FooModel {
+class LocationProvinces extends FooModel
+{
 
     /**
-     * @table categories
+     * @table provinces
      * @param array $attributes
      */
     public $user = NULL;
-    public function __construct(array $attributes = array()) {
+
+    public function __construct(array $attributes = array())
+    {
         //set configurations
         $this->setConfigs();
 
@@ -19,121 +21,51 @@ class Branch extends FooModel {
 
     }
 
-    public function setConfigs() {
+    public function setConfigs()
+    {
 
         //table name
-        $this->table = 'branch';
+        $this->table = 'posts';
 
         //list of field in table
-        $this->fillable = [
-            'branch_name',
-            'branch_slug',
-            'category_id',
-            'slideshow_id',
-            'user_id',
-            'user_full_name',
-            'user_email',
-            'branch_overview',
-            'branch_description',
-            'branch_image',
-            'branch_files',
-            'branch_status',
-        ];
+        $this->fillable = array_merge($this->fillable, [
+            'code',
+            'name',
+        ]);
 
         //list of fields for inserting
-        $this->fields = [
-            'branch_name' => [
-                'name' => 'branch_name',
+        $this->fields = array_merge($this->fields, [
+            'code' => [
+                'name' => 'code',
                 'type' => 'Text',
             ],
-            'branch_slug' => [
-                'name' => 'branch_slug',
+            'name' => [
+                'name' => 'name',
                 'type' => 'Text',
             ],
-            'category_id' => [
-                'name' => 'category_id',
-                'type' => 'Int',
-            ],
-            'slideshow_id' => [
-                'name' => 'slideshow_id',
-                'type' => 'Int',
-            ],
-            'user_id' => [
-                'name' => 'user_id',
-                'type' => 'Int',
-            ],
-            'user_full_name' => [
-                'name' => 'user_full_name',
-                'type' => 'Text',
-            ],
-            'user_email' => [
-                'name' => 'email',
-                'type' => 'Text',
-            ],
-            'branch_overview' => [
-                'name' => 'branch_overview',
-                'type' => 'Text',
-            ],
-            'branch_description' => [
-                'name' => 'branch_description',
-                'type' => 'Text',
-            ],
-            'branch_image' => [
-                'name' => 'branch_image',
-                'type' => 'Text',
-            ],
-            'branch_files' => [
-                'name' => 'files',
-                'type' => 'Json',
-            ],
-            'branch_status' => [
-                'name' => 'status',
-                'type' => 'Int',
-            ],
-        ];
+
+        ]);
 
         //check valid fields for inserting
-        $this->valid_insert_fields = [
-            'branch_name',
-            'branch_slug',
-            'user_id',
-            'category_id',
-            'slideshow_id',
-            'user_full_name',
-            'updated_at',
-            'branch_overview',
-            'branch_description',
-            'branch_image',
-            'branch_files',
-            'branch_status',
-        ];
+        $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
+            'code',
+            'name'
+        ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'branch_name',
-            'updated_at',
+            'code',
+            'name',
             $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
-            'keyword',
-            'status',
-            'category',
-            '_id',
-            'limit',
-            'branch_id!',
-            'category_id',
-            'user_id',
+            'code',
+            'name',
         ];
 
         //primary key
-        $this->primaryKey = 'branch_id';
-
-        //the number of items on page
-        $this->perPage = 10;
-
-        //item status
-        $this->field_status = 'branch_status';
+        $this->primaryKey = 'province_id';
 
     }
 
@@ -142,7 +74,8 @@ class Branch extends FooModel {
      * @param type $params
      * @return object list of categories
      */
-    public function selectItems($params = array()) {
+    public function selectItems($params = array())
+    {
 
         //join to another tables
         $elo = $this->joinTable();
@@ -167,17 +100,18 @@ class Branch extends FooModel {
     }
 
     /**
-     * Get a branch by {id}
+     * Get a post by {id}
      * @param ARRAY $params list of parameters
-     * @return OBJECT branch
+     * @return OBJECT post
      */
-    public function selectItem($params = array(), $key = NULL) {
+    public function selectItem($params = array(), $key = NULL)
+    {
 
 
         if (empty($key)) {
             $key = $this->primaryKey;
         }
-       //join to another tables
+        //join to another tables
         $elo = $this->joinTable();
 
         //search filters
@@ -196,18 +130,19 @@ class Branch extends FooModel {
     }
 
 
-    public function getComments($branch_id) {
+    public function getComments($post_id)
+    {
 
-        // Get branch
+        // Get post
         $params = array(
-            'id' => $branch_id,
+            'id' => $post_id,
         );
-        $branch = $this->selectItem($params);
+        $post = $this->selectItem($params);
 
         // Get comment by context
         $params = array(
-            'context_name' => 'branch',
-            'context_id' => $branch_id,
+            'context_name' => 'post',
+            'context_id' => $post_id,
             'by_status' => true,
         );
         $obj_comment = new Comment();
@@ -215,9 +150,9 @@ class Branch extends FooModel {
         $comments = $obj_comment->selectItems($params);
 
         $users_comments = $obj_comment->mapCommentArray($comments);
-        $branch->cache_comments = json_encode($users_comments);
-        $branch->cache_time = time();
-        $branch->save();
+        $post->cache_comments = json_encode($users_comments);
+        $post->cache_time = time();
+        $post->save();
 
         return $users_comments;
     }
@@ -227,7 +162,8 @@ class Branch extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    protected function joinTable(array $params = []){
+    protected function joinTable(array $params = [])
+    {
         return $this;
     }
 
@@ -236,17 +172,14 @@ class Branch extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    protected function searchFilters(array $params = [], $elo, $by_status = TRUE){
+    protected function searchFilters(array $params, $elo, $by_status = TRUE)
+    {
 
         //filter
-        if ($this->isValidFilters($params) && (!empty($params)))
-        {
-            foreach($params as $column => $value)
-            {
-                if($this->isValidValue($value))
-                {
-                    switch($column)
-                    {
+        if ($this->isValidFilters($params) && (!empty($params))) {
+            foreach ($params as $column => $value) {
+                if ($this->isValidValue($value)) {
+                    switch ($column) {
                         case 'category_id':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.category_id', '=', $value);
@@ -270,20 +203,20 @@ class Branch extends FooModel {
                             break;
                         case '_id':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.branch_id', '!=', $value);
+                                $elo = $elo->where($this->table . '.post_id', '!=', $value);
                             }
                             break;
                         case 'status':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.'.$this->field_status, '=', $value);
+                                $elo = $elo->where($this->table . '.' . $this->field_status, '=', $value);
                             }
                             break;
                         case 'keyword':
                             if (!empty($value)) {
-                                $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.branch_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.branch_description','LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.branch_overview','LIKE', "%{$value}%");
+                                $elo = $elo->where(function ($elo) use ($value) {
+                                    $elo->where($this->table . '.post_name', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->table . '.post_description', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->table . '.post_overview', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -294,7 +227,7 @@ class Branch extends FooModel {
             }
         } elseif ($by_status) {
 
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
+            $elo = $elo->where($this->table . '.' . $this->field_status, '=', $this->config_status['publish']);
 
         }
 
@@ -306,11 +239,12 @@ class Branch extends FooModel {
      * @param ELOQUENT OBJECT
      * @return ELOQUENT OBJECT
      */
-    public function createSelect($elo) {
+    public function createSelect($elo)
+    {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.branch_id as id'
-                );
+            $this->table . '.post_id as id'
+        );
 
         return $elo;
     }
@@ -320,7 +254,8 @@ class Branch extends FooModel {
      * @param ARRAY $params list of parameters
      * @return ELOQUENT OBJECT
      */
-    public function paginateItems(array $params = [], $elo) {
+    public function paginateItems(array $params, $elo)
+    {
         $items = $elo->paginate($this->perPage);
 
         return $items;
@@ -332,29 +267,30 @@ class Branch extends FooModel {
      * @param INT $id is primary key
      * @return type
      */
-    public function updateItem($params = [], $id = NULL) {
+    public function updateItem($params = [], $id = NULL)
+    {
 
         if (empty($id)) {
             $id = $params['id'];
         }
         $field_status = $this->field_status;
 
-        //get branch item by conditions
+        //get post item by conditions
         $_params = [
             'id' => $id,
         ];
-        $branch = $this->selectItem($_params);
+        $post = $this->selectItem($_params);
 
-        if (!empty($branch)) {
+        if (!empty($post)) {
             $dataFields = $this->getDataFields($params, $this->fields);
 
             foreach ($dataFields as $key => $value) {
-                $branch->$key = $value;
+                $post->$key = $value;
             }
 
-            $branch->save();
+            $post->save();
 
-            return $branch;
+            return $post;
         } else {
             return NULL;
         }
@@ -364,9 +300,10 @@ class Branch extends FooModel {
     /**
      *
      * @param ARRAY $params list of parameters
-     * @return OBJECT branch
+     * @return OBJECT post
      */
-    public function insertItem($params = []) {
+    public function insertItem($params = [])
+    {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
@@ -387,7 +324,8 @@ class Branch extends FooModel {
      * @param ARRAY $input list of parameters
      * @return boolean TRUE incase delete successfully otherwise return FALSE
      */
-    public function deleteItem($input = [], $delete_type) {
+    public function deleteItem(?array $input, $delete_type)
+    {
 
         $item = $this->find($input['id']);
 
@@ -406,7 +344,8 @@ class Branch extends FooModel {
         return FALSE;
     }
 
-    public function getCoursesByCategoriesRoot($categories) {
+    public function getCoursesByCategoriesRoot($categories)
+    {
 
         $this->is_pagination = false;
 
@@ -438,23 +377,25 @@ class Branch extends FooModel {
         return $categories;
     }
 
-    public function getCouresByCategoryIds($ids) {
+    public function getCouresByCategoryIds($ids)
+    {
         $courses = self::whereIn('category_id', $ids)
-                    ->paginate($this->perPage);
+            ->paginate($this->perPage);
         return $courses;
     }
 
 
-    public function getItemsByCategories($categories) {
+    public function getItemsByCategories($categories)
+    {
 
         $items = [];
         $ids = [];
 
-        foreach ($categories as $category ) {
+        foreach ($categories as $category) {
             $ids += [$category->category_id => 1];
 
             if (!empty($category->category_id_child_str)) {
-                $ids += (array) json_decode($category->category_id_child_str);
+                $ids += (array)json_decode($category->category_id_child_str);
             }
         }
 
@@ -464,4 +405,4 @@ class Branch extends FooModel {
         return $items;
     }
 
-    }
+}
