@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'a7e54a7619753b2259adb3bd7bd37898602c4c96',
+        'reference' => '8fcf2d497b00f1c9a6e37c6fda468698ab009464',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -124,7 +124,7 @@
         'foostart/package-branch' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'db3005d271dc6bec3a239e18125ae296d6297d67',
+            'reference' => 'd957721daa4a1aed0b647b7bd878b24acf6bd33b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../foostart/package-branch',
             'aliases' => array(
@@ -486,7 +486,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'a7e54a7619753b2259adb3bd7bd37898602c4c96',
+            'reference' => '8fcf2d497b00f1c9a6e37c6fda468698ab009464',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -799,15 +799,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/foostart/package-branch.git",
-                "reference": "db3005d271dc6bec3a239e18125ae296d6297d67"
+                "reference": "d957721daa4a1aed0b647b7bd878b24acf6bd33b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/foostart/package-branch/zipball/db3005d271dc6bec3a239e18125ae296d6297d67",
-                "reference": "db3005d271dc6bec3a239e18125ae296d6297d67",
+                "url": "https://api.github.com/repos/foostart/package-branch/zipball/d957721daa4a1aed0b647b7bd878b24acf6bd33b",
+                "reference": "d957721daa4a1aed0b647b7bd878b24acf6bd33b",
                 "shasum": ""
             },
-            "time": "2022-10-08T07:57:01+00:00",
+            "time": "2022-10-08T08:17:11+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
