@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5f99fc79ceeaed6e352eae59333244b83a3ac263',
+        'reference' => 'a7e54a7619753b2259adb3bd7bd37898602c4c96',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -119,6 +119,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../foostart/package-acl',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'foostart/package-branch' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'db3005d271dc6bec3a239e18125ae296d6297d67',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../foostart/package-branch',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'foostart/package-category' => array(
@@ -475,7 +486,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5f99fc79ceeaed6e352eae59333244b83a3ac263',
+            'reference' => 'a7e54a7619753b2259adb3bd7bd37898602c4c96',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

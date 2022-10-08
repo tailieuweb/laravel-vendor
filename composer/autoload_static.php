@@ -157,6 +157,7 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
             'Foostart\\Front\\' => 15,
             'Foostart\\Filemanager\\' => 21,
             'Foostart\\Category\\' => 18,
+            'Foostart\\Branch\\' => 16,
             'Foostart\\Acl\\' => 13,
             'Faker\\' => 6,
         ),
@@ -515,6 +516,10 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'Foostart\\Category\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-category',
+        ),
+        'Foostart\\Branch\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-branch',
         ),
         'Foostart\\Acl\\' => 
         array (
