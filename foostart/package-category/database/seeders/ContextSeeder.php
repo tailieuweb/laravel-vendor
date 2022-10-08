@@ -29,6 +29,9 @@ class ContextSeeder extends FoostartSeeder
         $this->slideshowCreateContext();
     }
 
+    /**
+     * Create user context
+     */
     private function userCreateContext() {
         //Create context for user/level
         DB::table($this->table)->insert([
@@ -42,7 +45,7 @@ class ContextSeeder extends FoostartSeeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        //Create context for user/level
+        //Create context for user/department
         DB::table($this->table)->insert([
             $this->prefix_column . 'name' => 'User department',
             $this->prefix_column . 'key' => md5('user/department'),

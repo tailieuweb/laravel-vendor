@@ -29,9 +29,14 @@ class UserPresenter extends AbstractPresenter
         $this->userProvider = new UserProvider(new NativeHasher);
         $this->groupProvider = new GroupProvider;
         $this->throttleProvider = new ThrottleProvider($this->userProvider);
-        $throttle = $this->throttleProvider->findByUserId($user_id);
-        if (!empty($throttle)) {
-            $this->resource->suspended = $throttle->isSuspended();
+        try {
+            $throttle = $this->throttleProvider->findByUserId($user_id);
+            if (!empty($throttle)) {
+                $this->resource->suspended = $throttle->isSuspended();
+            }
+        } catch (\Throwable $e) {
+            //User is not throttled
         }
+
     }
 }
