@@ -25,7 +25,7 @@ class LocationProvinces extends FooModel
     {
 
         //table name
-        $this->table = 'posts';
+        $this->table = 'location_provinces';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [

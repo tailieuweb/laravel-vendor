@@ -12,8 +12,10 @@ class LocationSeeder extends FoostartSeeder
     {
         // Table name
         $this->table = '';
-        // Prefix column
-        $this->prefix_column = 'location';
+        // Prefix table name
+        $this->prefix_table = 'location_';
+        // Prefix column name
+        $this->prefix_column = 'location_';
 
         $this->pathData = base_path() . '/vendor/foostart/package-branch/database/seeders/data';
     }
@@ -44,9 +46,9 @@ class LocationSeeder extends FoostartSeeder
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
-                LocationProvinces::create([
-                    "code" => trim($data['0']),
-                    "name" => trim($data['1']),
+                LocationProvinces::firstOrCreate([
+                    $this->prefix_column . 'code' => trim($data['0']),
+                    $this->prefix_column . 'name' => trim($data['1']),
                     'status' => 99,
                     'created_user_id' => 1,
                     'updated_user_id' => 1,
@@ -70,10 +72,10 @@ class LocationSeeder extends FoostartSeeder
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
-                LocationProvinces::create([
+                LocationProvinces::firstOrCreate([
                     "province_id" => trim($data['0']),
-                    "code" => trim($data['1']),
-                    "name" => trim($data['2']),
+                    $this->prefix_column . 'code' => trim($data['1']),
+                    $this->prefix_column . 'name' => trim($data['2']),
                     'status' => 99,
                     'created_user_id' => 1,
                     'updated_user_id' => 1,
@@ -99,8 +101,8 @@ class LocationSeeder extends FoostartSeeder
             if (!$firstline) {
                 LocationProvinces::create([
                     "ward_id" => trim($data['0']),
-                    "code" => trim($data['1']),
-                    "name" => trim($data['2']),
+                    $this->prefix_column . 'code' => trim($data['1']),
+                    $this->prefix_column . 'name' => trim($data['2']),
                     'status' => 99,
                     'created_user_id' => 1,
                     'updated_user_id' => 1,
