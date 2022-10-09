@@ -122,7 +122,18 @@
 
             </div>
 
-            <!--POST DESCRIPTION-->
+            <!--BRANCH OVERVIEW-->
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'branch_overview',
+            'label' => trans($plang_admin.'.labels.overview'),
+            'value' => @$item->branch_overview,
+            'description' => trans($plang_admin.'.descriptions.overview'),
+            'tinymce' => false,
+            'errors' => $errors,
+            ])
+            <!--/BRANCH OVERVIEW-->
+
+            <!--BRANCH DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
                 'name' => 'branch_description',
                 'label' => trans($plang_admin.'.labels.description'),
@@ -132,28 +143,26 @@
                 'tinymce' => true,
                 'errors' => $errors,
             ])
-            <!--/POST DESCRIPTION-->
+            <!--/BRANCH DESCRIPTION-->
 
         </div>
 
         <!--ADVANCED-->
         <div id="menu_2" class="tab-pane fade">
-            <!--POST OVERVIEW-->
-            @include('package-category::admin.partials.textarea', [
-            'name' => 'branch_overview',
-            'label' => trans($plang_admin.'.labels.overview'),
-            'value' => @$item->branch_overview,
-            'description' => trans($plang_admin.'.descriptions.overview'),
-            'tinymce' => false,
+            <!--LOCATION-->
+            @include('package-category::admin.partials.select_location', [
+            'name' => 'location',
+            'label' => trans($plang_admin.'.labels.location'),
+            'value' => @$item->branch_image,
+            'description' => trans($plang_admin.'.descriptions.location'),
             'errors' => $errors,
             ])
-            <!--/POST OVERVIEW-->
-
+            <!--/LOCATION-->
         </div>
 
         <!--OTHER-->
         <div id="menu_3" class="tab-pane fade">
-            <!--POST IMAGE-->
+            <!--BRANCH IMAGE-->
             @include('package-category::admin.partials.input_image', [
             'name' => 'branch_image',
             'label' => trans($plang_admin.'.labels.image'),
@@ -161,9 +170,9 @@
             'description' => trans($plang_admin.'.descriptions.image'),
             'errors' => $errors,
             ])
-            <!--/POST IMAGE-->
+            <!--/BRANCH IMAGE-->
 
-            <!--POST FILES-->
+            <!--BRANCH FILES-->
             @include('package-category::admin.partials.input_files', [
                 'name' => 'files',
                 'label' => trans($plang_admin.'.labels.files'),
@@ -171,7 +180,7 @@
                 'description' => trans($plang_admin.'.descriptions.files'),
                 'errors' => $errors,
             ])
-            <!--/POST FILES-->
+            <!--/BRANCH FILES-->
         </div>
 
     </div>

@@ -11,6 +11,7 @@
 */
 
 
+use Foostart\Branch\Models\LocationProvinces;
 use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
@@ -147,11 +148,6 @@ class BranchAdminController extends FooController {
      */
     public function edit(Request $request) {
 
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3['label'] = 'Edit';
-
         $item = NULL;
 
         /**
@@ -182,14 +178,14 @@ class BranchAdminController extends FooController {
                                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
             }
         }
+        // Get location
+        $objLocation = new LocationProvinces();
+        $provinces = $objLocation->all();
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'request' => $request,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
     }

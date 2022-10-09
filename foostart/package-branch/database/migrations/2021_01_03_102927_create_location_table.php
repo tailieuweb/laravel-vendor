@@ -37,8 +37,8 @@ class CreateLocationTable extends FoostartMigration
         Schema::dropIfExists('location_provinces');
         Schema::create('location_provinces', function (Blueprint $table) {
             $table->id('province_id');
+            $table->string('province_code', 55)->unique()->comment('Province code');
             $table->string('province_name')->comment('Province name');
-            $table->string('province_code')->comment('Province code');
 
             //Set common columns
             $this->setCommonColumns($table);
@@ -52,10 +52,10 @@ class CreateLocationTable extends FoostartMigration
         Schema::dropIfExists('location_districts');
         Schema::create('location_districts', function (Blueprint $table) {
             $table->id('district_id');
-            $table->integer('province_id')->comment('Province ID');
-            $table->string('province_name')->comment('District name');
-            $table->string('province_code')->comment('District code');
-
+            $table->string('province_code')->comment('Province code');//Index
+            $table->string('district_code', 55)->unique()->comment('District code');
+            $table->string('district_name')->comment('District name');
+            $table->index(['province_code']);
             //Set common columns
             $this->setCommonColumns($table);
         });
@@ -68,8 +68,10 @@ class CreateLocationTable extends FoostartMigration
         Schema::dropIfExists('location_wards');
         Schema::create('location_wards', function (Blueprint $table) {
             $table->id('ward_id');
+            $table->string('district_code')->comment('District code');//Index
+            $table->string('ward_code', 55)->unique()->comment('Ward code');
             $table->string('ward_name')->comment('Ward name');
-            $table->string('ward_code')->comment('Ward code');
+            $table->index(['district_code']);
 
             //Set common columns
             $this->setCommonColumns($table);

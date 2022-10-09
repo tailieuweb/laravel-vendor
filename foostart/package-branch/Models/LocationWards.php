@@ -12,6 +12,12 @@ class LocationWards extends FooModel
      */
     public $user = NULL;
 
+    /**
+     * Autoload relation
+     * @var string[]
+     */
+   protected $with = array('district');
+
     public function __construct(array $attributes = array())
     {
         //set configurations
@@ -30,8 +36,8 @@ class LocationWards extends FooModel
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'district_id',
-            'code',
-            'name',
+            'ward_code',
+            'ward_name',
         ]);
 
         //list of fields for inserting
@@ -411,6 +417,14 @@ class LocationWards extends FooModel
         $items = $this->getCouresByCategoryIds(array_keys($ids));
 
         return $items;
+    }
+
+    /**
+     * Get the district that owns the ward.
+     */
+    public function district()
+    {
+        return $this->belongsTo(LocationDistricts::class, 'district_code', 'district_code');
     }
 
 }

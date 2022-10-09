@@ -1,6 +1,8 @@
 <?php namespace Database\Seeders;
 
 use Foostart\Branch\Models\LocationProvinces;
+use Foostart\Branch\Models\LocationDistricts;
+use Foostart\Branch\Models\LocationWards;
 use Foostart\Category\Helpers\FoostartSeeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -15,7 +17,7 @@ class LocationSeeder extends FoostartSeeder
         // Prefix table name
         $this->prefix_table = 'location_';
         // Prefix column name
-        $this->prefix_column = 'location_';
+        $this->prefix_column = '';
 
         $this->pathData = base_path() . '/vendor/foostart/package-branch/database/seeders/data';
     }
@@ -34,6 +36,8 @@ class LocationSeeder extends FoostartSeeder
 
         // Insert data
         $this->createProvincesData();
+        $this->createDistrictsData();
+        $this->createWardsData();
     }
 
     /**
@@ -47,8 +51,8 @@ class LocationSeeder extends FoostartSeeder
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
                 LocationProvinces::firstOrCreate([
-                    $this->prefix_column . 'code' => trim($data['0']),
-                    $this->prefix_column . 'name' => trim($data['1']),
+                    'province_code' => trim($data['0']),
+                    'province_name' => trim($data['1']),
                     'status' => 99,
                     'created_user_id' => 1,
                     'updated_user_id' => 1,
@@ -72,10 +76,10 @@ class LocationSeeder extends FoostartSeeder
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
-                LocationProvinces::firstOrCreate([
-                    "province_id" => trim($data['0']),
-                    $this->prefix_column . 'code' => trim($data['1']),
-                    $this->prefix_column . 'name' => trim($data['2']),
+                LocationDistricts::firstOrCreate([
+                    "province_code" => trim($data['0']),
+                    'district_code' => trim($data['1']),
+                    'district_name' => trim($data['2']),
                     'status' => 99,
                     'created_user_id' => 1,
                     'updated_user_id' => 1,
@@ -99,10 +103,10 @@ class LocationSeeder extends FoostartSeeder
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
-                LocationProvinces::create([
-                    "ward_id" => trim($data['0']),
-                    $this->prefix_column . 'code' => trim($data['1']),
-                    $this->prefix_column . 'name' => trim($data['2']),
+                LocationWards::firstOrCreate([
+                    'district_code' => trim($data['0']),
+                    'ward_code' => trim($data['1']),
+                    'ward_name' => trim($data['2']),
                     'status' => 99,
                     'created_user_id' => 1,
                     'updated_user_id' => 1,

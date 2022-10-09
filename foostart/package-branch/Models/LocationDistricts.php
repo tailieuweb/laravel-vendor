@@ -11,6 +11,11 @@ class LocationDistricts extends FooModel
      * @param array $attributes
      */
     public $user = NULL;
+    /**
+     * Autoload relation
+     * @var string[]
+     */
+    protected $with = array('wards', 'province');
 
     public function __construct(array $attributes = array())
     {
@@ -30,8 +35,8 @@ class LocationDistricts extends FooModel
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
             'province_id',
-            'code',
-            'name',
+            'district_code',
+            'district_name',
         ]);
 
         //list of fields for inserting
@@ -40,12 +45,12 @@ class LocationDistricts extends FooModel
                 'name' => 'province_id',
                 'type' => 'Text',
             ],
-            'code' => [
-                'name' => 'code',
+            'district_code' => [
+                'name' => 'district_code',
                 'type' => 'Text',
             ],
-            'name' => [
-                'name' => 'name',
+            'district_name' => [
+                'name' => 'district_name',
                 'type' => 'Text',
             ],
 
@@ -54,22 +59,22 @@ class LocationDistricts extends FooModel
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
             'province_id',
-            'code',
-            'name'
+            'district_code',
+            'district_name'
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
             'province_id',
-            'code',
-            'name',
+            'district_code',
+            'district_name',
             $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
             'province_id',
-            'code',
-            'name',
+            'district_code',
+            'district_name',
         ];
 
         //primary key
@@ -411,6 +416,23 @@ class LocationDistricts extends FooModel
         $items = $this->getCouresByCategoryIds(array_keys($ids));
 
         return $items;
+    }
+
+    /**
+     * Get list of wards for the district
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function wards()
+    {
+        return $this->hasMany(LocationWards::class, 'district_code', 'district_code');
+    }
+
+    /**
+     * Get the province that owns the district.
+     */
+    public function province()
+    {
+        return $this->belongsTo(LocationProvinces::class, 'province_code', 'province_code');
     }
 
 }

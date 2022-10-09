@@ -12,6 +12,12 @@ class LocationProvinces extends FooModel
      */
     public $user = NULL;
 
+    /**
+     * Autoload relation
+     * @var string[]
+     */
+   protected $with = array('districts');
+
     public function __construct(array $attributes = array())
     {
         //set configurations
@@ -29,18 +35,18 @@ class LocationProvinces extends FooModel
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'code',
-            'name',
+            'province_code',
+            'province_name',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'code' => [
-                'name' => 'code',
+            'province_code' => [
+                'name' => 'province_code',
                 'type' => 'Text',
             ],
-            'name' => [
-                'name' => 'name',
+            'province_name' => [
+                'name' => 'province_name',
                 'type' => 'Text',
             ],
 
@@ -48,20 +54,20 @@ class LocationProvinces extends FooModel
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'code',
-            'name'
+            'province_code',
+            'province_name'
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'code',
-            'name',
+            'province_code',
+            'province_name',
             $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
-            'code',
-            'name',
+            'province_code',
+            'province_name',
         ];
 
         //primary key
@@ -403,6 +409,15 @@ class LocationProvinces extends FooModel
         $items = $this->getCouresByCategoryIds(array_keys($ids));
 
         return $items;
+    }
+
+    /**
+     * Get list of districts for the province.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function districts()
+    {
+        return $this->hasMany(LocationDistricts::class, 'province_code', 'province_code');
     }
 
 }
