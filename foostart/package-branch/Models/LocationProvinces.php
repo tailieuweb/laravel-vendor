@@ -12,11 +12,7 @@ class LocationProvinces extends FooModel
      */
     public $user = NULL;
 
-    /**
-     * Autoload relation
-     * @var string[]
-     */
-   protected $with = array('districts');
+
 
     public function __construct(array $attributes = array())
     {
@@ -420,4 +416,31 @@ class LocationProvinces extends FooModel
         return $this->hasMany(LocationDistricts::class, 'province_code', 'province_code');
     }
 
+    public function __toArray() {
+        $provinces = [];
+        if (!empty($this->items)) {
+            foreach ($this->items as $item) {
+                $provinces[] = [
+                  'name' => $item->province_name,
+                  'code' => $item->province_code,
+                  'district' => $item->districts->toArray()
+                ];
+            }
+        }
+        return $provinces;
+    }
+
+    public static function toSelectOption() {
+        $items = self::all();
+        $selectOptions = [];
+        if (!empty($items)) {
+            foreach ($items as $item) {
+                $selectOptions[] = [
+                  $item->province_code => $item->province_name
+                ];
+            }
+        }
+
+        return $selectOptions;
+    }
 }

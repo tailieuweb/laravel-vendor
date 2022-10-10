@@ -12,12 +12,6 @@ class LocationWards extends FooModel
      */
     public $user = NULL;
 
-    /**
-     * Autoload relation
-     * @var string[]
-     */
-   protected $with = array('district');
-
     public function __construct(array $attributes = array())
     {
         //set configurations
@@ -425,6 +419,34 @@ class LocationWards extends FooModel
     public function district()
     {
         return $this->belongsTo(LocationDistricts::class, 'district_code', 'district_code');
+    }
+
+    public function __toArray() {
+        $wards = [];
+        if (!empty($this->items)) {
+            foreach ($this->items as $item) {
+                $districts[] = [
+                    'district_code' => $item->district_code,
+                    'name' => $item->ward_name,
+                    'code' => $item->ward_code
+                ];
+            }
+        }
+        return $wards;
+    }
+
+    public static function toSelectOption() {
+        $items = self::all();
+        $selectOptions = [];
+        if (!empty($items)) {
+            foreach ($items as $item) {
+                $selectOptions[] = [
+                    $item->province_code => $item->province_name
+                ];
+            }
+        }
+
+        return $selectOptions;
     }
 
 }

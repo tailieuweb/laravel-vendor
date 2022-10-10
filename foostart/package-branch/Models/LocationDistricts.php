@@ -11,11 +11,7 @@ class LocationDistricts extends FooModel
      * @param array $attributes
      */
     public $user = NULL;
-    /**
-     * Autoload relation
-     * @var string[]
-     */
-    protected $with = array('wards', 'province');
+
 
     public function __construct(array $attributes = array())
     {
@@ -435,4 +431,32 @@ class LocationDistricts extends FooModel
         return $this->belongsTo(LocationProvinces::class, 'province_code', 'province_code');
     }
 
+    public function __toArray() {
+        $districts = [];
+        if (!empty($this->items)) {
+            foreach ($this->items as $item) {
+                $districts[] = [
+                    'province_code' => $item->province_code,
+                    'name' => $item->district_name,
+                    'code' => $item->district_code,
+                    'wards' => $item->wards->toArray()
+                ];
+            }
+        }
+        return $districts;
+    }
+
+    public static function toSelectOption() {
+        $items = self::all();
+        $selectOptions = [];
+        if (!empty($items)) {
+            foreach ($items as $item) {
+                $selectOptions[] = [
+                    $item->province_code => $item->province_name
+                ];
+            }
+        }
+
+        return $selectOptions;
+    }
 }

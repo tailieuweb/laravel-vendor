@@ -11,7 +11,9 @@
 */
 
 
+use Foostart\Branch\Models\LocationDistricts;
 use Foostart\Branch\Models\LocationProvinces;
+use Foostart\Branch\Models\LocationWards;
 use Illuminate\Http\Request;
 use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
@@ -179,13 +181,17 @@ class BranchAdminController extends FooController {
             }
         }
         // Get location
-        $objLocation = new LocationProvinces();
-        $provinces = $objLocation->all();
+        $provinces = LocationProvinces::toSelectOption();
+        $districts = LocationDistricts::toSelectOption();
+        $wards = LocationWards::toSelectOption();
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'request' => $request,
+            'provinces' => $provinces,
+            'districts' => $districts,
+            'wards' => $wards,
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
     }

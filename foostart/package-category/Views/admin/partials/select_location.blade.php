@@ -46,21 +46,14 @@ $description = empty($description) ? '' : $description;
 <!-- CATEGORY LIST -->
 @section('footer_scripts')
     @parent
+    <script type='text/javascript'>
 
-    <script type="javascript">
-        $('#city').change(function() {
-            $('#street option').hide();
-            $('#street option[value="' + $(this).val() + '"]').show();
-            // add this code to select 1'st of streets automaticaly
-            // when city changed
-            if ($('#street option[value="' + $(this).val() + '"]').length) {
-                $('#street option[value="' + $(this).val() + '"]').first().prop('selected', true);
-            }
-                // in case if there's no corresponding street:
-            // reset select element
-            else {
-                $('#street').val('');
-            };
+        $(document).ready(function () {
+            var provinces = 'a';
+            console.log(provinces);
         });
+
     </script>
+
+
 @endsection
