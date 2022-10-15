@@ -150,7 +150,7 @@
         <!--ADVANCED-->
         <div id="menu_2" class="tab-pane fade">
             <!--LOCATION-->
-            @include('package-category::admin.partials.select_location', [
+            @include('package-category::admin.partials.select_location_VN', [
             'name' => 'location',
             'label' => trans($plang_admin.'.labels.location'),
             'value' => @$item->branch_image,
