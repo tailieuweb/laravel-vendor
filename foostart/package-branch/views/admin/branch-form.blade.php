@@ -94,22 +94,6 @@
                </div>
 
                 <div class='col-md-6'>
-
-                    <!-- LIST OF CATEGORIES -->
-                    @include('package-category::admin.partials.select_single', [
-                        'name' => 'slideshow_id',
-                        'label' => trans($plang_admin.'.labels.slideshow'),
-                        'items' => $slideshow,
-                        'value' => @$item->slideshow_id,
-                        'description' => trans($plang_admin.'.descriptions.slideshow', [
-                                     'href' => URL::route('slideshows.list')
-                                     ]),
-                        'errors' => $errors,
-                    ])
-
-               </div>
-
-                <div class='col-md-6'>
                     <!--STATUS-->
                     @include('package-category::admin.partials.select_single', [
                         'name' => 'status',

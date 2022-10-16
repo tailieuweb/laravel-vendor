@@ -72,7 +72,8 @@ $description = empty($description) ? '' : $description;
     <script type='text/javascript'>
 
         $(document).ready(function () {
-
+            let url_get_districts = '{{env('APP_URL')}}/api/location/districts';
+            let url_get_wards = '{{env('APP_URL')}}/api/location/wards';
             /**
              * Province change
              */
@@ -80,44 +81,61 @@ $description = empty($description) ? '' : $description;
                 // Province code
                 let province_code = $(this).val();
                 // Get districts by province_code
+                $.ajax({
+                    url: url_get_districts + '/' + $(this).val(),
+                    cache: false,
+                    type: "GET",
+                    success: function(response) {
+                        if (response.status == 200) {
+                            var $el = $('#district');
+                            $el.empty(); // remove old options
+                            $el.append($("<option></option>")
+                                .attr("value", '').text('Choose district'));
 
+                            // for each set of data, add a new option
+                            $.each(response.data, function(index, value) {
+                                $el.append($("<option></option>")
+                                    .attr("value", value.district_code).text(value.district_name));
+                            });
+                        }
+                    },
+                    error: function(xhr) {
 
-                $('#district option').hide();
-                $('#district option[data-province-code="' + $(this).val() + '"]').show();
-                // add this code to select 1'st of streets automaticaly
-                // when city changed
-                if ($('#district option[data-province-code="' + $(this).val() + '"]').length) {
-                    $('#district option[data-province-code="' + $(this).val() + '"]').first().prop('selected', true);
-                }
-                    // in case if there's no corresponding street:
-                // reset select element
-                else {
-                    $('#district').val('');
-                };
+                    }
+                });
 
                 /**
                  * District change
                  */
                 $('#district').change(function() {
+                    // District code
+                    let district_code = $(this).val();
+                    // Get wards by district_code
+                    $.ajax({
+                        url: url_get_wards + '/' + $(this).val(),
+                        cache: false,
+                        type: "GET",
+                        success: function(response) {
+                            if (response.status == 200) {
+                                var $el = $('#ward');
+                                $el.empty(); // remove old options
+                                $el.append($("<option></option>")
+                                    .attr("value", '').text('Choose a ward'));
 
-                    $('#ward option').hide();
-                    $('#ward option[data-ward-code="' + $(this).val() + '"]').show();
-                    // add this code to select 1'st of streets automaticaly
-                    // when city changed
-                    if ($('#ward option[data-ward-code="' + $(this).val() + '"]').length) {
-                        $('#ward option[data-ward-code="' + $(this).val() + '"]').first().prop('selected', true);
-                    }
-                        // in case if there's no corresponding street:
-                    // reset select element
-                    else {
-                        $('#ward').val('');
-                    }
-                    ;
+                                // for each set of data, add a new option
+                                $.each(response.data, function(index, value) {
+                                    $el.append($("<option></option>")
+                                        .attr("value", value.ward_code).text(value.ward_name));
+                                });
+                            }
+                        },
+                        error: function(xhr) {
+
+                        }
+                    });
                 });
             });
         });
 
     </script>
-
-
 @endsection

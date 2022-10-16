@@ -34,8 +34,6 @@ class BranchAdminController extends FooController {
     public $obj_category = NULL;
     public $context = NULL;
     public $categories = NULL;
-    public $slideshow = NULL;
-
 
     public function __construct(Request $request) {
 
@@ -443,11 +441,6 @@ class BranchAdminController extends FooController {
      */
     public function copy(Request $request) {
 
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3['label'] = 'Copy';
-
         $params = $request->all();
 
         $item = NULL;
@@ -502,6 +495,35 @@ class BranchAdminController extends FooController {
         } else {
             $data = [
               'status' => 400
+            ];
+        }
+        return  response()->json($data);
+    }
+
+    /**
+     * Get list of wards by district_code
+     * @param string $districtCode
+     * @return mixed
+     */
+    public function getWards(Request $request, string $districtCode) {
+        $data = null;
+
+        // Get districts by province code
+        $this->objWard = new LocationWards();
+        $this->objWard->is_pagination = false;
+        $_params = [
+            'district_code' => $districtCode
+        ];
+        $wards = $this->objWard->selectItems($_params);
+
+        if (!empty($wards)) {
+            $data = [
+                'data' => $wards,
+                'status' => 200
+            ];
+        } else {
+            $data = [
+                'status' => 400
             ];
         }
         return  response()->json($data);

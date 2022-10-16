@@ -23,6 +23,14 @@ Route::group(['middleware' => ['web'],
         'uses' => 'BranchAdminController@getDistricts'
     ]);
 
+    /**
+     * Get wards by district code
+     */
+    Route::get('api/location/wards/{district_code}', [
+        'as' => 'location.wards',
+        'uses' => 'BranchAdminController@getWards'
+    ]);
+
 });
 
 

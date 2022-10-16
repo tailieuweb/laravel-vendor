@@ -29,23 +29,23 @@ class LocationWards extends FooModel
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'district_id',
+            'district_code',
             'ward_code',
             'ward_name',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'district_id' => [
-                'name' => 'district_id',
+            'district_code' => [
+                'name' => 'district_code',
                 'type' => 'Text',
             ],
-            'code' => [
-                'name' => 'code',
+            'ward_code' => [
+                'name' => 'ward_code',
                 'type' => 'Text',
             ],
-            'name' => [
-                'name' => 'name',
+            'ward_name' => [
+                'name' => 'ward_name',
                 'type' => 'Text',
             ],
 
@@ -53,23 +53,23 @@ class LocationWards extends FooModel
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'district_id',
-            'code',
-            'name'
+            'district_code',
+            'ward_code',
+            'ward_name'
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'district_id',
-            'code',
-            'name',
+            'district_code',
+            'ward_code',
+            'ward_name',
             $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
-            'district_id',
-            'code',
-            'name',
+            'district_code',
+            'ward_code',
+            'ward_name',
         ];
 
         //primary key
@@ -188,9 +188,9 @@ class LocationWards extends FooModel
             foreach ($params as $column => $value) {
                 if ($this->isValidValue($value)) {
                     switch ($column) {
-                        case 'category_id':
+                        case 'district_code':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.category_id', '=', $value);
+                                $elo = $elo->where($this->table . '.district_code', '=', $value);
                             }
                             break;
                         case 'category':
@@ -222,9 +222,9 @@ class LocationWards extends FooModel
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function ($elo) use ($value) {
-                                    $elo->where($this->table . '.post_name', 'LIKE', "%{$value}%")
-                                        ->orWhere($this->table . '.post_description', 'LIKE', "%{$value}%")
-                                        ->orWhere($this->table . '.post_overview', 'LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.district_code', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->table . '.ward_name', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->table . '.ward_code', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -251,7 +251,7 @@ class LocationWards extends FooModel
     {
 
         $elo = $elo->select($this->table . '.*',
-            $this->table . '.post_id as id'
+            $this->table . '.ward_id as id'
         );
 
         return $elo;
