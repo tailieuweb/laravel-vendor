@@ -156,6 +156,7 @@
             'value' => @$item->branch_image,
             'description' => trans($plang_admin.'.descriptions.location'),
             'errors' => $errors,
+            'provinces' => $provinces
             ])
             <!--/LOCATION-->
         </div>

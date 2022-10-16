@@ -28,6 +28,9 @@ use Foostart\Branch\Validators\BranchValidator;
 class BranchAdminController extends FooController {
 
     public $obj_item = NULL;
+    public $objDistrict = NULL;
+    public $objWard = NULL;
+
     public $obj_category = NULL;
     public $context = NULL;
     public $categories = NULL;
@@ -41,7 +44,6 @@ class BranchAdminController extends FooController {
         //models
         $this->obj_item = new Branch(array('perPage' => 10));
         $this->obj_category = new Category();
-        $this->obj_slideshow = new Slideshow();
 
         //validators
         $this->obj_validator = new BranchValidator();
@@ -83,14 +85,6 @@ class BranchAdminController extends FooController {
         }
         $this->data_view['categories'] = $this->categories;
         $this->data_view['context'] = $this->context;
-        $this->data_view['slideshow'] = $this->obj_slideshow->pluckSelect();
-
-
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_1['label'] = 'Admin';
-        $this->breadcrumb_2['label'] = 'Rules';
 
     }
 
@@ -182,16 +176,16 @@ class BranchAdminController extends FooController {
         }
         // Get location
         $provinces = LocationProvinces::toSelectOption();
-        $districts = LocationDistricts::toSelectOption();
-        $wards = LocationWards::toSelectOption();
+        // $districts = LocationDistricts::toSelectOption();
+        //$wards = LocationWards::toSelectOption();
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'request' => $request,
             'provinces' => $provinces,
-            'districts' => $districts,
-            'wards' => $wards,
+//            'districts' => $districts,
+//            'wards' => $wards,
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
@@ -310,7 +304,6 @@ class BranchAdminController extends FooController {
         /**
          * Breadcrumb
          */
-        $this->breadcrumb_3['label'] = 'Config';
 
         $is_valid_request = $this->isValidRequest($request);
         // display view
@@ -348,9 +341,6 @@ class BranchAdminController extends FooController {
             'request' => $request,
             'content' => $content,
             'backups' => $backups,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
 
         return view($this->page_views['admin']['config'], $this->data_view);
@@ -368,7 +358,6 @@ class BranchAdminController extends FooController {
         /**
          * Breadcrumb
          */
-        $this->breadcrumb_3['label'] = 'Lang';
 
         $is_valid_request = $this->isValidRequest($request);
         // display view
@@ -441,9 +430,6 @@ class BranchAdminController extends FooController {
             'langs'   => $langs,
             'lang_contents' => $lang_contents,
             'lang' => $lang,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
 
         return view($this->page_views['admin']['lang'], $this->data_view);
@@ -487,13 +473,38 @@ class BranchAdminController extends FooController {
             'item' => $item,
             'request' => $request,
             'context' => $context,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
 
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
 
+    /**
+     * Get list of districts by province_code
+     * @param string $provinceCode
+     * @return mixed
+     */
+    public function getDistricts(Request $request, string $provinceCode) {
+        $data = null;
+
+        // Get districts by province code
+        $this->objDistrict = new LocationDistricts();
+        $this->objDistrict->is_pagination = false;
+        $_params = [
+            'province_code' => $provinceCode
+        ];
+        $districts = $this->objDistrict->selectItems($_params);
+
+        if (!empty($districts)) {
+            $data = [
+              'data' => $districts,
+              'status' => 200
+            ];
+        } else {
+            $data = [
+              'status' => 400
+            ];
+        }
+        return  response()->json($data);
+    }
 
 }

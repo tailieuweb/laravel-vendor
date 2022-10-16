@@ -25,6 +25,7 @@ $name = empty($name) ? 'undefined' : $name;
 
 //items
 $items = empty($items) ? [] : $items;
+$provinces = empty($provinces) ? [] : $provinces;
 
 //value
 $value = empty($value) ? $request->get($name) : $value;
@@ -43,27 +44,26 @@ $description = empty($description) ? '' : $description;
 ?>
 <!--/DATA-->
 
-{!! Form::select('province', $items, $value, ['class' => 'form-control',  'placeholder' => $placehover]) !!}
-
-
-<select id="province" name="province">
-    <option value="0">Select City</option>
-    <option value="1">Manchester</option>
-    <option value="2">Leicester</option>
-    <option value="3">Londra</option>
-</select>
-
-<select id="district" name="district">
-    <option value="0" data-province-code="1">Select Street</option>
-    <option value="1" data-province-code="1">Street 1</option>
-    <option value="1" data-province-code="1">Street 2</option>
-</select>
-
-<select id="ward" name="ward">
-    <option value="0" data-district-code="1">Select Street</option>
-    <option value="1" data-district-code="1">Street 1</option>
-    <option value="1" data-district-code="1">Street 2</option>
-</select>
+<div class="row">
+    <div class="col-md-4">
+        {!! Form::select('province', $provinces, $value, [  'class' => 'form-control',
+                                                            'placeholder' => $placehover,
+                                                            'id' => 'province'
+                                                            ]) !!}
+    </div>
+    <div class="col-md-4">
+        {!! Form::select('district', [], null, [  'class' => 'form-control',
+                                                             'placeholder' => $placehover,
+                                                             'id' => 'district'
+                                                             ]) !!}
+    </div>
+    <div class="col-md-4">
+        {!! Form::select('ward', [], null, [  'class' => 'form-control',
+                                                     'placeholder' => $placehover,
+                                                     'id' => 'ward'
+                                                     ]) !!}
+    </div>
+</div>
 
 
 <!-- CATEGORY LIST -->
@@ -77,6 +77,10 @@ $description = empty($description) ? '' : $description;
              * Province change
              */
             $('#province').change(function() {
+                // Province code
+                let province_code = $(this).val();
+                // Get districts by province_code
+
 
                 $('#district option').hide();
                 $('#district option[data-province-code="' + $(this).val() + '"]').show();

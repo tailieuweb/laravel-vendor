@@ -435,9 +435,7 @@ class LocationProvinces extends FooModel
         $selectOptions = [];
         if (!empty($items)) {
             foreach ($items as $item) {
-                $selectOptions[] = [
-                  $item->province_code => $item->province_name
-                ];
+                $selectOptions[$item->province_code] = $item->province_name;
             }
         }
 

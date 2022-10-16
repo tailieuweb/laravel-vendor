@@ -30,15 +30,15 @@ class LocationDistricts extends FooModel
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'province_id',
+            'province_code',
             'district_code',
             'district_name',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'province_id' => [
-                'name' => 'province_id',
+            'province_code' => [
+                'name' => 'province_code',
                 'type' => 'Text',
             ],
             'district_code' => [
@@ -54,21 +54,21 @@ class LocationDistricts extends FooModel
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'province_id',
+            'province_code',
             'district_code',
             'district_name'
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'province_id',
+            'province_code',
             'district_code',
             'district_name',
             $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
-            'province_id',
+            'province_code',
             'district_code',
             'district_name',
         ];
@@ -189,9 +189,9 @@ class LocationDistricts extends FooModel
             foreach ($params as $column => $value) {
                 if ($this->isValidValue($value)) {
                     switch ($column) {
-                        case 'category_id':
+                        case 'province_code':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.category_id', '=', $value);
+                                $elo = $elo->where($this->table . '.province_code', '=', $value);
                             }
                             break;
                         case 'category':
@@ -212,7 +212,7 @@ class LocationDistricts extends FooModel
                             break;
                         case '_id':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.post_id', '!=', $value);
+                                $elo = $elo->where($this->table . '.district_id', '!=', $value);
                             }
                             break;
                         case 'status':
@@ -223,9 +223,9 @@ class LocationDistricts extends FooModel
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function ($elo) use ($value) {
-                                    $elo->where($this->table . '.post_name', 'LIKE', "%{$value}%")
-                                        ->orWhere($this->table . '.post_description', 'LIKE', "%{$value}%")
-                                        ->orWhere($this->table . '.post_overview', 'LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.province_code', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->table . '.district_code', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->table . '.district_name', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -252,7 +252,7 @@ class LocationDistricts extends FooModel
     {
 
         $elo = $elo->select($this->table . '.*',
-            $this->table . '.post_id as id'
+            $this->table . '.district_id as id'
         );
 
         return $elo;
