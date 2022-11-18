@@ -115,6 +115,13 @@ return [
             "link" => '/admin/slideshows',
             "permissions" => [$admin, "_permission-editor"]
         ],
+        //Branch
+        [
+            "name" => "acl-admin.menu.branch",
+            "route" => "branch.list",
+            "link" => '/admin/branch',
+            "permissions" => [$admin, "_permission-editor"]
+        ],
 
     ]
 ];

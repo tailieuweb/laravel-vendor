@@ -86,6 +86,7 @@ return array(
     'Foostart\\Front\\' => array($vendorDir . '/foostart/package-front'),
     'Foostart\\Filemanager\\' => array($vendorDir . '/foostart/package-filemanager/src'),
     'Foostart\\Category\\' => array($vendorDir . '/foostart/package-category'),
+    'Foostart\\Branch\\' => array($vendorDir . '/foostart/package-branch'),
     'Foostart\\Acl\\' => array($vendorDir . '/foostart/package-acl/app'),
     'Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),

@@ -793,6 +793,52 @@
             "install-path": "../foostart/package-acl"
         },
         {
+            "name": "foostart/package-branch",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-branch.git",
+                "reference": "d957721daa4a1aed0b647b7bd878b24acf6bd33b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-branch/zipball/d957721daa4a1aed0b647b7bd878b24acf6bd33b",
+                "reference": "d957721daa4a1aed0b647b7bd878b24acf6bd33b",
+                "shasum": ""
+            },
+            "time": "2022-10-08T08:17:11+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Branch\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Manage branch",
+            "keywords": [
+                "Laravel 9x",
+                "foostart"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-branch/issues",
+                "source": "https://github.com/foostart/package-branch/tree/main"
+            },
+            "install-path": "../foostart/package-branch"
+        },
+        {
             "name": "foostart/package-category",
             "version": "2022.04.251612",
             "version_normalized": "2022.04.251612.0",

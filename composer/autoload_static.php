@@ -157,6 +157,7 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
             'Foostart\\Front\\' => 15,
             'Foostart\\Filemanager\\' => 21,
             'Foostart\\Category\\' => 18,
+            'Foostart\\Branch\\' => 16,
             'Foostart\\Acl\\' => 13,
             'Faker\\' => 6,
         ),
@@ -516,6 +517,10 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         array (
             0 => __DIR__ . '/..' . '/foostart/package-category',
         ),
+        'Foostart\\Branch\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-branch',
+        ),
         'Foostart\\Acl\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-acl/app',
@@ -803,6 +808,7 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'Database\\Seeders\\CategorySeeder' => __DIR__ . '/../..' . '/database/seeders/CategorySeeder.php',
         'Database\\Seeders\\ContextSeeder' => __DIR__ . '/../..' . '/database/seeders/ContextSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\LocationSeeder' => __DIR__ . '/../..' . '/database/seeders/LocationSeeder.php',
         'Database\\Seeders\\PexcelSeeder' => __DIR__ . '/../..' . '/database/seeders/PexcelSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -1631,6 +1637,14 @@ class ComposerStaticInitf3f86c3acf25b154c5598cb1c1d3901a
         'Foostart\\Acl\\Providers\\EventServiceProvider' => __DIR__ . '/..' . '/foostart/package-acl/app/Providers/EventServiceProvider.php',
         'Foostart\\Acl\\Providers\\RouteServiceProvider' => __DIR__ . '/..' . '/foostart/package-acl/app/Providers/RouteServiceProvider.php',
         'Foostart\\Acl\\User' => __DIR__ . '/..' . '/foostart/package-acl/app/User.php',
+        'Foostart\\Branch\\BranchServiceProvider' => __DIR__ . '/..' . '/foostart/package-branch/BranchServiceProvider.php',
+        'Foostart\\Branch\\Controllers\\Admin\\BranchAdminController' => __DIR__ . '/..' . '/foostart/package-branch/Controllers/Admin/BranchAdminController.php',
+        'Foostart\\Branch\\Controllers\\Front\\BranchFrontController' => __DIR__ . '/..' . '/foostart/package-branch/Controllers/Front/BranchFrontController.php',
+        'Foostart\\Branch\\Models\\Branch' => __DIR__ . '/..' . '/foostart/package-branch/Models/Branch.php',
+        'Foostart\\Branch\\Models\\LocationDistricts' => __DIR__ . '/..' . '/foostart/package-branch/Models/LocationDistricts.php',
+        'Foostart\\Branch\\Models\\LocationProvinces' => __DIR__ . '/..' . '/foostart/package-branch/Models/LocationProvinces.php',
+        'Foostart\\Branch\\Models\\LocationWards' => __DIR__ . '/..' . '/foostart/package-branch/Models/LocationWards.php',
+        'Foostart\\Branch\\Validators\\BranchValidator' => __DIR__ . '/..' . '/foostart/package-branch/Validators/BranchValidator.php',
         'Foostart\\Category\\CategoryServiceProvider' => __DIR__ . '/..' . '/foostart/package-category/CategoryServiceProvider.php',
         'Foostart\\Category\\Controllers\\Admin\\CategoryAdminController' => __DIR__ . '/..' . '/foostart/package-category/Controllers/Admin/CategoryAdminController.php',
         'Foostart\\Category\\Controllers\\Admin\\ContextAdminController' => __DIR__ . '/..' . '/foostart/package-category/Controllers/Admin/ContextAdminController.php',
