@@ -94,6 +94,22 @@
                </div>
 
                 <div class='col-md-6'>
+
+                    <!-- LIST OF CATEGORIES -->
+                    @include('package-category::admin.partials.select_single', [
+                        'name' => 'slideshow_id',
+                        'label' => trans($plang_admin.'.labels.slideshow'),
+                        'items' => $slideshow,
+                        'value' => @$item->slideshow_id,
+                        'description' => trans($plang_admin.'.descriptions.slideshow', [
+                                     'href' => URL::route('slideshows.list')
+                                     ]),
+                        'errors' => $errors,
+                    ])
+
+               </div>
+
+                <div class='col-md-6'>
                     <!--STATUS-->
                     @include('package-category::admin.partials.select_single', [
                         'name' => 'status',
@@ -106,18 +122,7 @@
 
             </div>
 
-            <!--BRANCH OVERVIEW-->
-            @include('package-category::admin.partials.textarea', [
-            'name' => 'branch_overview',
-            'label' => trans($plang_admin.'.labels.overview'),
-            'value' => @$item->branch_overview,
-            'description' => trans($plang_admin.'.descriptions.overview'),
-            'tinymce' => false,
-            'errors' => $errors,
-            ])
-            <!--/BRANCH OVERVIEW-->
-
-            <!--BRANCH DESCRIPTION-->
+            <!--POST DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
                 'name' => 'branch_description',
                 'label' => trans($plang_admin.'.labels.description'),
@@ -127,27 +132,28 @@
                 'tinymce' => true,
                 'errors' => $errors,
             ])
-            <!--/BRANCH DESCRIPTION-->
+            <!--/POST DESCRIPTION-->
 
         </div>
 
         <!--ADVANCED-->
         <div id="menu_2" class="tab-pane fade">
-            <!--LOCATION-->
-            @include('package-category::admin.partials.select_location_VN', [
-            'name' => 'location',
-            'label' => trans($plang_admin.'.labels.location'),
-            'value' => @$item->branch_image,
-            'description' => trans($plang_admin.'.descriptions.location'),
+            <!--POST OVERVIEW-->
+            @include('package-category::admin.partials.textarea', [
+            'name' => 'branch_overview',
+            'label' => trans($plang_admin.'.labels.overview'),
+            'value' => @$item->branch_overview,
+            'description' => trans($plang_admin.'.descriptions.overview'),
+            'tinymce' => false,
             'errors' => $errors,
-            'provinces' => $provinces
             ])
-            <!--/LOCATION-->
+            <!--/POST OVERVIEW-->
+
         </div>
 
         <!--OTHER-->
         <div id="menu_3" class="tab-pane fade">
-            <!--BRANCH IMAGE-->
+            <!--POST IMAGE-->
             @include('package-category::admin.partials.input_image', [
             'name' => 'branch_image',
             'label' => trans($plang_admin.'.labels.image'),
@@ -155,9 +161,9 @@
             'description' => trans($plang_admin.'.descriptions.image'),
             'errors' => $errors,
             ])
-            <!--/BRANCH IMAGE-->
+            <!--/POST IMAGE-->
 
-            <!--BRANCH FILES-->
+            <!--POST FILES-->
             @include('package-category::admin.partials.input_files', [
                 'name' => 'files',
                 'label' => trans($plang_admin.'.labels.files'),
@@ -165,7 +171,7 @@
                 'description' => trans($plang_admin.'.descriptions.files'),
                 'errors' => $errors,
             ])
-            <!--/BRANCH FILES-->
+            <!--/POST FILES-->
         </div>
 
     </div>

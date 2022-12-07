@@ -92,8 +92,7 @@ return [
         'signup' => 'Signup',
         'change-password' => 'Chanage password',
         'change-password-success-title' => 'Change password success title',
-        'home-page' => 'Homage page',
-        'login' => 'Login',
+        'home-page' => 'Login page',
     ],
 
 

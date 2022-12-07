@@ -70,16 +70,16 @@ class FrontController extends Controller {
     public function __construct() {
 
         //set root source blocks
-//        $this->root_source_blocks = realpath(config($this->package_name.'.dir.root_source_blocks'));
-//
-//        //set directory of list of blocks
-//        $dir_source_blocks = config($this->package_name.'.dir.source_blocks');
-//
-//        if (!file_exists($dir_source_blocks)) {
-//            mkdir($dir_source_blocks, 0755    , true);
-//        }
-//        $this->dir_source_blocks = realpath($dir_source_blocks);
-//        $this->dir_target_blocks = realpath(__DIR__ . '/..');
+        $this->root_source_blocks = realpath(config($this->package_name.'.dir.root_source_blocks'));
+
+        //set directory of list of blocks
+        $dir_source_blocks = config($this->package_name.'.dir.source_blocks');
+
+        if (!file_exists($dir_source_blocks)) {
+            mkdir($dir_source_blocks, 0755    , true);
+        }
+        $this->dir_source_blocks = realpath($dir_source_blocks);
+        $this->dir_target_blocks = realpath(__DIR__ . '/..');
 
         //object category
         $this->obj_category = new FooCategory();
@@ -416,20 +416,7 @@ class FrontController extends Controller {
             $_source = realpath($this->dir_source_blocks . '/' . $id . '/' . $id . '-content.php');
             $_target = $dir_target_block_views . '/' . $id . '-content.blade.php';
             if ($_source) {
-                //Copy
                 copy($_source, $_target);
-                /**
-                 * Override content
-                 */
-                //Remove php tag
-                $content = file_get_contents($_target);
-                $pattern = '/<\?php[\s\S]*?\?>/';
-                $content = preg_replace($pattern, '', $content);
-
-                //Update image path
-                $pattern = '/src=".*?images/';
-                $content = preg_replace($pattern, 'src="packages/foostart/package-front/images', $content);
-                file_put_contents($_target, $content);
             }
         }
 
@@ -466,14 +453,6 @@ class FrontController extends Controller {
     public function configBlockPageIds() {
         $this->block_page_ids = [
             'home' => $this->getPageConfig('home'),
-            'news_list' => $this->getPageConfig('news_list'),
-            'news_detail' => $this->getPageConfig('news_detail'),
-            'personnel_list' => $this->getPageConfig('personnel_list'),
-            'personnel_detail' => $this->getPageConfig('personnel_detail'),
-            'student_list' => $this->getPageConfig('student_list'),
-            'student_detail' => $this->getPageConfig('student_detail'),
-            'thematic_list' => $this->getPageConfig('thematic_list'),
-            'thematic_detail' => $this->getPageConfig('personnel_detail'),
         ];
         return $this->block_page_ids;
     }

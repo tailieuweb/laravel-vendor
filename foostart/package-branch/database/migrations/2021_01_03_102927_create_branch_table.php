@@ -1,10 +1,10 @@
 <?php
 
+use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateBranchTable extends FoostartMigration
+class CreateCompaniesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -31,9 +31,7 @@ class CreateBranchTable extends FoostartMigration
             $table->text('cache_comments')->nullable();
             $table->text('cache_other_branch')->nullable();
             $table->integer('cache_time')->nullable();
-
-            //Set common columns
-            $this->setCommonColumns($table);
+            $table->timestamps();
         });
     }
 
@@ -44,6 +42,6 @@ class CreateBranchTable extends FoostartMigration
      */
     public function down()
     {
-
+        
     }
 }

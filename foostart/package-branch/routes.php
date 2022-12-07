@@ -3,52 +3,20 @@
 use Illuminate\Session\TokenMismatchException;
 
 /**
- * API
- */
-Route::group(['middleware' => ['web'],
-            'namespace' => 'Foostart\Branch\Controllers\Admin'], function () {
-    /*
-    |-----------------------------------------------------------------------
-    | Manage branch
-    |-----------------------------------------------------------------------
-    | 1. Get districts by province code
-    | 2. Get wards by district code
-    |
-    */
-    /**
-     * Get districts by province code
-     */
-    Route::get('api/location/districts/{province_code}', [
-        'as' => 'location.districts',
-        'uses' => 'BranchAdminController@getDistricts'
-    ]);
-
-    /**
-     * Get wards by district code
-     */
-    Route::get('api/location/wards/{district_code}', [
-        'as' => 'location.wards',
-        'uses' => 'BranchAdminController@getWards'
-    ]);
-
-});
-
-
-/**
  * FRONT
  */
-//Route::get('branch', [
-//    'as' => 'branch',
-//    'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@index'
-//]);
-//Route::get('branch/search/', [
-//    'as' => 'branch',
-//    'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@search'
-//]);
-//Route::get('branch/{slug}', [
-//    'as' => 'branch',
-//    'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@show'
-//]);
+Route::get('branch', [
+    'as' => 'branch',
+    'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@index'
+]);
+Route::get('branch/search/', [
+    'as' => 'branch',
+    'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@search'
+]);
+Route::get('branch/{slug}', [
+    'as' => 'branch',
+    'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@show'
+]);
 
 /**
  * ADMINISTRATOR

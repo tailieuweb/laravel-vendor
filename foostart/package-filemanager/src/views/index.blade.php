@@ -14,16 +14,15 @@
 
     <title>{{ trans('package-filemanager::lfm.title-page') }}</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('vendor/package-filemanager/img/folder.png') }}">
-    {!! HTML::style('packages/foostart/css/bootstrap-3.3.7.min.css') !!}
-    {!! HTML::style('packages/foostart/css/font-awesome-4.7.0.min.css') !!}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('vendor/package-filemanager/css/cropper.min.css') }}">
     <style>{!! \File::get(base_path('vendor/foostart/package-filemanager/public/css/lfm.css')) !!}</style>
     {{-- Use the line below instead of the above if you need to cache the css. --}}
     {{-- <link rel="stylesheet" href="{{ asset('/vendor/package-filemanager/css/lfm.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('vendor/package-filemanager/css/mfb.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/package-filemanager/css/dropzone.min.css') }}">
-    {!! HTML::script('packages/foostart/js/vendor/jquery-2.2.4.min.js') !!}
-    {!! HTML::script('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') !!}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.css">
 </head>
 <body>
 <div class="container-fluid" id="wrapper">
@@ -153,9 +152,10 @@
     <img src="{{asset('vendor/package-filemanager/img/loader.svg')}}">
 </div>
 
-
-<script src="{{ asset('vendor/package-filemanager/js/bootbox.min.js') }}"></script>
-<script src="{{ asset('vendor/package-filemanager/js/jquery-ui-1.13.2.min.js') }}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="{{ asset('vendor/package-filemanager/js/cropper.min.js') }}"></script>
 <script src="{{ asset('vendor/package-filemanager/js/jquery.form.min.js') }}"></script>
 <script src="{{ asset('vendor/package-filemanager/js/dropzone.min.js') }}"></script>

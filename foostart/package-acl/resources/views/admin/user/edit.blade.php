@@ -77,14 +77,6 @@
                                     {!! Form::select('banned', ["1" => "Yes", "0" => "No"], (isset($user->banned) && $user->banned) ? $user->banned : "0", ["class"=> "form-control"] ) !!}
                                 </div>
                             </div>
-                            @if(isset($user->suspended) && $user->suspended)
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {!! Form::label("suspended",trans($plang_admin.'.labels.suspended').':') !!}
-                                        {!! Form::checkbox('suspended',trans($plang_admin.'.labels.suspended') , (isset($user->suspended) && $user->suspended) ? true : false) !!}
-                                    </div>
-                                </div>
-                            @endif
                         </div>
                         <!-- End status -->
 

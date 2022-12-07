@@ -29,7 +29,7 @@ class AuthController extends Controller
      */
     public function getClientLogin(Request $request)
     {
-        //User logged
+        //User loged
         if ($this->authenticator->check()) {
             return Redirect::to(Config::get('acl_base.user_login_redirect_url'));
         }
@@ -77,7 +77,6 @@ class AuthController extends Controller
     }
 
     /**
-     * User login at url: /login
      * Post client login
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse

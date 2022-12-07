@@ -1,4 +1,5 @@
 <img src="{!! $captcha->getImageSrcTag() !!}">
+
 @section('footer_scripts')
     @parent
 

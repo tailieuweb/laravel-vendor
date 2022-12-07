@@ -31,7 +31,7 @@ class Style extends FooModel
             'style_image',
             'style_view_file',
             'style_js_file',
-            'style_css_file',
+            'style_js_file',
             'style_view_content',
         ]);
 
@@ -197,7 +197,7 @@ class Style extends FooModel
             }
         } elseif ($by_status) {
 
-            $elo = $elo->where($this->table . '.' . $this->field_status, '=', $this->config_status['publish']);
+            $elo = $elo->where($this->table . '.' . $this->field_status, '=', $this->status['publish']);
 
         }
 
@@ -254,7 +254,7 @@ class Style extends FooModel
                 $slideshow->$key = $value;
             }
 
-            $slideshow->$field_status = $this->config_status['publish'];
+            $slideshow->$field_status = $this->status['publish'];
 
             $slideshow->save();
 
@@ -275,7 +275,7 @@ class Style extends FooModel
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $dataFields[$this->field_status] = $this->config_status['publish'];
+        $dataFields[$this->field_status] = $this->status['publish'];
 
 
         $item = self::create($dataFields);

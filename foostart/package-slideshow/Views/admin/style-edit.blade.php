@@ -1,10 +1,10 @@
 <!--
-| TITLE
+| @TITLE
 | Update existing style
 | Add new style
 |
 |-------------------------------------------------------------------------------
-| REQUIRED
+| @REQUIRED
 | Permission
 |
 |÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷
@@ -15,7 +15,7 @@
 |
 |_______________________________________________________________________________
 -->
-@extends('package-acl::admin.layouts.base-2cols')
+@extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
     {{ trans($plang_admin.'.pages.title-edit-style') }}

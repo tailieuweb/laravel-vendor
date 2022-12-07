@@ -18,7 +18,6 @@ use Foostart\Acl\Authentication\Repository\EloquentUserProfileRepository;
 use Foostart\Acl\Authentication\Repository\SentryGroupRepository;
 use Foostart\Acl\Authentication\Repository\SentryUserRepository;
 use Foostart\Acl\Authentication\Services\UserRegisterService;
-use Illuminate\Pagination\Paginator;
 
 class AuthenticationServiceProvider extends ServiceProvider
 {
@@ -81,8 +80,6 @@ class AuthenticationServiceProvider extends ServiceProvider
         $this->setupPublishDataCommand();
 
         $this->overwriteSentryConfig();
-
-        Paginator::useBootstrapThree();
     }
 
     protected function overwriteSentryConfig()
@@ -234,7 +231,6 @@ class AuthenticationServiceProvider extends ServiceProvider
             __DIR__ . '/../../config/acl_messages.php' => config_path('acl_messages.php'),
             __DIR__ . '/../../config/acl_sentry.php' => config_path('acl_sentry.php'),
             __DIR__ . '/../../config/package-acl.php' => config_path('package-acl.php'),
-            __DIR__ . '/../../config/cartalyst.sentry.php' => config_path('cartalyst.sentry.php'),
         ]);
     }
 

@@ -86,7 +86,7 @@ class FrontServiceProvider extends ServiceProvider {
             __DIR__ . '/public/css' => public_path('packages/foostart/package-front/css'),
             __DIR__ . '/public/js' => public_path('packages/foostart/package-front/js'),
             __DIR__ . '/public/images' => public_path('packages/foostart/package-front/images'),
-            __DIR__ . '/public/images' => public_path('packages/foostart/package-front/images'),
+            __DIR__ . '/public/images' => public_path('images'),
             __DIR__ . '/public/fonts' => public_path('packages/foostart/package-front/fonts'),
         ]);
     }

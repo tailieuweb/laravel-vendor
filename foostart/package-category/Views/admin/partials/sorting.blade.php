@@ -1,9 +1,9 @@
 <!--
-| TITLE
+| @TITLE
 | Sorting data on the list of items
 |
 |-------------------------------------------------------------------------------
-| REQUIRED
+| @REQUIRED
 | 1. The list of messages: admin_message_script.blade.php
 | 2. The script: custom-ordering.js
 |

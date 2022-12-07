@@ -12,38 +12,22 @@
     $nav = $items->toArray();
     $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
     ?>
-    <div class="btn-delete-top">
-        <div>
-            @if($nav['total'] == 1)
-                {!! trans($plang_admin.'.descriptions.counter', ['number' => $nav['total']]) !!}
-            @else
-                {!! trans($plang_admin.'.descriptions.counters', ['number' => $nav['total']]) !!}
-            @endif
-        </div>
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
-                                                                "class"=>"btn btn-danger delete btn-delete-all del-trash",
-                                                                "title"=> trans($plang_admin.'.hint.delete-in-trash'),
-                                                                'name'=>'del-trash'))
-        !!}
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
-                                                                    "class"=>"btn btn-warning delete btn-delete-all del-forever",
-                                                                    "title"=> trans($plang_admin.'.hint.delete-forever'),
-                                                                    'name'=>'del-forever'))
-        !!}
-    </div>
+    <caption>
+        @if($nav['total'] == 1)
+            {!! trans($plang_admin.'.descriptions.counter', ['number' => $nav['total']]) !!}
+        @else
+            {!! trans($plang_admin.'.descriptions.counters', ['number' => $nav['total']]) !!}
+        @endif
+    </caption>
 
     <table class="table table-hover">
 
         <thead>
         <tr style="height: 50px;">
 
-            <!--COUNTER-->
+            <!--ORDER-->
             <th style='width:{{ $withs['order'] }}'>
                 {{ trans($plang_admin.'.columns.order') }}
-                <span class="del-checkbox pull-right">
-                    <input type="checkbox" id="selecctall"/>
-                    <label for="del-checkbox"></label>
-                </span>
             </th>
 
             <!-- NAME -->
@@ -82,7 +66,19 @@
                 <span class='lb-delete-all'>
                     {{ trans($plang_admin.'.columns.operations') }}
                 </span>
+
+                {!! Form::submit(trans($plang_admin.'.buttons.delete'), array("class"=>"btn btn-danger pull-right delete btn-delete-all del-trash", 'name'=>'del-trash')) !!}
+                {!! Form::submit(trans($plang_admin.'.buttons.delete'), array("class"=>"btn btn-warning pull-right delete btn-delete-all del-forever", 'name'=>'del-forever')) !!}
             </th>
+
+            <!--DELETE-->
+            <th style='width:{{ $withs['delete'] }}'>
+                <span class="del-checkbox pull-right">
+                    <input type="checkbox" id="selecctall"/>
+                    <label for="del-checkbox"></label>
+                </span>
+            </th>
+
         </tr>
 
         </thead>
@@ -92,13 +88,7 @@
 
             <tr>
                 <!--COUNTER-->
-                <td>
-                    <?php echo $counter; $counter++ ?>
-                        <span class='box-item pull-right'>
-                            <input type="checkbox" id="<?php echo $item->id ?>" name="ids[]" value="{!! $item->id !!}">
-                            <label for="box-item"></label>
-                        </span>
-                </td>
+                <td> <?php echo $counter; $counter++ ?> </td>
 
                 <!--NAME-->
                 <td> {!! $item->style_name !!} </td>
@@ -135,6 +125,15 @@
                     </a>
 
                 </td>
+
+                <!--DELETE-->
+                <td>
+                    <span class='box-item pull-right'>
+                        <input type="checkbox" id="<?php echo $item->id ?>" name="ids[]" value="{!! $item->id !!}">
+                        <label for="box-item"></label>
+                    </span>
+                </td>
+
             </tr>
         @endforeach
 

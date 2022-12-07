@@ -1,21 +1,21 @@
 <!--
-| TITLE
+| @TITLE
 | Update existing branch
 | Add new branch
 |
 |-------------------------------------------------------------------------------
-| REQUIRED
+| @REQUIRED
 | Permission
 |
 |÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷
-| DESCRIPTION
+| @DESCRIPTION
 | 1. Admin
 | 2. Manager
 | 3. User
 |
 |_______________________________________________________________________________
 -->
-@extends('package-acl::admin.layouts.base-2cols')
+@extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
     {{ trans($plang_admin.'.pages.title-edit') }}

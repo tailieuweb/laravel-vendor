@@ -294,7 +294,7 @@ class Branch extends FooModel {
             }
         } elseif ($by_status) {
 
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->config_status['publish']);
+            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->status['publish']);
 
         }
 
@@ -370,7 +370,7 @@ class Branch extends FooModel {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $dataFields[$this->field_status] = $this->config_status['publish'];
+        $dataFields[$this->field_status] = $this->status['publish'];
 
 
         $item = self::create($dataFields);

@@ -41,9 +41,6 @@ class BranchServiceProvider extends ServiceProvider {
         // publish migration
         $this->publishMigrations();
 
-        // publish seeders
-        $this->publishSeeders();
-
     }
 
     /**
@@ -95,24 +92,12 @@ class BranchServiceProvider extends ServiceProvider {
         ]);
     }
 
-    /**
-     * Publish migrations
-     */
     protected function publishMigrations()
     {
-        $this->publishes([
-            __DIR__ . '/database/migrations' => $this->app->databasePath() . '/migrations',
-        ]);
 
+        $this->publishes([
+                                 __DIR__ . '/database/migrations' => $this->app->databasePath() . '/migrations',
+                         ]);
     }
 
-    /**
-     * Publish seeders
-     */
-    protected function publishSeeders()
-    {
-        $this->publishes([
-            __DIR__ . '/database/seeders' => $this->app->databasePath() . '/seeders',
-        ]);
-    }
 }

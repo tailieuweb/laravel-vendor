@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Laravel Filemanager</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('vendor/package-filemanager/img/folder.png') }}">
-    {!! HTML::style('packages/foostart/css/bootstrap-3.3.7.min.css') !!}
-    {!! HTML::style('packages/foostart/css/font-awesome-4.7.0.min.css') !!}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="container">
@@ -57,15 +57,15 @@
     </div>
 </div>
 
-{!! HTML::script('packages/foostart/js/vendor/jquery-2.2.4.min.js') !!}
-{!! HTML::script('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') !!}
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script>
     var route_prefix = "{{ url(config('lfm.url_prefix', config('lfm.prefix'))) }}";
 </script>
 
 <!-- CKEditor init -->
-{!! HTML::script('packages/foostart/js/vendor/ckeditor.js') !!}
-{!! HTML::script('packages/foostart/js/vendor/jquery.js') !!}
+<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
 <script>
     $('textarea[name=ce]').ckeditor({
         height: 100,
@@ -120,9 +120,8 @@
     $('#lfm2').filemanager('file', {prefix: route_prefix});
 </script>
 
-
-<link rel="stylesheet" href="{{ asset('vendor/package-filemanager/css/summernote.css') }}">
-{!! HTML::script('packages/foostart/js/vendor/summernote.js') !!}
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
 <script>
     $(document).ready(function () {
         $('#summernote').summernote();

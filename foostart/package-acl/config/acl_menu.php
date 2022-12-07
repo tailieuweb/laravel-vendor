@@ -77,14 +77,6 @@ return [
             "permissions" => [$admin, "_permission-editor"]
         ],
 
-        //Pexcel
-        [
-            "name" => "acl-admin.menu.pexcel",
-            "route" => "pexcel",
-            "link" => '/admin/pexcel',
-            "permissions" => [$admin, "_permission-editor"]
-        ],
-
         //Contexts
         [
             'name' => 'category-admin.menus.top-menu-contexts',
@@ -108,20 +100,12 @@ return [
             "permissions" => [$admin, "_permission-editor"]
         ],
 
-        //Slideshow
+        //Pexcel
         [
-            "name" => "acl-admin.menu.slideshow",
-            "route" => "slideshows.list",
-            "link" => '/admin/slideshows',
+            "name" => "acl-admin.menu.pexcel",
+            "route" => "pexcel",
+            "link" => '/admin/pexcel',
             "permissions" => [$admin, "_permission-editor"]
         ],
-        //Branch
-        [
-            "name" => "acl-admin.menu.branch",
-            "route" => "branch.list",
-            "link" => '/admin/branch',
-            "permissions" => [$admin, "_permission-editor"]
-        ],
-
     ]
 ];

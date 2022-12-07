@@ -100,7 +100,7 @@ return [
    */
 
     "captcha_signup" => TRUE,
-    "captcha_login" => TRUE,
+    "captcha_login" => FALSE,
 
     /*
      |--------------------------------------------------------------------------

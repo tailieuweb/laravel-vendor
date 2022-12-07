@@ -19,7 +19,6 @@ class GregWarCaptchaValidator extends CaptchaValidator
     public function __construct()
     {
         $this->captcha_field = 'authentication_captcha_value';
-        $this->setErrorMessage();
     }
 
     public static function getInstance()

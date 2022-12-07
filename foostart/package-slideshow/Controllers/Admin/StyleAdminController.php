@@ -144,12 +144,12 @@ class StyleAdminController extends FooController
 
         $id = (int)$request->get('id');
 
-        $params['view_style_path'] = $package_path =  realpath(__DIR__ . '/../..'.'/Views/customization');
+        $view_style_path = $package_path = realpath(base_path(config('package-slideshow.view-style-path')));
 
         if ($is_valid_request && $this->obj_validator->validate($params)) {// valid data
 
             // update existing item
-            if (!empty($id) & $this->obj_validator->isExistingView($params)) {
+            if (!empty($id)) {
 
                 $item = $this->obj_item->find($id);
 
@@ -159,7 +159,7 @@ class StyleAdminController extends FooController
                     $item = $this->obj_item->updateItem($params);
 
                     //save to file
-                    file_put_contents($params['view_style_path'] . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
+                    file_put_contents($view_style_path . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
                     // message
                     return Redirect::route($this->root_router . '.edit', ["id" => $item->id])
                         ->withMessage(trans($this->plang_admin . '.actions.edit-ok'));
@@ -172,10 +172,9 @@ class StyleAdminController extends FooController
 
                 // add new item
             } else {
+
                 //save to file
-                if (!empty($params['style_view_file']) && !$this->obj_validator->isExistingView($params)) {
-                    file_put_contents($params['view_style_path'] . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
-                }
+                file_put_contents($view_style_path . '/' . $params['style_view_file'] . '.blade.php', $params['style_view_content']);
                 //insert
                 $item = $this->obj_item->insertItem($params);
 
@@ -193,14 +192,14 @@ class StyleAdminController extends FooController
 
             }
 
+        } else { // invalid data
+
+            $errors = $this->obj_validator->getErrors();
+
+            // passing the id incase fails editing an already existing item
+            return Redirect::route($this->root_router . '.edit', $id ? ["id" => $id] : [])
+                ->withInput()->withErrors($errors);
         }
-
-        $errors = $this->obj_validator->getErrors();
-
-        // passing the id incase fails editing an already existing item
-        return Redirect::route($this->root_router . '.edit', $id ? ["id" => $id] : [])
-            ->withInput()->withErrors($errors);
-
     }
 
     /**
@@ -241,50 +240,5 @@ class StyleAdminController extends FooController
         return Redirect::route($this->root_router . '.list')
             ->withMessage(trans($this->plang_admin . '.actions.delete-error'));
     }
-
-
-    /**
-     * Edit existing item by {id} parameters OR
-     * Add new item
-     * @return view edit page
-     * @date 26/12/2017
-     */
-    public function copy(Request $request)
-    {
-        $item = NULL;
-        $categories = NULL;
-
-        $params = $request->all();
-        $params['id'] = $request->get('cid', NULL);
-
-        if (!empty($params['id'])) {
-
-            $item = $this->obj_item->selectItem($params, FALSE);
-
-            if (empty($item)) {
-                return Redirect::route($this->root_router . '.list')
-                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
-            }
-
-            $item->id = NULL;
-        }
-
-        //get categories by context
-        $context = $this->obj_item->getContext($this->category_ref_name);
-        if ($context) {
-            $params['context_id'] = $context->context_id;
-            $categories = $this->obj_category->pluckSelect($params);
-        }
-
-        // display view
-        $this->data_view = array_merge($this->data_view, array(
-            'item' => $item,
-            'categories' => $categories,
-            'request' => $request,
-            'context' => $context,
-        ));
-        return view($this->page_views['admin']['edit'], $this->data_view);
-    }
-
 
 }
