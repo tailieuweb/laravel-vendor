@@ -52,8 +52,9 @@ class HomeController extends FrontController {
         $pg_categories = $this->obj_category->getCategoriesByIdParent($this->category['id_1'], $params);
         $qc_categories = $this->obj_category->getCategoriesByIdParent($this->category['id_2'], $params);
 
-        $pg_rules = $this->obj_post->getItemsByCategories($pg_categories->childs);
-        $qc_rules = $this->obj_post->getItemsByCategories($qc_categories->childs);
+
+//        $pg_rules = $this->obj_post->getItemsByCategories($pg_categories->childs);
+//        $qc_rules = $this->obj_post->getItemsByCategories($qc_categories->childs);
 
         // display view
         $this->data_view = array_merge($this->data_view, array(

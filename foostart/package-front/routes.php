@@ -68,28 +68,28 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * Rules
          */
-        Route::get('/rules/{name}-{id}', [
-            'as' => 'rules',
-            'uses' => 'RulesController@index'
-        ])->where(['name' => '[a-zA-Z0-9-_]+','id' => '[0-9]+']);
+//        Route::get('/rules/{name}-{id}', [
+//            'as' => 'rules',
+//            'uses' => 'RulesController@index'
+//        ])->where(['name' => '[a-zA-Z0-9-_]+','id' => '[0-9]+']);
 
         /**
          * Rule
          */
-        Route::get('/rule/{name}-{id}', [
-            'as' => 'rule',
-            'uses' => 'RuleController@index'
-        ])->where(['name' => '[a-zA-Z0-9-_]+','id' => '[0-9]+']);
+//        Route::get('/rule/{name}-{id}', [
+//            'as' => 'rule',
+//            'uses' => 'RuleController@index'
+//        ])->where(['name' => '[a-zA-Z0-9-_]+','id' => '[0-9]+']);
 
 
 
         /**
          * Search
          */
-        Route::get('/search/{keyword?}', [
-            'as' => 'search',
-            'uses' => 'SearchController@index'
-        ])->where(['keyword' => '[a-zA-Z0-9-_]+']);
+//        Route::get('/search/{keyword?}', [
+//            'as' => 'search',
+//            'uses' => 'SearchController@index'
+//        ])->where(['keyword' => '[a-zA-Z0-9-_]+']);
 
     });
 });

@@ -85,7 +85,7 @@ class AuthController extends Controller
     {
 
         list($email, $password, $remember, $captcha) = $this->getLoginInput($request);
-
+        $user = App\Models\User::find(1);
         try {
             //Show captcha
             $enable_captcha = Config::get('acl_base.captcha_login');

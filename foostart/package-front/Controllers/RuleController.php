@@ -20,8 +20,6 @@ use Foostart\Front\Controllers\FrontController;
 
 //Models
 use Foostart\Post\Models\Post;
-use Foostart\Checklist\Models\CheckedRule;
-use Foostart\Checklist\Models\Task;
 use Foostart\Category\Models\Category;
 
 class RuleController extends FrontController {
@@ -40,8 +38,7 @@ class RuleController extends FrontController {
         //object item
         $this->obj_category = new Category();
         $this->obj_rules = new Post();
-        $this->obj_task = new Task();
-        $this->obj_checked_rule = new CheckedRule();
+
     }
 
     /**
@@ -49,7 +46,7 @@ class RuleController extends FrontController {
      */
     public function index($name, $id) {
 
-
+        return 'debug';
         $request = new Request();
         //init
         $user = $this->getUser();
