@@ -52,11 +52,11 @@ View::composer([
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
         trans('category-admin.sidebar.config') => [
-            "url" => URL::route('contexts.config', []),
+            "url" => URL::route('contexts.config.get', []),
             'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
         ],
         trans('category-admin.sidebar.lang') => [
-            "url" => URL::route('contexts.lang', []),
+            "url" => URL::route('contexts.lang.get', []),
             'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
         ],
     ];

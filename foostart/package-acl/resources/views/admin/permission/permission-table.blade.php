@@ -104,7 +104,7 @@ $withs = [
                     </span>
                 </td>
                 <td>
-                    <a href="{!! URL::route('permissions.edit', ['id' => $permission->id]) !!}">
+                    <a href="{!! URL::route('permissions.edit.get', ['id' => $permission->id]) !!}">
                         {!! $permission->id !!}
                     </a>
                 </td>
