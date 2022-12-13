@@ -50,7 +50,7 @@ View::composer([
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.add-user') => [
-            'url' => URL::route('users.edit'),
+            'url' => URL::route('users.edit.get'),
             'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.upload-user') => [
@@ -66,7 +66,7 @@ View::composer([
             'icon' => '<i class="fa fa-bars" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.user-lang') => [
-            'url' => URL::route('users.lang', []),
+            'url' => URL::route('users.lang.get', []),
             'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
         ],
     ]);

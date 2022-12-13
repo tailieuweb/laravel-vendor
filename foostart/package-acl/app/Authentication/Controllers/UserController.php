@@ -127,12 +127,12 @@ class UserController extends Controller
             DbHelper::rollback();
             $errors = $this->f->getErrors();
             // passing the id incase fails editing an already existing item
-            return Redirect::route("users.edit", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
+            return Redirect::route("users.edit.get", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
         }
 
         DbHelper::commit();
 
-        return Redirect::route('users.edit', ["id" => $user->id])
+        return Redirect::route('users.edit.get', ["id" => $user->id])
             ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
     }
 
@@ -168,7 +168,7 @@ class UserController extends Controller
             $errors = $this->f->getErrors();
             return Redirect::route('users.list')->withErrors($errors);
         }
-        return Redirect::route('users.edit', ["id" => $user->id])
+        return Redirect::route('users.edit.get', ["id" => $user->id])
             ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
     }
 
@@ -180,10 +180,10 @@ class UserController extends Controller
         try {
             $this->user_repository->addGroup($user_id, $group_id);
         } catch (JacopoExceptionsInterface $e) {
-            return Redirect::route('users.edit', ["id" => $user_id])
+            return Redirect::route('users.edit.get', ["id" => $user_id])
                 ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
         }
-        return Redirect::route('users.edit', ["id" => $user_id])
+        return Redirect::route('users.edit.get', ["id" => $user_id])
             ->withMessage(Config::get('acl_messages.flash.success.user_group_add_success'));
     }
 
@@ -200,10 +200,10 @@ class UserController extends Controller
         try {
             $this->user_repository->removeGroup($user_id, $group_id);
         } catch (JacopoExceptionsInterface $e) {
-            return Redirect::route('users.edit', ["id" => $user_id])
+            return Redirect::route('users.edit.get', ["id" => $user_id])
                 ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
         }
-        return Redirect::route('users.edit', ["id" => $user_id])
+        return Redirect::route('users.edit.get', ["id" => $user_id])
             ->withMessage(Config::get('acl_messages.flash.success.user_group_delete_success'));
     }
 
@@ -221,7 +221,7 @@ class UserController extends Controller
             return Redirect::route("users.edit")->withInput()
                 ->withErrors(new MessageBag(["permissions" => Config::get('acl_messages.flash.error.user_permission_not_found')]));
         }
-        return Redirect::route('users.edit', ["id" => $obj->id])
+        return Redirect::route('users.edit.get', ["id" => $obj->id])
             ->withMessage(Config::get('acl_messages.flash.success.user_permission_add_success'));
     }
 

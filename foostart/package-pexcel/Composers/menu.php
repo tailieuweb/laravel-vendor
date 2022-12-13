@@ -55,11 +55,11 @@ View::composer([
             'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
         ],
         trans('pexcel-admin.sidebar.config') => [
-            "url" => URL::route('pexcel.config', []),
+            "url" => URL::route('pexcel.config.get', []),
             'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
         ],
         trans('pexcel-admin.sidebar.lang') => [
-            "url" => URL::route('pexcel.lang', []),
+            "url" => URL::route('pexcel.lang.get', []),
             'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
         ],
     ];

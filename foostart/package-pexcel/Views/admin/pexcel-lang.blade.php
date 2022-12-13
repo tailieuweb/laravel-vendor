@@ -47,7 +47,7 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['pexcel.lang'], 'method' => 'post'])  !!}
+                        {!! Form::open(['route'=>['pexcel.lang.post'], 'method' => 'post'])  !!}
 
                             <div class='btn-form'>
 

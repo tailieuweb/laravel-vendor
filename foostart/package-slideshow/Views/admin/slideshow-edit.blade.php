@@ -1,14 +1,14 @@
 <!--
-| @TITLE
+| TITLE
 | Update existing slideshow
 | Add new slideshow
 |
 |-------------------------------------------------------------------------------
-| @REQUIRED
+| REQUIRED
 | Permission
 |
 |÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷
-| @DESCRIPTION
+| DESCRIPTIONED
 | 1. Admin
 | 2. Manager
 | 3. User

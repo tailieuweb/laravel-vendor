@@ -46,7 +46,7 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['pexcel.config'], 'method' => 'post'])  !!}
+                        {!! Form::open(['route'=>['pexcel.config.post'], 'method' => 'post'])  !!}
 
                             <div class='btn-form'>
 

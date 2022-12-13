@@ -29,7 +29,7 @@
                 <div class="panel-body">
                     <div class="col-md-6 col-xs-6">
                         <h4>{!! trans($plang_admin.'.labels.user-profile') !!} </h4>
-                    {!! Form::model($user, [ 'url' => URL::route('users.edit')] )  !!}
+                    {!! Form::model($user, [ 'url' => URL::route('users.edit.post')] )  !!}
                     {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                     {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
                     {!! Form::hidden('id') !!}
@@ -82,7 +82,7 @@
 
                         <!--BUTTONS-->
                         <div class='btn-form'>
-                            <a href="{!! URL::route('users.profile.edit',['user_id' => $user->id]) !!}"
+                            <a href="{!! URL::route('users.profile.edit.get',['user_id' => $user->id]) !!}"
                                class="btn btn-primary pull-right margin-left-5" {!! ! isset($user->id) ? 'disabled="disabled"' : '' !!}>
                                 <i class="fa fa-user"></i> Edit profile</a>
 
