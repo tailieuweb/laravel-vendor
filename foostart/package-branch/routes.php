@@ -6,15 +6,15 @@ use Illuminate\Session\TokenMismatchException;
  * FRONT
  */
 Route::get('branch', [
-    'as' => 'branch',
+    'as' => 'branch.get',
     'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@index'
 ]);
 Route::get('branch/search/', [
-    'as' => 'branch',
+    'as' => 'branch.search',
     'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@search'
 ]);
 Route::get('branch/{slug}', [
-    'as' => 'branch',
+    'as' => 'branch.detail',
     'uses' => 'Foostart\Branch\Controllers\Front\BranchFrontController@show'
 ]);
 
@@ -92,12 +92,12 @@ Route::group(['middleware' => ['web']], function () {
          * configs
         */
         Route::get('admin/branch/config', [
-            'as' => 'branch.config',
+            'as' => 'branch.config.get',
             'uses' => 'BranchAdminController@config'
         ]);
 
         Route::post('admin/branch/config', [
-            'as' => 'branch.config',
+            'as' => 'branch.config.post',
             'uses' => 'BranchAdminController@config'
         ]);
 
@@ -105,12 +105,12 @@ Route::group(['middleware' => ['web']], function () {
          * language
         */
         Route::get('admin/branch/lang', [
-            'as' => 'branch.lang',
+            'as' => 'branch.lang.get',
             'uses' => 'BranchAdminController@lang'
         ]);
 
         Route::post('admin/branch/lang', [
-            'as' => 'branch.lang',
+            'as' => 'branch.lang.post',
             'uses' => 'BranchAdminController@lang'
         ]);
 

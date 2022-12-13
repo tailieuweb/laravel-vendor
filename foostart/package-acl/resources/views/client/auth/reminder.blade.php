@@ -88,7 +88,7 @@
                     {!! Form::close() !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                            <a href="{!! URL::route('user.login') !!}">
+                            <a href="{!! URL::route('user.login.get') !!}">
                                 <i class="fa fa-arrow-left"></i>
                                 {!! trans($plang_front.'.pages.login') !!}
                             </a>

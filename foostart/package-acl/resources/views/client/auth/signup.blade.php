@@ -143,7 +143,7 @@
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                            {!! link_to_route('user.login', trans($plang_front.'.pages.login')) !!}
+                            {!! link_to_route('user.login.get', trans($plang_front.'.pages.login')) !!}
                         </div>
 
                     <!--                        <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
