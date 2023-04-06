@@ -111,6 +111,7 @@ class PostAdminController extends FooController
             return redirect()->route('posts.list', ['user_id' => $user['user_id']]);
 
         }
+        $params['is_admin'] = $is_admin;
 
         $items = $this->obj_item->selectItems($params);
 
@@ -184,7 +185,7 @@ class PostAdminController extends FooController
 
         $item = NULL;
 
-        $params = array_merge($request->all(), $this->getUser());
+        $params = array_merge($this->getUser(), $request->all());
 
         $is_valid_request = $this->isValidRequest($request);
 

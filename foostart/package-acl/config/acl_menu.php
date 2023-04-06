@@ -74,7 +74,7 @@ return [
             "name" => "acl-admin.menu.permissions",
             "route" => "permissions",
             "link" => '/admin/permissions',
-            "permissions" => [$admin, "_permission-editor"]
+            "permissions" => [$admin]
         ],
 
         //Contexts
@@ -105,7 +105,7 @@ return [
             "name" => "acl-admin.menu.sites",
             "route" => "crawler.site",
             "link" => '/admin/crawler/site',
-            "permissions" => [$admin, "_permission-editor"]
+            "permissions" => [$admin]
         ],
 
         //Crawler work
@@ -113,7 +113,7 @@ return [
             "name" => "acl-admin.menu.crawler_works_jobs",
             "route" => "crawler.work.job",
             "link" => '/admin/crawler/work/job',
-            "permissions" => [$admin, "_permission-editor"]
+            "permissions" => [$admin]
         ],
 
         //Pexcel
@@ -121,7 +121,7 @@ return [
             "name" => "acl-admin.menu.pexcel",
             "route" => "pexcel",
             "link" => '/admin/pexcel',
-            "permissions" => [$admin, "_permission-editor"]
+            "permissions" => [$admin]
         ],
         // Company
         [
