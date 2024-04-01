@@ -124,12 +124,12 @@ Route::group(['middleware' => ['web']], function () {
          * configs
         */
         Route::get('admin/pexcel/config', [
-            'as' => 'pexcel.config',
+            'as' => 'pexcel.configGet',
             'uses' => 'PexcelAdminController@config'
         ]);
 
         Route::post('admin/pexcel/config', [
-            'as' => 'pexcel.config',
+            'as' => 'pexcel.configPost',
             'uses' => 'PexcelAdminController@config'
         ]);
 
@@ -137,12 +137,12 @@ Route::group(['middleware' => ['web']], function () {
          * language
         */
         Route::get('admin/pexcel/lang', [
-            'as' => 'pexcel.lang',
+            'as' => 'pexcel.langGet',
             'uses' => 'PexcelAdminController@lang'
         ]);
 
         Route::post('admin/pexcel/lang', [
-            'as' => 'pexcel.lang',
+            'as' => 'pexcel.langPost',
             'uses' => 'PexcelAdminController@lang'
         ]);
 

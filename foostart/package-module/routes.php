@@ -24,11 +24,11 @@ Route::group(['middleware' => ['web']], function () {
      * sample
     */
     Route::get('modules/sample', [
-        'as' => 'modules.sample',
+        'as' => 'modules.sampleGet',
         'uses' => 'Foostart\Module\Controllers\Admin\ModuleAdminController@sample'
     ]);
     Route::post('modules/sample', [
-        'as' => 'modules.sample',
+        'as' => 'modules.samplePost',
         'uses' => 'Foostart\Module\Controllers\Admin\ModuleAdminController@addSample'
     ]);
 
@@ -116,12 +116,12 @@ Route::group(['middleware' => ['web']], function () {
          * configs
         */
         Route::get('admin/modules/config', [
-            'as' => 'modules.config',
+            'as' => 'modules.configGet',
             'uses' => 'ModuleAdminController@config'
         ]);
 
         Route::post('admin/modules/config', [
-            'as' => 'modules.config',
+            'as' => 'modules.configPost',
             'uses' => 'ModuleAdminController@config'
         ]);
 
@@ -129,12 +129,12 @@ Route::group(['middleware' => ['web']], function () {
          * language
         */
         Route::get('admin/modules/lang', [
-            'as' => 'modules.lang',
+            'as' => 'modules.langGet',
             'uses' => 'ModuleAdminController@lang'
         ]);
 
         Route::post('admin/modules/lang', [
-            'as' => 'modules.lang',
+            'as' => 'modules.langPost',
             'uses' => 'ModuleAdminController@lang'
         ]);
 

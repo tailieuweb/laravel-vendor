@@ -19,12 +19,12 @@ Route::group(['middleware' => ['web']], function () {
          * configs
          */
         Route::get('admin/internship/config', [
-            'as' => 'Internship.config',
+            'as' => 'internship.configGet',
             'uses' => 'InternshipAdminController@config'
         ]);
 
         Route::post('admin/internship/config', [
-            'as' => 'internship.config',
+            'as' => 'internship.configPost',
             'uses' => 'InternshipAdminController@config'
         ]);
 
@@ -32,12 +32,12 @@ Route::group(['middleware' => ['web']], function () {
          * language
          */
         Route::get('admin/internship/lang', [
-            'as' => 'internship.lang',
+            'as' => 'internship.langGet',
             'uses' => 'InternshipAdminController@lang'
         ]);
 
         Route::post('admin/internship/lang', [
-            'as' => 'internship.lang',
+            'as' => 'internship.langPost',
             'uses' => 'InternshipAdminController@lang'
         ]);
 

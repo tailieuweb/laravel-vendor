@@ -32,12 +32,12 @@ Route::group(['middleware' => ['web']], function () {
          * language
          */
         Route::get('admin/company/lang', [
-            'as' => 'company.lang',
+            'as' => 'company.langGet',
             'uses' => 'CompanyAdminController@lang'
         ]);
 
         Route::post('admin/company/lang', [
-            'as' => 'company.lang',
+            'as' => 'company.langPost',
             'uses' => 'CompanyAdminController@lang'
         ]);
 

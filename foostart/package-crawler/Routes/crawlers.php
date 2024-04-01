@@ -19,12 +19,12 @@ Route::group(['middleware' => ['web']], function () {
          * configs
          */
         Route::get('admin/crawler/config', [
-            'as' => 'crawler.config',
+            'as' => 'crawler.configGet',
             'uses' => 'CrawlerAdminController@config'
         ]);
 
         Route::post('admin/crawler/config', [
-            'as' => 'crawler.config',
+            'as' => 'crawler.configPost',
             'uses' => 'CrawlerAdminController@config'
         ]);
 
@@ -32,12 +32,12 @@ Route::group(['middleware' => ['web']], function () {
          * language
          */
         Route::get('admin/crawler/lang', [
-            'as' => 'crawler.lang',
+            'as' => 'crawler.langGet',
             'uses' => 'CrawlerAdminController@lang'
         ]);
 
         Route::post('admin/crawler/lang', [
-            'as' => 'crawler.lang',
+            'as' => 'crawler.langPost',
             'uses' => 'CrawlerAdminController@lang'
         ]);
 

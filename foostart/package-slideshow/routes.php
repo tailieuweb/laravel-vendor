@@ -85,12 +85,12 @@ Route::group(['middleware' => ['web']], function () {
          * configs
          */
         Route::get('admin/slideshows/config', [
-            'as' => 'slideshows.config',
+            'as' => 'slideshows.configGet',
             'uses' => 'SlideshowAdminController@config'
         ]);
 
         Route::post('admin/slideshows/config', [
-            'as' => 'slideshows.config',
+            'as' => 'slideshows.configPost',
             'uses' => 'SlideshowAdminController@config'
         ]);
 
@@ -98,11 +98,11 @@ Route::group(['middleware' => ['web']], function () {
          * language
          */
         Route::get('admin/slideshows/lang', [
-            'as' => 'slideshows.lang',
+            'as' => 'slideshows.langGet',
             'uses' => 'SlideshowAdminController@lang'
         ]);
 
-        Route::post('admin/slideshows/lang', [
+        Route::post('admin/slideshows/langPost', [
             'as' => 'slideshows.lang',
             'uses' => 'SlideshowAdminController@lang'
         ]);

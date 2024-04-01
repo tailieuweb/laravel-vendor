@@ -20,20 +20,6 @@ Route::group(['middleware' => ['web', ], 'namespace' => 'Foostart\Contact\Contro
  * ADMINISTRATOR
  */
 Route::group(['middleware' => ['web']], function () {
-    /**
-     * sample
-    */
-    Route::get('contacts/sample', [
-        'as' => 'contacts.sample',
-        'uses' => 'Foostart\Contact\Controllers\Admin\ContactAdminController@sample'
-    ]);
-    Route::post('contacts/sample', [
-        'as' => 'contacts.sample',
-        'uses' => 'Foostart\Contact\Controllers\Admin\ContactAdminController@addSample'
-    ]);
-
-
-
 
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
                   'namespace' => 'Foostart\Contact\Controllers\Admin',
@@ -108,12 +94,12 @@ Route::group(['middleware' => ['web']], function () {
          * configs
         */
         Route::get('admin/contacts/config', [
-            'as' => 'contacts.config',
+            'as' => 'contacts.configGet',
             'uses' => 'ContactAdminController@config'
         ]);
 
         Route::post('admin/contacts/config', [
-            'as' => 'contacts.config',
+            'as' => 'contacts.configPost',
             'uses' => 'ContactAdminController@config'
         ]);
 
@@ -121,12 +107,12 @@ Route::group(['middleware' => ['web']], function () {
          * language
         */
         Route::get('admin/contacts/lang', [
-            'as' => 'contacts.lang',
+            'as' => 'contacts.langGet',
             'uses' => 'ContactAdminController@lang'
         ]);
 
         Route::post('admin/contacts/lang', [
-            'as' => 'contacts.lang',
+            'as' => 'contacts.langPost',
             'uses' => 'ContactAdminController@lang'
         ]);
 

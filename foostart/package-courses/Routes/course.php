@@ -19,12 +19,12 @@ Route::group(['middleware' => ['web']], function () {
          * configs
          */
         Route::get('admin/courses/config', [
-            'as' => 'course.config',
+            'as' => 'course.configGet',
             'uses' => 'CourseAdminController@config'
         ]);
 
         Route::post('admin/courses/config', [
-            'as' => 'course.config',
+            'as' => 'course.configPost',
             'uses' => 'CourseAdminController@config'
         ]);
 
@@ -32,12 +32,12 @@ Route::group(['middleware' => ['web']], function () {
          * language
          */
         Route::get('admin/courses/lang', [
-            'as' => 'course.lang',
+            'as' => 'course.langGet',
             'uses' => 'CourseAdminController@lang'
         ]);
 
         Route::post('admin/courses/lang', [
-            'as' => 'course.lang',
+            'as' => 'course.langPost',
             'uses' => 'CourseAdminController@lang'
         ]);
 
@@ -81,7 +81,7 @@ Route::group(['middleware' => ['web']], function () {
          * class
          */
         Route::get('admin/courses/class/', [
-            'as' => 'course.edit',
+            'as' => 'course.editGet',
             'uses' => 'CourseAdminController@edit'
         ]);
 

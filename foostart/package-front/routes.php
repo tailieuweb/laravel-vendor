@@ -68,7 +68,6 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'home',
             'uses' => 'HomeController@index'
         ]); Route::get('/trang-chu', [
-            'as' => 'home',
             'uses' => 'HomeController@index'
         ]);
 
