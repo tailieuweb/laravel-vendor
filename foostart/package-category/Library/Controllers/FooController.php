@@ -122,6 +122,12 @@ class FooController extends Controller
         unset($this->user['created_at']);
         unset($this->user['updated_at']);
 
+        $this->user['is_admin'] = false;
+        //TODO: Check permission
+        if ($this->user['user_name'] === 'admin') {
+            $this->user['is_admin'] = true;
+        }
+
         return $this->user;
     }
 

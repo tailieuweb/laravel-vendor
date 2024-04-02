@@ -122,10 +122,10 @@ class InternshipAdminController extends FooController {
         $teacher_id = $request->get('teacher_id');
 
         //Check teacher is valid
-        if (!empty($teacher_id) && ($user['user_id'] != $teacher_id) ) {
+        if (!empty($teacher_id) && ( ($user['user_id'] != $teacher_id) && !$user['is_admin'] )) {
             return Redirect::route('teacher.course')
                 ->withMessage(trans($this->plang_admin.'.actions.edit-error'));
-        } elseif ($user['user_id'] == $teacher_id) {
+        } elseif ($user['user_id'] == $teacher_id || $user['is_admin']) {
             return $this->editCompanyByTeacher($request);
         }
 
@@ -133,7 +133,7 @@ class InternshipAdminController extends FooController {
         $params = $request->all();
         $obj_class_user = new ClassesUsers();
         $params = [
-            'user_id' => $user['user_id']
+            'user_id' => $teacher_id
         ];
         $classes = $obj_class_user->selectItems($params);
 
@@ -286,7 +286,7 @@ class InternshipAdminController extends FooController {
 
         //Allow teacher edit info
         $isValidTeacher = false;
-        if (($course->teacher_id == $user['user_id']) && ($course->teacher_id == $teacher_id)) {
+        if (($course->teacher_id == $user['user_id'] || $user['is_admin']) && ($course->teacher_id == $teacher_id)) {
             $isValidTeacher = true;
         }
 
