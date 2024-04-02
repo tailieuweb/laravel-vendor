@@ -55,7 +55,7 @@ View::composer([
             'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
         ],
         trans('post-admin.sidebar.config') => [
-            "url" => URL::route('posts.config', []),
+            "url" => URL::route('posts.configGet', []),
             'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
         ],
         trans('post-admin.sidebar.lang') => [

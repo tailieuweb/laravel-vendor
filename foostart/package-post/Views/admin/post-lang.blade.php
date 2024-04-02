@@ -47,7 +47,7 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['posts.lang'], 'method' => 'post'])  !!}
+                        {!! Form::open(['route'=>['posts.langPost'], 'method' => 'post'])  !!}
 
                         <div class='btn-form'>
 

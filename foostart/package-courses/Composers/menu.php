@@ -58,11 +58,11 @@ View::composer([
                 'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
             trans('course-admin.sidebar.config') => [
-                "url" => URL::route('course.config', []),
+                "url" => URL::route('course.configGet', []),
                 'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
             ],
             trans('course-admin.sidebar.lang') => [
-                "url" => URL::route('course.lang', []),
+                "url" => URL::route('course.langGet', []),
                 'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
             ],
         ];

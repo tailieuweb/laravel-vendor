@@ -102,8 +102,8 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'PostAdminController@lang'
         ]);
 
-        Route::post('admin/posts/langPost', [
-            'as' => 'posts.lang',
+        Route::post('admin/posts/lang', [
+            'as' => 'posts.langPost',
             'uses' => 'PostAdminController@lang'
         ]);
 

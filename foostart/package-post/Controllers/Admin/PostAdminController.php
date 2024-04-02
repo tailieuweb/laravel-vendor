@@ -171,6 +171,7 @@ class PostAdminController extends FooController
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'request' => $request,
+            'user_id' => $user['user_id']
         ));
         return view($this->page_views['admin']['edit'], $this->data_view);
     }
