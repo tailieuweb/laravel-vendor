@@ -44,7 +44,7 @@ class CrawlerAdminController extends BaseCrawlerAdminController {
 
         // package name
         $this->package_name = 'package-crawler';
-        $this->package_base_name = 'crawler';
+        $this->package_base_name = 'crawler.crawler';
 
         // root routers
         $this->root_router = 'crawler';

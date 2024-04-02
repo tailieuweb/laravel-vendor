@@ -49,11 +49,11 @@ View::composer([
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.config') => [
-                "url" => URL::route('crawler.config', []),
+                "url" => URL::route('crawler.configGet', []),
                 'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
             ],
             trans('crawler-admin.sidebar.lang') => [
-                "url" => URL::route('crawler.lang', []),
+                "url" => URL::route('crawler.langGet', []),
                 'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
             ],
         ];

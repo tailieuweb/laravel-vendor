@@ -29,7 +29,7 @@
                 <div class="panel-body">
                     <div class="col-md-6 col-xs-6">
                         <h4>{!! trans($plang_admin.'.labels.user-profile') !!} </h4>
-                    {!! Form::model($user, [ 'url' => URL::route('users.edit')] )  !!}
+                    {!! Form::model($user, [ 'url' => URL::route('users.editPost')] )  !!}
                     {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                     {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
                     {!! Form::hidden('id') !!}

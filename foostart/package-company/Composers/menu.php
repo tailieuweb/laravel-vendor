@@ -60,7 +60,7 @@ View::composer([
                 'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
             ],
             trans('company-admin.sidebar.lang') => [
-                "url" => URL::route('company.lang', []),
+                "url" => URL::route('company.langGet', []),
                 'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
             ],
         ];
