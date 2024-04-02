@@ -67,16 +67,29 @@
                 </div>
             </div>
 
-
-            <!--NAME-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'company_name',
-                'label' => trans($plang_admin.'.labels.internship_company_name'),
-                'value' => @$item->company_name,
-                'description' => trans($plang_admin.'.descriptions.internship_company_name'),
-                'errors' => $errors,
-            ])
-            <!--/NAME-->
+            <div class="row">
+                <div class="col-md-6">
+                    <!--NAME-->
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => 'company_name',
+                        'label' => trans($plang_admin.'.labels.internship_company_name'),
+                        'value' => @$item->company_name,
+                        'description' => trans($plang_admin.'.descriptions.internship_company_name'),
+                        'errors' => $errors,
+                    ])
+                    <!--/NAME-->
+                </div>
+                <div class="col-md-6">
+                    <!--STATUS-->
+                    @include('package-category::admin.partials.radio', [
+                        'name' => 'company_status',
+                        'label' => trans($plang_admin.'.labels.company_status'),
+                        'value' => @$item->status,
+                        'description' => trans($plang_admin.'.descriptions.company_status'),
+                        'items' => ['1' => 'Chính thức', '2' => 'Dự kiến']
+                    ])
+                </div>
+            </div>
 
             <!--SITE SLUG-->
             @include('package-category::admin.partials.input_slug', [
@@ -92,23 +105,13 @@
             <!--/SITE SLUG-->
 
             <!--SITE SLUG-->
-                @include('package-category::admin.partials.input_slug', [
-                    'name' => 'course_id',
-                    'id' => 'course_id',
-                    'value' => @$item->course_id,
-                    'hidden' => true,
-                ])
-                <!--/SITE SLUG-->
-
-            <!--ADDRESS-->
-            @include('package-category::admin.partials.input_text', [
-                'name' => 'company_address',
-                'label' => trans($plang_admin.'.labels.internship_company_address'),
-                'value' => @$item->company_address,
-                'description' => trans($plang_admin.'.descriptions.internship_company_address'),
-                'errors' => $errors,
+            @include('package-category::admin.partials.input_slug', [
+                'name' => 'course_id',
+                'id' => 'course_id',
+                'value' => @$item->course_id,
+                'hidden' => true,
             ])
-            <!-- /ADDRESS-->
+            <!--/SITE SLUG-->
 
             <div class="row">
                 <div class='col-md-6'>
@@ -162,7 +165,46 @@
                 </div>
             </div>
 
-
+            <!--ADDRESS-->
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="company_address">Địa chỉ công ty</label>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">
+                                Tỉnh/Thành phố
+                            </span>
+                            {!! Form::select('location_province', [], null, ['class' => 'form-control',  'placeholder' => 'Chọn tỉnh/thành phố']) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">
+                                Quận/Huyện
+                            </span>
+                            {!! Form::select('location_district', [], null, ['class' => 'form-control',  'placeholder' => 'Chọn quận/huyện']) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">
+                                Xã/Phường
+                            </span>
+                            {!! Form::select('location_ward', [], null, ['class' => 'form-control',  'placeholder' => 'Chọn xã/phường']) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @include('package-category::admin.partials.input_text', [
+                'name' => 'company_address',
+                'label' => trans($plang_admin.'.labels.internship_company_address_detail'),
+                'value' => @$item->company_address,
+                'description' => trans($plang_admin.'.descriptions.internship_company_address_detail'),
+                'errors' => $errors,
+            ])
+            <!-- /ADDRESS-->
 
         </div>
         <!--/END MENU1-->
