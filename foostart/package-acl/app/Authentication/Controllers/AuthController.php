@@ -110,7 +110,7 @@ class AuthController extends Controller
                 $errors = $this->authenticator->getErrors();
             }
 
-            return redirect()->route("user.login")->withInput()->withErrors($errors);
+            return redirect()->route("user.loginGet")->withInput()->withErrors($errors);
         }
 
         return Redirect::to(Config::get('acl_base.user_login_redirect_url'));

@@ -328,12 +328,13 @@ class CourseTeacherController extends FooController {
         }
 
         //Get company info
+        $counterUnCompany = 0;
         if (!empty($items)) {
             $obj_internship = new Internship();
-            foreach ($items as $index => $item) {
+            foreach ($items as $index => $_item) {
                 $_params = [
-                    'user_id' => $item['user_id'],
-                    'course_id' => $item['course_id'],
+                    'user_id' => $_item['user_id'],
+                    'course_id' => $_item['course_id'],
                 ];
                 $internship = $obj_internship->selectItem($_params);
 
@@ -341,6 +342,11 @@ class CourseTeacherController extends FooController {
                 if (!empty($internship)) {
                     //Set company info
                     $items[$index]['company_name'] = $internship->company_name;
+                    if (empty($internship->company_name)) {
+                        $counterUnCompany++;
+                    }
+                } else {
+                    $counterUnCompany++;
                 }
             }
         }
@@ -350,6 +356,8 @@ class CourseTeacherController extends FooController {
             'item' => $item,
             'items' => $items,
             'request' => $request,
+            'courseName' => $item['course_name'],
+            'counterUnCompany' => $counterUnCompany,
 
         ));
 

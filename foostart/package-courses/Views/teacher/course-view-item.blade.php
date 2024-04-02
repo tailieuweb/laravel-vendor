@@ -14,6 +14,9 @@ $withs = [
 @if(!empty($items))
     <div style="min-height: 50px;">
         <div>
+            <p>{!! $courseName !!}</p>
+        </div>
+        <div>
             @if(count($items) == 1)
                 {!! trans($plang_admin.'.descriptions.student_counter', ['number' => 1]) !!}
             @else
@@ -21,9 +24,24 @@ $withs = [
             @endif
         </div>
 
+        <div>
+            {!! trans($plang_admin.'.descriptions.counter_uncompany', ['number' => $counterUnCompany]) !!}
+        </div>
+
     </div>
 
     <div class="table-responsive">
+        <div>
+            <!--Export-->
+            <a class='btn-form btn btn-info pull-left' href="{!! URL::route('course.export', [
+                                                        'id' => $request->get('id'),
+                                                        '_token' => csrf_token()
+                                                        ])
+                                !!}">
+                Export
+            </a>
+            <!--/BUTTONS-->
+        </div>
     <table class="table table-hover">
 
         <thead>

@@ -46,7 +46,8 @@ Route::group(['middleware' => ['web']], function () {
     /****************************************************************************
      * Course
      */
-    Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
+//    Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],//TODO
+    Route::group(['middleware' => ['admin_logged', 'in_context'],
         'namespace' => 'Foostart\Courses\Controllers\Admin',
     ], function () {
 
