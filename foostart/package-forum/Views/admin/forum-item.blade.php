@@ -107,8 +107,21 @@
                     </span>
                 </td>
 
-                <!--NAME-->
-                <td> {!! $item->forum_questions_title !!} </td>
+                <!--TITLE-->
+                <td>
+                    <div class="row">
+                        {!! $item->forum_questions_title !!}
+                        <span>
+                            <i class="fa fa-comment" aria-hidden="true"></i> 5
+                            <i class="fa fa-eye" aria-hidden="true"></i> 10
+                        </span>
+                    </div>
+                    <div class="row">
+                        <blockquote class="quote-card" style="font-size: 12px">
+                            <p><b>Admin</b> đã đặt câu hỏi vào lúc 	<b>03-04-2024 15:08</b></p>
+                        </blockquote>
+                    </div>
+                </td>
 
                 <!--STATUS-->
                 <td style="text-align: center;">
