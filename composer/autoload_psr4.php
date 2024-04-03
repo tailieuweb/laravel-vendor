@@ -82,6 +82,7 @@ return array(
     'Foostart\\Module\\' => array($vendorDir . '/foostart/package-module'),
     'Foostart\\Internship\\' => array($vendorDir . '/foostart/package-internship'),
     'Foostart\\Front\\' => array($vendorDir . '/foostart/package-front'),
+    'Foostart\\Forum\\' => array($vendorDir . '/foostart/package-forum'),
     'Foostart\\Filemanager\\' => array($vendorDir . '/foostart/package-filemanager/src'),
     'Foostart\\Crawler\\' => array($vendorDir . '/foostart/package-crawler'),
     'Foostart\\Courses\\' => array($vendorDir . '/foostart/package-courses'),

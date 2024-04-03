@@ -222,6 +222,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
             'Foostart\\Module\\' => 16,
             'Foostart\\Internship\\' => 20,
             'Foostart\\Front\\' => 15,
+            'Foostart\\Forum\\' => 15,
             'Foostart\\Filemanager\\' => 21,
             'Foostart\\Crawler\\' => 17,
             'Foostart\\Courses\\' => 17,
@@ -576,6 +577,10 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         array (
             0 => __DIR__ . '/..' . '/foostart/package-front',
         ),
+        'Foostart\\Forum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/foostart/package-forum',
+        ),
         'Foostart\\Filemanager\\' => 
         array (
             0 => __DIR__ . '/..' . '/foostart/package-filemanager/src',
@@ -898,6 +903,7 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Database\\Seeders\\CrawlerSeeder' => __DIR__ . '/../..' . '/database/seeders/CrawlerSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\InternshipSeeder' => __DIR__ . '/../..' . '/database/seeders/InternshipSeeder.php',
+        'Database\\Seeders\\LocationSeeder' => __DIR__ . '/../..' . '/database/seeders/LocationSeeder.php',
         'Database\\Seeders\\ModulesSeeder' => __DIR__ . '/../..' . '/database/seeders/ModulesSeeder.php',
         'Database\\Seeders\\PexcelSeeder' => __DIR__ . '/../..' . '/database/seeders/PexcelSeeder.php',
         'Database\\Seeders\\PostsSeeder' => __DIR__ . '/../..' . '/database/seeders/PostsSeeder.php',
@@ -1803,6 +1809,9 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Category\\Middleware\\InContext' => __DIR__ . '/..' . '/foostart/package-category/Middleware/InContext.php',
         'Foostart\\Category\\Models\\Category' => __DIR__ . '/..' . '/foostart/package-category/Models/Category.php',
         'Foostart\\Category\\Models\\Context' => __DIR__ . '/..' . '/foostart/package-category/Models/Context.php',
+        'Foostart\\Category\\Models\\LocationDistricts' => __DIR__ . '/..' . '/foostart/package-category/Models/LocationDistricts.php',
+        'Foostart\\Category\\Models\\LocationProvinces' => __DIR__ . '/..' . '/foostart/package-category/Models/LocationProvinces.php',
+        'Foostart\\Category\\Models\\LocationWards' => __DIR__ . '/..' . '/foostart/package-category/Models/LocationWards.php',
         'Foostart\\Category\\Validators\\CategoryValidator' => __DIR__ . '/..' . '/foostart/package-category/Validators/CategoryValidator.php',
         'Foostart\\Category\\Validators\\ContextValidator' => __DIR__ . '/..' . '/foostart/package-category/Validators/ContextValidator.php',
         'Foostart\\Company\\CompanyServiceProvider' => __DIR__ . '/..' . '/foostart/package-company/CompanyServiceProvider.php',
@@ -1898,6 +1907,12 @@ class ComposerStaticInit7997ba8f77937a83d1f609e4e7f1bcbb
         'Foostart\\Filemanager\\Middlewares\\CreateDefaultFolder' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Middlewares/CreateDefaultFolder.php',
         'Foostart\\Filemanager\\Middlewares\\MultiUser' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Middlewares/MultiUser.php',
         'Foostart\\Filemanager\\Traits\\LfmHelpers' => __DIR__ . '/..' . '/foostart/package-filemanager/src/Traits/LfmHelpers.php',
+        'Foostart\\Forum\\Controllers\\Admin\\ForumAdminController' => __DIR__ . '/..' . '/foostart/package-forum/Controllers/Admin/ForumAdminController.php',
+        'Foostart\\Forum\\Controllers\\Front\\ForumFrontController' => __DIR__ . '/..' . '/foostart/package-forum/Controllers/Front/ForumFrontController.php',
+        'Foostart\\Forum\\Controllers\\User\\ForumUserController' => __DIR__ . '/..' . '/foostart/package-forum/Controllers/User/ForumUserController.php',
+        'Foostart\\Forum\\ForumServiceProvider' => __DIR__ . '/..' . '/foostart/package-forum/ForumServiceProvider.php',
+        'Foostart\\Forum\\Models\\Forum' => __DIR__ . '/..' . '/foostart/package-forum/Models/Forum.php',
+        'Foostart\\Forum\\Validators\\ForumValidator' => __DIR__ . '/..' . '/foostart/package-forum/Validators/ForumValidator.php',
         'Foostart\\Front\\Controllers\\AaoController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/AaoController.php',
         'Foostart\\Front\\Controllers\\AdmissionsController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/AdmissionsController.php',
         'Foostart\\Front\\Controllers\\BrochureController' => __DIR__ . '/..' . '/foostart/package-front/Controllers/BrochureController.php',

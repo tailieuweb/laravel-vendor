@@ -151,5 +151,12 @@ return [
             "link" => '/admin/internship',
             "permissions" => []
         ],
+        // Forums
+        [
+            "name" => "acl-admin.menu.forum",
+            "route" => "forums",
+            "link" => '/admin/forums',
+            "permissions" => []
+        ],
     ]
 ];

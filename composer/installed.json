@@ -1333,6 +1333,52 @@
             "install-path": "../foostart/package-filemanager"
         },
         {
+            "name": "foostart/package-forum",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foostart/package-forum.git",
+                "reference": "bee5fe3937fdd89668823c6f32f9c20fe3363ddb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foostart/package-forum/zipball/bee5fe3937fdd89668823c6f32f9c20fe3363ddb",
+                "reference": "bee5fe3937fdd89668823c6f32f9c20fe3363ddb",
+                "shasum": ""
+            },
+            "time": "2024-04-03T03:09:48+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Foostart\\Forum\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FooStart",
+                    "email": "foostart.com@gmail.com",
+                    "homepage": "http://foostart.com"
+                }
+            ],
+            "description": "Manage questions and answers",
+            "keywords": [
+                "foostart",
+                "laravel 8 package post"
+            ],
+            "support": {
+                "issues": "https://github.com/foostart/package-forum/issues",
+                "source": "https://github.com/foostart/package-forum/tree/main"
+            },
+            "install-path": "../foostart/package-forum"
+        },
+        {
             "name": "foostart/package-front",
             "version": "10.0.0",
             "version_normalized": "10.0.0.0",
