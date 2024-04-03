@@ -60,6 +60,7 @@ class ForumAdminController extends FooController
                 'edit' => $this->package_name . '::admin.' . $this->package_base_name . '-edit',
                 'config' => $this->package_name . '::admin.' . $this->package_base_name . '-config',
                 'lang' => $this->package_name . '::admin.' . $this->package_base_name . '-lang',
+                'view' => $this->package_name . '::admin.' . $this->package_base_name . '-view',
             ]
         ];
 
@@ -466,5 +467,53 @@ class ForumAdminController extends FooController
         ));
 
         return view($this->page_views['admin']['edit'], $this->data_view);
+    }
+
+    /**
+     * Edit existing item by {id} parameters OR
+     * Add new item
+     * @return view edit page
+     * @date 26/12/2017
+     */
+    public function view(Request $request)
+    {
+        $item = NULL;
+
+        /**
+         * Params
+         */
+        $params = $request->all();
+        $params['id'] = $request->get('id', NULL);
+
+        /**
+         * Get current user and ignore admin
+         */
+        $is_admin = $this->hasPermissions(array('_superadmin'));
+        $user = $this->getUser();
+
+        if ($is_admin) {
+
+        } else {
+            $params['user_id'] = $user['user_id'];
+        }
+
+        //get item data by id
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+
+            if (empty($item)) {
+                return Redirect::route($this->root_router . '.list')
+                    ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
+            }
+        }
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'item' => $item,
+            'request' => $request,
+            'user_id' => $user['user_id']
+        ));
+        return view($this->page_views['admin']['view'], $this->data_view);
     }
 }

@@ -22,6 +22,7 @@ View::composer([
     'package-forum::admin.forum-search',
     'package-forum::admin.forum-config',
     'package-forum::admin.forum-lang',
+    'package-forum::admin.forum-view',
 ], function ($view) {
 
     //Order by params

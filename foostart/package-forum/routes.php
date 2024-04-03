@@ -74,6 +74,14 @@ Route::group(['middleware' => ['web']], function () {
         ]);
 
         /**
+         * view
+         */
+        Route::get('admin/forums/view', [
+            'as' => 'forums.view',
+            'uses' => 'ForumAdminController@view'
+        ]);
+
+        /**
          * trash
          */
         Route::get('admin/forums/trash', [

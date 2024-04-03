@@ -150,6 +150,14 @@
                         </a>&nbsp;
                 @endif
 
+                <!--view-->
+                <a href="{!! URL::route('forums.view', [   'id' => $item->id,
+                                                            '_token' => csrf_token()
+                                                        ])
+                        !!}">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                </a>&nbsp;
+
                 <!--edit-->
                     <a href="{!! URL::route('forums.edit', [   'id' => $item->id,
                                                                 '_token' => csrf_token()
