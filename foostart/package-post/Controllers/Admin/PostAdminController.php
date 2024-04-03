@@ -434,6 +434,7 @@ class PostAdminController extends FooController
     public function copy(Request $request)
     {
 
+        $user = $this->getUser();
         /**
          * Breadcrumb
          */
@@ -464,6 +465,7 @@ class PostAdminController extends FooController
             'item' => $item,
             'request' => $request,
             'context' => $context,
+            'user_id'  => $user['user_id']
         ));
 
         return view($this->page_views['admin']['edit'], $this->data_view);
