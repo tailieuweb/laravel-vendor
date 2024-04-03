@@ -28,7 +28,7 @@ class Style extends FooModel {
             'style_image',
             'style_view_file',
             'style_js_file',
-            'style_js_file',
+            'style_css_file',
             'style_view_content',
         ]);
 
@@ -194,7 +194,7 @@ class Style extends FooModel {
             }
         } elseif ($by_status) {
 
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->status['publish']);
+            $elo = $elo->where($this->table . '.' . $this->field_status, '=', $this->config_status['publish']);
 
         }
 
@@ -248,7 +248,7 @@ class Style extends FooModel {
                 $slideshow->$key = $value;
             }
 
-            $slideshow->$field_status = $this->status['publish'];
+            $slideshow->$field_status = $this->config_status['publish'];
 
             $slideshow->save();
 
@@ -268,7 +268,7 @@ class Style extends FooModel {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $dataFields[$this->field_status] = $this->status['publish'];
+        $dataFields[$this->field_status] = $this->config_status['publish'];
 
 
         $item = self::create($dataFields);
@@ -285,7 +285,8 @@ class Style extends FooModel {
      * @param ARRAY $input list of parameters
      * @return boolean TRUE incase delete successfully otherwise return FALSE
      */
-    public function deleteItem(array $input, $delete_type) {
+    public function deleteItem(?array $input, $delete_type)
+    {
 
         $item = $this->find($input['id']);
 

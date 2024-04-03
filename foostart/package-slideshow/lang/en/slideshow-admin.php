@@ -50,6 +50,7 @@ return [
         'operations' => 'Operations',
         'updated_at' => 'Updated at',
         'filename' => 'File name',
+        'name-style' => 'Style name',
     ],
 
 
@@ -62,9 +63,13 @@ return [
     */
     'pages' => [
         'title-list' => 'List of slideshows',
+        'title-list-style' => 'List of styles',
         'title-list-search' => 'Search results',
+        'title-list-search-style' => 'Search results',
         'title-edit' => 'Edit slideshow',
+        'title-edit-style' => 'Edit style',
         'title-add' => 'Add new slideshow',
+        'title-add-style' => 'Add new style',
         'title-delete' => 'Delete slideshow',
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage languages',
@@ -146,6 +151,7 @@ return [
     'errors' => [
         'required' => ':attribute is required',
         'required_length' => 'Allow from: <b>:minlength</b> to <b>:maxlength</b>. characters',
+        'existing_view' => 'File is existing'
     ],
 
 
@@ -193,6 +199,8 @@ return [
         'style-select' => 'Slect style',
         'images' => 'Images',
         'image' => 'Image',
+        'js-file' => 'JavaScript file',
+        'css-file' => 'CSS file',
     ],
 
 

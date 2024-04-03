@@ -31,10 +31,10 @@ class CreateSlideshowsTable extends FoostartMigration
 
             // Other attributes
             $table->string($this->prefix_column . 'name', 255)->comment('Slideshow name');
-            $table->string($this->prefix_column . 'overview', 1000)->comment('Slideshow overview');
-            $table->text($this->prefix_column . 'description')->comment('Slideshow description');
-            $table->string($this->prefix_column . 'image', 255)->nullable()->comment('Image path');
-            $table->text($this->prefix_column . 'images')->nullable()->comment('List of image paths');
+            $table->string($this->prefix_column . 'overview', 1000)->comment('Slideshow overview')->nullable();
+            $table->text($this->prefix_column . 'description')->comment('Slideshow description')->nullable();
+            $table->string($this->prefix_column . 'image', 255)->nullable()->comment('Image path')->nullable();
+            $table->text($this->prefix_column . 'images')->nullable()->comment('List of image paths')->nullable();
 
             //Set common columns
             $this->setCommonColumns($table);

@@ -4,6 +4,7 @@ use Foostart\Category\Library\Validators\FooValidator;
 use Event;
 use \LaravelAcl\Library\Validators\AbstractValidator;
 use Foostart\Slideshow\Models\Style;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
@@ -17,8 +18,6 @@ class StyleValidator extends FooValidator
         // add rules
         self::$rules = [
             'style_name' => ["required"],
-            'style_view_file' => ["required"],
-            'style_view_content' => ["required"],
         ];
 
         // set configs
@@ -28,8 +27,8 @@ class StyleValidator extends FooValidator
         $this->obj_style = new Style();
 
         // language
-        $this->lang_front = 'style-front';
-        $this->lang_admin = 'style-admin';
+        $this->lang_front = 'slideshow-admin';
+        $this->lang_admin = 'slideshow-admin';
 
         // event listening
         Event::listen('validating', function ($input) {
@@ -71,6 +70,19 @@ class StyleValidator extends FooValidator
         return $flag;
     }
 
+    /***
+     * @param array $params
+     * @return bool
+     */
+    public function isExistingView(array $params): bool {
+        $fileDir = $params['view_style_path'] . '/' . $params['style_view_file'] . '.blade.php';
+        if (File::exists($fileDir)) {
+            // Add message error
+            $this->errors->add('style_view_file', trans($this->lang_admin . '.errors.existing_view'));
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Load configuration
@@ -79,7 +91,7 @@ class StyleValidator extends FooValidator
     public function loadConfigs()
     {
 
-        $configs = config('package-style');
+        $configs = config('package-slideshow');
         return $configs;
     }
 

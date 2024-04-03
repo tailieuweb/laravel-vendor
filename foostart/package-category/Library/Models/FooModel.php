@@ -70,7 +70,7 @@ class FooModel extends Model
 
     protected $obj_context = NULL;
 
-    protected $is_pagination = TRUE;
+    public $is_pagination = TRUE;
 
     /**
      *

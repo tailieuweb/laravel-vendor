@@ -1,10 +1,10 @@
 <!--
-| @TITLE
+| TITLE
 | Update existing slideshow
 | Add new slideshow
 |
 |-------------------------------------------------------------------------------
-| @REQUIRED
+| REQUIRED
 | Permission
 |
 |÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷
@@ -15,7 +15,7 @@
 |
 |_______________________________________________________________________________
 -->
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
     {{ trans($plang_admin.'.pages.title-edit') }}
