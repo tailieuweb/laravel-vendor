@@ -65,6 +65,9 @@ return [
         'title-delete' => 'Xóa',
         'title-config' => 'Cấu hình ứng dụng',
         'title-lang' => 'Quản lý ngôn ngữ',
+        'title-question-and-answer' => 'Hỏi đáp các vấn đề thực tập',
+        'title-question' => 'Hỏi các vấn đề thực tập',
+        'title-answer' => 'Trả lời câu hỏi'
     ],
 
 
