@@ -1,0 +1,180 @@
+/*******************************************************************************
+********************************VARIABLES***************************************
+********************************************************************************/
+/*GENERAL*/
+@test:12;
+@font-name-arial: arial;
+@color-yellow: #dacb46;
+@color-yellow-hover: #ffdb35;
+
+@line-height-18: 18px;
+@line-height-20: 20px;
+@line-height-22: 22px;
+@line-height-24: 24px;
+@line-height-26: 26px;
+@line-height-28: 28px;
+@line-height-30: 30px;
+@line-height-32: 32px;
+@line-height-34: 34px;
+@line-height-36: 36px;
+
+/*COLOR*/
+@font-color-main: @font-color-green;
+@font-color-main-hover: @font-color-green-hover;
+@font-color-green: #a2b657;
+@font-color-green-hover: #c4d67f;
+@font-color-white: #fff;
+@font-color-black: #333;
+@font-color-black-2: #0f1521;
+@font-color-gray-1: #ededed;
+@font-color-gray-2: #ccc;
+@font-color-gray-3: #D3D3D3;
+@font-color-gray-4: #aaa;
+@font-color-gray-5: #797979;
+@font-color-gray-6: #494949;
+
+/*BACKGROUND*/
+@background-color-main: @background-color-green;
+@background-color-main-hover: @background-color-green-hover;
+@background-color-green: #a2b657;
+@background-color-green-hover: #c4d67f;
+@background-color-while: #fff;
+@background-color-black: #333;
+@background-color-black-2: #0f1521;
+@background-color-gray: #f7f7f7;
+@background-color-gray-1: #ededed;
+@background-color-gray-4: #aaa;
+@background-color-gray-5: #797979;
+@background-color-dropdown-menu: #e5e5e5;
+
+/*HEADING*/
+@font-size-heading-1: bold 44px;
+//@font-size-heading-2: 700 24px; TODO
+@font-size-heading-2: 700 14px;//font link in course detail
+@font-size-heading-3: 700 20px;
+@font-size-heading-4: 700 18px;
+@font-size-heading-5: normal 16px;
+@font-size-heading-6: normal 14px;
+@font-size-small: normal 12px;
+
+/*ARTICLE*/
+@font-size-article-title: normal 20px;
+@font-size-article-description: @font-size-heading-6;
+@font-size-article-date: 600 18px;
+@font-size-article-author: italic 18px;
+@font-size-article-cost: normal 30px;
+@font-size-article-image-width: 100%;
+@font-size-article-image-height: 100%;
+@font-size-article-title-sm: bold 32px;
+@font-size-article-title-xs: bold 22px;
+@padding-size-read-more: 10px 18px;
+
+
+/*******************************************************************************
+********************************CLASS*******************************************
+********************************************************************************/
+@style-description {
+    font: @font-size-article-description @font-name-arial;
+    color: @font-color-black;
+}
+
+@style-heading-1 {
+    font: @font-size-heading-1 @font-name-arial;
+    color: @font-color-black;
+}
+
+@style-heading-2 {
+    font: @font-size-heading-2 @font-name-arial;
+    color: @font-color-green;
+}
+
+@style-title-page {
+    font: @font-size-heading-2 @font-name-arial;
+    color: @font-color-black;
+}
+
+@style-title-article {
+    font: @font-size-article-title @font-name-arial;
+    color: @font-color-green;
+}
+
+@style-title-footer {
+    font: @font-size-heading-2 @font-name-arial;
+    color: @font-color-white;
+}
+
+@style-author {
+    font: @font-size-article-author @font-name-arial;
+    color: @font-color-white;
+}
+
+@style-link {
+    font: @font-size-heading-4 @font-name-arial;
+    color: @font-color-green;
+}
+
+@style-menu{
+    color: @font-color-black;
+    background-color: @background-color-dropdown-menu;
+}
+
+@style-menu-hover{
+    color: @font-color-white;
+    background: @background-color-green;
+}
+
+@style-pagination {
+    font: @font-size-heading-6 @font-name-arial;
+    color: @font-color-green;
+    background-color: @background-color-while;
+}
+
+/*LINK*/
+@link-title {
+    @style-title-article;
+}
+@link-title-hover {
+    font: @font-size-article-title @font-name-arial;
+    color: @font-color-green-hover;
+}
+
+@link-read-more{
+    font: @font-size-heading-6 @font-name-arial;
+    color: @font-color-white;
+    background: @background-color-green;
+    padding: @padding-size-read-more;
+}
+
+@link-read-more-hover{
+    background: @background-color-green-hover;
+    color: @font-color-white;
+}
+
+@link-author {
+    background: @background-color-black-2;
+}
+@link-author-hover {
+    background: @background-color-green-hover;
+    color: @font-color-white;
+}
+
+/*MEDIA*/
+@lg-1200: 1200px;
+@md-992: 992px;
+@sm-768: 768px;
+@sm-767: 767px;
+@xs-480: 480px;
+
+
+a:hover {
+    text-decoration: none;
+}
+
+.read-more {
+    text-decoration: none;
+    color: @color-yellow;
+    font-style: italic;
+}
+.read-more:hover {
+    color: @color-yellow-hover;
+}
