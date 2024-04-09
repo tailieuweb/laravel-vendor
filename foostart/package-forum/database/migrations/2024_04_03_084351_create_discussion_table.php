@@ -26,7 +26,7 @@ class CreateDiscussionTable extends FoostartMigration
             $table->increments($this->prefix_column . 'id')->comment('Primary key');
 
             // Relation
-            $table->integer('form_questions_id')->comment('Question ID');
+            $table->integer('forum_quesitions_id')->comment('Question ID');
 
             // Other attributes
             $table->integer($this->prefix_column . 'order')->nullable()->comment('Order in list of answer');

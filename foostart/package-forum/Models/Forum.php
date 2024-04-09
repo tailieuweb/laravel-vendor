@@ -3,6 +3,7 @@
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 use Foostart\Comment\Models\Comment;
+use Illuminate\Support\Facades\DB;
 
 class Forum extends FooModel
 {
@@ -117,7 +118,9 @@ class Forum extends FooModel
     {
 
         //join to another tables
-        $elo = $this->joinTable();
+//        $params['join_table'] = 'forum_discussions';
+//        $params['join_on'] = 'forum_questions_id';
+        $elo = $this->joinTable($params);
 
         //search filters
         $elo = $this->searchFilters($params, $elo);
@@ -203,7 +206,11 @@ class Forum extends FooModel
      */
     protected function joinTable(array $params = [])
     {
-        return $this;
+        $elo = $this;
+        if (!empty($params['join_table']) && !empty($params['join_on'])) {
+            $elo = $elo->join($params['join_table'], "{$this->table}.{$params['join_on']}", '=', "{$params['join_table']}.{$params['join_on']}");
+        }
+        return $elo;
     }
 
     /**
@@ -282,7 +289,8 @@ class Forum extends FooModel
     {
 
         $elo = $elo->select($this->table . '.*',
-            $this->table . '.forum_questions_id as id'
+            $this->table . '.forum_questions_id as id',
+            DB::raw('(select count(*) from forum_discussions WHERE forum_discussions.forum_questions_id = forum_questions.forum_questions_id) as number_answers')
         );
 
         return $elo;

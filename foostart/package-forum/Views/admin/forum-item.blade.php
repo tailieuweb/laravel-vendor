@@ -112,8 +112,8 @@
                     <div class="row">
                         {!! $item->forum_questions_title !!}
                         <span>
-                            <i class="fa fa-comment" aria-hidden="true"></i> 5
-                            <i class="fa fa-eye" aria-hidden="true"></i> 10
+                            <i class="fa fa-comment" aria-hidden="true"></i> {!! $item->number_answers !!}
+                            <i class="fa fa-eye" aria-hidden="true"></i> {!! $item->views !!}
                         </span>
                     </div>
                     <div class="row">
