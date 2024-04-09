@@ -281,6 +281,7 @@ return [
         'user-restore' => 'Are you sure to restore this item?',
         'permission-not-found' => 'No permissions found.',
         'empty-data' => 'Empty data',
+        'captcha-error' => 'Captcha không đúng, vui lòng kiểm tra lại'
     ],
 
 
