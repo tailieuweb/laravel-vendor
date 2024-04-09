@@ -110,7 +110,7 @@
                 <!--TITLE-->
                 <td>
                     <div class="row">
-                        {!! $item->forum_questions_title !!}
+                        {!! htmlentities ($item->forum_questions_title) !!}
                         <span>
                             <i class="fa fa-comment" aria-hidden="true"></i> {!! $item->number_answers !!}
                             <i class="fa fa-eye" aria-hidden="true"></i> {!! $item->views !!}

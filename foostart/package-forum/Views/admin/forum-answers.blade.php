@@ -25,57 +25,23 @@
             </div>
             <!--/col-9-->
             <div class="col-md-9 col-sm-9" style="" contenteditable="false">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <span><strong>Admin</strong> đã trả lời câu hỏi </span>
-                        <span class="pull-right">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true" data-target="#updateAnswer" data-toggle="modal"></i> chỉnh sửa
-                            <i class="fa fa-trash" aria-hidden="true"></i> xóa
-                            <i class="fa fa-calendar" aria-hidden="true"></i> 04/04/2024
-                        </span>
-                    </div>
-                    <div class="panel-body">Tìm hiểu thông tin công ty thông qua các trang tuyển dụng để hiểu rõ về môi trường
-                        làm việc cũng như công việc dự kiến sẽ làm khi vào công ty. Từ đó chuẩn bị đối ứng các câu hỏi liên quan
-                        đến công việc trong buổi phỏng vấn.
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <span><strong>Admin</strong> đã trả lời câu hỏi </span>
-                        <span class="pull-right">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true" data-target="#updateAnswer" data-toggle="modal"></i> chỉnh sửa
-                            <i class="fa fa-trash" aria-hidden="true"></i> xóa
-                            <i class="fa fa-calendar" aria-hidden="true"></i> 03/04/2024
-                        </span>
-                    </div>
-                    <div class="panel-body">Đi đến đúng giờ vào buổi phỏng vấn, tốt nhất là tới sớm tầm 30 phút để có sự thoải mái trong buổi phỏng vấn.
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <span><strong>Admin</strong> đã trả lời câu hỏi </span>
-                        <span class="pull-right">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true" data-target="#updateAnswer" data-toggle="modal"></i> chỉnh sửa
-                            <i class="fa fa-trash" aria-hidden="true"></i> xóa
-                            <i class="fa fa-calendar" aria-hidden="true"></i> 02/04/2024
-                        </span>
-                    </div>
-                    <div class="panel-body">Trả lời tự tin các câu hỏi của doanh nghiệp
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <span><strong>Admin</strong> đã trả lời câu hỏi </span>
-                        <span class="pull-right">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true" data-target="#updateAnswer" data-toggle="modal"></i> chỉnh sửa
-                            <i class="fa fa-trash" aria-hidden="true"></i> xóa
-                            <i class="fa fa-calendar" aria-hidden="true"></i> 02/04/2024
-                        </span>
-                    </div>
-                    <div class="panel-body">Tham gia phỏng vấn nhiều công ty rồi rút kinh nghiệm dần dần thôi
-                    </div>
-                </div>
-
+                @if (!empty($userAnswers))
+                    @foreach($userAnswers as $userAnswer)
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <span><strong>{{$userAnswer['userinfo_fullname']}}</strong> đã trả lời câu hỏi </span>
+                                <span class="pull-right">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true" data-target="#updateAnswer{!! $userAnswer['forum_discussions_id'] !!}" data-toggle="modal"></i> chỉnh sửa
+                                    <i class="fa fa-trash" aria-hidden="true"></i> xóa
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> {!! date('d-m-Y H:i',strtotime($userAnswer['updated_at'])) !!}
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                {!! $userAnswer['forum_discussions_description'] !!}
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
 
             <div id="push"></div>
@@ -85,20 +51,28 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="updateAnswer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Cập nhật câu trả lời</h4>
-            </div>
-            <div class="modal-body">
-                <textarea class="form-control" rows="3"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Cập nhật</button>
+@if (!empty($userAnswers))
+    @foreach($userAnswers as $userAnswer)
+        <div class="modal fade" id="updateAnswer{!! $userAnswer['forum_discussions_id'] !!}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form method="POST" action="{!! URL::route('forums.update_answer',['qid' => $item->id,
+                                                                                    'aid' => $userAnswer['forum_discussions_id']]) !!}">
+                        {!! csrf_field(); !!}
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Cập nhật câu trả lời</h4>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="3" name="answer">{!! $userAnswer['forum_discussions_description'] !!}</textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    @endforeach
+@endif

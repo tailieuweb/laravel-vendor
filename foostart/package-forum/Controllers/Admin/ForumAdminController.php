@@ -10,6 +10,7 @@
 |
 */
 
+use Foostart\Forum\Models\ForumDiscussions;
 use URL, Route, Redirect;
 use Illuminate\Http\Request;
 use Foostart\Forum\Models\Forum;
@@ -27,6 +28,7 @@ class ForumAdminController extends FooController
     public $context = NULL;
     public $categories = NULL;
     public $slideshow = NULL;
+    public $discussions = NULL;
 
 
     public function __construct(Request $request)
@@ -36,6 +38,7 @@ class ForumAdminController extends FooController
 
         //models
         $this->obj_item = new Forum(array('perPage' => 10));
+        $this->discussions = new ForumDiscussions();
         $this->obj_category = new Category();
         $this->obj_slideshow = new Slideshow();
 
@@ -497,11 +500,20 @@ class ForumAdminController extends FooController
             $params['user_id'] = $user['user_id'];
         }
 
+        $userInfo = [];
+        $numbersOfAnswers = 0;
+        $nummberOfQuestions = 0;
+        $userAnswers = [];
         //get item data by id
         if (!empty($params['id'])) {
 
             $item = $this->obj_item->selectItem($params, FALSE);
+            $userInfo = $this->getUserInfoById($item->created_user_id);
+            $numbersOfAnswers = $this->discussions->countAnswerByQuestionId($item->id);
+            $nummberOfQuestions = $this->obj_item->countQuestionsByUserId($item->created_user_id);
 
+            $answers = $this->discussions->getAnswerByQuestionId($item->id);
+            $userAnswers = $this->findUserAnswers($answers);
             if (empty($item)) {
                 return Redirect::route($this->root_router . '.list')
                     ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
@@ -512,8 +524,43 @@ class ForumAdminController extends FooController
         $this->data_view = array_merge($this->data_view, array(
             'item' => $item,
             'request' => $request,
-            'user_id' => $user['user_id']
+            'user_id' => $user['user_id'],
+            'userInfo' => $userInfo,
+            'numberOfAnswers' => $numbersOfAnswers,
+            'numberOfQuestions' => $nummberOfQuestions,
+            'userAnswers' => $userAnswers,
         ));
         return view($this->page_views['admin']['view'], $this->data_view);
+    }
+
+    public function findUserAnswers($answers) {
+        $userAnswers = [];
+        foreach ($answers as $answer) {
+            $userInfo = $this->getUserInfoById($answer->created_user_id);
+            $userAnswers[] = array_merge(
+                $answer->toArray(), $userInfo
+            );
+        }
+        return $userAnswers;
+    }
+
+    public function answer(Request $request) {
+        $params = array_merge($this->getUser(), $request->all());
+        $this->discussions->insertItem($params);
+
+        return Redirect::route($this->root_router . '.view', ["id" => $params['id'],
+                                                                '_token_' => $params['_token']])
+            ->withMessage('Thêm câu trả lời thành công');
+    }
+
+    public function updateAnswer(Request  $request) {
+        $params = array_merge($this->getUser(), $request->all());
+        $discussion = $this->discussions->find($params['aid']);
+        $discussion->forum_discussions_description = $params['answer'];
+        $discussion->save();
+        return Redirect::route($this->root_router . '.view', ["id" => $params['qid'],
+            '_token_' => $params['_token']])
+            ->withMessage('Cập nhật câu trả lời thành công');
+
     }
 }

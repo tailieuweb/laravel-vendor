@@ -81,6 +81,16 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'ForumAdminController@view'
         ]);
 
+        Route::post('admin/forums/answer', [
+            'as' => 'forums.answer',
+            'uses' => 'ForumAdminController@answer'
+        ]);
+
+        Route::post('admin/forums/update_answer', [
+            'as' => 'forums.update_answer',
+            'uses' => 'ForumAdminController@updateAnswer'
+        ]);
+
         /**
          * trash
          */

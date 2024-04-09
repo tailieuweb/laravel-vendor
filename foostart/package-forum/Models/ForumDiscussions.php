@@ -1,11 +1,11 @@
 <?php namespace Foostart\Forum\Models;
 
-use Foostart\Category\Library\Models\FooModel;
-use Illuminate\Database\Eloquent\Model;
-use Foostart\Comment\Models\Comment;
 use Illuminate\Support\Facades\DB;
+use Foostart\Comment\Models\Comment;
+use Illuminate\Database\Eloquent\Model;
+use Foostart\Category\Library\Models\FooModel;
 
-class Forum extends FooModel
+class ForumDiscussions extends FooModel
 {
 
     /**
@@ -27,64 +27,32 @@ class Forum extends FooModel
     {
 
         //table name
-        $this->table = 'forum_questions';
+        $this->table = 'forum_discussions';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'forum_questions_title',
-            'forum_questions_order',
-            'forum_questions_slug',
-            'forum_questions_overview',
-            'forum_questions_description',
-            'forum_questions_image',
-            'forum_questions_files',
-            //Relation
-            'category_id',
+            'forum_questions_id',
+            'forum_discussions_description',
+            'forum_discussions_files',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'forum_questions_title' => [
-                'name' => 'title',
-                'type' => 'Text',
-            ],
-            'forum_questions_slug' => [
-                'name' => 'slug',
-                'type' => 'Text',
-            ],
-            'forum_questions_overview' => [
-                'name' => 'overview',
-                'type' => 'Text',
-            ],
-            'forum_questions_description' => [
-                'name' => 'description',
-                'type' => 'Text',
-            ],
-            'forum_questions_image' => [
-                'name' => 'image',
-                'type' => 'Text',
-            ],
-            'forum_questions_files' => [
-                'name' => 'files',
-                'type' => 'Json',
-            ],
-            //Relation
-            'category_id' => [
-                'name' => 'category_id',
+            'forum_questions_id' => [
+                'name' => 'id',
                 'type' => 'Int',
+            ],
+            'forum_discussions_description' => [
+                'name' => 'answer',
+                'type' => 'Text',
             ],
         ]);
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'forum_questions_title',
-            'forum_questions_slug',
-            'forum_questions_overview',
-            'forum_questions_description',
-            'forum_questions_image',
-            'forum_questions_files',
-            //Relation
-            'category_id',
+            'forum_questions_id',
+            'forum_discussions_description',
+            'forum_discussions_files',
         ]);
 
         //check valid fields for ordering
@@ -100,12 +68,11 @@ class Forum extends FooModel
             '_id',
             'limit',
             'forum_question_id!',
-            'category_id',
             'user_id',
         ];
 
         //primary key
-        $this->primaryKey = 'forum_questions_id';
+        $this->primaryKey = 'forum_discussions_id';
 
     }
 
@@ -454,8 +421,15 @@ class Forum extends FooModel
         return $items;
     }
 
-    public function countQuestionsByUserId($uid) {
-        $count = $this->where('created_user_id', '=', $uid)->count();
+    public function countAnswerByQuestionId($qid) {
+        $count = $this->where('forum_questions_id', '=', $qid)->count();
         return $count;
+    }
+
+    public function getAnswerByQuestionId($qid) {
+        $answers = $this->where('forum_questions_id', '=', $qid)
+                    ->orderBy('updated_at', 'desc')
+                    ->get();
+        return $answers;
     }
 }

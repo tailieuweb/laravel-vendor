@@ -66,10 +66,25 @@
                                         <!--left col-->
                                         <ul class="list-group">
                                             <li class="list-group-item text-muted" contenteditable="false">Người đặt câu hỏi</li>
-                                            <li class="list-group-item text-right"><span class="pull-left"><strong class="">Họ và tên</strong></span> Admin</li>
-                                            <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email</strong></span> admin@admin.com</li>
-                                            <li class="list-group-item text-right"><span class="pull-left"><strong class="">Thảo luận</strong></span> 0 bài đăng
-
+                                            <li class="list-group-item text-right"><span class="pull-left"><strong class="">Họ và tên</strong></span>
+                                                @if ($userInfo && !empty($userInfo['userinfo_fullname']))
+                                                    {{ $userInfo['userinfo_fullname'] }}
+                                                @endif
+                                            </li>
+                                            <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email</strong></span>
+                                                @if ($userInfo && !empty($userInfo['userinfo_email']))
+                                                    {{ $userInfo['userinfo_email'] }}
+                                                @endif
+                                            </li>
+                                            <li class="list-group-item text-right"><span class="pull-left"><strong class="">Đã hỏi</strong></span>
+                                                @if ($numberOfQuestions)
+                                                 {{ $numberOfQuestions  }}
+                                                @endif
+                                            </li>
+                                            <li class="list-group-item text-right"><span class="pull-left"><strong class="">Đã trả lời</strong></span>
+                                                @if ($numberOfAnswers)
+                                                    {{ $numberOfAnswers  }}
+                                                @endif
                                             </li>
                                         </ul>
 
@@ -78,12 +93,12 @@
                                     <div class="col-md-9 col-sm-9" style="" contenteditable="false">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <span>Cần chuẩn bị như thế nào trong buổi phỏng vấn</span>
+                                                <span>{{$item->forum_questions_title}}</span>
                                                 <span>
-                                                    <i class="fa fa-calendar" aria-hidden="true"></i> 04/04/2024
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i> {!! date('d-m-Y H:i',strtotime($item->updated_at)) !!}
                                                 </span>
                                             </div>
-                                            <div class="panel-body">Xin nhờ Thầy/Cô và các bạn chia sẻ giúp 1 số kinh nghiệm khi tham gia phỏng vấn
+                                            <div class="panel-body">{!! $item->forum_questions_description !!}
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-danger">Câu hỏi đã đóng</button>
@@ -112,17 +127,20 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <form method="POST" action="{!! URL::route('forums.answer',['id' => $item->id]) !!}">
+                    {!! csrf_field(); !!}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Đăng câu trả lời</h4>
                 </div>
                 <div class="modal-body">
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" rows="3" name="answer"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary">Trả lời</button>
+                    <button type="submit" class="btn btn-primary modalButton">Trả lời</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>

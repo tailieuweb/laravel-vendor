@@ -36,6 +36,7 @@ class CreateCompanyTable extends FoostartMigration
             $table->text($this->prefix_column . 'description')->nullable()->comment('Company description');
 
             //Set common columns
+            $table->integer('version')->unsigned()->default('1')->comment('Versioning');
             $this->setCommonColumns($table);
         });
     }
