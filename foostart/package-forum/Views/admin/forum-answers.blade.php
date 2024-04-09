@@ -32,7 +32,10 @@
                                 <span><strong>{{$userAnswer['userinfo_fullname']}}</strong> đã trả lời câu hỏi </span>
                                 <span class="pull-right">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true" data-target="#updateAnswer{!! $userAnswer['forum_discussions_id'] !!}" data-toggle="modal"></i> chỉnh sửa
-                                    <i class="fa fa-trash" aria-hidden="true"></i> xóa
+                                    <a href="{!! URL::route('forums.delete_answer',['qid' => $item->id,
+                                                                                    '_token' => csrf_token(),
+                                                                                    'aid' => $userAnswer['forum_discussions_id']]) !!}"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>xóa
                                     <i class="fa fa-calendar" aria-hidden="true"></i> {!! date('d-m-Y H:i',strtotime($userAnswer['updated_at'])) !!}
                                 </span>
                             </div>

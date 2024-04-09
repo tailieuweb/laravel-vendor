@@ -563,4 +563,15 @@ class ForumAdminController extends FooController
             ->withMessage('Cập nhật câu trả lời thành công');
 
     }
+
+    public function deleteAnswer(Request  $request) {
+        $params = array_merge($this->getUser(), $request->all());
+        $discussion = $this->discussions->find($params['aid']);
+        $discussion->delete();
+
+        return Redirect::route($this->root_router . '.view', ["id" => $params['qid'],
+            '_token_' => $params['_token']])
+            ->withMessage('Cập nhật câu trả lời thành công');
+
+    }
 }

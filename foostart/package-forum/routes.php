@@ -91,6 +91,11 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'ForumAdminController@updateAnswer'
         ]);
 
+        Route::get('admin/forums/delete_answer', [
+            'as' => 'forums.delete_answer',
+            'uses' => 'ForumAdminController@deleteAnswer'
+        ]);
+
         /**
          * trash
          */
