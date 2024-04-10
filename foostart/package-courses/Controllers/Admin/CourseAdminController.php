@@ -14,6 +14,7 @@ use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Courses\Models\ClassesUsers;
 use Foostart\Internship\Models\Internship;
 use Foostart\Internship\Models\InternshipDiary;
+use Foostart\Pexcel\Helper\CompanyExportTemplate;
 use Foostart\Pexcel\Helper\CourseEnrollParser;
 use Foostart\Pexcel\Helper\CourseExport;
 use Foostart\Pexcel\Helper\CourseExportDiaryTemplate;
@@ -302,6 +303,7 @@ class CourseAdminController extends FooController {
             $courseExportTeacher = new CourseExportTeacher();
             $courseExportTeacher->ids = $ids;
 
+            return $this->exportCompanyList($ids);
             return Excel::download($courseExportTeacher, 'courseExportTeacher.xlsx');
 
             $flag = false;
@@ -314,6 +316,15 @@ class CourseAdminController extends FooController {
         return Redirect::route($this->root_router)
             ->withMessage(trans($this->plang_admin.'.actions.export_by_teacher_null'));
 
+
+    }
+
+    private function exportCompanyList($ids) {
+        $data = $this->obj_item->exportCompanyList($ids);
+        $companyExport = new CompanyExportTemplate();
+        $companyExport->items= $data;
+
+        return Excel::download($companyExport, 'danh-sach-cong-ty-theo-gv.xlsx');
 
     }
 

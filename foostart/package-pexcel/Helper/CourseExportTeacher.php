@@ -43,9 +43,9 @@ class CourseExportTeacher implements FromCollection {
 
         $data = DB::select(DB::raw(
                 $sql
-                ));
+                ))->get();
 
-        return new Collection($data);
+        return $data;
     }
 
 }

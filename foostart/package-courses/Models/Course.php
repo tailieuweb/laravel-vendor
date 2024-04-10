@@ -1,6 +1,7 @@
 <?php namespace Foostart\Courses\Models;
 
 use Foostart\Category\Library\Models\FooModel;
+use Illuminate\Support\Facades\DB;
 
 class Course extends FooModel {
 
@@ -389,5 +390,35 @@ class Course extends FooModel {
     public function classes_users()
     {
         return $this->hasMany(ClassesUsers::class);
+    }
+
+    public function exportCompanyList($ids = []) {
+       $ids = join(",",$ids);
+        $sql ="
+                    SELECT *, count(*) as `numbers`
+                    FROM (
+                        SELECT
+                            classes_users.`course_id`,
+                            company_name,
+                            company_instructor_phone,
+                            CONCAT_WS('\n', company_address, company_phone) as company_address
+                        FROM `classes_users`
+                        INNER JOIN `internship` ON `internship`.user_id = `classes_users`.user_id
+                        WHERE
+                              (classes_users.`course_id`  IN (" . $ids . "))
+                        GROUP BY internship.`user_id`, classes_users.`course_id`
+                        ORDER BY classes_users.`course_id`
+                    ) AS company_info
+                    GROUP BY company_info.company_instructor_phone
+                    ORDER BY company_info.course_id;
+                ";
+
+
+        $data = DB::select(DB::raw(
+            $sql
+        ));
+
+        return $data;
+
     }
 }
