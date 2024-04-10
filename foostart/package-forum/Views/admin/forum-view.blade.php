@@ -101,10 +101,14 @@
                                             <div class="panel-body">{!! $item->forum_questions_description !!}
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-danger">Câu hỏi đã đóng</button>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                            Trả lời
-                                        </button>
+                                        @if($item->status == 88)
+                                            <button type="button" class="btn btn-danger">Câu hỏi đã đóng</button>
+                                        @else
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                Trả lời
+                                            </button>
+                                        @endif
+
                                     </div>
 
                                     <div id="push"></div>

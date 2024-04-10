@@ -17,9 +17,18 @@
                 <!--left col-->
                 <ul class="list-group">
                     <li class="list-group-item text-muted" contenteditable="false">Các câu hỏi liên quan</li>
-                    <li class="list-group-item text-left">1. Có nên gọi điện hỏi kết quả phỏng vấn không?</li>
-                    <li class="list-group-item text-left">2. Thực tập tại công ty ở quê Bình Định có được không?</li>
-                    <li class="list-group-item text-left">3. Thực tập tại công ty không phải CNTT có được không?</li>
+                    @if (!empty($relatedQuestions))
+                        @foreach($relatedQuestions as $key => $question)
+                            <?php $in = $key + 1; ?>
+                            <a href="{!! URL::route('forums.view', [   'id' => $question->forum_questions_id,
+                                                            '_token' => csrf_token()
+                                                        ])
+                                    !!}">
+                                <li class="list-group-item text-left">{!! "<b>".$in.'</b> '.$question->forum_questions_title !!}</li>
+                            </a>
+                        @endforeach
+
+                    @endif
                 </ul>
 
             </div>
@@ -27,15 +36,24 @@
             <div class="col-md-9 col-sm-9" style="" contenteditable="false">
                 @if (!empty($userAnswers))
                     @foreach($userAnswers as $userAnswer)
+                        <?php $cl = 'style="background-color: antiquewhite;"' ?>
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading" @if($userAnswer['is_best_answer'] == 1) {!! $cl !!} @endif>
                                 <span><strong>{{$userAnswer['userinfo_fullname']}}</strong> đã trả lời câu hỏi </span>
                                 <span class="pull-right">
+                                    @if($item->status != 88)
+
+                                        <a href="{!! URL::route('forums.like_answer',['qid' => $item->id,
+                                                                                    '_token' => csrf_token(),
+                                                                                    'aid' => $userAnswer['forum_discussions_id']]) !!}"><i class="fa fa-magic" aria-hidden="true"></i>Like
+                                        </a>xóa
+
                                     <i class="fa fa-pencil-square-o" aria-hidden="true" data-target="#updateAnswer{!! $userAnswer['forum_discussions_id'] !!}" data-toggle="modal"></i> chỉnh sửa
                                     <a href="{!! URL::route('forums.delete_answer',['qid' => $item->id,
                                                                                     '_token' => csrf_token(),
                                                                                     'aid' => $userAnswer['forum_discussions_id']]) !!}"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>xóa
+                                    @endif
                                     <i class="fa fa-calendar" aria-hidden="true"></i> {!! date('d-m-Y H:i',strtotime($userAnswer['updated_at'])) !!}
                                 </span>
                             </div>

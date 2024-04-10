@@ -458,4 +458,11 @@ class Forum extends FooModel
         $count = $this->where('created_user_id', '=', $uid)->count();
         return $count;
     }
+
+    public function getRelatedQuestions($item) {
+        $questions = $this->where('category_id', '=', $item->category_id)
+                            ->where('forum_questions_id', '!=', $item->forum_questions_id)
+                        ->get();
+        return $questions;
+    }
 }

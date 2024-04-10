@@ -504,10 +504,15 @@ class ForumAdminController extends FooController
         $numbersOfAnswers = 0;
         $nummberOfQuestions = 0;
         $userAnswers = [];
+        $relatedQuestions = [];
         //get item data by id
         if (!empty($params['id'])) {
 
             $item = $this->obj_item->selectItem($params, FALSE);
+            $item->views += 1;
+            $item->save();
+            $relatedQuestions = $this->obj_item->getRelatedQuestions($item);
+
             $userInfo = $this->getUserInfoById($item->created_user_id);
             $numbersOfAnswers = $this->discussions->countAnswerByQuestionId($item->id);
             $nummberOfQuestions = $this->obj_item->countQuestionsByUserId($item->created_user_id);
@@ -529,6 +534,7 @@ class ForumAdminController extends FooController
             'numberOfAnswers' => $numbersOfAnswers,
             'numberOfQuestions' => $nummberOfQuestions,
             'userAnswers' => $userAnswers,
+            'relatedQuestions' => $relatedQuestions
         ));
         return view($this->page_views['admin']['view'], $this->data_view);
     }
@@ -568,6 +574,18 @@ class ForumAdminController extends FooController
         $params = array_merge($this->getUser(), $request->all());
         $discussion = $this->discussions->find($params['aid']);
         $discussion->delete();
+
+        return Redirect::route($this->root_router . '.view', ["id" => $params['qid'],
+            '_token_' => $params['_token']])
+            ->withMessage('Cập nhật câu trả lời thành công');
+
+    }
+
+    public function likeAnswer(Request  $request) {
+        $params = array_merge($this->getUser(), $request->all());
+        $discussion = $this->discussions->find($params['aid']);
+        $discussion->is_best_answer = !(bool)$discussion->is_best_answer;
+        $discussion->save();
 
         return Redirect::route($this->root_router . '.view', ["id" => $params['qid'],
             '_token_' => $params['_token']])

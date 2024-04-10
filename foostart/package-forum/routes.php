@@ -95,6 +95,10 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'forums.delete_answer',
             'uses' => 'ForumAdminController@deleteAnswer'
         ]);
+        Route::get('admin/forums/like_answer', [
+            'as' => 'forums.like_answer',
+            'uses' => 'ForumAdminController@likeAnswer'
+        ]);
 
         /**
          * trash
