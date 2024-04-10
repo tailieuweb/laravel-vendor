@@ -82,7 +82,7 @@
                 <div class="col-md-6">
                     <!--STATUS-->
                     @include('package-category::admin.partials.radio', [
-                        'name' => 'company_status',
+                        'name' => 'status',
                         'label' => trans($plang_admin.'.labels.company_status'),
                         'value' => @$item->status,
                         'description' => trans($plang_admin.'.descriptions.company_status'),
@@ -295,7 +295,23 @@
             if(this.value != ""){
                 const result = data.filter(n => n.Id === this.value);
 
-                for (const k of result[0].Districts) {
+                // for (const k of result[0].Districts) {
+                //     district.options[district.options.length] = new Option(k.Name, k.Id);
+                // }
+                let districts = result[0].Districts;
+                districts.sort((a, b) => {
+                    const nameA = a.Name.toUpperCase();
+                    const nameB = b.Name.toUpperCase();
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+                    return 0;
+                });
+
+                for (const k of districts) {
                     district.options[district.options.length] = new Option(k.Name, k.Id);
                 }
             }
@@ -311,5 +327,27 @@
                 }
             }
         };
+
+        <?php if(!empty($item) && !empty($item->location_province)) { ?>
+            citis.value = {!! $item->location_province !!};
+            const event1 = new Event('change');
+            citis.dispatchEvent(event1);
+
+            districts.value = {!! $item->location_district !!};
+            const event11 = new Event('change');
+            districts.dispatchEvent(event11);
+
+            wards.value = {!! $item->location_ward !!}
+        <?php }else{ ?>
+            citis.value = 79;
+            const event2 = new Event('change');
+            citis.dispatchEvent(event2);
+        <?php }?>
+
+
     }
+
+
+
+
 </script>

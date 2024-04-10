@@ -92,11 +92,15 @@ $withs = [
                     {!! trans($plang_admin.'.columns.phone') !!}
                 </th>
 
-                <!--STATUS-->
+                <!--Company-->
                 <?php $name = 'status' ?>
                 <th class="hidden-xs text-center" style='width:{{ $withs['status'] }}'>
-                    {!! trans($plang_admin.'.columns.status') !!}
+                    Công ty
+                </th>
 
+                <!--expected-->
+                <th class="hidden-xs text-center" style='width:{{ $withs['status'] }}'>
+                    Tình trạng
                 </th>
 
                 <!--OPERATIONS-->
@@ -145,6 +149,16 @@ $withs = [
                     <td style="text-align: center;">
 
                         @if(isset($item['company_name']) && (isset($config_status['list'][99])))
+                            <i class="fa fa-circle" style="color:{!! $config_status['color'][99] !!}" title='{!! $config_status["list"][99] !!}'></i>
+                        @else
+                            <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>
+                        @endif
+                    </td>
+
+                    <!--Is expected-->
+                    <td style="text-align: center;">
+
+                        @if(isset($item['status']) && ($item['status'] == 1) && (isset($config_status['list'][99])))
                             <i class="fa fa-circle" style="color:{!! $config_status['color'][99] !!}" title='{!! $config_status["list"][99] !!}'></i>
                         @else
                             <i class="fa fa-circle-o red" title='{!! trans($plang_admin.".labels.unknown") !!}'></i>

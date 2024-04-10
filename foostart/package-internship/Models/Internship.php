@@ -37,6 +37,9 @@ class Internship extends FooModel {
             'company_name',
             'company_slug',
             'company_website',
+            'location_province',
+            'location_district',
+            'location_ward',
             'company_address',
             'company_description',
             'company_image',
@@ -66,6 +69,18 @@ class Internship extends FooModel {
             ],
             'user_id' => [
                 'name' => 'user_id',
+                'type' => 'Int',
+            ],
+            'location_province' => [
+                'name' => 'location_province',
+                'type' => 'Int',
+            ],
+            'location_district' => [
+                'name' => 'location_district',
+                'type' => 'Int',
+            ],
+            'location_ward' => [
+                'name' => 'location_ward',
                 'type' => 'Int',
             ],
             'course_id' => [
@@ -120,6 +135,9 @@ class Internship extends FooModel {
             'company_name',
             'company_slug',
             'company_website',
+            'location_province',
+            'location_district',
+            'location_ward',
             'company_address',
             'company_description',
             'company_image',

@@ -505,6 +505,7 @@ class CourseAdminController extends FooController {
                     //Set company info
                     $items[$index]['company_name'] = $internship->company_name;
                     $items[$index]['phone'] = $internship->student_phone;
+                    $items[$index]['status'] = $internship->status;
                     if (empty($internship->company_name)) {
                         $counterUnCompany++;
                     }
