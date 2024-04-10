@@ -13,8 +13,10 @@
 use Foostart\Category\Library\Controllers\FooController;
 use Foostart\Courses\Models\ClassesUsers;
 use Foostart\Internship\Models\Internship;
+use Foostart\Internship\Models\InternshipDiary;
 use Foostart\Pexcel\Helper\CourseEnrollParser;
 use Foostart\Pexcel\Helper\CourseExport;
+use Foostart\Pexcel\Helper\CourseExportDiaryTemplate;
 use Foostart\Pexcel\Helper\CourseExportTeacher;
 use Foostart\Pexcel\Helper\CourseExportTemplate;
 use Illuminate\Http\Request;
@@ -632,9 +634,9 @@ class CourseAdminController extends FooController {
 
 //        return  Excel::download($objCourseExport, $courseName.'.xlsx');
         $course = $item['course'];
-        return $this->exportTest($items, $courseName, $counterUnCompany, $course);
+        return $this->exportCourseFile($items, $courseName, $counterUnCompany, $course);
     }
-    public function exportTest($items, $courseName, $counterUnCompany, $course) {
+    public function exportCourseFile($items, $courseName, $counterUnCompany, $course) {
         try {
             $courseExportTemplate = new CourseExportTemplate();
             $courseExportTemplate->items = $items;
@@ -642,6 +644,145 @@ class CourseAdminController extends FooController {
             $courseExportTemplate->course = $course;
             $courseExportTemplate->counterUnCompany = $counterUnCompany;
             return Excel::download($courseExportTemplate, $courseName.'.xlsx');
+        } catch (Exception $exception) {
+            var_dump($exception);
+        }
+
+    }
+
+    /**
+     * View data file form excel
+     * @param Request $request
+     */
+    public function exportDiary(Request $request) {
+
+        $item = NULL;
+        $categories = NULL;
+
+        $params = $request->all();
+        $params['id'] = $request->get('id', NULL);
+
+        if (!empty($params['id'])) {
+
+            $item = $this->obj_item->selectItem($params, FALSE);
+        }
+
+        if (empty($params['id'] || empty($item))) {
+            return Redirect::route($this->root_router . '.list')
+                ->withMessage(trans($this->plang_admin . '.actions.edit-error'));
+        }
+
+        $courseName = $item->course_name;
+        // Get student by course id
+        $obj_class_user = new ClassesUsers();
+        $_params = [
+            'course_id' => $params['id']
+        ];
+        $items = $obj_class_user->selectItems($_params);
+        $items = $items->toArray();
+
+        //
+        $user_repository = App::make('user_repository');
+        $profile_repository = App::make('profile_repository');
+
+        $obj_user = new UserRepositorySearchFilter(0);
+
+        for ($i = 0; $i < count($items); $i++) {
+            $params = [
+                'id' => $items[$i]['user_id']
+            ];
+            $user_info = $obj_user->all($params)->first();
+
+            if (!empty($user_info)) {
+                $items[$i]['email'] = $user_info->email;
+                $items[$i]['user_name'] = $user_info->user_name;
+                $items[$i]['first_name'] = $user_info->first_name;
+                $items[$i]['last_name'] = $user_info->last_name;
+                $items[$i]['phone'] = $user_info->phone;
+            }
+        }
+
+        //Get company info
+        $counterUnCompany = 0;
+        if (!empty($items)) {
+            $obj_internship = new Internship();
+            foreach ($items as $index => $item) {
+                $_params = [
+                    'user_id' => $item['user_id'],
+                    'course_id' => $item['course_id'],
+                ];
+                $internship = $obj_internship->selectItem($_params);
+
+                //Add company info to user
+                if (!empty($internship)) {
+                    //Set company info
+                    $items[$index]['student_class'] = $internship->student_class;
+                    $items[$index]['student_phone'] = $internship->student_phone;
+                    $items[$index]['company_name'] = $internship->company_name;
+                    $items[$index]['company_address'] = $internship->company_address;
+                    $items[$index]['company_phone'] = $internship->company_phone;
+                    $items[$index]['company_instructor'] = $internship->company_instructor;
+                    $items[$index]['company_instructor_phone'] = $internship->company_instructor_phone;
+
+                    if (empty($internship->company_name)) {
+                        $counterUnCompany++;
+                    }
+                } else {
+                    $counterUnCompany++;
+                }
+            }
+        }
+
+
+        // Get diary
+        $course_id = $request->get('id', NULL);
+        $internship = new Internship();
+        $internshipDiary = new InternshipDiary();
+        foreach ($items as $key => $item) {
+            $user_id = $item['user_id'];
+            $_params = [
+                'user_id' => $user_id,
+                'course_id' => $course_id
+            ];
+            $internshipData = $internship->selectItem($_params);
+            $internshipDiaryData = $internshipDiary->selectItems(['internship_id' => $internshipData->internship_id]);
+
+            $items[$key]['diary'] = $internshipDiaryData;
+        }
+
+        //Sort name ascending
+        $items = collect($items)->sortBy(function($item) {
+            return [$item['last_name']];
+        });
+
+        // display view
+//        $this->data_view = array_merge($this->data_view, array(
+//            'item' => $item,
+//            'items' => $items,
+//            'counterUnCompany' => $counterUnCompany,
+//            'request' => $request,
+//            'courseName' => $courseName
+//        ));
+//
+//        $objCourseExport = new CourseExport();
+//        $objCourseExport->course = $items;
+//        $objCourseExport->courseName = $courseName;
+//        $objCourseExport->counterUnCompany = $counterUnCompany;
+
+//        $objCourseExport->view = $this->page_views['admin']['export'];
+
+//        return  Excel::download($objCourseExport, $courseName.'.xlsx');
+        $course = $item['course'];
+        return $this->exportDiaryFile($items, $courseName, $counterUnCompany, $course);
+    }
+    public function exportDiaryFile($items, $courseName, $counterUnCompany, $course) {
+        try {
+            $courseExportTemplate = new CourseExportDiaryTemplate();
+            $courseExportTemplate->items = $items;
+            $courseExportTemplate->courseName = $courseName;
+            $courseExportTemplate->course = $course;
+            $courseExportTemplate->counterUnCompany = $counterUnCompany;
+            return Excel::download($courseExportTemplate, $courseName.'-nhat-ky.xlsx');
         } catch (Exception $exception) {
             var_dump($exception);
         }

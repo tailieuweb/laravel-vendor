@@ -141,6 +141,15 @@ Route::group(['middleware' => ['web']], function () {
         ]);
 
         /**
+         * view
+         */
+        Route::get('admin/courses/exportDiary', [
+            'as' => 'course.exportDiary',
+            'uses' => 'CourseAdminController@exportDiary'
+        ]);
+
+
+        /**
          * Export by teacher
          */
         Route::get('admin/courses/exportByTeacher', [

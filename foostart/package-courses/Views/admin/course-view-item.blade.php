@@ -37,10 +37,21 @@ $withs = [
                                                         '_token' => csrf_token()
                                                         ])
                                 !!}">
-                Export
+                Danh sách đăng ký
+            </a>
+            <!--/BUTTONS-->
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <!--Export-->
+            <a class='btn-form btn btn-info pull-left' href="{!! URL::route('course.exportDiary', [
+                                                        'id' => $request->get('id'),
+                                                        '_token' => csrf_token()
+                                                        ])
+                                !!}" style=" margin-left: 20px;">
+                Nhật ký thực tập
             </a>
             <!--/BUTTONS-->
         </div>
+
         <table class="table table-hover">
 
             <thead>
