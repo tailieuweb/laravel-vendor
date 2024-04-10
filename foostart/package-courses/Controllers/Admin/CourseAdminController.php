@@ -16,6 +16,7 @@ use Foostart\Internship\Models\Internship;
 use Foostart\Pexcel\Helper\CourseEnrollParser;
 use Foostart\Pexcel\Helper\CourseExport;
 use Foostart\Pexcel\Helper\CourseExportTeacher;
+use Foostart\Pexcel\Helper\CourseExportTemplate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
@@ -629,7 +630,21 @@ class CourseAdminController extends FooController {
 
         $objCourseExport->view = $this->page_views['admin']['export'];
 
-        return  Excel::download($objCourseExport, $courseName.'.xlsx');
+//        return  Excel::download($objCourseExport, $courseName.'.xlsx');
+        $course = $item['course'];
+        return $this->exportTest($items, $courseName, $counterUnCompany, $course);
+    }
+    public function exportTest($items, $courseName, $counterUnCompany, $course) {
+        try {
+            $courseExportTemplate = new CourseExportTemplate();
+            $courseExportTemplate->items = $items;
+            $courseExportTemplate->courseName = $courseName;
+            $courseExportTemplate->course = $course;
+            $courseExportTemplate->counterUnCompany = $counterUnCompany;
+            return Excel::download($courseExportTemplate, $courseName.'.xlsx');
+        } catch (Exception $exception) {
+            var_dump($exception);
+        }
 
     }
 
