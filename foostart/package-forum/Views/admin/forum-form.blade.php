@@ -164,6 +164,7 @@
 
 <!--HIDDEN FIELDS-->
 <div class='hidden-field'>
+    {!! Form::hidden('version',@$item->version) !!}
     {!! Form::hidden('id',@$item->id) !!}
     {!! Form::hidden('context',$request->get('context',null)) !!}
 </div>

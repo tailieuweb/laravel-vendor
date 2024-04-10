@@ -202,7 +202,17 @@ class ForumAdminController extends FooController
 
                 if (!empty($item)) {
 
-                    $item = $this->obj_item->updateItem($params, $id);
+                    $in_version = $item->version;
+                    $out_version = $request->get('version');
+
+                    if ($in_version == $out_version) {
+                        $params['version'] = (int) $params['version'] + 1;
+                        $item = $this->obj_item->updateItem($params, $id);
+                    } else {
+                        return Redirect::route($this->root_router . '.edit', ["id" => $item->forum_questions_id])
+                            ->withErrors('Vui lòng tải lại trang để cập nhật thông tin mới nhất');
+                    }
+
 
                     // message
                     return Redirect::route($this->root_router . '.edit', ["id" => $item->id])

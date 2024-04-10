@@ -38,6 +38,7 @@ class Forum extends FooModel
             'forum_questions_description',
             'forum_questions_image',
             'forum_questions_files',
+            'version',
             //Relation
             'category_id',
         ]);
@@ -73,6 +74,10 @@ class Forum extends FooModel
                 'name' => 'category_id',
                 'type' => 'Int',
             ],
+            'version' => [
+                'name' => 'version',
+                'type' => 'Int',
+            ],
         ]);
 
         //check valid fields for inserting
@@ -83,6 +88,7 @@ class Forum extends FooModel
             'forum_questions_description',
             'forum_questions_image',
             'forum_questions_files',
+            'version',
             //Relation
             'category_id',
         ]);
