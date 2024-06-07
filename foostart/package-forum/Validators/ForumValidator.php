@@ -16,8 +16,8 @@ class ForumValidator extends FooValidator
         // add rules
         self::$rules = [
             'title' => ["required"],
-//            'overview' => ["required"],
-            'description' => ["required"],
+            'overview' => ["required"],
+//            'description' => ["required"],
         ];
 
         // set configs
@@ -63,23 +63,23 @@ class ForumValidator extends FooValidator
                 'min' => $_ln['forum_question_title']['min'],
                 'max' => $_ln['forum_question_title']['max'],
             ],
-//            'overview' => [
-//                'key' => 'overview',
-//                'label' => trans($this->lang_admin . '.fields.overview'),
-//                'min' => $_ln['forum_question_overview']['min'],
-//                'max' => $_ln['forum_question_overview']['max'],
-//            ],
-            'description' => [
-                'key' => 'description',
-                'label' => trans($this->lang_admin . '.fields.description'),
-                'min' => $_ln['forum_question_description']['min'],
-                'max' => $_ln['forum_question_description']['max'],
+            'overview' => [
+                'key' => 'overview',
+                'label' => trans($this->lang_admin . '.fields.overview'),
+                'min' => $_ln['forum_question_overview']['min'],
+                'max' => $_ln['forum_question_overview']['max'],
             ],
+//            'description' => [
+//                'key' => 'description',
+//                'label' => trans($this->lang_admin . '.fields.description'),
+//                'min' => $_ln['forum_question_description']['min'],
+//                'max' => $_ln['forum_question_description']['max'],
+//            ],
         ];
 
         $flag = $this->isValidLength($input['title'], $params['title']) ? $flag : FALSE;
-//        $flag = $this->isValidLength($input['overview'], $params['overview']) ? $flag : FALSE;
-        $flag = $this->isValidLength($input['description'], $params['description']) ? $flag : FALSE;
+        $flag = $this->isValidLength($input['overview'], $params['overview']) ? $flag : FALSE;
+//        $flag = $this->isValidLength($input['description'], $params['description']) ? $flag : FALSE;
 
         return $flag;
     }

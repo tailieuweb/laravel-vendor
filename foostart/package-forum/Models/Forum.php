@@ -363,7 +363,7 @@ class Forum extends FooModel
         $dataFields = $this->getDataFields($params, $this->fields);
 
         $dataFields[$this->field_status] = $this->config_status['publish'];
-
+        $dataFields['version'] = 0;
 
         $item = self::create($dataFields);
 

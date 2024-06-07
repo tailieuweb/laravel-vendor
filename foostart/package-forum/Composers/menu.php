@@ -93,3 +93,70 @@ View::composer([
     $view->with('plang_admin', $plang_admin);
     $view->with('plang_front', $plang_front);
 });
+
+
+View::composer([
+    'package-forum::member.forum-edit',
+    'package-forum::member.forum-form',
+    'package-forum::member.forum-items',
+    'package-forum::member.forum-item',
+    'package-forum::member.forum-search',
+    'package-forum::member.forum-view',
+], function ($view) {
+
+    //Order by params
+    $params = Request::all();
+
+    /**
+     * $plang-admin
+     * $plang-front
+     */
+
+    $plang_admin = 'forum-admin';
+    $plang_front = 'forum-front';
+
+    $fooCategory = new FooCategory();
+    $key = $fooCategory->getContextKeyByRef('admin/forums');
+
+    /**
+     * $sidebar_items
+     */
+    $sidebar_items = [
+        trans('forum-admin.sidebar.add') => [
+            'url' => URL::route('forums.edit', []),
+            'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
+        ],
+        trans('forum-admin.sidebar.list') => [
+            "url" => URL::route('forums.list', []),
+            'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
+        ],
+    ];
+
+    /**
+     * $sorting
+     * $order_by
+     */
+    $orders = [
+        '' => trans($plang_admin . '.form.no-selected'),
+        'id' => trans($plang_admin . '.fields.id'),
+        'status' => trans($plang_admin . '.columns.status'),
+        'updated_at' => trans($plang_admin . '.fields.updated_at'),
+    ];
+    $sortTable = new SortTable();
+    $sortTable->setOrders($orders);
+    $sorting = $sortTable->linkOrders();
+
+
+    //Order by
+    $order_by = [
+        'asc' => trans('category-admin.order.by-asc'),
+        'desc' => trans('category-admin.order.by-des'),
+    ];
+
+    // assign to view
+    $view->with('sidebar_items', $sidebar_items);
+    $view->with('order_by', $order_by);
+    $view->with('sorting', $sorting);
+    $view->with('plang_admin', $plang_admin);
+    $view->with('plang_front', $plang_front);
+});

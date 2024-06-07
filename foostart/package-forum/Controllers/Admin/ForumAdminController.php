@@ -29,6 +29,7 @@ class ForumAdminController extends FooController
     public $categories = NULL;
     public $slideshow = NULL;
     public $discussions = NULL;
+    private $isUser = null;
 
 
     public function __construct(Request $request)
@@ -64,6 +65,11 @@ class ForumAdminController extends FooController
                 'config' => $this->package_name . '::admin.' . $this->package_base_name . '-config',
                 'lang' => $this->package_name . '::admin.' . $this->package_base_name . '-lang',
                 'view' => $this->package_name . '::admin.' . $this->package_base_name . '-view',
+            ],
+            'member' => [
+                'items' => $this->package_name . '::member.' . $this->package_base_name . '-items',
+                'edit' => $this->package_name . '::member.' . $this->package_base_name . '-edit',
+                'view' => $this->package_name . '::member.' . $this->package_base_name . '-view',
             ]
         ];
 
@@ -85,6 +91,13 @@ class ForumAdminController extends FooController
         $this->data_view['context'] = $this->context;
         $this->data_view['slideshow'] = $this->obj_slideshow->pluckSelect();
 
+        $is_admin = $this->hasPermissions(array('_superadmin'));
+        if ($is_admin) {
+            $this->isUser = 'admin';
+        }else {
+            $this->isUser = 'member';
+        }
+
     }
 
     /**
@@ -104,16 +117,7 @@ class ForumAdminController extends FooController
          * Get current user and ignore admin
          */
         $is_admin = $this->hasPermissions(array('_superadmin'));
-
-        if ($is_admin) {
-
-        } else if (empty($params['user_id']) || ($params['user_id'] != $user['user_id'])) {
-
-            return redirect()->route('forums.list', ['user_id' => $user['user_id']]);
-
-        }
         $params['is_admin'] = $is_admin;
-
         $items = $this->obj_item->selectItems($params);
 
         // display view
@@ -126,7 +130,7 @@ class ForumAdminController extends FooController
             'config_status' => $this->obj_item->config_status
         ));
 
-        return view($this->page_views['admin']['items'], $this->data_view);
+        return view($this->page_views[$this->isUser]['items'], $this->data_view);
     }
 
     /**
@@ -174,7 +178,7 @@ class ForumAdminController extends FooController
             'request' => $request,
             'user_id' => $user['user_id']
         ));
-        return view($this->page_views['admin']['edit'], $this->data_view);
+        return view($this->page_views[$this->isUser]['edit'], $this->data_view);
     }
 
     /**
@@ -184,7 +188,6 @@ class ForumAdminController extends FooController
      */
     public function post(Request $request)
     {
-
         $item = NULL;
 
         $params = array_merge($this->getUser(), $request->all());
@@ -546,7 +549,7 @@ class ForumAdminController extends FooController
             'userAnswers' => $userAnswers,
             'relatedQuestions' => $relatedQuestions
         ));
-        return view($this->page_views['admin']['view'], $this->data_view);
+        return view($this->page_views[$this->isUser]['view'], $this->data_view);
     }
 
     public function findUserAnswers($answers) {
