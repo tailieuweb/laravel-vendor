@@ -163,7 +163,7 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'users.edit.permission',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editPermission'
         ]);
-        Route::get('/admin/users/profile/editGet', [
+        Route::get('/admin/users/profile/edit', [
             'as' => 'users.profile.edit',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editProfile'
         ]);

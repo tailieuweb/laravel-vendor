@@ -66,16 +66,19 @@ class CourseExportDiaryTemplate implements WithEvents {
                 5 => 'K',
                 6 => 'L',
             ];
-            foreach ($item['diary'] as $_index => $_item) {
-                if ($_index >= count($weeks)) break;
-                $report = "'-". $_item->diary_mon . PHP_EOL .
-                            "-". $_item->diary_tue . PHP_EOL .
-                            "-". $_item->diary_wed . PHP_EOL .
-                            "-". $_item->diary_thu . PHP_EOL .
-                            "-". $_item->diary_fri . PHP_EOL .
-                            "-". $_item->diary_sat . PHP_EOL;
-                $sheet->setCellValue($weeks[$_index].$index, $report);
+            if (!empty($item['diary'])) {
+                foreach ($item['diary'] as $_index => $_item) {
+                    if ($_index >= count($weeks)) break;
+                    $report = "'-". $_item->diary_mon . PHP_EOL .
+                        "-". $_item->diary_tue . PHP_EOL .
+                        "-". $_item->diary_wed . PHP_EOL .
+                        "-". $_item->diary_thu . PHP_EOL .
+                        "-". $_item->diary_fri . PHP_EOL .
+                        "-". $_item->diary_sat . PHP_EOL;
+                    $sheet->setCellValue($weeks[$_index].$index, $report);
+                }
             }
+
 //            $sheet->setCellValue($rows['phone'].$index, $item['student_phone']);
 //            $sheet->setCellValue($rows['class'].$index, $item['student_class']);
 //

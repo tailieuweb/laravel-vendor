@@ -757,9 +757,11 @@ class CourseAdminController extends FooController {
                 'course_id' => $course_id
             ];
             $internshipData = $internship->selectItem($_params);
-            $internshipDiaryData = $internshipDiary->selectItems(['internship_id' => $internshipData->internship_id]);
+            if (!empty($internshipData)) {
+                $internshipDiaryData = $internshipDiary->selectItems(['internship_id' => $internshipData->internship_id]);
 
-            $items[$key]['diary'] = $internshipDiaryData;
+                $items[$key]['diary'] = $internshipDiaryData;
+            }
         }
 
         //Sort name ascending

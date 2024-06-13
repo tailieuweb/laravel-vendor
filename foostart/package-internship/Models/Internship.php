@@ -40,6 +40,7 @@ class Internship extends FooModel {
             'location_province',
             'location_district',
             'location_ward',
+            'street',
             'company_address',
             'company_description',
             'company_image',
@@ -82,6 +83,10 @@ class Internship extends FooModel {
             'location_ward' => [
                 'name' => 'location_ward',
                 'type' => 'Int',
+            ],
+            'street' => [
+                'name' => 'street',
+                'type' => 'Text',
             ],
             'course_id' => [
                 'name' => 'course_id',
@@ -138,6 +143,7 @@ class Internship extends FooModel {
             'location_province',
             'location_district',
             'location_ward',
+            'street',
             'company_address',
             'company_description',
             'company_image',

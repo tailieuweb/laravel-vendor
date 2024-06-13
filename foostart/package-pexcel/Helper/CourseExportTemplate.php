@@ -57,8 +57,8 @@ class CourseExportTemplate implements WithEvents {
 
             $sheet->setCellValue($rows['mssv'].$index, $item['user_name']);
             $sheet->setCellValue($rows['full_name'].$index, $item['first_name'] . ' ' . $item['last_name']);
-            $sheet->setCellValue($rows['phone'].$index, $item['student_phone']);
-            $sheet->setCellValue($rows['class'].$index, $item['student_class']);
+            $sheet->setCellValue($rows['phone'].$index, @$item['student_phone']);
+            $sheet->setCellValue($rows['class'].$index, @$item['student_class']);
 
             $company = @$item['company_name'] . PHP_EOL  . PHP_EOL .
                 "Địa chỉ: " . @$item['company_address'] . PHP_EOL . PHP_EOL .

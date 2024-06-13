@@ -5,9 +5,11 @@
 {!! Form::open(['route'=>['internship.post_company', 'course_id' => $course_id,
                                                     'student_id' => $student_id,
                                                     'teacher_id' => $teacher_id,
-                            ],  'files'=>true, 'method' => 'post'])  !!}
+                            ],  'files'=>true, 'method' => 'post', 'id'=> 'btn-submit-form'])  !!}
 @else
-    {!! Form::open(['route'=>['internship.post_company', 'course_id' => $course_id],  'files'=>true, 'method' => 'post'])  !!}
+    {!! Form::open(['route'=>['internship.post_company', 'course_id' => $course_id],
+                            'files'=>true, 'method' => 'post',
+                            'id'=> 'btn-submit-form'])  !!}
 @endif
 
     <!--BUTTONS-->
@@ -204,9 +206,9 @@
                 </div>
             </div>
             @include('package-category::admin.partials.input_text', [
-                'name' => 'company_address',
+                'name' => 'street',
                 'label' => trans($plang_admin.'.labels.internship_company_address_detail'),
-                'value' => @$item->company_address,
+                'value' => @$item->street,
                 'description' => trans($plang_admin.'.descriptions.internship_company_address_detail'),
                 'errors' => $errors,
             ])
@@ -347,7 +349,23 @@
 
     }
 
+</script>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn-submit-form').on( "submit", function( event ) {
+            var city = $( "#city option:selected" ).text();
+            var district = $( "#district option:selected" ).text();
+            var ward = $( "#ward option:selected" ).text();
+            var street = $('#street').val();
+            var address = street + ', ' + ward + ', ' + district + ', ' + city;
 
+            var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "company_address").val(address);
+
+            $('#btn-submit-form').append(input);
+        });
+    });
 </script>
