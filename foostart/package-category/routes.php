@@ -174,3 +174,43 @@ Route::group(['middleware' => ['web']], function () {
 
     });
 });
+
+
+/*
+|-----------------------------------------------------------------------
+| Location
+|-----------------------------------------------------------------------
+| Manage categories
+|
+|
+|
+*/
+
+Route::group(['middleware' => ['web'],
+            'namespace' => 'Foostart\Category\Controllers\API'], function () {
+
+    /**
+     * Provinces
+     */
+    Route::get('api/provinces', [
+        'as' => 'provinces.list',
+        'uses' => 'LocationsController@getProvinces'
+    ]);
+
+    /**
+     * Districts
+     */
+    Route::get('api/districts', [
+        'as' => 'districts.list',
+        'uses' => 'LocationsController@getDistricts'
+    ]);
+
+    /**
+     * Wards
+     */
+    Route::get('api/wards', [
+        'as' => 'wards.list',
+        'uses' => 'LocationsController@getWards'
+    ]);
+
+});

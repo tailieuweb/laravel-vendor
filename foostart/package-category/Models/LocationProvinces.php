@@ -27,22 +27,37 @@ class LocationProvinces extends FooModel
     {
 
         //table name
-        $this->table = 'location_provinces';
+        $this->table = 'provinces';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
-            'province_code',
-            'province_name',
+            'name',
+            'name_en',
+            'full_name',
+            'full_name_en',
+            'code_name',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'province_code' => [
-                'name' => 'province_code',
+            'name' => [
+                'name' => 'name',
                 'type' => 'Text',
             ],
-            'province_name' => [
-                'name' => 'province_name',
+            'name_en' => [
+                'name' => 'name_en',
+                'type' => 'Text',
+            ],
+            'full_name' => [
+                'name' => 'full_name',
+                'type' => 'Text',
+            ],
+            'full_name_en' => [
+                'name' => 'full_name_en',
+                'type' => 'Text',
+            ],
+            'code_name' => [
+                'name' => 'code_name',
                 'type' => 'Text',
             ],
 
@@ -50,24 +65,26 @@ class LocationProvinces extends FooModel
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'province_code',
-            'province_name'
+            'name',
+            'name_en',
+            'full_name',
+            'full_name_en',
+            'code_name',
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'province_code',
-            'province_name',
-            $this->field_status,
+            'name',
+            'full_name'
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
-            'province_code',
-            'province_name',
+            'name',
+            'full_name',
         ];
 
         //primary key
-        $this->primaryKey = 'province_id';
+        $this->primaryKey = 'code';
 
     }
 
@@ -132,32 +149,6 @@ class LocationProvinces extends FooModel
     }
 
 
-    public function getComments($post_id)
-    {
-
-        // Get post
-        $params = array(
-            'id' => $post_id,
-        );
-        $post = $this->selectItem($params);
-
-        // Get comment by context
-        $params = array(
-            'context_name' => 'post',
-            'context_id' => $post_id,
-            'by_status' => true,
-        );
-        $obj_comment = new Comment();
-        $obj_comment->user = $this->user;
-        $comments = $obj_comment->selectItems($params);
-
-        $users_comments = $obj_comment->mapCommentArray($comments);
-        $post->cache_comments = json_encode($users_comments);
-        $post->cache_time = time();
-        $post->save();
-
-        return $users_comments;
-    }
 
     /**
      *
@@ -182,9 +173,9 @@ class LocationProvinces extends FooModel
             foreach ($params as $column => $value) {
                 if ($this->isValidValue($value)) {
                     switch ($column) {
-                        case 'category_id':
+                        case 'code':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.category_id', '=', $value);
+                                $elo = $elo->where($this->table . '.code', '=', $value);
                             }
                             break;
                         case 'category':
@@ -208,11 +199,7 @@ class LocationProvinces extends FooModel
                                 $elo = $elo->where($this->table . '.post_id', '!=', $value);
                             }
                             break;
-                        case 'status':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.' . $this->field_status, '=', $value);
-                            }
-                            break;
+
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function ($elo) use ($value) {
