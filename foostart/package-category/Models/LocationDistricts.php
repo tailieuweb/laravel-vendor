@@ -20,33 +20,39 @@ class LocationDistricts extends FooModel
 
         parent::__construct($attributes);
 
+        $this->is_pagination = false;
     }
 
     public function setConfigs()
     {
 
         //table name
-        $this->table = 'location_districts';
+        $this->table = 'districts';
+        $this->keyType = 'string';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
+            'code',
+            'name',
+            'name_en',
+            'full_name',
+            'full_name_en',
+            'code_name',
             'province_code',
-            'district_code',
-            'district_name',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'province_code' => [
-                'name' => 'province_code',
+            'name' => [
+                'name' => 'name',
                 'type' => 'Text',
             ],
-            'district_code' => [
-                'name' => 'district_code',
+            'name_en' => [
+                'name' => 'name_en',
                 'type' => 'Text',
             ],
-            'district_name' => [
-                'name' => 'district_name',
+            'full_name' => [
+                'name' => 'full_name',
                 'type' => 'Text',
             ],
 
@@ -54,27 +60,27 @@ class LocationDistricts extends FooModel
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'province_code',
-            'district_code',
-            'district_name'
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
+            'code',
+            'name',
+            'full_name',
+            'code_name',
             'province_code',
-            'district_code',
-            'district_name',
-            $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
+            'code',
+            'name',
+            'full_name',
+            'code_name',
             'province_code',
-            'district_code',
-            'district_name',
         ];
 
         //primary key
-        $this->primaryKey = 'district_id';
+        $this->primaryKey = 'code';
 
     }
 
@@ -189,14 +195,14 @@ class LocationDistricts extends FooModel
             foreach ($params as $column => $value) {
                 if ($this->isValidValue($value)) {
                     switch ($column) {
+                        case 'code':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.code', '=', $value);
+                            }
+                            break;
                         case 'province_code':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.province_code', '=', $value);
-                            }
-                            break;
-                        case 'category':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.category_id', '=', $value);
                             }
                             break;
                         case 'user_id':
@@ -236,8 +242,6 @@ class LocationDistricts extends FooModel
             }
         } elseif ($by_status) {
 
-            $elo = $elo->where($this->table . '.' . $this->field_status, '=', $this->config_status['publish']);
-
         }
 
         return $elo;
@@ -252,7 +256,7 @@ class LocationDistricts extends FooModel
     {
 
         $elo = $elo->select($this->table . '.*',
-            $this->table . '.district_id as id'
+            $this->table . '.code as id'
         );
 
         return $elo;

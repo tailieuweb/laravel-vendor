@@ -21,6 +21,8 @@ class LocationProvinces extends FooModel
 
         parent::__construct($attributes);
 
+        $this->is_pagination = false;
+
     }
 
     public function setConfigs()
@@ -28,6 +30,7 @@ class LocationProvinces extends FooModel
 
         //table name
         $this->table = 'provinces';
+        $this->keyType = 'string';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
@@ -74,13 +77,17 @@ class LocationProvinces extends FooModel
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
+            'code',
             'name',
-            'full_name'
+            'full_name',
+            'code_name',
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
+            'code',
             'name',
             'full_name',
+            'code_name',
         ];
 
         //primary key
@@ -216,7 +223,7 @@ class LocationProvinces extends FooModel
             }
         } elseif ($by_status) {
 
-            $elo = $elo->where($this->table . '.' . $this->field_status, '=', $this->config_status['publish']);
+            $elo = $elo;
 
         }
 
@@ -232,7 +239,7 @@ class LocationProvinces extends FooModel
     {
 
         $elo = $elo->select($this->table . '.*',
-            $this->table . '.post_id as id'
+            $this->table . '.code as id'
         );
 
         return $elo;

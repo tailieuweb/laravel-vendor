@@ -19,57 +19,52 @@ class LocationWards extends FooModel
 
         parent::__construct($attributes);
 
+        $this->is_pagination = false;
+
     }
 
     public function setConfigs()
     {
 
         //table name
-        $this->table = 'location_wards';
+        $this->table = 'wards';
+        $this->keyType = 'string';
 
         //list of field in table
         $this->fillable = array_merge($this->fillable, [
+            'name',
+            'name_en',
+            'full_name',
+            'full_name_en',
+            'code_name',
             'district_code',
-            'ward_code',
-            'ward_name',
         ]);
 
         //list of fields for inserting
         $this->fields = array_merge($this->fields, [
-            'district_code' => [
-                'name' => 'district_code',
-                'type' => 'Text',
-            ],
-            'ward_code' => [
-                'name' => 'ward_code',
-                'type' => 'Text',
-            ],
-            'ward_name' => [
-                'name' => 'ward_name',
-                'type' => 'Text',
-            ],
+
 
         ]);
 
         //check valid fields for inserting
         $this->valid_insert_fields = array_merge($this->valid_insert_fields, [
-            'district_code',
-            'ward_code',
-            'ward_name'
         ]);
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
+            'code',
+            'name',
+            'full_name',
+            'code_name',
             'district_code',
-            'ward_code',
-            'ward_name',
-            $this->field_status,
         ];
         //check valid fields for filter
         $this->valid_filter_fields = [
+            'code',
+            'name',
+            'full_name',
+            'code_name',
             'district_code',
-            'ward_code',
-            'ward_name',
         ];
 
         //primary key
@@ -188,14 +183,14 @@ class LocationWards extends FooModel
             foreach ($params as $column => $value) {
                 if ($this->isValidValue($value)) {
                     switch ($column) {
+                        case 'code':
+                            if (!empty($value)) {
+                                $elo = $elo->where($this->table . '.code', '=', $value);
+                            }
+                            break;
                         case 'district_code':
                             if (!empty($value)) {
                                 $elo = $elo->where($this->table . '.district_code', '=', $value);
-                            }
-                            break;
-                        case 'category':
-                            if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.category_id', '=', $value);
                             }
                             break;
                         case 'user_id':
@@ -235,8 +230,6 @@ class LocationWards extends FooModel
             }
         } elseif ($by_status) {
 
-            $elo = $elo->where($this->table . '.' . $this->field_status, '=', $this->config_status['publish']);
-
         }
 
         return $elo;
@@ -251,7 +244,7 @@ class LocationWards extends FooModel
     {
 
         $elo = $elo->select($this->table . '.*',
-            $this->table . '.ward_id as id'
+            $this->table . '.code as id'
         );
 
         return $elo;

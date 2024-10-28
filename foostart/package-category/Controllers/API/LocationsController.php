@@ -60,12 +60,16 @@ class LocationsController extends FooController
 
     public function getDistricts(Request $request)
     {
-        var_dump(22);
+        $input = $request->all();
+        $districts = $this->obj_district->selectItems($input);
+        return $this->sendResponse($districts, 'OK');
     }
 
     public function getWards(Request $request)
     {
-        var_dump(33);
+        $input = $request->all();
+        $wards = $this->obj_ward->selectItems($input);
+        return $this->sendResponse($wards, 'OK');
     }
 
 
