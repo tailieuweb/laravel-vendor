@@ -277,75 +277,49 @@
     var citis = document.getElementById("city");
     var districts = document.getElementById("district");
     var wards = document.getElementById("ward");
-    var Parameter = {
-        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-        method: "GET",
-        responseType: "application/json",
-    };
-    var promise = axios(Parameter);
-    promise.then(function (result) {
-        renderCity(result.data);
-    });
+
+    axios.get('/api/provinces')
+        .then(function (result) {
+            renderCity(result.data);
+        });
 
     function renderCity(data) {
-        for (const x of data) {
-            citis.options[citis.options.length] = new Option(x.Name, x.Id);
+        // Provinces
+        for (const x of data.data) {
+            citis.options[citis.options.length] = new Option(x.name, x.code);
         }
+
+        // On change
         citis.onchange = function () {
-            district.length = 1;
-            ward.length = 1;
+            districts.length = 1;
+            wards.length = 1;
             if(this.value != ""){
-                const result = data.filter(n => n.Id === this.value);
-
-                // for (const k of result[0].Districts) {
-                //     district.options[district.options.length] = new Option(k.Name, k.Id);
-                // }
-                let districts = result[0].Districts;
-                districts.sort((a, b) => {
-                    const nameA = a.Name.toUpperCase();
-                    const nameB = b.Name.toUpperCase();
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-                    return 0;
-                });
-
-                for (const k of districts) {
-                    district.options[district.options.length] = new Option(k.Name, k.Id);
-                }
+                axios.get(`/api/districts?province_code=${this.value}`)
+                    .then(function (result) {
+                        const list_districts = result.data;
+                        for (const k of list_districts.data) {
+                            districts.options[districts.options.length] = new Option(k.full_name, k.code);
+                        }
+                    });
             }
         };
-        district.onchange = function () {
-            ward.length = 1;
-            const dataCity = data.filter((n) => n.Id === citis.value);
+
+        districts.onchange = function () {
+            wards.length = 1;
             if (this.value != "") {
-                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
-
-                for (const w of dataWards) {
-                    wards.options[wards.options.length] = new Option(w.Name, w.Id);
-                }
+                axios.get(`/api/wards?district_code=${this.value}`)
+                    .then(function (result) {
+                        const wardsData = result.data;
+                        for (const w of wardsData.data) {
+                            wards.options[wards.options.length] = new Option(w.full_name, w.code);
+                        }
+                    });
             }
         };
 
-        <?php if(!empty($item) && !empty($item->location_province)) { ?>
-            citis.value = {!! $item->location_province !!};
-            const event1 = new Event('change');
-            citis.dispatchEvent(event1);
-
-            districts.value = {!! $item->location_district !!};
-            const event11 = new Event('change');
-            districts.dispatchEvent(event11);
-
-            wards.value = {!! $item->location_ward !!}
-        <?php }else{ ?>
-            citis.value = 79;
-            const event2 = new Event('change');
-            citis.dispatchEvent(event2);
-        <?php }?>
-
+        citis.value = 79;
+        const event2 = new Event('change');
+        citis.dispatchEvent(event2);
 
     }
 

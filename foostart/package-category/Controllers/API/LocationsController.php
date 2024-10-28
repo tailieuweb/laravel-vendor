@@ -54,6 +54,9 @@ class LocationsController extends FooController
     public function getProvinces(Request $request)
     {
         $input = $request->all();
+        $input['order'] = [
+          'name' => 'ASC'
+        ];
         $provinces = $this->obj_province->selectItems($input);
         return $this->sendResponse($provinces, 'OK');
     }
@@ -61,6 +64,9 @@ class LocationsController extends FooController
     public function getDistricts(Request $request)
     {
         $input = $request->all();
+        $input['order'] = [
+            'full_name' => 'ASC'
+        ];
         $districts = $this->obj_district->selectItems($input);
         return $this->sendResponse($districts, 'OK');
     }
@@ -68,6 +74,9 @@ class LocationsController extends FooController
     public function getWards(Request $request)
     {
         $input = $request->all();
+        $input['order'] = [
+            'full_name' => 'ASC'
+        ];
         $wards = $this->obj_ward->selectItems($input);
         return $this->sendResponse($wards, 'OK');
     }
