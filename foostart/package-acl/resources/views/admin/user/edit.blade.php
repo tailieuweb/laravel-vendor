@@ -90,7 +90,7 @@
 
                         <!--BUTTONS-->
                         <div class='btn-form'>
-                            <a href="{!! URL::route('users.profile.edit',['user_id' => $user->id]) !!}"
+                            <a href="{!! URL::route('users.profile.editGet',['user_id' => $user->id]) !!}"
                                class="btn btn-primary pull-right margin-left-5" {!! ! isset($user->id) ? 'disabled="disabled"' : '' !!}>
                                 <i class="fa fa-user"></i> Edit profile</a>
 

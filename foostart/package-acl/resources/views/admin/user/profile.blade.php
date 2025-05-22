@@ -42,7 +42,7 @@
                                 @include('package-acl::admin.user.partials.show_gravatar')
                             @endif
                             <h4><i class="fa fa-cubes"></i>{!! trans($plang_admin.'.labels.user-data').':' !!}</h4>
-                            {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
+                            {!! Form::model($user_profile,['route'=>'users.profile.editPost', 'method' => 'post']) !!}
 
                             <div class="row">
                                 <div class="col-md-6 col-xs-12">
